@@ -1,0 +1,41 @@
+{
+  "name": "project",
+  "description": "project description",
+  "main": "index.js",
+  "authors": [
+    "Astronim"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/libs/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "slick-carousel": "^1.6.0",
+    "jquery": "^3.1.1",
+    "device.js": "devicejs#^0.2.7",
+    "jquery-form": "^4.2.2",
+    "jquery-placeholder": "^2.3.1",
+    "jquery-smartresize": "*",
+    "include-media": "^1.4.9",
+    "select2": "^4.0.3",
+    "normalize-scss": "normalize.scss#^7.0.1",
+    "jquery-validation": "^1.17.0",
+    "swiper": "^3.4.2",
+    "matchHeight": "matchheight#^0.7.0",
+    "isotope-layout": "^3.0.6",
+    "imagesloaded": "^4.1.4",
+    "isotope-packery": "^2.0.1",
+    "priority-nav": "priority-nav.js#^1.0.12",
+    "okaynav": "^2.0.4"
+  },
+  "devDependencies": {
+    "mathsass": "^0.9.5"
+  }
+}

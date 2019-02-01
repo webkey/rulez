@@ -1,0 +1,45 @@
+<header class="header">
+  <div class="max-wrap">
+    <!--header-top-->
+    <div class="header-top layout">
+      <div class="add-menu" data-btn-more="Еще">
+        <ul class="add-menu__list">
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+          <li>menu item</li>
+        </ul>
+      </div>
+      @@include('_tpl_user-options.html')
+    </div>
+    <!--header-top end-->
+    <!--header-common-->
+    <div class="header-common layout-narrow">
+      <!--logo-->
+      <div class="logo-wrap">
+        <div class="logo">
+          @@if(context.currentItem === "Главная"){<span>Rulezzz. Твой магазин</span>}
+          @@if(context.currentItem !== "Главная"){<a href="index.html" title="Перейти на главную">Rulezzz. Твой магазин</a>}
+          <img style="display: none;" src="img/logo.png" alt="Print version logotype">
+        </div>
+      </div>
+      <!--logo end-->
+
+      <div class="site-nav">
+        <div class="catalog-opener">{{Весь каталог}}</div>
+        <!--navigation-->
+        <div class="nav-wrap">
+          <nav class="nav">
+            @@include('_tpl_nav-constructor.html', { "currentItem": "@@currentItem", "bsKey": "nav" })
+          </nav>
+        </div>
+        <!--navigation end-->
+        <div class="search">{{Поиск}}</div>
+      </div>
+    </div>
+    <!--header-common end-->
+  </div>
+</header>

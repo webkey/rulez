@@ -1,0 +1,318 @@
+'use strict';
+
+var gulp = require('gulp') // Подключение Gulp
+    , sass = require('gulp-sass') // Подключение Sass пакет https://github.com/dlmanning/gulp-sass
+    , browserSync = require('browser-sync').create() // Подключение Browser Sync
+    , reload = browserSync.reload
+    , concat = require('gulp-concat') // Подключение gulp-concat (для конкатенации файлов)
+    , uglify = require('gulp-uglifyjs')// Подключение gulp-uglifyjs (для сжатия JS)
+    , cssnano = require('gulp-cssnano')// Подключение пакет для минификации CSS
+    , concatCss = require('gulp-concat-css')
+    , rename = require('gulp-rename')// Подключение библиотеку для переименования файлов
+    , del = require('del')// Подключение библиотеку для удаления файлов и папок
+    , imagemin = require('gulp-imagemin')// Подключение библиотеку для работы с изображениями
+    , pngquant = require('imagemin-pngquant')// Подключение библиотеку для работы с png
+    , cache = require('gulp-cache')// Подключение библиотеку кеширования
+    , autoprefixer = require('gulp-autoprefixer')// Подключение библиотеку для автоматического добавления префиксов
+    , sourcemaps = require('gulp-sourcemaps')// Подключение Source Map для дебагинга sass-файлов https://github.com/floridoo/gulp-sourcemaps
+    , fileinclude = require('gulp-file-include')
+    , markdown = require('markdown')
+    , htmlbeautify = require('gulp-html-beautify')// Подключение
+    , fs = require('fs')
+    , modernizr = require('modernizr')// For compiling modernizr.min.js
+    , config = require('./modernizr-config')// Path to modernizr-config.json
+    , replace = require('gulp-string-replace')
+    , strip = require('gulp-strip-comments')// Удалить комментарии
+    , stripCssComments = require('gulp-strip-css-comments')// Удалить комментарии (css)
+    , removeEmptyLines = require('gulp-remove-empty-lines')// Удалить пустые строки
+    , revts = require('gulp-rev-timestamp')// Дабавить версии к подключаемым файлам
+    , beautify = require('gulp-beautify')// Причесать js
+    , index = require('gulp-index') // Для создания списка страниц https://www.npmjs.com/package/gulp-index
+;
+
+/**
+ * @description Относительный путь
+ * @type {{dist: string}}
+ */
+var path = {
+  'dist': 'dist'
+};
+
+/**
+ * @description Таск формирует ДОМ страниц
+ */
+gulp.task('htmlCompilation', function () {
+  return gulp.src(['src/__*.html'])
+      .pipe(fileinclude({
+        filters: {
+          markdown: markdown.parse
+        }
+      }))
+      .pipe(rename(function (path) {
+        path.basename = path.basename.substr(2);
+      }))
+      .pipe(htmlbeautify({
+        // "indent_with_tabs": true,
+        "indent_size": 2,
+        "max_preserve_newlines": 0
+      }))
+      .pipe(gulp.dest('./src/'));
+});
+
+/**
+ * @description Таск создает список всех страниц
+ */
+gulp.task('html:buildAllPages', ['htmlCompilation'], function () {
+  var pref = "all-pages";
+  return gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
+      .pipe(index({
+        // written out before index contents
+        'prepend-to-output': () => `<head> <title>All pages</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"><link rel="shortcut icon" href="favicon.ico"></head><body>`,
+        'title': 'All pages',
+        'title-template': (title) => `<h1 class="` + pref + `__title">${title}</h1>`,
+        'section-template': (sectionContent) => `<section class="` + pref + `__section"> ${sectionContent}</section>`,
+        'section-heading-template': (heading) => `<!--<h2 class="` + pref + `__section-heading">${heading}</h2>-->`,
+        'list-template': (listContent) => `<ul class="` + pref + `__list"> ${listContent}</ul>`,
+        'item-template': (filepath, filename) => `<li class="` + pref + `__item"><a class="` + pref + `__item-link" href="./${filename}">${filename}</a></li>`,
+        'outputFile': './all-pages.html'
+      }))
+      .pipe(htmlbeautify({
+        // "indent_with_tabs": true,
+        "indent_size": 2,
+        "max_preserve_newlines": 0
+      }))
+      .pipe(gulp.dest('./src/'));
+});
+
+/**
+ * @description Таск для переноса normalize
+ */
+gulp.task('normalize', function () {
+  return gulp.src('src/libs/normalize-scss/sass/**/*.+(scss|sass)')
+      .pipe(stripCssComments())
+      .pipe(gulp.dest('src/_temp/'));
+});
+
+/**
+ * @description Таск преобразует sass в css
+ */
+gulp.task('sassCompilation', ['normalize'], function () {
+  return gulp.src('src/sass/**/*.+(scss|sass)')
+      .pipe(sourcemaps.init())
+      .pipe(sass({
+        outputStyle: 'expanded', // nested (default), expanded, compact, compressed
+        // indentType: 'tab',
+        indentType: 'space',
+        // indentWidth: 1,
+        indentWidth: 2,
+        precision: 3,
+        linefeed: 'lf' // cr, crlf, lf or lfcr
+      }).on('error', sass.logError))
+      .pipe(replace('../../', '../'))
+      .pipe(replace('@charset "UTF-8";', ''))
+      .pipe(autoprefixer([
+        'last 5 versions', '> 1%', 'ie >= 9', 'and_chr >= 2.3' //, 'ie 8', 'ie 7'
+      ], {
+        cascade: true
+      }))
+      .pipe(sourcemaps.write('./'))
+      .pipe(gulp.dest('./src/css'))
+      .pipe(browserSync.reload({
+        stream: true
+      }));
+});
+
+/**
+ * @description Таск для мержа css библиотек
+ */
+gulp.task('mergeCssLibs', function () {
+  return gulp.src([
+    'src/css/temp/*.css'
+    , 'src/libs/select2/dist/css/select2.min.css'
+    , 'src/libs/swiper/dist/css/swiper.min.css'
+    , 'src/libs/priority-nav/dist/priority-nav-core.css'
+  ])
+      .pipe(concatCss("src/css/libs.css", {
+        rebaseUrls: false
+      }))
+      .pipe(gulp.dest('./'))
+      .pipe(cssnano())
+      .pipe(rename({suffix: '.min'}))
+      .pipe(gulp.dest('./'));
+});
+
+/**
+ * @description Таск для формирования кастомного modernizr
+ */
+gulp.task('createCustomModernizr', function (done) {
+  modernizr.build(config, function (code) {
+    fs.writeFile('src/js/modernizr.min.js', code, done);
+  });
+});
+
+/**
+ * @description Таск для мераж js библиотек
+ */
+gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
+  return gulp.src([
+    // 'src/libs/device.js/lib/device.min.js' // определение устройств
+    'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
+    , 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
+    // , 'src/libs/jquery-form/dist/jquery.form.min.js' // jquery form для работы с ajax
+    , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
+    , 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
+    , 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
+    , 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
+    , 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
+    , 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
+    , 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider
+    , 'src/libs/imagesloaded/imagesloaded.pkgd.min.js' // preload images
+    , 'src/libs/isotope-layout/dist/isotope.pkgd.min.js' // isotope grid
+    , 'src/libs/isotope-packery/packery-mode.pkgd.min.js' // isotope packery
+    , 'node_modules/scrollreveal/dist/scrollreveal.min.js' // show elements
+    , 'src/libs/priority-nav/dist/priority-nav.min.js' // Лишние пункты меню скрываем в кнопку Ещё
+  ])
+      .pipe(concat('libs.js'))
+      .pipe(gulp.dest('src/js'))
+      .pipe(rename({suffix: '.min'}))
+      .pipe(uglify())
+      .pipe(gulp.dest('src/js'));
+});
+
+/**
+ * @description Таск для копирования jquery в js папку
+ */
+gulp.task('copyJqueryToJs', function () {
+  return gulp.src([
+    'src/libs/jquery/dist/jquery.min.js'
+  ])
+      .pipe(gulp.dest('src/js'));
+});
+
+/**
+ * @description Таск browserSync
+ */
+gulp.task('browserSync', function (done) {
+  browserSync.init({
+    server: {
+      baseDir: "./src"
+    },
+    open: false,
+    notify: false
+  });
+  browserSync.watch(['src/*.html', 'src/js/**/*.js', 'src/includes/**/*.json', 'src/includes/**/*.svg', 'src/includes/**/*.html']).on("change", browserSync.reload);
+  done();
+});
+
+/**
+ * @description Таск наблюдения за изменением файлов
+ */
+gulp.task('watch', ['createCustomModernizr', 'browserSync', 'html:buildAllPages', 'sassCompilation', 'mergeCssLibs', 'copyLibsScriptsToJs'], function () {
+  gulp.watch(['src/_tpl_*.html', 'src/__*.html', 'src/includes/**/*.json', 'src/includes/**/*.svg', 'src/includes/**/*.html'], ['html:buildAllPages']);
+  gulp.watch('src/sass/**/*.+(scss|sass)', ['sassCompilation']);
+});
+
+/**
+ * @description Таск watch определяем как дефолтный
+ */
+gulp.task('default', ['watch']);
+
+
+/************************************************************
+ * Create Distribution folder and move files to it
+ ************************************************************/
+
+/**
+ * @description Копирование изображений в папку релиза
+ */
+gulp.task('copyImgToDist', function () {
+  return gulp.src('src/img/**/*')
+      .pipe(cache(imagemin({
+        interlaced: true,
+        progressive: true,
+        // svgoPlugins: [{removeViewBox: false}],
+        optimizationLevel: 7, //степень сжатия от 0 до 7
+        use: [pngquant()]
+      })))
+      .pipe(gulp.dest(path.dist + '/img'));
+});
+
+/**
+ * @description Таск для компиляции sass файлов без мапинга. Специально для релизной версии
+ */
+gulp.task('sassCompilationForDist', function () {
+  return gulp.src('src/sass/**/*.+(scss|sass)')
+      .pipe(sass({
+        outputStyle: 'expanded',
+        indentType: 'space',
+        indentWidth: 2,
+        precision: 3,
+        linefeed: 'lf'
+      }).on('error', sass.logError))
+      .pipe(replace('../../', '../'))
+      .pipe(replace('@charset "UTF-8";', ''))
+      .pipe(autoprefixer([
+        'last 5 versions', '> 1%', 'ie >= 9', 'and_chr >= 2.3'
+      ], {
+        cascade: true
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(gulp.dest(path.dist + '/css'))
+});
+
+/**
+ * @description Перенос файлов в папку релиза
+ */
+gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sassCompilationForDist', 'mergeCssLibs', 'createCustomModernizr', 'copyLibsScriptsToJs'], function () {
+
+  gulp.src(['src/ajax/**/*'])
+      .pipe(gulp.dest(path.dist + '/ajax'));
+
+  gulp.src(['src/video/**/*'])
+      .pipe(gulp.dest(path.dist + '/video'));
+
+  gulp.src('src/fonts/**/*')
+      .pipe(gulp.dest(path.dist + '/fonts'));
+
+  gulp.src('src/js/common.js')
+      .pipe(strip({
+        safe: true,
+        ignore: /\/\*\*\s*\n([^\*]*(\*[^\/])?)*\*\//g // Не удалять /**...*/
+      }))
+      .pipe(removeEmptyLines())
+      .pipe(beautify({
+        // "indent_with_tabs": true,
+        "indent_size": 2,
+        "space_after_anon_function": true,
+        "max_preserve_newlines": 2
+      }))
+      .pipe(gulp.dest(path.dist + '/js'));
+
+  gulp.src(['!src/js/temp/**/*.js', '!src/js/**/_temp_*.js', '!src/js/common.js', 'src/js/*.js'])
+      .pipe(gulp.dest(path.dist + '/js'));
+
+  gulp.src('src/assets/**/*')
+      .pipe(gulp.dest(path.dist + '/assets'));
+
+  gulp.src(['!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', 'src/*.html'])
+      .pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
+      .pipe(gulp.dest(path.dist));
+
+  gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess'])
+      .pipe(gulp.dest(path.dist));
+
+});
+
+/**
+ * @description Таск удаления релизной папки
+ */
+gulp.task('cleanDist', function () {
+  return del.sync([path.dist + '/']);
+});
+
+/**
+ * @description Таск очистки кэша
+ */
+gulp.task('clearCache', function () {
+  return cache.clearAll();
+});

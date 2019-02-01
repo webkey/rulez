@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]> <html class="no-js old-ie" lang="ru"> <![endif]-->
+<!--[if IE 9]> <html class="no-js ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="ru">
+<!--<![endif]-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Главная</title>
+  <!--Mobile optimized-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+  <!--Theme color-->
+  <meta name="theme-color" content="#6e52dd">
+  <!--SEO-->
+  <meta name="description" content="описание">
+  <meta name="keywords" content="ключевые слова">
+  <meta name="yandex-verification" content="XXXXXXXXXXXXXX">
+  <meta name="google-site-verification" content="XXXXXXXXXXXXXX">
+  <!--The Open Graph protocol-->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="http://localhost:3000/index.html">
+  <meta property="og:title" content="Название">
+  <meta property="og:image" content="http://localhost:3000/apple-touch-icon.png">
+  <meta property="og:image:height" content="256">
+  <meta property="og:image:width" content="256">
+  <meta property="og:description" content="Описание">
+  <meta property="og:site_name" content="Расширенное название">
+  <!--Favicon-->
+  <link rel="shortcut icon" href="favicon.ico?rev=@@hash">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico?rev=@@hash">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?rev=@@hash">
+  <!--Style-->
+  <link rel="stylesheet" href="css/libs.min.css?rev=@@hash">
+  <link rel="stylesheet" href="css/main.css?rev=@@hash">
+  <!--Modernizr-->
+  <script src="js/modernizr.min.js"></script>
+</head>
+
+<body class="home-page">
+  <noscript>
+    <div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div>
+  </noscript>
+  <!--[if lt IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
+  <div class="wrapper">
+    <!--HEADER-->
+    <header class="header">
+      <div class="max-wrap">
+        <!--header-top-->
+        <div class="header-top layout">
+          <div class="add-menu" data-btn-more="Еще">
+            <ul class="add-menu__list">
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+              <li>menu item</li>
+            </ul>
+          </div>
+          <div class="user-options">
+            {{Вход, лайки, корзина...}}
+            <!--<div class="user-options__item user-options&#45;&#45;login">
+		<a href="#" title="Вход" class="btn-login-js">
+			<svg class="svg-ico-profile" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 563.4 563.4"><path d="M280.8 314.6c83.3 0 150.8-67.5 150.8-150.8S364.1 13.4 280.8 13.4 130 81 130 163.8 197.5 314.6 280.8 314.6zM280.8 52.7c61.1 0 111 50 111 111S341.9 274.8 280.8 274.8s-111-50-111-111S219.7 52.7 280.8 52.7z"></path><path d="M19.9 550h523.6c11.1 0 19.9-8.8 19.9-19.9 0-104.1-84.7-189.2-189.2-189.2H189.2C85.1 340.9 0 425.6 0 530.1 0 541.2 8.8 550 19.9 550zM189.2 380.7h185c75.9 0 138.3 56.4 148 129.5H41.2C50.9 437.6 113.3 380.7 189.2 380.7z"></path></svg>
+			<span>Войти</span>
+		</a>
+	</div>
+	<div class="user-options__item user-options&#45;&#45;likes">
+		<a href="#" title="Избранное">
+			<svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+    <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
+</svg>
+			<span>12</span>
+		</a>
+	</div>-->
+          </div>
+        </div>
+        <!--header-top end-->
+        <!--header-common-->
+        <div class="header-common layout-narrow">
+          <!--logo-->
+          <div class="logo-wrap">
+            <div class="logo">
+              <span>Rulezzz. Твой магазин</span>
+              <img style="display: none;" src="img/logo.png" alt="Print version logotype">
+            </div>
+          </div>
+          <!--logo end-->
+          <div class="site-nav">
+            <div class="catalog-opener">{{Весь каталог}}</div>
+            <!--navigation-->
+            <div class="nav-wrap">
+              <nav class="nav">
+                <!--(1) START nav FIRST level-->
+                <ul class="nav__list reset-list nav-js">
+                  <!--nav item start-->
+                  <li class="has-drop">
+                    <div class="nav__tab nav__tab-js">
+                      <a href="all-pages.html"><span>All pages</span></a>
+                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                    </div>
+                    <!--(2) START nav SECOND level-->
+                    <div class="nav__drop nav-drop-js">
+                      <ul class="sub-nav__list">
+                        <li><a href="404.html"><span>404</span></a></li>
+                        <li><a href="forms.html"><span>forms</span></a></li>
+                        <li><a href="index.html"><span>index</span></a></li>
+                        <li><a href="inner.html"><span>inner</span></a></li>
+                        <li><a href="typography.html"><span>typography</span></a></li>
+                      </ul>
+                    </div>
+                    <!--(2) END nav SECOND level-->
+                  </li>
+                  <!--nav item end-->
+                  <!--nav item start-->
+                  <li class="has-drop ">
+                    <div class="nav__tab nav__tab-js">
+                      <a href="#"><span>Пункт 1</span></a>
+                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                    </div>
+                    <!--(2) START nav SECOND level-->
+                    <div class="nav__drop nav-drop-js">
+                      <ul class="sub-nav__list">
+                        <li>
+                          <div class="nav__tab nav__tab-js">
+                            <a href="#"><span>Пункт 1.1</span></a>
+                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                          </div>
+                        </li>
+                        <li class="has-drop">
+                          <div class="nav__tab nav__tab-js">
+                            <a href="#"><span>Пункт 1.2 (есть подпункты)</span></a>
+                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                          </div>
+                          <!--(3) START nav THIRD level-->
+                          <div class="nav__drop nav-drop-js">
+                            <ul class="sub-nav__list">
+                              <li>
+                                <div class="nav__tab nav__tab-js">
+                                  <a href="#"><span>Пункт 1.2.1</span></a>
+                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                </div>
+                              </li>
+                              <li class="has-drop">
+                                <div class="nav__tab nav__tab-js">
+                                  <a href="#"><span>Пункт 1.2.2 (есть подпункты)</span></a>
+                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                </div>
+                                <!--(4) START nav FOURTH level-->
+                                <div class="nav__drop nav-drop-js">
+                                  <ul class="sub-nav__list">
+                                    <li>
+                                      <div class="nav__tab nav__tab-js">
+                                        <a href="#"><span>Пункт 1.2.2.1</span></a>
+                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="nav__tab nav__tab-js">
+                                        <a href="#"><span>Пункт 1.2.2.2</span></a>
+                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="nav__tab nav__tab-js">
+                                        <a href="#"><span>Пункт 1.2.2.3</span></a>
+                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                      </div>
+                                    </li>
+                                    <li>
+                                      <div class="nav__tab nav__tab-js">
+                                        <a href="#"><span>Пункт 1.2.2.3</span></a>
+                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                      </div>
+                                    </li>
+                                  </ul>
+                                </div>
+                                <!--(4) END nav FOURTH level-->
+                              </li>
+                              <li>
+                                <div class="nav__tab nav__tab-js">
+                                  <a href="#"><span>Пункт 1.2.3</span></a>
+                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                </div>
+                              </li>
+                              <li>
+                                <div class="nav__tab nav__tab-js">
+                                  <a href="#"><span>Пункт 1.2.4</span></a>
+                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <!--(3) END nav THIRD level-->
+                        </li>
+                        <li>
+                          <div class="nav__tab nav__tab-js">
+                            <a href="#"><span>Пункт 1.4</span></a>
+                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="nav__tab nav__tab-js">
+                            <a href="#"><span>Пункт 1.5</span></a>
+                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <!--(2) END nav SECOND level-->
+                  </li>
+                  <!--nav item end-->
+                  <!--nav item start-->
+                  <li class="">
+                    <div class="nav__tab nav__tab-js">
+                      <a href="#"><span>Пункт 2</span></a>
+                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                    </div>
+                  </li>
+                  <!--nav item end-->
+                  <!--==================================================================-->
+                  <!--====================== ПРИМЕР БЕЗ ДРОПА ==========================-->
+                  <!--==================================================================-->
+                  <!--nav item start-->
+                  <li class="">
+                    <div class="nav__tab nav__tab-js">
+                      <a href="#"><span>Пункт 3</span></a>
+                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                    </div>
+                  </li>
+                  <!--nav item end-->
+                  <!--==================================================================-->
+                  <!--================== ПРИМЕР БЕЗ ДРОПА конец ========================-->
+                  <!--==================================================================-->
+                  <!--==================================================================-->
+                  <!--====================== ПРИМЕР С ДРОПОМ ===========================-->
+                  <!--==================================================================-->
+                  <!--Чтобы лучше было видно группу пунктов в одно дропе, нужно подсветить этот дроп, введя в поиск ==========3========== -->
+                  <!--nav item start-->
+                  <li class="has-drop">
+                    <div class="nav__tab nav__tab-js">
+                      <a href="#"><span>tt1tt</span></a>
+                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                    </div>
+                    <!--(2) START nav SECOND level-->
+                    <div class="nav__drop nav-drop-js">
+                      <ul class="sub-nav__list">
+                        <li class="has-drop">
+                          <div class="nav__tab nav__tab-js">
+                            <a href="#"><span>tt2tt</span></a>
+                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                          </div>
+                          <!--(3) START nav THIRD level-->
+                          <div class="nav__drop nav-drop-js">
+                            <ul class="sub-nav__list">
+                              <li>
+                                <div class="nav__tab nav__tab-js">
+                                  <a href="#"><span>tt3tt</span></a>
+                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
+                                </div>
+                              </li>
+                            </ul>
+                          </div>
+                          <!--(3) END nav THIRD level-->
+                        </li>
+                      </ul>
+                    </div>
+                    <!--(2) END nav SECOND level-->
+                  </li>
+                  <!--nav item end-->
+                  <!--пробел ставим ТОЛЬКО после элемента с правилом "pos": "end"-->
+                  <!--==================================================================-->
+                  <!--==================== ПРИМЕР С ДРОПОМ конец =======================-->
+                  <!--==================================================================-->
+                </ul>
+                <!--(1) END nav FIRST level-->
+              </nav>
+            </div>
+            <!--navigation end-->
+            <div class="search">{{Поиск}}</div>
+          </div>
+        </div>
+        <!--header-common end-->
+      </div>
+    </header>
+    <!--HEADER end-->
+    <!--MAIN-->
+    <div class="main">
+      <!--CONTENT-->
+      <section class="main-section main-section_promo">
+        <h2 class="hide">Промо слайдер</h2>
+        <div class="promo-slider swiper-container promo-slider-js">
+          <div class="swiper-wrapper">
+            <div class="promo-slider__item swiper-slide">
+              <div class="promo-slider__item__img" data-swiper-parallax="700">
+                <img src="img/temp/list/1920/img_01.jpg" alt="Image Description" />
+              </div>
+              <div class="promo-slider__item__img for-mob">
+                <img class="" src="img/temp/list/1920/img_01.jpg" alt="Image Description" />
+              </div>
+              <a href="#" class="promo-slider__item__content">
+                <div class="promo-slider__item__footer">
+                  <a href="#" class="btn-def">
+                    Получить
+                  </a>
+                </div>
+              </a>
+            </div>
+            <div class="promo-slider__item swiper-slide">
+              <div class="promo-slider__item__img" data-swiper-parallax="700">
+                <img src="img/temp/list/1920/img_02.jpg" alt="Image Description" />
+              </div>
+              <div class="promo-slider__item__img for-mob">
+                <img class="" src="img/temp/list/1920/img_02.jpg" alt="Image Description" />
+              </div>
+              <a href="#" class="promo-slider__item__content">
+                <div class="promo-slider__item__footer">
+                  <a href="#" class="btn-def">
+                    Получить
+                  </a>
+                </div>
+              </a>
+            </div>
+            <div class="promo-slider__item swiper-slide">
+              <div class="promo-slider__item__img" data-swiper-parallax="700">
+                <img src="img/temp/list/1920/img_03.jpg" alt="Image Description" />
+              </div>
+              <div class="promo-slider__item__img for-mob">
+                <img class="" src="img/temp/list/1920/img_03.jpg" alt="Image Description" />
+              </div>
+              <a href="#" class="promo-slider__item__content">
+                <div class="promo-slider__item__footer">
+                  <a href="#" class="btn-def">
+                    Получить
+                  </a>
+                </div>
+              </a>
+            </div>
+            <div class="promo-slider__item swiper-slide">
+              <div class="promo-slider__item__img" data-swiper-parallax="700">
+                <img src="img/temp/list/1920/img_04.jpg" alt="Image Description" />
+              </div>
+              <div class="promo-slider__item__img for-mob">
+                <img class="" src="img/temp/list/1920/img_04.jpg" alt="Image Description" />
+              </div>
+              <a href="#" class="promo-slider__item__content">
+                <div class="promo-slider__item__footer">
+                  <a href="#" class="btn-def">
+                    Получить
+                  </a>
+                </div>
+              </a>
+            </div>
+            <div class="promo-slider__item swiper-slide">
+              <div class="promo-slider__item__img" data-swiper-parallax="700">
+                <img src="img/temp/list/1920/img_05.jpg" alt="Image Description" />
+              </div>
+              <div class="promo-slider__item__img for-mob">
+                <img class="" src="img/temp/list/1920/img_05.jpg" alt="Image Description" />
+              </div>
+              <a href="#" class="promo-slider__item__content">
+                <div class="promo-slider__item__footer">
+                  <a href="#" class="btn-def">
+                    Получить
+                  </a>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
+            {{arrow prev}}
+          </div>
+          <div class="slider-arrow slider-arrow_next slider-arrow_next-js">
+            {{arrow right}}
+          </div>
+        </div>
+      </section>
+      <section class="main-section main-section_quick-links layout-narrow max-wrap">
+        <h2 class="hide">Быстрые ссылки</h2>
+        <div class="quick-links">
+          <div class="quick-links__list grid-js">
+            <div class="quick-links__item grid-item-js" style="height: 175px;">{{Мониторы}}</div>
+            <div class="quick-links__item grid-item-js" style="height: 332px;">{{Компьютеры}}</div>
+            <div class="quick-links__item grid-item-js" data-sr="enter bottom and move 20px over 2s" style="height: 373px;">{{Ноутбуки}}</div>
+            <div class="quick-links__item grid-item-js" style="height: 180px;">{{Заказать звонок}}</div>
+            <div class="quick-links__item grid-item-js" style="height: 123px;">{{Game Zone}}</div>
+            <div class="quick-links__item grid-item-js" style="height: 175px;">{{Моноблоки}}</div>
+          </div>
+        </div>
+      </section>
+      <section class="main-section main-section_opinions layout-narrow max-wrap">
+        <h2 class="hide">Статьи</h2>
+        <div class="opinions">
+          <div class="opinions__list">
+            <div class="opinions__item opinions__item_alt">{{Полезные советы}}</div>
+            <div class="opinions__item">{{Полезные советы}}</div>
+          </div>
+        </div>
+      </section>
+      <section class="main-section main-section_topics tabs-js max-wrap">
+        <div class="caption-box layout">
+          <h2 class="caption-box__title">Лучшая цена</h2>
+          <div class="caption-box__options">
+            <div class="topics__thumbs">
+              <a href="#laptops" class="tabs__anchor-js tabs-active"><span>Ноутбуки</span></a>
+              <a href="#monoblocks" class="tabs__anchor-js"><span>Моноблоки</span></a>
+              <a href="#computers" class="tabs__anchor-js"><span>Компьютеры</span></a>
+              <a href="#monitors" class="tabs__anchor-js"><span>Мониторы</span></a>
+              <a href="#printers" class="tabs__anchor-js"><span>Принтеры МФУ</span></a>
+              <a href="#tablets" class="tabs__anchor-js"><span>Планшеты</span></a>
+              <a href="#game-zone" class="tabs__anchor-js"><span>Game Zone</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs layout">
+          <div class="topics-tabs__panels tabs__panels-js">
+            <div class="topics-tabs__panel tabs__panel-js" id="laptops">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="monoblocks">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="computers">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="monitors">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="printers">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="tablets">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="game-zone">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 4}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="main-section main-section_banners max-wrap">
+        <section class="banner">
+          <img src="img/banner-01.jpg" alt="image description" />
+        </section>
+      </section>
+      <section class="main-section main-section_topics tabs-js max-wrap">
+        <div class="caption-box layout">
+          <h2 class="caption-box__title">Идеи для подарков</h2>
+          <div class="caption-box__options">
+            <div class="topics__thumbs">
+              <a href="#laptops2" class="tabs__anchor-js tabs-active"><span>Ноутбуки</span></a>
+              <a href="#monoblocks2" class="tabs__anchor-js"><span>Моноблоки</span></a>
+              <a href="#computers2" class="tabs__anchor-js"><span>Компьютеры</span></a>
+              <a href="#monitors2" class="tabs__anchor-js"><span>Мониторы</span></a>
+              <a href="#printers2" class="tabs__anchor-js"><span>Принтеры МФУ</span></a>
+              <a href="#tablets2" class="tabs__anchor-js"><span>Планшеты</span></a>
+              <a href="#game-zone2" class="tabs__anchor-js"><span>Game Zone</span></a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs layout">
+          <div class="topics-tabs__panels tabs__panels-js">
+            <div class="topics-tabs__panel tabs__panel-js" id="laptops2">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Ноутбуки 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="monoblocks2">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Моноблоки 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="computers2">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Компьютеры 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="monitors2">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Мониторы 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="printers2">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Принтеры МФУ 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="tablets2">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Планшеты 4}}</a>
+                </div>
+              </div>
+            </div>
+            <div class="topics-tabs__panel tabs__panel-js" id="game-zone2">
+              <div class="topics__list">
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 1}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 2}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 3}}</a>
+                </div>
+                <div class="topics__item">
+                  <a href="#" class="product-item">{{Game Zone 4}}</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="main-section main-section_grid layout max-wrap">
+        <h2 class="hide">Бренды</h2>
+        <div class="brands">
+          {{Бренды}}
+        </div>
+      </section>
+      <section class="main-section main-section_game-zone" id="gameZone">
+        <div class="game-zone layout max-wrap">
+          <div class="game-zone__caption">
+            <h2 class="game-zone__title">Game Zone</h2>
+            <div class="game-zone__options">
+              <div class="game-zone__links">
+                <a href="#" class="tabs__anchor-js tabs-active"><span>Мышки игровые</span></a>
+                <a href="#" class="tabs__anchor-js"><span>Клавиатуры игровые</span></a>
+                <a href="#" class="tabs__anchor-js"><span>Очки для геймеров</span></a>
+                <a href="#" class="tabs__anchor-js"><span>Манипуляторы Геймпады</span></a>
+                <a href="#" class="tabs__anchor-js"><span>Рули</span></a>
+                <a href="#" class="tabs__anchor-js"><span>Шлем</span></a>
+                <a href="#" class="tabs__anchor-js"><span>Игры</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="game-zone__entry">
+            <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний ноутбук это очень лёгкое и ультратонкое устройство с</p>
+            <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний ноутбук это очень лёгкое и ультратонкое устройство с</p>
+          </div>
+          <div class="game-zone__tiles">
+            <div class="game-zone__list grid-js">
+              <div class="game-zone__item grid-item-js" style="height: 316px;">Игровые ноутбуки</div>
+              <div class="game-zone__item grid-item-js" style="height: 218px;">Мониторы игровые</div>
+              <div class="game-zone__item grid-item-js" style="height: 317px;">Игровые компьютеры</div>
+              <div class="game-zone__item grid-item-js" style="height: 321px;">Игровые приставки</div>
+              <div class="game-zone__item grid-item-js" style="height: 241px;">Моноблоки игровые</div>
+              <div class="game-zone__item grid-item-js" style="height: 142px;">Планшеты игровые</div>
+              <div class="game-zone__item game-zone__item-wide grid-item-js" style="height: 147px;">Очки виртуальной реальности</div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="main-section main-section_articles layout max-wrap">
+        <h2 class="main-section__title">Статьи и обзоры, полезные советы</h2>
+        <div class="article-tiles">
+          <div class="article-tiles__list grid-js">
+            <div class="article-tiles__item article-tiles__item-wide grid-item-js" style="height: 420px;">Обзор ультрабука Huawei Matebook X Pro</div>
+            <div class="article-tiles__item article-tiles__item-wide grid-item-js" style="height: 207px;">Предзаказ Xiaomi Mi MIX 3</div>
+            <div class="article-tiles__item grid-item-js" style="height: 422px;">Подборка подарков от</div>
+            <div class="article-tiles__item grid-item-js" style="height: 205px;">Предзаказ Xiaomi Mi MIX 3</div>
+            <div class="article-tiles__item grid-item-js" style="height: 205px;">Обзор Iphone</div>
+          </div>
+        </div>
+      </section>
+      <section class="main-section main-section_grid layout max-wrap">
+        <h2 class="hide">Обратная связь</h2>
+        <div class="brands">
+          {{Помощь экспертов в выборе товаров}} <br>
+          {{Рассрочка и кредит по выгодным условиям}} <br>
+          {{Быстрая доставка по Минску курьером}} <br>
+          {{Дополнительные услуги по сервисному обслуживанию}}
+        </div>
+      </section>
+      <!--CONTENT end-->
+    </div>
+    <!--MAIN end-->
+    <!--FOOTER-->
+    <footer class="footer">
+      <div class="footer__holder max-wrap layout">
+        <!--footer-common-->
+        <div class="footer-common">
+          <div class="footer-grid">
+            <div class="footer-grid__item footer-grid__item_catalog">
+              <strong class="footer-grid__title"><a href="#"><span>Каталог</span></a></strong>
+              <div class="footer-grid__content">
+                <ul class="footer-grid__list">
+                  <li><a href="#"><span>Ноутбуки</span></a></li>
+                  <li><a href="#"><span>Моноблоки</span></a></li>
+                  <li><a href="#"><span>Компьютеры</span></a></li>
+                  <li><a href="#"><span>Мониторы</span></a></li>
+                  <li><a href="#"><span>Принтеры и МФУ</span></a></li>
+                  <li><a href="#"><span>Game Zone</span></a></li>
+                  <li><a href="#"><span>Планшеты и смартфоны</span></a></li>
+                  <li><a href="#"><span>Телевизоры</span></a></li>
+                  <li><a href="#"><span>SSD</span></a></li>
+                  <li><a href="#"><span>Внешние жесткие диски</span></a></li>
+                  <li><a href="#"><span>Экшен-камеры</span></a></li>
+                  <li><a href="#"><span>Электронные книги</span></a></li>
+                  <li><a href="#"><span>Чехлы для планшетов</span></a></li>
+                  <li><a href="#"><span>IP-камеры</span></a></li>
+                  <li><a href="#"><span>Программное обеспечение</span></a></li>
+                  <li><a href="#"><span>Умные часы</span></a></li>
+                  <li><a href="#"><span>Аксессуары для ноутбуков и компьютеров</span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-grid__item">
+              <strong class="footer-grid__title"><a href="#"><span>Rulez.by</span></a></strong>
+              <div class="footer-grid__content">
+                <ul class="footer-grid__list">
+                  <li><a href="#"><span>Акции и подарки</span></a></li>
+                  <li><a href="#"><span>Условия покупки в кредит</span></a></li>
+                  <li><a href="#"><span>Условия покупки в рассрочку</span></a></li>
+                  <li><a href="#"><span>Услуги</span></a></li>
+                  <li><a href="#"><span>Сервисный центр</span></a></li>
+                  <li><a href="#"><span>Доставка</span></a></li>
+                  <li><a href="#"><span>Способы оплаты</span></a></li>
+                  <li><a href="#"><span>Сертификаты и гарантия</span></a></li>
+                  <li><a href="#"><span>Часто задаваемые вопросы</span></a></li>
+                  <li><a href="#"><span>О компании</span></a></li>
+                  <li><a href="#"><span>Карта сайта</span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-grid__item">
+              <strong class="footer-grid__title"><a href="#"><span>Контакты</span></a></strong>
+              <div class="footer-grid__content">
+                <ul class="footer-grid__phones">
+                  <li><a href="tel:+375291232017"><span><i>+375 (29)</i> 123 20 17</span></a></li>
+                  <li><a href="tel:+375291231010"><span><i>+375 (29)</i> 123 10 10</span></a></li>
+                  <li><a href="tel:+375291231010"><span><i>+375 (29)</i> 123 10 10</span></a></li>
+                </ul>
+                <div class="soc-footer">
+                  <div class="soc-footer__list">
+                    <div class="soc-footer__item">
+                      <a href="?fb" title="Facebook" class="fb">
+                        <span>Facebook</span>
+                        <svg class="svg-ico-facebook" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 123 263.5">
+                          <path fill="#3a589e" d="M80.9 85.2V57.9c0-10.4 6.6-12.6 11.5-12.6s29.5 0 29.5 0V-0.1H81.5c-44.8 0-55.2 33.9-55.2 55.2v30.1H0.1v46.5h26.2c0 59.6 0 131.7 0 131.7H81c0 0 0-72.7 0-131.7h37.2l4.9-46.5L80.9 85.2 80.9 85.2z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="soc-footer__item">
+                      <a href="?vk" title="Вконтакте" class="vk">
+                        <span>Вконтакте</span>
+                        <svg class="svg-ico-vkontakte" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 107.585 61.139">
+                          <path fill="#4b73a4" d="M104.8 51.2c-2.6-2.6-13.2-13.7-13.2-13.7 -1.6-2.1-2.1-4.7-0.5-6.8 3.2-4.2 9-11.6 11.1-14.8 3.2-4.2 9-13.2 1.1-13.2H85.9c-1.6 0-2.6 1.1-3.7 2.1 0 0-6.8 12.6-9 16.8 -5.8 11.6-10 7.9-10 2.6V5.9c0-3.2-2.6-5.8-5.8-5.8H44.3c-3.7-0.5-6.8 1.6-9.5 4.2 0 0 6.8-1.1 6.8 7.9v13.7c0 2.1-1.6 3.7-3.7 3.7 -1.1 0-2.1-0.5-3.2-1.1 -5.3-7.4-10-15.3-13.2-23.7 -0.5-1.1-2.1-2.1-3.2-2.1H2.6C1.1 2.7 0 3.7 0 5.3c0 0.5 0 0.5 0 1.1 4.7 13.2 25.3 54.3 49 54.3h10c2.1 0 3.7-1.6 3.7-3.7v-5.8c0-2.1 1.6-3.7 3.7-3.7 1.1 0 2.1 0.5 2.6 1.1L80.6 59.6c1.1 1.1 2.6 1.6 3.7 1.6h15.8C109.1 60.7 109.1 55.4 104.8 51.2z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="soc-footer__item">
+                      <a href="?telegram" title="Телеграм" class="telegram">
+                        <span>Телеграм</span>
+                        <svg class="svg-ico-telegram" width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 42.6">
+                          <path d="M17.6 33.2l-4-1.6c-1.7-0.7-2.6 0.1-1.9 1.9 0 0 3.7 8.9 3.6 9.2 -0.1 0.3 3.5-5.3 3.5-5.3C20 35.8 19.4 33.9 17.6 33.2zM41.7 0.4L1.2 21.6c-1.7 0.9-1.6 2.2 0.1 2.8l5.2 2c1.7 0.7 4.4 0.3 5.9-0.8L34.8 7.9c1.5-1.2 1.6-1 0.4 0.4l-17.7 19c-1.3 1.4-0.9 3 0.8 3.7l0.6 0.2c1.8 0.7 4.6 1.8 6.3 2.5l5.7 2.3c1.7 0.7 3.6-0.1 4.1-1.9l8.7-32.1C44.3 0.3 43.4-0.5 41.7 0.4z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="subs">
+                  <a href="#" class="btn-subs"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                      <circle cx="6.18" cy="17.82" r="2.18"></circle>
+                      <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path>
+                    </svg> <span>Подписать на рассылку</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--footer-common end-->
+        <!--footer bottom-->
+        <div class="footer-bottom">
+          <div class="footer-bottom__holder">
+            <div class="footer-bottom__col">
+              <span class="copyright">&copy; <a href="index.html">rulezz</a> 2019</span>
+            </div>
+            <div class="footer-bottom__col">
+              <div class="license">ООО «Сити Трейд Маркет» Юр. адрес: 220019, РБ, г. Минск, ул. Солнечная, д.27, оф.335 В торговом реестре РБ с 6 февраля 2017 года №366540 УНП: 1927465445 Выдано&nbsp;Минским Городским исполнительным комитетом 06.12.2017 г.</div>
+            </div>
+            <div class="footer-bottom__col">
+              <!--developer-->
+              <div class="developer">
+                <a href="http://astronim.by/" target="_blank" title="Разработка сайта">
+                  <span class="developer__logo">Astronim*Support</span>
+                </a>
+              </div>
+              <!--developer end-->
+            </div>
+          </div>
+        </div>
+        <!--footer bottom end-->
+      </div>
+    </footer>
+    <!--FOOTER end-->
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/libs.min.js"></script>
+  <script src="js/common.js?rev=@@hash"></script>
+</body>
+
+</html>

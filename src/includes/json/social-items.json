@@ -1,0 +1,20 @@
+[
+  {
+	"href": "?fb",
+	"class": "fb",
+	"svg": "@@include('includes/svg/icon-soc--facebook.svg')",
+	"title": "Facebook"
+  },
+  {
+	"href": "?vk",
+	"class": "vk",
+	"svg": "@@include('includes/svg/icon-soc--vkontakte.svg')",
+	"title": "Вконтакте"
+  },
+  {
+	"href": "?telegram",
+	"class": "telegram",
+	"svg": "@@include('includes/svg/icon-soc--telegram.svg')",
+	"title": "Телеграм"
+  }
+]

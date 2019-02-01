@@ -1,0 +1,392 @@
+@@include('_tpl_layout_head.html', {
+  "title": "Главная",
+  "pageClass": "home-page"
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', {"currentItem": "Главная" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <!--CONTENT-->
+  <section class="main-section main-section_promo">
+    <h2 class="hide">Промо слайдер</h2>
+    <div class="promo-slider swiper-container promo-slider-js">
+      <div class="swiper-wrapper">
+        @@loop("_tpl_sliders_promo-slider--items.html", "includes/json/sliders_promo-slider.json")
+      </div>
+      <div class="swiper-pagination"></div>
+      <div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
+        {{arrow prev}}
+      </div>
+      <div class="slider-arrow slider-arrow_next slider-arrow_next-js">
+        {{arrow right}}
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section main-section_quick-links layout-narrow max-wrap">
+    <h2 class="hide">Быстрые ссылки</h2>
+    <div class="quick-links">
+      <div class="quick-links__list grid-js">
+        <div class="quick-links__item grid-item-js" style="height: 175px;">{{Мониторы}}</div>
+        <div class="quick-links__item grid-item-js" style="height: 332px;">{{Компьютеры}}</div>
+        <div class="quick-links__item grid-item-js" data-sr="enter bottom and move 20px over 2s" style="height: 373px;">{{Ноутбуки}}</div>
+        <div class="quick-links__item grid-item-js" style="height: 180px;">{{Заказать звонок}}</div>
+        <div class="quick-links__item grid-item-js" style="height: 123px;">{{Game Zone}}</div>
+        <div class="quick-links__item grid-item-js" style="height: 175px;">{{Моноблоки}}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section main-section_opinions layout-narrow max-wrap">
+    <h2 class="hide">Статьи</h2>
+    <div class="opinions">
+      <div class="opinions__list">
+        <div class="opinions__item opinions__item_alt">{{Полезные советы}}</div>
+        <div class="opinions__item">{{Полезные советы}}</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section main-section_topics tabs-js max-wrap">
+    <div class="caption-box layout">
+      <h2 class="caption-box__title">Лучшая цена</h2>
+      <div class="caption-box__options">
+        <div class="topics__thumbs">
+          <a href="#laptops" class="tabs__anchor-js tabs-active"><span>Ноутбуки</span></a>
+          <a href="#monoblocks" class="tabs__anchor-js"><span>Моноблоки</span></a>
+          <a href="#computers" class="tabs__anchor-js"><span>Компьютеры</span></a>
+          <a href="#monitors" class="tabs__anchor-js"><span>Мониторы</span></a>
+          <a href="#printers" class="tabs__anchor-js"><span>Принтеры МФУ</span></a>
+          <a href="#tablets" class="tabs__anchor-js"><span>Планшеты</span></a>
+          <a href="#game-zone" class="tabs__anchor-js"><span>Game Zone</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="topics-tabs layout">
+      <div class="topics-tabs__panels tabs__panels-js">
+        <div class="topics-tabs__panel tabs__panel-js" id="laptops">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="monoblocks">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="computers">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="monitors">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="printers">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="tablets">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="game-zone"><div class="topics__list">
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 1}}</a>
+          </div>
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 2}}</a>
+          </div>
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 3}}</a>
+          </div>
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 4}}</a>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section main-section_banners max-wrap">
+    <section class="banner">
+      <img src="img/banner-01.jpg" alt="image description" />
+    </section>
+  </section>
+
+  <section class="main-section main-section_topics tabs-js max-wrap">
+    <div class="caption-box layout">
+      <h2 class="caption-box__title">Идеи для подарков</h2>
+      <div class="caption-box__options">
+        <div class="topics__thumbs">
+          <a href="#laptops2" class="tabs__anchor-js tabs-active"><span>Ноутбуки</span></a>
+          <a href="#monoblocks2" class="tabs__anchor-js"><span>Моноблоки</span></a>
+          <a href="#computers2" class="tabs__anchor-js"><span>Компьютеры</span></a>
+          <a href="#monitors2" class="tabs__anchor-js"><span>Мониторы</span></a>
+          <a href="#printers2" class="tabs__anchor-js"><span>Принтеры МФУ</span></a>
+          <a href="#tablets2" class="tabs__anchor-js"><span>Планшеты</span></a>
+          <a href="#game-zone2" class="tabs__anchor-js"><span>Game Zone</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="topics-tabs layout">
+      <div class="topics-tabs__panels tabs__panels-js">
+        <div class="topics-tabs__panel tabs__panel-js" id="laptops2">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Ноутбуки 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="monoblocks2">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Моноблоки 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="computers2">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Компьютеры 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="monitors2">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Мониторы 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="printers2">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Принтеры МФУ 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="tablets2">
+          <div class="topics__list">
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 1}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 2}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 3}}</a>
+            </div>
+            <div class="topics__item">
+              <a href="#" class="product-item">{{Планшеты 4}}</a>
+            </div>
+          </div>
+        </div>
+        <div class="topics-tabs__panel tabs__panel-js" id="game-zone2"><div class="topics__list">
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 1}}</a>
+          </div>
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 2}}</a>
+          </div>
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 3}}</a>
+          </div>
+          <div class="topics__item">
+            <a href="#" class="product-item">{{Game Zone 4}}</a>
+          </div>
+        </div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section main-section_grid layout max-wrap">
+    <h2 class="hide">Бренды</h2>
+    <div class="brands">
+      {{Бренды}}
+    </div>
+  </section>
+
+  <section class="main-section main-section_game-zone" id="gameZone">
+    <div class="game-zone layout max-wrap">
+      <div class="game-zone__caption">
+        <h2 class="game-zone__title">Game Zone</h2>
+        <div class="game-zone__options">
+          <div class="game-zone__links">
+            <a href="#" class="tabs__anchor-js tabs-active"><span>Мышки игровые</span></a>
+            <a href="#" class="tabs__anchor-js"><span>Клавиатуры игровые</span></a>
+            <a href="#" class="tabs__anchor-js"><span>Очки для геймеров</span></a>
+            <a href="#" class="tabs__anchor-js"><span>Манипуляторы Геймпады</span></a>
+            <a href="#" class="tabs__anchor-js"><span>Рули</span></a>
+            <a href="#" class="tabs__anchor-js"><span>Шлем</span></a>
+            <a href="#" class="tabs__anchor-js"><span>Игры</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="game-zone__entry">
+        <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний ноутбук это очень лёгкое и ультратонкое устройство с</p>
+        <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний ноутбук это очень лёгкое и ультратонкое устройство с</p>
+      </div>
+      <div class="game-zone__tiles">
+        <div class="game-zone__list grid-js">
+          <div class="game-zone__item grid-item-js" style="height: 316px;">Игровые ноутбуки</div>
+          <div class="game-zone__item grid-item-js" style="height: 218px;">Мониторы игровые</div>
+          <div class="game-zone__item grid-item-js" style="height: 317px;">Игровые компьютеры</div>
+          <div class="game-zone__item grid-item-js" style="height: 321px;">Игровые приставки</div>
+          <div class="game-zone__item grid-item-js" style="height: 241px;">Моноблоки игровые</div>
+          <div class="game-zone__item grid-item-js" style="height: 142px;">Планшеты игровые</div>
+          <div class="game-zone__item game-zone__item-wide grid-item-js" style="height: 147px;">Очки виртуальной реальности</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section main-section_articles layout max-wrap">
+    <h2 class="main-section__title">Статьи и обзоры, полезные советы</h2>
+    <div class="article-tiles">
+      <div class="article-tiles__list grid-js">
+        <div class="article-tiles__item article-tiles__item-wide grid-item-js" style="height: 420px;">Обзор ультрабука Huawei Matebook X Pro</div>
+        <div class="article-tiles__item article-tiles__item-wide grid-item-js" style="height: 207px;">Предзаказ Xiaomi Mi MIX 3</div>
+        <div class="article-tiles__item grid-item-js" style="height: 422px;">Подборка подарков от</div>
+        <div class="article-tiles__item grid-item-js" style="height: 205px;">Предзаказ Xiaomi Mi MIX 3</div>
+        <div class="article-tiles__item grid-item-js" style="height: 205px;">Обзор Iphone</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="main-section main-section_grid layout max-wrap">
+    <h2 class="hide">Обратная связь</h2>
+    <div class="brands">
+      {{Помощь экспертов в выборе товаров}} <br>
+      {{Рассрочка и кредит по выгодным условиям}} <br>
+      {{Быстрая доставка по Минску курьером}} <br>
+      {{Дополнительные услуги по сервисному обслуживанию}}
+    </div>
+  </section>
+  <!--CONTENT end-->
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

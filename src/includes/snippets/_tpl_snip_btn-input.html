@@ -1,0 +1,9 @@
+<input
+@@if(context.type){type="@@type"}
+
+@@if(context.value){value="@@value"}
+
+@@if(context.disabled){disabled}
+
+@@if(!context.classes){class="btn-def"}
+@@if(context.classes){class="@@classes"} />

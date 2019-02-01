@@ -1,0 +1,14 @@
+<@@if(context.tag){@@tag}@@if(!context.tag){a}
+
+@@if(context.tag == "a" || !context.tag && !context.href){href="#"}
+@@if(context.href){href="@@href"}
+
+@@if(context.disabled){data-disabled="disabled"}
+
+@@if(!context.classes){class="btn-def"}
+@@if(context.classes){class="@@classes"}>
+
+@@if(!context.text){{{Default button}}}
+@@if(context.text){@@text}
+
+</@@if(context.tag){@@tag}@@if(!context.tag){a}>
