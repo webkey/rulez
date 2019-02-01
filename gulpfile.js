@@ -130,7 +130,9 @@ gulp.task('mergeCssLibs', function () {
     'src/css/temp/*.css'
     , 'src/libs/select2/dist/css/select2.min.css'
     , 'src/libs/swiper/dist/css/swiper.min.css'
-    , 'src/libs/priority-nav/dist/priority-nav-core.css'
+    // , 'src/libs/priority-nav/dist/priority-nav-core.css'
+    // , 'node_modules/okaynav/dist/css/common.min.css'
+    // , 'node_modules/okaynav/dist/css/okayNav.min.css' // https://www.npmjs.com/package/okaynav
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -170,7 +172,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/isotope-layout/dist/isotope.pkgd.min.js' // isotope grid
     , 'src/libs/isotope-packery/packery-mode.pkgd.min.js' // isotope packery
     , 'node_modules/scrollreveal/dist/scrollreveal.min.js' // show elements
-    , 'src/libs/priority-nav/dist/priority-nav.min.js' // Лишние пункты меню скрываем в кнопку Ещё
+    // , 'src/libs/priority-nav/dist/priority-nav.min.js' // Лишние пункты меню скрываем в кнопку Ещё
+    , 'node_modules/okaynav/dist/js/jquery.okayNav-min.js' // https://www.npmjs.com/package/okaynav
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

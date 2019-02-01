@@ -75,7 +75,7 @@ function navExpander() {
   var $nav = $('.add-menu');
 
   if ($nav.length) {
-    // var label = $nav.attr('data-btn-more') || "More...";
+    var label = $nav.attr('data-btn-more') || 'More...';
     // priorityNav.init({
     //   mainNavWrapper: '.add-menu',
     //   mainNav: '.add-menu__list',
@@ -87,7 +87,12 @@ function navExpander() {
     //   breakPoint: 768
     // });
 
-    var navigation = $nav.okayNav();
+    var navigation = $nav.okayNav({
+      // align_right: true
+      // toggle_icon_content: '<span /><span /><span />'
+      toggle_icon_content: '<span>' + label + '</span><i>&nbsp;</i>',
+      // swipe_enabled: true
+    });
   }
 
   // var $page = $('html');

@@ -398,7 +398,6 @@ table {
 }
 
 /* no js warning end */
-.add-menu,
 .user-options,
 .quick-links__item,
 .opinions__item,
@@ -903,21 +902,21 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 /*list */
-ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list),
-ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) {
+ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible),
+ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) {
   margin: 0 0 2.4rem;
   padding: 0;
   list-style: none;
 }
 
-ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) li,
-ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) li {
+ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) li,
+ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) li {
   padding-left: 30px;
   margin: 0 0 1rem;
   position: relative;
 }
 
-ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) > li::before {
+ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) > li::before {
   content: '';
   display: block;
   float: left;
@@ -929,17 +928,17 @@ ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not
   border-left-color: #6e52dd;
 }
 
-ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) {
+ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) {
   counter-reset: section;
 }
 
-ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) > li {
+ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) > li {
   counter-increment: section;
   height: 1%;
   overflow: hidden;
 }
 
-ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) > li::before {
+ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) > li::before {
   position: relative;
   display: inline-block;
   text-align: left;
@@ -952,15 +951,15 @@ ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not
   margin-left: -30px;
 }
 
-ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) ul,
-ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) ol,
-ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) ul,
-ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) ol {
+ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) ul,
+ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) ol,
+ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) ul,
+ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) ol {
   margin: 1.2rem 0;
 }
 
-.layout-article ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list),
-.layout-article ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list) {
+.layout-article ul:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible),
+.layout-article ol:not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible) {
   margin-left: auto;
   margin-right: auto;
 }
@@ -4257,20 +4256,41 @@ html.css-scroll-fixed:not(.open-only-mob) {
 
 /* header-top */
 .header-top {
+  position: relative;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-align: center;
+      align-items: center;
   -ms-flex-pack: justify;
       justify-content: space-between;
   height: 43px;
+  z-index: 9;
 }
 
-.add-menu {
-  height: 100%;
+/* add-menu */
+.add-menu-wrap {
   width: 50%;
 }
 
-html:not(.no-js) .add-menu {
+.no-flexwrap .add-menu-wrap {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.add-menu {
+  position: relative;
+  float: left;
+  font-size: 1.5rem;
+  line-height: 1.4;
+}
+
+html:not(.no-js) .add-menu:not(.loaded) {
   opacity: 0;
+  visibility: hidden;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   overflow: hidden;
   will-change: opacity;
   transition-property: opacity;
@@ -4278,18 +4298,9 @@ html:not(.no-js) .add-menu {
   transition-timing-function: ease-in-out;
 }
 
-html:not(.no-js) .add-menu.priority-nav {
-  overflow: visible;
-  opacity: 1;
-}
-
-.no-flexwrap .add-menu {
-  display: inline-block;
-  vertical-align: top;
-}
-
 .add-menu__list {
   display: inline-block;
+  vertical-align: top;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -4297,14 +4308,126 @@ html:not(.no-js) .add-menu.priority-nav {
 
 .add-menu__list li {
   display: inline-block;
-  padding: 0 2rem;
+  vertical-align: top;
+  margin-right: 2rem;
 }
 
+.okayNav__nav--visible {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.okayNav__nav--visible li {
+  float: left;
+}
+
+.okayNav__nav--invisible {
+  position: absolute;
+  top: 100%;
+  left: -5px;
+  bottom: 0;
+  background: red;
+  list-style: none;
+  margin: 0;
+  padding: 0 5px 5px;
+  opacity: 0;
+  visibility: hidden;
+  -ms-transform: none !important;
+      transform: none !important;
+  will-change: transform, opacity, visibility;
+  transition-property: transform, opacity, visibility;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.okayNav__nav--invisible.nav-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.okayNav__nav--invisible li {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 2rem;
+}
+
+.okayNav__menu-toggle {
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+}
+
+.okayNav__menu-toggle span {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.okayNav__menu-toggle i {
+  position: relative;
+  top: 0.4em;
+  left: 0.4em;
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border: solid currentColor;
+  border-width: 0 1px 1px 0;
+  -ms-transform: rotate(0.125turn);
+      transform: rotate(0.125turn);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+}
+
+.okayNav__menu-toggle.icon--active i {
+  -ms-transform: rotate(0.625turn);
+      transform: rotate(0.625turn);
+  top: 0.7em;
+}
+
+.add-menu__list a,
+.okayNav__nav--invisible a,
+.okayNav__menu-toggle {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition-property: color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.add-menu__list a span,
+.okayNav__nav--invisible a span,
+.okayNav__menu-toggle span {
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.add-menu__list a:hover,
+.okayNav__nav--invisible a:hover,
+.okayNav__menu-toggle:hover {
+  color: white;
+}
+
+.add-menu__list a:hover span,
+.okayNav__nav--invisible a:hover span,
+.okayNav__menu-toggle:hover span {
+  box-shadow: inset 0 -2px 0 white;
+}
+
+/* add-menu end */
+/* user-options */
 .user-options {
   height: 100%;
   width: 40%;
 }
 
+/* user-options end */
+/* header-common */
 .header-common {
   display: -ms-flexbox;
   display: flex;
@@ -4320,6 +4443,7 @@ html:not(.no-js) .add-menu.priority-nav {
   clear: both;
 }
 
+/* header-common end */
 /* logo */
 .no-flexwrap .logo-wrap {
   display: inline-block;
