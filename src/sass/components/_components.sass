@@ -635,6 +635,7 @@
 
 /* main-section
 .main-section
+  position: relative
   padding-top: 2rem
   padding-bottom: 2rem
 
@@ -647,6 +648,17 @@
 
   &:last-child
     margin-bottom: 0
+
+.mark-anchor
+  position: absolute
+  left: 0
+  top: -#{$header-height}
+  height: 0
+  font-size: 0
+  line-height: 0
+  pointer-events: none
+  overflow: hidden
+  user-select: none
 
 /* main-section end
 
@@ -666,7 +678,7 @@
   position: relative
 
   &::before
-    $left: 100px
+    $left: 130px
     $bottom: 100px
     content: ''
     display: block
@@ -745,7 +757,7 @@
   align-items: flex-start
   flex-basis: 100%
   width: 100%
-  padding: $header-height 0 11.5rem 55rem
+  padding: $header-height 0 11.5rem 37%
   color: inherit
   text-decoration: none
   flex-grow: 1
@@ -1030,7 +1042,8 @@ $advise-figure-space: 2rem
 
 /* quick-links
 $ql-item-space: 12px
-$ql-columns: 4
+$ql-columns: 5
+$ql-columns--desk-lg: 4
 .main-section_quick-links
   position: relative
   padding-top: 0
@@ -1047,6 +1060,10 @@ $ql-columns: 4
   margin-left: -#{round($ql-item-space / 2)}
   margin-right: -#{round($ql-item-space / 2)}
 
+  +media('<desk-lg')
+    margin-left: -#{round($ql-columns--desk-lg / 2)}
+    margin-right: -#{round($ql-columns--desk-lg / 2)}
+
   &:not(.grid-completed)
     overflow: hidden
     white-space: nowrap
@@ -1057,6 +1074,9 @@ $ql-columns: 4
   width: calc(#{round-float(100% / $ql-columns, 2)} - #{$ql-item-space})
   margin: 0 round($ql-item-space / 2) $ql-item-space
 
+  +media('<desk-lg')
+    width: calc(#{round-float(100% / $ql-columns--desk-lg, 2)} - #{$ql-item-space})
+
   &.has-shadow
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25)
 
@@ -1066,6 +1086,9 @@ $ql-columns: 4
 
 .quick-links__item-wide
   width: calc(#{round-float(100% / $ql-columns * 2, 2)} - #{$ql-item-space})
+
+  +media('<desk-lg')
+    width: calc(#{round-float(100% / $ql-columns--desk-lg * 2, 2)} - #{$ql-item-space})
 
 /* quick-links end
 
@@ -1535,6 +1558,66 @@ $product-item-space: 2rem 2.4rem
 
 /* product item end
 
+/* topic-banner
+.topic-banner
+  position: relative
+  display: block
+  overflow: hidden
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  text-decoration: none
+  color: white
+  // transition
+  $prop: background-size
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+.topic-banner__title
+  position: absolute
+  left: 0
+  bottom: 0
+  width: 100%
+  +font-bold
+  font-size: 2.4rem
+  line-height: 3.5rem
+  padding: 1rem 1.4rem 5rem
+  z-index: 1
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    height: calc(100% + 6rem)
+    opacity: 0.6
+    +linear-gradient(to top, black 0%, rgba(black, 0) 100%)
+    z-index: -1
+
+  & > span
+    box-shadow: inset 0 -2px 0 rgba(white, 0.75)
+    // transition
+    $prop: box-shadow
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+// hover
+a.topic-banner
+  &:hover
+    .topic-banner__title
+      & > span
+        box-shadow: none
+
+/* topic-banner end
+
 /* topics
 .main-section_topics
   position: relative
@@ -1563,7 +1646,7 @@ $tl-columns: 4
     display: inline-block
     vertical-align: top
 
-  .product-item
+  .product-item, .topic-banner
     height: 100%
 
 /* topics end
@@ -1600,6 +1683,7 @@ $tl-columns: 4
   display: flex
   justify-content: center
   align-items: center
+  flex-basis: 20%
   flex-grow: 1
   min-height: 10rem
   text-align: center
@@ -1753,45 +1837,43 @@ $gz-columns: 4
   color: white
   text-decoration: none
 
-  & > a
-    height: 0
-    display: block
-    text-indent: -9999px
-    overflow: hidden
-    background-color: #080f1f
-    background-repeat: no-repeat
-    background-position: center
-    background-size: cover
+.game-zone__inner
+  height: 0
+  display: block
+  position: relative
+  background-color: #080f1f
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  // transition
+  $prop: transform, box-shadow
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  // hover
+  .no-touchevents &:hover
+    $size: 1rem
+    transform: translate(-$size, -$size)
+    box-shadow: $size $size 0 rgba(black, 0.5)
+
+  // active
+  .no-touchevents &:active
     // transition
-    $prop: transform, box-shadow
-    will-change: $prop
-    transition:
-      property: $prop
-      duration: $animation-speed
-      timing-function: ease-in-out
+    transition: none
+    $size: 0
+    transform: translate(-$size, -$size)
+    box-shadow: $size $size 0 rgba(black, 0.5)
 
-    &::before
-      content: ""
-      display: block
-      position: relative
-      padding-top: inherit
-
-    // hover
-    .no-touchevents &:hover
-      $size: 1rem
-      transform: translate(-$size, -$size)
-      box-shadow: $size $size 0 rgba(black, 0.5)
-
-    // active
-    .no-touchevents &:active
-      // transition
-      transition: none
-      $size: 0
-      transform: translate(-$size, -$size)
-      box-shadow: $size $size 0 rgba(black, 0.5)
-
-//.game-zone__item-wide
-  width: calc(#{round-float(100% / $gz-columns * 2, 2)} - #{$gz-item-space})
+.game-zone__title
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  padding: 2rem
+  +hide-text
 
 /* quick-links end
 
@@ -1799,7 +1881,7 @@ $gz-columns: 4
 .main-section_articles
   position: relative
 
-$at-item-space: 12px
+$at-item-space: 10px
 $at-columns: 5
 .article-tiles
   margin-bottom: $bottom-space
@@ -1818,14 +1900,97 @@ $at-columns: 5
 .article-tiles__item
   display: inline-block
   vertical-align: top
-  width: calc(#{round-float(100% / $at-columns, 2)} - #{$at-item-space})
-  //width: calc(#{round-float(100% / $at-columns, 2)})
-  margin: 0 round($at-item-space / 2) $at-item-space
-  //outline: 1px solid red
+  width: round-float(100% / $at-columns, 2)
+  padding: 0 round($at-item-space / 2) $at-item-space
 
 .article-tiles__item-wide
-  width: calc(#{round-float(100% / $at-columns * 2, 2)} - #{$at-item-space})
-  //width: calc(#{round-float(100% / $at-columns * 2, 2)})
+  width: round-float(100% / $at-columns * 2, 2)
+  
+.article-tiles__inner
+  position: relative
+  display: block
+  text-decoration: none
+  color: currentColor
+  overflow: hidden
+
+.article-tiles__figure
+  img
+    max-width: 100%
+    width: 100%
+
+.article-tiles__content
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  padding: 1.8rem 2.5rem
+  z-index: 1
+
+.article-tiles__title
+  +font-bold
+  font-size: 2.4rem
+  line-height: 3.4rem
+  text-decoration: underline
+  color: currentColor
+
+  &::before
+    content: ""
+    display: none
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    height: calc(100% + 6rem)
+    opacity: 0.6
+    $color: black
+    +linear-gradient(to top, $color 0%, rgba($color, 0) 100%)
+    z-index: -1
+
+.article-tiles__label
+  display: inline-block
+  vertical-align: top
+  background-color: white
+  font-size: 1.2rem
+  line-height: 1.6rem
+  text-transform: uppercase
+  letter-spacing: 0.15em
+  padding: 0.3rem 1.2rem 0
+  margin-bottom: 1.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+.article-tiles__date
+  display: inline-block
+  vertical-align: top
+  font-size: 1.4rem
+  line-height: 1.8rem
+  margin-bottom: 0.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+// text-small
+.article-tiles__item
+  &.text-small
+    .article-tiles__title
+      font-size: 1.8rem
+      line-height: 2.4rem
+
+  &.text-light
+    color: white
+
+  &.text-bottom-left
+    .article-tiles__content
+      position: absolute
+      top: auto
+      bottom: 0
+
+// hover
+a.article-tiles__inner
+  &:hover
+    .article-tiles__title
+      text-decoration: none
 
 /* articles main previews end
 
@@ -1849,7 +2014,7 @@ $at-columns: 5
   align-items: center
   flex-grow: 1
   flex-basis: 25%
-  min-height: 10rem
+  min-height: 12rem
   text-align: center
   text-decoration: none
   color: currentColor
@@ -1890,6 +2055,7 @@ $at-columns: 5
     width: $size
     min-width: $size
     height: $size
+    opacity: 0.8
 
     path
       fill: $base-color

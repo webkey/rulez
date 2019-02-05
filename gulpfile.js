@@ -35,7 +35,7 @@ var gulp = require('gulp') // Подключение Gulp
  * @type {{dist: string}}
  */
 var path = {
-  'dist': 'dist'
+  'dist': '1'
 };
 
 /**
@@ -290,6 +290,9 @@ gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sas
         "max_preserve_newlines": 2
       }))
       .pipe(gulp.dest(path.dist + '/js'));
+
+  gulp.src(['!src/css/temp/**/*.css', '!src/css/**/_temp_*.css', '!src/css/main.css', 'src/css/*.css'])
+      .pipe(gulp.dest(path.dist + '/css'));
 
   gulp.src(['!src/js/temp/**/*.js', '!src/js/**/_temp_*.js', '!src/js/common.js', 'src/js/*.js'])
       .pipe(gulp.dest(path.dist + '/js'));

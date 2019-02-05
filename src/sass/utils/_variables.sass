@@ -6,7 +6,7 @@
 // ==========================================================================
 
 // Medium query
-$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1366px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1280px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
 
 // Fonts style
 // ==========================================================================
@@ -190,15 +190,17 @@ $user-content: user-content !default
 // ==========================================================================
 
 // минимальная ширина сайта
-$page-layout-min: 320px !default
+//$page-layout-min: 320px !default
+$page-layout-min: 1024px !default
 // отступы для всего сайта
 $page-layout-space: 0 20px !default
 $page-layout-space--mob: 0 10px !default
 $page-layout-space-narrow: 0 97px !default
+$page-layout-space-narrow--tab: 0 20px !default
 $page-layout-space-narrow--mob: 0 10px !default
 // v h
 // максимальная ширина сайта
-$page-layout-width: 1280px !default
+$page-layout-width: 1600px !default
 // минимальные отступы у текствого блока
 $text-layout-space: 50px 60px !default
 // v h
@@ -227,6 +229,7 @@ $list-space: 30px
 $header-height: 13rem !default
 $header-height--sm: 9rem !default
 $header-bg: #1a1a1a !default
+$header-top__r-width: 55rem !default
 
 
 // Sidebar
@@ -242,6 +245,7 @@ $aside-width: 160px !default
 // ==========================================================================
 $footer-space: 5rem 0 2rem !default
 $footer-grid-space: 0 4.4rem !default
+$footer-grid-space--tab: 0 2rem !default
 // v h
 
 // Sliders
