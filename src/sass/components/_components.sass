@@ -1746,7 +1746,7 @@ $tl-columns: 4
   &:last-child
     margin-bottom: 0
 
-.game-zone__caption
+.game-zone-caption
   display: flex
   align-items: center
   margin-bottom: 2.0rem
@@ -1754,7 +1754,7 @@ $tl-columns: 4
   &:last-child
     margin-bottom: 0
 
-.game-zone__title
+.game-zone-caption__title
   margin-right: 5rem
   margin-bottom: 0
   +font-bold
@@ -1813,7 +1813,7 @@ $tl-columns: 4
     &:last-child
       margin-bottom: 0
 
-$gz-item-space: 12px
+$gz-item-space: 18px
 $gz-columns: 4
 .game-zone__tiles
   margin-bottom: $bottom-space
@@ -2047,6 +2047,7 @@ a.article-tiles__inner
   display: flex
   align-items: center
   text-align: left
+  max-width: 24rem
 
   & > svg
     $size: 3.4rem

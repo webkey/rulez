@@ -4645,7 +4645,7 @@ a.topic-banner:hover .topic-banner__title > span {
   margin-bottom: 0;
 }
 
-.game-zone__caption {
+.game-zone-caption {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-align: center;
@@ -4653,11 +4653,11 @@ a.topic-banner:hover .topic-banner__title > span {
   margin-bottom: 2.0rem;
 }
 
-.game-zone__caption:last-child {
+.game-zone-caption:last-child {
   margin-bottom: 0;
 }
 
-.game-zone__title {
+.game-zone-caption__title {
   margin-right: 5rem;
   margin-bottom: 0;
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
@@ -4745,8 +4745,8 @@ a.topic-banner:hover .topic-banner__title > span {
 }
 
 .game-zone__list {
-  margin-left: -6px;
-  margin-right: -6px;
+  margin-left: -9px;
+  margin-right: -9px;
 }
 
 .game-zone__list:not(.grid-completed) {
@@ -4758,7 +4758,7 @@ a.topic-banner:hover .topic-banner__title > span {
   display: inline-block;
   vertical-align: top;
   width: 25%;
-  padding: 0 6px 12px;
+  padding: 0 9px 18px;
   color: white;
   text-decoration: none;
 }
@@ -5010,6 +5010,7 @@ a.article-tiles__inner:hover .article-tiles__title {
   -ms-flex-align: center;
       align-items: center;
   text-align: left;
+  max-width: 24rem;
 }
 
 .helper__inner > svg {
