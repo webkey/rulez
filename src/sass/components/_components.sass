@@ -223,6 +223,9 @@
     duration: $animation-speed
     timing-function: ease-in-out
 
+  .swiper-container-horizontal>.swiper-pagination-bullets &
+    margin: 0 6px
+
   // hover
   &:hover
     opacity: 0.8
@@ -650,29 +653,12 @@
 /* promo slider
 .main-section_promo
   height: 575px
-  min-height: 400px
   padding-top: 0
   padding-bottom: 0
-  margin-bottom: -115px
+  margin-bottom: -11.5rem
 
   &:last-child
     margin-bottom: 0
-
-  &::before
-    content: ""
-    display: none
-    +ratio(192, 82)
-
-    +media('<desk-sm')
-      display: block
-
-    +media('<mob-lg')
-      display: none
-
-  & + section
-    position: relative
-    z-index: 5
-
 
 .promo-slider
   height: 100%
@@ -695,21 +681,7 @@
     border-radius: 50% 50% 0 0 / 100% 100% 0 0
     z-index: 9
 
-  +media('<desk-sm')
-    position: absolute
-    left: 0
-    top: 0
-    width: 100%
-    height: 100%
-
-  +media('<mob-lg')
-    position: relative
-    left: auto
-    top: auto
-    width: auto
-    height: auto
-
-  // arrows, pagination
+  // arrows
   .slider-arrow
     display: none
     top: auto
@@ -743,200 +715,327 @@
   .swiper-pagination
     line-height: 0
     bottom: 132px
-    margin-bottom: 3rem
-
-    +media('<desk-ml')
-      margin-bottom: 2rem
-
-    +media('<desk-sm')
-      bottom: 0
-
-  .swiper-pagination-bullet
-    vertical-align: top
 
 .promo-slider__item
-  display: flex
-  flex-direction: column
-  text-align: center
-  justify-content: center
-  align-items: center
+  //display: flex
+  //flex-direction: column
+  //text-align: center
+  //justify-content: center
+  //align-items: center
   position: relative
-  //padding-bottom: $parts-height
-  //padding-bottom: 25%
   overflow: hidden
 
-  +media('<desk-sm')
-    +padding-horizontal(nth($slider-promo-button-size--mob, 2) + 50)
-
-  +media('<mob-lg')
-    //+padding-horizontal(nth($page-layout-space--mob, 2))
-    padding: 0
-    display: block
-
-  &::after
-    position: relative
-    content: ""
-    display: block
-    width: 100%
-    //height: 25%
-    height: 140px
-    pointer-events: none
-    z-index: -1
-
-    +media('<desk-sm')
-      display: none
-
-.promo-slider__item__img
+.promo-slider__item-img
   position: absolute
   +size(100%)
   +position(0)
-  background-color: $bg-color-alt
-  z-index: -2
 
   img
     display: block
+    max-width: 100%
+    margin: 0 auto
     +size(100%)
-    max-width: none
-    +object-fit(cover)
+    +object-fit(scale-down)
 
-    +media('<mob-lg')
-      height: auto
-
-  &.for-mob
-    display: none
-
-  +media('<mob-lg')
-    &
-      position: relative
-      left: auto
-      top: auto
-      width: auto
-      height: auto
-      display: none
-
-      &.for-mob
-        display: block
-
-.promo-slider__item__content
+.promo-slider__item-content
   position: relative
-  display: block
   display: flex
   flex-direction: column
   justify-content: center
-  align-items: center
+  align-items: flex-start
+  flex-basis: 100%
+  width: 100%
+  padding: $header-height 0 11.5rem 55rem
   color: inherit
   text-decoration: none
-  //width: 960px
-  width: 100%
-  max-width: 100%
-  text-align: center
   flex-grow: 1
+  height: 100%
 
-  //+media('<desk-ml')
-    width: 800px
-
-  //+media('<tab-lg')
-    width: 480px
-
-  +media('<mob-lg')
-    position: absolute
-    left: 0
-    top: 0
-    width: 100%
-    height: 100%
-    +padding-horizontal(nth($page-layout-space--mob, 2))
-
-.promo-slider__item__title
-  $font-size: 60px
-  $line-height: 70px
-  $font-size--md: 56px
-  $line-height--md: 62px
-  $font-size--sm: 48px
-  $line-height--sm: 58px
-  $font-size--tab: 30px
-  $line-height--tab: 36px
-  $font-size--mob: 18px
-  $line-height--mob: 22px
+.promo-slider__item-title
+  $font-size: 3.6rem
+  $line-height: 4.0rem
+  $font-size--tab: 3.0rem
+  $line-height--tab: 3.6rem
+  $font-size--mob: 1.8rem
+  $line-height--mob: 2.2rem
   // ===============
   display: block
   overflow: hidden
-  max-height: round($line-height*3) // maximum 3 line
-  margin-left: auto
-  margin-right: auto
-  //margin-bottom: 5rem
-  //+font-black
+  margin-bottom: 0.6em
+  max-height: round-float($line-height * 3, 1) // maximum 3 line
   +font($font-size, $line-height)
   letter-spacing: normal
-  text-align: center
-  width: 960px
+  width: 43rem
   max-width: 100%
-
-  +media('<desk-lg')
-    font-size: $font-size--md
-    line-height: $line-height--md
-    max-height: round($line-height--md*3) // maximum 3 line
-
-  +media('<desk-ml')
-    font-size: $font-size--sm
-    line-height: $line-height--sm
-    max-height: round($line-height--sm*3) // maximum 3 line
-    //margin-bottom: 2rem
-    width: 800px
+  color: white
 
   +media('<tab-lg')
     font-size: $font-size--tab
     line-height: $line-height--tab
-    max-height: round($line-height--tab*4) // maximum 4 line
+    max-height: round-float($line-height * 4, 1) // maximum 4 line
+    width: auto
 
   +media('<mob-lg')
     font-size: $font-size--mob
     line-height: $line-height--mob
-    max-height: round($line-height--mob*5) // maximum 5 line
-    width: 480px
+    max-height: round-float($line-height * 5, 1) // maximum 5 line
 
   &:last-child
     margin-bottom: 0
 
-.promo-slider__item__footer
-  position: absolute
-  left: 0
-  //bottom: 9rem
-  bottom: 8rem
-  width: 100%
+.promo-slider__item-footer
 
-  +media('<desk-ml')
-    bottom: 5rem
-
-  +media('<tab-lg')
-    display: none
-
-  .more-link
-    +display-inline-block-top
-    text-decoration: none
-    color: inherit
-
-    span
-      +display-inline-block-top
-      line-height: 1.5
-      border-bottom: 2px solid
-
-    &:hover
-      color: $base-color
-
-      span
-        border-color: $base-color
-
-  .btn-def-alt
-    color: $text-color
+  .btn-def
+    min-width: 20.3rem
 
 /* promo slider end
+
+/* category-links
+.category-links
+  background-color: white
+  padding: 1.6rem
+
+.category-links__title
+  margin-bottom: 2rem
+  display: flex
+  justify-content: flex-start
+  align-items: center
+
+  &:last-child
+    margin-bottom: 0
+
+  & > svg
+    display: inline-block
+    vertical-align: top
+    width: 3rem
+    height: 3rem
+    margin-right: 1rem
+
+    path
+      fill: $base-color
+
+  & > strong
+    display: inline-block
+    vertical-align: top
+    +font-bold
+    font-size: 1.6rem
+    line-height: 2.0rem
+    color: #000
+    margin-right: 1rem
+
+    a
+      text-decoration: none
+      color: currentColor
+
+      +underlinedLinks(#000)
+
+  & > em
+    display: inline-block
+    vertical-align: top
+    +font-light
+    font-style: normal
+    font-size: 1.4rem
+    line-height: 2.0rem
+    color: $base-color
+
+.category-links__list
+  display: flex
+  flex-wrap: wrap
+  list-style: none
+  margin: 0 0 2rem
+  padding: 0
+  +clear-spacing
+
+  &:last-child
+    margin-bottom: 0
+
+  li
+    //display: inline-block
+    //vertical-align: top
+    color: #131313
+    font-size: 1.4rem
+    line-height: 1.8rem
+    letter-spacing: normal
+    padding: 0 0.5rem 1rem 0
+
+    // for ie 9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+
+  a
+    display: inline-block
+    vertical-align: top
+    color: currentColor
+    text-align: center
+    min-height: 3.2rem
+    border-radius: 1.6rem
+    padding: 0.7rem 0.9rem 0.5rem
+    box-shadow: inset 0 0 0 1px rgba(#bdbdbd, 0.3)
+    text-decoration: none
+    // transition
+    $prop: border-color, background-color, color
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    &:hover
+      background-color: $base-color
+      border-color: $base-color
+      color: white
+
+
+/* category-links end
+
+/* advise
+$advise-figure-size: 6.4rem 6.4rem
+$advise-figure-space: 2rem
+.advise
+  position: relative
+  padding: 2.0rem 1.6rem 1.6rem
+  background-color: white
+  box-shadow: 0 0 3px rgba(black, 0.17)
+  z-index: 1
+  +clear
+
+.advise__figure
+  float: left
+  padding: 0
+  margin-right: $advise-figure-space
+  height: nth($advise-figure-size, 1)
+  width: nth($advise-figure-size, 2)
+  border-radius: round-float(nth($advise-figure-size, 1) / 2, 1)
+  overflow: hidden
+  position: relative
+  border: 3px solid #efefef
+  
+  img
+    display: block
+    border-radius: round-float(nth($advise-figure-size, 1) / 2, 1)
+    width: 100%
+    height: 100%
+    max-width: none
+
+.advise__name
+  display: block
+  margin-left: nth($advise-figure-size, 2) + $advise-figure-space
+  +font-bold
+  font-size: 1.6rem
+  line-height: 2.0rem
+  color: #000
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.advise__past
+  display: block
+  margin-left: nth($advise-figure-size, 2) + $advise-figure-space
+  font-size: 1.4rem
+  line-height: 1.8rem
+  color: #9b9b9b
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.advise-chat
+  display: block
+  margin-left: nth($advise-figure-size, 2) + $advise-figure-space
+  overflow: hidden
+
+.advise-chat__list
+  list-style: none
+  padding: 0
+  margin: 0 0 -1rem
+  +clear
+
+  li
+    float: left
+    margin: 0 1rem 1rem 0
+
+  a
+    $size: 2.4rem
+    display: block
+    height: $size
+    width: $size
+    text-decoration: none
+    text-indent: -9999px
+    overflow: hidden
+    background-repeat: no-repeat
+    background-image: url(../../img/sprite-chat.jpg)
+
+    &.chat-viber
+      background-position: -4px -4px
+
+    &.chat-telegram
+      background-position: -38px -4px
+
+    &.chat-whatsapp
+      background-position: -77px -4px
+
+.advise-btn
+  display: block
+  text-decoration: none
+  +font-bold
+  font-size: 1.4rem
+  line-height: 2.0rem
+  text-align: center
+  background-color: #ffe99c
+  padding: 8px
+  color: #000
+  // transition
+  $prop: background-color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  & > span
+    display: block
+    padding: 1.5rem 2rem
+    background-color: white
+    border-radius: 3px
+    box-shadow: inset 0 0 0 1px #efefef
+
+  //hover
+  &:hover
+    background-color: $base-color-alt
+
+/* advise end
+
+/* game-zone-anchor
+.game-zone-anchor
+  display: block
+  text-decoration: none
+  +font-bold
+  font-size: 1.6rem
+  line-height: 2.0rem
+  color: white
+  text-transform: uppercase
+  text-align: center
+  +ratio(259, 123)
+  border-radius: 1rem
+  overflow: hidden
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+
+  & > span
+    display: none
+
+/* game-zone-anchor end
 
 /* quick-links
 $ql-item-space: 12px
 $ql-columns: 4
 .main-section_quick-links
+  position: relative
   padding-top: 0
   padding-bottom: 2rem
+  z-index: 5
 
 .quick-links
   margin-bottom: $bottom-space
@@ -957,7 +1056,9 @@ $ql-columns: 4
   vertical-align: top
   width: calc(#{round-float(100% / $ql-columns, 2)} - #{$ql-item-space})
   margin: 0 round($ql-item-space / 2) $ql-item-space
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.12)
+
+  &.has-shadow
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25)
 
   // show on scroll
   //html:not(.no-js) &
@@ -967,6 +1068,89 @@ $ql-columns: 4
   width: calc(#{round-float(100% / $ql-columns * 2, 2)} - #{$ql-item-space})
 
 /* quick-links end
+
+/* opinion
+$opinion-figure-size: 6.4rem 6.4rem
+$opinion-figure-space: 2rem
+$opinion-box-shadow-size: 0 2px 10px
+$opinion-box-shadow-color: black
+.opinion
+  position: relative
+  display: block
+  padding: 3.0rem 4.5rem
+  background-color: white
+  text-decoration: none
+  color: #000
+  box-shadow: $opinion-box-shadow-size rgba($opinion-box-shadow-color, 0)
+  // transition
+  $prop: box-shadow
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+  +clear
+
+  .touchevents &
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+.opinion__figure
+  float: left
+  padding: 0
+  margin-right: $opinion-figure-space
+  height: nth($opinion-figure-size, 1)
+  width: nth($opinion-figure-size, 2)
+  border-radius: round-float(nth($opinion-figure-size, 1) / 2, 1)
+  overflow: hidden
+  position: relative
+  border: 3px solid white
+
+  img
+    display: block
+    border-radius: round-float(nth($opinion-figure-size, 1) / 2, 1)
+    width: 100%
+    height: 100%
+    max-width: none
+
+.opinion__label
+  display: block
+  margin-left: nth($opinion-figure-size, 2) + $opinion-figure-space
+  font-size: 1.4rem
+  line-height: 2.0rem
+  letter-spacing: 0.2em
+  color: $base-color
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.opinion__text
+  display: block
+  margin-left: nth($opinion-figure-size, 2) + $opinion-figure-space
+  +font-bold
+  font-size: 1.8rem
+  line-height: 2.6rem
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+// alternative view
+.opinion_alt
+  background-color: $base-color
+  color: white
+
+  .opinion__label,
+  .opinion__text
+    color: currentColor
+
+a.opinion
+  // hover
+  &:hover
+    z-index: 5
+    box-shadow: $opinion-box-shadow-size rgba($opinion-box-shadow-color, 0.15)
+
+/* opinion end
 
 /* opinions
 .main-section_opinions
@@ -991,17 +1175,22 @@ $ql-columns: 4
     display: inline-block
     vertical-align: top
 
-.opinions__item_alt
-  background-color: $base-color
-  color: white
+  .opinion
+    height: 100%
 
 /* opinions end
+
+/* topics-tabs
+.topics-tabs__panel
+  outline: none
+
+/* topics-tabs end
 
 /* caption-box
 .caption-box
   display: flex
   align-items: center
-  margin-bottom: 2.0rem
+  margin-bottom: 2.5rem
 
   &:last-child
     margin-bottom: 0
@@ -1019,6 +1208,44 @@ $ql-columns: 4
 
 /* caption-box end
 
+/* topics-thumbs
+.topics-thumbs
+  display: flex
+  flex-wrap: wrap
+
+  a
+    color: #646464
+    text-decoration: none
+    margin: 0.5rem 4rem 0.5rem 0
+    // transition
+    $prop: opacity
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    // for ie 9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+
+    // touch
+    &.touchevents
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+    +underlinedAnchor(#646464)
+
+    // active
+    &.tabs-active
+      color: #000
+      +font-bold
+
+      & > span
+        border-color: transparent
+
+/* topics-thumbs end
+
 /* tabs
 .tabs__panels-js
   z-index: 1
@@ -1028,6 +1255,285 @@ $ql-columns: 4
   visibility: hidden
 
 /* tabs end
+
+/* product item
+$product-item-space: 2rem 2.4rem
+.product-item
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  height: 100%
+  background-color: white
+
+.product-item__header
+  width: 100%
+  margin-bottom: 2rem
+  padding: nth($product-item-space, 1) nth($product-item-space, 2) 0
+
+  &:last-child
+    margin-bottom: 0
+
+  & > a
+    display: block
+    margin-bottom: 1rem
+    text-decoration: none
+    color: currentColor
+
+    &:last-child
+      margin-bottom: 0
+
+.product-item__figure
+  margin-bottom: 4.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+  img
+    display: block
+    width: 100%
+    height: 100%
+    max-width: none
+    +object-fit(scale-down)
+
+.product-item__title
+  display: block
+  +font-bold
+  font-size: 1.6rem
+  line-height: 2.4rem
+  color: #000
+  margin-bottom: 2rem
+
+  +underlinedLinks(black)
+
+  &:last-child
+    margin-bottom: 0
+
+.product-item__rate
+  display: block
+  width: 90px
+
+  & > span
+    display: block
+    width: 100%
+    height: 14px
+    background: url(../../img/rate.jpg) no-repeat 0 0
+
+.product-item__footer
+  padding: 0 nth($product-item-space, 2)
+
+.product-item__meta
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin: 1rem 0
+  min-height: 3.2rem
+
+.product-item__stock
+  display: flex
+  align-items: center
+  flex-basis: 50%
+  font-size: 1.2rem
+  line-height: 1.6rem
+  color: #000
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+    width: calc(50% - 6px)
+
+  & > svg
+    $size: 1.8rem
+    display: inline-block
+    vertical-align: top
+    width: $size
+    height: $size
+
+    path
+      fill: $base-color
+
+    & + span
+      padding-left: 0.8rem
+
+  & > span
+    padding-top: 0.2rem
+
+    // for ie 9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+
+  // off
+  &.off
+    color: #c3c3c3
+
+    & > svg path
+      fill: currentColor
+
+.product-item__price
+  flex-basis: 50%
+  text-align: right
+  line-height: 1
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+    width: calc(50% - 6px)
+
+.product-item__price-new
+  & > strong
+    display: inline-block
+    vertical-align: baseline
+    +font-bold
+    font-size: 2.4rem
+    line-height: 3.2rem
+
+  & > em
+    display: inline-block
+    vertical-align: baseline
+    font-style: normal
+    font-size: 1.4rem
+    line-height: 1.8rem
+
+.product-item__option
+  position: relative
+  display: flex
+  justify-content: space-between
+  align-items: center
+  line-height: 1
+  margin: 0 -#{nth($product-item-space, 2) - 0.5}
+  z-index: 1
+
+  &::before, &::after
+    content: ""
+    display: block
+    border: solid #f5f5f5
+    position: absolute
+    z-index: -1
+
+  &::before
+    width: 100%
+    left: 0
+    top: 0
+    border-width: 2px 0 0
+
+  &::after
+    width: 0
+    height: 100%
+    left: 50%
+    top: 0
+    border-width: 0 0 0 2px
+    margin-left: -1px
+
+  & > a
+    flex-grow: 1
+    flex-basis: 50%
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 1.8rem 1rem
+    font-size: 1.2rem
+    line-height: 1.6rem
+    text-decoration: none
+    text-align: center
+    color: #000
+    // transition
+    $prop: background-color, color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    // for ie 9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: calc(50% - 6px)
+
+    & > svg
+      $size: 2.2rem
+      display: inline-block
+      vertical-align: top
+      width: $size
+      height: $size
+
+      path
+        fill: $base-color
+        // transition
+        $prop: fill
+        transition:
+          property: $prop
+          duration: $animation-speed
+          timing-function: ease-in-out
+
+    & > span
+      padding-top: 0.2rem
+      padding-right: 1rem
+
+      // for ie 9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    // favorites
+    &:first-child
+      & > svg path
+        fill: #ef4180
+
+    // added
+    &.added:nth-child(2)
+      & > svg
+        background-color: $base-color
+        border-radius: 50%
+        box-shadow: 0 0 0 3px rgba($base-color, 1)
+
+        path
+          fill: white
+
+    // hover
+    &:hover
+      background-color: $base-color
+      color: white
+
+      & > svg path
+        fill: white
+
+.product-item__sale
+  $size: 3.4rem
+  position: absolute
+  top: 0.5rem
+  right: 1.7rem
+  width: $size
+  height: $size
+  padding-left: 0.1em
+  border-radius: round-float($size / 2, 1)
+  background-color: #ef4180
+  +font-bold
+  font-size: 1.4rem
+  line-height: $size
+  color: white
+  text-align: center
+  pointer-events: none
+
+.product-item__labels
+  position: absolute
+  top: 0
+  left: 0
+  pointer-events: none
+
+.product-item__label
+  font-size: 1.2rem
+  line-height: 1.6rem
+  color: white
+  text-align: center
+  padding: 1.2rem 2.4rem
+
+.product-item__label_day
+  background-color: $base-color
+
+/* product item end
 
 /* topics
 .main-section_topics
@@ -1052,15 +1558,20 @@ $tl-columns: 4
   //html:not(.no-js) &
     visibility: hidden
 
-.product-item
-  display: block
-  height: 100%
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+
+  .product-item
+    height: 100%
 
 /* topics end
 
 /* main-banners
 .main-section_banners
   position: relative
+  padding-top: 0
 
 .banner
   margin-bottom: 2rem
@@ -1075,10 +1586,71 @@ $tl-columns: 4
 /* main-banners end
 
 /* brands
-.main-section_grid
+.brands
   position: relative
 
+.brands__list
+  display: flex
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.brands__item
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-grow: 1
+  min-height: 10rem
+  text-align: center
+  text-decoration: none
+  color: currentColor
+  background-color: white
+  border: solid #f5f5f5
+  border-width: 0 0 0 1px
+  // transition
+  $prop: box-shadow
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+    width: calc(20% - 6px)
+
+  // touch
+  .touchevents &
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+  &:first-child
+    border: none
+
+  img
+    // transition
+    $prop: transform
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  // hover
+  &:hover
+    box-shadow: inset 0 -8px 0 $base-color
+
+    img
+      transform: translate(0, -8px)
+
 /* brands end
+
+/* main-section_brands
+.main-section_brands
+  position: relative
+
+/* main-section_brands end
 
 /* quick-links
 .main-section_game-zone
@@ -1106,13 +1678,39 @@ $tl-columns: 4
   line-height: 42px
   color: white
 
-.caption-box__options
+.game-zone__options
   position: relative
+  padding-top: 0.5rem
 
+// game-zone__links
 .game-zone__links
+  display: flex
+  flex-wrap: wrap
 
   a
-    color: white
+    color: #c8c8c8
+    text-decoration: none
+    margin: 0.5rem 4rem 0.5rem 0
+    // transition
+    $prop: color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    // for ie 9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+
+    // touch
+    &.touchevents
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+    +underlinedLinks(white)
+
+// game-zone__links end
 
 .game-zone__entry
   margin-bottom: 2rem
@@ -1150,17 +1748,57 @@ $gz-columns: 4
 .game-zone__item
   display: inline-block
   vertical-align: top
-  width: calc(#{round-float(100% / $gz-columns, 2)} - #{$gz-item-space})
-  margin: 0 round($gz-item-space / 2) $gz-item-space
-  background-color: #080f1f
+  width: round-float(100% / $gz-columns, 2)
+  padding: 0 round($gz-item-space / 2) $gz-item-space
   color: white
+  text-decoration: none
 
-.game-zone__item-wide
+  & > a
+    height: 0
+    display: block
+    text-indent: -9999px
+    overflow: hidden
+    background-color: #080f1f
+    background-repeat: no-repeat
+    background-position: center
+    background-size: cover
+    // transition
+    $prop: transform, box-shadow
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    &::before
+      content: ""
+      display: block
+      position: relative
+      padding-top: inherit
+
+    // hover
+    .no-touchevents &:hover
+      $size: 1rem
+      transform: translate(-$size, -$size)
+      box-shadow: $size $size 0 rgba(black, 0.5)
+
+    // active
+    .no-touchevents &:active
+      // transition
+      transition: none
+      $size: 0
+      transform: translate(-$size, -$size)
+      box-shadow: $size $size 0 rgba(black, 0.5)
+
+//.game-zone__item-wide
   width: calc(#{round-float(100% / $gz-columns * 2, 2)} - #{$gz-item-space})
 
 /* quick-links end
 
 /* articles main previews
+.main-section_articles
+  position: relative
+
 $at-item-space: 12px
 $at-columns: 5
 .article-tiles
@@ -1190,3 +1828,104 @@ $at-columns: 5
   //width: calc(#{round-float(100% / $at-columns * 2, 2)})
 
 /* articles main previews end
+
+/* helper
+.main-section_helper
+  position: relative
+
+.helper
+  position: relative
+
+.helper__list
+  display: flex
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.helper__item
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-grow: 1
+  flex-basis: 25%
+  min-height: 10rem
+  text-align: center
+  text-decoration: none
+  color: currentColor
+  background-color: white
+  border: solid #f5f5f5
+  border-width: 0 0 0 1px
+  // transition
+  $prop: background-color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+    width: calc(20% - 6px)
+
+  // touch
+  .touchevents &
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+  &:first-child
+    border: none
+
+.helper__inner
+  width: calc(100% - 4rem)
+  display: flex
+  align-items: center
+  text-align: left
+
+  & > svg
+    $size: 3.4rem
+    display: inline-block
+    vertical-align: top
+    width: $size
+    min-width: $size
+    height: $size
+
+    path
+      fill: $base-color
+      // transition
+      $prop: fill
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+    & + span
+      margin-left: 1.5rem
+
+  & > span
+    font-size: 1.4rem
+    line-height: 1.8rem
+    color: rgba(black, 0.8)
+    // transition
+    $prop: color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+
+.helper__item
+  // hover
+  &:hover
+    background-color: $base-color
+    color: white
+
+    .helper__inner
+      & > svg path
+        fill: white
+
+      & > span
+        color: white
+
+/* helper

@@ -1,37 +1,34 @@
 [
   {
-	"src": "img/temp/list/1920/img_01.jpg",
-	"srcMob": "img/temp/list/1920/img_01.jpg",
-	"title": "",
-	"alt": "Image Description",
-	"text": ""
+    "bgColor": "#6e52dd",
+    "src": "img/promo-slider-01.png",
+    "srcMob": "img/promo-slider-01.png",
+    "title": "При покупке ноутбука или компьютера - подарок",
+    "alt": "При покупке ноутбука или компьютера - подарок",
+    "text": ""
   },
   {
-	"src": "img/temp/list/1920/img_02.jpg",
-	"srcMob": "img/temp/list/1920/img_02.jpg",
-	"title": "",
-	"alt": "Image Description",
-	"text": ""
+    "bgColor": "#395cdd",
+    "src": "img/promo-slider-01.png",
+    "srcMob": "img/promo-slider-01.png",
+    "title": "При покупке ноутбука или компьютера - подарок",
+    "alt": "При покупке ноутбука или компьютера - подарок",
+    "text": ""
   },
   {
-	"src": "img/temp/list/1920/img_03.jpg",
-	"srcMob": "img/temp/list/1920/img_03.jpg",
-	"title": "",
-	"alt": "Image Description",
-	"text": ""
+    "bgColor": "#897cdd",
+    "src": "img/promo-slider-01.png",
+    "srcMob": "img/promo-slider-01.png",
+    "title": "При покупке ноутбука или компьютера - подарок",
+    "alt": "При покупке ноутбука или компьютера - подарок",
+    "text": ""
   },
   {
-	"src": "img/temp/list/1920/img_04.jpg",
-	"srcMob": "img/temp/list/1920/img_04.jpg",
-	"title": "",
-	"alt": "Image Description",
-	"text": ""
-  },
-  {
-	"src": "img/temp/list/1920/img_05.jpg",
-	"srcMob": "img/temp/list/1920/img_05.jpg",
-	"title": "",
-	"alt": "Image Description",
-	"text": ""
+    "bgColor": "#dd7296",
+    "src": "img/promo-slider-01.png",
+    "srcMob": "img/promo-slider-01.png",
+    "title": "При покупке ноутбука или компьютера - подарок",
+    "alt": "При покупке ноутбука или компьютера - подарок",
+    "text": ""
   }
 ]

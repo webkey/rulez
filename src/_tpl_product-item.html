@@ -1,0 +1,41 @@
+<div class="product-item">
+  <div class="product-item__header">
+    <a href="@@href">
+      <div class="product-item__figure">
+        <img src="@@src" alt="@@title" />
+      </div>
+      <h3 class="product-item__title"><span>@@title</span></h3>
+    </a>
+    <div class="product-item__rate"><span style="width: @@rate"></span></div>
+  </div>
+
+  <div class="product-item__footer">
+    <div class="product-item__meta">
+      @@if(context.price.val){<div class="product-item__stock on">@@include("includes/svg/icon-.svg")<span>В наличии</span></div>}
+      @@if(!context.price.val){<div class="product-item__stock off">@@include("includes/svg/icon-.svg")<span>Нет в наличии</span></div>}
+
+      @@if(context.price.val){
+      <div class="product-item__price">
+        @@if(context.priceOld.val){<div class="product-item__price-old"><strong>@@priceOld.val</strong> <em>@@priceOld.unit</em></div>}
+        <div class="product-item__price-new"><strong>@@price.val</strong> <em>@@price.unit</em></div>
+      </div>
+      }
+    </div>
+    <div class="product-item__option">
+      @@if(!context.inFavorites){<a href="#"><span>В избранное</span>@@include("includes/svg/icon-like.svg")</a>}
+      @@if(context.inFavorites){<a href="#" class="added"><span>В избранном</span>@@include("includes/svg/icon-like-full.svg")</a>}
+
+      @@if(!context.inCart){<a href="#"><span>В корзину</span>@@include("includes/svg/icon-cart.svg")</a>}
+      @@if(context.inCart){<a href="#" class="added"><span>В корзине</span>@@include("includes/svg/icon-cart.svg")</a>}
+    </div>
+  </div>
+
+  @@if(context.sale){
+  <span class="product-item__sale">@@sale</span>
+  }
+  @@if(context.label){
+  <div class="product-item__labels">
+    @@if(context.label.day){<div class="product-item__label product-item__label_day">@@label.day</div>}
+  </div>
+  }
+</div>

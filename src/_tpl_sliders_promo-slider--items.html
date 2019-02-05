@@ -1,16 +1,13 @@
-<div class="promo-slider__item swiper-slide">
-	<div class="promo-slider__item__img" data-swiper-parallax="700">
+<div class="promo-slider__item swiper-slide" style="background-color: @@bgColor;">
+	<div class="promo-slider__item-img" data-swiper-parallax="200">
 		<img src="@@src" alt="@@if(context.alt){@@alt}@@if(!context.alt){@@title}" />
 	</div>
-	<div class="promo-slider__item__img for-mob">
-		<img class="" src="@@srcMob" alt="@@if(context.alt){@@alt}@@if(!context.alt){@@title}" />
-	</div>
-	<a href="#" class="promo-slider__item__content">
+	<div class="promo-slider__item-content max-wrap">
 		@@if(context.title){
-		<div class="promo-slider__item__title" data-swiper-parallax="-400">@@title</div>
+		<div class="promo-slider__item-title" data-swiper-parallax="-700">@@title</div>
 		}
-		<div class="promo-slider__item__footer">
+		<div class="promo-slider__item-footer" data-swiper-parallax="-400">
 			@@include("includes/snippets/_tpl_snip_btn.html", {"text": "Получить"})
 		</div>
-	</a>
+	</div>
 </div>

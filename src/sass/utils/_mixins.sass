@@ -1097,6 +1097,41 @@
 // ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИОПОГРАФИЧЕСКИХ СТИЛЯХ
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
+// Подчеркиванеие ссылки на ховер
+// Структура должна быть такая: <a href="#"><span>Some link</span></a>
+=underlinedLinks($color: black)
+  span
+    // transition
+    $prop: box-shadow
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  &:hover
+    color: rgba($color, 1)
+
+    span
+      box-shadow: inset 0 -2px 0 rgba($color, 0.75)
+
+// Подчеркиванеие якоря на ховер
+// Структура должна быть такая: <a href="#anchorName"><span>Some anchor</span></a>
+=underlinedAnchor($color: black, $border-width: 2px)
+  span
+    border-bottom: $border-width dotted rgba($color, 0.35)
+    // transition
+    $prop: border-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  &:hover
+    color: rgba($color, 1)
+
+    span
+      border-color: rgba($color, 1)
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИПОГРАФИЧЕСКИХ СТИЛЯХ конец
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//

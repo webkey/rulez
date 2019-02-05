@@ -46,10 +46,11 @@
   <div class="wrapper">
     <!--HEADER-->
     <header class="header">
+      <div class="header-bg">&nbsp;</div>
       <div class="max-wrap">
         <!--header-top-->
         <div class="header-top layout">
-          <div class="add-menu-wrap">
+          <div class="header-top__l">
             <div class="add-menu" data-btn-more="Еще">
               <ul class="add-menu__list">
                 <li><a href="#"><span>Акции и подарки</span></a></li>
@@ -57,30 +58,69 @@
                 <li><a href="#"><span>Рассрочка</span></a></li>
                 <li><a href="#"><span>Оплата</span></a></li>
                 <li><a href="#"><span>Гарантия и доставка</span></a></li>
-                <li><a href="#"><span>Акции и подарки</span></a></li>
-                <li><a href="#"><span>Скидки</span></a></li>
-                <li><a href="#"><span>Рассрочка</span></a></li>
                 <li><a href="#"><span>Оплата</span></a></li>
-                <li><a href="#"><span>Гарантия и доставка</span></a></li>
+                <li><a href="#"><span>Гарантия</span></a></li>
+                <li><a href="#"><span>Рассрочка</span></a></li>
+                <li><a href="#"><span>Скидки</span></a></li>
+                <li><a href="#"><span>Акции и подарки</span></a></li>
               </ul>
             </div>
           </div>
-          <div class="user-options">
-            {{Вход, лайки, корзина...}}
-            <!--<div class="user-options__item user-options&#45;&#45;login">
-		<a href="#" title="Вход" class="btn-login-js">
-			<svg class="svg-ico-profile" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 563.4 563.4"><path d="M280.8 314.6c83.3 0 150.8-67.5 150.8-150.8S364.1 13.4 280.8 13.4 130 81 130 163.8 197.5 314.6 280.8 314.6zM280.8 52.7c61.1 0 111 50 111 111S341.9 274.8 280.8 274.8s-111-50-111-111S219.7 52.7 280.8 52.7z"></path><path d="M19.9 550h523.6c11.1 0 19.9-8.8 19.9-19.9 0-104.1-84.7-189.2-189.2-189.2H189.2C85.1 340.9 0 425.6 0 530.1 0 541.2 8.8 550 19.9 550zM189.2 380.7h185c75.9 0 138.3 56.4 148 129.5H41.2C50.9 437.6 113.3 380.7 189.2 380.7z"></path></svg>
-			<span>Войти</span>
-		</a>
-	</div>
-	<div class="user-options__item user-options&#45;&#45;likes">
-		<a href="#" title="Избранное">
-			<svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-    <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
-</svg>
-			<span>12</span>
-		</a>
-	</div>-->
+          <div class="header-top__r">
+            <div class="cont">
+              <ul class="chats">
+                <li><a href="https://www.viber.com/" target="_blank"><span>Viber</span></a></li>
+                <li><a href="https://telegram.org/" target="_blank"><span>Telegram</span></a></li>
+                <li><a href="https://www.whatsapp.com/" target="_blank"><span>Whatsapp</span></a></li>
+              </ul>
+              <div class="phones phones-js">
+                <a href="tel:+375291231010" class="phones-opener-js"><span>+375 (29) <strong>123 10 10</strong></span><i>&nbsp;</i></a>
+                <ul class="phones-drop phones-drop-js">
+                  <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+                  <li class="active-item"><a href="tel:+375291232017"><span>+375 (29) <strong>123 20 17</strong></span></a></li>
+                  <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="user-options">
+              <div class="user-options__item user-options__item_login">
+                <a href="#" class="btn-login-js" title="Вход в личный кабинет">
+                  <svg class="svg-ico-profile" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 563.4 563.4">
+                    <path d="M280.8 314.6c83.3 0 150.8-67.5 150.8-150.8S364.1 13.4 280.8 13.4 130 81 130 163.8 197.5 314.6 280.8 314.6zM280.8 52.7c61.1 0 111 50 111 111S341.9 274.8 280.8 274.8s-111-50-111-111S219.7 52.7 280.8 52.7z"></path>
+                    <path d="M19.9 550h523.6c11.1 0 19.9-8.8 19.9-19.9 0-104.1-84.7-189.2-189.2-189.2H189.2C85.1 340.9 0 425.6 0 530.1 0 541.2 8.8 550 19.9 550zM189.2 380.7h185c75.9 0 138.3 56.4 148 129.5H41.2C50.9 437.6 113.3 380.7 189.2 380.7z"></path>
+                  </svg>
+                  <span>Войти</span>
+                </a>
+              </div>
+              <div class="user-options__item user-options__item_likes">
+                <a href="#" title="Избранное">
+                  <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
+                    <path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09C10.91 3.81 9.24 3 7.5 3 4.42 3 2 5.42 2 8.5c0 3.78 3.4 6.86 8.55 11.54L12 21.35l1.45-1.32C18.6 15.36 22 12.28 22 8.5 22 5.42 19.58 3 16.5 3zm-4.4 15.55l-.1.1-.1-.1C7.14 14.24 4 11.39 4 8.5 4 6.5 5.5 5 7.5 5c1.54 0 3.04.99 3.57 2.36h1.87C13.46 5.99 14.96 5 16.5 5c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path>
+                  </svg>
+                  <span class="hide-text">Избранное</span>
+                  <em class="counter">1</em>
+                </a>
+              </div>
+              <div class="user-options__item user-options__item_compare">
+                <a href="#" title="Перейти к сравнению">
+                  <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M10 20h4V4h-4v16zm-6 0h4v-8H4v8zM16 9v11h4V9h-4z"></path>
+                  </svg>
+                  <span class="hide-text">Сравнить</span>
+                  <em class="counter">3</em>
+                </a>
+              </div>
+            </div>
+            <a href="#" class="cart-link" title="Оформить заказа">
+              <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path>
+              </svg>
+              <div class="cart-link__text">
+                <strong>Корзина</strong>
+                <span>300.00 руб</span>
+              </div>
+              <em class="counter">1</em>
+            </a>
           </div>
         </div>
         <!--header-top end-->
@@ -95,197 +135,46 @@
           </div>
           <!--logo end-->
           <div class="site-nav">
-            <div class="catalog-opener">{{Весь каталог}}</div>
-            <!--navigation-->
-            <div class="nav-wrap">
-              <nav class="nav">
-                <!--(1) START nav FIRST level-->
-                <ul class="nav__list reset-list nav-js">
-                  <!--nav item start-->
-                  <li class="has-drop">
-                    <div class="nav__tab nav__tab-js">
-                      <a href="all-pages.html"><span>All pages</span></a>
-                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                    </div>
-                    <!--(2) START nav SECOND level-->
-                    <div class="nav__drop nav-drop-js">
-                      <ul class="sub-nav__list">
-                        <li><a href="404.html"><span>404</span></a></li>
-                        <li><a href="forms.html"><span>forms</span></a></li>
-                        <li><a href="index.html"><span>index</span></a></li>
-                        <li><a href="inner.html"><span>inner</span></a></li>
-                        <li><a href="typography.html"><span>typography</span></a></li>
-                      </ul>
-                    </div>
-                    <!--(2) END nav SECOND level-->
-                  </li>
-                  <!--nav item end-->
-                  <!--nav item start-->
-                  <li class="has-drop current">
-                    <div class="nav__tab nav__tab-js">
-                      <a href="#"><span>Пункт 1</span></a>
-                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                    </div>
-                    <!--(2) START nav SECOND level-->
-                    <div class="nav__drop nav-drop-js">
-                      <ul class="sub-nav__list">
-                        <li>
-                          <div class="nav__tab nav__tab-js">
-                            <a href="#"><span>Пункт 1.1</span></a>
-                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                          </div>
-                        </li>
-                        <li class="has-drop">
-                          <div class="nav__tab nav__tab-js">
-                            <a href="#"><span>Пункт 1.2 (есть подпункты)</span></a>
-                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                          </div>
-                          <!--(3) START nav THIRD level-->
-                          <div class="nav__drop nav-drop-js">
-                            <ul class="sub-nav__list">
-                              <li>
-                                <div class="nav__tab nav__tab-js">
-                                  <a href="#"><span>Пункт 1.2.1</span></a>
-                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                </div>
-                              </li>
-                              <li class="has-drop">
-                                <div class="nav__tab nav__tab-js">
-                                  <a href="#"><span>Пункт 1.2.2 (есть подпункты)</span></a>
-                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                </div>
-                                <!--(4) START nav FOURTH level-->
-                                <div class="nav__drop nav-drop-js">
-                                  <ul class="sub-nav__list">
-                                    <li>
-                                      <div class="nav__tab nav__tab-js">
-                                        <a href="#"><span>Пункт 1.2.2.1</span></a>
-                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div class="nav__tab nav__tab-js">
-                                        <a href="#"><span>Пункт 1.2.2.2</span></a>
-                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div class="nav__tab nav__tab-js">
-                                        <a href="#"><span>Пункт 1.2.2.3</span></a>
-                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                      </div>
-                                    </li>
-                                    <li>
-                                      <div class="nav__tab nav__tab-js">
-                                        <a href="#"><span>Пункт 1.2.2.3</span></a>
-                                        <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                      </div>
-                                    </li>
-                                  </ul>
-                                </div>
-                                <!--(4) END nav FOURTH level-->
-                              </li>
-                              <li>
-                                <div class="nav__tab nav__tab-js">
-                                  <a href="#"><span>Пункт 1.2.3</span></a>
-                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                </div>
-                              </li>
-                              <li>
-                                <div class="nav__tab nav__tab-js">
-                                  <a href="#"><span>Пункт 1.2.4</span></a>
-                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                          <!--(3) END nav THIRD level-->
-                        </li>
-                        <li>
-                          <div class="nav__tab nav__tab-js">
-                            <a href="#"><span>Пункт 1.4</span></a>
-                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                          </div>
-                        </li>
-                        <li>
-                          <div class="nav__tab nav__tab-js">
-                            <a href="#"><span>Пункт 1.5</span></a>
-                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                          </div>
-                        </li>
-                      </ul>
-                    </div>
-                    <!--(2) END nav SECOND level-->
-                  </li>
-                  <!--nav item end-->
-                  <!--nav item start-->
-                  <li class="">
-                    <div class="nav__tab nav__tab-js">
-                      <a href="#"><span>Пункт 2</span></a>
-                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                    </div>
-                  </li>
-                  <!--nav item end-->
-                  <!--==================================================================-->
-                  <!--====================== ПРИМЕР БЕЗ ДРОПА ==========================-->
-                  <!--==================================================================-->
-                  <!--nav item start-->
-                  <li class="">
-                    <div class="nav__tab nav__tab-js">
-                      <a href="#"><span>Пункт 3</span></a>
-                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                    </div>
-                  </li>
-                  <!--nav item end-->
-                  <!--==================================================================-->
-                  <!--================== ПРИМЕР БЕЗ ДРОПА конец ========================-->
-                  <!--==================================================================-->
-                  <!--==================================================================-->
-                  <!--====================== ПРИМЕР С ДРОПОМ ===========================-->
-                  <!--==================================================================-->
-                  <!--Чтобы лучше было видно группу пунктов в одно дропе, нужно подсветить этот дроп, введя в поиск ==========3========== -->
-                  <!--nav item start-->
-                  <li class="has-drop">
-                    <div class="nav__tab nav__tab-js">
-                      <a href="#"><span>tt1tt</span></a>
-                      <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                    </div>
-                    <!--(2) START nav SECOND level-->
-                    <div class="nav__drop nav-drop-js">
-                      <ul class="sub-nav__list">
-                        <li class="has-drop">
-                          <div class="nav__tab nav__tab-js">
-                            <a href="#"><span>tt2tt</span></a>
-                            <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                          </div>
-                          <!--(3) START nav THIRD level-->
-                          <div class="nav__drop nav-drop-js">
-                            <ul class="sub-nav__list">
-                              <li>
-                                <div class="nav__tab nav__tab-js">
-                                  <a href="#"><span>tt3tt</span></a>
-                                  <span class="nav__angle nav-handler-js"><i>&nbsp;</i></span>
-                                </div>
-                              </li>
-                            </ul>
-                          </div>
-                          <!--(3) END nav THIRD level-->
-                        </li>
-                      </ul>
-                    </div>
-                    <!--(2) END nav SECOND level-->
-                  </li>
-                  <!--nav item end-->
-                  <!--пробел ставим ТОЛЬКО после элемента с правилом "pos": "end"-->
-                  <!--==================================================================-->
-                  <!--==================== ПРИМЕР С ДРОПОМ конец =======================-->
-                  <!--==================================================================-->
-                </ul>
-                <!--(1) END nav FIRST level-->
-              </nav>
+            <div class="site-nav__grid">
+              <a href="#" class="catalog-opener catalog-opener-js"><i>&nbsp;</i><span>Весь каталог</span></a>
             </div>
-            <!--navigation end-->
-            <div class="search">{{Поиск}}</div>
+            <div class="site-nav__grid">
+              <!--navigation-->
+              <div class="nav-wrap">
+                <nav class="nav">
+                  <ul class="nav__list">
+                    <li><a href="#"><span>Ноутбуки</span></a></li>
+                    <li><a href="#"><span>Моноблоки</span></a></li>
+                    <li><a href="#"><span>Компьютеры</span></a></li>
+                    <li><a href="#"><span>Мониторы</span></a></li>
+                    <li><a href="#"><span>Принтеры МФУ</span></a></li>
+                    <li><a href="#"><span>Планшеты</span></a></li>
+                    <li><a href="#"><span>Game Zone</span></a></li>
+                  </ul>
+                </nav>
+              </div>
+              <!--navigation end-->
+              <div class="search-form" id="searchPanel">
+                <form action="#" method="post">
+                  <div class="search-form__field input-wrap">
+                    <input type="search" class="search-form__input stop-remove-class field-js" />
+                    <div class="search-form__btn">
+                      <svg class="svg-ico-search" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.862 21.863">
+                        <path class="a" d="M18.625,16.75h-.987l-.35-.338a8.137,8.137,0,1,0-.875.875l.338.35v.987L23,24.862,24.862,23Zm-7.5,0a5.625,5.625,0,1,1,5.625-5.625A5.617,5.617,0,0,1,11.125,16.75Z" transform="translate(-3 -3)"></path>
+                      </svg>
+                      <span>Найти</span>
+                      <input type="submit" value="">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <a href="#searchPanel" class="toggle-search toggle-search-js">
+                <svg class="svg-ico-search" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.862 21.863">
+                  <path class="a" d="M18.625,16.75h-.987l-.35-.338a8.137,8.137,0,1,0-.875.875l.338.35v.987L23,24.862,24.862,23Zm-7.5,0a5.625,5.625,0,1,1,5.625-5.625A5.617,5.617,0,0,1,11.125,16.75Z" transform="translate(-3 -3)"></path>
+                </svg>
+                <span>Open search panel</span>
+              </a>
+            </div>
           </div>
         </div>
         <!--header-common end-->

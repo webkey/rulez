@@ -37,6 +37,20 @@ function printShow() {
 }
 
 /**
+ * !Equal height of blocks by maximum height of them
+ */
+function equalHeight() {
+  // equal height of elements
+  var $equalHeight = $('.equal-height-js');
+
+  if($equalHeight.length) {
+    $equalHeight.children().matchHeight({
+      byRow: true, property: 'height', target: null, remove: false
+    });
+  }
+}
+
+/**
  * !Show elements on scroll
  */
 function showOnScroll() {
@@ -111,36 +125,67 @@ function navExpander() {
 }
 
 /**
+ * !Tooltip
+ * */
+function initTooltip() {
+  var $elements = $('.user-options__item a, .cart-link');
+  $.each($elements, function () {
+    var $curElem = $(this);
+    $curElem.attr('data-title', $curElem.attr('title')).attr('title','');
+  })
+}
+
+/**
+ * !Detect scroll page
+ */
+function detectScroll() {
+  // external js:
+  // 1) resizeByWidth (resize only width);
+
+  var $page = $('html'),
+      // $fixedElement = $('.main-nav'),
+      // var minScrollTop = $fixedElement.offset().top,
+      minScrollTop = 100,
+      currentScrollTop = $(window).scrollTop();
+
+  $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
+
+  $(window).on('load resizeByWidth scroll', function () {
+
+    // minScrollTop = $fixedElement.offset().top;
+    currentScrollTop = $(window).scrollTop();
+    $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
+  })
+}
+/**
  * !Toggle class on a form elements on focus
  * */
 function inputFocusClass() {
   var $inputs = $('.field-js');
 
   if ($inputs.length) {
-    var $fieldWrap = $('.input-wrap');
-    var $selectWrap = $('.select');
-    var classFocus = 'input--focus';
+    var $fieldWrap = $('.input-wrap'),
+        $selectWrap = $('.select'),
+        classFocus = 'input--focus';
 
     $inputs.focus(function () {
-      var $currentField = $(this);
-      var $currentFieldWrap = $currentField.closest($fieldWrap);
+      var $currentField = $(this),
+          $currentFieldWrap = $currentField.closest($fieldWrap);
 
       $currentField.addClass(classFocus);
       $currentField.prev('label').addClass(classFocus);
       $currentField.closest($selectWrap).prev('label').addClass(classFocus);
       $currentFieldWrap.addClass(classFocus);
       $currentFieldWrap.find('label').addClass(classFocus);
-
     }).blur(function () {
-      var $currentField = $(this);
-      var $currentFieldWrap = $currentField.closest($fieldWrap);
+      var $currentField = $(this),
+          $currentFieldWrap = $currentField.closest($fieldWrap);
 
       $currentField.removeClass(classFocus);
       $currentField.prev('label').removeClass(classFocus);
       $currentField.closest($selectWrap).prev('label').removeClass(classFocus);
       $currentFieldWrap.removeClass(classFocus);
       $currentFieldWrap.find('label').removeClass(classFocus);
-
     });
   }
 }
@@ -279,12 +324,7 @@ function slidersInit() {
           $thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
           $thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
           $thisPag = $('.swiper-pagination', $thisSlider);
-      var time = 8;
-      var $bar,
-          slider,
-          isPause,
-          tick,
-          percentTime;
+      var slider;
 
       slider = new Swiper($thisSlider, {
         // Optional parameters
@@ -302,6 +342,10 @@ function slidersInit() {
         pagination: $thisPag,
         paginationType: 'bullets',
         paginationClickable: true,
+
+        longSwipesRatio: 0.05,
+        longSwipesMs: 200,
+
         breakpoints: {
           768: {
             parallax: false
@@ -310,57 +354,18 @@ function slidersInit() {
         // events
         onInit: function (swiper) {
           $(swiper.container).closest($thisSlider).addClass('is-loaded');
+          changeBgColor(swiper);
         }
       });
 
-      // slider.on('slideChangeStart', function () {
-      // 	startProgressbar();
-      // 	isPause = true;
-      // });
+      slider.on('slideChangeStart', function (swiper) {
+        changeBgColor(swiper);
+      });
 
-      // $bar = $('.slider-progress .progress');
-      //
-      // $('.main-enter').on({
-      // 	mouseenter: function() {
-      // 		isPause = true;
-      // 	},
-      // 	mouseleave: function() {
-      // 		isPause = false;
-      // 	}
-      // });
-      //
-      // function startProgressbar() {
-      // 	resetProgressbar();
-      // 	percentTime = 0;
-      // 	isPause = false;
-      // 	tick = setInterval(interval, 10);
-      // }
-      //
-      // function interval() {
-      // 	if(isPause === false) {
-      // 		percentTime += 1 / (time+0.1);
-      // 		$bar.css({
-      // 			// width: percentTime+"%",
-      // 			'-ms-transform'     : 'translateX(' + percentTime + '%)',
-      // 			'transform'         : 'translateX(' + percentTime + '%)'
-      // 		});
-      // 		if(percentTime >= 100) {
-      // 			slider.slideNext();
-      // 			startProgressbar();
-      // 		}
-      // 	}
-      // }
-      //
-      // function resetProgressbar() {
-      // 	$bar.css({
-      // 		// width: 0+'%',
-      // 		'-ms-transform'     : 'translateX(0%)',
-      // 		'transform'         : 'translateX(0%)'
-      // 	});
-      // 	clearTimeout(tick);
-      // }
-      //
-      // startProgressbar();
+      function changeBgColor(swiper) {
+        var bgColor = $(swiper.slides).eq(swiper.activeIndex).css('background-color');
+        $('.header-bg').css('background-color', bgColor);
+      }
     });
 
   }
@@ -678,6 +683,468 @@ function tabs() {
   }
 }
 
+/**! jquery.ms-drop.js
+ * Version: 2018.1.0
+ * Author: Astronim*
+ * Description: Toggle a drop menu
+ */
+
+(function($){
+  var defaults = {
+    // container: '.ms-drop__container-js', // is element
+    opener: '.ms-drop__opener-js',
+    openerText: 'span',
+    drop: '.ms-drop__drop-js',
+    dropOption: '.ms-drop__drop-js a',
+    dropOptionText: 'span',
+    initClass: 'ms-drop--initialized',
+    closeOutsideClick: true, // Close all if outside click
+    closeEscClick: true, // Close all if click on escape key
+    closeAfterSelect: true, // Close drop after selected option
+    preventOption: false, // Add preventDefault on click to option
+    selectValue: true, // Display the selected value in the opener
+    modifiers: {
+      isOpen: 'is-open',
+      activeItem: 'active-item'
+    }
+
+    // Callback functions
+    // afterInit: function () {} // Fire immediately after initialized
+    // afterChange: function () {} // Fire immediately after added or removed an open-class
+  };
+
+  function MsDrop(element, options) {
+    var self = this;
+
+    self.config = $.extend(true, {}, defaults, options);
+
+    self.element = element;
+
+    self.callbacks();
+    self.event();
+    // close drop if clicked outside active element
+    if (self.config.closeOutsideClick) {
+      self.closeOnClickOutside();
+    }
+    // close drop if clicked escape key
+    if (self.config.closeEscClick) {
+      self.closeOnClickEsc();
+    }
+    self.eventDropItems();
+    self.init();
+  }
+
+  /** track events */
+  MsDrop.prototype.callbacks = function () {
+    var self = this;
+    $.each(self.config, function (key, value) {
+      if(typeof value === 'function') {
+        self.element.on(key + '.msDrop', function (e, param) {
+          return value(e, self.element, param);
+        });
+      }
+    });
+  };
+
+  MsDrop.prototype.event = function () {
+    var self = this;
+    self.element.on('click', self.config.opener, function (event) {
+      event.preventDefault();
+      var curContainer = $(this).closest(self.element);
+
+      if (curContainer.hasClass(self.config.modifiers.isOpen)) {
+
+        curContainer.removeClass(self.config.modifiers.isOpen);
+
+        // callback afterChange
+        self.element.trigger('afterChange.msDrop');
+        return;
+      }
+
+      self.element.removeClass(self.config.modifiers.isOpen);
+
+      curContainer.addClass(self.config.modifiers.isOpen);
+
+      // callback afterChange
+      self.element.trigger('afterChange.msDrop');
+    });
+  };
+
+  MsDrop.prototype.closeOnClickOutside = function () {
+
+    var self = this;
+    $(document).on('click', function(event){
+      if( $(event.target).closest(self.element).length ) {
+        return;
+      }
+
+      self.closeDrop();
+      event.stopPropagation();
+    });
+
+  };
+
+  MsDrop.prototype.closeOnClickEsc = function () {
+
+    var self = this;
+    $(document).keyup(function(e) {
+      if (e.keyCode === 27) {
+        self.closeDrop();
+      }
+    });
+
+  };
+
+  MsDrop.prototype.closeDrop = function (container) {
+
+    var self = this,
+        $element = $(container || self.element);
+
+    if ($element.hasClass(self.config.modifiers.isOpen)) {
+      $element.removeClass(self.config.modifiers.isOpen);
+    }
+
+  };
+
+  MsDrop.prototype.eventDropItems = function () {
+
+    var self = this;
+
+    self.element.on('click', self.config.dropOption, function (e) {
+      var cur = $(this);
+      var curParent = cur.parent();
+
+      if(curParent.hasClass(self.config.modifiers.activeItem)){
+        e.preventDefault();
+        return;
+      }
+      if(self.config.preventOption){
+        e.preventDefault();
+      }
+
+      var curContainer = cur.closest(self.element);
+
+      curContainer.find(self.config.dropOption).parent().removeClass(self.config.modifiers.activeItem);
+
+      curParent
+          .addClass(self.config.modifiers.activeItem);
+
+      if(self.config.selectValue){
+        curContainer
+            .find(self.config.opener).find(self.config.openerText)
+            .html(cur.find(self.config.dropOptionText).html());
+      }
+
+      if(self.config.closeAfterSelect) {
+        self.closeDrop();
+      }
+
+    });
+
+  };
+
+  MsDrop.prototype.init = function () {
+
+    this.element.addClass(this.config.initClass);
+
+    this.element.trigger('afterInit.msDrop');
+
+  };
+
+  $.fn.msDrop = function (options) {
+    'use strict';
+
+    return this.each(function(){
+      new MsDrop($(this), options);
+    });
+
+  };
+})(jQuery);
+
+/**!
+ * Toggle dropdown menu
+ */
+function pickUp() {
+  var $phones = $('.phones-js');
+
+  if ($phones.length) {
+    $phones.msDrop({
+      opener: '.phones-opener-js',
+      drop: '.phones-drop-js',
+      preventOption: true,
+      selectValue: false,
+      modifiers: {
+        isOpen: 'is-open',
+        activeItem: 'active-item'
+      }
+    })
+  }
+}
+
+/*! jquery.ms-switch-class.js
+ * Version: 2018.1.0
+ * Author: *
+ * Description: Extended toggle class
+ */
+
+(function ($) {
+  'use strict';
+
+  var countFixedScroll = 0;
+  // Нужно для корректной работы с доп. классом фиксирования скролла
+
+  var SwitchClass = function (element, config) {
+    var self,
+        $element = $(element),
+        $html = $('html'),
+        pref = 'jq-switch-class',
+        pluginClasses = {
+          initClass: pref + '_initialized'
+        },
+        mod = {
+          scrollFixedClass: 'css-scroll-fixed'
+        },
+        $switchClassTo = $element.add(config.switcher).add(config.adder).add(config.remover).add(config.switchClassTo),
+        classIsAdded = false; //Флаг отвечающий на вопрос: класс добавлен?
+
+    var callbacks = function () {
+          /** track events */
+          $.each(config, function (key, value) {
+            if (typeof value === 'function') {
+              $element.on('switchClass.' + key, function (e, param) {
+                return value(e, $element, param);
+              });
+            }
+          });
+        },
+        prevent = function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+          return false;
+        },
+        toggleFixedScroll = function () {
+          $html.toggleClass(mod.scrollFixedClass, !!countFixedScroll);
+        },
+        add = function () {
+          if (classIsAdded) return;
+
+          // Callback before added class
+          $element.trigger('switchClass.beforeAdded');
+
+          // Добавить активный класс на:
+          // 1) Основной элемент
+          // 2) Дополнительный переключатель
+          // 3) Элементы указанные в настройках экземпляра плагина
+          $switchClassTo.addClass(config.modifiers.activeClass);
+
+          classIsAdded = true;
+
+          if (config.cssScrollFixed) {
+            // Если в настойках указано, что нужно добавлять класс фиксации скролла,
+            // То каждый раз вызывая ДОБАВЛЕНИЕ активного класса, увеличивается счетчик количества этих вызовов
+            ++countFixedScroll;
+            toggleFixedScroll();
+          }
+
+          // callback after added class
+          $element.trigger('switchClass.afterAdded');
+        },
+        remove = function () {
+          if (!classIsAdded) return;
+
+          // callback beforeRemoved
+          $element.trigger('switchClass.beforeRemoved');
+
+          // Удалять активный класс с:
+          // 1) Основной элемент
+          // 2) Дополнительный переключатель
+          // 3) Элементы указанные в настройках экземпляра плагина
+          $switchClassTo.removeClass(config.modifiers.activeClass);
+
+          classIsAdded = false;
+
+          if (config.cssScrollFixed) {
+            // Если в настойках указано, что нужно добавлять класс фиксации скролла,
+            // То каждый раз вызывая УДАЛЕНИЕ активного класса, уменьшается счетчик количества этих вызовов
+            --countFixedScroll;
+            toggleFixedScroll();
+          }
+
+          // callback afterRemoved
+          $element.trigger('switchClass.afterRemoved');
+        },
+        events = function () {
+          $element.on('click', function (event) {
+            if (classIsAdded) {
+              remove();
+
+              event.preventDefault();
+              return false;
+            }
+
+            add();
+
+            prevent(event);
+          });
+
+          $(config.switcher).on('click', function (event) {
+            $element.click();
+            prevent(event);
+          });
+
+          $(config.adder).on('click', function (event) {
+            add();
+            prevent(event);
+          });
+
+          $(config.remover).on('click', function (event) {
+            remove();
+            prevent(event);
+          })
+
+        },
+        removeByClickOutside = function () {
+          $html.on('click', function (event) {
+            if (classIsAdded && config.removeOutsideClick && !$(event.target).closest('.' + config.modifiers.stopRemoveClass).length) {
+              remove();
+              // event.stopPropagation();
+            }
+          });
+        },
+        removeByClickEsc = function () {
+          $html.keyup(function (event) {
+            if (classIsAdded && config.removeEscClick && event.keyCode === 27) {
+              remove();
+            }
+          });
+        },
+        init = function () {
+          $element.addClass(pluginClasses.initClass).addClass(config.modifiers.initClass);
+          $element.trigger('switchClass.afterInit');
+        };
+
+    self = {
+      callbacks: callbacks,
+      remove: remove,
+      events: events,
+      removeByClickOutside: removeByClickOutside,
+      removeByClickEsc: removeByClickEsc,
+      init: init
+    };
+
+    return self;
+  };
+
+  // $.fn.switchClass = function (options, params) {
+  $.fn.switchClass = function () {
+    var _ = this,
+        opt = arguments[0],
+        args = Array.prototype.slice.call(arguments, 1),
+        l = _.length,
+        i,
+        ret;
+    for (i = 0; i < l; i++) {
+      if (typeof opt === 'object' || typeof opt === 'undefined') {
+        _[i].switchClass = new SwitchClass(_[i], $.extend(true, {}, $.fn.switchClass.defaultOptions, opt));
+        _[i].switchClass.callbacks();
+        _[i].switchClass.events();
+        _[i].switchClass.removeByClickOutside();
+        _[i].switchClass.removeByClickEsc();
+        _[i].switchClass.init();
+      }
+      else {
+        ret = _[i].switchClass[opt].apply(_[i].switchClass, args);
+      }
+      if (typeof ret !== 'undefined') {
+        return ret;
+      }
+    }
+    return _;
+  };
+
+  $.fn.switchClass.defaultOptions = {
+    switcher: null,
+    /**
+     * @description - Дополнительный элемент, которым можно ДОБАВЛЯТЬ/УДАЛЯТЬ класс
+     * @example {String}{JQ Object} null - '.switcher-js', или $('.switcher-js')
+     */
+    adder: null,
+    /**
+     * @description - Дополнительный элемент, которым можно ДОБАВЛЯТЬ класс
+     * @example {String}{JQ Object} null - '.adder-js', или $('.adder-js')
+     */
+    remover: null,
+    /**
+     * @description - Дополнительный элемент, которым можно УДАЛЯТЬ класс
+     * @example {String}{JQ Object} null - '.remover-js', или $('.remover-js')
+     */
+    switchClassTo: null,
+    /**
+     * @description - Один или несколько эелментов, на которые будет добавляться/удаляться активный класс (modifiers.activeClass)
+     * @example {JQ Object} null - 1) $('html, .popup-js, .overlay-js')
+     * @example {JQ Object} null - 2) $('html').add('.popup-js').add('.overlay-js')
+     */
+    removeOutsideClick: true,
+    /**
+     * @description - Удалать класс по клику по пустому месту на странице? Если по клику на определенный элемент удалять класс не нужно, то на этот элемент нужно добавить дата-антрибут [data-tc-stop]
+     * @param {boolean} true - или false
+     */
+    removeEscClick: true,
+    /**
+     * @description - Удалять класс по клику на клавишу Esc?
+     * @param {boolean} true - или false
+     */
+    cssScrollFixed: false,
+    /**
+     * @description - Добавлять на html дополнительный класс 'css-scroll-fixed'? Через этот класс можно фиксировать скролл методами css
+     * @see - _mixins.sass =scroll-blocked()
+     * @param {boolean} true - или false.
+     */
+    modifiers: {
+      initClass: null,
+      activeClass: 'active',
+      stopRemoveClass: 'stop-remove-class' // Если кликнуть по елементу с этим классам, то событие удаления активного класса не будет вызвано
+    }
+    /**
+     * @description - Список классов-модификаторов
+     */
+  };
+
+})(jQuery);
+
+/**
+ * !Toggle search panel
+ */
+function toggleSearchPanel() {
+  var $searchSwitcher = $('.toggle-search-js');
+  if ($searchSwitcher.length) {
+    var options = {
+      switcher: '.tc__switcher-js'
+      , adder: '.tc__opener-js'
+      , remover: '.tc__remover-js'
+      , switchClassTo: $('.site-nav')
+      , modifiers: {
+        activeClass: 'search-is-open'
+      }
+      , cssScrollFixed: false
+      , removeOutsideClick: true
+      , afterAdded: function () {
+        setTimeout(function () {
+          $('.search-form__input').focus();
+        }, 50);
+      }
+      , afterRemoved: function () {
+        setTimeout(function () {
+          $('.search-form__input').blur();
+        }, 50);
+      }
+    };
+
+    $searchSwitcher.switchClass(options);
+  }
+}
+
+
 
 /**
  * !Form validation
@@ -713,25 +1180,22 @@ function formValidation() {
  * =========== !ready document, load/resize window ===========
  */
 
-$(window).on('load', function () {
-  // add functions
-});
-
-$(window).on('debouncedresize', function () {
-  // $(document.body).trigger("sticky_kit:recalc");
-});
-
 $(document).ready(function () {
   // showOnScroll();
   placeholderInit();
   navExpander();
+  initTooltip();
+  detectScroll();
   printShow();
+  equalHeight();
   inputFocusClass();
   inputHasValueClass();
   customSelect($('select.cselect'));
   slidersInit();
   gridLayout();
   tabs();
+  pickUp();
+  toggleSearchPanel();
   objectFitImages(); // object-fit-images initial
 
   formValidation();

@@ -13,6 +13,8 @@ $breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-m
 //$font-norm: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default
 $font-norm: 'circe-regular', Helvetica, Arial, sans-serif !default
 $font-bold: 'circe-bold', Helvetica, Arial, sans-serif !default
+$font-extra-bold: 'circe-extra-bold', Helvetica, Arial, sans-serif !default
+$font-light: 'circe-light', Helvetica, Arial, sans-serif !default
 $font-alt: Georgia, serif !default
 
 // Reset font-weight and font-style
@@ -29,14 +31,23 @@ $font-alt: Georgia, serif !default
 
 =font-bold()
   font-family: $font-bold
-  +font-reset
+  font-weight: normal
+
+=font-extra-bold()
+  font-family: $font-extra-bold
+  font-weight: normal
 
 =font-italic()
   font-style: italic
 
 =font-bold-italic()
-  font-weight: bold
+  font-family: $font-bold
+  font-weight: normal
   font-style: italic
+
+=font-light()
+  font-family: $font-light
+  font-weight: normal
 
 // Alternative font
 =font-alt()
@@ -151,7 +162,7 @@ $bottom-space--small: round-float($font-size*$line-height*0.75, 1) !default
 $base-color: #6e52dd !default
 $base-color-alt: #f8e71c !default
 // ----------------------------------------------------
-$bg-color: #e5e5e5 !default
+$bg-color: #f5f5f5 !default
 $bg-color-alt: #f3f3f3 !default
 // ----------------------------------------------------
 $text-color: #262626 !default
@@ -213,8 +224,8 @@ $list-space: 30px
 
 // Header
 // ==========================================================================
-$header-height: 180px !default
-$header-height--sm: 90px !default
+$header-height: 13rem !default
+$header-height--sm: 9rem !default
 $header-bg: #1a1a1a !default
 
 
@@ -259,7 +270,7 @@ $instagram-color-end: #a43b97 !default
 // ==========================================================================
 $btn-height: 50px !default
 $btn-bg-color: $base-color-alt !default
-$btn-bg-hover-color: darken($base-color-alt, 20%) !default
+$btn-bg-hover-color: $btn-bg-color !default
 $btn-text-color: #515151 !default
 $btn-disabled-color: #ccc !default
 
@@ -358,8 +369,8 @@ $multiple-item-space: 3px !default
   border-color: $form-error-color
 
 =form-has-value()
-  color: blueviolet
-  border-color: blueviolet
+  //color: blueviolet
+  //border-color: blueviolet
 
 =form-on-focus()
   //color: $form-border-focus-color
@@ -373,4 +384,5 @@ $animation-speed-mouseleave: 0.35s !default
 
 // No custom list
 // ==========================================================================
-$no-custom-list: ':not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible)'
+$no-custom-list-parent: null !default // parent elements of a list
+$no-custom-list: ':not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.add-menu__list):not(.okayNav__nav--invisible):not(.phones-drop):not(.chats):not(.nav__list):not(.advise-chat__list):not(.category-links__list)' !default

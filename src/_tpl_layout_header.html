@@ -1,8 +1,9 @@
 <header class="header">
+  <div class="header-bg">&nbsp;</div>
   <div class="max-wrap">
     <!--header-top-->
     <div class="header-top layout">
-      <div class="add-menu-wrap">
+      <div class="header-top__l">
         <div class="add-menu" data-btn-more="Еще">
           <ul class="add-menu__list">
             <li><a href="#"><span>Акции и подарки</span></a></li>
@@ -10,15 +11,40 @@
             <li><a href="#"><span>Рассрочка</span></a></li>
             <li><a href="#"><span>Оплата</span></a></li>
             <li><a href="#"><span>Гарантия и доставка</span></a></li>
-            <li><a href="#"><span>Акции и подарки</span></a></li>
-            <li><a href="#"><span>Скидки</span></a></li>
-            <li><a href="#"><span>Рассрочка</span></a></li>
             <li><a href="#"><span>Оплата</span></a></li>
-            <li><a href="#"><span>Гарантия и доставка</span></a></li>
+            <li><a href="#"><span>Гарантия</span></a></li>
+            <li><a href="#"><span>Рассрочка</span></a></li>
+            <li><a href="#"><span>Скидки</span></a></li>
+            <li><a href="#"><span>Акции и подарки</span></a></li>
           </ul>
         </div>
       </div>
-      @@include('_tpl_user-options.html')
+      <div class="header-top__r">
+        <div class="cont">
+          <ul class="chats">
+            <li><a href="https://www.viber.com/" target="_blank"><span>Viber</span></a></li>
+            <li><a href="https://telegram.org/" target="_blank"><span>Telegram</span></a></li>
+            <li><a href="https://www.whatsapp.com/" target="_blank"><span>Whatsapp</span></a></li>
+          </ul>
+          <div class="phones phones-js">
+            <a href="tel:+375291231010" class="phones-opener-js"><span>+375 (29) <strong>123 10 10</strong></span><i>&nbsp;</i></a>
+            <ul class="phones-drop phones-drop-js">
+              <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+              <li class="active-item"><a href="tel:+375291232017"><span>+375 (29) <strong>123 20 17</strong></span></a></li>
+              <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+            </ul>
+          </div>
+        </div>
+        @@include('_tpl_user-options.html')
+        <a href="#" class="cart-link" title="Оформить заказа">
+          @@include("includes/svg/icon-cart.svg")
+          <div class="cart-link__text">
+            <strong>Корзина</strong>
+            <span>300.00 руб</span>
+          </div>
+          <em class="counter">1</em>
+        </a>
+      </div>
     </div>
     <!--header-top end-->
     <!--header-common-->
@@ -34,15 +60,44 @@
       <!--logo end-->
 
       <div class="site-nav">
-        <div class="catalog-opener">{{Весь каталог}}</div>
-        <!--navigation-->
-        <div class="nav-wrap">
-          <nav class="nav">
-            @@include('_tpl_nav-constructor.html', { "currentItem": "@@currentItem", "bsKey": "nav" })
-          </nav>
+        <div class="site-nav__grid">
+          <a href="#" class="catalog-opener catalog-opener-js"><i>&nbsp;</i><span>Весь каталог</span></a>
         </div>
-        <!--navigation end-->
-        <div class="search">{{Поиск}}</div>
+        <div class="site-nav__grid">
+          <!--navigation-->
+          <div class="nav-wrap">
+            <nav class="nav">
+              <ul class="nav__list">
+                <li><a href="#"><span>Ноутбуки</span></a></li>
+                <li><a href="#"><span>Моноблоки</span></a></li>
+                <li><a href="#"><span>Компьютеры</span></a></li>
+                <li><a href="#"><span>Мониторы</span></a></li>
+                <li><a href="#"><span>Принтеры МФУ</span></a></li>
+                <li><a href="#"><span>Планшеты</span></a></li>
+                <li><a href="#"><span>Game Zone</span></a></li>
+              </ul>
+            </nav>
+          </div>
+          <!--navigation end-->
+
+          <div class="search-form" id="searchPanel">
+            <form action="#" method="post">
+              <div class="search-form__field input-wrap">
+                <input type="search" class="search-form__input stop-remove-class field-js"/>
+                <div class="search-form__btn">
+                  @@include("includes/svg/icon-search.svg")
+                  <span>Найти</span>
+                  <input type="submit" value="">
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <a href="#searchPanel" class="toggle-search toggle-search-js">
+            @@include("includes/svg/icon-search.svg")
+            <span>Open search panel</span>
+          </a>
+        </div>
       </div>
     </div>
     <!--header-common end-->
