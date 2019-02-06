@@ -1,12 +1,4 @@
-//======================================================//
-//Sass VENDORS//
-//======================================================//
-// @link https://github.com/eduardoboucas/include-media
 @import ../libs/include-media/dist/include-media
-
-//======================================================//
-//Sass UTILS//
-//======================================================//
 @import utils/variables
 @import utils/functions
 @import utils/mixins
@@ -33,7 +25,10 @@
 @import base/oldie
 @import base/nojs
 
-@import temp.sass
+/*======================================================*/
+/* LAYOUT
+/*======================================================*/
+@import base/layout
 
 /*======================================================*/
 /* TYPOGRAPHY
@@ -41,41 +36,20 @@
 @import base/typography
 /* === BUTTON ===
 @import base/buttons
-/* === BUTTON end ===
 /* === FORM'S ELEMENTS ===
 @import forms/forms
-/* === FORM'S ELEMENTS end ===
 
 /*======================================================*/
 /* COMMON
 /*======================================================*/
-
-///*======================================================*/
-///*COMPONENTS*/
-///*======================================================*/
-@import components/components
+@import components/user-form
+@import components/sliders-vendor
+@import components/breadcrumbs
+@import components/doc-list
+@import components/feature-list
 @import components/user-options
-//@import components/bitrix-search
 
-/*======================================================*/
-/* PARTIALS
-/*======================================================*/
-@import base/layout
-
-/*======================================================*/
-/*POPUPS*/
-/*======================================================*/
-//@import components/shutter
-
-///*======================================================*/
-///*PAGES*/
-///*======================================================*/
-@import pages/home
-
-///*======================================================*/
-///*THEMES*/
-///*======================================================*/
-@import themes/theme
+@import components/components
 
 /*======================================================*/
 /* PRINT VERSION

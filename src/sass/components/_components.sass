@@ -2,219 +2,1387 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-/* user form
-.user-form
-  margin-bottom: $bottom-space
+/* === HEADER ===
+.header
+  position: fixed
+  width: 100%
+  min-width: $page-layout-min
+  height: $header-height
+  z-index: 10
+  // transition
+  $prop: box-shadow
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
 
-  &:last-child
-    margin-bottom: 0
+  .page-scrolled &
+    box-shadow: 0 2px 5px rgba(black, 0.15)
 
-  .form-title
-    display: block
-    +font-alt-bold
-    color: $title-color
-    text-align: center
-    margin-bottom: $bottom-space
-
-    // font size
-    &
-      +font-h2
-
-  form
-    display: block
-
-  .input-wrap
-    &:last-child
-      margin-bottom: 0
-
-  textarea
-    height: 130px
-    max-height: 130px
-    resize: none
-
-  .form-buttons
-    float: left
-    margin-right: 30px
-
-    +media('<mob-lg')
-      float: none
-      margin: 0
-
-    [class*="btn-"]
-      +media('<mob-lg')
-        display: block
-        width: 100%
-        margin-top: $bottom-space--small
-
-        &:first-child
-          margin-top: 0
-
-  .form-note
-    overflow: hidden
-    min-height: $btn-height
-    +clear-spacing
-    line-height: 25px
-
-    &::before
-      content: ''
-      display: inline-block
-      vertical-align: middle
-      min-height: inherit
-
-  .form-note__item
-    display: inline-block
-    vertical-align: middle
-    width: calc(100% - 6px)
-    +font($font-size--small, $line-height--small)
-    letter-spacing: $letter-spacing
-
-/* user form end
-
-/* slider
-.swiper-container, .swiper-pagination, .slider-arrows
+.header-bg
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  background-color: $base-color
   opacity: 0
   // transition
-  $prop: opacity
+  $prop: background-color, opacity
   will-change: $prop
   transition:
     property: $prop
     duration: $animation-speed
+    timing-function: ease-in-out
 
-  .is-loaded &, &.is-loaded, .no-js &
-    opacity: 1
+  .page-scrolled &
+    opacity: 0.85
 
-.swiper-container, .swiper-pagination-bullet, .slider-arrows
-  pointer-events: none
-
-  .is-loaded &, &.is-loaded, .no-js &
-    pointer-events: auto
-
-// slider arrows
-.slider-arrows
-  height: 0
-  position: absolute
-  width: 100%
-  left: 0
-  bottom: 100%
-  //margin-bottom: $bottom-space--article
-  pointer-events: none
-
-  +media('<desk-sm')
-    //margin-bottom: $bottom-space--article--md
-
-  +media('<mob-lg')
-    //margin-bottom: $bottom-space--article--mob
-    display: none
-
-.slider-arrows__holder
+/* header-top
+.header-top
   position: relative
+  display: flex
+  align-items: center
+  justify-content: space-between
+  z-index: 9
 
-.slider-arrow
-  position: absolute
-  top: 50%
-  +size(nth($slider-button-size, 2), nth($slider-button-size, 1))
-  margin-top: -#{round(nth($slider-button-size, 2)/2)}
-  color: $base-color
-  will-change: transform
-  //background: rgba(91, 255, 176, 0.51)
-  // для тестирования, чтобы видеть контуры кнопки
-  //background: none
-  z-index: 5
-  cursor: pointer
-  user-select: none
-  -webkit-tap-highlight-color: transparent
+.header-top__l
+  width: calc(100% - 4rem - #{$header-top__r-width})
+  max-width: 50%
 
-  .slider-arrows &
-    left: auto
-    top: auto
-    bottom: 0
-    pointer-events: auto
-    margin: round((50 - nth($slider-button-size, 1))/2) 0
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
 
-    +media('<desk-sm')
-      margin: round((38 - nth($slider-button-size, 1))/2) 0
+.header-top__r
+  width: $header-top__r-width
+  display: flex
+  justify-content: flex-end
+  align-items: flex-start
 
-    +media('<mob-sm')
-      margin: round((30 - nth($slider-button-size, 1))/2) 0
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
 
-  svg
-    display: block
-    position: absolute
-    left: 50%
-    top: 50%
-    width: $slider-arrow-size
-    height: $slider-arrow-size
-    margin: -#{round($slider-arrow-size/2)} 0 0 -#{round($slider-arrow-size/2)}
+  & > div
+    // for ie 9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+
+/* add-menu
+.add-menu
+  position: relative
+  float: left
+  font-size: 1.5rem
+  line-height: 1.4
+
+  //&.loaded
+    display: flex
+
+  html:not(.no-js) &:not(.loaded)
+    opacity: 0
+    visibility: hidden
+    user-select: none
     // transition
     $prop: opacity
+    overflow: hidden
     will-change: $prop
     transition:
       property: $prop
       duration: $animation-speed
+      timing-function: ease-in-out
 
-    +media('<desk-sm')
-      width: $slider-arrow-size--mob
-      height: $slider-arrow-size--mob
-      margin: -#{round($slider-arrow-size--mob/2)} 0 0 -#{round($slider-arrow-size--mob/2)}
-
-
-    & + svg
-      opacity: 0
-
-  path
-    fill: currentColor
-
-// prev arrow
-.slider-arrow_prev
-  left: 0
-
-  .slider-arrows &
-    right: nth($slider-button-size, 2)
-
-// next arrow
-.slider-arrow_next
-  right: 0
-
-  .slider-arrows &
-    right: 0
-
-// hover, disabled, active
-.slider-arrow
-
-  // hover
-  &:not(.swiper-button-disabled):hover
-    svg
-      & + svg
-        opacity: 1
-
-  // active
-  &:not(.swiper-button-disabled):active
-    svg
-      transform: translate(0, 1px)
-
-  // disabled
-  &.swiper-button-disabled
-    pointer-events: auto
-    cursor: default
-    opacity: 0.33
-
-
-/* slider pagination
-.swiper-pagination
-  pointer-events: none
-
-.swiper-pagination-bullet
+.add-menu__list
   display: inline-block
   vertical-align: top
-  $size: 8px
-  +size($size)
-  border-radius: round($size / 2)
-  border: none
+  list-style: none
+  margin: 0
+  padding: 0
+
+  li
+    display: inline-block
+    vertical-align: top
+    margin-right: 2rem
+
+// okaynav
+.okayNav__nav--visible
+  overflow: hidden
+  white-space: nowrap
+
+  li
+    float: left
+
+.okayNav__nav--invisible
+  position: absolute
+  top: 100%
+  left: -0.5rem
+  max-height: 10rem
+  width: calc(100% + 1rem)
+  overflow-x: hidden
+  overflow-y: auto
+  list-style: none
+  margin: 0
+  padding: 0.5rem 0 0
+  opacity: 0
+  visibility: hidden
+  pointer-events: none
+  $translate: 0, -2px
+  transform: translate($translate) !important
+  transform: translate3d($translate, 0) !important
+  //background-color: $base-color
+  background-color: $bg-color
+  box-shadow: 0 2px 5px rgba(black, 0.15)
+  border-radius: 2px
+  // transition
+  $prop: transform, opacity, visibility
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &.nav-open
+    opacity: 1
+    visibility: visible
+    $translate: 0, 0
+    transform: translate($translate) !important
+    transform: translate3d($translate, 0) !important
+    pointer-events: auto
+
+  li
+    display: inline-block
+    vertical-align: top
+    margin: 0 1rem 0.5rem
+
+  a
+    color: $text-color
+    text-decoration: none
+    // transition
+    $prop: color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    +underlinedLinks($text-color)
+
+.okayNav__menu-toggle
+  position: relative
+  display: inline-block
+  vertical-align: top
+  text-decoration: none
+  padding-right: 1.2rem
+
+  span
+    user-select: none
+    pointer-events: none
+
+  i
+    position: absolute
+    top: 50%
+    right: 0.1rem
+    margin-top: -0.5rem
+    display: inline-block
+    width: 0.5rem
+    height: 0.5rem
+    border: solid currentColor
+    border-width: 0 1px 1px 0
+    transform: rotate(0.125turn)
+    user-select: none
+    pointer-events: none
+
+  &:active
+    top: 1px
+
+  &.icon--active
+    i
+      border-width: 1px 0 0 1px
+      margin-top: -0.1rem
+
+.add-menu__list a,
+.okayNav__menu-toggle
+  color: rgba(white, 0.5)
+  text-decoration: none
+  // transition
+  $prop: color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  +underlinedLinks(white)
+
+/* add-menu end
+
+/* header contacts
+.cont
+  position: relative
+  padding-top: 5px
+  min-width: 14rem
+
+  .header-top &
+    margin-right: 3rem
+
+.chats
+  width: 100%
+  list-style: none
+  margin: 0
+  padding: 0
+  +font-light
+  font-size: 1.2rem
+  line-height: 1.6rem
+  color: white
+  +clear
+
+  li
+    float: left
+    margin: 0 0.5rem 0.2rem 0
+
+  a
+    color: currentColor
+    text-decoration: none
+
+    +underlinedLinks(white)
+
+.phones
+  font-size: 1.6rem
+  line-height: 2.0rem
+  color: white
+
+  // opener
+  & > a
+    text-decoration: none
+    color: currentColor
+    position: relative
+    display: inline-block
+    vertical-align: top
+    padding-right: 1.2rem
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+    +underlinedLinks(white)
+
+    &:active
+      top: 1px
+
+    strong, b
+      +font-extra-bold
+
+    i
+      position: absolute
+      top: 50%
+      right: 0.1rem
+      margin-top: -0.5rem
+      display: inline-block
+      width: 0.5rem
+      height: 0.5rem
+      border: solid currentColor
+      border-width: 0 1px 1px 0
+      transform: rotate(0.125turn)
+      user-select: none
+      pointer-events: none
+
+  &.is-open > a i
+    border-width: 1px 0 0 1px
+    margin-top: -0.1rem
+
+.phones-drop
+  position: absolute
+  left: -0.5rem
+  top: 100%
+  width: 9.5em
+  margin: 0
+  padding: 0.5rem
+  list-style: none
+  color: $text-color
+  opacity: 0
+  visibility: hidden
+  $translate: 0, -2px
+  transform: translate($translate)
+  transform: translate3d($translate, 0)
+  //background-color: $base-color
+  background-color: $bg-color
+  box-shadow: 0 2px 5px rgba(black, 0.15)
+  border-radius: 2px
+  // transition
+  $prop: transform, opacity, visibility
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .is-open > &
+    opacity: 1
+    visibility: visible
+    $translate: 0, 0
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+
+  li
+    margin-bottom: 0.5rem
+
+    &:last-child
+      margin-bottom: 0
+
+  a
+    text-decoration: none
+    color: $text-color
+
+    +underlinedLinks($text-color)
+
+    strong, b
+      +font-extra-bold
+
+/* header contacts end
+
+/* cart-link
+.cart-link
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: flex-start
+  text-decoration: none
+  color: white
+  padding: 0.6rem 0.8rem 0.7rem
+  border-radius: 0 0 0.7rem 0.7rem
+  // transition
+  $prop: background-color, color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .header-top &
+    margin-left: 2.8rem
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+
+  // tooltip
+  &[data-title]::before
+    content: attr(data-title)
+    display: block
+    min-width: 100%
+    padding: 0.4rem 0.8rem
+    position: absolute
+    right: 0
+    top: 100%
+    margin-top: 2px
+    +font(1.2rem, 2rem)
+    text-align: center
+    letter-spacing: normal
+    white-space: nowrap
+    z-index: 2
+    //color: white
+    color: $text-color
+    +antialiased
+    opacity: 0
+    visibility: hidden
+    $translate: 0, -2px
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    //background-color: $base-color
+    background-color: $bg-color
+    box-shadow: 0 2px 5px rgba(black, 0.15)
+    border-radius: 2px
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      delay: 0s
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  svg
+    display: inline-block
+    vertical-align: top
+
+    background-color: white
+    width: 3rem
+    height: 3rem
+    border-radius: 1.5rem
+
+    // transition
+    $prop: background-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    path
+      fill: $base-color
+
+      // transition
+      $prop: fill
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+    & + .cart-link__text
+      padding-left: 1.2rem
+
+  // counter
+  .counter
+    display: block
+    position: absolute
+    left: 0.5rem
+    top: 0.5rem
+    background-color: #e61f1f
+    $size: 1.2rem
+    width: $size
+    height: $size
+    padding: 0.1rem 0 0 0
+    font-style: normal
+    font-size: 0.9rem
+    line-height: $size
+    text-align: center
+    color: white
+    border-radius: round-float($size / 2, 1)
+    z-index: 10
+
+.cart-link__text
+  font-size: 1.2rem
+  line-height: 1
+  color: currentColor
+
+  & > strong, & > span
+    +font-normal
+    display: block
+
+// hover
+.cart-link
+  &:hover
+    color: $base-color
+    //background-color: white
+    background-color: $bg-color
+
+    svg
+      background-color: $base-color
+
+      path
+        fill: white
+
+  // tooltip
+  .no-touchevents &[data-title]:hover
+    &::before
+      transition-delay: 0.6s
+      opacity: 1
+      visibility: visible
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+
+/* cart-link end
+
+/* header-common
+.header-common
+  display: flex
+  align-items: flex-start
+  position: relative
+  padding-top: 2.3rem
+  padding-bottom: 1rem
+  z-index: 5
+  +clear
+
+/* header-common end
+
+/* logo
+.logo-wrap
+  margin-top: -1.2rem
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+
+.logo
+  position: relative
+  float: left
+  background: url(../../img/logo.png) no-repeat
+  width: 165px
+  height: 63px
+  text-indent: -9999px
+  overflow: hidden
+  margin: 0 2rem 0 0
+  z-index: 5
+
+  a, & > span
+    display: block
+    height: 100%
+
+/* logo end
+
+/* site-nav
+.site-nav
+  position: relative
+  z-index: 1
+  flex-grow: 1
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  $height: 50px
+  height: $height
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background-color: #fff
+    z-index: -1
+  // transition
+  //$prop: background-color
+  //will-change: $prop
+  //transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &.search-is-open
+    &::before
+      background-color: $base-color
+      box-shadow: 0 0 2px rgba(black, 0.15)
+
+  &, &::before
+    border-radius: round($height / 2)
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+
+  // for ie 9
+  .no-flexwrap & > div
+    display: inline-block
+    vertical-align: top
+
+.site-nav__grid
+  position: relative
+  display: flex
+  align-items: center
+  margin: 0 0.5rem
+
+  // for ie 9
+  .no-flexwrap & > div
+    display: inline-block
+    vertical-align: top
+
+  &:last-child
+    flex-grow: 1
+    justify-content: flex-end
+
+/* site-nav end
+
+/* catalog opener
+a.catalog-opener
+  $btn-menu-size: $header-height--sm
+  $btn-menu-lines-width: 18px
+  $btn-menu-lines-height: 2px
+  $btn-menu-lines-space: 3px
+  $btn-menu-lines-color: $base-color
+  $btn-menu-lines-color--mob: $base-color
+  $btn-menu-animation-speed: $animation-speed
+  $btn-menu-animation-delay: round-float($animation-speed*0.5, 2)
+
+  $user-options-cross-width: $btn-menu-lines-width
+  $user-options-cross-height: $btn-menu-lines-height
+  $user-options-cross-color: $btn-menu-lines-color
+  $user-options-cross-color--mob: $btn-menu-lines-color--mob
+
+  // =====================
+
+  //display: none
+  position: relative
+  padding: 1rem 2rem 1rem 5rem
+  font-size: 1.4rem
+  line-height: 2.0rem
+  color: #4a4a4a
+  text-decoration: none
+  border-radius: 2rem
+  // transition
+  $prop: color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  //&:active
+    transform: translate(0, 1px)
+
+  // убрать подсветку при клике на тачскринах
+  .touchevents &
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+  // крест
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 50%
+    left: 14px
+    +size($user-options-cross-width, $user-options-cross-height)
+    background-color: $user-options-cross-color
+    margin-top: -#{round($user-options-cross-height / 2)}
+    will-change: opacity, transform
+    opacity: 0
+    transition:
+      property: transform, opacity
+      duration: $btn-menu-animation-speed
+      delay: 0s
+      timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
+
+  // бутерброд
+  & > i
+    position: absolute
+    left: 14px
+    top: 50%
+    +size($btn-menu-lines-width, $btn-menu-lines-height)
+    background-color: $btn-menu-lines-color
+    margin-top: -#{round($btn-menu-lines-height / 2)}
+    backface-visibility: hidden
+    transition:
+      property: opacity
+      duration: $btn-menu-animation-speed
+      delay: $btn-menu-animation-delay
+
+    &::before, &::after
+      content: ''
+      display: block
+      position: absolute
+      +size($btn-menu-lines-width, $btn-menu-lines-height)
+      background-color: $btn-menu-lines-color
+      backface-visibility: hidden
+      transition:
+        property: transform
+        duration: $btn-menu-animation-speed
+        delay: $btn-menu-animation-delay
+
+    //first line menu
+    &::before
+      top: -#{$btn-menu-lines-height + $btn-menu-lines-space}
+
+    //third line menu
+    &::after
+      top: #{$btn-menu-lines-height + $btn-menu-lines-space}
+
+  // hover
+  &:hover
+    color: $base-color
+
+  // opened
+  &.is-open
+
+    &::before, &::after
+      transition-delay: $btn-menu-animation-delay
+      opacity: 1
+
+    &::before
+      transform: rotate(45deg) translateZ(0)
+
+    &::after
+      transform: rotate(-45deg) translateZ(0)
+
+    & > i
+      opacity: 0
+      transition-delay: 0s
+
+      &::before, &::after
+        transition-delay: 0s
+
+      &::before
+        transform: translate(0, #{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+
+      &::after
+        transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
+
+  .search-is-open &
+    color: white
+
+    &::before, &::after, & > i, & > i::before, & > i::after
+      background-color: currentColor
+
+    &:hover
+      color: $base-color
+      background-color: white
+
+/* catalog opener end
+
+/* nav
+.nav-wrap
+  // transition
+  $prop: transform, opacity, visibility
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .search-is-open &
+    opacity: 0
+    visibility: hidden
+    $scale: 1, 1
+    transform: scale3d($scale, 1)
+    transform: scale($scale)
+
+.nav
+  position: relative
+
+.nav__list
+  list-style: none
+  margin: 0
+  padding: 0
+  line-height: 1
+  +clear
+
+  li
+    float: left
+    margin: 0.25rem 2rem 0.25rem 0
+
+    +media('<desk-md')
+      margin: 0.25rem 1rem 0.25rem 0
+
+  a
+    display: block
+    +font-bold
+    color: #232323
+    font-size: 1.4rem
+    text-decoration: none
+    padding-top: 0.5rem
+    padding-bottom: 0.5rem
+
+    +underlinedLinks(#232323)
+
+
+/* nav end
+
+/* search panel
+$search-form-size: 4rem 100%
+$search-btn-size: 4rem 4rem
+$search-btn-space: 0 0.5rem
+.search-form
+  position: absolute
+  left: 0
+  top: 50%
+  height: nth($search-form-size, 1)
+  width: nth($search-form-size, 2)
+  margin-top: -#{round-float(nth($search-form-size, 1) / 2, 1)}
+  z-index: 99
+  opacity: 0
+  visibility: hidden
+  //$scale: 1, 1
+  //transform: scale3d($scale, 1)
+  //transform: scale($scale)
+  // transition
+  //$prop: transform, opacity, visibility
+  //will-change: $prop
+  //transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .search-is-open &
+    opacity: 1
+    visibility: visible
+  //$scale: 1, 1
+  //transform: scale3d($scale, 1)
+  //transform: scale($scale)
+
+  form
+    display: block
+    margin: 0
+    padding: 0
+    height: 100%
+
+.search-form__field
+  position: relative
+  margin: 0
+  z-index: auto
+  padding-right: nth($search-btn-space, 2) * 2 + nth($search-btn-size, 2)
+
+  .search-form__input
+    $font-size: 1.6rem
+    $line-height: 2.0rem
+    display: block
+    padding: #{round-float((nth($search-form-size, 1) - $line-height) / 2, 1)} 1.5rem
+    width: 100%
+    height: nth($search-form-size, 1)
+    color: #000
+    cursor: text
+    background-color: white
+    //box-shadow: inset 1px 1px 2px rgba(black, 0.6)
+    box-shadow: none
+    border: 0
+    border-radius: 0.5rem
+    font-family: inherit
+    font-size: $font-size
+    line-height: $line-height
+
+// search panel buttons
+.search-form__btn, .toggle-search
+  height: nth($search-btn-size, 1)
+  width: nth($search-btn-size, 2)
+  border-radius: round-float(nth($search-btn-size, 1) / 2, 1)
+  margin: 0 nth($search-btn-space, 2)
+  // transition
+  $prop: background-color, color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  & > svg
+    $size: 20px
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    width: $size
+    height: $size
+    margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)}
+
+    path
+      fill: currentColor
+
+  & > span
+    +hide-text
+
+// search panel submit button
+.search-form__btn
+  position: absolute
+  right: 0
+  top: 50%
+  margin-top: -#{round-float(nth($search-btn-size, 1) / 2, 1)}
+  display: inline-block
+  vertical-align: top
+  background-color: $base-color
+  color: white
+
+  & > span
+    +hide-text
+
+  & > input
+    position: absolute
+    width: 100%
+    height: 100%
+    border: none
+    background: none
+    box-shadow: none
+    padding: 0
+    margin: 0
+
+  & > svg
+    $size: 20px
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    width: $size
+    height: $size
+    margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)}
+
+    path
+      fill: currentColor
+
+  // hover
+  &:hover
+    background-color: white
+    color: $base-color
+
+// search panel switcher button
+.toggle-search
+  position: relative
+  display: block
+  background-color: white
   color: $base-color
+
+  .search-is-open &
+    opacity: 0
+    visibility: hidden
+
+  // active
+  &:active
+    top: 1px
+    box-shadow: inset 0 2px 2px rgba(black, 0.3)
+
+  // hover
+  &:hover
+    background-color: $base-color
+    color: white
+
+/* search panel end
+
+/* === CONTENT ===
+.main
+  flex-shrink: 1
+  flex-grow: 1
+  position: relative
+  clear: both
+  //padding-top: $header-height
+
+  //+media('<desk-md')
+    padding-top: $header-height--sm
+
+  .no-js &
+    padding-top: 0
+
+.main__holder
+  width: 100%
+  +clear
+
+.content-wrap
+  float: left
+  width: 100%
+
+.content
+  margin: 0 200px 0 300px
+  min-height: 50px
+
+  background-color: whitesmoke
+
+  +media('<desk-lg')
+    margin-right: 0
+
+  +media('<tab-lg')
+    margin-left: 0
+
+
+/* === SIDEBAR ===
+.sidebar
+  display: inline
+  float: left
+  margin: 0 0 0 -100%
+  width: $sidebar-width
+
+  background-color: sandybrown
+
+  +media('<tab-lg')
+    display: none
+
+
+/* === ASIDE ===
+.aside
+  display: inline
+  float: right
+  margin: 0 0 0 -#{$aside-width}
+  width: $aside-width
+  background-color: sandybrown
+
+  +media('<desk-lg')
+    display: none
+
+
+/* === FOOTER ===
+.footer
+  position: relative
+  z-index: 5
+  +font(1.4rem, 1.79)
+  color: white
+  background-color: #2d2d2d
+
+.footer__holder
+  cursor: default
+  padding-top: nth($footer-space, 1)
+  padding-bottom: nth($footer-space, 3)
+
+/* footer-common
+.footer-common
+  overflow: hidden
+  margin-bottom: 5.2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.footer-grid
+  display: flex
+  margin-left: -#{nth($footer-grid-space, 2)}
+  margin-right: -#{round-float(nth($footer-grid-space, 2) / 2, 1)}
+
+  +media('<desk-md')
+    margin-left: -#{nth($footer-grid-space--tab, 2)}
+    margin-right: -#{round-float(nth($footer-grid-space--tab, 2) / 2, 1)}
+
+.footer-grid__item
+  display: flex
+  flex-grow: 1
+  flex-basis: 25%
+  flex-direction: column
+  padding: 0 0 nth($footer-grid-space, 2)
+
+  +media('<desk-md')
+    padding: 0 0 nth($footer-grid-space--tab, 2)
+
+  //for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+    width: 25%
+
+.footer-grid__item_catalog
+  flex-basis: 50%
+  width: 50%
+
+.footer-grid__title
+  display: block
+  margin-bottom: 2.5rem
+  padding: 0 round-float(nth($footer-grid-space, 2) / 2, 1) 0 nth($footer-grid-space, 2)
+  +font-bold
+  font-size: 16px
+  line-height: 1.5
+  color: white
+
+  +media('<desk-md')
+    padding: 0 round-float(nth($footer-grid-space--tab, 2) / 2, 1) 0 nth($footer-grid-space--tab, 2)
+
+  &:last-child
+    margin-bottom: 0
+
+  a
+    color: currentColor
+    text-decoration: none
+    padding-top: 0.5em
+
+    span
+      $prop: box-shadow
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+    // hover
+    &:hover
+      span
+        box-shadow: inset 0 -2px 0 rgba(white, 0.6)
+
+.footer-grid__content
+  flex-grow: 1
+  padding: 0 round-float(nth($footer-grid-space, 2) / 2, 1) 0 nth($footer-grid-space, 2)
+  border-left: 1px solid rgba(#979797, 0.2)
+
+  +media('<desk-md')
+    padding: 0 round-float(nth($footer-grid-space--tab, 2) / 2, 1) 0 nth($footer-grid-space--tab, 2)
+
+.footer-grid__list
+  list-style: none
+  margin: 0 0 2rem
+  padding: 0
+  font-size: 1.4rem
+  line-height: 1.5
+
+  &:last-child
+    margin-bottom: 0
+
+  li
+    display: inline-block
+    vertical-align: top
+    width: 100%
+    margin-bottom: 0.4rem
+
+    &:last-child
+      margin-bottom: 0
+
+  a
+    color: rgba(white, 0.6)
+    text-decoration: none
+    padding-top: 0.5em
+    // transition
+    $prop: color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    &[href^="tel:"]
+      +font-bold
+      color: #d2d2d2
+
+      i
+        +font-normal
+
+    +underlinedLinks(white)
+
+.footer-grid__item_catalog
+  .footer-grid__content
+    position: relative
+
+    &::before
+      content: ''
+      display: block
+      position: absolute
+      border-left: 1px solid rgba(#979797, 0.2)
+      height: 100%
+      left: 50%
+
+  .footer-grid__list
+    column-count: 2
+    column-gap: 8rem
+
+.footer-grid__phones
+  list-style: none
+  margin: 0 0 3rem
+  padding: 0
+  font-size: 1.4rem
+  line-height: 1.5
+
+  &:last-child
+    margin-bottom: 0
+
+  li
+    margin-bottom: 2rem
+
+    &:last-child
+      margin-bottom: 0
+
+  a
+    color: rgba(white, 0.6)
+    text-decoration: none
+    padding-top: 0.5em
+
+    &[href^="tel:"]
+      +font-bold
+      color: #d2d2d2
+
+      i
+        +font-normal
+
+    span
+      // transition
+      $prop: box-shadow
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+    // hover
+    &:hover
+      span
+        box-shadow: inset 0 -2px 0 rgba(white, 0.6)
+
+/* footer-common end
+
+/* soc-footer
+.soc-footer
+  overflow: hidden
+  margin-bottom: 2.6rem
+  line-height: 1
+
+  &:last-child
+    margin-bottom: 0
+
+.soc-footer__list
+  position: relative
+  display: inline-block
+  vertical-align: top
+  letter-spacing: normal
+  margin: 0 -8px -10px
+
+.soc-footer__item
+  float: left
+  margin: 0 8px 10px
+
+  a
+    display: block
+    position: relative
+    +size(20px)
+    color: #545454
+    // transition
+    $prop: color
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    span
+      +hide-text
+
+    svg
+      +centering-transform-abs
+      +size(20px)
+
+    path
+      fill: currentColor
+
+    .no-touchevents &:hover
+      &.fb
+        color: $facebook-color
+
+      &.vk
+        color: $vkontakte-color
+
+      &.twitter
+        color: $twitter-color
+
+      &.ok
+        color: $odnoklassniki-color
+
+      &.youtube
+        color: $youtube-color
+
+      &.telegram
+        color: $telegram-color
+
+      &.instagram
+        color: $instagram-color-end
+
+/* soc-footer end
+
+/* btn-subs
+.btn-subs
+  position: relative
+  display: inline-block
+  vertical-align: top
+  padding: 0.7rem 1.3rem 0.7rem 3.7rem
+  margin-bottom: 2.5rem
+  font-size: 1.4rem
+  line-height: 1.8rem
+  color: #e0e0e0
+  text-decoration: none
+  border: 1px solid #494949
+  border-radius: 8px
+  // transition
+  $prop: border-color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &:last-child
+    margin-bottom: 0
+
+  svg
+    $size: 18px
+    display: block
+    position: absolute
+    top: 50%
+    left: 1.3rem
+    height: $size
+    width: $size
+    margin-top: -#{round($size / 2)}
+
+    path, circle
+      fill: #888
+      // transition
+      $prop: fill
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+  // hover
+  &:hover
+    border-color: currentColor
+
+    svg
+      path, circle
+        fill: currentColor
+
+/* btn-subs end
+
+/* footer bottom
+.footer-bottom
+  position: relative
+  // обрезать вытянутый маржинами по горизонтале дочерний элемент
+  overflow: hidden
+  font-size: 1.2rem
+  line-height: 1.4rem
+
+.footer-bottom__holder
+  position: relative
+  display: flex
+  flex-wrap: nowrap
+  justify-content: space-between
+  +margin-horizontal(-#{round(nth($grid-space, 2)/2)})
+  margin-bottom: -#{round(nth($grid-space, 1)/2)}
+
+.footer-bottom__col
+  flex-basis: 160px
+  text-align: center
+  +padding-horizontal(round(nth($grid-space, 2)/2))
+  margin-bottom: #{round(nth($grid-space, 1)/2)}
+
+  &:nth-child(2)
+    flex-basis: 500px
+
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
+    width: calc(33.33% - 5px)
+
+    +media('<mob-lg')
+      width: 100%
+
+  +media('<mob-lg')
+    min-width: 100%
+
+  &:first-child
+    +media('>=mob-lg')
+      text-align: left
+
+  &:last-child
+    +media('>=mob-lg')
+      text-align: right
+
+  a
+    color: inherit
+    text-decoration: none
+
+    .no-touchevents &:hover
+      text-decoration: underline
+
+/* footer bottom end
+
+/* license
+.license
+  color: rgba(#848484, 0.6)
+
+/* license end
+
+/* developer
+.developer
+  display: inline-block
+
+  a
+    text-decoration: none
+
+    .no-touchevents &:hover
+      text-decoration: none
+
+.developer__label
+  +media('<mob-lg')
+    display: block
+
+  i
+    +media('<mob-lg')
+      display: none
+
+.developer__logo
+  +display-inline-block-top
+  position: relative
+  top: 5px
+  padding-right: 3px
+  +size(154px, 20px)
+  text-align: left
+  text-indent: -9999px
   opacity: 0.3
-  margin: 6px
-  pointer-events: auto
-  background: white
   // transition
   $prop: opacity
   will-change: $prop
@@ -223,416 +1391,29 @@
     duration: $animation-speed
     timing-function: ease-in-out
 
-  .swiper-container-horizontal>.swiper-pagination-bullets &
-    margin: 0 6px
+  &::before, &::after
+    +pseudo()
+    +position(0, 0)
+    +size(149px, 16px)
+
+  &::before
+    +pseudo()
+    +position(4px, 4px)
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTA2ODc1N0UwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTA2ODc1N0YwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDY4NzU3QzA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDY4NzU3RDA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnDruBQAAAAkSURBVHjaYmRgYPjPACL+/2cE0YwYAkAGA5jByPgfqwBAgAEAP4gP/bFMMZQAAAAASUVORK5CYII=')
+    background-size: 2px
+
+  &::after
+    +pseudo()
+    background: #00ef85 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
+    background-size: auto 16px
 
   // hover
   &:hover
-    opacity: 0.8
-
-.swiper-pagination-bullet-active
-  opacity: 1
-  cursor: default
-
-  &:hover
-    opacity: 1
-    cursor: default
-
-/* slider end
-
-/* slick sliders
-// slider
-.slick-slide
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important
-  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important
-  outline: none !important
-
-// arrows
-.slick-arrow
-  +size(40px)
-  display: block
-  position: absolute
-  border: none
-  border-radius: 0
-  background: none
-  outline: none
-  box-shadow: none
-  opacity: 1
-  z-index: 6
-  transition-property: background, opacity, visibility
-  transition-duration: 0.2s
-
-  .no-touchevents &:hover
-    opacity: 1
-    background: #e6e6e6
-
-  &.slick-disabled, .no-touchevents &.slick-disabled
-    opacity: 0.25
-    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
-    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=25)
-    cursor: default
-
-    &::before
-      opacity: 1
-
-  &::before
-    content: none
-
-  &::after
-    top: 50%
-    content: ""
-    position: absolute
-    opacity: 1
-    pointer-events: none
-    +size(12px)
-    transform: rotate(45deg)
-    border: 0 solid #000
-
-.slick-prev
-  left: 0
-
-  &::after
-    left: 50%
-    border-width: 0 0 2px 2px
-    margin: -6px 0 0 -4px
-
-.slick-next
-  right: 0
-
-  &::after
-    right: 50%
-    border-width: 2px 2px 0 0
-    margin: -6px -4px 0 0
-
-// dots
-.slick-dots
-  margin: 0
-  line-height: 0
-
-  .#{$user-content} &
-    margin: 0
-    max-width: none
-
-  li
-    vertical-align: top
-    width: auto
-    height: auto
-    margin: 0
-
-    &, .#{$user-content} &
-      padding: 4px 10px
-      margin: 0
-
-      &::before
-        content: none
-
-    button
-      width: 12px
-      height: 12px
-      padding: 0
-      border-radius: 50%
-      background: $base-color
-      position: relative
-      transition-property: background, border, box-shadow, transform
-      transition-duration: 0.6s
-
-      &::before
-        content: ''
-        position: absolute
-        left: 2px
-        top: 2px
-        height: 8px
-        width: 8px
-        background: #fff
-        border-radius: 50%
-        opacity: 1
-        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.20)
-        transition-property: transform, opacity
-        transition-duration: $animation-speed
-
-    &.slick-active button::before
-      opacity: 0
-
-//.no-touchevents &:hover button::before
-/* slick sliders end
-
-/* images slider
-.images-slider
-  position: relative
-  margin-bottom: $bottom-space
-
-  +media('<tab-lg')
-    margin-bottom: $bottom-space--large
-
-.images-slider__list, .slick-dotted.images-slider__list
-  padding-bottom: $bottom-space
-  margin-bottom: 0
-  position: relative
-  z-index: 2
-
-.images-slider__item
-  float: none
-  display: inline-block
-  vertical-align: top
-  opacity: 0
-  white-space: normal
-  overflow: hidden
-  position: relative
-  background-color: transparent
-
-  .slick-initialized &
-    display: block
-    float: left
     opacity: 1
 
-  .no-js &
-    display: block
-    width: 100%
-    opacity: 1
-    margin-bottom: $bottom-space
+/* developer end
 
-  &::before
-    content: ''
-    display: block
-    +ratio(16, 9)
-
-    .no-js &
-      content: none
-
-  img
-    position: absolute
-    +position(0)
-    text-align: center
-    max-width: none
-    width: 100%
-    height: 100%
-    +object-fit(contain)
-
-    .no-js &[data-lazy]
-      display: none
-
-    .no-js &
-      position: relative
-      +position(auto)
-      width: auto
-      height: auto
-      +object-fit(fill)
-      margin-bottom: 1rem
-
-  .caption
-    display: none
-
-    .no-js &
-      display: block
-
-.images-slider
-
-  .slick-arrow
-    right: 0
-    left: auto
-    top: 100%
-    transform: translate(0, 0)
-
-  .slick-prev
-    right: 40px
-
-  // slider counter
-  .slider-counter
-    position: absolute
-    left: 0
-    top: 100%
-    color: $text-color-light
-
-    .slide-curr
-      color: $text-color
-
-  .slick-dots, .#{$user-content} & .slick-dots
-    position: absolute
-    bottom: $bottom-space + 1
-
-    li
-      +padding-horizontal(7px)
-
-      button
-        width: 6px
-        height: 6px
-        border-radius: 50%
-        background-color: white
-        opacity: 0.5
-        transition-property: opacity, transform
-        transition-duration: $animation-speed
-
-        &::before
-          content: none
-
-      &.slick-active button
-        opacity: 1
-
-      .no-touchevents &:hover button
-        opacity: 1
-        transform: scale(2)
-
-/* images slider end
-
-/* flashes
-.flashes
-  padding: 0 90px
-
-.flashes__item, .images-slider__item .caption
-  +font(1.4rem, 1.5)
-  color: $text-color-light
-
-  & > *:last-child
-    margin-bottom: 0
-
-/* flashes end
-
-/* breadcrumbs
-.breadcrumbs
-  color: $text-color-light
-  margin-bottom: $bottom-space--large
-
-  +media('<desk-lg')
-    margin-bottom: $bottom-space--middle
-
-  &:last-child
-    margin-bottom: 0
-
-.breadcrumbs__list
-  &, .#{$user-content} &
-    padding: 0
-    margin: 0
-    list-style: none
-
-    li
-      padding: 0 6px 0 0
-      margin: 0
-
-      &::before, &:first-child::before
-        content: none
-
-  cursor: default
-  overflow: hidden
-  +font($font-size--small, $line-height--small)
-
-  .layout-article &
-    max-width: none
-
-  li
-    display: inline
-    position: relative
-
-    &::after
-      display: inline-block
-      vertical-align: baseline
-      content: '•'
-      border: none
-      color: $base-color
-      padding-left: 10px
-
-    &:last-child::after
-      content: none
-
-  a
-    padding-top: 0.5em
-    color: $text-color
-    text-decoration: none
-    cursor: pointer
-
-    span
-      border-bottom: 1px solid rgba(white, 0.3)
-
-    .no-touchevents &:hover
-      color: $base-color
-
-      span
-        border-color: rgba($base-color, 0.3)
-
-/* breadcrumbs end
-
-/* files links
-.file
-  $file-icon-size: 42px
-  +display-inline-block-top
-  min-height: $file-icon-size
-  padding: 0.5em
-  +font(16px, 20px)
-  color: $text-color
-  text-decoration: none
-
-  +clear
-
-  svg
-    float: left
-    +size($file-icon-size)
-
-  & > span, & > em
-    display: block
-    margin-left: #{$file-icon-size}
-    padding-left: 1em
-
-  & > em
-    display: block
-    font-size: 1.4rem
-    color: $text-color-light
-
-  .no-touchevents &:hover
-    background-color: $base-color
-
-    & > em
-      color: $bg-color
-
-.st-bg
-  fill: #e2e5e7
-
-.st-corner
-  fill: #b0b7bd
-
-.st-shadow
-  fill: #cad1d8
-
-.st-text
-  fill: #fff
-
-/* files links end
-
-/* feature list
-.feature-list
-  margin-bottom: $bottom-space--medium
-
-  &:last-child
-    margin-bottom: 0
-
-.feature-list__item
-  margin-bottom: $bottom-space
-  +clear
-
-  &:last-child
-    margin-bottom: 0
-
-.feature-list__img
-  float: left
-  width: 25%
-  margin: 0.3em $bottom-space $bottom-space--small 0
-
-  +media("<mob-lg")
-    width: auto
-    float: none
-    margin-right: 0
-
-.feature-list__content
-  overflow: hidden
-
-  h3, p
-    margin-bottom: $bottom-space--small
-
-    &:last-child
-      margin-bottom: 0
-
-/* feature list end
-
-// =============================================
-
+/* === MAIN ===
 /* main-section
 .main-section
   position: relative
@@ -1060,10 +1841,6 @@ $ql-columns--desk-lg: 4
   margin-left: -#{round($ql-item-space / 2)}
   margin-right: -#{round($ql-item-space / 2)}
 
-  +media('<desk-lg')
-    margin-left: -#{round($ql-columns--desk-lg / 2)}
-    margin-right: -#{round($ql-columns--desk-lg / 2)}
-
   &:not(.grid-completed)
     overflow: hidden
     white-space: nowrap
@@ -1095,7 +1872,8 @@ $ql-columns--desk-lg: 4
 /* opinion
 $opinion-figure-size: 6.4rem 6.4rem
 $opinion-figure-space: 2rem
-$opinion-box-shadow-size: 0 2px 10px
+$opinion-box-shadow-size--start: 0 2px 4px
+$opinion-box-shadow-size--end: 0 5px 8px
 $opinion-box-shadow-color: black
 .opinion
   position: relative
@@ -1104,9 +1882,10 @@ $opinion-box-shadow-color: black
   background-color: white
   text-decoration: none
   color: #000
-  box-shadow: $opinion-box-shadow-size rgba($opinion-box-shadow-color, 0)
+  box-shadow: $opinion-box-shadow-size--start rgba($opinion-box-shadow-color, 0.18)
   // transition
-  $prop: box-shadow
+  $prop: box-shadow, transform
+  will-change: $prop
   transition:
     property: $prop
     duration: $animation-speed
@@ -1171,7 +1950,17 @@ a.opinion
   // hover
   &:hover
     z-index: 5
-    box-shadow: $opinion-box-shadow-size rgba($opinion-box-shadow-color, 0.15)
+    box-shadow: $opinion-box-shadow-size--end rgba($opinion-box-shadow-color, 0.35)
+    $translate: 0, -0.5rem
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+
+  // active
+  &:active
+    $translate: 0, 0
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    transition: none
 
 /* opinion end
 
@@ -1187,12 +1976,10 @@ a.opinion
 
 .opinions__list
   display: flex
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.18)
 
 .opinions__item
   flex-basis: 50%
   flex-grow: 1
-  background-color: white
 
   .no-flexwrap &
     display: inline-block
