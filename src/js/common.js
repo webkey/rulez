@@ -1144,6 +1144,81 @@ function toggleSearchPanel() {
   }
 }
 
+/**
+ * !Product liked
+ * */
+function productLiked() {
+  $('.like-js').on('click', function (e) {
+    var $btn = $(this),
+        classActive = 'added',
+        activeText = $btn.data('active-text'),
+        inactiveText = $btn.data('inactive-text');
+
+    $btn.toggleClass(classActive);
+
+    if($btn.hasClass(classActive)) {
+      $('span', $btn).text(activeText);
+      // if($btn.attr('title') !== undefined){
+      //   $btn.attr('title', activeText);
+      // }
+      if($btn.attr('data-title') !== undefined){
+        $btn.attr('data-title', activeText);
+      }
+    } else {
+      $('span', $btn).text(inactiveText);
+      // if($btn.attr('title') !== undefined){
+      //   $btn.attr('title', inactiveText);
+      // }
+      if($btn.attr('data-title') !== undefined){
+        $btn.attr('data-title', inactiveText);
+      }
+    }
+
+    e.preventDefault();
+  })
+}
+
+/**
+ * Add to car animation
+ */
+
+function addToCarAnimation() {
+  var $btn = $('.add-to-car-js'),
+      $cardKeeper = $('.card-keeper-js'),
+      addedClass = 'added',
+      pushClass = 'push',
+      pickClass = 'pick',
+      activeText = $btn.data('active-text'),
+      inactiveText = $btn.data('inactive-text'),
+      timeout
+  ;
+
+  $btn.on('click', function (event) {
+    event.preventDefault();
+    var $cutBtn = $(this);
+    timeout = setTimeout(function () {
+      $cardKeeper.removeClass(pushClass).removeClass(pickClass);
+    }, 1000);
+    if (!$cutBtn.hasClass(addedClass)) {
+      $cutBtn.addClass(addedClass);
+      $('span', $cutBtn).text(activeText);
+      if($cutBtn.attr('data-title') !== undefined){
+        $cutBtn.attr('data-title', inactiveText);
+      }
+      setTimeout(function () {
+        $cardKeeper.addClass(pushClass);
+        clearTimeout(timeout);
+      }, 2000)
+    } else {
+      $cutBtn.removeClass(addedClass);
+      $('span', $cutBtn).text(inactiveText);
+      setTimeout(function () {
+        $cardKeeper.addClass(pickClass);
+        // clearTimeout(timeout);
+      }, 2000);
+    }
+  })
+}
 
 
 /**
@@ -1182,6 +1257,7 @@ function formValidation() {
 
 $(document).ready(function () {
   // showOnScroll();
+  objectFitImages(); // object-fit-images initial
   placeholderInit();
   navExpander();
   initTooltip();
@@ -1196,7 +1272,8 @@ $(document).ready(function () {
   tabs();
   pickUp();
   toggleSearchPanel();
-  objectFitImages(); // object-fit-images initial
+  productLiked();
+  // addToCarAnimation();
 
   formValidation();
 });

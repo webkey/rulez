@@ -1,32 +1,40 @@
-<div class="product-item">
+<div itemscope itemtype="http://schema.org/Product" class="product-item">
   <div class="product-item__header">
-    <a href="@@href">
+    <a itemprop="url" href="@@href">
       <div class="product-item__figure">
-        <img src="@@src" alt="@@title" />
+        <img itemprop="image" src="@@src" alt="@@title" />
       </div>
-      <h3 class="product-item__title"><span>@@title</span></h3>
+      <h3 itemprop="name" class="product-item__title"><span>@@title</span></h3>
     </a>
-    <div class="product-item__rate"><span style="width: @@rate"></span></div>
+    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product-item__rate">
+      <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth"></span>
+      <meta itemprop="ratingCount" content="1">
+    </div>
   </div>
 
-  <div class="product-item__footer">
+  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-item__footer">
     <div class="product-item__meta">
-      @@if(context.price.val){<div class="product-item__stock on">@@include("includes/svg/icon-.svg")<span>В наличии</span></div>}
-      @@if(!context.price.val){<div class="product-item__stock off">@@include("includes/svg/icon-.svg")<span>Нет в наличии</span></div>}
+      @@if(context.price.val){<div itemprop="availability" content="http://schema.org/InStock" class="product-item__stock on">@@include("includes/svg/icon-.svg")<span>В наличии</span></div>}
+      @@if(!context.price.val){<div itemprop="availability" content="http://schema.org/SoldOut" class="product-item__stock off">@@include("includes/svg/icon-.svg")<span>Нет в наличии</span></div>}
 
       @@if(context.price.val){
       <div class="product-item__price">
         @@if(context.priceOld.val){<div class="product-item__price-old"><strong>@@priceOld.val</strong> <em>@@priceOld.unit</em></div>}
-        <div class="product-item__price-new"><strong>@@price.val</strong> <em>@@price.unit</em></div>
+        <div class="product-item__price-new"><strong itemprop="price" content="@@price.val">@@price.val</strong> <em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+      </div>
+      }
+      @@if(!context.price.val){
+      <div class="product-item__price off">
+        <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
       </div>
       }
     </div>
     <div class="product-item__option">
-      @@if(!context.inFavorites){<a href="#"><span>В избранное</span>@@include("includes/svg/icon-like.svg")</a>}
-      @@if(context.inFavorites){<a href="#" class="added"><span>В избранном</span>@@include("includes/svg/icon-like-full.svg")</a>}
+      @@if(!context.inFavorites){<a href="#" class="product-item__option-btn like-js" data-active-text="В избранном" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i>@@include("includes/svg/icon-like.svg")@@include("includes/svg/icon-unlike.svg")</i></a>}
+      @@if(context.inFavorites){<a href="#" class="product-item__option-btn like-js added" data-active-text="В избранном" data-inactive-text="В избранное" tabindex="0"><span>В избранном</span><i>@@include("includes/svg/icon-like.svg")@@include("includes/svg/icon-unlike.svg")</i></a>}
 
-      @@if(!context.inCart){<a href="#"><span>В корзину</span>@@include("includes/svg/icon-cart.svg")</a>}
-      @@if(context.inCart){<a href="#" class="added"><span>В корзине</span>@@include("includes/svg/icon-cart.svg")</a>}
+      @@if(!context.inCart){<a href="#" class="product-item__option-btn add-to-car-js" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0"><span>В корзину</span><i>@@include("includes/svg/icon-cart.svg")</i></a>}
+      @@if(context.inCart){<a href="#" class="product-item__option-btn add-to-car-js added" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0"><span>В корзине</span><i>@@include("includes/svg/icon-cart.svg")</i></a>}
     </div>
   </div>
 

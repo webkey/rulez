@@ -3947,7 +3947,7 @@ html:not(.no-js) .add-menu:not(.loaded) {
   transition-timing-function: ease-in-out;
 }
 
-.cart-link svg {
+.cart-link > i {
   display: inline-block;
   vertical-align: top;
   background-color: white;
@@ -3959,14 +3959,21 @@ html:not(.no-js) .add-menu:not(.loaded) {
   transition-timing-function: ease-in-out;
 }
 
-.cart-link svg path {
+.cart-link > i svg {
+  display: inline-block;
+  vertical-align: top;
+  width: 3rem;
+  height: 3rem;
+}
+
+.cart-link > i svg path {
   fill: #6e52dd;
   transition-property: fill;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
 
-.cart-link svg + .cart-link__text {
+.cart-link > i + .cart-link__text {
   padding-left: 1.2rem;
 }
 
@@ -4006,11 +4013,11 @@ html:not(.no-js) .add-menu:not(.loaded) {
   background-color: #f5f5f5;
 }
 
-.cart-link:hover svg {
+.cart-link:hover > i {
   background-color: #6e52dd;
 }
 
-.cart-link:hover svg path {
+.cart-link:hover > i svg path {
   fill: white;
 }
 
@@ -4021,6 +4028,28 @@ html:not(.no-js) .add-menu:not(.loaded) {
   -ms-transform: translate(0, 0);
       transform: translate(0, 0);
   transform: translate3d(0, 0, 0);
+}
+
+.cart-link.push > i {
+  animation: pushInCart 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes pushInCart {
+  0% {
+    transform: translate(0, 0.8rem) scale(1.25, 1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1, 1);
+  }
+}
+
+@keyframes pickOutCart {
+  0% {
+    transform: translate(0, -0.5rem) scale(0.85, 1);
+  }
+  100% {
+    transform: translate(0, 0) scale(1, 1);
+  }
 }
 
 /* cart-link end */
@@ -4085,7 +4114,8 @@ html:not(.no-js) .add-menu:not(.loaded) {
       justify-content: space-between;
   -ms-flex-align: center;
       align-items: center;
-  height: 50px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .site-nav::before {
@@ -4106,7 +4136,7 @@ html:not(.no-js) .add-menu:not(.loaded) {
 }
 
 .site-nav, .site-nav::before {
-  border-radius: 25px;
+  border-radius: 2.5rem;
 }
 
 .no-flexwrap .site-nav {
@@ -6088,6 +6118,14 @@ a.opinion:active {
   width: calc(50% - 6px);
 }
 
+.product-item__price.off {
+  color: #c3c3c3;
+}
+
+.product-item__price.off > svg path {
+  fill: currentColor;
+}
+
 .product-item__price-new > strong {
   display: inline-block;
   vertical-align: baseline;
@@ -6142,7 +6180,7 @@ a.opinion:active {
   margin-left: -1px;
 }
 
-.product-item__option > a {
+.product-item__option-btn {
   -ms-flex-positive: 1;
       flex-grow: 1;
   -ms-flex-preferred-size: 50%;
@@ -6164,56 +6202,75 @@ a.opinion:active {
   transition-timing-function: ease-in-out;
 }
 
-.no-flexwrap .product-item__option > a {
+.no-flexwrap .product-item__option-btn {
   display: inline-block;
   vertical-align: top;
   width: calc(50% - 6px);
 }
 
-.product-item__option > a > svg {
+.product-item__option-btn > i {
   display: inline-block;
   vertical-align: top;
   width: 2.2rem;
   height: 2.2rem;
 }
 
-.product-item__option > a > svg path {
+.product-item__option-btn > i svg {
+  display: inline-block;
+  vertical-align: top;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+.product-item__option-btn > i svg path {
   fill: #6e52dd;
   transition-property: fill;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
 
-.product-item__option > a > span {
+.product-item__option-btn > span {
   padding-top: 0.2rem;
   padding-right: 1rem;
 }
 
-.no-flexwrap .product-item__option > a > span {
+.no-flexwrap .product-item__option-btn > span {
   display: inline-block;
   vertical-align: top;
 }
 
-.product-item__option > a:first-child > svg path {
+.product-item__option-btn:first-child > i svg.svg-ico-unlike {
+  display: none;
+}
+
+.product-item__option-btn:first-child > i svg path {
   fill: #ef4180;
 }
 
-.product-item__option > a.added:nth-child(2) > svg {
+.product-item__option-btn:first-child.added > i svg.svg-ico-like {
+  display: none;
+}
+
+.product-item__option-btn:first-child.added > i svg.svg-ico-unlike {
+  display: inline-block;
+}
+
+.product-item__option-btn.added:nth-child(2) > i {
   background-color: #6e52dd;
   border-radius: 50%;
   box-shadow: 0 0 0 3px #6e52dd;
 }
 
-.product-item__option > a.added:nth-child(2) > svg path {
+.product-item__option-btn.added:nth-child(2) > i svg path {
   fill: white;
 }
 
-.product-item__option > a:hover {
+.product-item__option-btn:hover {
   background-color: #6e52dd;
   color: white;
 }
 
-.product-item__option > a:hover > svg path {
+.product-item__option-btn:hover > i svg path {
   fill: white;
 }
 
