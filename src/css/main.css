@@ -887,7 +887,7 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em {
 }
 
 .hide {
-  display: none;
+  display: none !important;
 }
 
 .mark {
@@ -3449,7 +3449,7 @@ form .success + .select2 + .error-note + .success-note {
   width: 100%;
   min-width: 1024px;
   height: 13rem;
-  z-index: 10;
+  z-index: 99;
   transition-property: box-shadow;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
@@ -3980,19 +3980,45 @@ html:not(.no-js) .add-menu:not(.loaded) {
 .cart-link .counter {
   display: block;
   position: absolute;
-  left: 0.5rem;
-  top: 0.5rem;
+  left: 0.2rem;
+  top: 0.2rem;
   background-color: #e61f1f;
-  width: 1.2rem;
-  height: 1.2rem;
+  width: 1.6rem;
+  height: 1.6rem;
   padding: 0.1rem 0 0 0;
   font-style: normal;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
   text-align: center;
   color: white;
-  border-radius: 0.6rem;
+  border-radius: 0.8rem;
   z-index: 10;
+}
+
+.cart-link.push .counter {
+  animation: incCount 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.cart-link.pick .counter {
+  animation: decCount 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+@keyframes incCount {
+  0% {
+    transform: translate(0, 0.8rem) scale(1.5);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes decCount {
+  0% {
+    transform: translate(0, -0.8rem) scale(0.8);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
 }
 
 .cart-link__text {
@@ -4034,12 +4060,16 @@ html:not(.no-js) .add-menu:not(.loaded) {
   animation: pushInCart 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
 }
 
+.cart-link.pick > i {
+  animation: pickOutCart 1.2s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
 @keyframes pushInCart {
   0% {
     transform: translate(0, 0.8rem) scale(1.25, 1);
   }
   100% {
-    transform: translate(0, 0) scale(1, 1);
+    transform: translate(0, 0) scale(1);
   }
 }
 
@@ -4048,7 +4078,7 @@ html:not(.no-js) .add-menu:not(.loaded) {
     transform: translate(0, -0.5rem) scale(0.85, 1);
   }
   100% {
-    transform: translate(0, 0) scale(1, 1);
+    transform: translate(0, 0) scale(1);
   }
 }
 
@@ -5984,6 +6014,7 @@ a.opinion:active {
 
 .product-item__figure {
   margin-bottom: 4.5rem;
+  position: relative;
 }
 
 .product-item__figure:last-child {
@@ -5998,6 +6029,26 @@ a.opinion:active {
   -o-object-fit: scale-down;
      object-fit: scale-down;
   font-family: "object-fit: scale-down";
+}
+
+.product-figure_copy-js {
+  position: absolute;
+  margin-bottom: 0;
+  opacity: 0.3;
+  z-index: 98;
+  will-change: opacity, transform;
+  animation: moveToCart 0.5s ease-in-out;
+}
+
+@keyframes moveToCart {
+  0% {
+    opacity: 0.3;
+    transform: translate(0, 0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) scale(1.3);
+  }
 }
 
 .product-item__title {
@@ -6258,7 +6309,7 @@ a.opinion:active {
 .product-item__option-btn.added:nth-child(2) > i {
   background-color: #6e52dd;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px #6e52dd;
+  box-shadow: 0 0 0 6px #6e52dd;
 }
 
 .product-item__option-btn.added:nth-child(2) > i svg path {

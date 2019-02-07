@@ -1183,39 +1183,71 @@ function productLiked() {
  */
 
 function addToCarAnimation() {
-  var $btn = $('.add-to-car-js'),
-      $cardKeeper = $('.card-keeper-js'),
+  var $btn = $('.add-to-cart-js'),
+      $cartKeeper = $('.cart-keeper-js'),
+      $cartCounter = $('.counter-js', $cartKeeper),
       addedClass = 'added',
       pushClass = 'push',
       pickClass = 'pick',
       activeText = $btn.data('active-text'),
       inactiveText = $btn.data('inactive-text'),
-      timeout
+      timeoutPush, timeoutPick
   ;
 
   $btn.on('click', function (event) {
     event.preventDefault();
-    var $cutBtn = $(this);
-    timeout = setTimeout(function () {
-      $cardKeeper.removeClass(pushClass).removeClass(pickClass);
-    }, 1000);
+
+    var $cutBtn = $(this),
+        countLength = +$cartCounter.text();
+
+    $cartKeeper.removeClass(pushClass).removeClass(pickClass);
+
     if (!$cutBtn.hasClass(addedClass)) {
+      // Change a button
       $cutBtn.addClass(addedClass);
       $('span', $cutBtn).text(activeText);
       if($cutBtn.attr('data-title') !== undefined){
         $cutBtn.attr('data-title', inactiveText);
       }
-      setTimeout(function () {
-        $cardKeeper.addClass(pushClass);
-        clearTimeout(timeout);
-      }, 2000)
+
+      // Remove a copy of product image
+      $('#figureCopy').remove();
+      // Animate a product added to a cart
+      var $figure = $cutBtn.closest('.product-item-js').find('.product-figure-js');
+      $figure.clone()
+          .addClass('product-figure_copy-js').attr('id', 'figureCopy')
+          // .removeClass('product-figure-js')
+          .offset({top:$figure.offset().top, left:$figure.offset().left})
+          .css({
+            width: $figure.outerWidth(),
+            height: $figure.outerHeight()
+          })
+          .appendTo('body');
+
+      // Animate a cart keeper (+ css styles)
+      clearTimeout(timeoutPush);
+      timeoutPush = setTimeout(function () {
+        $cartCounter.removeClass('hide').text(++countLength);
+        $cartKeeper.addClass(pushClass);
+      }, 30)
     } else {
+      // Change a button
       $cutBtn.removeClass(addedClass);
       $('span', $cutBtn).text(inactiveText);
-      setTimeout(function () {
-        $cardKeeper.addClass(pickClass);
+
+      // Remove a copy of product image
+      // $('#figureCopy').remove();
+
+      // Animate a cart keeper (+ css styles)
+      clearTimeout(timeoutPick);
+      timeoutPick = setTimeout(function () {
+        $cartCounter.text(--countLength);
+        if (!countLength) {
+          $cartCounter.addClass('hide');
+        }
+        $cartKeeper.addClass(pickClass);
         // clearTimeout(timeout);
-      }, 2000);
+      }, 30);
     }
   })
 }
@@ -1273,7 +1305,7 @@ $(document).ready(function () {
   pickUp();
   toggleSearchPanel();
   productLiked();
-  // addToCarAnimation();
+  addToCarAnimation();
 
   formValidation();
 });
