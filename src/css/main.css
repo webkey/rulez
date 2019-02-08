@@ -6034,7 +6034,7 @@ a.opinion:active {
 .product-figure_copy-js {
   position: absolute;
   margin-bottom: 0;
-  opacity: 0.3;
+  opacity: 0;
   z-index: 98;
   will-change: opacity, transform;
   animation: moveToCart 0.5s ease-in-out;
@@ -6448,6 +6448,18 @@ a.topic-banner:hover .topic-banner__title > span {
 
 .topics__item .product-item, .topics__item .topic-banner {
   height: 100%;
+}
+
+@media (max-width: 1599px) {
+  .topics__list:not(.topics__list_with-banners) .topics__item:last-child {
+    display: none;
+  }
+}
+
+@media (max-width: 1599px) {
+  .topics__list_with-banners .topics__item:nth-last-child(2) {
+    display: none;
+  }
 }
 
 /* topics end */

@@ -2164,7 +2164,7 @@ $product-item-space: 2rem 2.4rem
 .product-figure_copy-js
   position: absolute
   margin-bottom: 0
-  opacity: 0.3
+  opacity: 0
   z-index: 98
   will-change: opacity, transform
   animation: moveToCart 0.5s ease-in-out
@@ -2545,6 +2545,15 @@ $tl-columns: 4
 
   .product-item, .topic-banner
     height: 100%
+
+  .topics__list:not(.topics__list_with-banners) &:last-child
+    +media('<desk-lg')
+      display: none
+
+
+  .topics__list_with-banners &:nth-last-child(2)
+    +media('<desk-lg')
+      display: none
 
 /* topics end
 
