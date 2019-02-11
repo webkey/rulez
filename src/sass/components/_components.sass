@@ -72,8 +72,8 @@
       display: inline-block
       vertical-align: top
 
-/* add-menu
-.add-menu
+/* navigation
+.nav
   position: relative
   float: left
   font-size: 1.5rem
@@ -95,7 +95,7 @@
       duration: $animation-speed
       timing-function: ease-in-out
 
-.add-menu__list
+.nav__list
   display: inline-block
   vertical-align: top
   list-style: none
@@ -202,9 +202,9 @@
       border-width: 1px 0 0 1px
       margin-top: -0.1rem
 
-.add-menu__list a,
+.nav__list a,
 .okayNav__menu-toggle
-  color: rgba(white, 0.5)
+  color: rgba(white, 0.85)
   text-decoration: none
   // transition
   $prop: color
@@ -215,7 +215,16 @@
 
   +underlinedLinks(white)
 
-/* add-menu end
+// current item
+.nav__list,
+.okayNav__nav--invisible
+  .current a
+      //color: $base-color-alt
+      +font-bold
+
+      +underlinedLinksReset
+
+/* navigation end
 
 /* header contacts
 .cont
@@ -665,7 +674,7 @@ a.catalog-opener
   text-decoration: none
   border-radius: 2rem
   // transition
-  $prop: color
+  $prop: color, background-color
   will-change: $prop
   transition:
     property: $prop
@@ -774,8 +783,8 @@ a.catalog-opener
 
 /* catalog opener end
 
-/* nav
-.nav-wrap
+/* categories nav
+.c-nav-wrap
   // transition
   $prop: transform, opacity, visibility
   will-change: $prop
@@ -791,10 +800,10 @@ a.catalog-opener
     transform: scale3d($scale, 1)
     transform: scale($scale)
 
-.nav
+.c-nav
   position: relative
 
-.nav__list
+.c-nav__list
   list-style: none
   margin: 0
   padding: 0
@@ -819,8 +828,15 @@ a.catalog-opener
 
     +underlinedLinks(#232323)
 
+  // current item
+  .current
+    a
+      color: $base-color
 
-/* nav end
+      +underlinedLinksReset
+
+
+/* categories nav end
 
 /* search panel
 $search-form-size: 4rem 100%
@@ -2279,6 +2295,35 @@ $product-item-space: 2rem 2.4rem
 
     & > svg path
       fill: currentColor
+
+.product-item__price-old,
+.product-item__price-new
+  display: inline-block
+  vertical-align: baseline
+
+.product-item__price-old
+  color: #c3c3c3
+
+  & > strong, & > em
+    display: inline-block
+    vertical-align: baseline
+    +font-normal
+
+  & > strong
+    position: relative
+
+    &::after
+      $size: 3.8rem
+      content: ""
+      display: block
+      position: absolute
+      top: 50%
+      left: 50%
+      width: $size
+      height: 0
+      margin: -0.2rem -#{round-float($size / 2, 1)}
+      border-top: 1px solid currentColor
+      transform: rotate(-42deg)
 
 .product-item__price-new
   & > strong

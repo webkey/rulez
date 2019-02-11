@@ -51,11 +51,11 @@
         <!--header-top-->
         <div class="header-top layout">
           <div class="header-top__l">
-            <div class="add-menu" data-btn-more="Еще">
-              <ul class="add-menu__list">
+            <nav class="nav" data-btn-more="Еще">
+              <ul class="nav__list">
                 <li><a href="#"><span>Акции и подарки</span></a></li>
                 <li><a href="#"><span>Скидки</span></a></li>
-                <li><a href="#"><span>Рассрочка</span></a></li>
+                <li class="current"><a href="#"><span>Рассрочка</span></a></li>
                 <li><a href="#"><span>Оплата</span></a></li>
                 <li><a href="#"><span>Гарантия и доставка</span></a></li>
                 <li><a href="#"><span>Оплата</span></a></li>
@@ -64,7 +64,7 @@
                 <li><a href="#"><span>Скидки</span></a></li>
                 <li><a href="#"><span>Акции и подарки</span></a></li>
               </ul>
-            </div>
+            </nav>
           </div>
           <div class="header-top__r">
             <div class="cont">
@@ -129,7 +129,7 @@
           <!--logo-->
           <div class="logo-wrap">
             <div class="logo">
-              <span>Rulezzz. Твой магазин</span>
+              <a href="index.html" title="Перейти на главную">Rulezzz. Твой магазин</a>
               <img style="display: none;" src="img/logo.png" alt="Print version logotype">
             </div>
           </div>
@@ -140,18 +140,18 @@
             </div>
             <div class="site-nav__grid">
               <!--navigation-->
-              <div class="nav-wrap">
-                <nav class="nav">
-                  <ul class="nav__list">
-                    <li><a href="#"><span>Ноутбуки</span></a></li>
-                    <li><a href="#"><span>Моноблоки</span></a></li>
-                    <li><a href="#"><span>Компьютеры</span></a></li>
-                    <li><a href="#"><span>Мониторы</span></a></li>
-                    <li><a href="#"><span>Принтеры МФУ</span></a></li>
-                    <li><a href="#"><span>Планшеты</span></a></li>
-                    <li><a href="#"><span>Game Zone</span></a></li>
+              <div class="c-nav-wrap">
+                <div class="c-nav">
+                  <ul class="c-nav__list">
+                    <li class=""><a href="#"><span>Ноутбуки</span></a></li>
+                    <li class="current"><a href="#"><span>Моноблоки</span></a></li>
+                    <li class=""><a href="#"><span>Компьютеры</span></a></li>
+                    <li class=""><a href="#"><span>Мониторы</span></a></li>
+                    <li class=""><a href="#"><span>Принтеры</span></a></li>
+                    <li class=""><a href="#"><span>Планшеты</span></a></li>
+                    <li class=""><a href="#"><span>Game Zone</span></a></li>
                   </ul>
-                </nav>
+                </div>
               </div>
               <!--navigation end-->
               <div class="search-form" id="searchPanel">
@@ -421,7 +421,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -457,7 +457,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -493,7 +493,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -530,7 +531,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -569,7 +570,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -609,7 +610,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -645,7 +646,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -681,7 +682,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -718,7 +720,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -757,7 +759,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -797,7 +799,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -833,7 +835,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -869,7 +871,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -906,7 +909,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -945,7 +948,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -985,7 +988,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1021,7 +1024,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1057,7 +1060,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1094,7 +1098,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1133,7 +1137,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1173,7 +1177,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1209,7 +1213,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1245,7 +1249,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1282,7 +1287,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1321,7 +1326,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1361,7 +1366,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1397,7 +1402,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1433,7 +1438,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1470,7 +1476,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1509,7 +1515,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1549,7 +1555,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1585,7 +1591,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1621,7 +1627,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1658,7 +1665,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1697,7 +1704,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1762,7 +1769,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1798,7 +1805,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1834,7 +1841,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1870,7 +1877,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1915,7 +1922,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1951,7 +1958,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -1987,7 +1994,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2024,7 +2032,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2060,7 +2068,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2103,7 +2111,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2139,7 +2147,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2175,7 +2183,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2212,7 +2221,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2248,7 +2257,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2291,7 +2300,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2327,7 +2336,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2363,7 +2372,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2400,7 +2410,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2436,7 +2446,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2479,7 +2489,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2515,7 +2525,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2551,7 +2561,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2588,7 +2599,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2624,7 +2635,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2667,7 +2678,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2703,7 +2714,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2739,7 +2750,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2776,7 +2788,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2812,7 +2824,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2855,7 +2867,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2891,7 +2903,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>Нет в наличии</span></div>
                         <div class="product-item__price off">
-                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2927,7 +2939,8 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -2964,7 +2977,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">
@@ -3000,7 +3013,7 @@
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-1.85.63-3.55 1.69-4.9L16.9 18.31C15.55 19.37 13.85 20 12 20zm6.31-3.1L7.1 5.69C8.45 4.63 10.15 4 12 4c4.42 0 8 3.58 8 8 0 1.85-.63 3.55-1.69 4.9z"></path>
                           </svg><span>В наличии</span></div>
                         <div class="product-item__price">
-                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong> <em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product-item__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
                       <div class="product-item__option">

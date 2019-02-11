@@ -1114,6 +1114,10 @@
     span
       box-shadow: inset 0 -2px 0 rgba($color, 0.75)
 
+=underlinedLinksReset()
+  &:hover span
+    box-shadow: none
+
 // Подчеркиванеие якоря на ховер
 // Структура должна быть такая: <a href="#anchorName"><span>Some anchor</span></a>
 =underlinedAnchor($color: black, $border-width: 2px)

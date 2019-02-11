@@ -86,20 +86,10 @@ function showOnScroll() {
  * !Expand navigation
  */
 function navExpander() {
-  var $nav = $('.add-menu');
+  var $nav = $('.nav');
 
   if ($nav.length) {
     var label = $nav.attr('data-btn-more') || 'More...';
-    // priorityNav.init({
-    //   mainNavWrapper: '.add-menu',
-    //   mainNav: '.add-menu__list',
-    //   // navDropdownClassName: 'nav__dropdown',
-    //   // navDropdownToggleClassName: 'nav__dropdown-toggle',
-    //   navDropdownLabel: label,
-    //   navDropdownBreakpointLabel: 'Меню',
-    //   throttleDelay: 200,
-    //   breakPoint: 768
-    // });
 
     var navigation = $nav.okayNav({
       // align_right: true

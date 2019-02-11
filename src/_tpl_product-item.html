@@ -19,13 +19,13 @@
 
       @@if(context.price.val){
       <div class="product-item__price">
-        @@if(context.priceOld.val){<div class="product-item__price-old"><strong>@@priceOld.val</strong> <em>@@priceOld.unit</em></div>}
-        <div class="product-item__price-new"><strong itemprop="price" content="@@price.val">@@price.val</strong> <em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+        @@if(context.priceOld.val){<div class="product-item__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>}
+        <div class="product-item__price-new"><strong itemprop="price" content="@@price.val">@@price.val</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
       </div>
       }
       @@if(!context.price.val){
       <div class="product-item__price off">
-        <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong> <em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+        <div class="product-item__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
       </div>
       }
     </div>
