@@ -746,7 +746,7 @@ a.catalog-opener
     color: $base-color
 
   // opened
-  &.is-open
+  &.catalog-is-open
 
     &::before, &::after
       transition-delay: $btn-menu-animation-delay
@@ -782,6 +782,188 @@ a.catalog-opener
       background-color: white
 
 /* catalog opener end
+
+/* catalog shutter
+.catalog-shutter
+  position: fixed
+  left: 0
+  top: $header-height
+  width: 100%
+  height: calc(100% - #{$header-height})
+  //background-color: rgba(black, 0.3)
+  z-index: 9999
+  opacity: 0
+  pointer-events: none
+  user-select: none
+  //animation: catalogClose 0.35s ease-in-out
+  $prop: transform, opacity
+  will-change: $prop
+  transition:
+    property: transform, opacity
+    duration: $animation-speed
+
+  &.catalog-is-open
+    opacity: 1
+    pointer-events: auto
+    user-select: auto
+    //animation: catalogOpen 0.35s ease-in-out
+
+  //@keyframes catalogOpen
+    0%
+      opacity: 0
+      $translate: 0, -2rem
+      transform: translate($translate) // for old browser
+      transform: translate3d($translate, 0)
+
+    100%
+      opacity: 1
+      $translate: 0, 0
+      transform: translate($translate) // for old browser
+      transform: translate3d($translate, 0)
+
+  //@keyframes catalogClose
+    0%
+      opacity: 1
+      $translate: 0, 0
+      transform: translate($translate) // for old browser
+      transform: translate3d($translate, 0)
+
+    100%
+      opacity: 0
+      $translate: 0, 3rem
+      transform: translate($translate) // for old browser
+      transform: translate3d($translate, 0)
+
+.catalog
+  background: white
+  box-shadow: 0 12px 10px rgba(0, 0, 0, 0.17)
+  border-radius: 7px
+  margin-bottom: $bottom-space
+  padding: 3rem
+  transform-origin: 20rem top
+  $translate: 0, -1rem
+  $scale: 0.8, 0.8
+  transform: translate($translate) scale($scale) // for old browser
+  transform: translate3d($translate, 0) scale3d($scale, 1)
+  $prop: transform, opacity
+  will-change: $prop
+  transition:
+    property: transform, opacity
+    duration: $animation-speed
+
+  .catalog-is-open &
+    $translate: 0, 0
+    $scale: 1, 1
+    transform: translate($translate) // for old browser
+    transform: translate3d($translate, 0)
+
+  &:last-child
+    margin-bottom: 0
+
+// catalog list
+$cat-item-space: 20px
+$cat-columns: 6
+$cat-columns--desk-lg: 5
+.catalog__list
+  list-style: none
+  padding: 0
+  margin: 0 -#{round($cat-item-space / 2)}
+
+  &:not(.grid-completed)
+    overflow: hidden
+    white-space: nowrap
+
+  .catalog &
+    margin-bottom: -#{$cat-item-space * 2}
+
+.catalog__item
+  display: inline-block
+  vertical-align: top
+  width: calc(#{round-float(100% / $cat-columns, 2)} - #{$cat-item-space})
+  margin: 0 round($cat-item-space / 2) $cat-item-space * 2
+
+  +media('<desk-lg')
+    width: calc(#{round-float(100% / $cat-columns--desk-lg, 2)} - #{$cat-item-space})
+
+.catalog-list__inner
+  display: block
+  padding: 0
+
+.catalog-list__title
+  margin-bottom: 2rem
+  display: flex
+  justify-content: flex-start
+  align-items: center
+
+  &:last-child
+    margin-bottom: 0
+
+  .current &
+    +font-bold
+
+  & > a, & > span, & > strong
+    display: flex
+    justify-content: flex-start
+    align-items: center
+    font-size: 1.4rem
+    line-height: 1.8rem
+    min-height: 3rem // Компенсировать разную высоту иконок
+    text-decoration: none
+    color: $base-color
+    margin-right: 1rem
+
+  & > a
+    +underlinedLinks($base-color)
+
+  & > a, & > span
+    // for ie 9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+
+    & > svg
+      display: inline-block
+      vertical-align: top
+      //width: 3rem
+      //height: 3rem
+      margin-right: 1rem
+
+      path
+        fill: black
+
+.catalog-links
+  list-style: none
+  margin: 0 0 2rem
+  padding: 0
+
+  &:last-child
+    margin-bottom: 0
+
+  li
+    color: #131313
+    font-size: 1.4rem
+    line-height: 1.8rem
+    letter-spacing: normal
+    margin-bottom: 1.2rem
+
+    a
+      color: currentColor
+      text-decoration: none
+
+      +underlinedLinks(#131313)
+
+    & > span
+      +font-bold
+      color: $base-color
+
+// catalog list end
+    
+//=== Catalog is open ===
+.catalog-is-open
+  .main, .footer
+    filter: blur(3px)
+
+/* catalog shutter end
 
 /* categories nav
 .c-nav-wrap
@@ -1001,6 +1183,13 @@ $search-btn-space: 0 0.5rem
   position: relative
   clear: both
   //padding-top: $header-height
+  // transition
+  $prop: filter
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
 
   //+media('<desk-md')
     padding-top: $header-height--sm

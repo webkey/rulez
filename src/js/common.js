@@ -1103,12 +1103,13 @@ function pickUp() {
 })(jQuery);
 
 /**
- * !Toggle search panel
+ * !Toggle shutters panel, like a search panel, a catalog shutter etc.
  */
-function toggleSearchPanel() {
-  var $searchSwitcher = $('.toggle-search-js');
+function toggleShutters() {
+  // Toggle a search panel
+  var $searchSwitcher = $('.toggle-search-js'), searchPanel;
   if ($searchSwitcher.length) {
-    var options = {
+    searchPanel = $searchSwitcher.switchClass({
       switcher: '.tc__switcher-js'
       , adder: '.tc__opener-js'
       , remover: '.tc__remover-js'
@@ -1128,10 +1129,30 @@ function toggleSearchPanel() {
           $('.search-form__input').blur();
         }, 50);
       }
-    };
-
-    $searchSwitcher.switchClass(options);
+    });
   }
+
+  // Toggle a catalog shutter
+  var $catalogSwitcher = $('.catalog-opener-js'), catalogShutter;
+  if ($catalogSwitcher.length) {
+    catalogShutter = $catalogSwitcher.switchClass({
+      switchClassTo: $('.catalog-shutter-js').add('.catalog-overlay-js').add('body')
+      , modifiers: {
+        activeClass: 'catalog-is-open'
+      }
+      , cssScrollFixed: false
+    });
+  }
+
+
+  // При добавлении классов одним экземпляром плагина,
+  // вызывать метод удаления классов другими
+  searchPanel.on('switchClass.beforeAdded', function () {
+    catalogShutter.switchClass('remove');
+  });
+  catalogShutter.on('switchClass.beforeAdded', function () {
+    searchPanel.switchClass('remove');
+  });
 }
 
 /**
@@ -1293,7 +1314,7 @@ $(document).ready(function () {
   gridLayout();
   tabs();
   pickUp();
-  toggleSearchPanel();
+  toggleShutters();
   productLiked();
   addToCarAnimation();
 

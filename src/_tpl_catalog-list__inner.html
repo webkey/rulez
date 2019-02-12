@@ -1,0 +1,9 @@
+<div class="catalog-list__inner">
+	<div class="catalog-list__title">
+		<a href="#">@@icon<span>@@title</span></a>
+	</div>
+	<ul class="catalog-links">
+		@@if(context.current){<li class="current"><span>@@current</span></li>}
+		@@for (var i = 0; i < links.length; i++){<li class=""><a href="#"><span>`+links[i]+`</span></a></li>}
+	</ul>
+</div>
