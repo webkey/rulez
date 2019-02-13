@@ -96,6 +96,9 @@ function navExpander() {
       // toggle_icon_content: '<span /><span /><span />'
       toggle_icon_content: '<span>' + label + '</span><i>&nbsp;</i>',
       // swipe_enabled: true
+      itemHidden : function() {
+        $nav.addClass('after-hidden')
+      }
     });
   }
 
@@ -854,7 +857,7 @@ function tabs() {
 /**!
  * Toggle dropdown menu
  */
-function pickUp() {
+function toggleDropMenu() {
   var $phones = $('.phones-js');
 
   if ($phones.length) {
@@ -1696,7 +1699,7 @@ $(document).ready(function () {
   slidersInit();
   gridLayout();
   tabs();
-  pickUp();
+  toggleDropMenu();
   toggleShutters();
   productLiked();
   addToCarAnimation();
