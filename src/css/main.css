@@ -3458,6 +3458,7 @@ form .success + .select2 + .error-note + .success-note {
   width: 100%;
   height: 575px;
   overflow: hidden;
+  background-color: #6e52dd;
 }
 
 .page-bg::before {
