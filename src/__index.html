@@ -55,6 +55,14 @@
           })
         </div>
         <div class="quick-links__item has-shadow grid-item-js">
+          @@include("_tpl_quick-links-category.html", {
+          "title": "Моноблоки",
+          "icon": "@@include('includes/svg/icon-.svg')",
+          "count": "5171",
+          "links": ["Dell", "HP", "ACER", "Lenovo", "Asus"]
+          })
+        </div>
+        <div class="quick-links__item has-shadow grid-item-js">
           <div class="advise">
             <div class="advise__figure"><img src="img/img-advise.jpg" alt="image description" /></div>
             <strong class="advise__name">Евгений</strong>
@@ -71,14 +79,6 @@
         </div>
         <div class="quick-links__item grid-item-js">
           <a href="#gameZone" class="game-zone-anchor" style="background-image: url(img/img-game-zone.jpg);"><span>Game Zone</span></a>
-        </div>
-        <div class="quick-links__item has-shadow grid-item-js">
-          @@include("_tpl_quick-links-category.html", {
-          "title": "Моноблоки",
-          "icon": "@@include('includes/svg/icon-.svg')",
-          "count": "5171",
-          "links": ["Dell", "HP", "ACER", "Lenovo", "Asus"]
-          })
         </div>
       </div>
     </div>
@@ -1253,7 +1253,7 @@
               <img src="img/img-article-01.jpg" alt="Обзор ультрабука Huawei Matebook X Pro" />
             </div>
             <div class="article-tiles__content">
-              <time class="article-tiles__date" datetime="2019.02.05">05.02.2019</time>
+              <time class="article-tiles__date" datetime="2019-02-05">05.02.2019</time>
               <h3 class="article-tiles__title"><span>Обзор ультрабука Huawei Matebook X Pro</span></h3>
             </div>
           </a>

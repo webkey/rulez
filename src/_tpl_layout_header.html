@@ -37,7 +37,7 @@
         </div>
         @@include('_tpl_user-options.html')
         <a href="#" class="cart-link cart-keeper-js" title="Оформить заказа">
-          <i>@@include("includes/svg/icon-cart.svg")</i>
+          <i>@@include("includes/svg/icon-cart-circle.svg")</i>
           <div class="cart-link__text">
             <strong>Корзина</strong>
             <span>300.00 руб</span>
@@ -68,13 +68,26 @@
           <div class="c-nav-wrap">
             <div class="c-nav">
               <ul class="c-nav__list">
-                <li class="@@if(context.currentItem == 'Ноутбуки'){current}"><a href="#"><span>Ноутбуки</span></a></li>
-                <li class="@@if(context.currentItem == 'Моноблоки'){current}"><a href="#"><span>Моноблоки</span></a></li>
-                <li class="@@if(context.currentItem == 'Компьютеры'){current}"><a href="#"><span>Компьютеры</span></a></li>
-                <li class="@@if(context.currentItem == 'Мониторы'){current}"><a href="#"><span>Мониторы</span></a></li>
-                <li class="@@if(context.currentItem == 'Принтеры'){current}"><a href="#"><span>Принтеры</span></a></li>
-                <li class="@@if(context.currentItem == 'Планшеты'){current}"><a href="#"><span>Планшеты</span></a></li>
-                <li class="@@if(context.currentItem == 'Game Zone'){current}"><a href="#"><span>Game Zone</span></a></li>
+                @@if(context.currentItem != 'Ноутбуки'){<li><a href="#"><span>Ноутбуки</span></a></li>}
+                @@if(context.currentItem == 'Ноутбуки'){<li class="current"><span>Ноутбуки</span></li>}
+
+                @@if(context.currentItem != 'Моноблоки'){<li><a href="#"><span>Моноблоки</span></a></li>}
+                @@if(context.currentItem == 'Моноблоки'){<li class="current"><span>Моноблоки</span></li>}
+
+                @@if(context.currentItem != 'Компьютеры'){<li><a href="#"><span>Компьютеры</span></a></li>}
+                @@if(context.currentItem == 'Компьютеры'){<li class="current"><span>Компьютеры</span></li>}
+
+                @@if(context.currentItem != 'Мониторы'){<li><a href="#"><span>Мониторы</span></a></li>}
+                @@if(context.currentItem == 'Мониторы'){<li class="current"><span>Мониторы</span></li>}
+
+                @@if(context.currentItem != 'Принтеры'){<li><a href="#"><span>Принтеры</span></a></li>}
+                @@if(context.currentItem == 'Принтеры'){<li class="current"><span>Принтеры</span></li>}
+
+                @@if(context.currentItem != 'Планшеты'){<li><a href="#"><span>Планшеты</span></a></li>}
+                @@if(context.currentItem == 'Планшеты'){<li class="current"><span>Планшеты</span></li>}
+
+                @@if(context.currentItem != 'Game Zone'){<li><a href="#"><span>Game Zone</span></a></li>}
+                @@if(context.currentItem == 'Game Zone'){<li class="current"><span>Game Zone</span></li>}
               </ul>
             </div>
           </div>

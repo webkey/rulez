@@ -431,14 +431,18 @@
       height: $size
 
       path
-        fill: $base-color
-
         // transition
         $prop: fill
         transition:
           property: $prop
           duration: $animation-speed
           timing-function: ease-in-out
+
+        &.svg-ico-cart-circle
+          fill: white
+
+        &.svg-ico-cart-cart
+          fill: $base-color
 
     & + .cart-link__text
       padding-left: 1.2rem
@@ -505,7 +509,11 @@
 
       svg
         path
-          fill: white
+          &.svg-ico-cart-circle
+            fill: $base-color
+
+          &.svg-ico-cart-cart
+            fill: $bg-color
 
   // tooltip
   .no-touchevents &[data-title]:hover
@@ -834,7 +842,7 @@ a.catalog-opener
       transform: translate($translate) // for old browser
       transform: translate3d($translate, 0)
 
-.catalog
+.catalog-menu
   background: white
   box-shadow: 0 12px 10px rgba(0, 0, 0, 0.17)
   border-radius: 7px
@@ -864,32 +872,38 @@ a.catalog-opener
 $cat-item-space: 20px
 $cat-columns: 6
 $cat-columns--desk-lg: 5
-.catalog__list
+.catalog-menu__list
+  display: flex
+  justify-content: flex-start
+  align-items: flex-start
+  flex-wrap: wrap
   list-style: none
   padding: 0
   margin: 0 -#{round($cat-item-space / 2)}
 
-  &:not(.grid-completed)
-    overflow: hidden
-    white-space: nowrap
-
-  .catalog &
+  .catalog-menu &
     margin-bottom: -#{$cat-item-space * 2}
 
-.catalog__item
-  display: inline-block
-  vertical-align: top
-  width: calc(#{round-float(100% / $cat-columns, 2)} - #{$cat-item-space})
+.catalog-menu__item
+  $width: calc(#{round-float(100% / $cat-columns, 2) - 0.01} - #{$cat-item-space})
+  width: $width
+  max-width: $width
+  flex-basis: $width
   margin: 0 round($cat-item-space / 2) $cat-item-space * 2
+  //outline: 1px solid lightgrey
 
   +media('<desk-lg')
-    width: calc(#{round-float(100% / $cat-columns--desk-lg, 2)} - #{$cat-item-space})
+    $width: calc(#{round-float(100% / $cat-columns--desk-lg, 2) - 0.01} - #{$cat-item-space})
+    width: $width
+    max-width: $width
+    flex-basis: $width
 
-.catalog-list__inner
-  display: block
-  padding: 0
+  // for ie 9
+  .no-flexwrap &
+    display: inline-block
+    vertical-align: top
 
-.catalog-list__title
+.catalog-menu__title
   margin-bottom: 2rem
   display: flex
   justify-content: flex-start
@@ -931,34 +945,152 @@ $cat-columns--desk-lg: 5
       path
         fill: black
 
-.catalog-links
+.catalog-menu__links
+  $angle-size: 2.0rem
+  $arrow-size: 0.8rem
+
   list-style: none
   margin: 0 0 2rem
   padding: 0
+
+  .no-js &:not(.ms-rolls_initialized)
+    ul
+      display: none // Важно! До инициализации скрипта, скрыть все панели, а после показать.
 
   &:last-child
     margin-bottom: 0
 
   li
     color: #131313
-    font-size: 1.4rem
-    line-height: 1.8rem
-    letter-spacing: normal
-    margin-bottom: 1.2rem
+    font-size: 0
+    line-height: 1
+    letter-spacing: -4px
+    white-space: nowrap
+    padding: 0 0 1.2rem
+
+    &:last-child
+      padding-bottom: 0
+
+    a, & > span
+      display: inline-block
+      vertical-align: middle
+      font-size: 1.4rem
+      line-height: 1.8rem
+      letter-spacing: normal
+      white-space: normal
+      cursor: default
+      color: currentColor
+
+    &.has-items
+      & > a, & > span
+        margin-right: $angle-size + 0.3
 
     a
-      color: currentColor
       text-decoration: none
-
+      cursor: pointer
       +underlinedLinks(#131313)
 
-    & > span
-      +font-bold
-      color: $base-color
+    & > em
+      position: relative
+      display: inline-block
+      vertical-align: middle
+      width: $angle-size
+      height: $angle-size
+      margin-left: -$angle-size
+      text-indent: -9999px
+      overflow: hidden
+      cursor: pointer
+      z-index: 5
+      border-radius: 0.4rem
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+      // transition
+      $prop: transform
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+      &::before, &::after
+        content: ""
+        display: block
+        position: absolute
+        top: 50%
+        height: 0.2rem
+        width: $arrow-size
+        background-color: currentColor
+        pointer-events: none
+        margin: -0.1rem -0.6rem
+        // transition
+        $prop: background-color
+        transition:
+          property: $prop
+          duration: $animation-speed
+          timing-function: ease-in-out
+
+      &::before
+        transform: rotate(45deg)
+        left: 50%
+
+      &::after
+        transform: rotate(-45deg)
+        right: 50%
+
+      &:hover
+        &::before, &::after
+          background-color: $base-color
+
+  ul
+    list-style: none
+    padding: 1.2rem 0 0 2rem
+    opacity: 0
+    // transition
+    $prop: opacity
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    li
+      a
+        $color: #666
+        color: $color
+
+        +underlinedLinks($color)
+
+  // current
+  li
+    &.current
+      & > a, & > span
+        +font-bold
+        color: $base-color
+
+      & > a
+        +underlinedLinks($base-color)
+
+  // active
+  li.active
+    & > em
+      $rotate: -0.5turn
+      transform: rotate($rotate)
+
+  ul.active
+    opacity: 1
 
 // catalog list end
     
 //=== Catalog is open ===
+.main, .footer
+  // transition
+  $prop: filter
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
 .catalog-is-open
   .main, .footer
     filter: blur(3px)
@@ -999,24 +1131,28 @@ $cat-columns--desk-lg: 5
     +media('<desk-md')
       margin: 0.25rem 1rem 0.25rem 0
 
-  a
+  a, li > span
     display: block
     +font-bold
     color: #232323
     font-size: 1.4rem
-    text-decoration: none
     padding-top: 0.5rem
     padding-bottom: 0.5rem
+    cursor: default
+
+  a
+    text-decoration: none
+    cursor: pointer
 
     +underlinedLinks(#232323)
 
   // current item
   .current
-    a
+    a, & > span
       color: $base-color
 
-      +underlinedLinksReset
-
+    a
+      +underlinedLinks($base-color)
 
 /* categories nav end
 
@@ -1183,13 +1319,6 @@ $search-btn-space: 0 0.5rem
   position: relative
   clear: both
   //padding-top: $header-height
-  // transition
-  $prop: filter
-  will-change: $prop
-  transition:
-    property: $prop
-    duration: $animation-speed
-    timing-function: ease-in-out
 
   //+media('<desk-md')
     padding-top: $header-height--sm
@@ -1700,6 +1829,14 @@ $search-btn-space: 0 0.5rem
   user-select: none
 
 /* main-section end
+
+/* grid js
+.grid-js
+  &:not(.grid-completed)
+    overflow: hidden
+    white-space: nowrap
+
+/* grid js end
 
 /* promo slider
 .main-section_promo
@@ -2491,6 +2628,7 @@ $product-item-space: 2rem 2.4rem
   vertical-align: baseline
 
 .product-item__price-old
+  line-height: 3.2rem
   color: #c3c3c3
 
   & > strong, & > em
@@ -2638,7 +2776,7 @@ $product-item-space: 2rem 2.4rem
   &.added:nth-child(2)
     & > i
       background-color: $base-color
-      border-radius: 50%
+      border-radius: 0.1rem
       box-shadow: 0 0 0 6px rgba($base-color, 1)
 
       svg

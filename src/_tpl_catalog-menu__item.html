@@ -1,13 +1,13 @@
 <div class="catalog-menu__title">
 	<a href="#">@@icon<span>@@title</span></a>
 </div>
-<ul class="catalog-menu__links">
+<ul class="catalog-menu__links catalog-links-js">
 	@@if(context.current){<li class="current"><span>@@current</span></li>}
 	@@for (var i = 0; i < links.length; i++){<li><a href="#"><span>`+links[i]+`</span></a></li>}
 	@@if(context.hasSubLinks){
-	<li class="has-drop">
-		<a href="#">@@hasSubLinks</a>
-		<em class="catalog-menu__angle-js"><i>▼</i></em>
+	<li class="has-items">
+		<a href="#"><span>@@hasSubLinks</span></a>
+		<em>▼</em>
 		<ul>
 			@@for (var i = 0; i < subLinks.length; i++){<li><a href="#"><span>`+subLinks[i]+`</span></a></li>}
 		</ul>
