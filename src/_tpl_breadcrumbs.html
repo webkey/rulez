@@ -1,8 +1,8 @@
 <div class="breadcrumbs">
   <ul class="breadcrumbs__list">
     @@for (var i = 0; i < items.length; i++) {
-    <li><a href="#"><span title="`+items[i]+`">`+items[i]+`</span></a></li>
+    <li><a href="#" title="Перейти в раздел `+items[i]+`"><span>`+items[i]+`</span></a></li>
     }
-    <li><span title="@@if(context.last){@@last}@@if(!context.last){Название раздела}">@@if(context.last){@@last}@@if(!context.last){Название раздела}</span></li>
+    <li>@@if(context.last){@@last}@@if(!context.last){Название раздела}</li>
   </ul>
 </div>

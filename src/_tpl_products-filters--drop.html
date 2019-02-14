@@ -1,0 +1,30 @@
+@@if (context.checkboxesExpanded) {
+  @@for (var key in checkboxesExpanded) {
+    <li>
+      <label class="check-label@@if(context.addClass){ @@addClass}">
+        <input type="checkbox" name="`+key+`" data-filter-name="`+key+`" data-filter-tag="`+checkboxesExpanded[key].tagText+`" />
+        <i>&nbsp;</i>
+        @@if(context.hasIcon){
+          <em class="checkbox-icon">
+            <img src="`+checkboxesExpanded[key].icon+`" alt="`+checkboxesExpanded[key].labelText+`" />
+          </em>
+        }
+        <span>`+checkboxesExpanded[key].labelText+`</span>
+        @@if(context.hasImg){
+          <img src="`+checkboxesExpanded[key].img+`" alt="`+checkboxesExpanded[key].labelText+`" />
+        }
+      </label>
+    </li>
+  }
+}
+@@if (context.checkboxes) {
+  @@for (var key in checkboxes) {
+    <li>
+      <label class="check-label@@if(context.addClass){ @@addClass}">
+        <input type="checkbox" name="`+key+`" data-filter-name="`+key+`" />
+        <i>&nbsp;</i>
+        <span class="p-filters-label-text-js">`+checkboxes[key]+`</span>
+      </label>
+    </li>
+  }
+}

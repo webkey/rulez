@@ -1,0 +1,465 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Каталог",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "Ноутбуки" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Каталог", "Ноутбуки"],
+      "last": "SAMSUNG GL753VE-GC112T"
+    })
+
+    <!--CONTENT-->
+    <!--Во время подбора результатов нужно добавлять класс js-loading на контейнер p-filters-js-->
+    <div class="m-container p-filters-js">
+      <div class="m-aside shutter--filters shutter--filters-js">
+        <div class="shutter--filters__options">
+          <a href="#" class="btn-filters-close js-btn-shutter-close" title="Закрыть фильтр">
+            <div><span>Фильтр</span> <span class="p-filters-activated p-filters-activated-js hide">0</span></div>
+            @@include("includes/svg/icon-close.svg")
+          </a>
+        </div>
+        <form name="form" action="#?" method="get">
+          <div class="m-aside__align">
+            <div class="m-aside__holder">
+              <!--filters-->
+              <!--Имя тега берется с аттрибута data-filter-name-->
+              <!--Если есть элемент с классом .p-filters-label-text-js, то именем тега будет контент этого элемента-->
+              <!--Если есть data-filter-tag, то тег берется с этого аттрибута-->
+              <div class="p-filters-list">
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Цена", "group": "price", "modGroup": "" })
+                      <li>
+                        <div class="select select-small">
+                          <select class="field-effects-js" name="filter-by-price-from" data-filter-select="price-from" data-filter-default="">
+                            <option value="" data-filter-name="5">5</option>
+                            <option value="10" data-filter-name="10">10</option>
+                            <option value="20" data-filter-name="20">20</option>
+                            <option value="30" data-filter-name="30">30</option>
+                            <option value="50" data-filter-name="50">50</option>
+                            <option value="100" data-filter-name="100">100</option>
+                            <option value="200" data-filter-name="200">200</option>
+                            <option value="500" data-filter-name="500">500</option>
+                            <option value="1000" data-filter-name="1000">1000</option>
+                          </select>
+                        </div>
+                      </li>
+                      <li>
+                        <div class="select select-small">
+                          <select class="field-effects-js" name="filter-by-price-to" data-filter-select="price-to" data-filter-default="">
+                            <option value="" data-filter-name="5">5</option>
+                            <option value="10" data-filter-name="10">10</option>
+                            <option value="20" data-filter-name="20">20</option>
+                            <option value="30" data-filter-name="30">30</option>
+                            <option value="50" data-filter-name="50">50</option>
+                            <option value="100" data-filter-name="100">100</option>
+                            <option value="200" data-filter-name="200">200</option>
+                            <option value="500" data-filter-name="500">500</option>
+                            <option value="1000" data-filter-name="1000">1000</option>
+                            <option value="2000" data-filter-name="2000">2000</option>
+                            <option value="3000" data-filter-name="3000">3000</option>
+                            <option value="4000" data-filter-name="4000">4000</option>
+                            <option value="5000" data-filter-name="5000">5000</option>
+                            <option value="6000" data-filter-name="6000">6000</option>
+                          </select>
+                        </div>
+                      </li>
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "По назначению", "group": "purpose", "modGroup": "item-float" })
+
+                    @@include('_tpl_products-filters--drop.html', {
+                      "addClass": "checkbox_value",
+                      "checkboxes": {
+                        "budget": "Бюджетный",
+                        "study": "Для дома и учебы",
+                        "home": "Домашний",
+                        "work": "Рабочий",
+                        "game": "Игровой",
+                        "design": "Для дизайна",
+                        "power": "Мощные",
+                        "video": "Для видеомонтажа",
+                        "universal": "Универсальный"
+                      }
+                    })
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Тип", "group": "type", "modGroup": "" })
+
+                    @@include('_tpl_products-filters--drop.html', {
+                      "addClass": "",
+                      "hasImg": "",
+                      "hasIcon": "",
+                      "checkboxesExpanded": {
+                        "netbooks": {
+                          "labelText": "Нетбуки (малый размер экрана)",
+                          "tagText": "Нетбуки",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "smartbooks": {
+                          "labelText": "Смартбуки (компактные, малой мощности)",
+                          "tagText": "Смартбуки",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "transformers": {
+                          "labelText": "Трансформеры (угол открытия 360°)",
+                          "tagText": "Трансформеры",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "images": {
+                          "labelText": "Имиджевые (стильный дизайн)",
+                          "tagText": "Имиджевые",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "ultracompacts": {
+                          "labelText": "Ультракомпакты (сверхлегкие и мощнче)",
+                          "tagText": "Ультракомпакты",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "workstations": {
+                          "labelText": "Рабочие станции (сверхнадежные)",
+                          "tagText": "Рабочие станции",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "premiums": {
+                          "labelText": "Премиум сегмент",
+                          "tagText": "Премиум",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "news": {
+                          "labelText": "Новинки",
+                          "tagText": "Новинки",
+                          "img": "",
+                          "icon": ""
+                        }
+                      },
+                      "checkboxes": ""
+                    })
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Производитель", "group": "brand", "modGroup": "" })
+
+                    @@include('_tpl_products-filters--drop.html', {
+                      "addClass": "",
+                      "checkboxes": {
+                        "asus": "ASUS",
+                        "acer": "Acer",
+                        "apple": "Apple",
+                        "dell": "Dell",
+                        "digma": "Digma",
+                        "hp": "HP",
+                        "lenovo": "Lenovo",
+                        "prestigio": "Prestigio"
+                      }
+                    })
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Дата выхода на рынок", "group": "entry-date", "modGroup": "" })
+                    <li>
+                      <div class="select select-small">
+                        <select class="field-effects-js" name="filter-by-years-from" data-filter-select="years-from" data-filter-default="">
+                          <option value="" data-filter-name="">Год выпуска с</option>
+                          <option value="2012" data-filter-name="2012">2012</option>
+                          <option value="2013" data-filter-name="2013">2013</option>
+                          <option value="2014" data-filter-name="2014">2014</option>
+                          <option value="2015" data-filter-name="2015">2015</option>
+                          <option value="2016" data-filter-name="2016">2016</option>
+                          <option value="2017" data-filter-name="2017">2017</option>
+                          <option value="2018" data-filter-name="2018">2018</option>
+                          <option value="2019" data-filter-name="2019">2019</option>
+                        </select>
+                      </div>
+                    </li>
+                    <li>
+                      <div class="select select-small">
+                        <select class="field-effects-js" name="filter-by-years-to" data-filter-select="years-to" data-filter-default="">
+                          <option value="" data-filter-name="">Год выпуска по</option>
+                          <option value="2012" data-filter-name="2012">2012</option>
+                          <option value="2013" data-filter-name="2013">2013</option>
+                          <option value="2014" data-filter-name="2014">2014</option>
+                          <option value="2015" data-filter-name="2015">2015</option>
+                          <option value="2016" data-filter-name="2016">2016</option>
+                          <option value="2017" data-filter-name="2017">2017</option>
+                          <option value="2018" data-filter-name="2018">2018</option>
+                          <option value="2019" data-filter-name="2019">2019</option>
+                        </select>
+                      </div>
+                    </li>
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Диагональ экрана", "group": "screen-diagonal", "modGroup": "item-float" })
+
+                    @@include('_tpl_products-filters--drop.html', {
+                      "addClass": "checkbox_value",
+                      "hasImg": "",
+                      "hasIcon": "",
+                      "checkboxesExpanded": {
+                        "11": {
+                          "labelText": "менее 12&quot;",
+                          "tagText": "до 12&quot;",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "12-13": {
+                          "labelText": "12-13&quot;",
+                          "tagText": "12-13&quot;",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "13.3-14": {
+                          "labelText": "13.3-14&quot;",
+                          "tagText": "13.3-14&quot;",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "15": {
+                          "labelText": "15&quot;",
+                          "tagText": "15&quot;",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "17": {
+                          "labelText": "17&quot;",
+                          "tagText": "17&quot;",
+                          "img": "",
+                          "icon": ""
+                        },
+                        "19": {
+                          "labelText": "18&quot; и более",
+                          "tagText": "больше 18&quot;",
+                          "img": "",
+                          "icon": ""
+                        }
+                      },
+                      "checkboxes": ""
+                    })
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Матрица экрана", "group": "screen-type", "modGroup": "" })
+
+                    @@include('_tpl_products-filters--drop.html', {
+                      "addClass": "",
+                      "checkboxes": {
+                        "tnfilm": "TN+Film",
+                        "ips": "IPS"
+                      }
+                    })
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Цвет корпуса", "group": "color", "modGroup": "" })
+
+                    @@include('_tpl_products-filters--drop.html', {
+                      "addClass": "",
+                      "checkboxes": {
+                        "black": "Черный",
+                        "white": "Белый",
+                        "silver": "Стальной",
+                        "pink": "Розовый",
+                        "red": "Красный"
+                      }
+                    })
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js">
+                  <div class="p-filters-selected p-filters-selected-js">0</div>
+                  <div class="p-filters-inner">
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "START", "title": "Процессор", "group": "processor", "modGroup": "" })
+
+                    @@include('_tpl_products-filters--drop.html', {
+                      "addClass": "",
+                      "checkboxes": {
+                        "1": "Intel Core i9",
+                        "2": "Intel Core i7",
+                        "3": "Intel Core i5",
+                        "4": "Intel Core i3",
+                        "5": "Intel Core m3",
+                        "6": "Intel Core m5",
+                        "7": "Intel Core m7",
+                        "8": "Intel Pentium",
+                        "9": "Intel Pentium Silver",
+                        "10": "Intel Celeron",
+                        "11": "Intel Xeon",
+                        "12": "AMD A12",
+                        "13": "AMD A12 pro",
+                        "14": "AMD A10",
+                        "15": "AMD A10 pro",
+                        "16": "AMD A9",
+                        "17": "AMD A8",
+                        "18": "AMD A8 Pro",
+                        "19": "AMD A6",
+                        "20": "AMD A4",
+                        "21": "AMD E2",
+                        "22": "AMD E1",
+                        "23": "AMD Fusion",
+                        "24": "AMD FX",
+                        "25": "AMD Ryzen 3",
+                        "26": "AMD Ryzen 5",
+                        "27": "AMD Ryzen 5 Pro",
+                        "28": "AMD Ryzen 7",
+                        "29": "Intel Atom",
+                        "30": "AMD",
+                        "31": "AMD Athlon II",
+                        "32": "AMD Turion II",
+                        "33": "Intel Atom",
+                        "34": "Intel Celeron Dual-Core",
+                        "35": "Intel Core Duo",
+                        "36": "Intel Core 2 Duo"
+                      }
+                    })
+
+                    @@include('_tpl_products-filters--DROP_LAYOUT.html', {"itemLayout": "END"})
+
+                  </div>
+                </div>
+                <!--===============-->
+                <!--===============-->
+              </div>
+              <!--filters end-->
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="m-content">
+        <div class="m-content__body">
+          <h1>Ноутбуки</h1>
+          <div class="m-content__body__options">
+            @@include('_tpl_products-options.html')
+          </div>
+          <div class="m-content__body__tags">
+            <div class="p-filters-tags">
+              <div class="p-filters-tags__frame p-filters-tags-js">
+                <!--filters tags-->
+              </div>
+            </div>
+          </div>
+          <div class="m-content__body__layout">
+            <div class="products">
+              <section class="products__list">
+                <div class="products__list__holder">
+                  {{Список продуктов}}
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+
+        <div class="m-content__footer">
+          {{Футер}}
+        </div>
+      </div>
+
+      <div class="p-filters-results p-filters-results-js">
+        <div class="p-filters-results__selected">
+          <div class="p-filters-results__selected__align">
+            <div class="p-filters-results__selected__label">Выбрано</div>
+            <div class="p-filters-results__selected__count"><span class="cur">1202</span> из 1202</div>
+          </div>
+        </div>
+        <div class="p-filters-results__apply">
+          <a href="#" class="btn-filters-apply"><span>подобрать</span></a>
+        </div>
+        <button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
+          @@include("includes/svg/icon-bin.svg")
+        </button>
+        <div class="results-loading">Подбор результатов...</div>
+      </div>
+
+      <div class="loader-cover">&nbsp;</div>
+    </div>
+
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')
