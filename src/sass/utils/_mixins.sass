@@ -453,25 +453,29 @@
   display: inline-block
   vertical-align: top
   width: round-float(100%/$length-in-row, 2)
-  padding:
-    left: round($horizontal-space/2)
-    right: round($horizontal-space/2)
+  @if $horizontal-space
+    padding:
+      left: round($horizontal-space/2)
+      right: round($horizontal-space/2)
 
-  &:nth-child(n)
-    margin-top: $bottom-space
+  @if $bottom-space
+    &:nth-child(n)
+      margin-top: $bottom-space
 
   &:nth-child(-n+#{$length-in-row})
     margin-top: 0
 
-/// использовать если нужно только поменять количество колонок
+/// использовать если нужно поменять количество колонок и/или величину отступов
 =grid-item-responsive($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
   width: round-float(100%/$length-in-row, 2)
-  padding:
-    left: round($horizontal-space/2)
-    right: round($horizontal-space/2)
+  @if $horizontal-space
+    padding:
+      left: round($horizontal-space/2)
+      right: round($horizontal-space/2)
 
-  &:nth-child(n)
-    margin-top: $bottom-space
+  @if $bottom-space
+    &:nth-child(n)
+      margin-top: $bottom-space
 
   &:nth-child(-n+#{$length-in-row})
     margin-top: 0
@@ -479,12 +483,14 @@
 =grid-item-float($length-in-row: 1, $horizontal-space: 20px, $bottom-space: $horizontal-space)
   float: left
   width: round-float(100%/$length-in-row, 2)
-  padding:
-    left: round($horizontal-space/2)
-    right: round($horizontal-space/2)
+  @if $horizontal-space
+    padding:
+      left: round($horizontal-space/2)
+      right: round($horizontal-space/2)
 
   &:nth-child(n)
-    margin-top: $bottom-space
+    @if $bottom-space
+      margin-top: $bottom-space
     clear: none
 
   &:nth-child(-n+#{$length-in-row})
@@ -496,12 +502,14 @@
 /// использовать если нужно только поменять количество колонок
 =grid-item-float-responsive($length-in-row: 1, $horizontal-space: 0, $bottom-space: $horizontal-space)
   width: round-float(100%/$length-in-row, 2)
-  padding:
-    left: round($horizontal-space/2)
-    right: round($horizontal-space/2)
+  @if $horizontal-space
+    padding:
+      left: round($horizontal-space/2)
+      right: round($horizontal-space/2)
 
   &:nth-child(n)
-    margin-top: $bottom-space
+    @if $bottom-space
+      margin-top: $bottom-space
     clear: none
 
   &:nth-child(-n+#{$length-in-row})

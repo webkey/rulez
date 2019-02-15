@@ -405,32 +405,177 @@
           </div>
         </form>
       </div>
+
       <div class="m-content">
-        <div class="m-content__body">
+        <div class="m-heading">
           <h1>Ноутбуки</h1>
-          <div class="m-content__body__options">
-            @@include('_tpl_products-options.html')
-          </div>
-          <div class="m-content__body__tags">
-            <div class="p-filters-tags">
-              <div class="p-filters-tags__frame p-filters-tags-js">
-                <!--filters tags-->
-              </div>
-            </div>
-          </div>
-          <div class="m-content__body__layout">
-            <div class="products">
-              <section class="products__list">
-                <div class="products__list__holder">
-                  {{Список продуктов}}
-                </div>
-              </section>
-            </div>
+          <div class="view-switcher view-switcher-products-js" data-toggle-view-switcher="products">
+            <a href="#" class="active" data-mod="grid-view" title="Продукты отобразить плиткой">
+              @@include("includes/svg/icon-grid-view.svg")
+              <span>Плиткой</span>
+            </a>
+            <a href="#" data-mod="list-view" title="Продукты отобразить списком">
+              @@include("includes/svg/icon-list-view.svg")
+              <span>Списком</span>
+            </a>
           </div>
         </div>
-
-        <div class="m-content__footer">
-          {{Футер}}
+        <div class="m-tags">
+          <div class="p-filters-tags p-filters-tags-js">
+            <!--filters tags-->
+          </div>
+        </div>
+        <div class="m-options">
+          <a href="#" class="filters-switcher_mob btn-filters-js" title="Показать фильтры">
+            <div class="p-filters-activated p-filters-activated-js hide">0</div>
+            @@include("includes/svg/icon-filters.svg") <span>Фильтр</span>
+          </a>
+          <div class="p-sorting p-sorting-js">
+            <a href="#byPrice"><em>▼</em><span>По цене</span></a>
+            <a href="#byPopular"><em>▼</em><span>По популярности</span></a>
+          </div>
+          <label class="check-label">
+            <input type="checkbox" name="stock">
+            <span>Товар в наличии</span>
+          </label>
+        </div>
+        <div class="banner">
+          <img src="img/banner-02.jpg" alt="Все виды рассрочки" />
+        </div>
+        <div class="products" data-toggle-view-panels="products">
+          <section class="products__list equal-height-js">
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-01.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "5", "rateWidth": "100%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "1457", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-02.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "4.5", "rateWidth": "90%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-03.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "3", "rateWidth": "60%",
+              "priceOld": {"val": "5199", "unit": "р."},
+              "price": {"val": "4325", "unit": "р."},
+              "inFavorites": "added",
+              "inCart": "added",
+              "sale": "30%",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-03.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "5", "rateWidth": "100%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "4325", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": { "day": "Товар дня" }
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-01.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "5", "rateWidth": "100%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "1457", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-04.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "5", "rateWidth": "100%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "1457", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-01.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "4.5", "rateWidth": "90%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-05.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "3", "rateWidth": "60%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "4325", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-04.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "5", "rateWidth": "100%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "1457", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "sale": "",
+              "label": ""
+              })
+            </article>
+            <article class="products__item">
+              <a href="#" class="topic-banner" style="background-image: url(img/topic-banner.jpg);">
+                <div class="topic-banner__title"><span>Обзор ультрабука Huawei Matebook X Pro</span></div>
+              </a>
+            </article>
+          </section>
         </div>
       </div>
 

@@ -1,0 +1,49 @@
+<div itemscope itemtype="http://schema.org/Product" class="product product-js">
+  <div class="product__header">
+    <a itemprop="url" href="@@href">
+      <div class="product__figure product-figure-js">
+        <img itemprop="image" src="@@src" alt="@@title" />
+      </div>
+      <h3 itemprop="name" class="product__title"><span>@@title</span></h3>
+    </a>
+    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+      <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth"></span>
+      <meta itemprop="ratingCount" content="1">
+    </div>
+  </div>
+
+  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__footer">
+    <div class="product__meta">
+      @@if(context.price.val){<div itemprop="availability" content="http://schema.org/InStock" class="product__stock on">@@include("includes/svg/icon-.svg")<span>В наличии</span></div>}
+      @@if(!context.price.val){<div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off">@@include("includes/svg/icon-.svg")<span>Нет в наличии</span></div>}
+
+      @@if(context.price.val){
+      <div class="product__price">
+        @@if(context.priceOld.val){<div class="product__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>}
+        <div class="product__price-new"><strong itemprop="price" content="@@price.val">@@price.val</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+      </div>
+      }
+      @@if(!context.price.val){
+      <div class="product__price off">
+        <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+      </div>
+      }
+    </div>
+    <div class="product__option">
+      @@if(!context.inFavorites){<a href="#" class="product__option-btn like-js" data-active-text="В избранном" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i>@@include("includes/svg/icon-like.svg")@@include("includes/svg/icon-dislike.svg")</i></a>}
+      @@if(context.inFavorites){<a href="#" class="product__option-btn like-js added" data-active-text="В избранном" data-inactive-text="В избранное" tabindex="0"><span>В избранном</span><i>@@include("includes/svg/icon-like.svg")@@include("includes/svg/icon-dislike.svg")</i></a>}
+
+      @@if(!context.inCart){<a href="#" class="product__option-btn add-to-cart-js" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0"><span>В корзину</span><i>@@include("includes/svg/icon-cart.svg")</i></a>}
+      @@if(context.inCart){<a href="#" class="product__option-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0"><span>В корзине</span><i>@@include("includes/svg/icon-cart.svg")</i></a>}
+    </div>
+  </div>
+
+  @@if(context.sale){
+  <span class="product__sale">@@sale</span>
+  }
+  @@if(context.label){
+  <div class="product__labels">
+    @@if(context.label.day){<div class="product__label product__label_day">@@label.day</div>}
+  </div>
+  }
+</div>

@@ -150,6 +150,7 @@ function detectScroll() {
     $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
   })
 }
+
 /**
  * !Toggle class on a form elements on focus
  * */
@@ -239,6 +240,35 @@ function customSelect(select) {
       // , placeholder: placeholder
     });
   })
+}
+
+/**
+ * Add classes on elements near banners (in products)
+ */
+function bannersSiblings() {
+  var $banner = $('.banner_in-products-js');
+
+  if ($banner.length) {
+    // Клонируем первый перед баннером элемет
+    // Вставляем клон первым после баннера
+    $banner
+        .prev().addClass('step-1').clone().addClass('clone').insertAfter($banner);
+    // Клонируем второй перед баннером элемет
+    // Вставляем клон вторым после баннера
+    $banner
+        .prev().prev().addClass('step-2').clone().addClass('clone').insertAfter($banner);
+    // Клонируем третий перед баннером элемет
+    // Вставляем клон третим после баннера
+    $banner
+        .prev().prev().prev().addClass('step-3').clone().addClass('clone').insertAfter($banner);
+  }
+
+  var $productsList = $('.products__list');
+  if($productsList.length) {
+    $productsList.children().matchHeight({
+      byRow: true, property: 'height', target: null, remove: false
+    });
+  }
 }
 
 /**
@@ -1162,18 +1192,24 @@ function toggleShutters() {
 
   // При добавлении классов одним экземпляром плагина,
   // вызывать метод удаления классов другими
-  searchPanel.on('switchClass.beforeAdded', function () {
-    catalogShutter.switchClass('remove');
-    filtersShutter.switchClass('remove');
-  });
-  catalogShutter.on('switchClass.beforeAdded', function () {
-    searchPanel.switchClass('remove');
-    filtersShutter.switchClass('remove');
-  });
-  filtersShutter.on('switchClass.beforeAdded', function () {
-    catalogShutter.switchClass('remove');
-    searchPanel.switchClass('remove');
-  });
+  if (searchPanel) {
+    searchPanel.on('switchClass.beforeAdded', function () {
+      catalogShutter && catalogShutter.switchClass('remove');
+      filtersShutter && filtersShutter.switchClass('remove');
+    });
+  }
+  if (catalogShutter) {
+    catalogShutter.on('switchClass.beforeAdded', function () {
+      searchPanel && searchPanel.switchClass('remove');
+      filtersShutter && filtersShutter.switchClass('remove');
+    });
+  }
+  if (filtersShutter) {
+    filtersShutter.on('switchClass.beforeAdded', function () {
+      catalogShutter && catalogShutter.switchClass('remove');
+      searchPanel && searchPanel.switchClass('remove');
+    });
+  }
 }
 
 /**
@@ -1244,7 +1280,7 @@ function addToCarAnimation() {
       // Remove a copy of product image
       $('#figureCopy').remove();
       // Animate a product added to a cart
-      var $figure = $cutBtn.closest('.product-item-js').find('.product-figure-js');
+      var $figure = $cutBtn.closest('.product-js').find('.product-figure-js');
       $figure.clone()
           .addClass('product-figure_copy-js').attr('id', 'figureCopy')
           // .removeClass('product-figure-js')
@@ -1283,35 +1319,396 @@ function addToCarAnimation() {
   })
 }
 
+/**! jquery.ms-rolls.js
+ * Version: 2019.1.0
+ * Author: Astronim*
+ */
+
+(function ($) {
+  'use strict';
+
+  var MsRolls = function (element, config) {
+    var self,
+        $element = $(element),
+        $panel = $(config.panel, $element),
+        isAnimated = false,
+        pref = 'ms-rolls',
+        pluginClasses = {
+          initClass: pref + '_initialized'
+        },
+        focusElements = 'input, a, [tabindex], area, select, textarea, button, [contentEditable=true]' + config.hand,
+        $panelWrap,
+        relativeStyles = {
+          position: '',
+          left: '',
+          top: '',
+          width: ''
+        },
+        showStyles = {
+          opacity: '',
+          'user-select': '',
+          'pointer-event': '',
+          'z-index': ''
+        },
+        absoluteStyles = {
+          position: 'absolute',
+          left: 0,
+          top: 0,
+          width: '100%'
+        },
+        hideStyles = {
+          opacity: 0,
+          'user-select': 'none',
+          'pointer-event': 'none',
+          'z-index': -1
+        };
+
+    var dataClpsd = $element.attr('data-rolls-collapsed');
+    var collapsed = (dataClpsd === "true" || dataClpsd === "false") ? dataClpsd === "true" : config.collapsed;
+
+    var callbacks = function () {
+          /** track events */
+          $.each(config, function (key, value) {
+            if (typeof value === 'function') {
+              $element.on('msRolls.' + key, function (e, param) {
+                return value(e, $element, param);
+              });
+            }
+          });
+        },
+        tabindexOn = function (_element) {
+          // Все элементы _element поставить в фокус-очередь
+          _element.attr('tabindex', '0');
+        },
+        tabindexOff = function (_element) {
+          // Все элементы _element убрать с фокус-очереди
+          _element.attr('tabindex', '-1');
+        },
+        open = function ($_panel) {
+          if (!$_panel.length) {
+            return false;
+          }
+
+          var $activePanelWrap = $_panel.parent(), // Ближайшая родительская обертка активной Панели
+              $activeParentsPanels = $_panel.parentsUntil(element, config.panel), // Все родительские Панели активной Панели
+              $otherActivePanelsWrap = $activeParentsPanels.parent(), // Все родительские Обертка активной Панели не включая ближайшую
+              $otherActiveHeader = $otherActivePanelsWrap.prev(config.header), // Все родительские Обертка активной Панели не включая ближайшую
+              $otherActiveParentsItems = $activeParentsPanels.parentsUntil(element, config.item) // Все родительские Элементы активной Панели
+          ;
+
+          // 1) Открыть все родительские Панели (без анимации)
+          // Добавить класс на активные родительские (не ближайшие) элементы
+          $activeParentsPanels.add($otherActiveParentsItems).add($otherActiveHeader).add($(config.hand, $otherActiveHeader)).addClass(config.modifiers.activeClass);
+
+          // Открывать родительские Панели необходимо, если, например, открывается вложенная Панель методом "open"
+          $activeParentsPanels
+              .css(relativeStyles)
+              .css(showStyles)
+              .data('active', true).attr('data-active', true); // Указать в data-атрибуте, что Панель открыта;
+
+          // 2) Открыть текущую панель (с анимацией)
+          $element.trigger('msRolls.beforeOpen');// Вызов события перед открытием текущей панели
+
+          var $activeItems = $_panel.closest(config.item), // Родительский Элемент активной Панели
+              $activeHeader = $activePanelWrap.prev(config.header); // Шапка активной Панели
+
+          // Добавить класс на активные элементы
+          $_panel.add($activeItems).add($activeHeader).add($(config.hand, $activeHeader)).addClass(config.modifiers.activeClass);
+
+          var callback = arguments[1];
+
+          $_panel.css(showStyles); // Панель делаем видимой до начала анимации
+
+          changeHeight($activePanelWrap, $_panel.outerHeight(), function () {
+            $_panel
+                .css(relativeStyles)
+                .data('active', true).attr('data-active', true); // Указать в data-атрибуте, что Панель открыта
+
+            $activePanelWrap.css({
+              position: '',
+              overflow: '',
+              'height': ''
+            });
+
+            if (config.accessibility) {
+              // Поставить в фокус-очередь все элементы с фокусировкой внутри активной Панели
+              tabindexOn($(focusElements, $_panel));
+
+              // В неактивных Панелях все элементы с фокусировкой убрать с фокус-очереди
+              tabindexOff($(focusElements, $_panel.find(config.panel).filter(function () {
+                return !$(this).data('active');
+              })));
+            }
+
+            // Вызов события после открытия текущей панели
+            $element.trigger('msRolls.afterOpen');
+
+            // Вызов callback функции после открытия панели
+            if (typeof callback === "function") {
+              callback();
+            }
+          });
+
+          if (collapsed) {
+            // Проверить у соседей всех родительских Элементов наличие активных Панелей
+            // Закрыть эти Панели
+            var $siblingsPanel = $_panel.parentsUntil($element, config.item).siblings().find(config.panel).filter(function () {
+              return $(this).data('active');
+            });
+
+            closePanel($siblingsPanel, function () {
+              isAnimated = false; // Анимация завершена
+            });
+          }
+        },
+        close = function ($_panel) {
+          if (!$_panel.length) {
+            return false;
+          }
+          // Закрыть отдельно все вложенные активные панели,
+          // И отдельно текущую панель.
+          // Это сделано с целью определения события закрытия текущей панели отдельно.
+
+          if (collapsed) {
+            // Закрыть активные панели внутри текущей
+            var $childrenOpenedPanel = $(config.panel, $_panel).filter(function () {
+              return $(this).data('active');
+            });
+
+            closePanel($childrenOpenedPanel);
+          }
+
+          // Закрыть текущую панель
+          $element.trigger('msRolls.beforeClose'); // Вызов события перед закрытием текущей панели
+          var callback = arguments[1];
+
+          closePanel($_panel, function () {
+            $element.trigger('msRolls.afterClose'); // Вызов события после закрытия текущей панели
+
+            // Вызов callback функции после закрытия панели
+            if (typeof callback === "function") {
+              callback();
+            }
+          });
+        },
+        closePanel = function ($_panel) {
+          if (!$_panel.length) {
+            return false;
+          }
+
+          var callback = arguments[1],
+              $curPanelWrap = $_panel.parent(); // родительская обертка активной Панели
+
+          var $curItems = $_panel.closest(config.item), // родительский Элемент активной Панели
+              $curHeader = $curPanelWrap.prev(config.header); // Шапка активной Панели
+
+          // Удалить активный класс со всех элементов
+          $_panel.add($curItems).add($curHeader).add($(config.hand, $curHeader)).removeClass(config.modifiers.activeClass);
+
+          // Закрыть панель
+          changeHeight($curPanelWrap, 0, function () {
+            $_panel
+                .css(absoluteStyles)
+                .css(hideStyles)
+                .data('active', false).attr('data-active', false); // Указать в data-атрибуте, что панель закрыта
+
+            $curPanelWrap.css('height', '');
+
+            // Web accessibility
+            if (config.accessibility) {
+              // Убрать с фокус-очереди все элементы с фокусировкой внутри текущей Панели
+              tabindexOff($(focusElements, $_panel));
+            }
+
+            // Вызов callback функции после закрытия панели
+            if (typeof callback === "function") {
+              callback();
+            }
+          });
+        },
+        changeHeight = function ($_wrap, _val) {
+          var callback = arguments[2];
+
+          $_wrap.css({
+            position: 'relative',
+            overflow: 'hidden'
+          }).animate({
+            'height': _val
+          }, config.animationSpeed, function () {
+
+            if (typeof callback === "function") {
+              callback();
+            }
+
+            isAnimated = false;
+          });
+        },
+        events = function () {
+          $element.on(config.event, config.hand, function (event) {
+            // Если панель во время клика находится в процессе анимации, то выполнение функции прекратится
+            if (isAnimated) {
+              event.preventDefault();
+              return false;
+            }
+
+            var $currentHand = $(this);
+            // Если текущий пункт не содержит панелей,
+            // то выполнение функции прекратится
+            if (!$currentHand.closest(config.item).has(config.panel).length) {
+              console.log(1);
+              return false;
+            }
+
+            // Начало анимирования панели
+            // Включить флаг анимации
+            isAnimated = true;
+
+            event.preventDefault();
+
+            var $currentPanel = $currentHand.closest(config.header).next().children(config.panel);
+
+            if ($currentPanel.data('active')) {
+              // Закрыть текущую панель
+              close($currentPanel, function () {
+                isAnimated = false; // Анимация завершина
+              });
+            } else {
+              // Открыть текущую панель
+              open($currentPanel, function () {
+                isAnimated = false; // Анимация завершина
+              });
+            }
+          });
+        },
+        init = function () {
+          $panelWrap = $('<div/>', {
+            class: 'rolls-panel-wrap-js',
+            css: {
+              position: 'relative',
+              overflow: 'hidden'
+            }
+          });
+
+          $panel.wrap($panelWrap);
+
+          $panel
+              .css(absoluteStyles)
+              .css(hideStyles);
+
+          var $activePanels = $panel.filter('.' + config.modifiers.activeClass);
+
+          // Добавить класс на активные элементы
+          var $activeItems = $activePanels.parents(config.item), // Все родительские Элементы активной Панели
+              $activeHeaders = $activePanels.parentsUntil(element).prev(config.header), // Все Шапки в родительских Элементах
+              $allActivePanels = $activeHeaders.next().children(config.panel); // Все родительские Панели
+
+          $activePanels.add($activeItems).add($activeHeaders).add($allActivePanels).add($(config.hand, $activeHeaders)).addClass(config.modifiers.activeClass);
+
+          // Открыть все родительские панели
+          $activePanels.add($allActivePanels).css(relativeStyles).css(showStyles);
+
+          // Удалить лишние внутренние стили у оберток активных Панелей
+          $activePanels.add($allActivePanels).parent().css({
+            // position: '',
+            overflow: ''
+          });
+
+          // На активные панели установить дата-атрибут active сo заначением true
+          $activePanels.add($allActivePanels).data('active', true).attr('data-active', true);
+
+          // Web accessibility
+          if (config.accessibility) {
+            // Переключатель поставить в фокус-очередь
+            tabindexOn($(config.hand, $element));
+            // Все элементы с фокусировкой внутри панелей убрать с фокус-очереди
+            tabindexOff($(focusElements, $panel));
+            // Все элементы с фокусировкой внутри активных панелей поставить в фокус-очередь
+            tabindexOn($(focusElements, $allActivePanels));
+          }
+
+          $element.addClass(pluginClasses.initClass);
+          $element.trigger('msRolls.afterInit');
+        };
+
+    self = {
+      callbacks: callbacks,
+      open: open,
+      close: close,
+      events: events,
+      init: init
+    };
+
+    return self;
+  };
+
+  $.fn.msRolls = function () {
+    var _ = this,
+        opt = arguments[0],
+        args = Array.prototype.slice.call(arguments, 1),
+        l = _.length,
+        i,
+        ret;
+    for (i = 0; i < l; i++) {
+      if (typeof opt === 'object' || typeof opt === 'undefined') {
+        _[i].msRolls = new MsRolls(_[i], $.extend(true, {}, $.fn.msRolls.defaultOptions, opt));
+        _[i].msRolls.init();
+        _[i].msRolls.callbacks();
+        _[i].msRolls.events();
+      } else {
+        ret = _[i].msRolls[opt].apply(_[i].msRolls, args);
+      }
+      if (typeof ret !== 'undefined') {
+        return ret;
+      }
+    }
+    return _;
+  };
+
+  $.fn.msRolls.defaultOptions = {
+    item: '.rolls__item-js', // Общий ближайший родитель (Элемент) для переключателя и разворачивающейся панели (Далее Панель)
+    header: '.rolls__header-js', // Обертка для переключателя (Шапка)
+    hand: '.rolls__hand-js', // Переключатель
+    panel: '.rolls__panel-js', // Панель
+    event: 'click', // Событие, которое разворачивает/сворачивает Панель
+    animationSpeed: 300, // Скорость анимации Панели
+    collapsed: true, // Параметр, указывающий на необходимось сворачивать ранее открытые Панели
+    accessibility: false, // Опримизировать переключение фокуса по табу (снижает скорость выполнения скрипта)
+    modifiers: {
+      activeClass: 'rolls-active' // Класс, который добавляется, на активный элементы
+    }
+  };
+
+})(jQuery);
+
+/**
+ * Rolls
+ */
+function rollsInit() {
+  var $catalogLinks = $('.catalog-links-js');
+
+  if ($catalogLinks.length) {
+    $catalogLinks.msRolls({
+      item: 'li',
+      header: 'li > em',
+      hand: 'li > em',
+      panel: 'ul',
+      animationSpeed: 200,
+      collapsed: false,
+      modifiers: {
+        activeClass: 'active'
+      }
+    })
+  }
+}
+
 /**
  * !Toggle view plugin
  * */
-
 (function($){
-  // <!--view switcher-->
-  // <div class="class-js" data-toggle-view-switcher="id">
-  // 	<a href="#" class="grid-view tv-active" title="">View 1</a>
-  // 	<a href="#" class="list-view" title="">View 2</a>
-  // </div>
-  // <!--view switcher end-->
-
   var defaults = {
     anchor: 'a',
-    active: 0,
-    containerClass: 'toggle-view-initialized',
-    dataAttrSwitcher: 'data-toggle-view-switcher',
-    dataAttrPanels: 'data-toggle-view-panels',
-
-    activeClass: 'tv-active',
-    viewClass: 'tv-alt-view'
-
-    // Add callback-function:
-    // created: function () {} // fire after initialized
-    // changed: function () {} // fire after view changed
-    // Callback-function outside call for example:
-    // $('.thisClass').on('changed.toggleView', function () {
-    // 	console.log('changed.toggleView...');
-    // });
+    initClass: 'toggle-view_initialized',
+    activeClass: 'active'
   };
 
   function ToggleView(element, options) {
@@ -1320,12 +1717,16 @@ function addToCarAnimation() {
     self.config = $.extend(true, {}, defaults, options);
 
     self.element = element;
-    self.anchor = self.element.find(self.config.anchor);
-    self.panels = $('[' + self.config.dataAttrPanels + '="' + self.element.attr(self.config.dataAttrSwitcher) + '"]');
+    self.anchor = $(self.config.anchor, $(self.element));
+
+    self.data = {
+      switcher: 'data-toggle-view-switcher',
+      panel: 'data-toggle-view-panels'
+    };
 
     self.callbacks();
-    self.event(); // example event
-    self.init(); // create DOM structure of the plugins
+    self.event();
+    self.init();
   }
 
   /** track events */
@@ -1345,18 +1746,20 @@ function addToCarAnimation() {
 
     self.anchor.on('click', function (e) {
       e.preventDefault();
-      var currentAnchor = $(this);
+
+      var currentAnchor = $(this),
+          mod = currentAnchor.attr('data-mod');
 
       if ( currentAnchor.hasClass(self.config.activeClass) ) return;
 
       self.anchor.removeClass(self.config.activeClass);
-
       currentAnchor.addClass(self.config.activeClass);
 
-      // add modifiers class to panels
-      var currentSwitcherAttr = currentAnchor.closest(self.element).attr(self.config.dataAttrSwitcher);
-
-      $('[' + self.config.dataAttrPanels + '="' + currentSwitcherAttr + '"]').toggleClass(self.config.viewClass);
+      var id = currentAnchor.closest(self.element).attr(self.data.switcher);
+      // Add modifier to a panel
+      $('[' + self.data.panel + '="' + id + '"]').attr('data-view', mod);
+      // Add modifier to a switcher
+      $(self.element).attr('data-view', mod);
 
       self.element.trigger('changed.toggleView');
     });
@@ -1365,12 +1768,17 @@ function addToCarAnimation() {
   ToggleView.prototype.init = function () {
     var self = this;
 
-    self.element.addClass(self.config.containerClass);
-    var currentSwitcherAttr = self.element.attr(self.config.dataAttrSwitcher);
-    $('[' + self.config.dataAttrPanels + '="' + currentSwitcherAttr + '"]').addClass(self.config.containerClass);
+    var activeAnchor = self.anchor.filter('.' + self.config.activeClass),
+        mod = activeAnchor.attr('data-mod');
 
+    var id = activeAnchor.closest(self.element).attr(self.data.switcher);
+    // Add modifier to a panel
+    $('[' + self.data.panel + '="' + id + '"]').attr('data-view', mod);
+    // Add modifier to a switcher
+    $(self.element).attr('data-view', mod);
+
+    self.element.addClass(self.config.initClass);
     self.element.trigger('created.toggleView');
-
   };
 
   $.fn.toggleView = function (options) {
@@ -1386,26 +1794,13 @@ function addToCarAnimation() {
  * !Toggle view initial
  * */
 function toggleViewInit() {
-  var $toggleViewSwitcherNews = $('.view-switcher-news-js');
-
-  if ( $toggleViewSwitcherNews.length ) {
-
-    $toggleViewSwitcherNews.toggleView({
-      activeClass: 'active',
-      viewClass: 'row-view-activated'
-    })
-  }
-
-  // ==============================
-
-  var $toggleViewSwitcherProducts = $('.view-switcher-products-js');
-
-  if ( $toggleViewSwitcherProducts.length ) {
-
-    $toggleViewSwitcherProducts.toggleView({
-      activeClass: 'active',
-      viewClass: 'grid-view'
-    })
+  var $productsSwitcher = $('.view-switcher-products-js');
+  if ( $productsSwitcher.length ) {
+    $productsSwitcher.toggleView({
+      'changed.toggleView': function () {
+        $.fn.matchHeight._update()
+      }
+    });
   }
 }
 
@@ -1924,7 +2319,7 @@ function multiFiltersInit() {
       tagsItem: '.p-filters-tags-item-js',
       tagTextContainer: '.p-filters-tag-text-js',
       resultsPanel: '.p-filters-results-js',
-      tagsItemTpl: '<div class="p-filters-tags__item p-filters-tags-item-js"><i>Удалить</i><span class="p-filters-tag-text-js"></span></div>',
+      tagsItemTpl: '<div class="p-filters-tags__item p-filters-tags-item-js"><span class="p-filters-tag-text-js"></span><i>x</i></div>',
 
       dropOpenClass: 'p-filters-is-open',
       filtersOnClass: 'p-filters-on',
@@ -1961,388 +2356,35 @@ $(function () {
   }
 });
 
-/**! jquery.ms-rolls.js
- * Version: 2019.1.0
- * Author: Astronim*
- * Description: Extended toggle class
- */
-
-(function ($) {
-  'use strict';
-
-  var MsRolls = function (element, config) {
-    var self,
-        $element = $(element),
-        $panel = $(config.panel, $element),
-        isAnimated = false,
-        pref = 'ms-rolls',
-        pluginClasses = {
-          initClass: pref + '_initialized'
-        },
-        focusElements = 'input, a, [tabindex], area, select, textarea, button, [contentEditable=true]' + config.hand,
-        $panelWrap,
-        relativeStyles = {
-          position: '',
-          left: '',
-          top: '',
-          width: ''
-        },
-        showStyles = {
-          opacity: '',
-          'user-select': '',
-          'pointer-event': '',
-          'z-index': ''
-        },
-        absoluteStyles = {
-          position: 'absolute',
-          left: 0,
-          top: 0,
-          width: '100%'
-        },
-        hideStyles = {
-          opacity: 0,
-          'user-select': 'none',
-          'pointer-event': 'none',
-          'z-index': -1
-        };
-
-    var dataClpsd = $element.attr('data-rolls-collapsed');
-    var collapsed = (dataClpsd === "true" || dataClpsd === "false") ? dataClpsd === "true" : config.collapsed;
-
-    var callbacks = function () {
-          /** track events */
-          $.each(config, function (key, value) {
-            if (typeof value === 'function') {
-              $element.on('msRolls.' + key, function (e, param) {
-                return value(e, $element, param);
-              });
-            }
-          });
-        },
-        tabindexOn = function (_element) {
-          // Все элементы _element поставить в фокус-очередь
-          _element.attr('tabindex', '0');
-        },
-        tabindexOff = function (_element) {
-          // Все элементы _element убрать с фокус-очереди
-          _element.attr('tabindex', '-1');
-        },
-        open = function ($_panel) {
-          if (!$_panel.length) {
-            return false;
-          }
-
-          var $activePanelWrap = $_panel.parent(), // Ближайшая родительская обертка активной Панели
-              $activeParentsPanels = $_panel.parentsUntil(element, config.panel), // Все родительские Панели активной Панели
-              $otherActivePanelsWrap = $activeParentsPanels.parent(), // Все родительские Обертка активной Панели не включая ближайшую
-              $otherActiveHeader = $otherActivePanelsWrap.prev(config.header), // Все родительские Обертка активной Панели не включая ближайшую
-              $otherActiveParentsItems = $activeParentsPanels.parentsUntil(element, config.item) // Все родительские Элементы активной Панели
-          ;
-
-          // 1) Открыть все родительские Панели (без анимации)
-          // Добавить класс на активные родительские (не ближайшие) элементы
-          $activeParentsPanels.add($otherActiveParentsItems).add($otherActiveHeader).add($(config.hand, $otherActiveHeader)).addClass(config.modifiers.activeClass);
-
-          // Открывать родительские Панели необходимо, если, например, открывается вложенная Панель методом "open"
-          $activeParentsPanels
-              .css(relativeStyles)
-              .css(showStyles)
-              .data('active', true).attr('data-active', true); // Указать в data-атрибуте, что Панель открыта;
-
-          // 2) Открыть текущую панель (с анимацией)
-          $element.trigger('msRolls.beforeOpen');// Вызов события перед открытием текущей панели
-
-          var $activeItems = $_panel.closest(config.item), // Родительский Элемент активной Панели
-              $activeHeader = $activePanelWrap.prev(config.header); // Шапка активной Панели
-
-          // Добавить класс на активные элементы
-          $_panel.add($activeItems).add($activeHeader).add($(config.hand, $activeHeader)).addClass(config.modifiers.activeClass);
-
-          var callback = arguments[1];
-
-          $_panel.css(showStyles); // Панель делаем видимой до начала анимации
-
-          changeHeight($activePanelWrap, $_panel.outerHeight(), function () {
-            $_panel
-                .css(relativeStyles)
-                .data('active', true).attr('data-active', true); // Указать в data-атрибуте, что Панель открыта
-
-            $activePanelWrap.css({
-              position: '',
-              overflow: '',
-              'height': ''
-            });
-
-            if (config.accessibility) {
-              // Поставить в фокус-очередь все элементы с фокусировкой внутри активной Панели
-              tabindexOn($(focusElements, $_panel));
-
-              // В неактивных Панелях все элементы с фокусировкой убрать с фокус-очереди
-              tabindexOff($(focusElements, $_panel.find(config.panel).filter(function () {
-                return !$(this).data('active');
-              })));
-            }
-
-            // Вызов события после открытия текущей панели
-            $element.trigger('msRolls.afterOpen');
-
-            // Вызов callback функции после открытия панели
-            if (typeof callback === "function") {
-              callback();
-            }
-          });
-
-          if (collapsed) {
-            // Проверить у соседей всех родительских Элементов наличие активных Панелей
-            // Закрыть эти Панели
-            var $siblingsPanel = $_panel.parentsUntil($element, config.item).siblings().find(config.panel).filter(function () {
-              return $(this).data('active');
-            });
-
-            closePanel($siblingsPanel, function () {
-              isAnimated = false; // Анимация завершена
-            });
-          }
-        },
-        close = function ($_panel) {
-          if (!$_panel.length) {
-            return false;
-          }
-          // Закрыть отдельно все вложенные активные панели,
-          // И отдельно текущую панель.
-          // Это сделано с целью определения события закрытия текущей панели отдельно.
-
-          if (collapsed) {
-            // Закрыть активные панели внутри текущей
-            var $childrenOpenedPanel = $(config.panel, $_panel).filter(function () {
-              return $(this).data('active');
-            });
-
-            closePanel($childrenOpenedPanel);
-          }
-
-          // Закрыть текущую панель
-          $element.trigger('msRolls.beforeClose'); // Вызов события перед закрытием текущей панели
-          var callback = arguments[1];
-
-          closePanel($_panel, function () {
-            $element.trigger('msRolls.afterClose'); // Вызов события после закрытия текущей панели
-
-            // Вызов callback функции после закрытия панели
-            if (typeof callback === "function") {
-              callback();
-            }
-          });
-        },
-        closePanel = function ($_panel) {
-          if (!$_panel.length) {
-            return false;
-          }
-
-          var callback = arguments[1],
-              $curPanelWrap = $_panel.parent(); // родительская обертка активной Панели
-
-          var $curItems = $_panel.closest(config.item), // родительский Элемент активной Панели
-              $curHeader = $curPanelWrap.prev(config.header); // Шапка активной Панели
-
-          // Удалить активный класс со всех элементов
-          $_panel.add($curItems).add($curHeader).add($(config.hand, $curHeader)).removeClass(config.modifiers.activeClass);
-
-          // Закрыть панель
-          changeHeight($curPanelWrap, 0, function () {
-            $_panel
-                .css(absoluteStyles)
-                .css(hideStyles)
-                .data('active', false).attr('data-active', false); // Указать в data-атрибуте, что панель закрыта
-
-            $curPanelWrap.css('height', '');
-
-            // Web accessibility
-            if (config.accessibility) {
-              // Убрать с фокус-очереди все элементы с фокусировкой внутри текущей Панели
-              tabindexOff($(focusElements, $_panel));
-            }
-
-            // Вызов callback функции после закрытия панели
-            if (typeof callback === "function") {
-              callback();
-            }
-          });
-        },
-        changeHeight = function ($_wrap, _val) {
-          var callback = arguments[2];
-
-          $_wrap.css({
-            position: 'relative',
-            overflow: 'hidden'
-          }).animate({
-            'height': _val
-          }, config.animationSpeed, function () {
-
-            if (typeof callback === "function") {
-              callback();
-            }
-
-            isAnimated = false;
-          });
-        },
-        events = function () {
-          $element.on(config.event, config.hand, function (event) {
-            // Если панель во время клика находится в процессе анимации, то выполнение функции прекратится
-            if (isAnimated) {
-              event.preventDefault();
-              return false;
-            }
-
-            var $currentHand = $(this);
-            // Если текущий пункт не содержит панелей,
-            // то выполнение функции прекратится
-            if (!$currentHand.closest(config.item).has(config.panel).length) {
-              console.log(1);
-              return false;
-            }
-
-            // Начало анимирования панели
-            // Включить флаг анимации
-            isAnimated = true;
-
-            event.preventDefault();
-
-            var $currentPanel = $currentHand.closest(config.header).next().children(config.panel);
-
-            if ($currentPanel.data('active')) {
-              // Закрыть текущую панель
-              close($currentPanel, function () {
-                isAnimated = false; // Анимация завершина
-              });
-            } else {
-              // Открыть текущую панель
-              open($currentPanel, function () {
-                isAnimated = false; // Анимация завершина
-              });
-            }
-          });
-        },
-        init = function () {
-          $panelWrap = $('<div/>', {
-            class: 'rolls-panel-wrap-js',
-            css: {
-              position: 'relative',
-              overflow: 'hidden'
-            }
-          });
-
-          $panel.wrap($panelWrap);
-
-          $panel
-              .css(absoluteStyles)
-              .css(hideStyles);
-
-          var $activePanels = $panel.filter('.' + config.modifiers.activeClass);
-
-          // Добавить класс на активные элементы
-          var $activeItems = $activePanels.parents(config.item), // Все родительские Элементы активной Панели
-              $activeHeaders = $activePanels.parentsUntil(element).prev(config.header), // Все Шапки в родительских Элементах
-              $allActivePanels = $activeHeaders.next().children(config.panel); // Все родительские Панели
-
-          $activePanels.add($activeItems).add($activeHeaders).add($allActivePanels).add($(config.hand, $activeHeaders)).addClass(config.modifiers.activeClass);
-
-          // Открыть все родительские панели
-          $activePanels.add($allActivePanels).css(relativeStyles).css(showStyles);
-
-          // Удалить лишние внутренние стили у оберток активных Панелей
-          $activePanels.add($allActivePanels).parent().css({
-            // position: '',
-            overflow: ''
-          });
-
-          // На активные панели установить дата-атрибут active сo заначением true
-          $activePanels.add($allActivePanels).data('active', true).attr('data-active', true);
-
-          // Web accessibility
-          if (config.accessibility) {
-            // Переключатель поставить в фокус-очередь
-            tabindexOn($(config.hand, $element));
-            // Все элементы с фокусировкой внутри панелей убрать с фокус-очереди
-            tabindexOff($(focusElements, $panel));
-            // Все элементы с фокусировкой внутри активных панелей поставить в фокус-очередь
-            tabindexOn($(focusElements, $allActivePanels));
-          }
-
-          $element.addClass(pluginClasses.initClass);
-          $element.trigger('msRolls.afterInit');
-        };
-
-    self = {
-      callbacks: callbacks,
-      open: open,
-      close: close,
-      events: events,
-      init: init
-    };
-
-    return self;
-  };
-
-  $.fn.msRolls = function () {
-    var _ = this,
-        opt = arguments[0],
-        args = Array.prototype.slice.call(arguments, 1),
-        l = _.length,
-        i,
-        ret;
-    for (i = 0; i < l; i++) {
-      if (typeof opt === 'object' || typeof opt === 'undefined') {
-        _[i].msRolls = new MsRolls(_[i], $.extend(true, {}, $.fn.msRolls.defaultOptions, opt));
-        _[i].msRolls.init();
-        _[i].msRolls.callbacks();
-        _[i].msRolls.events();
-      } else {
-        ret = _[i].msRolls[opt].apply(_[i].msRolls, args);
-      }
-      if (typeof ret !== 'undefined') {
-        return ret;
-      }
-    }
-    return _;
-  };
-
-  $.fn.msRolls.defaultOptions = {
-    item: '.rolls__item-js', // Общий ближайший родитель (Элемент) для переключателя и разворачивающейся панели (Далее Панель)
-    header: '.rolls__header-js', // Обертка для переключателя (Шапка)
-    hand: '.rolls__hand-js', // Переключатель
-    panel: '.rolls__panel-js', // Панель
-    event: 'click', // Событие, которое разворачивает/сворачивает Панель
-    animationSpeed: 300, // Скорость анимации Панели
-    collapsed: true, // Параметр, указывающий на необходимось сворачивать ранее открытые Панели
-    accessibility: false, // Опримизировать переключение фокуса по табу (снижает скорость выполнения скрипта)
-    modifiers: {
-      activeClass: 'rolls-active' // Класс, который добавляется, на активный элементы
-    }
-  };
-
-})(jQuery);
-
 /**
- * Rolls
- */
-function rollsInit() {
-  var $catalogLinks = $('.catalog-links-js');
+ * !Change sorting state
+ * */
+function sortingState() {
+  var $sortingContainer = $('.p-sorting-js'),
+      _ascending = 'order-top',
+      _descending = 'order-bottom',
+      activeClass = 'active';
 
-  if ($catalogLinks.length) {
-    $catalogLinks.msRolls({
-      item: 'li',
-      header: 'li > em',
-      hand: 'li > em',
-      panel: 'ul',
-      animationSpeed: 200,
-      collapsed: false,
-      modifiers: {
-        activeClass: 'active'
-      }
-    })
-  }
+  var $sortingItems = $('a', $sortingContainer);
+
+  $sortingItems.on('click', function (e) {
+    var $this = $(this);
+    if (!$this.hasClass(activeClass)) {
+      $sortingItems.removeClass(activeClass);
+      $this.addClass(activeClass);
+      return;
+    }
+
+    if (!$this.hasClass(_ascending) && !$this.hasClass(_descending)) {
+      $this.addClass(_ascending);
+    } else {
+      $this.toggleClass(_ascending + ' ' + _descending);
+    }
+  })
 }
+
+
+
 
 /**
  * !Form validation
@@ -2390,6 +2432,7 @@ $(document).ready(function () {
   inputFocusClass();
   inputHasValueClass();
   customSelect($('select.cselect'));
+  // bannersSiblings();
   slidersInit();
   gridLayout();
   tabs();
@@ -2400,6 +2443,7 @@ $(document).ready(function () {
   rollsInit();
   toggleViewInit();
   multiFiltersInit();
+  sortingState();
 
   formValidation();
 });
