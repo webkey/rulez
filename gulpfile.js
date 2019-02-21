@@ -1,32 +1,32 @@
 'use strict';
 
-var gulp = require('gulp') // Подключение Gulp
-    , sass = require('gulp-sass') // Подключение Sass пакет https://github.com/dlmanning/gulp-sass
-    , browserSync = require('browser-sync').create() // Подключение Browser Sync
+var gulp = require('gulp')
+    , sass = require('gulp-sass')
+    , browserSync = require('browser-sync').create()
     , reload = browserSync.reload
-    , concat = require('gulp-concat') // Подключение gulp-concat (для конкатенации файлов)
-    , uglify = require('gulp-uglifyjs')// Подключение gulp-uglifyjs (для сжатия JS)
-    , cssnano = require('gulp-cssnano')// Подключение пакет для минификации CSS
+    , concat = require('gulp-concat')
+    , uglify = require('gulp-uglifyjs')
+    , cssnano = require('gulp-cssnano')
     , concatCss = require('gulp-concat-css')
-    , rename = require('gulp-rename')// Подключение библиотеку для переименования файлов
-    , del = require('del')// Подключение библиотеку для удаления файлов и папок
-    , imagemin = require('gulp-imagemin')// Подключение библиотеку для работы с изображениями
-    , pngquant = require('imagemin-pngquant')// Подключение библиотеку для работы с png
-    , cache = require('gulp-cache')// Подключение библиотеку кеширования
-    , autoprefixer = require('gulp-autoprefixer')// Подключение библиотеку для автоматического добавления префиксов
-    , sourcemaps = require('gulp-sourcemaps')// Подключение Source Map для дебагинга sass-файлов https://github.com/floridoo/gulp-sourcemaps
+    , rename = require('gulp-rename')
+    , del = require('del')
+    , imagemin = require('gulp-imagemin')
+    , pngquant = require('imagemin-pngquant')
+    , cache = require('gulp-cache')
+    , autoprefixer = require('gulp-autoprefixer')
+    , sourcemaps = require('gulp-sourcemaps')
     , fileinclude = require('gulp-file-include')
     , markdown = require('markdown')
-    , htmlbeautify = require('gulp-html-beautify')// Подключение
+    , htmlbeautify = require('gulp-html-beautify')
     , fs = require('fs')
-    , modernizr = require('modernizr')// For compiling modernizr.min.js
-    , config = require('./modernizr-config')// Path to modernizr-config.json
+    , modernizr = require('modernizr')
+    , config = require('./modernizr-config')
     , replace = require('gulp-string-replace')
-    , strip = require('gulp-strip-comments')// Удалить комментарии
-    , stripCssComments = require('gulp-strip-css-comments')// Удалить комментарии (css)
-    , removeEmptyLines = require('gulp-remove-empty-lines')// Удалить пустые строки
-    , revts = require('gulp-rev-timestamp')// Дабавить версии к подключаемым файлам
-    , beautify = require('gulp-beautify')// Причесать js
+    , strip = require('gulp-strip-comments')
+    , stripCssComments = require('gulp-strip-css-comments')
+    , removeEmptyLines = require('gulp-remove-empty-lines')
+    , revts = require('gulp-rev-timestamp')
+    , beautify = require('gulp-beautify')
     , index = require('gulp-index') // Для создания списка страниц https://www.npmjs.com/package/gulp-index
 ;
 
@@ -304,7 +304,7 @@ gulp.task('buildDist', ['cleanDist', 'html:buildAllPages', 'copyImgToDist', 'sas
       .pipe(revts()) // Добавить версии подключаемых файлов. В html добавить ключ ?rev=@@hash в место добавления версии
       .pipe(gulp.dest(path.dist));
 
-  gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess'])
+  gulp.src(['src/*.png', 'src/*.ico', 'src/.htaccess', 'src/manifest.webmanifest', 'src/*.json'])
       .pipe(gulp.dest(path.dist));
 
 });

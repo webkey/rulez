@@ -81,9 +81,10 @@
   max-width: 50%
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
 .header-top__r
   width: $header-top__r-width
@@ -92,15 +93,17 @@
   align-items: flex-start
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
-
-  & > div
-    // for ie 9
+  @if $ie9
     .no-flexwrap &
       display: inline-block
       vertical-align: top
+
+  & > div
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
 /* navigation
 .nav
@@ -398,9 +401,10 @@
     margin-left: 2.8rem
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
   // tooltip
   &[data-title]::before
@@ -597,9 +601,10 @@
   margin-top: -1.2rem
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
 .logo
   position: relative
@@ -658,14 +663,17 @@
     border-radius: round-float($height / 2, 1)
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
-  // for ie 9
-  .no-flexwrap & > div
-    display: inline-block
-    vertical-align: top
+  & > div
+    // for ie 9
+    @if $ie9
+      .no-flexwrap
+        display: inline-block
+        vertical-align: top
 
 .site-nav__grid
   position: relative
@@ -673,10 +681,12 @@
   align-items: center
   margin: 0 0.5rem
 
+  & > div
   // for ie 9
-  .no-flexwrap & > div
-    display: inline-block
-    vertical-align: top
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
   &:last-child
     flex-grow: 1
@@ -844,11 +854,13 @@ a.catalog-opener
     user-select: auto
 
 .catalog-menu
+  max-height: calc(100vh - #{$header-height} - 2rem)
+  overflow: auto
+  margin-bottom: $bottom-space
+  padding: 3rem
   background: white
   box-shadow: 0 12px 10px rgba(0, 0, 0, 0.17)
   border-radius: 7px
-  margin-bottom: $bottom-space
-  padding: 3rem
   transform-origin: 20rem top
   $translate: 0, -1rem
   $scale: 0.8, 0.8
@@ -882,7 +894,7 @@ $cat-columns--desk-lg: 5
   padding: 0
   margin: 0 -#{round($cat-item-space / 2)}
 
-  .catalog-menu &
+  //.catalog-menu &
     margin-bottom: -#{$cat-item-space * 2}
 
 .catalog-menu__item
@@ -900,9 +912,10 @@ $cat-columns--desk-lg: 5
     flex-basis: $width
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
 .catalog-menu__title
   margin-bottom: 2rem
@@ -925,16 +938,18 @@ $cat-columns--desk-lg: 5
     min-height: 3rem // Компенсировать разную высоту иконок
     text-decoration: none
     color: $base-color
-    margin-right: 1rem
+    //margin-right: 1rem
 
   & > a
     +underlinedLinks($base-color)
 
   & > a, & > span
+
     // for ie 9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
     & > svg
       display: inline-block
@@ -948,7 +963,7 @@ $cat-columns--desk-lg: 5
 
 .catalog-menu__links
   $angle-size: 2.0rem
-  $arrow-size: 0.8rem
+  $arrow-size: 0.6rem
 
   list-style: none
   margin: 0 0 2rem
@@ -984,7 +999,7 @@ $cat-columns--desk-lg: 5
 
     &.has-items
       & > a, & > span
-        margin-right: $angle-size + 0.3
+        margin-right: $angle-size + 0.8
 
     a
       text-decoration: none
@@ -1002,11 +1017,13 @@ $cat-columns--desk-lg: 5
       overflow: hidden
       cursor: pointer
       z-index: 5
-      border-radius: 0.4rem
+      color: currentColor
+      border: 1px solid currentColor
+      border-radius: round-float($angle-size / 2, 1)
       user-select: none
       -webkit-tap-highlight-color: transparent
       // transition
-      $prop: transform
+      $prop: transform, color
       will-change: $prop
       transition:
         property: $prop
@@ -1022,13 +1039,7 @@ $cat-columns--desk-lg: 5
         width: $arrow-size
         background-color: currentColor
         pointer-events: none
-        margin: -0.1rem -0.6rem
-        // transition
-        $prop: background-color
-        transition:
-          property: $prop
-          duration: $animation-speed
-          timing-function: ease-in-out
+        margin: -0.1rem -0.5rem
 
       &::before
         transform: rotate(45deg)
@@ -1039,8 +1050,7 @@ $cat-columns--desk-lg: 5
         right: 50%
 
       &:hover
-        &::before, &::after
-          background-color: $base-color
+        color: $base-color
 
   ul
     list-style: none
@@ -1428,10 +1438,11 @@ $search-btn-space: 0 0.5rem
     padding: 0 0 nth($footer-grid-space--tab, 2)
 
   //for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
-    width: 25%
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: 25%
 
 .footer-grid__item_catalog
   flex-basis: 50%
@@ -1724,13 +1735,14 @@ $search-btn-space: 0 0.5rem
     flex-basis: 500px
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
-    width: calc(33.33% - 5px)
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: calc(33.33% - 5px)
 
-    +media('<mob-lg')
-      width: 100%
+      +media('<mob-lg')
+        width: 100%
 
   +media('<mob-lg')
     min-width: 100%
@@ -2079,9 +2091,10 @@ $search-btn-space: 0 0.5rem
     padding: 0 0.5rem 1rem 0
 
     // for ie 9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
   a
     display: inline-block
@@ -2110,17 +2123,18 @@ $search-btn-space: 0 0.5rem
 /* category-links end
 
 /* advise
-$advise-figure-size: 6.4rem 6.4rem
+$advise-figure-size: 9.2rem 9.2rem
 $advise-figure-space: 2rem
-.advise-box
+$advise-content-space: nth($advise-figure-size, 2) + $advise-figure-space
+.advise
   overflow: hidden
 
   .m-aside &
     padding-right: 1px
 
-.advise
+.advise__contact
   position: relative
-  padding: 2.0rem 1.6rem 1.6rem
+  padding: 3.7rem 1.6rem
   background-color: white
   box-shadow: 0 0 3px rgba(black, 0.17)
   z-index: 1
@@ -2128,15 +2142,16 @@ $advise-figure-space: 2rem
 
 .advise__figure
   float: left
+  overflow: hidden
+  position: relative
   padding: 0
   margin-right: $advise-figure-space
+  margin-top: -0.7rem
   height: nth($advise-figure-size, 1)
   width: nth($advise-figure-size, 2)
   border-radius: round-float(nth($advise-figure-size, 1) / 2, 1)
-  overflow: hidden
-  position: relative
-  border: 3px solid #efefef
-  
+  border: 4px solid #efefef
+
   img
     display: block
     border-radius: round-float(nth($advise-figure-size, 1) / 2, 1)
@@ -2146,44 +2161,53 @@ $advise-figure-space: 2rem
 
 .advise__name
   display: block
-  margin-left: nth($advise-figure-size, 2) + $advise-figure-space
+  margin-left: $advise-content-space
   +font-bold
   font-size: 1.6rem
   line-height: 2.0rem
   color: #000
-  margin-bottom: 1rem
+  margin-bottom: 0.2rem
 
   &:last-child
     margin-bottom: 0
 
 .advise__past
   display: block
-  margin-left: nth($advise-figure-size, 2) + $advise-figure-space
+  margin-left: $advise-content-space
   font-size: 1.4rem
   line-height: 1.8rem
   color: #9b9b9b
-  margin-bottom: 1rem
+  margin-bottom: 0.6rem
 
   &:last-child
     margin-bottom: 0
 
 .advise-chat
   display: block
-  margin-left: nth($advise-figure-size, 2) + $advise-figure-space
+  margin-left: $advise-content-space
   overflow: hidden
 
 .advise-chat__list
   list-style: none
-  padding: 0
-  margin: 0 0 -1rem
   +clear
+
+  &, .#{$user-content} &
+    padding: 0
+    margin: 0 -0.6rem -1rem
 
   li
     float: left
-    margin: 0 1rem 1rem 0
+
+  &, .#{$user-content} &
+    li
+      margin: 0 0.7rem 0.7rem 0
+      padding: 0
+
+      &::before
+        content: none
 
   a
-    $size: 2.4rem
+    $size: 4rem
     display: block
     height: $size
     width: $size
@@ -2194,23 +2218,23 @@ $advise-figure-space: 2rem
     background-image: url(../../img/sprite-chat.jpg)
 
     &.chat-viber
-      background-position: -4px -4px
+      background-position: -5px -3px
 
     &.chat-telegram
-      background-position: -38px -4px
+      background-position: -51px -3px
 
     &.chat-whatsapp
-      background-position: -77px -4px
+      background-position: -102px -3px
 
-.advise-btn
+.advise__callback
   display: block
   text-decoration: none
   +font-bold
-  font-size: 1.4rem
-  line-height: 2.0rem
+  font-size: 1.7rem
+  line-height: 2.5rem
   text-align: center
   background-color: #ffe99c
-  padding: 8px
+  padding: 10px
   color: #000
   // transition
   $prop: background-color
@@ -2221,14 +2245,66 @@ $advise-figure-space: 2rem
 
   & > span
     display: block
-    padding: 1.5rem 2rem
+    padding: 2rem 2.5rem
     background-color: white
     border-radius: 3px
     box-shadow: inset 0 0 0 1px #efefef
 
   //hover
   &:hover
-    background-color: $base-color-alt
+    background-color: $base-color
+
+// advise_small
+$advise-figure-size--small: 6.4rem 6.4rem
+$advise-figure-space--small: 2rem
+$advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figure-space--small
+.advise_small
+  .advise__contact
+    padding: 2.0rem 1.6rem
+
+  .advise__figure
+    margin-right: $advise-figure-space--small
+    margin-top: -0.4rem
+    height: nth($advise-figure-size--small, 1)
+    width: nth($advise-figure-size--small, 2)
+    border-radius: round-float(nth($advise-figure-size--small, 1) / 2, 1)
+    border-width: 3px
+
+    img
+      border-radius: round-float(nth($advise-figure-size--small, 1) / 2, 1)
+
+  .advise__name, .advise__past, .advise-chat
+    margin-left: $advise-content-space--small
+
+  .advise-chat__list
+    &, .#{$user-content} &
+      margin: 0 -0.2rem -1rem
+
+    a
+      $size: 2.4rem
+      height: $size
+      width: $size
+      background-size: 103px
+
+      &.chat-viber
+        background-position: -5px -4px
+
+      &.chat-telegram
+        background-position: -38px -4px
+
+      &.chat-whatsapp
+        background-position: -73px -4px
+
+  .advise__callback
+    font-size: 1.4rem
+    line-height: 2.0rem
+    padding: 8px
+
+    & > span
+      padding: 1.5rem 2rem
+
+
+
 
 /* advise end
 
@@ -2414,9 +2490,11 @@ a.opinion
   flex-basis: 50%
   flex-grow: 1
 
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
+  // for ie 9
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
   .opinion
     height: 100%
@@ -2468,9 +2546,10 @@ a.opinion
       timing-function: ease-in-out
 
     // for ie 9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
     // touch
     &.touchevents
@@ -2507,10 +2586,12 @@ $product-item-space: 2rem 2.4rem
   flex-direction: column
   justify-content: space-between
   height: 100%
-  background-color: white
+  //background-color: white // нельзя использовать заливку фона
+  z-index: 1
 
-.product__header
+.product__main
   width: 100%
+  min-height: 36.7rem
   margin-bottom: 2rem
   padding: nth($product-item-space, 1) nth($product-item-space, 2) 0
 
@@ -2519,26 +2600,43 @@ $product-item-space: 2rem 2.4rem
 
   & > a
     display: block
-    margin-bottom: 1rem
+    margin-bottom: 0.7rem
     text-decoration: none
     color: currentColor
+    -webkit-tap-highlight-color: transparent
 
     &:last-child
       margin-bottom: 0
 
 .product__figure
-  margin-bottom: 4.5rem
+  display: flex
+  justify-content: center
+  align-items: center
+  margin-bottom: 1rem
   position: relative
+  height: 23.2rem
+  // transition
+  $prop: transform
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: 0.2s
 
   &:last-child
     margin-bottom: 0
 
   img
     display: block
-    width: 100%
-    height: 100%
-    max-width: none
-    +object-fit(scale-down)
+    max-height: 100%
+    max-width: 100%
+    //width: 100%
+    //height: 100%
+    //max-width: none
+    //+object-fit(scale-down)
+
+  // hover
+  //&:hover
+    transform: scale(1.1) translateZ(0)
 
 // for js
 .product-figure_copy-js
@@ -2572,19 +2670,147 @@ $product-item-space: 2rem 2.4rem
     margin-bottom: 0
 
 .product__rate
+  $width: 90px
+  overflow: hidden
   display: block
-  width: 90px
+  width: $width + 8
+  margin-left: -4px
+  background: url(../../img/rate-empty.svg) no-repeat center
+  background-size: $width
 
   & > span
     display: block
-    width: 100%
+    width: $width
     height: 14px
-    background: url(../../img/rate.jpg) no-repeat 0 0
+    background: url(../../img/rate-full.svg) no-repeat 4px center
+    background-size: $width
 
+// --- product__meta ---
+.product__meta
+  position: relative
+
+// --- product__aim ---
+.product__aim
+  margin-bottom: 1.8rem
+  display: none
+
+  &:last-child
+    margin-bottom: 0
+
+.product__aim-btn
+  position: relative
+  display: inline-block
+  vertical-align: top
+  padding: 0.3rem 0 0.3rem 3.6rem
+  font-size: 1.4rem
+  line-height: 1.8rem
+  text-decoration: none
+  text-align: left
+  color: #000
+  // transition
+  $prop: background-color, color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
+  .product__aim &
+    margin: 0 3.5rem 1rem 0
+
+  & > i
+    $size: 2.2rem
+    position: absolute
+    left: 0
+    top: 50%
+    width: $size
+    height: $size
+    transform: translate(0, -50%)
+
+    svg
+      display: inline-block
+      vertical-align: top
+      width: $size
+      height: $size
+
+      path
+        fill: $base-color
+        // transition
+        $prop: fill, stroke
+        transition:
+          property: $prop
+          duration: $animation-speed
+          timing-function: ease-in-out
+
+  & > span
+    box-shadow: inset 0 -2px 0 rgba(black, 0.5)
+    // transition
+    $prop: box-shadow
+    //will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  // hover
+  &:hover
+    & > span
+      box-shadow: inset 0 0 0 transparent
+
+// favorite/like
+.product__aim-btn_like
+  & > i
+    svg
+      path
+        fill: transparent
+        stroke: #ef4180
+
+  &.added
+    & > i
+      svg
+        path
+          fill: #ef4180
+
+// compare
+.product__aim-btn_compare
+  & > i
+    svg
+      path
+        fill: #ccc
+
+  &.added
+    & > i
+      svg
+        path
+          fill: $base-color
+
+// --- products__feature ---
+.products__feature
+  margin: 0
+  padding: 0
+  list-style: none
+  display: none
+  font-size: 1.2rem
+  line-height: 1.4rem
+  color: #858585
+
+  li
+    padding-left: 0
+    margin-bottom: 0.3rem
+
+    &::before
+      content: none
+
+    & > span
+      color: #282828
+
+// --- product__footer ---
 .product__footer
   padding: 0 nth($product-item-space, 2)
 
-.product__meta
+// --- product__offer ---
+.product__offer
   display: flex
   justify-content: space-between
   align-items: center
@@ -2592,57 +2818,65 @@ $product-item-space: 2rem 2.4rem
   min-height: 3.2rem
 
 .product__stock
-  display: flex
-  align-items: center
+  position: relative
+  display: inline-block
+  vertical-align: top
+  padding: 0.3rem 0 0.3rem 2.8rem
   flex-basis: 50%
   font-size: 1.2rem
-  line-height: 1.6rem
+  line-height: 1.4rem
   color: #000
 
-  // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
-    width: calc(50% - 6px)
-
-  & > svg
+  & > i
     $size: 1.8rem
-    display: inline-block
-    vertical-align: top
+    position: absolute
+    left: 0
+    top: 50%
     width: $size
     height: $size
+    border: 1px solid $base-color
+    border-radius: round-float($size / 2, 1)
+    transform: translate(0, -50%)
 
-    path
-      fill: $base-color
-
-    & + span
-      padding-left: 0.8rem
-
-  & > span
-    padding-top: 0.2rem
-
-    // for ie 9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    &::before
+      $size: 0.5rem 0.8rem
+      content: ""
+      display: block
+      position: absolute
+      left: 50%
+      top: 50%
+      height: nth($size, 1)
+      width: nth($size, 2)
+      margin: -#{round-float(nth($size, 1)/2, 1) + 0.1} 0 0 -#{round-float(nth($size, 2)/2, 1)}
+      border-style: solid
+      border-color: inherit
+      border-width: 0 0 1px 1px
+      transform: rotate(-45deg)
 
   // off
   &.off
     color: #c3c3c3
 
-    & > svg path
-      fill: currentColor
+    & > i
+      border-color: currentColor
 
+      &::before
+        transform: rotate(0deg)
+        height: 0
+        margin-top: 0
+
+// --- product price ---
 .product__price
   flex-basis: 50%
   text-align: right
   line-height: 1
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
-    width: calc(50% - 6px)
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: calc(50% - 6px)
 
   // off
   &.off
@@ -2682,25 +2916,27 @@ $product-item-space: 2rem 2.4rem
       transform: rotate(-42deg)
 
 .product__price-new
+  line-height: 3.2rem
+  margin-left: 1rem
+
   & > strong
     display: inline-block
     vertical-align: baseline
     +font-bold
     font-size: 2.4rem
-    line-height: 3.2rem
 
   & > em
     display: inline-block
     vertical-align: baseline
     font-style: normal
     font-size: 1.4rem
-    line-height: 1.8rem
 
+// product__option
 .product__option
   position: relative
   display: flex
   justify-content: space-between
-  align-items: center
+  align-items: stretch
   line-height: 1
   margin: 0 -#{nth($product-item-space, 2) - 0.5}
   z-index: 1
@@ -2726,12 +2962,18 @@ $product-item-space: 2rem 2.4rem
     border-width: 0 0 0 2px
     margin-left: -1px
 
-.product__option-btn
+.product__option-item
   flex-grow: 1
   flex-basis: 50%
-  display: flex
-  align-items: center
-  justify-content: center
+
+  &.hide-for-list
+    display: block
+
+  &.show-for-list
+    display: none
+
+// --- opt-btn-like ---
+.opt-btn-like
   padding: 1.8rem 1rem
   font-size: 1.2rem
   line-height: 1.6rem
@@ -2744,12 +2986,96 @@ $product-item-space: 2rem 2.4rem
     property: $prop
     duration: $animation-speed
     timing-function: ease-in-out
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
   // for ie 9
-  .no-flexwrap &
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: calc(50% - 6px)
+
+  & > i
+    $size: 2.2rem
     display: inline-block
     vertical-align: top
-    width: calc(50% - 6px)
+    width: $size
+    height: $size
+
+    svg
+      display: inline-block
+      vertical-align: top
+      width: $size
+      height: $size
+
+      path
+        fill: transparent
+        stroke: #ef4180
+        // transition
+        $prop: fill, stroke
+        transition:
+          property: $prop
+          duration: $animation-speed
+          timing-function: ease-in-out
+
+  & > span
+    padding-top: 0.2rem
+    padding-right: 1rem
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+  // hover
+  &:hover
+    background-color: $base-color
+    color: white
+
+    & > i
+      svg
+        path
+          fill: transparent
+          stroke: white
+
+  // added
+  &.added
+    & > i
+      svg
+        path
+          fill: #ef4180
+
+    &:hover
+      & > i
+        svg
+          path
+            fill: white
+
+// --- opt-btn-buy ---
+.opt-btn-buy
+  padding: 1.8rem 1rem
+  font-size: 1.2rem
+  line-height: 1.6rem
+  text-decoration: none
+  text-align: center
+  color: #000
+  // transition
+  $prop: background-color, color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
+  // for ie 9
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: calc(50% - 6px)
 
   & > i
     $size: 2.2rem
@@ -2767,7 +3093,7 @@ $product-item-space: 2rem 2.4rem
       path
         fill: $base-color
         // transition
-        $prop: fill
+        $prop: fill, stroke
         transition:
           property: $prop
           duration: $animation-speed
@@ -2778,40 +3104,18 @@ $product-item-space: 2rem 2.4rem
     padding-right: 1rem
 
     // for ie 9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
-  // favorites
-  &:first-child
-    & > i
-      svg
-        &.svg-ico-unlike
-          display: none
+.opt-btn-buy__buy
+  display: none
 
-        path
-          fill: #ef4180
+.opt-btn-buy__in-cart
+  display: none
 
-    &.added
-      & > i
-        svg
-          &.svg-ico-like
-            display: none
-
-          &.svg-ico-unlike
-            display: inline-block
-
-  // added
-  &.added:nth-child(2)
-    & > i
-      background-color: $base-color
-      border-radius: 0.1rem
-      box-shadow: 0 0 0 6px rgba($base-color, 1)
-
-      svg
-        path
-          fill: white
-
+.opt-btn-buy
   // hover
   &:hover
     background-color: $base-color
@@ -2821,6 +3125,32 @@ $product-item-space: 2rem 2.4rem
       svg path
         fill: white
 
+  // added
+  &.added
+    & > i
+      background-color: $base-color
+      border-radius: 0.1rem
+      box-shadow: 0 0 0 6px rgba($base-color, 1)
+
+      svg
+        path
+          fill: white
+
+    .opt-btn-buy__to-cart
+      display: none
+
+    .opt-btn-buy__in-cart
+      display: block
+
+// button in product__option-item
+.opt-btn-like, .opt-btn-buy, .btn-def-alt
+  .product__option-item &
+    height: 100%
+    display: flex
+    align-items: center
+    justify-content: center
+
+// --- product__sale ---
 .product__sale
   $size: 3.4rem
   position: absolute
@@ -2853,6 +3183,190 @@ $product-item-space: 2rem 2.4rem
 
 .product__label_day
   background-color: $base-color
+
+//==== list view
+[data-view="list-view"]
+  $product-item-space: 3.2rem 2.6rem
+  $offer-width: 23.6rem
+
+  .product
+    flex-direction: row
+
+  .product__main
+    $width: calc(100% - #{$offer-width})
+    width: $width
+    min-height: 0
+    flex-basis: $width
+    //flex-grow: 1
+    margin: 0
+    padding: nth($product-item-space, 1) nth($product-item-space, 2)
+
+    & > a
+      display: inline
+      margin: 0
+
+  .product__figure
+    float: left
+    height: 25.8rem
+    width: 50%
+    margin-bottom: 0
+    padding-right: round-float(nth($product-item-space, 2) / 2, 1)
+
+  .product__title, .product__meta, .products__feature
+    float: right
+    clear: right
+    width: 50%
+    padding-left: round-float(nth($product-item-space, 2) / 2, 1)
+
+  .product__title
+    margin-bottom: 0.6rem
+
+  .product__meta
+    margin-bottom: 1.1rem
+
+  .product__rate
+    margin-bottom: 1.9rem
+
+  .product__aim
+    display: block
+
+  .products__feature
+    display: block
+
+  .product__footer
+    $width: $offer-width
+    width: $width
+    flex-basis: $width
+    //flex-grow: 1
+    margin: 0
+    padding: nth($product-item-space, 1) 0
+
+    &::before
+      content: ""
+      display: block
+      position: absolute
+      top: nth($product-item-space, 1)
+      bottom: nth($product-item-space, 1)
+      width: 0
+      border-left: 1px solid $border-color
+
+  .product__offer
+    flex-direction: column
+    justify-content: space-between
+    align-items: flex-end
+    height: auto
+    min-height: 10rem
+    margin: 0 0 2rem
+    padding: 0 nth($product-item-space, 2)
+
+  .product__stock
+    padding: 0.5rem 0 0.5rem 3rem
+
+    & > i
+      $size: 2.2rem
+      width: $size
+      height: $size
+      border-radius: round-float($size / 2, 1)
+
+      &::before
+        $size: 0.6rem 1rem
+        height: nth($size, 1)
+        width: nth($size, 2)
+        margin: -#{round-float(nth($size, 1)/2, 1) + 0.1} 0 0 -#{round-float(nth($size, 2)/2, 1)}
+
+    &.off
+      & > i
+        &::before
+          height: 0
+          margin-top: 0
+
+  .product__option
+    display: block
+    margin: 0
+    padding: 0 nth($product-item-space, 2)
+
+    &::before, &::after
+      display: none
+
+  .product__option-item
+    margin-bottom: 1rem
+
+    &.hide-for-list
+      display: none
+
+    &.show-for-list
+      display: block
+
+  // --- opt-btn-like ---
+  .opt-btn-like
+    display: none
+
+  // --- opt-btn-buy ---
+  .opt-btn-buy
+    position: relative
+    padding: 1.2rem 3.8rem
+    +font-bold
+    +font(1.8rem, 2.2rem)
+    color: $btn-text-color
+    background-color: $btn-bg-color
+    border-radius: 4px
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4)
+
+    & > i
+      display: none
+
+    & > span
+      padding: 0
+
+  .opt-btn-buy__to-cart
+    display: none
+
+  .opt-btn-buy__buy
+    display: block
+
+  .opt-btn-buy
+    // hover
+    &:hover
+      color: #000
+      box-shadow: 0 3px 6px rgba(black, 0.3)
+      top: -1px
+
+    // active
+    &:active
+      top: 0
+      box-shadow: none
+
+    // added
+    &.added
+      .opt-btn-buy__buy
+        display: none
+
+  .product__price
+    flex-basis: auto
+
+  .product__price-old,
+  .product__price-new
+    line-height: 4rem
+
+  .product__price-old
+    & > strong, & > em
+      font-size: 2rem
+
+  .product__price-new
+    & > strong, & > em
+      font-size: 3.0rem
+
+  .product__sale
+    $size: 5rem
+    right: auto
+    top: nth($product-item-space, 1)
+    left: calc((100% - #{$offer-width}) / 2)
+    width: $size
+    height: $size
+    font-size: 1.8rem
+    line-height: $size
+    margin-left: -($size + round-float(nth($product-item-space, 2) / 2, 1))
+    border-radius: round-float($size / 2, 1)
 
 /* product item end
 
@@ -2934,15 +3448,17 @@ $tl-columns: 4
 .topics__item
   width: calc(#{round-float(100% / $tl-columns, 2)} - #{$tl-item-space})
   margin: 0 round($tl-item-space / 2) $tl-item-space
+  background-color: white
 
   // show on scroll
   //html:not(.no-js) &
     visibility: hidden
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
 
   .product, .topic-banner
     height: 100%
@@ -2976,6 +3492,12 @@ $tl-columns: 4
       margin: 0 auto
       width: auto
       max-width: 100%
+
+  .products__list &
+    position: relative
+    flex-basis: 100%
+    width: 100%
+    z-index: 15
 
 /* main-banners end
 
@@ -3011,10 +3533,11 @@ $tl-columns: 4
     timing-function: ease-in-out
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
-    width: calc(20% - 6px)
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: calc(20% - 6px)
 
   // touch
   .touchevents &
@@ -3094,9 +3617,10 @@ $tl-columns: 4
       timing-function: ease-in-out
 
     // for ie 9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
     // touch
     &.touchevents
@@ -3168,7 +3692,7 @@ $gz-columns: 4
   .no-touchevents &:hover
     $size: 1rem
     transform: translate(-$size, -$size)
-    box-shadow: $size $size 0 rgba(black, 0.5)
+    box-shadow: $size $size 0.8rem rgba(black, 0.5)
 
   // active
   .no-touchevents &:active
@@ -3340,10 +3864,11 @@ a.article-tiles__inner
     timing-function: ease-in-out
 
   // for ie 9
-  .no-flexwrap &
-    display: inline-block
-    vertical-align: top
-    width: calc(20% - 6px)
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+      width: calc(20% - 6px)
 
   // touch
   .touchevents &
@@ -3423,6 +3948,7 @@ $products-border-width: 1px
   justify-content: stretch
   flex-flow: row wrap
   margin: 0 -#{$products-border-width}
+  background-color: white
 
 .products__item
   $width: round-float(100%/4, 2)
@@ -3440,7 +3966,6 @@ $products-border-width: 1px
     position: absolute
     border: 0 solid $border-color
     //border: 0 solid red
-    z-index: 10
     user-select: none
     pointer-events: none
     -webkit-tap-highlight-color: transparent
@@ -3485,12 +4010,12 @@ $products-border-width: 1px
 // variables
 $m-container-space: 0 3rem !default
 
-$p-filters-width: 342px !default
+$p-filters-width: 348px !default
 
 $p-filters-angle-size: 2.4rem !default
 $p-filters-angle-arrow-size: 0.8rem !default // width height
 
-$p-filters-space: 3rem 0 !default // v h
+$p-filters-space: 1.4rem 0 !default // v h
 
 $p-options-height--mob: 50px
 
@@ -3856,6 +4381,12 @@ $shutter-space: 20px 30px !default
 /* p-sorting end
 
 /* filters tags
+.m-tags
+  display: none
+
+  .filters-results-show &
+    display: block
+
 .p-filters-tags
   //position: sticky
   //top: 0
@@ -3863,11 +4394,7 @@ $shutter-space: 20px 30px !default
   position: relative
   line-height: 2.0rem
   margin-left: -1rem
-  display: none
   -webkit-tap-highlight-color: transparent
-
-  .filters-results-show &
-    display: block
 
 .p-filters-tags__item
   $this-icon-lines-width: 10px
@@ -3881,6 +4408,8 @@ $shutter-space: 20px 30px !default
   white-space: nowrap
   cursor: pointer
   margin-left: 1rem
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
   & > span
     margin-right: $this-icon-lines-width + 3
@@ -3980,6 +4509,7 @@ $shutter-space: 20px 30px !default
 .p-filters-item
   position: relative
   border: solid $border-color
+  padding: 1.9rem 0
   border-width: 0 0 1px
 
 // switcher
@@ -4031,11 +4561,6 @@ $shutter-space: 20px 30px !default
 
 // counter
 .p-filters-selected
-  position: absolute
-  right: 5px
-  top: 3px
-  z-index: 2
-  +font(1.4rem, round-float(18/14, 2))
   opacity: 0
   pointer-events: none
   //===================
@@ -4043,6 +4568,12 @@ $shutter-space: 20px 30px !default
   will-change: $param
   transition:
     property: $param
+
+  &::before
+    content: "("
+
+  &::after
+    content: ")"
 
   &.filters-selected-show
     opacity: 1
@@ -4161,18 +4692,16 @@ label.checkbox_value
 
 /* filters-results
 .p-filters-results
+  display: flex
+  justify-content: space-between
+  align-items: center
   position: absolute
   bottom: 0
   height: 50px
   width: $p-filters-width
-  background-color: $header-bg
-  //border: solid $header-bg
-  //background-color: #eee
-  //border: solid $border-color
-  //border-width: 1px 0
-  color: white
-  display: flex
-  justify-content: space-between
+  background-color: $base-color-alt
+  color: #000
+  z-index: 1
   opacity: 0
   visibility: hidden
   pointer-events: none
@@ -4203,7 +4732,6 @@ label.checkbox_value
       position: fixed
       left: 0
       bottom: 0
-  //overflow: hidden
 
   .results-loading
     +size(calc(100% + 2px))
@@ -4211,7 +4739,7 @@ label.checkbox_value
     left: -1px
     top: -1px
     +font-bold
-    +font(1.6rem, 50px)
+    +font(1.4rem, 50px)
     color: white
     text-align: center
     z-index: 5
@@ -4228,31 +4756,19 @@ label.checkbox_value
 
 // selected
 .p-filters-results__selected
-  +padding-horizontal(10px)
-  +clear-spacing
-  line-height: 1
-  text-align: center
-
-  flex: 1 1
-
-  &::before
-    content: ""
-    +display-inline-block-middle
-    height: 100%
+  padding: 0.5rem 1rem
+  flex-grow: 1
 
 .p-filters-results__selected__align
-  +display-inline-block-middle
-  max-width: calc(100% - 2px)
   text-align: left
 
 .p-filters-results__selected__label
   +font-light
-  +font(1.2rem, round-float(16/12, 2))
-  letter-spacing: 0.05em
+  +font(1.2rem, 1.6rem)
   text-transform: uppercase
 
 .p-filters-results__selected__count
-  +font-alt-bold
+  +font-bold
   +font(1.4rem, round-float(16/14, 2))
   letter-spacing: normal
 
@@ -4261,50 +4777,47 @@ label.checkbox_value
 
 // apply btn
 .p-filters-results__apply
-  +display-inline-block-top
-  padding: 5px 2px 5px 0
+  padding: 0.5rem 1rem
+  flex-grow: 1
 
   .btn-filters-apply
-    +display-inline-block-top
-    //height: calc(100% + 2px)
-    height: 100%
-    //margin: -1px 0
-    padding: 0 10px
+    display: block
+    padding: 1.2rem 1rem 1rem
     +font-bold
-    +clear-spacing
-    line-height: 1
-    color: white
+    font-size: 1.4rem
+    line-height: 1.8rem
     text-transform: uppercase
-    background-color: $header-bg
-    border: 2px solid white
+    background-color: $base-color
+    border-radius: 2rem
+    color: white
     z-index: 1
-
-    flex: 1 1
-
-    &::before
-      content: ""
-      +display-inline-block-middle
-      height: 100%
-
-    span
-      +display-inline-block-middle
-      +font(13px, 20px)
-      letter-spacing: 0.05em
-      max-width: calc(100% - 2px)
+    // transition
+    $prop: background-color, color
+    //will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
 
     // hover
     .no-touchevents &:hover
       color: $header-bg
       background-color: white
-//background-color: tint($btn-bg-hover-color, 80)
 
 // btn-clear-filters
 .btn-clear-filters
-  +size(52px)
+  +size(5rem)
   padding: 0
-  background-color: $header-bg
-  border: 2px solid $header-bg
+  background-color: #ff622e
+  border: none
   color: white
+  // transition
+  $prop: background-color, color
+  //will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
 
   svg
     +size(36px)
@@ -4314,14 +4827,11 @@ label.checkbox_value
 
   // hover
   .no-touchevents &:hover
-    background-color: white
-    border-color: $btn-bg
-    color: $btn-bg
+    background-color: #ff2b0a
 
   // focus
   &:disabled
-    background-color: $header-bg !important
-    border-color: $header-bg !important
+    background-color: $btn-disabled-color !important
     color: white !important
 
 .loader-cover
@@ -4381,8 +4891,8 @@ label.checkbox_value
 /* toggle filters for devices end
 
 /* collections
-$collections-space: 3.0rem 4.0rem
-$collections-title-width: 14rem
+$collections-space: 2.2rem 4.7rem
+$collections-title-width: 12.5rem
 .collections
   position: relative
   padding: $collections-space
@@ -4394,8 +4904,8 @@ $collections-title-width: 14rem
     content: ""
     display: block
     position: absolute
-    top: nth($collections-space, 1)
-    bottom: nth($collections-space, 1)
+    top: nth($collections-space, 1) + 0.5
+    bottom: nth($collections-space, 1) + 0.5
     left: $collections-title-width + nth($collections-space, 2)
     width: 0
     border-left: 1px solid $border-color
@@ -4412,11 +4922,12 @@ $collections-title-width: 14rem
 .collections__content
   flex-grow: 1
   flex-basis: calc(100% - #{$collections-title-width + nth($collections-space, 2)})
-  padding: 0 3.5rem
+  padding: 0 0 0 3.7rem
 
   // for ie 9
-  .no-flexwrap &
-    margin-left: $collections-title-width
+  @if $ie9
+    .no-flexwrap &
+      margin-left: $collections-title-width
 
 .collections__thumbs
   display: flex
@@ -4434,9 +4945,10 @@ $collections-title-width: 14rem
     margin: 0.5rem 4rem 0.5rem 0
 
     // for ie 9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
     // touch
     &.touchevents
@@ -4448,7 +4960,7 @@ $collections-title-width: 14rem
     // active
     &.tabs-active
       color: #000
-      +font-bold
+      //+font-bold
 
       & > span
         border-color: transparent
@@ -4473,7 +4985,7 @@ $collections-title-width: 14rem
       margin-bottom: 0
 
     li
-      margin: 1.2rem 2rem 0 0
+      margin: 1.2rem 1.2rem 0 0
       padding: 0
 
       &:before

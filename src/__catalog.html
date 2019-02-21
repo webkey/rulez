@@ -37,12 +37,13 @@
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Цена", "group": "price", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена", "group": "price", "modGroup": "" })
                     <li>
                       <div class="form-row">
-                        <div class="input-wrap">
-                          <div class="select select-small">
-                            <select class="field-effects-js" name="filter-by-price-from" data-filter-select="price-from" data-filter-default="">
+                        <div class="input-wrap has-prefix">
+                          <div class="select form-small">
+                            <span class="form-prefix">От</span>
+                            <select name="filter-by-price-from" data-filter-select="price-from" data-filter-default="">
                               <option value="" data-filter-tag="5">5</option>
                               <option value="10" data-filter-tag="10">10</option>
                               <option value="20" data-filter-tag="20">20</option>
@@ -55,9 +56,10 @@
                             </select>
                           </div>
                         </div>
-                        <div class="input-wrap">
-                          <div class="select select-small">
-                            <select class="field-effects-js" name="filter-by-price-to" data-filter-select="price-to" data-filter-default="">
+                        <div class="input-wrap has-prefix">
+                          <div class="select form-small">
+                            <span class="form-prefix">До</span>
+                            <select name="filter-by-price-to" data-filter-select="price-to" data-filter-default="">
                               <option value="" data-filter-tag="5">5</option>
                               <option value="10" data-filter-tag="10">10</option>
                               <option value="20" data-filter-tag="20">20</option>
@@ -77,30 +79,32 @@
                         </div>
                       </div>
                     </li>
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Цена2", "group": "price2", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена ввод", "group": "price2", "modGroup": "" })
                     <li>
                       <div class="form-row">
-                        <div class="input-wrap">
-                          <input class="form-light form-small field-effects-js" value="300" type="text" placeholder="От" data-filter-default="300" data-filter-tag="От" data-filter-title="Цена от" data-filter-type="input">
+                        <div class="input-wrap has-prefix">
+                          <span class="form-prefix">От</span>
+                          <input class="form-light form-small" value="300" type="text" placeholder="От" data-filter-default="300" data-filter-tag="От" data-filter-title="Цена от" data-filter-type="input">
                         </div>
-                        <div class="input-wrap">
-                          <input class="form-light form-small field-effects-js" value="5700" type="text" placeholder="От" data-filter-default="300" data-filter-tag="До" data-filter-title="Цена до" data-filter-type="input">
+                        <div class="input-wrap has-prefix">
+                          <span class="form-prefix">До</span>
+                          <input class="form-light form-small" value="5000" type="text" placeholder="От" data-filter-default="5000" data-filter-tag="До" data-filter-title="Цена до" data-filter-type="input">
                         </div>
                       </div>
                     </li>
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "По назначению", "group": "purpose", "modGroup": "item-float" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "По назначению", "group": "purpose", "modGroup": "item-float" })
 
-                  @@include('_tpl_products-filters--drop.html', {
+                  @@include('_tpl_products-filters-element.html', {
                     "addClass": "checkbox_value",
                     "checkboxes": {
                       "budget": "Бюджетный",
@@ -115,14 +119,14 @@
                     }
                   })
 
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Тип", "group": "type", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Тип", "group": "type", "modGroup": "" })
 
-                  @@include('_tpl_products-filters--drop.html', {
+                  @@include('_tpl_products-filters-element.html', {
                     "addClass": "",
                     "hasImg": "",
                     "hasIcon": "",
@@ -179,14 +183,14 @@
                     "checkboxes": ""
                   })
 
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Производитель", "group": "brand", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Производитель", "group": "brand", "modGroup": "" })
 
-                  @@include('_tpl_products-filters--drop.html', {
+                  @@include('_tpl_products-filters-element.html', {
                     "addClass": "",
                     "checkboxes": {
                       "asus": "ASUS",
@@ -200,15 +204,15 @@
                     }
                   })
 
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Дата выхода на рынок", "group": "entry-date", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Дата выхода на рынок", "group": "entry-date", "modGroup": "" })
                   <li>
                     <div class="select select-small">
-                      <select class="field-effects-js" name="filter-by-years-from" data-filter-select="years-from" data-filter-default="">
+                      <select class="field-js" name="filter-by-years-from" data-filter-select="years-from" data-filter-default="">
                         <option value="" data-filter-tag="">Год выпуска с</option>
                         <option value="2012" data-filter-tag="2012">2012</option>
                         <option value="2013" data-filter-tag="2013">2013</option>
@@ -223,7 +227,7 @@
                   </li>
                   <li>
                     <div class="select select-small">
-                      <select class="field-effects-js" name="filter-by-years-to" data-filter-select="years-to" data-filter-default="">
+                      <select class="field-js" name="filter-by-years-to" data-filter-select="years-to" data-filter-default="">
                         <option value="" data-filter-tag="">Год выпуска по</option>
                         <option value="2012" data-filter-tag="2012">2012</option>
                         <option value="2013" data-filter-tag="2013">2013</option>
@@ -236,14 +240,14 @@
                       </select>
                     </div>
                   </li>
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Диагональ экрана", "group": "screen-diagonal", "modGroup": "item-float" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Диагональ экрана", "group": "screen-diagonal", "modGroup": "item-float" })
 
-                  @@include('_tpl_products-filters--drop.html', {
+                  @@include('_tpl_products-filters-element.html', {
                     "addClass": "checkbox_value",
                     "hasImg": "",
                     "hasIcon": "",
@@ -288,14 +292,14 @@
                     "checkboxes": ""
                   })
 
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Матрица экрана", "group": "screen-type", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Матрица экрана", "group": "screen-type", "modGroup": "" })
 
-                  @@include('_tpl_products-filters--drop.html', {
+                  @@include('_tpl_products-filters-element.html', {
                     "addClass": "",
                     "checkboxes": {
                       "tnfilm": "TN+Film",
@@ -303,14 +307,14 @@
                     }
                   })
 
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Цвет корпуса", "group": "color", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цвет корпуса", "group": "color", "modGroup": "" })
 
-                  @@include('_tpl_products-filters--drop.html', {
+                  @@include('_tpl_products-filters-element.html', {
                     "addClass": "",
                     "checkboxes": {
                       "black": "Черный",
@@ -321,14 +325,14 @@
                     }
                   })
 
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js">
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "START", "title": "Процессор", "group": "processor", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Процессор", "group": "processor", "modGroup": "" })
 
-                  @@include('_tpl_products-filters--drop.html', {
+                  @@include('_tpl_products-filters-element.html', {
                     "addClass": "",
                     "checkboxes": {
                       "1": "Intel Core i9",
@@ -370,7 +374,7 @@
                     }
                   })
 
-                  @@include('_tpl_products-filter-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
@@ -378,21 +382,7 @@
               <!--filters end-->
             </form>
 
-            <div class="advise-box">
-              <div class="advise">
-                <div class="advise__figure"><img src="img/img-advise.jpg" alt="image description" /></div>
-                <strong class="advise__name">Евгений</strong>
-                <span class="advise__past">Ваш эксперт</span>
-                <div class="advise-chat">
-                  <ul class="advise-chat__list">
-                    <li><a href="https://www.viber.com/" target="_blank" class="chat-viber"><span>Viber</span></a></li>
-                    <li><a href="https://telegram.org/" target="_blank" class="chat-telegram"><span>Telegram</span></a></li>
-                    <li><a href="https://www.whatsapp.com/" target="_blank" class="chat-whatsapp"><span>Whatsapp</span></a></li>
-                  </ul>
-                </div>
-              </div>
-              <a href="#" class="advise-btn"><span>Заказать звонок</span></a>
-            </div>
+            @@include("_tpl_advise.html", {"addClasses": ""})
           </div>
         </div>
       </div>
@@ -401,11 +391,11 @@
         <div class="m-heading">
           <h1>Ноутбуки</h1>
           <div class="view-switcher view-switcher-products-js" data-toggle-view-switcher="products">
-            <a href="#" class="active" data-mod="grid-view" title="Продукты отобразить плиткой">
+            <a href="#" class="active" data-mod="grid-view" title="Продукты плиткой">
               @@include("includes/svg/icon-grid-view.svg")
               <span>Плиткой</span>
             </a>
-            <a href="#" data-mod="list-view" title="Продукты отобразить списком">
+            <a href="#" data-mod="list-view" title="Продукты списком">
               @@include("includes/svg/icon-list-view.svg")
               <span>Списком</span>
             </a>
@@ -430,9 +420,9 @@
             <span>Товар в наличии</span>
           </label>
         </div>
-        <div class="banner">
-          <img src="img/banner-02.jpg" alt="Все виды рассрочки" />
-        </div>
+        <section class="banner">
+          <a href="#"><img src="img/banner-02.jpg" alt="Все виды рассрочки" /></a>
+        </section>
         <div class="products" data-toggle-view-panels="products">
           <section class="products__list equal-height-js">
             <article class="products__item">
@@ -445,6 +435,7 @@
               "price": {"val": "1457", "unit": "р."},
               "inFavorites": "",
               "inCart": "",
+              "inCompare": "",
               "sale": "",
               "label": ""
               })
@@ -459,6 +450,7 @@
               "price": {"val": "", "unit": "р."},
               "inFavorites": "",
               "inCart": "",
+              "inCompare": "true",
               "sale": "",
               "label": ""
               })
@@ -473,6 +465,7 @@
               "price": {"val": "4325", "unit": "р."},
               "inFavorites": "added",
               "inCart": "added",
+              "inCompare": "",
               "sale": "30%",
               "label": ""
               })
@@ -480,7 +473,7 @@
             <article class="products__item">
               @@include("_tpl_product.html", {
               "href": "#",
-              "src": "img/img-product-03.jpg",
+              "src": "img/temp/img_640_01.jpg",
               "title": "Ноутбук SAMSUNG GL753VE-GC112T",
               "rate": "5", "rateWidth": "100%",
               "priceOld": {"val": "", "unit": "р."},
@@ -494,7 +487,7 @@
             <article class="products__item">
               @@include("_tpl_product.html", {
               "href": "#",
-              "src": "img/img-product-01.jpg",
+              "src": "img/temp/img_640_02.jpg",
               "title": "Ноутбук SAMSUNG GL753VE-GC112T",
               "rate": "5", "rateWidth": "100%",
               "priceOld": {"val": "", "unit": "р."},
@@ -577,15 +570,13 @@
 
       <div class="p-filters-results p-filters-results-js">
         <div class="p-filters-results__selected">
-          <div class="p-filters-results__selected__align">
-            <div class="p-filters-results__selected__label">Выбрано</div>
-            <div class="p-filters-results__selected__count"><span class="cur">1202</span> из 1202</div>
-          </div>
+          <div class="p-filters-results__selected__label">Выбрано</div>
+          <div class="p-filters-results__selected__count"><span class="cur">712</span> из 1202</div>
         </div>
         <div class="p-filters-results__apply">
-          <a href="#" class="btn-filters-apply"><span>подобрать</span></a>
+          <a href="#" class="btn-filters-apply">подобрать</a>
         </div>
-        <button class="btn-default btn-with-icon btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
+        <button class="btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
           @@include("includes/svg/icon-bin.svg")
         </button>
         <div class="results-loading">Подбор результатов...</div>

@@ -1213,37 +1213,43 @@ function toggleShutters() {
 }
 
 /**
- * !Product liked
+ * !Change visual state
  * */
-function productLiked() {
-  $('.like-js').on('click', function (e) {
-    var $btn = $(this),
-        classActive = 'added',
-        activeText = $btn.data('active-text'),
-        inactiveText = $btn.data('inactive-text');
+function changeState() {
+  function changeStateElement($_element) {
+    $_element.on('click', function (e) {
+      var $btn = $(this),
+          $copyBtn = $btn.closest('.product-js').find($_element),
+          classActive = 'added',
+          activeText = $btn.data('active-text'),
+          inactiveText = $btn.data('inactive-text');
 
-    $btn.toggleClass(classActive);
+      $btn.add($copyBtn).toggleClass(classActive);
 
-    if($btn.hasClass(classActive)) {
-      $('span', $btn).text(activeText);
-      // if($btn.attr('title') !== undefined){
-      //   $btn.attr('title', activeText);
-      // }
-      if($btn.attr('data-title') !== undefined){
-        $btn.attr('data-title', activeText);
+      if ($btn.hasClass(classActive)) {
+        $('span', $btn).add($('span', $copyBtn)).text(activeText);
+        // if($btn.attr('title') !== undefined){
+        //   $btn.attr('title', activeText);
+        // }
+        if ($btn.attr('data-title') !== undefined) {
+          $btn.add($('span', $copyBtn)).attr('data-title', activeText);
+        }
+      } else {
+        $('span', $btn).add($('span', $copyBtn)).text(inactiveText);
+        // if($btn.attr('title') !== undefined){
+        //   $btn.attr('title', inactiveText);
+        // }
+        if ($btn.attr('data-title') !== undefined) {
+          $btn.add($('span', $copyBtn)).attr('data-title', inactiveText);
+        }
       }
-    } else {
-      $('span', $btn).text(inactiveText);
-      // if($btn.attr('title') !== undefined){
-      //   $btn.attr('title', inactiveText);
-      // }
-      if($btn.attr('data-title') !== undefined){
-        $btn.attr('data-title', inactiveText);
-      }
-    }
 
-    e.preventDefault();
-  })
+      e.preventDefault();
+    });
+  }
+
+  changeStateElement($('.change-like-js'));
+  changeStateElement($('.change-compare-js'));
 }
 
 /**
@@ -1258,6 +1264,7 @@ function addToCarAnimation() {
       pickClass = 'pick',
       activeText = $btn.data('active-text'),
       inactiveText = $btn.data('inactive-text'),
+      animation = false,
       timeoutPush, timeoutPick
   ;
 
@@ -1272,24 +1279,22 @@ function addToCarAnimation() {
     if (!$cutBtn.hasClass(addedClass)) {
       // Change a button
       $cutBtn.addClass(addedClass);
-      $('span', $cutBtn).text(activeText);
-      if($cutBtn.attr('data-title') !== undefined){
-        $cutBtn.attr('data-title', inactiveText);
-      }
 
-      // Remove a copy of product image
-      $('#figureCopy').remove();
-      // Animate a product added to a cart
-      var $figure = $cutBtn.closest('.product-js').find('.product-figure-js');
-      $figure.clone()
-          .addClass('product-figure_copy-js').attr('id', 'figureCopy')
-          // .removeClass('product-figure-js')
-          .offset({top:$figure.offset().top, left:$figure.offset().left})
-          .css({
-            width: $figure.outerWidth(),
-            height: $figure.outerHeight()
-          })
-          .appendTo('body');
+      if (animation) {
+        // Remove a copy of product image
+        $('#figureCopy').remove();
+        // Animate a product added to a cart
+        var $figure = $cutBtn.closest('.product-js').find('.product-figure-js');
+        $figure.clone()
+            .addClass('product-figure_copy-js').attr('id', 'figureCopy')
+        // .removeClass('product-figure-js')
+            .offset({top:$figure.offset().top, left:$figure.offset().left})
+            .css({
+              width: $figure.outerWidth(),
+              height: $figure.outerHeight()
+            })
+            .appendTo('body');
+      }
 
       // Animate a cart keeper (+ css styles)
       clearTimeout(timeoutPush);
@@ -1300,7 +1305,6 @@ function addToCarAnimation() {
     } else {
       // Change a button
       $cutBtn.removeClass(addedClass);
-      $('span', $cutBtn).text(inactiveText);
 
       // Remove a copy of product image
       // $('#figureCopy').remove();
@@ -2438,7 +2442,7 @@ $(document).ready(function () {
   tabs();
   toggleDropMenu();
   toggleShutters();
-  productLiked();
+  changeState();
   addToCarAnimation();
   rollsInit();
   toggleViewInit();

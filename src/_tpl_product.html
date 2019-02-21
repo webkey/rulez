@@ -1,21 +1,40 @@
 <div itemscope itemtype="http://schema.org/Product" class="product product-js">
-  <div class="product__header">
+  <div class="product__main">
     <a itemprop="url" href="@@href">
       <div class="product__figure product-figure-js">
         <img itemprop="image" src="@@src" alt="@@title" />
       </div>
       <h3 itemprop="name" class="product__title"><span>@@title</span></h3>
     </a>
-    <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
-      <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth"></span>
-      <meta itemprop="ratingCount" content="1">
+    <div class="product__meta">
+      <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+        <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth"></span>
+        <meta itemprop="ratingCount" content="1">
+      </div>
+      <div class="product__aim">
+        @@if(!context.inCompare){<a href="#" class="product__aim-btn product__aim-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Сравнить</span></a>}
+        @@if(context.inCompare){<a href="#" class="product__aim-btn product__aim-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Добавлен к сравнению</span></a>}
+
+        @@if(!context.inFavorites){<a href="#" class="product__aim-btn product__aim-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>В избранное</span></a>}
+        @@if(context.inFavorites){<a href="#" class="product__aim-btn product__aim-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>Мне нравится</span></a>}
+      </div>
     </div>
+    <ul class="products__feature">
+      <li>Операционная система: <span>Windows 10</span></li>
+      <li>Диагональ экрана: <span>15.6&quot;</span></li>
+      <li>Разрешение экрана: <span>1366x768(HD)</span></li>
+      <li>Модель процессора: <span>Intel Celeron N3350</span></li>
+      <li>Оперативная память: <span>4 ГБ</span></li>
+      <li>Емкость HDD: <span>1000 ГБ</span></li>
+      <li>Тип видеокарты: <span>встроенная</span></li>
+      <li>Модель видеокарты: <span>Intel HD Graphics 500</span></li>
+    </ul>
   </div>
 
-  <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__footer">
-    <div class="product__meta">
-      @@if(context.price.val){<div itemprop="availability" content="http://schema.org/InStock" class="product__stock on">@@include("includes/svg/icon-.svg")<span>В наличии</span></div>}
-      @@if(!context.price.val){<div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off">@@include("includes/svg/icon-.svg")<span>Нет в наличии</span></div>}
+  <div class="product__footer">
+    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
+      @@if(context.price.val){<div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>}
+      @@if(!context.price.val){<div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>}
 
       @@if(context.price.val){
       <div class="product__price">
@@ -30,11 +49,29 @@
       }
     </div>
     <div class="product__option">
-      @@if(!context.inFavorites){<a href="#" class="product__option-btn like-js" data-active-text="В избранном" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i>@@include("includes/svg/icon-like.svg")@@include("includes/svg/icon-dislike.svg")</i></a>}
-      @@if(context.inFavorites){<a href="#" class="product__option-btn like-js added" data-active-text="В избранном" data-inactive-text="В избранное" tabindex="0"><span>В избранном</span><i>@@include("includes/svg/icon-like.svg")@@include("includes/svg/icon-dislike.svg")</i></a>}
-
-      @@if(!context.inCart){<a href="#" class="product__option-btn add-to-cart-js" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0"><span>В корзину</span><i>@@include("includes/svg/icon-cart.svg")</i></a>}
-      @@if(context.inCart){<a href="#" class="product__option-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0"><span>В корзине</span><i>@@include("includes/svg/icon-cart.svg")</i></a>}
+      <div class="product__option-item hide-for-list">
+        @@if(!context.inFavorites){<a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i>@@include("includes/svg/icon-like.svg")</i></a>}
+        @@if(context.inFavorites){<a href="#" class="opt-btn-like change-state-js added" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>Мне нравится</span><i>@@include("includes/svg/icon-like.svg")</i></a>}
+      </div>
+      <div class="product__option-item">
+        @@if(!context.inCart){
+        <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
+          <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
+          <span class="opt-btn-buy__buy">Купить</span>
+          <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
+          <i>@@include("includes/svg/icon-cart.svg")</i>
+        </a>}
+        @@if(context.inCart){
+        <a href="#" class="opt-btn-buy add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0">
+          <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
+          <span class="opt-btn-buy__buy">Купить</span>
+          <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
+          <i>@@include("includes/svg/icon-cart.svg")</i>
+        </a>}
+      </div>
+      <div class="product__option-item show-for-list">
+        <a href="#" class="btn-def-alt">Купить в рассрочку</a>
+      </div>
     </div>
   </div>
 

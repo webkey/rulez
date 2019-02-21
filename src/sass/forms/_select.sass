@@ -8,7 +8,7 @@
 		display: block
 		width: 100%
 
-.#{$user-content}, .select, .#{$user-content} .select
+.#{$user-content}, .select
   select
     +selectSelection
     display: block
@@ -25,10 +25,20 @@
       duration: $animation-speed
       timing-function: ease-in-out
 
-    // Стили для текста полей ввода прописываем отдельно через миксин,
+    // Стили для текста селекта прописываем отдельно через миксин,
     // чтобы была возможность добавить медиа развилки через тот же миксин
     &
       +selects-font
+
+//=== has-prefix
+.has-prefix select
+  padding-left: $form-input-space-h--has-prefix
+
+//=== form-small
+.form-small select, .#{$user-content} select.form-small
+  height: $form-input-height--small
+  padding-top: $form-input-space-vt--small
+  padding-bottom: $form-input-space-vb--small
 
 .#{$user-content} select
   padding-right: 0
@@ -65,7 +75,19 @@
     right: 17px
 
   select
-    padding-right: 40px
+    padding-right: $select-arrow-width
+
+  //=== form small
+  &.form-small select, select.form-small
+    padding-right: $select-arrow-width--small
+
+  &.form-small
+    &::before, &::after
+      right: 11px
+      +size(6px, 2px)
+
+    &::after
+      right: 8px
 
 // States
 .#{$user-content} select, .select
