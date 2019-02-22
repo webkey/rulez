@@ -2917,7 +2917,7 @@ $product-item-space: 2rem 2.4rem
 
 .product__price-new
   line-height: 3.2rem
-  margin-left: 1rem
+  margin-left: 0.4rem
 
   & > strong
     display: inline-block
@@ -3951,9 +3951,14 @@ $products-border-width: 1px
   background-color: white
 
 .products__item
-  $width: round-float(100%/4, 2)
+  $width: 25.0%
   width: $width
   flex-basis: $width
+
+  +media('<desk-lg')
+    $width: 33.33%
+    width: $width
+    flex-basis: $width
 
 // Добавить сетку из одинарного бордера
 .products__list,
@@ -5010,3 +5015,38 @@ $collections-title-width: 12.5rem
       +underlinedLinks($base-color)
 
 /* float-list end
+
+/* product card
+$card-visual-width: 63%
+$card-cont-width: 564px
+
+.p-card
+  background-color: white
+  padding: $section-layout-space
+  +clear
+
+// === visual ===
+.p-card-visual
+  position: relative
+  float: left
+  width: calc(100% - #{$card-cont-width})
+  padding-right: 120px
+
+// === card gallery ===
+.p-card__gallery
+  position: relative
+  padding-left: 190px
+  margin-bottom: $bottom-space--medium
+
+  &:last-child
+    margin-bottom: 0
+
+
+// === p-card-content ===
+.p-card-content
+  width: $card-cont-width
+  float: right
+  clear: right
+  padding-right: 0
+
+/* product card end

@@ -1,0 +1,151 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Карточка товара",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "Ноутбуки" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Каталог", "Ноутбуки", "Dell"],
+      "last": "Ноутбук Dell Inspiron 17 5770-6922"
+    })
+
+    <!--CONTENT-->
+    <!--product card-->
+    <section class="section p-card">
+      <div class="p-card-heading">
+        <h1 class="p-card-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
+      </div>
+      <div class="p-card-visual">
+        <div class="p-card-gallery p-card-gallery-js">
+          <div class="p-card-images p-card-images-js">
+            <div class="p-card-images__item">
+              @@include("_tpl_p-card-images-item.html", {"imgSrc": "img/products/preview/01.jpeg", "imgAlt": "image description"})
+            </div>
+            <div class="p-card-images__item">
+              @@include("_tpl_p-card-images-item.html", {"imgSrc": "img/products/preview/02.jpeg", "imgAlt": "image description"})
+            </div>
+            <div class="p-card-images__item">
+              @@include("_tpl_p-card-images-item.html", {"imgSrc": "img/products/preview/03.jpeg", "imgAlt": "image description"})
+            </div>
+          </div>
+
+        </div>
+        {{Visual}}
+      </div>
+      <div class="p-card-content">
+        {{Conten}}
+      </div>
+    </section>
+
+    <section class="section section_collections tabs-js">
+      <div class="collections">
+        <h2 class="collections__title">Готовые подборки</h2>
+        <div class="collections__content">
+          <div class="collections__thumbs">
+            <a href="#brand" class="tabs__anchor-js tabs-active"><span>По производителю</span></a>
+            <a href="#launch" class="tabs__anchor-js"><span>Дата выхода на рынок</span></a>
+            <a href="#screen" class="tabs__anchor-js"><span>Диагональ экрана</span></a>
+            <a href="#color" class="tabs__anchor-js"><span>Цвет корпуса</span></a>
+            <a href="#resolution" class="tabs__anchor-js"><span>Разрешение экрана</span></a>
+          </div>
+          <div class="tabs__panels-js">
+            <div class="tabs__panel-js" id="brand">
+              <ul class="float-list">
+                <li><span>ASUS</span></li>
+                <li><a href="#"><span>Acer</span></a></li>
+                <li><a href="#"><span>Apple</span></a></li>
+                <li><a href="#"><span>ASUS</span></a></li>
+                <li><a href="#"><span>Dell</span></a></li>
+                <li><a href="#"><span>DEXP</span></a></li>
+                <li><a href="#"><span>Digma</span></a></li>
+                <li><a href="#"><span>Dream Machines</span></a></li>
+                <li><a href="#"><span>Fujitsu</span></a></li>
+                <li><a href="#"><span>HP</span></a></li>
+                <li><a href="#"><span>Huawei</span></a></li>
+                <li><a href="#"><span>IRBIS</span></a></li>
+                <li><a href="#"><span>Krez</span></a></li>
+                <li><a href="#"><span>Lenovo</span></a></li>
+                <li><a href="#"><span>MSI</span></a></li>
+                <li><a href="#"><span>Packard</span></a></li>
+                <li><a href="#"><span>Bell</span></a></li>
+                <li><a href="#"><span>PNY</span></a></li>
+                <li><a href="#"><span>Prestigio</span></a></li>
+                <li><a href="#"><span>Razer</span></a></li>
+                <li><a href="#"><span>Xiaomi</span></a></li>
+              </ul>
+            </div>
+            <div class="tabs__panel-js" id="launch">
+              <ul class="float-list">
+                <li><a href="#"><span>2015</span></a></li>
+                <li><a href="#"><span>2016</span></a></li>
+                <li><a href="#"><span>2017</span></a></li>
+                <li><a href="#"><span>2018</span></a></li>
+                <li><a href="#"><span>2019</span></a></li>
+              </ul>
+            </div>
+            <div class="tabs__panel-js" id="screen">
+              <ul class="float-list">
+                <li><a href="#"><span>менее 12"</span></a></li>
+                <li><a href="#"><span>12-13"</span></a></li>
+                <li><a href="#"><span>13.3-14"</span></a></li>
+                <li><a href="#"><span>15"</span></a></li>
+                <li><a href="#"><span>17"</span></a></li>
+                <li><a href="#"><span>18" и более</span></a></li>
+              </ul>
+            </div>
+            <div class="tabs__panel-js" id="color">
+              <ul class="float-list">
+                <li><a href="#"><span>белый</span></a></li>
+                <li><a href="#"><span>бордовый</span></a></li>
+                <li><a href="#"><span>бронзовый</span></a></li>
+                <li><a href="#"><span>голубой</span></a></li>
+                <li><a href="#"><span>зеленый</span></a></li>
+                <li><a href="#"><span>золотистый</span></a></li>
+                <li><a href="#"><span>коричневый</span></a></li>
+                <li><a href="#"><span>красный</span></a></li>
+                <li><a href="#"><span>медный</span></a></li>
+              </ul>
+            </div>
+            <div class="tabs__panel-js" id="resolution">
+              <ul class="float-list">
+                <li><a href="#"><span>HD/HD+ (768p/900p)</span></a></li>
+                <li><a href="#"><span>Full HD (1080p)</span></a></li>
+                <li><a href="#"><span>QHD (1440p)</span></a></li>
+                <li><a href="#"><span>Retina</span></a></li>
+                <li><a href="#"><span>QHD+ (1800p)</span></a></li>
+                <li><a href="#"><span>4K UHD (2160p)</span></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section_helper">
+      <h2 class="hide">Помощь</h2>
+      <div class="helper">
+        <div class="helper__list">
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-call.svg") <span>Помощь экспертов в выборе товаров</span></div></a>
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-credit.svg") <span>Рассрочка и кредит по выгодным условиям</span></div></a>
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-delivery.svg") <span>Быстрая доставка по Минску курьером</span></div></a>
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-service.svg") <span>Дополнительные услуги по сервисному обслуживанию</span></div></a>
+        </div>
+      </div>
+    </section>
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

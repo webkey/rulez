@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<!--[if lt IE 9]> <html class="no-js old-ie" lang="ru"> <![endif]-->
+<!--[if IE 9]> <html class="no-js ie9" lang="ru"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="ru">
+<!--<![endif]-->
+
+<head>
+  <meta charset="UTF-8">
+  <title>Карточка товара</title>
+  <!--Mobile optimized-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
+  <!--Theme color-->
+  <meta name="theme-color" content="#6e52dd">
+  <!--SEO-->
+  <meta name="description" content="описание">
+  <meta name="keywords" content="ключевые слова">
+  <meta name="yandex-verification" content="XXXXXXXXXXXXXX">
+  <meta name="google-site-verification" content="XXXXXXXXXXXXXX">
+  <!--The Open Graph protocol-->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:url" content="http://localhost:3000/index.html">
+  <meta property="og:title" content="Название">
+  <meta property="og:image" content="http://localhost:3000/apple-touch-icon.png">
+  <meta property="og:image:height" content="256">
+  <meta property="og:image:width" content="256">
+  <meta property="og:description" content="Описание">
+  <meta property="og:site_name" content="Расширенное название">
+  <!--Favicon-->
+  <link rel="shortcut icon" href="favicon.ico?rev=@@hash">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="favicon.ico?rev=@@hash">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?rev=@@hash">
+  <!--manifest-->
+  <link rel="manifest" href="manifest.webmanifest">
+  <!--Style-->
+  <link rel="stylesheet" href="css/libs.min.css?rev=@@hash">
+  <link rel="stylesheet" href="css/main.css?rev=@@hash">
+  <!--Modernizr-->
+  <script src="js/modernizr.min.js"></script>
+</head>
+
+<body>
+  <noscript>
+    <div class="no-js-warning">Для корректной работы сайта <b>включите JavaScript</b> в браузере</div>
+  </noscript>
+  <!--[if lt IE 9]> <div class="browserupgrade"><p>You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p></div> <![endif]-->
+  <div class="wrapper">
+    <div class="page-bg">&nbsp;</div>
+    <!--HEADER-->
+    <header class="header header_float">
+      <div class="header-bg">&nbsp;</div>
+      <div class="max-wrap">
+        <!--header-top-->
+        <div class="header-top layout">
+          <div class="header-top__l">
+            <nav class="nav" data-btn-more="Еще">
+              <ul class="nav__list">
+                <li><a href="#"><span>Акции и подарки</span></a></li>
+                <li><a href="#"><span>Скидки</span></a></li>
+                <li class="current"><a href="#"><span>Рассрочка</span></a></li>
+                <li><a href="#"><span>Оплата</span></a></li>
+                <li><a href="#"><span>Гарантия и доставка</span></a></li>
+                <li><a href="#"><span>Оплата</span></a></li>
+                <li><a href="#"><span>Гарантия</span></a></li>
+                <li><a href="#"><span>Рассрочка</span></a></li>
+                <li><a href="#"><span>Скидки</span></a></li>
+                <li><a href="#"><span>Акции и подарки</span></a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header-top__r">
+            <div class="cont">
+              <ul class="chats">
+                <li><a href="https://www.viber.com/" target="_blank"><span>Viber</span></a></li>
+                <li><a href="https://telegram.org/" target="_blank"><span>Telegram</span></a></li>
+                <li><a href="https://www.whatsapp.com/" target="_blank"><span>Whatsapp</span></a></li>
+              </ul>
+              <div class="phones phones-js">
+                <a href="tel:+375291231010" class="phones-opener-js"><span>+375 (29) <strong>123 10 10</strong></span><i>&nbsp;</i></a>
+                <ul class="phones-drop phones-drop-js">
+                  <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+                  <li class="active-item"><a href="tel:+375291232017"><span>+375 (29) <strong>123 20 17</strong></span></a></li>
+                  <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="user-options">
+              <div class="user-options__item user-options__item_login">
+                <a href="#" class="btn-login-js" title="Вход в личный кабинет">
+                  <svg class="svg-ico-user" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
+                    <path d="M0 9C0 14 4 18 9 18 14 18 18 14 18 9 18 4 14 0 9 0 4 0 0 4 0 9ZM0.8 9C0.8 4.5 4.5 0.8 9 0.8 13.5 0.8 17.3 4.5 17.3 9 17.3 13.5 13.5 17.3 9 17.3 4.5 17.3 0.8 13.5 0.8 9Z"></path>
+                    <path d="M4.1 16.4C5.7 17.4 7.6 18 9.5 18 11.4 18 13.3 17.4 14.9 16.4 15 16.3 15 16.2 15 16.1 15 16 14.9 15.9 14.8 15.9 12.5 15.1 12.1 14.4 12.1 13.1 12.1 12.8 12.2 12.7 12.3 12.5 12.5 12.2 12.8 11.8 13 10.9 13 10.8 13 10.8 13.1 10.7L13.1 10.7C13.5 10.5 13.8 10.3 13.9 9.3 13.9 8.8 13.7 8.5 13.5 8.4 13.6 7.7 13.9 5.4 13 4.3 12.4 3.6 11.5 3.6 11.2 3.6 10.7 3.1 9.2 2.7 7.2 3.4 5 4.3 5.1 6.1 5.3 7.6 5.4 7.9 5.4 8.2 5.5 8.4 5.3 8.5 5.1 8.8 5.1 9.3 5.2 10.3 5.5 10.5 5.9 10.7 6 10.8 6 10.8 6 10.9 6.2 11.8 6.5 12.2 6.7 12.5L6.7 12.5C6.8 12.7 6.9 12.8 6.9 13.1 6.9 14.4 6.5 15.1 4.2 15.9 4.1 15.9 4 16 4 16.1 4 16.2 4 16.3 4.1 16.4ZM9.5 17.5C7.9 17.5 6.3 17 4.9 16.2 6.8 15.4 7.5 14.7 7.5 13.1 7.5 12.6 7.3 12.4 7.1 12.2L7.1 12.2C7 11.9 6.8 11.6 6.6 10.8 6.5 10.4 6.3 10.3 6.1 10.2L6.1 10.2C5.9 10.1 5.7 10.1 5.7 9.3 5.7 8.9 5.9 8.7 5.9 8.7 5.9 8.7 5.9 8.7 5.9 8.7 6 8.7 6.1 8.6 6 8.4 6 8.4 5.9 8 5.9 7.5 5.6 6.1 5.6 4.6 7.5 3.9 9.3 3.2 10.6 3.7 10.8 3.9 10.8 4 11 4.1 11 4.1 11 4.1 11.1 4.1 11.1 4.1 11.1 4.1 11.1 4.1 11.1 4.1 11.3 4.1 12.1 4.1 12.6 4.7 13.3 5.5 13.1 7.7 13 8.4 12.9 8.5 13 8.7 13.1 8.7 13.1 8.7 13.3 8.8 13.3 9.2 13.3 10.1 13.1 10.1 12.9 10.2L12.9 10.2C12.7 10.3 12.5 10.4 12.4 10.8 12.2 11.6 12 11.9 11.9 12.2L11.9 12.2C11.7 12.4 11.5 12.6 11.5 13.1 11.5 14.7 12.2 15.4 14.1 16.2 12.7 17 11.1 17.5 9.5 17.5Z"></path>
+                  </svg>
+                  <span>Войти</span>
+                </a>
+              </div>
+              <div class="user-options__item user-options__item_likes">
+                <a href="#" title="Избранное">
+                  <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                    <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z" /></svg>
+                  <span class="hide-text">Избранное</span>
+                  <em class="counter">1</em>
+                </a>
+              </div>
+              <div class="user-options__item user-options__item_compare">
+                <a href="#" title="Перейти к сравнению">
+                  <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg>
+                  <span class="hide-text">Сравнить</span>
+                  <em class="counter">3</em>
+                </a>
+              </div>
+            </div>
+            <a href="#" class="cart-link cart-keeper-js" title="Оформить заказа">
+              <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
+                  <path class="svg-ico-cart-circle" fill-rule="evenodd" clip-rule="evenodd" d="M15 30C23.2843 30 30 23.2843 30 15C30 6.71573 23.2843 0 15 0C6.71573 0 0 6.71573 0 15C0 23.2843 6.71573 30 15 30Z"></path>
+                  <path class="svg-ico-cart-cart" fill-rule="evenodd" clip-rule="evenodd" d="M30 5.90258C30 6.40102 29.6057 6.80517 29.1192 6.80517H27.3482L21.4767 20.6447H9.34872L7 11.0172H18.4035C18.89 11.0172 19.2842 11.4212 19.2842 11.9198C19.2842 12.4182 18.89 12.8223 18.4035 12.8223H9.25645L10.7244 18.8396H20.3215L26.1931 5H29.1192C29.6059 5 30 5.40393 30 5.90258ZM14.8474 23.5028C14.8474 24.8797 13.7541 26 12.4106 26C11.0672 26 9.97399 24.8797 9.97399 23.5028C9.97399 22.1258 11.0672 21.0055 12.4106 21.0055C13.7541 21.0055 14.8474 22.1258 14.8474 23.5028ZM12.4106 22.2089C13.1067 22.2089 13.6731 22.7895 13.6731 23.5028C13.6731 24.2163 13.1067 24.7966 12.4106 24.7966C11.7147 24.7966 11.1482 24.2163 11.1482 23.5028C11.1482 22.7895 11.7147 22.2089 12.4106 22.2089ZM21.3235 23.5028C21.3235 24.8797 20.23 26 18.8866 26C17.5433 26 16.4501 24.8797 16.4501 23.5028C16.4501 22.1258 17.5433 21.0055 18.8866 21.0055C20.23 21.0055 21.3235 22.1258 21.3235 23.5028ZM18.8866 22.2089C19.5828 22.2089 20.1493 22.7895 20.1493 23.5028C20.1493 24.2163 19.5827 24.7966 18.8866 24.7966C18.1906 24.7966 17.6243 24.2163 17.6243 23.5028C17.6243 22.7895 18.1906 22.2089 18.8866 22.2089Z"></path>
+                </svg></i>
+              <div class="cart-link__text">
+                <strong>Корзина</strong>
+                <span>300.00 руб</span>
+              </div>
+              <em class="counter counter-js">1</em>
+            </a>
+          </div>
+        </div>
+        <!--header-top end-->
+        <!--header-common-->
+        <div class="header-common layout">
+          <!--logo-->
+          <div class="logo-wrap">
+            <div class="logo">
+              <a href="index.html" title="Перейти на главную">Rulezzz. Твой магазин</a>
+              <img style="display: none;" src="img/logo.png" alt="Print version logotype">
+            </div>
+          </div>
+          <!--logo end-->
+          <div class="site-nav">
+            <div class="site-nav__grid">
+              <a href="#" class="catalog-opener catalog-opener-js"><i>&nbsp;</i><span>Весь каталог</span></a>
+            </div>
+            <div class="site-nav__grid">
+              <!--navigation-->
+              <div class="c-nav-wrap">
+                <div class="c-nav">
+                  <ul class="c-nav__list">
+                    <li class="current"><span>Ноутбуки</span></li>
+                    <li><a href="#"><span>Моноблоки</span></a></li>
+                    <li><a href="#"><span>Компьютеры</span></a></li>
+                    <li><a href="#"><span>Мониторы</span></a></li>
+                    <li><a href="#"><span>Принтеры</span></a></li>
+                    <li><a href="#"><span>Планшеты</span></a></li>
+                    <li><a href="#"><span>Game Zone</span></a></li>
+                  </ul>
+                </div>
+              </div>
+              <!--navigation end-->
+              <div class="search-form" id="searchPanel">
+                <form action="#" method="post" onsubmit="alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.'); return false;">
+                  <div class="search-form__field input-wrap">
+                    <input type="search" class="search-form__input stop-remove-class field-js" />
+                    <div class="search-form__btn">
+                      <svg class="svg-ico-search" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.862 21.863">
+                        <path class="a" d="M18.625,16.75h-.987l-.35-.338a8.137,8.137,0,1,0-.875.875l.338.35v.987L23,24.862,24.862,23Zm-7.5,0a5.625,5.625,0,1,1,5.625-5.625A5.617,5.617,0,0,1,11.125,16.75Z" transform="translate(-3 -3)"></path>
+                      </svg>
+                      <span>Найти</span>
+                      <input type="submit" value="">
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <a href="#searchPanel" class="toggle-search toggle-search-js">
+                <svg class="svg-ico-search" width="24" height="24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 21.862 21.863">
+                  <path class="a" d="M18.625,16.75h-.987l-.35-.338a8.137,8.137,0,1,0-.875.875l.338.35v.987L23,24.862,24.862,23Zm-7.5,0a5.625,5.625,0,1,1,5.625-5.625A5.617,5.617,0,0,1,11.125,16.75Z" transform="translate(-3 -3)"></path>
+                </svg>
+                <span>Open search panel</span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <!--header-common end-->
+      </div>
+    </header>
+    <div class="catalog-shutter catalog-shutter-js">
+      <div class="max-wrap layout">
+        <div class="catalog-menu stop-remove-class">
+          <ul class="catalog-menu__list">
+            <li class="catalog-menu__item current">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="17" viewBox="0 0 28 17">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2.67544 15.4288H25.3246C25.7932 15.4288 26.1739 15.0673 26.1739 14.6228V0.805982C26.1739 0.36154 25.7932 0 25.3246 0H2.67544C2.20708 0 1.82609 0.36154 1.82609 0.805982V14.6228C1.82609 15.0673 2.20733 15.4288 2.67544 15.4288ZM2.5541 0.805982C2.5541 0.742424 2.60846 0.690842 2.67544 0.690842H25.3246C25.3915 0.690842 25.4459 0.742424 25.4459 0.805982V14.6228C25.4459 14.6864 25.3915 14.738 25.3246 14.738H2.67544C2.60846 14.738 2.5541 14.6864 2.5541 14.6228V0.805982ZM28 16.6905V16.0455H16.5008C16.4438 16.2256 16.2701 16.3573 16.0623 16.3573H11.9379C11.7299 16.3573 11.5562 16.2253 11.4994 16.0455H0V16.6905C0 16.8614 0.146087 17 0.326149 17H27.6739C27.8539 17 28 16.8614 28 16.6905Z"></path>
+                  </svg><span>Ноутбуки</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li class="current"><span>Бюджетный</span></li>
+                <li><a href="#"><span>Для дома и учебы</span></a></li>
+                <li><a href="#"><span>Домашний</span></a></li>
+                <li><a href="#"><span>Рабочий</span></a></li>
+                <li><a href="#"><span>Для дизайна</span></a></li>
+                <li class="has-items">
+                  <a href="#"><span>Есть подпункты</span></a>
+                  <em>▼</em>
+                  <ul>
+                    <li><a href="#"><span>Домашний</span></a></li>
+                    <li><a href="#"><span>Рабочий</span></a></li>
+                    <li><a href="#"><span>Для дизайна</span></a></li>
+                    <li><a href="#"><span>Мощные</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="25" viewBox="0 0 27 25">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.35 0H25.65C26.3955 0 27 0.59967 27 1.33929V18.3036C27 19.0432 26.3955 19.6429 25.65 19.6429H15.3V22.3214H21.6C21.8485 22.3214 22.05 22.5213 22.05 22.7679V24.5536C22.05 24.8001 21.8485 25 21.6 25H5.4C5.15149 25 4.95 24.8001 4.95 24.5536V22.7679C4.95 22.5213 5.15149 22.3214 5.4 22.3214H11.7V19.6429H1.35C0.604468 19.6429 0 19.0432 0 18.3036V1.33929C0 0.59967 0.604468 0 1.35 0ZM5.85 24.1071H21.15V23.2143H5.85V24.1071ZM14.4 22.3214H12.6V19.6429H14.4V22.3214ZM25.65 18.75C25.8985 18.75 26.1 18.5501 26.1 18.3036V1.33929C26.1 1.09275 25.8985 0.892857 25.65 0.892857H1.35C1.10149 0.892857 0.9 1.09275 0.9 1.33929V18.3036C0.9 18.5501 1.10149 18.75 1.35 18.75H25.65Z"></path>
+                  </svg><span>Монблоки</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>Dell</span></a></li>
+                <li><a href="#"><span>HP</span></a></li>
+                <li><a href="#"><span>ACER</span></a></li>
+                <li><a href="#"><span>Lenovo</span></a></li>
+                <li><a href="#"><span>Asus</span></a></li>
+                <li class="has-items">
+                  <a href="#"><span>Есть подпункты</span></a>
+                  <em>▼</em>
+                  <ul>
+                    <li><a href="#"><span>Мощные</span></a></li>
+                    <li><a href="#"><span>Рабочий</span></a></li>
+                    <li><a href="#"><span>Для дизайна</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="42" height="25" viewBox="0 0 42 25">
+                    <rect x="32" y="9" width="8" height="1" rx="0.5"></rect>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M1.35 0H25.65C26.3955 0 27 0.59967 27 1.33929V18.3036C27 19.0432 26.3955 19.6429 25.65 19.6429H15.3V22.3214H21.6C21.8485 22.3214 22.05 22.5213 22.05 22.7679V24.5536C22.05 24.8001 21.8485 25 21.6 25H5.4C5.15149 25 4.95 24.8001 4.95 24.5536V22.7679C4.95 22.5213 5.15149 22.3214 5.4 22.3214H11.7V19.6429H1.35C0.604468 19.6429 0 19.0432 0 18.3036V1.33929C0 0.59967 0.604468 0 1.35 0ZM5.85 24.1071H21.15V23.2143H5.85V24.1071ZM14.4 22.3214H12.6V19.6429H14.4V22.3214ZM25.65 18.75C25.8985 18.75 26.1 18.5501 26.1 18.3036V1.33929C26.1 1.09275 25.8985 0.892857 25.65 0.892857H1.35C1.10149 0.892857 0.9 1.09275 0.9 1.33929V18.3036C0.9 18.5501 1.10149 18.75 1.35 18.75H25.65Z"></path>
+                    <rect x="30.5" y="5.5" width="11" height="18" rx="0.5" stroke="black" fill="none"></rect>
+                  </svg><span>Компьютеры</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>Бюджетный</span></a></li>
+                <li><a href="#"><span>Для дома и учебы</span></a></li>
+                <li><a href="#"><span>Домашний</span></a></li>
+                <li><a href="#"><span>Рабочий</span></a></li>
+                <li><a href="#"><span>Для дизайна</span></a></li>
+                <li><a href="#"><span>Мощные</span></a></li>
+                <li><a href="#"><span>Для видеомонтажа</span></a></li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17">
+                    <path d="M0 8.5H17" stroke="#131313"></path>
+                    <path d="M8.5 17L8.5 0.5" stroke="#131313"></path>
+                  </svg><span>Аксессуары</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>Бюджетный</span></a></li>
+                <li><a href="#"><span>Для дома и учебы</span></a></li>
+                <li><a href="#"><span>Домашний</span></a></li>
+                <li><a href="#"><span>Рабочий</span></a></li>
+                <li><a href="#"><span>Для дизайна</span></a></li>
+                <li><a href="#"><span>Мощные</span></a></li>
+                <li><a href="#"><span>Очень</span></a></li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="25" viewBox="0 0 29 25">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21 25H9L15.0003 15L21 25ZM15.0003 16.9982L10.8349 23.9411H19.1656L15.0003 16.9982Z"></path>
+                    <path d="M0 0V19H10.6333C10.9006 19 11.1167 18.7877 11.1167 18.525C11.1167 18.2623 10.9006 18.05 10.6333 18.05H0.966667V0.95H28.0333V18.05H18.3667C18.0994 18.05 17.8833 18.2623 17.8833 18.525C17.8833 18.7877 18.0994 19 18.3667 19H29V0H0Z"></path>
+                  </svg><span>Мониторы</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>17&quot;</span></a></li>
+                <li><a href="#"><span>19&quot;</span></a></li>
+                <li><a href="#"><span>21&quot;</span></a></li>
+                <li><a href="#"><span>22&quot;</span></a></li>
+                <li><a href="#"><span>24&quot;</span></a></li>
+                <li><a href="#"><span>27&quot;</span></a></li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="26" viewBox="0 0 20 26">
+                    <path d="M0.45453 20C0.705419 20 0.909059 19.8052 0.909059 19.5652V2.17393C0.909059 1.54 1.60995 0.869583 2.2727 0.869583H17.7273C18.3901 0.869583 19.0909 1.54 19.0909 2.17393C19.0909 2.41391 19.2946 2.6087 19.5455 2.6087C19.7964 2.6087 20 2.41391 20 2.17393C20.0001 1.05652 18.8955 0 17.7274 0H2.2727C1.10455 0 0 1.05652 0 2.17393V19.5652C0 19.8052 0.203641 20 0.45453 20Z"></path>
+                    <path d="M19.5454 4H2.27269C2.0218 4 1.81816 4.18954 1.81816 4.42306C1.81816 4.65658 2.0218 4.84612 2.27269 4.84612H19.0908V23.8846C19.0908 24.5015 18.39 25.1538 17.7272 25.1538H2.27269C1.60994 25.1538 0.909055 24.5015 0.909055 23.8846V21.7692H17.7272C17.9781 21.7692 18.1817 21.5797 18.1817 21.3461C18.1817 21.1126 17.9781 20.9231 17.7272 20.9231H0.454527C0.20364 20.9231 0 21.1126 0 21.3461V23.8846C0 24.9719 1.10454 26 2.27274 26H17.7273C18.8955 26 20 24.9719 20 23.8846V4.42306C19.9999 4.18954 19.7963 4 19.5454 4Z"></path>
+                    <path d="M10.4963 2C10.221 2 10 2.22401 10 2.5C10 2.77599 10.226 3 10.5013 3C10.7771 3 11 2.77599 11 2.5C11 2.22401 10.7771 2 10.5013 2H10.4963Z"></path>
+                    <path d="M9 23C9 23.5515 9.44847 24 10 24C10.5515 24 11 23.5515 11 23C11 22.4485 10.5515 22 10 22C9.44847 22 9 22.4485 9 23Z"></path>
+                  </svg><span>Планшеты</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>Бюджетный</span></a></li>
+                <li><a href="#"><span>Для дома и учебы</span></a></li>
+                <li><a href="#"><span>Домашний</span></a></li>
+                <li><a href="#"><span>Рабочий</span></a></li>
+                <li><a href="#"><span>Для дизайна</span></a></li>
+                <li><a href="#"><span>Мощные</span></a></li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="25" viewBox="0 0 30 25">
+                    <path d="M28.3322 21H25.0156V20.0892H28.3322C28.7352 20.0892 29.0629 19.7708 29.0629 19.379V13.6207C29.0629 13.229 28.7352 12.9105 28.3322 12.9105H14.6676C14.2648 12.9105 13.9368 13.229 13.9368 13.6207V19.379C13.9368 19.7708 14.2648 20.0892 14.6676 20.0892H18.1165V21H14.6676C13.748 21 13 20.2728 13 19.379V13.6207C13 12.727 13.748 12 14.6676 12H28.3322C29.252 12 30 12.727 30 13.6207V19.379C30 20.273 29.252 21 28.3322 21Z"></path>
+                    <path d="M25.5215 25H18.4782C18.2141 25 18 24.7832 18 24.5157V17.4843C18 17.2168 18.2141 17 18.4782 17C18.7423 17 18.9564 17.2168 18.9564 17.4843V24.0312H25.0433V17.4843C25.0433 17.2168 25.2574 17 25.5215 17C25.7859 17 26 17.2168 26 17.4843V24.5157C26 24.7832 25.7859 25 25.5215 25Z"></path>
+                    <path d="M27.5584 18H16.4418C16.1977 18 16 17.7761 16 17.5C16 17.2239 16.1977 17 16.4418 17H27.5584C27.8023 17 28 17.2239 28 17.5C28 17.7761 27.8023 18 27.5584 18Z"></path>
+                    <path d="M24.4999 16C24.2238 16 24 15.799 24 15.5511V14.4491C24 14.201 24.2238 14 24.4999 14C24.7762 14 25 14.201 25 14.4491V15.5511C25 15.799 24.7762 16 24.4999 16Z"></path>
+                    <path d="M22.5001 16C22.2238 16 22 15.799 22 15.5511V14.4491C22 14.201 22.2238 14 22.5001 14C22.7762 14 23 14.201 23 14.4491V15.5511C23 15.799 22.7762 16 22.5001 16Z"></path>
+                    <path d="M26.4999 16C26.2238 16 26 15.799 26 15.5511V14.4491C26 14.201 26.2238 14 26.4999 14C26.7762 14 27 14.201 27 14.4491V15.5511C27 15.799 26.7762 16 26.4999 16Z"></path>
+                    <path d="M3.05355 21C1.36974 21 0 19.5835 0 17.8426V3.15743C0 1.41649 1.36974 0 3.05355 0H19.9465C21.6303 0 23 1.41649 23 3.15743V12.3526C23 12.6122 22.7964 12.8227 22.5453 12.8227C22.2939 12.8227 22.0903 12.6122 22.0903 12.3526V3.15743C22.0903 1.93494 21.1286 0.940561 19.9465 0.940561H3.05355C1.87143 0.940561 0.909692 1.93494 0.909692 3.15743V17.8426C0.909692 19.0651 1.87143 20.0594 3.05355 20.0594H13.4603C13.7114 20.0594 13.915 20.27 13.915 20.5299C13.915 20.7895 13.7114 21 13.4603 21H3.05355Z"></path>
+                    <path d="M22.5453 6H0.454719C0.203621 6 0 5.7761 0 5.5C0 5.2239 0.203621 5 0.454719 5H22.5453C22.7964 5 23 5.2239 23 5.5C23 5.7761 22.7964 6 22.5453 6Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M5 3.0001C5 3.55138 5.44857 4 6 4C6.55143 4 7 3.55138 7 3.0001C7 2.44862 6.55143 2 6 2C5.44857 2 5 2.44862 5 3.0001ZM5.7156 3.0001C5.7156 2.8433 5.84322 2.71567 6 2.71567C6.15678 2.71567 6.2844 2.8433 6.2844 3.0001C6.2844 3.1569 6.15678 3.28453 6 3.28453C5.84322 3.28453 5.7156 3.1569 5.7156 3.0001Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M2 2.9999C2 3.55138 2.44857 4 3 4C3.55143 4 4 3.55138 4 2.9999C4 2.44862 3.55143 2 3 2C2.44857 2 2 2.44842 2 2.9999ZM2.7156 2.9999C2.7156 2.8431 2.84322 2.71547 3 2.71547C3.15678 2.71547 3.2844 2.8431 3.2844 2.9999C3.2844 3.1567 3.15678 3.28433 3 3.28433C2.84322 3.28433 2.7156 3.1567 2.7156 2.9999Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M8 3C8 3.55143 8.44857 4 9 4C9.55143 4 10 3.55143 10 3C10 2.44857 9.55143 2 9 2C8.44857 2 8 2.44857 8 3ZM8.7156 3C8.7156 2.84322 8.84322 2.7156 9 2.7156C9.15678 2.7156 9.2844 2.84322 9.2844 3C9.2844 3.15678 9.15678 3.2844 9 3.2844C8.84322 3.2844 8.7156 3.15678 8.7156 3Z"></path>
+                  </svg><span>Принтеры</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>Бюджетный</span></a></li>
+                <li><a href="#"><span>Для дома и учебы</span></a></li>
+                <li><a href="#"><span>Домашний</span></a></li>
+                <li><a href="#"><span>Рабочий</span></a></li>
+                <li><a href="#"><span>Для дизайна</span></a></li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 19.5H11.5C11.7761 19.5 12 19.7239 12 20V22C12 22.2761 11.7761 22.5 11.5 22.5H9.5V24.5C9.5 24.7761 9.27612 25 9 25H7C6.72388 25 6.5 24.7761 6.5 24.5V22.5H4.5C4.22387 22.5 4 22.2761 4 22V20C4 19.7239 4.22387 19.5 4.5 19.5H6.5V17.5C6.5 17.2239 6.72388 17 7 17H9C9.27612 17 9.5 17.2239 9.5 17.5V19.5ZM9 21.5H11V20.5H9C8.72388 20.5 8.5 20.2761 8.5 20V18H7.5V20C7.5 20.2761 7.27612 20.5 7 20.5H5V21.5H7C7.27612 21.5 7.5 21.7239 7.5 22V24H8.5V22C8.5 21.7239 8.72388 21.5 9 21.5Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M28.9495 20.3833C28.5788 17.0527 25.4512 13.9367 22.1181 13.5815C21.835 13.5503 21.5504 13.5341 21.2656 13.5332H15.9497V11.5998H14.9832V10.6332C14.9832 9.56546 14.1177 8.69989 13.0501 8.69989H10.6338C10.1 8.69989 9.6673 8.26713 9.6673 7.73323C9.6673 7.19934 10.1 6.76658 10.6338 6.76658H18.366C19.4336 6.76658 20.2991 5.901 20.2991 4.83327C20.2991 3.76554 19.4336 2.89996 18.366 2.89996H15.9497C15.4159 2.89996 14.9832 2.4672 14.9832 1.93331V0H14.0167V1.93331C14.0167 3.00104 14.8821 3.86662 15.9497 3.86662H18.366C18.8999 3.86662 19.3326 4.29937 19.3326 4.83327C19.3326 5.36716 18.8999 5.79992 18.366 5.79992H10.6338C9.56624 5.79992 8.70077 6.6655 8.70077 7.73323C8.70077 8.80096 9.56624 9.66654 10.6338 9.66654H13.0501C13.584 9.66654 14.0167 10.0993 14.0167 10.6332V11.5998H13.0501V13.5332H7.73425C7.44912 13.5338 7.16418 13.55 6.8808 13.5815C3.54629 13.9391 0.420543 17.0552 0.0508472 20.3858C-0.434651 24.629 2.61111 28.4625 6.85386 28.9481C8.58153 29.1458 10.3254 28.7553 11.8038 27.8397C12.4403 27.4229 13.1679 27.1658 13.9248 27.0901C14.2988 27.0605 14.6743 27.0592 15.0484 27.0862C15.8174 27.1606 16.5566 27.4206 17.2028 27.844C20.8354 30.0893 25.6002 28.9643 27.8452 25.3312C28.7587 23.8529 29.1478 22.1099 28.9495 20.3833ZM14.0167 12.5665H14.9832V13.5332H14.0167V12.5665ZM17.7122 27.0223C20.5004 28.7465 24.1236 28.2219 26.3085 25.7778C27.6039 24.3396 28.2161 22.4124 27.9883 20.4902C27.6693 17.6279 24.8795 14.8478 22.0152 14.5399C21.7662 14.5133 21.516 14.5 21.2656 14.4998H7.73425C7.4838 14.5007 7.23359 14.515 6.98471 14.5428C4.11992 14.8507 1.32956 17.6308 1.01157 20.4931C0.838324 22.0045 1.17939 23.5302 1.97973 24.824C3.94577 28.002 8.11542 28.9842 11.293 27.018C12.0606 26.5191 12.9372 26.2131 13.8485 26.1258C14.065 26.1088 14.28 26.0997 14.4999 26.0997C14.7077 26.0997 14.9136 26.1071 15.1175 26.1219C16.0429 26.2062 16.9336 26.5153 17.7122 27.0223Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19 18C19 16.8954 19.8954 16 21 16C22.1046 16 23 16.8954 23 18C23 19.1046 22.1046 20 21 20C19.8954 20 19 19.1046 19 18ZM20 18C20 18.5523 20.4477 19 21 19C21.5522 19 22 18.5523 22 18C22 17.4477 21.5523 17 21 17C20.4477 17 20 17.4477 20 18Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M19 24C19 22.8954 19.8954 22 21 22C22.1046 22 23 22.8954 23 24C23 25.1046 22.1046 26 21 26C19.8954 26 19 25.1046 19 24ZM20 24C20 24.5523 20.4477 25 21 25C21.5522 25 22 24.5523 22 24C22 23.4477 21.5523 23 21 23C20.4477 23 20 23.4477 20 24Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16 21C16 19.8954 16.8954 19 18 19C19.1046 19 20 19.8954 20 21C20 22.1046 19.1046 23 18 23C16.8954 23 16 22.1046 16 21ZM17 21C17 21.5523 17.4477 22 18 22C18.5522 22 19 21.5523 19 21C19 20.4477 18.5523 20 18 20C17.4477 20 17 20.4477 17 21Z"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M23 21C23 19.8954 23.8954 19 25 19C26.1046 19 27 19.8954 27 21C27 22.1046 26.1046 23 25 23C23.8954 23 23 22.1046 23 21ZM24 21C24 21.5523 24.4477 22 25 22C25.5522 22 26 21.5523 26 21C26 20.4477 25.5523 20 25 20C24.4477 20 24 20.4477 24 21Z"></path>
+                  </svg><span>Gamezone</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>Бюджетный</span></a></li>
+                <li><a href="#"><span>Для дома и учебы</span></a></li>
+                <li><a href="#"><span>Домашний</span></a></li>
+                <li><a href="#"><span>Рабочий</span></a></li>
+                <li><a href="#"><span>Для дизайна</span></a></li>
+              </ul>
+            </li>
+            <li class="catalog-menu__item">
+              <div class="catalog-menu__title">
+                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                    <path d="M2.134 6.892C1.37133 6.188 0.99 5.286 0.99 4.186C0.99 3.086 1.364 2.19133 2.112 1.502C2.88933 0.812666 3.85733 0.467999 5.016 0.467999C6.17467 0.467999 7.13533 0.812666 7.898 1.502C8.66067 2.17667 9.042 3.07133 9.042 4.186C9.042 5.286 8.66067 6.188 7.898 6.892C7.12067 7.58133 6.16 7.926 5.016 7.926C3.872 7.926 2.91133 7.58133 2.134 6.892ZM2.64 4.186C2.64 4.86067 2.86733 5.418 3.322 5.858C3.79133 6.28333 4.356 6.496 5.016 6.496C5.69067 6.496 6.25533 6.28333 6.71 5.858C7.16467 5.418 7.392 4.86067 7.392 4.186C7.392 3.526 7.16467 2.98333 6.71 2.558C6.25533 2.118 5.69067 1.898 5.016 1.898C4.34133 1.898 3.77667 2.118 3.322 2.558C2.86733 2.98333 2.64 3.526 2.64 4.186ZM11.396 15.098C10.6333 14.394 10.252 13.492 10.252 12.392C10.252 11.292 10.626 10.3973 11.374 9.708C12.1513 9.01867 13.1193 8.674 14.278 8.674C15.4367 8.674 16.3973 9.01867 17.16 9.708C17.9227 10.3827 18.304 11.2773 18.304 12.392C18.304 13.492 17.9227 14.394 17.16 15.098C16.3827 15.7873 15.422 16.132 14.278 16.132C13.134 16.132 12.1733 15.7873 11.396 15.098ZM11.902 12.392C11.902 13.0667 12.1293 13.624 12.584 14.064C13.0533 14.4893 13.618 14.702 14.278 14.702C14.9527 14.702 15.5173 14.4893 15.972 14.064C16.4267 13.624 16.654 13.0667 16.654 12.392C16.654 11.732 16.4267 11.1893 15.972 10.764C15.5173 10.324 14.9527 10.104 14.278 10.104C13.6033 10.104 13.0387 10.324 12.584 10.764C12.1293 11.1893 11.902 11.732 11.902 12.392ZM4.532 16.22L3.498 15.494L14.806 0.379999L15.818 1.128L4.532 16.22Z"></path>
+                  </svg><span>Скидки</span></a>
+              </div>
+              <ul class="catalog-menu__links catalog-links-js">
+                <li><a href="#"><span>Бюджетный</span></a></li>
+                <li><a href="#"><span>Для дома и учебы</span></a></li>
+                <li><a href="#"><span>Домашний</span></a></li>
+                <li><a href="#"><span>Рабочий</span></a></li>
+                <li><a href="#"><span>Для дизайна</span></a></li>
+                <li><a href="#"><span>Мощные</span></a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--HEADER end-->
+    <!--MAIN-->
+    <div class="main">
+      <div class="max-wrap layout">
+        <div class="breadcrumbs">
+          <ul class="breadcrumbs__list">
+            <li><a href="#" title="Перейти в раздел Каталог"><span>Каталог</span></a></li>
+            <li><a href="#" title="Перейти в раздел Ноутбуки"><span>Ноутбуки</span></a></li>
+            <li><a href="#" title="Перейти в раздел Dell"><span>Dell</span></a></li>
+            <li>Ноутбук Dell Inspiron 17 5770-6922</li>
+          </ul>
+        </div>
+        <!--CONTENT-->
+        <!--product card-->
+        <section class="section p-card">
+          <div class="p-card-heading">
+            <h1 class="p-card-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
+          </div>
+          <div class="p-card-visual">
+            <div class="p-card-gallery p-card-gallery-js">
+              <div class="p-card-images p-card-images-js">
+                <div class="p-card-images__item">
+                  <!--<img data-lazy="img/products/preview/01.jpeg" src="img/empty.png" alt="image description">-->
+                  <!--<noscript class="noscript"><img src="img/products/preview/01.jpeg" alt="image description"></noscript>-->
+                  <img src="img/products/preview/01.jpeg" alt="image description">
+                </div>
+                <div class="p-card-images__item">
+                  <!--<img data-lazy="img/products/preview/02.jpeg" src="img/empty.png" alt="image description">-->
+                  <!--<noscript class="noscript"><img src="img/products/preview/02.jpeg" alt="image description"></noscript>-->
+                  <img src="img/products/preview/02.jpeg" alt="image description">
+                </div>
+                <div class="p-card-images__item">
+                  <!--<img data-lazy="img/products/preview/03.jpeg" src="img/empty.png" alt="image description">-->
+                  <!--<noscript class="noscript"><img src="img/products/preview/03.jpeg" alt="image description"></noscript>-->
+                  <img src="img/products/preview/03.jpeg" alt="image description">
+                </div>
+              </div>
+            </div>
+            {{Visual}}
+          </div>
+          <div class="p-card-content">
+            {{Conten}}
+          </div>
+        </section>
+        <section class="section section_collections tabs-js">
+          <div class="collections">
+            <h2 class="collections__title">Готовые подборки</h2>
+            <div class="collections__content">
+              <div class="collections__thumbs">
+                <a href="#brand" class="tabs__anchor-js tabs-active"><span>По производителю</span></a>
+                <a href="#launch" class="tabs__anchor-js"><span>Дата выхода на рынок</span></a>
+                <a href="#screen" class="tabs__anchor-js"><span>Диагональ экрана</span></a>
+                <a href="#color" class="tabs__anchor-js"><span>Цвет корпуса</span></a>
+                <a href="#resolution" class="tabs__anchor-js"><span>Разрешение экрана</span></a>
+              </div>
+              <div class="tabs__panels-js">
+                <div class="tabs__panel-js" id="brand">
+                  <ul class="float-list">
+                    <li><span>ASUS</span></li>
+                    <li><a href="#"><span>Acer</span></a></li>
+                    <li><a href="#"><span>Apple</span></a></li>
+                    <li><a href="#"><span>ASUS</span></a></li>
+                    <li><a href="#"><span>Dell</span></a></li>
+                    <li><a href="#"><span>DEXP</span></a></li>
+                    <li><a href="#"><span>Digma</span></a></li>
+                    <li><a href="#"><span>Dream Machines</span></a></li>
+                    <li><a href="#"><span>Fujitsu</span></a></li>
+                    <li><a href="#"><span>HP</span></a></li>
+                    <li><a href="#"><span>Huawei</span></a></li>
+                    <li><a href="#"><span>IRBIS</span></a></li>
+                    <li><a href="#"><span>Krez</span></a></li>
+                    <li><a href="#"><span>Lenovo</span></a></li>
+                    <li><a href="#"><span>MSI</span></a></li>
+                    <li><a href="#"><span>Packard</span></a></li>
+                    <li><a href="#"><span>Bell</span></a></li>
+                    <li><a href="#"><span>PNY</span></a></li>
+                    <li><a href="#"><span>Prestigio</span></a></li>
+                    <li><a href="#"><span>Razer</span></a></li>
+                    <li><a href="#"><span>Xiaomi</span></a></li>
+                  </ul>
+                </div>
+                <div class="tabs__panel-js" id="launch">
+                  <ul class="float-list">
+                    <li><a href="#"><span>2015</span></a></li>
+                    <li><a href="#"><span>2016</span></a></li>
+                    <li><a href="#"><span>2017</span></a></li>
+                    <li><a href="#"><span>2018</span></a></li>
+                    <li><a href="#"><span>2019</span></a></li>
+                  </ul>
+                </div>
+                <div class="tabs__panel-js" id="screen">
+                  <ul class="float-list">
+                    <li><a href="#"><span>менее 12"</span></a></li>
+                    <li><a href="#"><span>12-13"</span></a></li>
+                    <li><a href="#"><span>13.3-14"</span></a></li>
+                    <li><a href="#"><span>15"</span></a></li>
+                    <li><a href="#"><span>17"</span></a></li>
+                    <li><a href="#"><span>18" и более</span></a></li>
+                  </ul>
+                </div>
+                <div class="tabs__panel-js" id="color">
+                  <ul class="float-list">
+                    <li><a href="#"><span>белый</span></a></li>
+                    <li><a href="#"><span>бордовый</span></a></li>
+                    <li><a href="#"><span>бронзовый</span></a></li>
+                    <li><a href="#"><span>голубой</span></a></li>
+                    <li><a href="#"><span>зеленый</span></a></li>
+                    <li><a href="#"><span>золотистый</span></a></li>
+                    <li><a href="#"><span>коричневый</span></a></li>
+                    <li><a href="#"><span>красный</span></a></li>
+                    <li><a href="#"><span>медный</span></a></li>
+                  </ul>
+                </div>
+                <div class="tabs__panel-js" id="resolution">
+                  <ul class="float-list">
+                    <li><a href="#"><span>HD/HD+ (768p/900p)</span></a></li>
+                    <li><a href="#"><span>Full HD (1080p)</span></a></li>
+                    <li><a href="#"><span>QHD (1440p)</span></a></li>
+                    <li><a href="#"><span>Retina</span></a></li>
+                    <li><a href="#"><span>QHD+ (1800p)</span></a></li>
+                    <li><a href="#"><span>4K UHD (2160p)</span></a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="section section_helper">
+          <h2 class="hide">Помощь</h2>
+          <div class="helper">
+            <div class="helper__list">
+              <a href="#" class="helper__item">
+                <div class="helper__inner"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 31 31">
+                    <path d="M22.2 18.3C23 18.3 23.8 18.6 24.4 19.3L28 22.9C28.7 23.5 29 24.3 29 25.1 29 25.9 28.7 26.7 28 27.3 27.7 27.6 27.4 27.9 27.2 28.2 27.1 28.2 27.1 28.2 27.1 28.3 26.7 28.6 26.3 29 26 29.4 26 29.4 26 29.4 26 29.4 26 29.4 26 29.4 26 29.4 25 30.5 23.7 31 22.2 31 22.1 31 22 31 21.8 31 19.6 30.8 17.6 30 16.1 29.3 12.2 27.4 8.7 24.7 5.9 21.3 3.5 18.5 1.9 15.9 0.9 13 0.4 11.9-0.1 10.1 0 8.2 0.1 7 0.6 6 1.4 5.2L3.7 3 3.7 3C4.3 2.3 5.1 2 5.9 2 6.7 2 7.4 2.3 8.1 3 8.5 3.3 8.9 3.8 9.3 4.2 9.5 4.4 9.7 4.6 9.9 4.8L9.9 4.8 11.7 6.6C13.1 7.9 13.1 9.7 11.7 11 11.6 11.1 11.5 11.2 11.4 11.3 11.3 11.4 11.2 11.5 11.1 11.6 11.1 11.6 11.1 11.7 11 11.7 10.6 12.2 10.1 12.6 9.6 13.1 10 14 10.6 14.8 11.4 15.9 13.1 17.9 14.8 19.5 16.8 20.7 17 20.8 17.2 21 17.4 21.1 17.5 21.1 17.5 21.1 17.6 21.2 17.7 21.2 17.8 21.3 17.9 21.3L20 19.3C20.6 18.6 21.4 18.3 22.2 18.3ZM26.1 26.8C26.3 26.6 26.5 26.4 26.7 26.1 27.4 25.4 27.4 24.8 26.7 24.1L23.1 20.5 23.1 20.5C22.9 20.3 22.6 20 22.2 20 21.8 20 21.4 20.3 21.2 20.5L19 22.7C18.9 22.8 18.5 23.2 18 23.2 17.8 23.2 17.6 23.1 17.3 23 17.3 23 17.3 23 17.3 23 17.3 23 17.3 23 17.3 23 17.1 22.9 16.8 22.7 16.6 22.6 16.4 22.5 16.1 22.4 15.8 22.2 13.7 20.9 11.8 19.2 10 16.9L10 16.9C9 15.7 8.4 14.6 7.9 13.5L7.9 13.5C7.8 13.1 7.7 12.5 8.2 12 8.2 12 8.2 12 8.2 12 8.2 12 8.3 12 8.3 12 8.8 11.4 9.3 10.9 9.9 10.4 10 10.2 10.1 10.1 10.3 10 10.3 9.9 10.4 9.9 10.5 9.8 11.1 9.1 11.1 8.5 10.5 7.8L8.7 6C8.6 5.9 8.5 5.8 8.4 5.7 8.3 5.6 8.2 5.5 8.1 5.4 7.7 5 7.3 4.6 6.9 4.2L6.9 4.2C6.7 4 6.3 3.8 5.9 3.8 5.6 3.8 5.2 3.9 4.9 4.2L2.7 6.4C2.1 7 1.9 7.6 1.8 8.4 1.7 9.5 1.9 10.8 2.5 12.4 3.5 15.1 5 17.5 7.2 20.2 9.9 23.4 13.2 25.9 16.8 27.7 18.2 28.4 20 29.1 21.9 29.2 22 29.3 22.1 29.3 22.2 29.3 23.3 29.3 24 28.9 24.7 28.2 25.1 27.7 25.5 27.3 26 26.9 26 26.9 26.1 26.8 26.1 26.8Z"></path>
+                    <path d="M16.7 7.7C18.4 8 19.9 8.7 21 9.9 22.2 11.1 23 12.6 23.3 14.3 23.4 14.7 23.7 15 24.1 15 24.2 15 24.2 15 24.3 15 24.8 14.9 25.1 14.5 25 14 24.6 12 23.7 10.2 22.3 8.7 20.8 7.3 19 6.4 17 6 16.5 5.9 16.1 6.2 16 6.7 15.9 7.2 16.2 7.6 16.7 7.7Z"></path>
+                    <path d="M31 14C30.4 10.5 28.7 7.3 26.2 4.8 23.7 2.3 20.5 0.6 17 0 16.6-0.1 16.1 0.3 16 0.7 15.9 1.2 16.3 1.7 16.8 1.8 19.9 2.3 22.7 3.8 25 6 27.2 8.3 28.7 11.1 29.2 14.3 29.3 14.7 29.7 15 30.1 15 30.2 15 30.2 15 30.3 15 30.7 14.9 31.1 14.4 31 14Z"></path>
+                  </svg> <span>Помощь экспертов в выборе товаров</span></div>
+              </a>
+              <a href="#" class="helper__item">
+                <div class="helper__inner"><svg xmlns="http://www.w3.org/2000/svg" width="34" height="32" viewBox="0 0 34 32">
+                    <path d="M31 11.5H31.6C32.9 11.5 34 12.6 34 14V17.9C34 19.2 32.9 20.3 31.6 20.3H31.1C30.3 22.4 29 24.3 27.3 25.8 27.3 25.8 27.2 25.9 27.2 25.9 27.2 25.9 27.2 25.9 27.2 25.9L27.2 25.9C27.2 25.9 27.1 26 27.1 26 27.1 26 27 26 27 26.1 25.6 27.3 25.5 28.7 25.5 29V30.3C25.5 31.2 24.8 32 23.8 32H18.6C17.7 32 16.9 31.2 16.9 30.3V30C16.1 30 15.3 30 14.4 29.9V30.3C14.4 31.2 13.7 32 12.7 32H7.5C6.6 32 5.9 31.3 5.8 30.5 5.8 30.4 5.8 30.4 5.8 30.4V30.3 29.9C5.8 29.2 5.5 27.3 4.1 25.8 3.1 24.8 2.2 23.4 1.4 21.8 1 20.9 0.6 19.9 0.4 19 0.4 18.9 0.4 18.9 0.4 18.9 0.4 18.9 0.3 18.9 0.3 18.9 0.1 17.9 0 17 0 16 0 12.2 1.7 8.7 4.7 6 7.7 3.4 11.7 2 15.9 2 17.6 2 19.2 2.2 20.7 2.6 21.6 1.5 23.2 0.3 25.8 0 25.9 0 25.9 0 26 0 26.7 0 27.3 0.4 27.6 0.9 27.9 1.5 27.9 2.2 27.5 2.7 26.8 3.8 26.6 4.9 26.9 5.8V5.9C28.8 7.4 30.2 9.4 31 11.5ZM31.6 18.6C32 18.6 32.3 18.2 32.3 17.8H32.3V13.9C32.3 13.5 32 13.2 31.6 13.2H30.4 30.4C30 13.2 29.7 13 29.6 12.6 28.9 10.5 27.5 8.5 25.6 7 25.4 6.8 25.3 6.6 25.3 6.3 25.3 6.3 25.3 6.3 25.3 6.3 25.3 6.3 25.3 6.3 25.3 6.3 24.9 4.9 25.2 3.3 26.1 1.9 26.1 1.8 26.1 1.8 26.1 1.8 26.1 1.7 26 1.7 26 1.7 23.6 2 22.4 3.2 21.7 4.1 21.5 4.4 21.1 4.5 20.8 4.4 19.2 3.9 17.6 3.7 15.9 3.7 8.1 3.7 1.7 9.2 1.7 16 1.7 16.8 1.8 17.7 2 18.5V18.5C2 18.6 2 18.6 2 18.6 2 18.6 2 18.6 2 18.6 2.2 19.4 2.5 20.2 2.9 21 2.9 21 2.9 21 2.9 21 2.9 21 2.9 21 2.9 21 3.6 22.5 4.4 23.7 5.3 24.6 7.2 26.5 7.5 28.9 7.5 29.9V29.9 30.3C7.5 30.3 7.5 30.3 7.5 30.3H12.7C12.7 30.3 12.8 30.3 12.8 30.3V29C12.8 28.8 12.9 28.5 13 28.4 13.2 28.2 13.5 28.1 13.7 28.2 14.4 28.3 15.2 28.3 15.9 28.3 16.5 28.3 17.1 28.3 17.6 28.2 17.7 28.2 17.7 28.2 17.7 28.2 17.9 28.2 18.1 28.3 18.3 28.4 18.5 28.6 18.6 28.8 18.6 29.1V30.3C18.6 30.3 18.6 30.3 18.6 30.3H23.8C23.8 30.3 23.8 30.3 23.8 30.3V29 29C23.8 28.4 24 26.5 25.9 24.8 25.9 24.8 25.9 24.8 25.9 24.8L26.1 24.6 26.1 24.6 26.1 24.6C27.8 23.1 29 21.2 29.7 19.2 29.8 18.8 30.1 18.6 30.5 18.6H31.6Z"></path>
+                    <path d="M17 15.1H15C14.3 15.1 13.7 14.6 13.7 13.9 13.7 13.2 14.3 12.7 15 12.7H18.5C18.9 12.7 19.3 12.3 19.3 11.8 19.3 11.4 18.9 11 18.5 11H16.9V9.8C16.9 9.4 16.5 9 16 9 15.5 9 15.1 9.4 15.1 9.8V11H15C13.4 11 12 12.3 12 13.9 12 15.5 13.4 16.8 15 16.8H17C17.7 16.8 18.2 17.4 18.2 18.1 18.2 18.7 17.7 19.3 17 19.3H13.5C13 19.3 12.6 19.7 12.6 20.1 12.6 20.6 13 21 13.5 21H15.1V22.2C15.1 22.6 15.5 23 16 23 16.5 23 16.9 22.6 16.9 22.2V21H17C17 21 17 21 17 21 18.7 21 20 19.7 20 18.1 20 16.5 18.6 15.1 17 15.1Z"></path>
+                  </svg> <span>Рассрочка и кредит по выгодным условиям</span></div>
+              </a>
+              <a href="#" class="helper__item">
+                <div class="helper__inner"><svg xmlns="http://www.w3.org/2000/svg" width="40" height="29" viewBox="0 0 40 29">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M29.8645 9.27177H32.3828C36.583 9.27177 40 12.6609 40 16.8266C40 17.1775 39.9622 17.7506 39.9032 18.4311L39.9027 18.4379C39.6977 20.7988 39.2389 24.4498 39.2141 24.6472L39.2128 24.6553L39.2116 24.6621L39.2115 24.6624L39.21 24.6707L39.2089 24.6774C39.2078 24.6841 39.2068 24.6908 39.2053 24.6974C39.2036 24.705 39.2016 24.7125 39.1996 24.72L39.1978 24.7265L39.1955 24.7353L39.1927 24.7456L39.1911 24.751C39.1871 24.7635 39.1824 24.7755 39.1777 24.7875C39.1757 24.7924 39.1741 24.7974 39.1721 24.8023C39.1648 24.8193 39.1567 24.8358 39.1479 24.852L39.1471 24.8535L39.1462 24.8548C39.138 24.8698 39.129 24.8844 39.1194 24.8985C39.118 24.9007 39.1164 24.9028 39.1149 24.9048L39.1112 24.9098C39.1034 24.9207 39.0956 24.9315 39.087 24.9421C39.083 24.9469 39.0787 24.9515 39.0746 24.9562C39.0669 24.9649 39.0591 24.9736 39.051 24.9818C39.0475 24.9854 39.0438 24.9889 39.0401 24.9923L39.0399 24.9925L39.035 24.9971C39.0273 25.0043 39.0198 25.0114 39.0117 25.0181C39.0055 25.0234 38.999 25.0283 38.9926 25.0334C38.9848 25.0392 38.9773 25.0451 38.9693 25.0506C38.9623 25.0555 38.9549 25.0602 38.9476 25.0649L38.9385 25.0705L38.9237 25.0793C38.916 25.0836 38.9084 25.0878 38.9004 25.0919C38.892 25.0961 38.8834 25.1001 38.8748 25.1041C38.867 25.1076 38.8592 25.1111 38.8511 25.1143L38.8385 25.1191L38.8224 25.1247C38.8149 25.1273 38.8075 25.1299 38.7998 25.1322L38.7865 25.1358L38.7787 25.1378L38.7655 25.1409L38.7591 25.1425L38.759 25.1425L38.759 25.1425C38.7549 25.1435 38.7508 25.1445 38.7466 25.1453C38.7318 25.1483 38.7166 25.1504 38.7014 25.1521L38.6949 25.1531L38.6912 25.1535C38.6722 25.1554 38.653 25.1566 38.6334 25.1566L38.6322 25.1565H36.0231C35.735 27.3224 33.8626 29 31.6014 29C29.3401 29 27.4679 27.3224 27.1798 25.1565H17.7814C17.4933 27.3224 15.6211 29 13.3599 29C11.0986 29 9.22629 27.3224 8.93824 25.1565H6.32979L6.32893 25.1566C6.31002 25.1566 6.29096 25.1556 6.27174 25.1538L6.27065 25.1536C6.25323 25.1519 6.23612 25.1492 6.21909 25.146L6.21555 25.1455L6.21206 25.1449C6.19416 25.1413 6.17666 25.1368 6.15932 25.1317L6.15518 25.1306C6.13995 25.1259 6.12518 25.1203 6.11049 25.1145L6.1065 25.1131C6.1045 25.1124 6.10249 25.1118 6.10057 25.1109C6.0923 25.1075 6.08426 25.1035 6.0762 25.0995L6.07613 25.0994L6.07606 25.0994L6.06932 25.096C6.0194 25.0716 5.97377 25.0405 5.93338 25.0038L5.92707 24.9982L5.92032 24.9922L5.91377 24.9861L5.912 24.9842L5.91049 24.9825C5.84768 24.9191 5.79955 24.8415 5.77119 24.755L5.76989 24.7513L5.76893 24.7488C5.76742 24.7439 5.7662 24.7389 5.76498 24.734L5.76498 24.7339L5.76291 24.7257L5.76103 24.7189C5.75864 24.7103 5.75627 24.7017 5.75448 24.6929L5.75334 24.6858L5.75244 24.6799C5.74971 24.6651 5.74713 24.6503 5.74557 24.6353C5.74528 24.6328 5.74519 24.6303 5.74509 24.6278L5.74471 24.6211C5.74362 24.6064 5.74252 24.5917 5.74252 24.5767L5.74244 24.5753C5.74244 24.568 5.74293 24.561 5.74341 24.5539L5.74408 24.5433L5.74447 24.5339L5.74479 24.5257L5.74526 24.5192L5.74549 24.517L5.74573 24.5149L6.35112 18.3177L6.35127 18.3159L6.74284 14.3083H4.7658C4.44213 14.3083 4.17986 14.0481 4.17986 13.7271C4.17986 13.4062 4.44213 13.146 4.7658 13.146H6.85635L7.57542 5.78523H0.58594C0.262267 5.78523 0 5.52503 0 5.20409C0 4.88314 0.262267 4.62295 0.58594 4.62295H7.68901L8.08933 0.52512L8.08972 0.522408C8.08997 0.519878 8.09038 0.517414 8.09079 0.514945L8.09175 0.508461C8.0937 0.493583 8.09566 0.478784 8.09863 0.464294L8.09937 0.461427L8.10011 0.45856C8.15784 0.192164 8.3966 0 8.67183 7.74856e-05L8.67269 0H15.704C16.0266 0 16.2899 0.260352 16.2899 0.581142C16.2899 0.901158 16.0266 1.16228 15.704 1.16228H9.20449L8.86636 4.62295H14.9227C15.2464 4.62295 15.5087 4.88314 15.5087 5.20409C15.5087 5.52503 15.2464 5.78523 14.9227 5.78523H8.75277L8.0337 13.146H11.7968C12.1204 13.146 12.3827 13.4062 12.3827 13.7271C12.3827 14.0481 12.1204 14.3083 11.7968 14.3083H7.92011L7.57956 17.795H27.9397L28.2339 14.4444L28.2343 14.4414L29.4003 1.16228H18.0477C17.7243 1.16228 17.4618 0.901158 17.4618 0.581142C17.4618 0.260352 17.7243 0 18.0477 0H30.0299H30.0317H30.039C30.0431 0 30.047 0.000266873 30.051 0.000534365L30.0595 0.00100731L30.0697 0.00127421C30.0765 0.00141196 30.0833 0.00154971 30.0902 0.0021696L30.095 0.00278948C30.1023 0.00343703 30.1094 0.0045318 30.1166 0.00563211L30.1166 0.00563286L30.1235 0.00666376L30.1312 0.00774975L30.1312 0.00775168C30.1388 0.008808 30.1465 0.00986589 30.1539 0.0113129C30.1589 0.0122899 30.1639 0.0135442 30.1688 0.0148037L30.1775 0.0169694L30.1813 0.0178718C30.1914 0.0202756 30.2015 0.0226862 30.2114 0.0256477L30.2194 0.0284196L30.2264 0.0308393C30.24 0.0353334 30.2535 0.0399826 30.2665 0.0454066L30.2718 0.0478861C30.4821 0.138002 30.6251 0.345276 30.6251 0.580445V0.581065L30.625 0.584939C30.6249 0.600359 30.6247 0.615778 30.6232 0.63143L29.8645 9.27177ZM32.1595 10.4342H29.7624L29.4562 13.9208H31.8533L32.1595 10.4342ZM13.3601 27.8376C11.5462 27.8376 10.0706 26.3741 10.0706 24.5752C10.0706 22.7763 11.5463 21.3127 13.3601 21.3127C15.1738 21.3127 16.6494 22.7763 16.6494 24.5752C16.6494 26.3741 15.1738 27.8376 13.3601 27.8376ZM28.3121 24.5752C28.3121 26.3741 29.7876 27.8376 31.6014 27.8376C33.4152 27.8376 34.8908 26.3741 34.8908 24.5752C34.8908 22.7763 33.4152 21.3127 31.6014 21.3127C29.7877 21.3127 28.3121 22.7763 28.3121 24.5752ZM38.1144 23.9938H36.0233C35.7353 21.8277 33.8629 20.1501 31.6015 20.1501C29.3403 20.1501 27.4679 21.8278 27.18 23.9938H17.7816C17.4937 21.8277 15.6214 20.1501 13.3601 20.1501C11.0987 20.1501 9.22629 21.8278 8.93832 23.9938H6.97393L7.46604 18.9569H28.4767V18.9572H28.4775C28.4971 18.9572 28.5166 18.9562 28.5358 18.9542C28.5394 18.9539 28.5429 18.9531 28.5465 18.9527C28.5618 18.9509 28.5771 18.9487 28.5921 18.9458C28.5959 18.945 28.5997 18.944 28.6035 18.9431L28.6113 18.9411L28.6145 18.9404C28.6189 18.9393 28.6233 18.9383 28.6276 18.9372C28.6339 18.9357 28.64 18.934 28.6461 18.9322C28.6519 18.9305 28.6575 18.9285 28.6631 18.9265L28.6689 18.9245L28.672 18.9234L28.6722 18.9233C28.681 18.9203 28.6897 18.9173 28.6982 18.9139C28.7064 18.9105 28.7143 18.9068 28.7222 18.9031C28.7309 18.8991 28.7396 18.8952 28.7479 18.8908C28.7559 18.8867 28.7637 18.8822 28.7716 18.8777C28.7796 18.873 28.7876 18.8683 28.7954 18.8633L28.8056 18.8566L28.8175 18.8482C28.8252 18.8428 28.8327 18.8372 28.8402 18.8314C28.8439 18.8285 28.8475 18.8255 28.8512 18.8225C28.8542 18.82 28.8571 18.8175 28.8601 18.8149L28.8696 18.8067C28.8737 18.8029 28.8778 18.7992 28.8818 18.7953C28.8878 18.7896 28.8937 18.7838 28.8995 18.7779C28.9065 18.7706 28.9133 18.7631 28.92 18.7554L28.9258 18.7487L28.9354 18.7371C28.9419 18.729 28.9481 18.7206 28.9542 18.7122C28.9588 18.7058 28.9632 18.6994 28.9676 18.6929C28.9733 18.6842 28.9788 18.6752 28.984 18.6661L28.9855 18.6636C28.989 18.6576 28.9925 18.6516 28.9957 18.6454C28.9996 18.6382 29.0031 18.6308 29.0066 18.6233L29.0093 18.6176L29.0114 18.6129C29.0141 18.607 29.0169 18.6011 29.0193 18.595C29.0224 18.5876 29.0251 18.58 29.0278 18.5724L29.0279 18.5723L29.0297 18.5671C29.0326 18.5588 29.0357 18.5505 29.0382 18.542C29.04 18.5359 29.0415 18.5298 29.043 18.5236L29.0453 18.5146L29.047 18.5078C29.0487 18.5009 29.0505 18.4939 29.0518 18.4869C29.0536 18.4778 29.0547 18.4685 29.0561 18.4592C29.0575 18.4496 29.0592 18.4401 29.0601 18.4303L29.0604 18.4287L29.0607 18.4262L29.3543 15.0827H32.3826C34.1779 15.0827 34.9876 16.0053 35.8447 16.9821C36.5519 17.788 37.3416 18.6872 38.6837 18.9066C38.5133 20.6942 38.2377 22.989 38.1144 23.9938ZM36.7285 16.2193C37.3775 16.9588 37.9132 17.5659 38.7839 17.742C38.8117 17.361 38.8281 17.0446 38.8281 16.8268C38.8281 13.621 36.4362 10.9595 33.3297 10.5038L33.0265 13.9556C34.926 14.1659 35.9169 15.2945 36.7285 16.2193Z" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11 25C11 23.8972 11.8972 23 13 23C14.1028 23 15 23.8972 15 25C15 26.1028 14.1028 27 13 27C11.8972 27 11 26.1028 11 25ZM12.0909 25C12.0909 25.5013 12.4987 25.9091 13 25.9091C13.5012 25.9091 13.9091 25.5013 13.9091 25C13.9091 24.4987 13.5013 24.0909 13 24.0909C12.4987 24.0909 12.0909 24.4987 12.0909 25Z" fill="black" />
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M29 25C29 23.8972 29.8972 23 31 23C32.1028 23 33 23.8972 33 25C33 26.1028 32.1028 27 31 27C29.8972 27 29 26.1028 29 25ZM30.0909 25C30.0909 25.5013 30.4987 25.9091 31 25.9091C31.5013 25.9091 31.9091 25.5013 31.9091 25C31.9091 24.4987 31.5013 24.0909 31 24.0909C30.4987 24.0909 30.0909 24.4987 30.0909 25Z" />
+                    <path d="M5.41935 9H2.58065C2.2599 9 2 9.22387 2 9.5C2 9.77613 2.2599 10 2.58065 10H5.41935C5.7401 10 6 9.77613 6 9.5C6 9.22387 5.7401 9 5.41935 9Z" />
+                  </svg> <span>Быстрая доставка по Минску курьером</span></div>
+              </a>
+              <a href="#" class="helper__item">
+                <div class="helper__inner"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="36" viewBox="0 0 35 36">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M35 21.8397V18.063C35 16.9501 34.2993 15.9727 33.2281 15.6307C32.7889 15.4905 32.3276 15.7299 32.1862 16.1652C32.0448 16.6006 32.272 17.0672 32.7113 17.2074C33.0833 17.3261 33.3289 17.6778 33.3289 18.0629V21.8396C33.3289 22.3348 32.9603 22.7493 32.4606 22.7493H31.3283C31.4783 21.9212 31.5543 21.0822 31.5543 20.2285C31.5543 18.4625 31.2262 16.7451 30.5784 15.1213C30.5786 15.1211 30.5789 15.1205 30.5791 15.1199L30.5794 15.1192L30.5797 15.1187C30.9238 14.8229 31.2726 14.3859 31.5616 13.8896C32.3631 12.514 32.4039 11.3792 31.6744 10.9092L30.592 10.1318C30.6271 9.8456 30.6448 9.55611 30.6448 9.26672C30.6448 8.97299 30.6265 8.67909 30.5903 8.38803L31.6731 7.61048C32.4039 7.141 32.3636 6.00595 31.5616 4.62963C31.2725 4.13319 30.9238 3.69693 30.5797 3.40119C29.8608 2.78365 29.3056 2.89674 29.0118 3.04434L27.7868 3.58679C27.3173 3.23537 26.8098 2.94468 26.2701 2.71832L26.1317 1.39555C26.0874 0.533155 25.0755 0 23.4714 0C21.8638 0 20.8524 0.534351 20.8112 1.39859L20.673 2.71822C20.1332 2.94468 19.6258 3.23518 19.1564 3.58669L17.9291 3.04305C17.1537 2.65151 16.1827 3.25359 15.3815 4.62954C14.5775 6.00963 14.5386 7.14505 15.2734 7.61268L16.3529 8.38785C16.3167 8.6789 16.2984 8.97281 16.2984 9.26662C16.2984 9.55565 16.3161 9.84505 16.3512 10.1318L15.2712 10.9074C14.9952 11.0856 14.6188 11.5056 14.7991 12.4317C14.8854 12.8749 15.0922 13.3925 15.3813 13.8888C16.1824 15.2643 17.1531 15.8664 17.9284 15.4758L19.144 14.9373C19.6173 15.2933 20.1294 15.5872 20.6747 15.8157L20.8112 17.1197C20.8525 17.9841 21.8639 18.5183 23.4716 18.5183C25.075 18.5183 26.0868 17.9856 26.1318 17.1237L26.2687 15.8156C26.814 15.587 27.3261 15.2931 27.7993 14.9371L28.8986 15.4239C29.5521 16.9424 29.8832 18.556 29.8832 20.2226C29.8832 25.6302 26.3456 30.3611 21.1956 31.9406C20.723 31.1653 19.8643 30.6629 18.8856 30.6629H16.1609C14.6739 30.6629 13.4641 31.8574 13.4641 33.3316C13.4641 34.8054 14.6739 36 16.1609 36H18.8855C20.2912 36 21.4492 34.9159 21.5716 33.5534C24.2949 32.7389 26.7437 31.0929 28.5232 28.8686C29.6063 27.5149 30.4105 25.9701 30.9173 24.4058H32.4606C33.8817 24.4058 35 23.2482 35 21.8397ZM23.4714 12.4185C25.2244 12.4185 26.6506 11.0049 26.6506 9.26754C26.6506 7.53014 25.2244 6.11656 23.4714 6.11656C21.7185 6.11656 20.2924 7.53005 20.2924 9.26754C20.2924 11.005 21.7186 12.4185 23.4714 12.4185ZM5.19894 20.2228C5.19894 15.2025 8.3533 10.6105 13.0749 8.79613C13.5051 8.63078 13.7007 8.15108 13.534 7.72476C13.3672 7.29816 12.8832 7.08661 12.4529 7.25188C9.84308 8.2547 7.63204 9.99219 6.02473 12.2765C4.37955 14.6146 3.52785 17.3625 3.52785 20.2229V22.7495H2.58573C2.08617 22.7495 1.67109 22.335 1.67109 21.8397V18.0631C1.67109 17.6781 1.93512 17.3262 2.30712 17.2075C2.74643 17.0674 2.98995 16.6008 2.84855 16.1654C2.70716 15.7301 2.2335 15.4907 1.79391 15.6309C0.722838 15.9727 0 16.9501 0 18.0631V21.8397C0 23.2483 1.16466 24.4059 2.58573 24.4059H4.32747C4.78897 24.4059 5.19894 24.0234 5.19894 23.566V20.2228ZM24.9795 9.26754C24.9795 8.44343 24.303 7.77289 23.4714 7.77289C22.64 7.77289 21.9635 8.44343 21.9635 9.26754C21.9635 10.0917 22.64 10.7622 23.4714 10.7622C24.303 10.7622 24.9795 10.0917 24.9795 9.26754ZM19.9113 33.319C19.9113 33.2513 19.9046 33.1769 19.8919 33.1129C19.8908 33.1084 19.8898 33.1057 19.8888 33.1032C19.8877 33.1004 19.8867 33.0977 19.8857 33.0927C19.7816 32.6406 19.3727 32.3194 18.8856 32.3194H16.1609C15.5953 32.3194 15.1352 32.7708 15.1352 33.3314C15.1352 33.8922 15.5953 34.3438 16.1609 34.3438H18.8856C19.4512 34.3439 19.9113 33.8795 19.9113 33.319ZM30.5044 6.40448L29.1933 7.34592C28.9283 7.53622 28.7998 7.86242 28.8647 8.18035C28.937 8.53581 28.9738 8.90131 28.9738 9.26672C28.9738 9.6289 28.9379 9.99053 28.867 10.3414C28.8028 10.659 28.9314 10.9846 29.196 11.1746L30.5045 12.1141C30.4663 12.308 30.3547 12.6484 30.1144 13.0608C29.8744 13.473 29.633 13.7387 29.4827 13.8686L28.0101 13.2165C27.7108 13.084 27.3612 13.1371 27.1156 13.3524C26.5598 13.8399 25.9236 14.2052 25.2247 14.4378C24.9143 14.5412 24.6935 14.8147 24.6597 15.1375L24.4937 16.7236C24.3051 16.7877 23.9521 16.8622 23.4716 16.8622C22.9913 16.8622 22.6383 16.7878 22.4498 16.7237L22.2837 15.1374C22.2499 14.8146 22.0289 14.5411 21.7185 14.4378C21.0198 14.2053 20.3836 13.8401 19.8275 13.3525C19.582 13.1373 19.2322 13.0841 18.933 13.2167L17.4605 13.8688C17.3102 13.7391 17.0687 13.4732 16.8285 13.0608C16.5883 12.6487 16.4768 12.3084 16.4386 12.1145L17.747 11.1748C18.0114 10.9849 18.14 10.6596 18.0762 10.3421C18.0052 9.9898 17.9693 9.62807 17.9693 9.26672C17.9693 8.90122 18.006 8.53572 18.0784 8.18025C18.1432 7.86224 18.0146 7.53603 17.7495 7.34565L16.4385 6.40421C16.4766 6.21023 16.5882 5.86995 16.8284 5.4577C17.0686 5.04537 17.3101 4.77953 17.4605 4.64978L18.9441 5.30698C19.2426 5.4393 19.5917 5.38676 19.8372 5.17245C20.3905 4.68944 21.0229 4.32735 21.7171 4.09611C22.0273 3.99268 22.2481 3.7192 22.2819 3.39649L22.4496 1.79482C22.6381 1.73077 22.9912 1.65633 23.4714 1.65633C23.9519 1.65633 24.3049 1.73077 24.4934 1.79491L24.6609 3.39649C24.6947 3.71929 24.9155 3.99277 25.2258 4.0962C25.9195 4.32726 26.5521 4.68954 27.1058 5.17263C27.3512 5.38676 27.7002 5.43939 27.9987 5.30716L29.4825 4.65015C29.6328 4.7799 29.8743 5.04574 30.1144 5.45798C30.3547 5.87032 30.4662 6.2106 30.5044 6.40448Z" /></svg> <span>Дополнительные услуги по сервисному обслуживанию</span></div>
+              </a>
+            </div>
+          </div>
+        </section>
+        <!--CONTENT end-->
+      </div>
+    </div>
+    <!--MAIN end-->
+    <!--FOOTER-->
+    <footer class="footer">
+      <div class="footer__holder max-wrap layout">
+        <!--footer-common-->
+        <div class="footer-common">
+          <div class="footer-grid">
+            <div class="footer-grid__item footer-grid__item_catalog">
+              <strong class="footer-grid__title"><a href="#"><span>Каталог</span></a></strong>
+              <div class="footer-grid__content">
+                <ul class="footer-grid__list">
+                  <li><a href="#"><span>Ноутбуки</span></a></li>
+                  <li><a href="#"><span>Моноблоки</span></a></li>
+                  <li><a href="#"><span>Компьютеры</span></a></li>
+                  <li><a href="#"><span>Мониторы</span></a></li>
+                  <li><a href="#"><span>Принтеры и МФУ</span></a></li>
+                  <li><a href="#"><span>Game Zone</span></a></li>
+                  <li><a href="#"><span>Планшеты и смартфоны</span></a></li>
+                  <li><a href="#"><span>Телевизоры</span></a></li>
+                  <li><a href="#"><span>SSD</span></a></li>
+                  <li><a href="#"><span>Внешние жесткие диски</span></a></li>
+                  <li><a href="#"><span>Экшен-камеры</span></a></li>
+                  <li><a href="#"><span>Электронные книги</span></a></li>
+                  <li><a href="#"><span>Чехлы для планшетов</span></a></li>
+                  <li><a href="#"><span>IP-камеры</span></a></li>
+                  <li><a href="#"><span>Программное обеспечение</span></a></li>
+                  <li><a href="#"><span>Умные часы</span></a></li>
+                  <li><a href="#"><span>Аксессуары для ноутбуков и компьютеров</span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-grid__item">
+              <strong class="footer-grid__title"><a href="#"><span>Rulez.by</span></a></strong>
+              <div class="footer-grid__content">
+                <ul class="footer-grid__list">
+                  <li><a href="#"><span>Акции и подарки</span></a></li>
+                  <li><a href="#"><span>Условия покупки в кредит</span></a></li>
+                  <li><a href="#"><span>Условия покупки в рассрочку</span></a></li>
+                  <li><a href="#"><span>Услуги</span></a></li>
+                  <li><a href="#"><span>Сервисный центр</span></a></li>
+                  <li><a href="#"><span>Доставка</span></a></li>
+                  <li><a href="#"><span>Способы оплаты</span></a></li>
+                  <li><a href="#"><span>Сертификаты и гарантия</span></a></li>
+                  <li><a href="#"><span>Часто задаваемые вопросы</span></a></li>
+                  <li><a href="#"><span>О компании</span></a></li>
+                  <li><a href="#"><span>Карта сайта</span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="footer-grid__item">
+              <strong class="footer-grid__title"><a href="#"><span>Контакты</span></a></strong>
+              <div class="footer-grid__content">
+                <ul class="footer-grid__phones">
+                  <li><a href="tel:+375291232017"><span><i>+375 (29)</i> 123 20 17</span></a></li>
+                  <li><a href="tel:+375291231010"><span><i>+375 (29)</i> 123 10 10</span></a></li>
+                  <li><a href="tel:+375291231010"><span><i>+375 (29)</i> 123 10 10</span></a></li>
+                </ul>
+                <div class="soc-footer">
+                  <div class="soc-footer__list">
+                    <div class="soc-footer__item">
+                      <a href="?fb" title="Facebook" class="fb">
+                        <span>Facebook</span>
+                        <svg class="svg-ico-facebook" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 123 263.5">
+                          <path fill="#3a589e" d="M80.9 85.2V57.9c0-10.4 6.6-12.6 11.5-12.6s29.5 0 29.5 0V-0.1H81.5c-44.8 0-55.2 33.9-55.2 55.2v30.1H0.1v46.5h26.2c0 59.6 0 131.7 0 131.7H81c0 0 0-72.7 0-131.7h37.2l4.9-46.5L80.9 85.2 80.9 85.2z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="soc-footer__item">
+                      <a href="?vk" title="Вконтакте" class="vk">
+                        <span>Вконтакте</span>
+                        <svg class="svg-ico-vkontakte" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 107.585 61.139">
+                          <path fill="#4b73a4" d="M104.8 51.2c-2.6-2.6-13.2-13.7-13.2-13.7 -1.6-2.1-2.1-4.7-0.5-6.8 3.2-4.2 9-11.6 11.1-14.8 3.2-4.2 9-13.2 1.1-13.2H85.9c-1.6 0-2.6 1.1-3.7 2.1 0 0-6.8 12.6-9 16.8 -5.8 11.6-10 7.9-10 2.6V5.9c0-3.2-2.6-5.8-5.8-5.8H44.3c-3.7-0.5-6.8 1.6-9.5 4.2 0 0 6.8-1.1 6.8 7.9v13.7c0 2.1-1.6 3.7-3.7 3.7 -1.1 0-2.1-0.5-3.2-1.1 -5.3-7.4-10-15.3-13.2-23.7 -0.5-1.1-2.1-2.1-3.2-2.1H2.6C1.1 2.7 0 3.7 0 5.3c0 0.5 0 0.5 0 1.1 4.7 13.2 25.3 54.3 49 54.3h10c2.1 0 3.7-1.6 3.7-3.7v-5.8c0-2.1 1.6-3.7 3.7-3.7 1.1 0 2.1 0.5 2.6 1.1L80.6 59.6c1.1 1.1 2.6 1.6 3.7 1.6h15.8C109.1 60.7 109.1 55.4 104.8 51.2z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                    <div class="soc-footer__item">
+                      <a href="?telegram" title="Телеграм" class="telegram">
+                        <span>Телеграм</span>
+                        <svg class="svg-ico-telegram" width="32" height="32" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 44 42.6">
+                          <path d="M17.6 33.2l-4-1.6c-1.7-0.7-2.6 0.1-1.9 1.9 0 0 3.7 8.9 3.6 9.2 -0.1 0.3 3.5-5.3 3.5-5.3C20 35.8 19.4 33.9 17.6 33.2zM41.7 0.4L1.2 21.6c-1.7 0.9-1.6 2.2 0.1 2.8l5.2 2c1.7 0.7 4.4 0.3 5.9-0.8L34.8 7.9c1.5-1.2 1.6-1 0.4 0.4l-17.7 19c-1.3 1.4-0.9 3 0.8 3.7l0.6 0.2c1.8 0.7 4.6 1.8 6.3 2.5l5.7 2.3c1.7 0.7 3.6-0.1 4.1-1.9l8.7-32.1C44.3 0.3 43.4-0.5 41.7 0.4z"></path>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="subs">
+                  <a href="#" class="btn-subs"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                      <circle cx="6.18" cy="17.82" r="2.18"></circle>
+                      <path d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"></path>
+                    </svg> <span>Подписать на рассылку</span></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--footer-common end-->
+        <!--footer bottom-->
+        <div class="footer-bottom">
+          <div class="footer-bottom__holder">
+            <div class="footer-bottom__col">
+              <span class="copyright">&copy; <a href="index.html">rulezz</a> 2019</span>
+            </div>
+            <div class="footer-bottom__col">
+              <div class="license">ООО «Сити Трейд Маркет» Юр. адрес: 220019, РБ, г. Минск, ул. Солнечная, д.27, оф.335 В торговом реестре РБ с 6 февраля 2017 года №366540 УНП: 1927465445 Выдано&nbsp;Минским Городским исполнительным комитетом 06.12.2017 г.</div>
+            </div>
+            <div class="footer-bottom__col">
+              <!--developer-->
+              <div class="developer">
+                <a href="http://astronim.by/" target="_blank" title="Разработка сайта">
+                  <span class="developer__logo">Astronim*Support</span>
+                </a>
+              </div>
+              <!--developer end-->
+            </div>
+          </div>
+        </div>
+        <!--footer bottom end-->
+      </div>
+    </footer>
+    <!--FOOTER end-->
+  </div>
+  <script src="js/jquery.min.js"></script>
+  <script src="js/libs.min.js"></script>
+  <script src="js/common.js?rev=@@hash"></script>
+</body>
+
+</html>

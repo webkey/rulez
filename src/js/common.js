@@ -243,7 +243,7 @@ function customSelect(select) {
 }
 
 /**
- * Add classes on elements near banners (in products)
+ * !Add classes on elements near banners (in products)
  */
 function bannersSiblings() {
   var $banner = $('.banner_in-products-js');
@@ -416,7 +416,8 @@ function gridLayout() {
 
 }
 
-/**! jquery.ms-tabs.js
+/**
+ * !jquery.ms-tabs.js
  * Version: 2018.1.0
  * Author: Astronim*
  * Description: Extended toggle class
@@ -706,7 +707,8 @@ function tabs() {
   }
 }
 
-/**! jquery.ms-drop.js
+/**
+ * !jquery.ms-drop.js
  * Version: 2018.1.0
  * Author: Astronim*
  * Description: Toggle a drop menu
@@ -884,8 +886,8 @@ function tabs() {
   };
 })(jQuery);
 
-/**!
- * Toggle dropdown menu
+/**
+ * !Toggle dropdown menu
  */
 function toggleDropMenu() {
   var $phones = $('.phones-js');
@@ -904,7 +906,8 @@ function toggleDropMenu() {
   }
 }
 
-/**! jquery.ms-switch-class.js
+/**
+ * !jquery.ms-switch-class.js
  * Version: 2018.1.0
  * Author: *
  * Description: Extended toggle class
@@ -1323,11 +1326,11 @@ function addToCarAnimation() {
   })
 }
 
-/**! jquery.ms-rolls.js
+/**
+ * !jquery.ms-rolls.js
  * Version: 2019.1.0
  * Author: Astronim*
  */
-
 (function ($) {
   'use strict';
 
@@ -1685,7 +1688,7 @@ function addToCarAnimation() {
 })(jQuery);
 
 /**
- * Rolls
+ * !Rolls
  */
 function rollsInit() {
   var $catalogLinks = $('.catalog-links-js');
@@ -2389,6 +2392,28 @@ function sortingState() {
 
 
 
+/**
+ * !Only number input
+ * */
+function onlyNumberInput() {
+  // link: https://stackoverflow.com/questions/995183/how-to-allow-only-numeric-0-9-in-html-inputbox-using-jquery
+
+  $("[data-only-number]").keydown(function (e) {
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+        // Allow: Ctrl+A, Command+A
+        (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) ||
+        // Allow: home, end, left, right, down, up
+        (e.keyCode >= 35 && e.keyCode <= 40)) {
+      // let it happen, don't do anything
+      return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+      e.preventDefault();
+    }
+  });
+}
 
 /**
  * !Form validation
@@ -2449,5 +2474,6 @@ $(document).ready(function () {
   multiFiltersInit();
   sortingState();
 
+  onlyNumberInput();
   formValidation();
 });
