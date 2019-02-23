@@ -24,18 +24,22 @@
       </div>
       <div class="p-card-visual">
         <div class="p-card-gallery p-card-gallery-js">
-          <div class="p-card-images p-card-images-js">
-            <div class="p-card-images__item">
-              @@include("_tpl_p-card-images-item.html", {"imgSrc": "img/products/preview/01.jpeg", "imgAlt": "image description"})
-            </div>
-            <div class="p-card-images__item">
-              @@include("_tpl_p-card-images-item.html", {"imgSrc": "img/products/preview/02.jpeg", "imgAlt": "image description"})
-            </div>
-            <div class="p-card-images__item">
-              @@include("_tpl_p-card-images-item.html", {"imgSrc": "img/products/preview/03.jpeg", "imgAlt": "image description"})
+          <div class="swiper-container p-card-gallery-images p-card-gallery-images-js">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/01.jpg", "imgThumbSrc": "img/products/thumbs/01.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/02.jpg", "imgThumbSrc": "img/products/thumbs/02.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/temp/img_1280_01.jpg", "imgThumbSrc": "img/temp/img_1280_01.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/temp/img_1280_02.jpg", "imgThumbSrc": "img/temp/img_1280_02.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/03.jpg", "imgThumbSrc": "img/products/thumbs/03.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/04.jpg", "imgThumbSrc": "img/products/thumbs/04.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/05.jpg", "imgThumbSrc": "img/products/thumbs/05.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/06.jpg", "imgThumbSrc": "img/products/thumbs/06.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/07.jpg", "imgThumbSrc": "img/products/thumbs/07.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/08.jpg", "imgThumbSrc": "img/products/thumbs/08.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/09.jpg", "imgThumbSrc": "img/products/thumbs/09.jpg", "imgAlt": "image description"})</div>
+              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/10.jpg", "imgThumbSrc": "img/products/thumbs/10.jpg", "imgAlt": "image description"})</div>
             </div>
           </div>
-
         </div>
         {{Visual}}
       </div>

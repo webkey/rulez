@@ -98,7 +98,8 @@
               <div class="user-options__item user-options__item_likes">
                 <a href="#" title="Избранное">
                   <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                    <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z" /></svg>
+                    <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                  </svg>
                   <span class="hide-text">Избранное</span>
                   <em class="counter">1</em>
                 </a>
@@ -384,21 +385,56 @@
           </div>
           <div class="p-card-visual">
             <div class="p-card-gallery p-card-gallery-js">
-              <div class="p-card-images p-card-images-js">
-                <div class="p-card-images__item">
-                  <!--<img data-lazy="img/products/preview/01.jpeg" src="img/empty.png" alt="image description">-->
-                  <!--<noscript class="noscript"><img src="img/products/preview/01.jpeg" alt="image description"></noscript>-->
-                  <img src="img/products/preview/01.jpeg" alt="image description">
-                </div>
-                <div class="p-card-images__item">
-                  <!--<img data-lazy="img/products/preview/02.jpeg" src="img/empty.png" alt="image description">-->
-                  <!--<noscript class="noscript"><img src="img/products/preview/02.jpeg" alt="image description"></noscript>-->
-                  <img src="img/products/preview/02.jpeg" alt="image description">
-                </div>
-                <div class="p-card-images__item">
-                  <!--<img data-lazy="img/products/preview/03.jpeg" src="img/empty.png" alt="image description">-->
-                  <!--<noscript class="noscript"><img src="img/products/preview/03.jpeg" alt="image description"></noscript>-->
-                  <img src="img/products/preview/03.jpeg" alt="image description">
+              <div class="swiper-container p-card-gallery-images p-card-gallery-images-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/01.jpg" data-thumb="img/products/thumbs/01.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/01.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/02.jpg" data-thumb="img/products/thumbs/02.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/02.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/temp/img_1280_01.jpg" data-thumb="img/temp/img_1280_01.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/temp/img_1280_01.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/temp/img_1280_02.jpg" data-thumb="img/temp/img_1280_02.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/temp/img_1280_02.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/03.jpg" data-thumb="img/products/thumbs/03.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/03.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/04.jpg" data-thumb="img/products/thumbs/04.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/04.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/05.jpg" data-thumb="img/products/thumbs/05.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/05.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/06.jpg" data-thumb="img/products/thumbs/06.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/06.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/07.jpg" data-thumb="img/products/thumbs/07.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/07.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/08.jpg" data-thumb="img/products/thumbs/08.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/08.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/09.jpg" data-thumb="img/products/thumbs/09.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/09.jpg" alt="image description"></noscript>
+                  </div>
+                  <div class="swiper-slide p-card-gallery-images__item"><img src="img/empty.png" data-src="img/products/preview/10.jpg" data-thumb="img/products/thumbs/10.jpg" class="swiper-lazy" alt="image description">
+                    <div class="swiper-lazy-preloader"></div>
+                    <noscript class="noscript"><img src="img/products/preview/10.jpg" alt="image description"></noscript>
+                  </div>
                 </div>
               </div>
             </div>

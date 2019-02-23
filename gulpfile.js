@@ -164,7 +164,6 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм
     , 'src/libs/select2/dist/js/select2.full.min.js' // кастомный селект
     , 'src/libs/select2/dist/js/i18n/ru.js' // локализация для кастомного селекта
-    , 'src/libs/slick-carousel/slick/slick.min.js' // slick slider
     , 'node_modules/object-fit-images/dist/ofi.min.js' // object-fit fix for a non-support browsers
     , 'src/libs/matchHeight/dist/jquery.matchHeight-min.js' // скрипт для выравнивания элементов по максимальному
     , 'src/libs/swiper/dist/js/swiper.min.js' // swiper slider

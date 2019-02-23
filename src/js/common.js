@@ -275,71 +275,7 @@ function bannersSiblings() {
  * !Initial sliders on the project
  * */
 function slidersInit() {
-  //images carousel
-  var $imagesCarousel = $('.images-slider-js');
-
-  if ($imagesCarousel.length) {
-    var slideCounterTpl = '' +
-        '<div class="slider-counter">' +
-        '<span class="slide-curr">0</span>/<span class="slide-total">0</span>' +
-        '</div>';
-
-    var titleListTpl = $('<div class="flashes"></div>');
-
-    $imagesCarousel.each(function () {
-      var $curSlider = $(this);
-      var $imgList = $curSlider.find('.images-slider__list');
-      var $imgListItem = $imgList.find('.images-slider__item');
-      var dur = 200;
-
-      // create titles
-      $imgList.after(titleListTpl.clone());
-      var $titleList = $curSlider.find('.flashes');
-      $.each($imgListItem, function () {
-        var $this = $(this);
-        $titleList.append($('<div class="flashes__item">' + $this.find('.caption').html() + '</div>'));
-      });
-
-      // initialized slider of titles
-      $titleList.slick({
-        fade: true,
-        speed: dur,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        infinite: true,
-        asNavFor: $imgList,
-        dots: false,
-        arrows: false,
-
-        swipe: false,
-        touchMove: false,
-        draggable: false
-      });
-
-      // initialized slider of images
-      $imgList.on('init', function (event, slick) {
-        $(slick.$slider).append($(slideCounterTpl).clone());
-
-        $('.slide-total', $(slick.$slider)).text(slick.$slides.length);
-        $('.slide-curr', $(slick.$slider)).text(slick.currentSlide + 1);
-      }).slick({
-        fade: false,
-        speed: dur,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        asNavFor: $titleList,
-        lazyLoad: 'ondemand',
-        infinite: true,
-        dots: true,
-        arrows: true
-      }).on('beforeChange', function (event, slick, currentSlide, nextSlider) {
-        $('.slide-curr', $(slick.$slider)).text(nextSlider + 1);
-      });
-
-    });
-  }
-
-  /*promo slider*/
+  /**promo slider*/
   var $promoSlider = $('.promo-slider-js');
   if ($promoSlider.length) {
     $promoSlider.each(function () {
@@ -350,6 +286,8 @@ function slidersInit() {
       var slider;
 
       slider = new Swiper($thisSlider, {
+        init: false,
+
         // Optional parameters
         loop: true,
         // Keyboard
@@ -358,13 +296,17 @@ function slidersInit() {
         parallax: true,
 
         // Navigation arrows
-        nextButton: $thisBtnNext,
-        prevButton: $thisBtnPrev,
+        navigation: {
+          nextEl: $thisBtnNext,
+          prevEl: $thisBtnPrev,
+        },
 
         // Pagination
-        pagination: $thisPag,
-        paginationType: 'bullets',
-        paginationClickable: true,
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
 
         longSwipesRatio: 0.05,
         longSwipesMs: 200,
@@ -374,23 +316,90 @@ function slidersInit() {
             parallax: false
           }
         },
-        // events
-        onInit: function (swiper) {
-          $(swiper.container).closest($thisSlider).addClass('is-loaded');
-          changeBgColor(swiper);
+
+        // Events
+        on: {
+          slideChange: function (e) {
+            changeBgColor(slider.activeIndex);
+          }
         }
       });
 
-      slider.on('slideChangeStart', function (swiper) {
-        changeBgColor(swiper);
+      slider.on('init', function() {
+        $(slider.el).closest($thisSlider).addClass('is-loaded');
+        changeBgColor(slider.activeIndex);
       });
 
-      function changeBgColor(swiper) {
-        var bgColor = $(swiper.slides).eq(swiper.activeIndex).css('background-color');
+      slider.init();
+
+      function changeBgColor(index) {
+        var bgColor = $(slider.slides).eq(index).css('background-color');
         $('.header-bg').css('background-color', bgColor);
       }
     });
 
+  }
+
+  /**card gallery*/
+  var $cardGallery = $('.p-card-gallery-js');
+
+  if($cardGallery.length){
+    var cardGalleryThumbsTpl = $('<div class="p-card-gallery-thumbs"><div class="p-card-gallery-thumbs__arrow-prev arrow-prev-js"></div><div class="swiper-container"><div class="swiper-wrapper"></div></div><div class="p-card-gallery-thumbs__arrow-next arrow-next-js"></div></div>');
+
+    $cardGallery.each(function () {
+      var $curSlider = $(this),
+          $imgList = $curSlider.find('.p-card-gallery-images-js'),
+          $imgListItem = $imgList.find('img').parent();
+
+      // create thumbs
+      $imgList.after(cardGalleryThumbsTpl.clone());
+
+      var $galleryThumbs = $curSlider.find('.p-card-gallery-thumbs'),
+          $galleryThumbsArrPrev = $galleryThumbs.find('.arrow-prev-js'),
+          $galleryThumbsArrNext = $galleryThumbs.find('.arrow-next-js');
+
+      $.each($imgListItem, function () {
+        var $this = $(this);
+        $galleryThumbs.find('.swiper-wrapper').append($('<div class="swiper-slide p-card-gallery-thumbs__item"><img src="' + $this.find('img').attr('data-thumb') + '" alt="' + $this.find('img').attr('alt') + '"></div>'));
+      });
+
+      var cardImgSlider = new Swiper ($imgList, {
+        init: false,
+        spaceBetween: 20,
+        preloadImages: false,
+        lazy: {
+          loadPrevNext: true,
+          loadOnTransitionStart: true
+        },
+        thumbs: {
+          swiper: {
+            el: $galleryThumbs.find('.swiper-container'),
+            direction: 'vertical',
+            slidesPerView: 'auto',
+            freeMode: true,
+            watchSlidesVisibility: true,
+            watchSlidesProgress: true,
+            navigation: {
+              nextEl: $galleryThumbsArrNext,
+              prevEl: $galleryThumbsArrPrev,
+            }
+          },
+        },
+        on: {
+          lazyImageReady: function (slide, image) {
+            objectFitImages($(image));
+          }
+        }
+      });
+
+      cardImgSlider.on('init', function() {
+        $curSlider.addClass('is-loaded');
+        // object-fit for non-support browsers
+        objectFitImages($('img', $(cardImgSlider.el)));
+      });
+
+      cardImgSlider.init();
+    });
   }
 }
 
