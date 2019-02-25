@@ -1,6 +1,6 @@
 <div itemscope itemtype="http://schema.org/Product" class="product product-js">
   <div class="product__main">
-    <a itemprop="url" href="@@href">
+    <a itemprop="url" href="product-card.html">
       <div class="product__figure product-figure-js">
         <img itemprop="image" src="@@src" alt="@@title" />
       </div>
@@ -8,15 +8,15 @@
     </a>
     <div class="product__meta">
       <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
-        <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth"></span>
+        <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth">@@rate</span>
         <meta itemprop="ratingCount" content="1">
       </div>
-      <div class="product__aim">
-        @@if(!context.inCompare){<a href="#" class="product__aim-btn product__aim-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Сравнить</span></a>}
-        @@if(context.inCompare){<a href="#" class="product__aim-btn product__aim-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Добавлен к сравнению</span></a>}
+      <div class="product__action">
+        @@if(!context.inCompare){<a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Сравнить</span></a>}
+        @@if(context.inCompare){<a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Добавлен к сравнению</span></a>}
 
-        @@if(!context.inFavorites){<a href="#" class="product__aim-btn product__aim-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>В избранное</span></a>}
-        @@if(context.inFavorites){<a href="#" class="product__aim-btn product__aim-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>Мне нравится</span></a>}
+        @@if(!context.inFavorites){<a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>В избранное</span></a>}
+        @@if(context.inFavorites){<a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>Мне нравится</span></a>}
       </div>
     </div>
     <ul class="products__feature">

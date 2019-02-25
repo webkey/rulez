@@ -28,6 +28,7 @@
   +font-bold
   color: $btn-text-color
   background: $btn-bg-color
+  border: none
   border-radius: 4px
   box-shadow: 0 1px 1px rgba(black, 0.4)
 
@@ -62,6 +63,7 @@
   margin: 0
   +font-bold
   color: $btn-alt-text-color
+  border: none
   background: $btn-alt-bg-color
   border-radius: 4px
   box-shadow: none
@@ -89,6 +91,42 @@
       display: none
 
 /* btn-def-alt end
+
+/* btn-outline
+.btn-outline
+  position: relative
+  padding: 1.3rem 2rem
+  margin: 0
+  +font-bold
+  color: #000
+  background: white
+  border-radius: 4px
+  border: 1px solid $border-color
+  box-shadow: none
+
+  &, & > span
+    +font(1.4rem, 2.2rem)
+    letter-spacing: normal
+
+  // hover
+  &:hover
+    box-shadow: 0 3px 6px rgba(black, 0.3)
+    top: -1px
+
+  // active
+  &:active
+    top: 0
+    box-shadow: none
+
+  // disabled
+  &:disabled, &.disabled, &[data-disabled]
+    cursor: default
+    background-color: $btn-disabled-color !important
+
+    &::before, &::after
+      display: none
+
+/* btn-outline end
 
 /* btn-with-icon
 .btn-with-icon

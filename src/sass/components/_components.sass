@@ -135,6 +135,7 @@
   list-style: none
   margin: 0
   padding: 0
+  cursor: default
 
   .no-js &
     overflow: visible
@@ -161,6 +162,7 @@
   opacity: 0
   visibility: hidden
   pointer-events: none
+  cursor: default
   $translate: 0, -2px
   transform: translate($translate) !important
   transform: translate3d($translate, 0) !important
@@ -235,6 +237,7 @@
       margin-top: -0.1rem
 
 .nav__list a,
+.nav__list li > span,
 .okayNav__menu-toggle
   color: rgba(white, 0.85)
   text-decoration: none
@@ -250,11 +253,11 @@
 // current item
 .nav__list,
 .okayNav__nav--invisible
-  .current a
-      //color: $base-color-alt
-      +font-bold
+  .current a, .current > span
+    //color: $base-color-alt
+    +font-bold
 
-      +underlinedLinksReset
+    +underlinedLinksReset
 
 /* navigation end
 
@@ -2688,20 +2691,16 @@ $product-item-space: 2rem 2.4rem
     height: 14px
     background: url(../../img/rate-full.svg) no-repeat 4px center
     background-size: $width
+    text-indent: -9999px
+    overflow: hidden
 
 // --- product__meta ---
 .product__meta
   position: relative
 
-// --- product__aim ---
-.product__aim
-  margin-bottom: 1.8rem
-  display: none
-
-  &:last-child
-    margin-bottom: 0
-
-.product__aim-btn
+// --- product__action ---
+// action-btn
+.action-btn
   position: relative
   display: inline-block
   vertical-align: top
@@ -2719,9 +2718,6 @@ $product-item-space: 2rem 2.4rem
     timing-function: ease-in-out
   user-select: none
   -webkit-tap-highlight-color: transparent
-
-  .product__aim &
-    margin: 0 3.5rem 1rem 0
 
   & > i
     $size: 2.2rem
@@ -2763,7 +2759,7 @@ $product-item-space: 2rem 2.4rem
       box-shadow: inset 0 0 0 transparent
 
 // favorite/like
-.product__aim-btn_like
+.action-btn_like
   & > i
     svg
       path
@@ -2777,7 +2773,7 @@ $product-item-space: 2rem 2.4rem
           fill: #ef4180
 
 // compare
-.product__aim-btn_compare
+.action-btn_compare
   & > i
     svg
       path
@@ -2788,6 +2784,16 @@ $product-item-space: 2rem 2.4rem
       svg
         path
           fill: $base-color
+
+.product__action
+  margin-bottom: 1.8rem
+  display: none
+
+  &:last-child
+    margin-bottom: 0
+
+  .action-btn
+    margin: 0 3.5rem 1rem 0
 
 // --- products__feature ---
 .products__feature
@@ -2838,7 +2844,7 @@ $product-item-space: 2rem 2.4rem
     top: 50%
     width: $size
     height: $size
-    border: 1px solid $base-color
+    border: 1px solid #7ed321
     border-radius: round-float($size / 2, 1)
     transform: translate(0, -50%)
 
@@ -2859,7 +2865,7 @@ $product-item-space: 2rem 2.4rem
 
   // off
   &.off
-    color: #c3c3c3
+    color: $text-color-disabled
 
     & > i
       border-color: currentColor
@@ -2875,16 +2881,13 @@ $product-item-space: 2rem 2.4rem
   text-align: right
   line-height: 1
 
-  // for ie 9
-  @if $ie9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
-      width: calc(50% - 6px)
-
   // off
   &.off
-    color: #c3c3c3
+    color: $text-color-disabled
+
+    .product__price-old,
+    .product__price-new
+      color: currentColor
 
     & > svg path
       fill: currentColor
@@ -2920,18 +2923,16 @@ $product-item-space: 2rem 2.4rem
       transform: rotate(-42deg)
 
 .product__price-new
+  display: inline-block
+  vertical-align: baseline
   line-height: 3.2rem
   margin-left: 0.4rem
 
   & > strong
-    display: inline-block
-    vertical-align: baseline
     +font-bold
     font-size: 2.4rem
 
   & > em
-    display: inline-block
-    vertical-align: baseline
     font-style: normal
     font-size: 1.4rem
 
@@ -3231,7 +3232,7 @@ $product-item-space: 2rem 2.4rem
   .product__rate
     margin-bottom: 1.9rem
 
-  .product__aim
+  .product__action
     display: block
 
   .products__feature
@@ -3313,20 +3314,39 @@ $product-item-space: 2rem 2.4rem
     +font(1.8rem, 2.2rem)
     color: $btn-text-color
     background-color: $btn-bg-color
+    border: none
     border-radius: 4px
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4)
 
-    & > i
+    .opt-btn-buy__to-cart
       display: none
+
+    .opt-btn-buy__buy
+      display: block
+
+    & > i
+      $size: 1.8rem
+      //display: none
+      position: absolute
+      left: 1rem
+      top: 50%
+      height: $size
+      width: $size
+      opacity: 0
+      $translate: 10px, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+      margin-top: -#{round-float($size / 2, 1) + 0.1}
+
+      svg
+        height: $size
+        width: $size
+
+        path
+          fill: $base-color
 
     & > span
       padding: 0
-
-  .opt-btn-buy__to-cart
-    display: none
-
-  .opt-btn-buy__buy
-    display: block
 
   .opt-btn-buy
     // hover
@@ -3342,8 +3362,25 @@ $product-item-space: 2rem 2.4rem
 
     // added
     &.added
+
       .opt-btn-buy__buy
         display: none
+
+      & > i
+        background: none
+        box-shadow: none
+        border-radius: 0
+        opacity: 1
+        $translate: 0, 0
+        transform: translate($translate)
+        transform: translate3d($translate, 0)
+        // transition
+        $prop: transform, opacity
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: $animation-speed * 2
+          timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28)
 
   .product__price
     flex-basis: auto
@@ -5021,20 +5058,55 @@ $collections-title-width: 12.5rem
 /* float-list end
 
 /* product card
-$card-visual-width: 63%
-$card-cont-width: 564px
+$card-cont-width: 520px // 520px (43.8%) на ширине 1280px
 
 .p-card
   background-color: white
-  padding: $section-layout-space
+  padding: 5rem nth($section-layout-space, 2) 6rem
   +clear
 
+// === heading ===
+// title
+.p-card-title
+  margin: 0
+
+// rate
+.p-card-rate
+  $width: 90px
+  overflow: hidden
+  display: inline-block
+  vertical-align: middle
+  width: $width + 8
+  margin-left: -4px
+  background: url(../../img/rate-empty.svg) no-repeat center
+  background-size: $width
+
+  & > span
+    display: block
+    width: $width
+    height: 14px
+    background: url(../../img/rate-full.svg) no-repeat 4px center
+    background-size: $width
+    text-indent: -9999px
+    overflow: hidden
+
+// heading
+.p-card-heading
+  margin-bottom: 2rem
+
+  .p-card-rate, .p-card-title
+    display: inline-block
+    vertical-align: middle
+
+  .p-card-title
+    margin-right: 2rem
+
+
 // === visual ===
-$gallery-thumbs-width: 80px
-$gallery-thumbs-item-space: 0
+$gallery-thumbs-size: 50px
+$gallery-thumbs-item-space: 14px
 $gallery-thumbs-arrow-size: 40px 100%
-$gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
-@debug $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
+$gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 4
 .p-card-visual
   position: relative
   float: left
@@ -5043,9 +5115,9 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
 // === card gallery ===
 .p-card-gallery
   position: relative
-  padding: 0 $gallery-thumbs-width
+  //padding: 0 $gallery-thumbs-size 0 #{$gallery-thumbs-size + 30}
+  padding: 0 100px 0 #{100 + $gallery-thumbs-size}
   margin-bottom: $bottom-space--medium
-  outline: 1px solid $border-color
 
   .js &:not(.is-loaded)
     opacity: 0
@@ -5057,8 +5129,8 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
 // === card gallery images ===
 .p-card-gallery-images
   margin: 0 auto
-  max-width: $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
-  outline: 1px solid $border-color
+  max-width: 600px
+  min-width: $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
 
 .p-card-gallery-images__item
   user-select: none
@@ -5085,11 +5157,16 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
   position: absolute
   left: 0
   top: 0
-  width: $gallery-thumbs-width
-  outline: 1px solid $border-color
+  width: $gallery-thumbs-size
 
   .swiper-container
+    display: flex
+    flex-wrap: wrap
+    align-items: center
     height: $gallery-thumbs-height
+
+  .swiper-wrapper
+    height: auto
 
 .p-card-gallery-thumbs__item
   position: relative
@@ -5097,8 +5174,17 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
   justify-content: center
   align-items: center
   cursor: pointer
-  width: 80px
-  height: 80px
+  width: $gallery-thumbs-size
+  height: $gallery-thumbs-size
+  border: 1px solid $border-color
+  border-radius: 2px
+  // transition
+  $prop: border-color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
   user-select: none
   -webkit-tap-highlight-color: transparent
 
@@ -5110,7 +5196,8 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
     top: 0
     width: 100%
     height: 100%
-    background-color: $base-color
+    //background-color: $base-color
+    +linear-gradient(to top, red 0%, blue 100%)
     opacity: 0
     // transition
     $prop: opacity
@@ -5121,19 +5208,21 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
         timing-function: ease-in-out
 
   &.swiper-slide-thumb-active
+    //border: 1px solid rgba($base-color, 0.1)
+
     &::after
-      opacity: 0.2
+      opacity: 0.15
 
   img
     display: block
-    max-width: calc(100% - 10px)
-    max-height: calc(100% - 10px)
+    max-width: calc(100% - 4px)
+    max-height: calc(100% - 4px)
 
 .p-card-gallery-thumbs__arrow-prev,
 .p-card-gallery-thumbs__arrow-next
   position: relative
   height: 40px
-  background-color: $base-color
+  //background-color: $base-color
   cursor: pointer
   user-select: none
   -webkit-tap-highlight-color: transparent
@@ -5147,7 +5236,7 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
     pointer-events: none
     +size(12px)
     transform: rotate(45deg)
-    border: 0 solid white
+    border: 0 solid #303030
     margin: -15px -10px
   &:focus
     outline: none
@@ -5174,10 +5263,421 @@ $gallery-thumbs-height: ($gallery-thumbs-width + $gallery-thumbs-item-space) * 5
 
 
 // === p-card-content ===
+// aim
+.p-card-action
+  .action-btn
+    margin: 0 0 1rem 3.5rem
+
+// stock
+.p-card-stock
+  position: relative
+  display: inline-block
+  vertical-align: top
+  padding: 0.3rem 0 0.3rem 2.8rem
+  flex-basis: 50%
+  font-size: 1.4rem
+  line-height: 1.6rem
+  color: #000
+
+  & > i
+    $size: 1.8rem
+    position: absolute
+    left: 0
+    top: 50%
+    width: $size
+    height: $size
+    background-color: #7ed321
+    border-radius: round-float($size / 2, 1)
+    transform: translate(0, -50%)
+
+    &::before
+      $size: 0.5rem 0.8rem
+      content: ""
+      display: block
+      position: absolute
+      left: 50%
+      top: 50%
+      height: nth($size, 1)
+      width: nth($size, 2)
+      margin: -#{round-float(nth($size, 1)/2, 1) + 0.1} 0 0 -#{round-float(nth($size, 2)/2, 1)}
+      border-style: solid
+      border-color: white
+      border-width: 0 0 1px 1px
+      transform: rotate(-45deg)
+
+  // off
+  &.off
+    color: $text-color-disabled
+
+    & > i
+      border-color: currentColor
+
+      &::before
+        transform: rotate(0deg)
+        height: 0
+        margin-top: 0
+
+// code
+.p-card-code
+  font-size: 1.4rem
+  line-height: 1.6rem
+  color: $text-color-light
+
+// price
+.p-card-price
+  line-height: 1
+
+  // off
+  &.off
+    color: $text-color-disabled
+
+    .p-card-price__old,
+    .p-card-price__new
+      color: currentColor
+
+    & > svg path
+      fill: currentColor
+
+.p-card-price__old,
+.p-card-price__new
+  display: inline-block
+  vertical-align: baseline
+  line-height: 4rem
+
+// price old
+.p-card-price__old
+  color: $text-color-light
+  margin-right: 0.4rem
+
+  & > strong, & > em
+    display: inline-block
+    vertical-align: baseline
+    +font-normal
+    font-size: 2.0rem
+
+  & > strong
+    position: relative
+
+    &::after
+      $size: 3.8rem
+      content: ""
+      display: block
+      position: absolute
+      top: 50%
+      left: 50%
+      width: $size
+      height: 0
+      margin: -0.2rem -#{round-float($size / 2, 1)}
+      border-top: 1px solid currentColor
+      transform: rotate(-42deg)
+
+// price new
+.p-card-price__new
+  color: #000
+
+  & > strong, & > em
+    display: inline-block
+    vertical-align: baseline
+
+  & > strong
+    +font-bold
+    font-size: 3.8rem
+
+  & > em
+    font-style: normal
+    font-size: 2rem
+
+// button buy
+.btn-buy
+  position: relative
+  padding: 1.4rem 3.8rem
+  +font-bold
+  +font(1.8rem, 2.2rem)
+  text-decoration: none
+  text-align: center
+  color: $btn-text-color
+  background-color: $btn-bg-color
+  border: none
+  border-radius: 4px
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4)
+  // transition
+  $prop: background-color, color
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
+  & > i
+    $size: 1.8rem
+    //display: none
+    position: absolute
+    left: 1rem
+    top: 50%
+    height: $size
+    width: $size
+    opacity: 0
+    $translate: 10px, 0
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    margin-top: -#{round-float($size / 2, 1) + 0.1}
+
+    svg
+      display: inline-block
+      vertical-align: top
+      width: $size
+      height: $size
+
+      path
+        fill: $base-color
+        // transition
+        $prop: fill, stroke
+        transition:
+          property: $prop
+          duration: $animation-speed
+          timing-function: ease-in-out
+
+  .btn-buy__in-cart
+    display: none
+
+  // button buy states
+  // hover
+  &:hover
+    color: #000
+    box-shadow: 0 3px 6px rgba(black, 0.3)
+    top: -1px
+
+  // active
+  &:active
+    top: 0
+    box-shadow: none
+
+  // added
+  &.added
+    .btn-buy__buy
+      display: none
+
+    .btn-buy__in-cart
+      display: block
+
+    & > i
+      background: none
+      box-shadow: none
+      border-radius: 0
+      opacity: 1
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+      // transition
+      $prop: transform, opacity
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed * 2
+        timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28)
+
+// options
+.p-card-options
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.p-card-options__item
+  margin-bottom: 1rem
+
+  .btn-buy, .btn-outline
+    display: block
+
+// p-card-offer
+.p-card-offer
+  border: 1px solid $border-color
+  box-shadow: 0 1px 2px rgba(black, 0.15)
+  padding: 2rem 2rem 1rem
+
+.p-card-offer__meta
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+  .p-card-stock, .p-card-code
+    margin-bottom: 1rem
+
+  .p-card-stock
+    padding-right: 1rem
+
+.p-card-offer__buy
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  margin-bottom: 1rem
+
+  .p-card-price, .p-card-options
+    flex-basis: 50%
+    flex-grow: 1
+
+  .p-card-price
+    margin-bottom: 2rem
+    padding-right: 1rem
+
+  .p-card-options
+    margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+// p-card-installments
+.p-card-installments
+  display: flex
+  flex-wrap: wrap
+  justify-content: space-between
+  background-color: #f9f7ff
+  padding: 1.4rem 2rem 1.2rem
+
+.p-card-installments__notice, .p-card-installments__buy
+  flex-grow: 1
+  flex-basis: 50%
+  margin-bottom: 1.6rem
+
+.p-card-installments__notice
+  color: #6a6a6b
+  line-height: 2.2rem
+
+  a
+    +font-bold
+    text-decoration: underline
+    color: #000
+
+.p-card-installments__buy
+  [class*="btn"]
+    display: block
+
+.p-card-installments__info
+  flex-basis: 100%
+
+// flat-tabs
+.flat-tabs__thumbs
+  display: flex
+  flex-wrap: wrap
+  justify-content: flex-start
+  align-items: flex-start
+
+  a
+    position: relative
+    display: inline-block
+    vertical-align: top
+    text-decoration: none
+    color: #000
+    font-size: 1.2rem
+    line-height: 1.4rem
+    padding: 0.8rem 3.7rem 0.8rem 0.9rem
+    margin: 0.4rem 0.8rem 0.4rem 0
+    border-radius: 4px
+    background-color: #f0edfa
+    // transition
+    $prop: background-color, color, box-shadow
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+    & > em
+      $size: 1.2rem
+      $arr-size: 0.4rem
+      position: absolute
+      right: 0.9rem
+      top: 50%
+      +size($size)
+      margin-top: -#{round-float($size / 2, 1)}
+      border-radius: round-float($size / 2, 1)
+      background-color: rgba($base-color, 0.2)
+      text-indent: -9999px
+      overflow: hidden
+      // transition
+      $prop: transform
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+      &::before
+        content: ""
+        display: block
+        position: absolute
+        left: 50%
+        top: 50%
+        height: $arr-size
+        width: $arr-size
+        margin:
+        border: solid white
+        border-width: 0 0 1px 1px
+        margin: -0.3rem -0.2rem
+        transform: rotate(-45deg)
+
+    // hover
+    &:hover
+      background-color: $base-color
+      color: white
+
+    // active
+    &:active
+      top: 1px
+
+    // is open
+    &.tabs-active
+      box-shadow: inset 0 0 0 2px $base-color
+
+      & > em
+        transform: rotate(0.5turn)
+        background-color: $base-color
+
+// p-card-services
+.p-card-services
+  display: flex
+  flex-wrap: wrap
+
+.p-card-services__item
+  flex-grow: 1
+  flex-basis: 50%
+  padding: 0 2rem
+  font-size: 1.2rem
+  line-height: 1.9rem
+  color: #7e7e7e
+
+  p
+    margin: 0
+
+  &:nth-child(2n)
+    border-left: 2px solid #f4f4f4
+
+// content
 .p-card-content
   width: $card-cont-width
   float: right
   clear: right
   padding-right: 0
+
+  .p-card-action,
+  .p-card-offer,
+  .p-card-installments,
+  .p-card-services
+    margin-bottom: 1.8rem
+
+    &:last-child
+      margin-bottom: 0
+
+  // action
+  .p-card-action
+    text-align: right
 
 /* product card end

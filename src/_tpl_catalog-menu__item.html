@@ -1,15 +1,15 @@
 <div class="catalog-menu__title">
-	<a href="#">@@icon<span>@@title</span></a>
+	<a href="catalog.html">@@icon<span>@@title</span></a>
 </div>
 <ul class="catalog-menu__links catalog-links-js">
 	@@if(context.current){<li class="current"><span>@@current</span></li>}
-	@@for (var i = 0; i < links.length; i++){<li><a href="#"><span>`+links[i]+`</span></a></li>}
+	@@for (var i = 0; i < links.length; i++){<li><a href="catalog.html"><span>`+links[i]+`</span></a></li>}
 	@@if(context.hasSubLinks){
 	<li class="has-items">
-		<a href="#"><span>@@hasSubLinks</span></a>
+		<a href="catalog.html"><span>@@hasSubLinks</span></a>
 		<em>▼</em>
 		<ul>
-			@@for (var i = 0; i < subLinks.length; i++){<li><a href="#"><span>`+subLinks[i]+`</span></a></li>}
+			@@for (var i = 0; i < subLinks.length; i++){<li><a href="catalog.html"><span>`+subLinks[i]+`</span></a></li>}
 		</ul>
 	</li>
 	}

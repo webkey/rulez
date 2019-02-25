@@ -18,10 +18,17 @@
 
     <!--CONTENT-->
     <!--product card-->
-    <section class="section p-card">
+    <section itemscope itemtype="http://schema.org/Product" class="section p-card">
+      <!--product card heading-->
       <div class="p-card-heading">
-        <h1 class="p-card-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
+        <h1 itemprop="name" class="p-card-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
+        <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-card-rate">
+          <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
+          <meta itemprop="ratingCount" content="1">
+        </div>
       </div>
+      <!--product card heading end-->
+      <!--product card visual-->
       <div class="p-card-visual">
         <div class="p-card-gallery p-card-gallery-js">
           <div class="swiper-container p-card-gallery-images p-card-gallery-images-js">
@@ -41,12 +48,78 @@
             </div>
           </div>
         </div>
-        {{Visual}}
       </div>
+      <!--product card visual end-->
+      <!--product card content-->
       <div class="p-card-content">
-        {{Conten}}
+        <div class="p-card-action">
+          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Сравнить</span></a>
+          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>В избранное</span></a>
+        </div>
+
+        <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="p-card-offer">
+          <div class="p-card-offer__meta">
+            <div itemprop="availability" content="http://schema.org/InStock" class="p-card-stock on"><i>&nbsp;</i>В наличии</div>
+            <div class="p-card-code">Ариткул (код): 12312312</div>
+          </div>
+          <div class="p-card-offer__buy">
+            <div class="p-card-price">
+              <div class="p-card-price__old"><strong>1500</strong>&nbsp;<em>р.</em></div>
+              <div class="p-card-price__new"><strong itemprop="price" content="@@price.val">1500</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
+            </div>
+            <div class="p-card-options">
+              <div class="p-card-options__item">
+                <a href="#" class="btn-buy add-to-cart-js" tabindex="0">
+                  <span class="btn-buy__buy">Купить</span>
+                  <span class="btn-buy__in-cart">В&nbsp;корзине</span>
+                  <i>@@include("includes/svg/icon-cart.svg")</i>
+                </a>
+              </div>
+              <div class="p-card-options__item">
+                <a href="#" class="btn-outline">Купить в один клик</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-card-installments">
+          <div class="p-card-installments__notice">
+            <a href="#">В рассрочку от 2 до 24 мес</a><br> от 50 рубилей/мес
+          </div>
+          <div class="p-card-installments__buy">
+            <a href="#" class="btn-def-alt">Купить в рассрочку</a>
+          </div>
+          <div class="p-card-installments__info">
+            <div class="flat-tabs tabs-js" data-tabs-collapsed="true">
+              <div class="flat-tabs__thumbs">
+                <a href="#installmentCards" class="tabs__anchor-js"><span>карты рассрочки</span><em>▼</em></a>
+                <a href="#installmentBanks" class="tabs__anchor-js"><span>рассрочка банков</span><em>▼</em></a>
+                <a href="#credit" class="tabs__anchor-js"><span>кредит</span><em>▼</em></a>
+              </div>
+              <div class="flat-tabs__panels tabs__panels-js">
+                <div id="installmentCards" class="flat-tabs__panel tabs__panel-js">{{карты рассрочки}}</div>
+                <div id="installmentBanks" class="flat-tabs__panel tabs__panel-js">{{рассрочка банков}}</div>
+                <div id="credit" class="flat-tabs__panel tabs__panel-js">{{кредит}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-card-services">
+          <div class="p-card-services__item">
+            <strong>@@include("includes/svg/icon-helper-credit.svg") <span>Доставка</span></strong>
+            <p>По Минску курьером &mdash; сегодня, завтра, бесплатно.</p>
+            <p>По всей Беларуси курьером в течение 1-3 дней.</p>
+          </div>
+          <div class="p-card-services__item">
+            <strong>@@include("includes/svg/icon-helper-delivery.svg") <span>Оплата</span></strong>
+            <p>Наличными, банковской картой, картами рассрочек, безналичный платежом.</p>
+          </div>
+        </div>
       </div>
+      <!--product card content end-->
     </section>
+    <!--product card end-->
 
     <section class="section section_collections tabs-js">
       <div class="collections">

@@ -376,7 +376,9 @@ function slidersInit() {
             el: $galleryThumbs.find('.swiper-container'),
             direction: 'vertical',
             slidesPerView: 'auto',
+            spaceBetween: 14,
             freeMode: true,
+            slideToClickedSlide: true,
             watchSlidesVisibility: true,
             watchSlidesProgress: true,
             navigation: {
