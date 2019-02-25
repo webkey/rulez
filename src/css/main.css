@@ -6187,7 +6187,7 @@ a.opinion:active {
 /* opinions end */
 /* topics-tabs */
 .topics-tabs__panel {
-  outline: none;
+  position: relative;
 }
 
 /* topics-tabs end */
@@ -6278,6 +6278,7 @@ a.opinion:active {
 .tabs__panel-js {
   opacity: 0;
   visibility: hidden;
+  outline: none;
 }
 
 /* tabs end */
@@ -9026,12 +9027,17 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 .p-card {
   background-color: white;
   padding: 5rem 2.4rem 6rem;
+  margin-bottom: 5rem;
 }
 
 .p-card::after {
   content: '';
   display: table;
   clear: both;
+}
+
+.p-card:last-child {
+  margin-bottom: 0;
 }
 
 .p-card-title {
@@ -9077,6 +9083,23 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
   width: calc(100% - 520px);
 }
 
+.p-card-sale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 7rem;
+  height: 7rem;
+  border-radius: 3.5rem;
+  background-color: #ef4180;
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 2.4rem;
+  line-height: 7rem;
+  color: white;
+  text-align: center;
+  pointer-events: none;
+}
+
 .p-card-gallery {
   position: relative;
   padding: 0 100px 0 150px;
@@ -9094,7 +9117,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 
 .p-card-gallery-images {
   margin: 0 auto;
-  max-width: 600px;
+  max-width: 500px;
   min-width: 386px;
 }
 
@@ -9128,10 +9151,23 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 }
 
 .p-card-gallery-thumbs {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: center;
+      justify-content: center;
   position: absolute;
-  left: 0;
+  left: 10px;
   top: 0;
   width: 50px;
+  min-height: 100%;
+}
+
+.p-card-sale + .p-card-gallery .p-card-gallery-thumbs {
+  padding-top: 8rem;
 }
 
 .p-card-gallery-thumbs .swiper-container {
@@ -9142,6 +9178,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
   -ms-flex-align: center;
       align-items: center;
   height: 306px;
+  width: 100%;
 }
 
 .p-card-gallery-thumbs .swiper-wrapper {
@@ -9254,6 +9291,14 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 
 .p-card-gallery-thumbs__arrow-next:active {
   top: 1px;
+}
+
+.p-card-action {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .p-card-action .action-btn {
@@ -9610,6 +9655,11 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
       justify-content: flex-start;
   -ms-flex-align: start;
       align-items: flex-start;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .flat-tabs__thumbs a {
@@ -9704,8 +9754,40 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
   color: #7e7e7e;
 }
 
+.p-card-services__item > strong {
+  display: block;
+  position: relative;
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  color: #000;
+  padding: 0.5rem 0 0.5rem 3.8rem;
+  margin-bottom: 1.5rem;
+  cursor: default;
+}
+
+.p-card-services__item > strong svg {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 2.4rem;
+  height: 2.4rem;
+  margin-top: -1.2rem;
+}
+
+.p-card-services__item > strong svg path {
+  fill: #6e52dd;
+}
+
 .p-card-services__item p {
   margin: 0;
+}
+
+.p-card-services__item mark {
+  background: none;
+  color: #6e52dd;
 }
 
 .p-card-services__item:nth-child(2n) {
@@ -9738,6 +9820,221 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 }
 
 /* product card end */
+/* tape slider */
+.tape-slider {
+  position: relative;
+  padding-top: 4rem;
+}
+
+.js .tape-slider:not(.is-loaded) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tape-slider .product {
+  background-color: white;
+}
+
+.tape-slider__prev, .tape-slider__next {
+  position: absolute;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  text-indent: -9999px;
+  height: 14px;
+  width: 20px;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.tape-slider__prev::before, .tape-slider__prev::after, .tape-slider__next::before, .tape-slider__next::after {
+  content: "";
+  display: block;
+  position: absolute;
+  border: 2px solid #1e201d;
+  -ms-transform: none;
+      transform: none;
+  transition-property: border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.tape-slider__prev::before, .tape-slider__next::before {
+  top: 50%;
+  left: 50%;
+  width: 19px;
+  height: 0;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  margin: -1px 0 0 -10px;
+}
+
+.tape-slider__prev::after, .tape-slider__next::after {
+  width: 10px;
+  height: 10px;
+  border-bottom: none;
+  top: 50%;
+}
+
+.tape-slider__prev:not(.swiper-button-disabled):hover::before, .tape-slider__prev:not(.swiper-button-disabled):hover::after, .tape-slider__next:not(.swiper-button-disabled):hover::before, .tape-slider__next:not(.swiper-button-disabled):hover::after {
+  border-color: #6e52dd;
+}
+
+.tape-slider__prev:not(.swiper-button-disabled):active, .tape-slider__next:not(.swiper-button-disabled):active {
+  -ms-transform: translate(0, 1px);
+      transform: translate(0, 1px);
+}
+
+.tape-slider__prev.swiper-button-disabled, .tape-slider__next.swiper-button-disabled {
+  pointer-events: auto;
+  cursor: default;
+  opacity: 0.3;
+  outline: none;
+}
+
+.tape-slider__prev {
+  right: 44px;
+}
+
+.tape-slider__prev::after {
+  left: 0;
+  border-right: none;
+  -ms-transform-origin: left top;
+      transform-origin: left top;
+  -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+}
+
+.tape-slider__next::after {
+  right: 0;
+  border-left: none;
+  -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+  -ms-transform-origin: right top;
+      transform-origin: right top;
+}
+
+/* tape slider end */
+/* product prompts */
+.section_p-prompts {
+  position: relative;
+}
+
+.p-prompts__thumbs {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 1.8rem;
+  line-height: 2.4rem;
+  margin: 0 2rem 1rem;
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.p-prompts__thumbs:last-child {
+  margin-bottom: 0;
+}
+
+.p-prompts__thumbs a {
+  color: #777;
+  text-decoration: none;
+  margin: 0 50px -2px 0;
+  padding: 0 0 15px;
+  border-bottom: 3px solid transparent;
+  transition-property: color, border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.p-prompts__thumbs a.touchevents {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.p-prompts__thumbs a:hover {
+  color: #000;
+}
+
+.p-prompts__thumbs a.tabs-active {
+  color: #000;
+  border-color: #6e52dd;
+}
+
+.simple-tabs__thumbs {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  margin-bottom: 1rem;
+}
+
+.simple-tabs__thumbs:last-child {
+  margin-bottom: 0;
+}
+
+.simple-tabs__thumbs a {
+  color: #777;
+  text-decoration: none;
+  margin: 0.5rem 3rem 0.5rem 0;
+}
+
+.simple-tabs__thumbs a.touchevents {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.simple-tabs__thumbs a span {
+  border-bottom: 2px dotted rgba(119, 119, 119, 0.35);
+  transition-property: border-color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.simple-tabs__thumbs a:hover {
+  color: #777777;
+}
+
+.simple-tabs__thumbs a:hover span {
+  border-color: #777777;
+}
+
+.simple-tabs__thumbs a.tabs-active {
+  color: #000;
+}
+
+.simple-tabs__thumbs a.tabs-active > span {
+  border-color: transparent;
+}
+
+.p-prompts__panel {
+  position: relative;
+  outline: none;
+}
+
+.p-prompts__panel .simple-tabs__thumbs {
+  position: absolute;
+  left: 2rem;
+  right: 10rem;
+  top: 0;
+  margin: 0;
+  z-index: 5;
+}
+
+.p-prompts__panel .tape-slider__prev, .p-prompts__panel .tape-slider__next {
+  margin-top: 0.8rem;
+  margin-right: 2rem;
+}
+
+/* product prompts end */
 /*======================================================*/
 /* PRINT VERSION */
 /*======================================================*/

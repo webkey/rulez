@@ -283,9 +283,9 @@ function slidersInit() {
           $thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
           $thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
           $thisPag = $('.swiper-pagination', $thisSlider);
-      var slider;
+      var promoSliderJs;
 
-      slider = new Swiper($thisSlider, {
+      promoSliderJs = new Swiper($thisSlider, {
         init: false,
 
         // Optional parameters
@@ -320,20 +320,20 @@ function slidersInit() {
         // Events
         on: {
           slideChange: function (e) {
-            changeBgColor(slider.activeIndex);
+            changeBgColor(promoSliderJs.activeIndex);
           }
         }
       });
 
-      slider.on('init', function() {
-        $(slider.el).closest($thisSlider).addClass('is-loaded');
-        changeBgColor(slider.activeIndex);
+      promoSliderJs.on('init', function() {
+        $(promoSliderJs.el).closest($thisSlider).addClass('is-loaded');
+        changeBgColor(promoSliderJs.activeIndex);
       });
 
-      slider.init();
+      promoSliderJs.init();
 
       function changeBgColor(index) {
-        var bgColor = $(slider.slides).eq(index).css('background-color');
+        var bgColor = $(promoSliderJs.slides).eq(index).css('background-color');
         $('.header-bg').css('background-color', bgColor);
       }
     });
@@ -342,7 +342,6 @@ function slidersInit() {
 
   /**card gallery*/
   var $cardGallery = $('.p-card-gallery-js');
-
   if($cardGallery.length){
     var cardGalleryThumbsTpl = $('<div class="p-card-gallery-thumbs"><div class="p-card-gallery-thumbs__arrow-prev arrow-prev-js"></div><div class="swiper-container"><div class="swiper-wrapper"></div></div><div class="p-card-gallery-thumbs__arrow-next arrow-next-js"></div></div>');
 
@@ -402,6 +401,41 @@ function slidersInit() {
 
       cardImgSlider.init();
     });
+  }
+
+  /**tape slider*/
+  var $tapeSlider = $('.tape-slider-js');
+  if ($tapeSlider.length) {
+    $tapeSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisBtnNext = $('.tape-slider__next-js', $thisSlider),
+          $thisBtnPrev = $('.tape-slider__prev-js', $thisSlider);
+      var tapeSliderJs;
+
+      tapeSliderJs = new Swiper($thisSlider, {
+        init: false,
+        loop: false,
+        keyboardControl: true,
+        slidesPerView: 5,
+        spaceBetween: 12,
+
+        // Navigation arrows
+        navigation: {
+          nextEl: $thisBtnNext,
+          prevEl: $thisBtnPrev,
+        }
+      });
+
+      tapeSliderJs.on('init', function() {
+        $(tapeSliderJs.slides).matchHeight({
+          byRow: true, property: 'height', target: null, remove: false
+        });
+        $(tapeSliderJs.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      tapeSliderJs.init();
+    });
+
   }
 }
 
@@ -474,9 +508,11 @@ function gridLayout() {
         toggleClass([$activePanel, $activeAnchor], true);
 
         // Анимирование высоты табов
-        $panels.animate({
-          'height': $activePanel.outerHeight()
-        }, config.animationSpeed);
+        $panels
+            .css('overflow', 'hidden')
+            .animate({
+              'height': $activePanel.outerHeight()
+            }, config.animationSpeed);
 
         // Скрыть все табы, кроме активного
         hideTab($otherPanel);
@@ -497,7 +533,8 @@ function gridLayout() {
               }).attr('tabindex', 0);
 
               $panels.css({
-                'height': ''
+                'height': '',
+                'overflow': ''
               });
 
               // Анимация полностью завершена
@@ -521,13 +558,16 @@ function gridLayout() {
         toggleClass([$panel, $anchor], false);
 
         // Анимирование высоты табов
-        $panels.animate({
-          'height': 0
-        }, config.animationSpeed);
+        $panels
+            .css('overflow', 'hidden')
+            .animate({
+              'height': 0
+            }, config.animationSpeed);
 
         hideTab($activePanel, function () {
           $panels.css({
-            'height': ''
+            'height': '',
+            'overflow': ''
           });
 
           isOpen = false;
@@ -620,8 +660,7 @@ function gridLayout() {
 
       $panels.css({
         'display': 'block',
-        'position': 'relative',
-        'overflow': 'hidden'
+        'position': 'relative'
       });
 
       $panel.css({
@@ -712,9 +751,21 @@ function gridLayout() {
  */
 function tabs() {
   var $tabs = $('.tabs-js');
-
   if ($tabs.length) {
     $tabs.msTabs();
+  }
+
+  var $pPromptsTabs = $('.p-prompts-js');
+  if ($pPromptsTabs.length) {
+    $pPromptsTabs.msTabs({
+      anchor: '.p-prompts__anchor-js',
+      panels: '.p-prompts__panels-js',
+      panel: '.p-prompts__panel-js',
+      modifiers: {
+        init: 'tp-prompts-initialized',
+        activeClass: 'tabs-active'
+      }
+    });
   }
 }
 

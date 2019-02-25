@@ -30,6 +30,7 @@
       <!--product card heading end-->
       <!--product card visual-->
       <div class="p-card-visual">
+        <div class="p-card-sale">30%</div>
         <div class="p-card-gallery p-card-gallery-js">
           <div class="swiper-container p-card-gallery-images p-card-gallery-images-js">
             <div class="swiper-wrapper">
@@ -108,8 +109,8 @@
         <div class="p-card-services">
           <div class="p-card-services__item">
             <strong>@@include("includes/svg/icon-helper-credit.svg") <span>Доставка</span></strong>
-            <p>По Минску курьером &mdash; сегодня, завтра, бесплатно.</p>
-            <p>По всей Беларуси курьером в течение 1-3 дней.</p>
+            <p>По Минску <mark>курьером &mdash; сегодня, завтра, бесплатно</mark>.</p>
+            <p>По всей Беларуси курьером в течение <span class="nobr">1-3 дней</span>.</p>
           </div>
           <div class="p-card-services__item">
             <strong>@@include("includes/svg/icon-helper-delivery.svg") <span>Оплата</span></strong>
@@ -120,6 +121,872 @@
       <!--product card content end-->
     </section>
     <!--product card end-->
+
+    <!--product prompts-->
+    <section class="section section_p-prompts p-prompts-js">
+      <h2 class="section__title hide">Предложения</h2>
+      <div class="p-prompts__thumbs">
+        <a href="#promptsPresents" class="p-prompts__anchor-js tabs-active"><span>Подарки</span></a>
+        <a href="#promptsCheap" class="p-prompts__anchor-js"><span>Вместе дешевле</span></a>
+        <a href="#promptsAccessories" class="p-prompts__anchor-js"><span>Аксессуары</span></a>
+        <a href="#promptsSimilar" class="p-prompts__anchor-js"><span>Похожие товары</span></a>
+      </div>
+      <div class="p-prompts__panels p-prompts__panels-js">
+        <div class="p-prompts__panel p-prompts__panel-js tabs-js" id="promptsPresents">
+          <h3 class="hide">Подарки</h3>
+          <div class="simple-tabs__thumbs">
+            <a href="#presentsHeadphones" class="tabs__anchor-js tabs-active"><span>Наушники</span></a>
+            <a href="#presentsMice" class="tabs__anchor-js"><span>Мышки</span></a>
+            <a href="#presentsBags" class="tabs__anchor-js"><span>Сумки для ноутбуков</span></a>
+          </div>
+          <div class="tabs__panels-js">
+            <div class="tabs__panel-js" id="presentsHeadphones">
+              <div class="swiper-container tape-slider tape-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "true",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-03.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "5199", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "added",
+                    "inCart": "added",
+                    "inCompare": "",
+                    "sale": "30%",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": { "day": "Товар дня" }
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-05.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                </div>
+                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
+                <div class="tape-slider__next tape-slider__next-js">Next</div>
+              </div>
+            </div>
+            <div class="tabs__panel-js" id="presentsMice">
+              <div class="swiper-container tape-slider tape-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "true",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-03.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "5199", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "added",
+                    "inCart": "added",
+                    "inCompare": "",
+                    "sale": "30%",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": { "day": "Товар дня" }
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-05.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                </div>
+                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
+                <div class="tape-slider__next tape-slider__next-js">Next</div>
+              </div>
+            </div>
+            <div class="tabs__panel-js" id="presentsBags">
+              <div class="swiper-container tape-slider tape-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "true",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-03.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "5199", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "added",
+                    "inCart": "added",
+                    "inCompare": "",
+                    "sale": "30%",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": { "day": "Товар дня" }
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-05.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                </div>
+                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
+                <div class="tape-slider__next tape-slider__next-js">Next</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-prompts__panel p-prompts__panel-js" id="promptsCheap">
+          <h3 class="hide">Вместе дешевле</h3>
+          {{Вместе дешевле}}
+        </div>
+        <div class="p-prompts__panel p-prompts__panel-js" id="promptsAccessories">
+          <h3 class="hide">Аксессуары</h3>
+          {{Аксессуары}}
+        </div>
+        <div class="p-prompts__panel p-prompts__panel-js tabs-js" id="promptsSimilar">
+          <h3 class="hide">Похожие товары</h3>
+          <div class="simple-tabs__thumbs">
+            <a href="#similarHeadphones" class="tabs__anchor-js tabs-active"><span>Наушники</span></a>
+            <a href="#similarMice" class="tabs__anchor-js"><span>Мышки</span></a>
+            <a href="#similarBags" class="tabs__anchor-js"><span>Сумки для ноутбуков</span></a>
+          </div>
+          <div class="tabs__panels-js">
+            <div class="tabs__panel-js" id="similarHeadphones">
+              <div class="swiper-container tape-slider tape-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "true",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-03.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "5199", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "added",
+                    "inCart": "added",
+                    "inCompare": "",
+                    "sale": "30%",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": { "day": "Товар дня" }
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-05.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                </div>
+                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
+                <div class="tape-slider__next tape-slider__next-js">Next</div>
+              </div>
+            </div>
+            <div class="tabs__panel-js" id="similarMice">
+              <div class="swiper-container tape-slider tape-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "true",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-03.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "5199", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "added",
+                    "inCart": "added",
+                    "inCompare": "",
+                    "sale": "30%",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": { "day": "Товар дня" }
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-05.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                </div>
+                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
+                <div class="tape-slider__next tape-slider__next-js">Next</div>
+              </div>
+            </div>
+            <div class="tabs__panel-js" id="similarBags">
+              <div class="swiper-container tape-slider tape-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "inCompare": "true",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-03.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "5199", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "added",
+                    "inCart": "added",
+                    "inCompare": "",
+                    "sale": "30%",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": { "day": "Товар дня" }
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/temp/img_640_02.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-01.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "4.5", "rateWidth": "90%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-05.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "3", "rateWidth": "60%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "4325", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                  <div class="swiper-slide tape-slider__item">
+                    @@include("_tpl_product.html", {
+                    "href": "#",
+                    "src": "img/img-product-04.jpg",
+                    "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                    "rate": "5", "rateWidth": "100%",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "inFavorites": "",
+                    "inCart": "",
+                    "sale": "",
+                    "label": ""
+                    })
+                  </div>
+                </div>
+                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
+                <div class="tape-slider__next tape-slider__next-js">Next</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+    <!--product prompts end-->
 
     <section class="section section_collections tabs-js">
       <div class="collections">

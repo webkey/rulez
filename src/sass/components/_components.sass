@@ -2510,7 +2510,7 @@ a.opinion
 
 /* topics-tabs
 .topics-tabs__panel
-  outline: none
+  position: relative
 
 /* topics-tabs end
 
@@ -2582,6 +2582,7 @@ a.opinion
 .tabs__panel-js
   opacity: 0
   visibility: hidden
+  outline: none
 
 /* tabs end
 
@@ -5063,7 +5064,11 @@ $card-cont-width: 520px // 520px (43.8%) на ширине 1280px
 .p-card
   background-color: white
   padding: 5rem nth($section-layout-space, 2) 6rem
+  margin-bottom: 5rem
   +clear
+
+  &:last-child
+    margin-bottom: 0
 
 // === heading ===
 // title
@@ -5107,10 +5112,28 @@ $gallery-thumbs-size: 50px
 $gallery-thumbs-item-space: 14px
 $gallery-thumbs-arrow-size: 40px 100%
 $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 4
+$gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-space * 2
 .p-card-visual
   position: relative
   float: left
   width: calc(100% - #{$card-cont-width})
+
+// === card sale ===
+.p-card-sale
+  $size: 7rem
+  position: absolute
+  top: 0
+  left: 0
+  width: $size
+  height: $size
+  border-radius: round-float($size / 2, 1)
+  background-color: #ef4180
+  +font-bold
+  font-size: 2.4rem
+  line-height: $size
+  color: white
+  text-align: center
+  pointer-events: none
 
 // === card gallery ===
 .p-card-gallery
@@ -5129,7 +5152,7 @@ $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 
 // === card gallery images ===
 .p-card-gallery-images
   margin: 0 auto
-  max-width: 600px
+  max-width: 500px
   min-width: $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
 
 .p-card-gallery-images__item
@@ -5154,16 +5177,25 @@ $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 
 
 // === card gallery thumbs ===
 .p-card-gallery-thumbs
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  justify-content: center
   position: absolute
-  left: 0
+  left: 10px
   top: 0
   width: $gallery-thumbs-size
+  min-height: 100%
+
+  .p-card-sale + .p-card-gallery &
+    padding-top: 8rem
 
   .swiper-container
     display: flex
     flex-wrap: wrap
     align-items: center
     height: $gallery-thumbs-height
+    width: 100%
 
   .swiper-wrapper
     height: auto
@@ -5265,6 +5297,9 @@ $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 
 // === p-card-content ===
 // aim
 .p-card-action
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
   .action-btn
     margin: 0 0 1rem 3.5rem
 
@@ -5567,6 +5602,8 @@ $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 
   flex-wrap: wrap
   justify-content: flex-start
   align-items: flex-start
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
   a
     position: relative
@@ -5654,8 +5691,36 @@ $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 
   line-height: 1.9rem
   color: #7e7e7e
 
+  & > strong
+    display: block
+    position: relative
+    +font-bold
+    font-size: 1.4rem
+    line-height: 1.8rem
+    color: #000
+    padding: 0.5rem 0 0.5rem 3.8rem
+    margin-bottom: 1.5rem
+    cursor: default
+
+    svg
+      $size: 2.4rem
+      display: inline-block
+      position: absolute
+      left: 0
+      top: 50%
+      width: $size
+      height: $size
+      margin-top: -#{round-float($size / 2, 1)}
+
+      path
+        fill: $base-color
+
   p
     margin: 0
+
+  mark
+    background: none
+    color: $base-color
 
   &:nth-child(2n)
     border-left: 2px solid #f4f4f4
@@ -5681,3 +5746,198 @@ $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 
     text-align: right
 
 /* product card end
+
+/* tape slider
+.tape-slider
+  position: relative
+  padding-top: 4rem
+
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+
+  .product
+    background-color: white
+
+// arrows
+$swiper-button-size: 14px, 20px
+$swiper-arrow-weight: 2px // толщина "древка" и линий "острея"
+$swiper-arrow-width: nth($swiper-button-size, 2) - (round($swiper-arrow-weight/2)) // длинна "древка" стрелки должно быть меньше длинны кнопки на несколько пискелов, чтобы не перекрывать "острие"
+$swiper-arrow-size: 10px // размер линий "острея"
+.tape-slider__prev, .tape-slider__next
+  position: absolute
+  right: 0
+  top: 0
+  overflow: hidden
+  text-indent: -9999px
+  height: nth($swiper-button-size, 1)
+  width: nth($swiper-button-size, 2)
+  will-change: transform
+  //background: rgba(255, 127, 80, 0.51) // для тестирования, чтобы видеть контуры кнопки
+  //background: none
+  cursor: pointer
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    border: $swiper-arrow-weight solid #1e201d
+    transform: none
+    // transition
+    $prop: border-color
+    //will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  &::before
+    +position(50%)
+    +size($swiper-arrow-width, 0)
+    border-left: none
+    border-right: none
+    border-bottom: none
+    margin: -#{round($swiper-arrow-weight/2)} 0 0 -#{round($swiper-arrow-width/2)}
+
+  &::after
+    +size($swiper-arrow-size)
+    border-bottom: none
+    top: 50%
+
+  // hover
+  &:not(.swiper-button-disabled):hover
+    &::before, &::after
+      border-color: $base-color
+
+  // active
+  &:not(.swiper-button-disabled):active
+    transform: translate(0, 1px)
+
+  // disabled
+  &.swiper-button-disabled
+    pointer-events: auto
+    cursor: default
+    opacity: 0.3
+    outline: none
+
+// prev arrow
+.tape-slider__prev
+  right: #{nth($swiper-button-size, 2) + 24}
+
+  &::after
+    left: 0
+    border-right: none
+    transform-origin: left top
+    transform: rotate(-45deg)
+
+// next arrow
+.tape-slider__next
+  &::after
+    right: 0
+    border-left: none
+    transform: rotate(45deg)
+    transform-origin: right top
+
+/* tape slider end
+
+/* product prompts
+.section_p-prompts
+  position: relative
+
+.p-prompts__thumbs
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.8rem
+  line-height: 2.4rem
+  margin: 0 2rem 1rem
+  border-bottom: 1px solid #c5c5c5
+
+  &:last-child
+    margin-bottom: 0
+
+  a
+    color: #777
+    text-decoration: none
+    margin: 0 50px -2px 0
+    padding: 0 0 15px
+    border-bottom: 3px solid transparent
+    // transition
+    $prop: color, border-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    // touch
+    &.touchevents
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+      
+    // hover
+    &:hover
+      color: #000
+
+    // active
+    &.tabs-active
+      color: #000
+      border-color: $base-color
+
+.simple-tabs__thumbs
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.4rem
+  line-height: 2.0rem
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+  a
+    color: #777
+    text-decoration: none
+    margin: 0.5rem 3rem 0.5rem 0
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    // touch
+    &.touchevents
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+    +underlinedAnchor(#777)
+
+    // active
+    &.tabs-active
+      color: #000
+      //+font-bold
+
+      & > span
+        border-color: transparent
+
+.p-prompts__panel
+  position: relative
+  outline: none
+
+  .simple-tabs__thumbs
+    position: absolute
+    left: 2rem
+    right: 10rem
+    top: 0
+    margin: 0
+    z-index: 5
+
+  .tape-slider__prev, .tape-slider__next
+    margin-top: 0.8rem
+    margin-right: 2rem
+
+/* product prompts end
