@@ -23,14 +23,13 @@
       <div class="p-card-heading">
         <h1 itemprop="name" class="p-card-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
         <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-card-rate">
-          <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
+          <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
           <meta itemprop="ratingCount" content="1">
         </div>
       </div>
       <!--product card heading end-->
-      <!--product card visual-->
-      <div class="p-card-visual">
-        <div class="p-card-sale">30%</div>
+      <!--product card main-->
+      <div class="p-card-main">
         <div class="p-card-gallery p-card-gallery-js">
           <div class="swiper-container p-card-gallery-images p-card-gallery-images-js">
             <div class="swiper-wrapper">
@@ -49,10 +48,27 @@
             </div>
           </div>
         </div>
+        <div class="p-card-services">
+          <div class="p-card-services__list">
+            <div class="p-card-services__item">
+              <strong>@@include("includes/svg/icon-helper-credit.svg") <span>Доставка</span></strong>
+              <p>По Минску <mark>курьером &mdash; сегодня, завтра, бесплатно</mark>.</p>
+              <p>По всей Беларуси курьером в течение <span class="nobr">1-3 дней</span>.</p>
+            </div>
+            <div class="p-card-services__item">
+              <strong>@@include("includes/svg/icon-helper-delivery.svg") <span>Оплата</span></strong>
+              <p>Наличными, банковской картой, картами рассрочек, безналичный платежом.</p>
+            </div>
+            <div class="p-card-services__item">
+              <strong>@@include("includes/svg/icon-helper-call.svg") <span>Помощь экспертов</span></strong>
+              <p>Консультации специалистов по телефону и в удобных мессенджерах, пишите нам!</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <!--product card visual end-->
-      <!--product card content-->
-      <div class="p-card-content">
+      <!--product card main end-->
+      <!--product card aside-->
+      <div class="p-card-aside">
         <div class="p-card-action">
           <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i>@@include("includes/svg/icon-compare.svg")</i><span>Сравнить</span></a>
           <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i>@@include("includes/svg/icon-like.svg")</i><span>В избранное</span></a>
@@ -83,42 +99,139 @@
           </div>
         </div>
 
-        <div class="p-card-installments">
-          <div class="p-card-installments__notice">
-            <a href="#">В рассрочку от 2 до 24 мес</a><br> от 50 рубилей/мес
+        <div class="credit tabs-js">
+          <div class="credit-thumbs">
+            <a href="#installmentCards" class="tabs-active tabs__anchor-js"><span>Карты рассрочки</span><em>▼</em></a>
+            <a href="#installmentBanks" class="tabs__anchor-js"><span>Рассрочка банков</span><em>▼</em></a>
+            <a href="#credit" class="tabs__anchor-js"><span>Кредит</span><em>▼</em></a>
           </div>
-          <div class="p-card-installments__buy">
-            <a href="#" class="btn-def-alt">Купить в рассрочку</a>
-          </div>
-          <div class="p-card-installments__info">
-            <div class="flat-tabs tabs-js" data-tabs-collapsed="true">
-              <div class="flat-tabs__thumbs">
-                <a href="#installmentCards" class="tabs__anchor-js"><span>карты рассрочки</span><em>▼</em></a>
-                <a href="#installmentBanks" class="tabs__anchor-js"><span>рассрочка банков</span><em>▼</em></a>
-                <a href="#credit" class="tabs__anchor-js"><span>кредит</span><em>▼</em></a>
+          <div class="tabs__panels-js">
+            <div id="installmentCards" class="credit-panel tabs__panel-js cards-js">
+              <div class="swiper-container cards-slider cards-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Карта Халва" data-card-text="<strong><mark>69 руб в месяц</mark></strong> - 3&nbsp;месяца, 6&nbsp;месяцев">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-01.jpg)">Credit Card 01</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Карта Другая" data-card-text="<strong><mark>800 руб в месяц</mark></strong> - 2&nbsp;месяца">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-02.jpg)">Credit Card 02</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Ещё Карта" data-card-text="<strong><mark>13 руб в месяц</mark></strong> - 0.5&nbsp;месяца, 0.666&nbsp;месяцев">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-03.jpg)">Credit Card 03</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Красная Карта" data-card-text="<strong><mark>70 руб в месяц</mark></strong> - 4&nbsp;месяца, 8&nbsp;месяцев">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-04.jpg)">Credit Card 04</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Карта Зеленая" data-card-text="<strong><mark>23 руб в месяц</mark></strong> - 11&nbsp;месяца, 7&nbsp;месяцев">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-05.jpg)">Credit Card 05</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Карта Для Детей" data-card-text="<strong><mark>3 000 руб в месяц</mark></strong> - 1&nbsp;месяца, 1&nbsp;месяцев">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-06.jpg)">Credit Card 06</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Карта Для Взрослых" data-card-text="<strong><mark>100 руб в месяц</mark></strong> - 2&nbsp;месяца, 1&nbsp;месяцев">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-07.jpg)">Credit Card 07</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Золотая Карта Для VIP Клиентов" data-card-text="<strong><mark>1 000 000 руб в месяц</mark></strong> - 36&nbsp;месяца или 5&nbsp;лет">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-08.jpg)">Credit Card 08</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="МТБанк Х - Карта" data-card-text="<strong><mark>700 руб в месяц</mark></strong> - 17&nbsp;месяца или 2&nbsp;года">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-09.jpg)">Credit Card 09</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Статусбанк «Статускарта» с офердрафтом с грейс-периодом 45 дней" data-card-text="<strong><mark>18 руб в месяц</mark></strong> - 23&nbsp;месяца или 8&nbsp;лет">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-10.jpg)">Credit Card 10</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="МТБанк Бонусная карта «Халва Плюс»" data-card-text="<strong><mark>19.50 руб в месяц</mark></strong> - 1&nbsp;месяца или 2&nbsp;месяца">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-11.jpg)">Credit Card 11</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="МТБанк Карта PayOkay (ПейОкей) в Беларуси" data-card-text="<strong><mark>2 000 000 руб в месяц</mark></strong> - 36&nbsp;месяца или 10&nbsp;лет">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-12.jpg)">Credit Card 12</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="МТБанк Карта «МТБанк-Корона»" data-card-text="<strong><mark>75 руб в месяц</mark></strong> - 12&nbsp;месяца или 5&nbsp;месяца">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-13.jpg)">Credit Card 13</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="МТБанк АвтоКарта - карта выгодных расчетов для автомобилистов" data-card-text="<strong><mark>5 руб в месяц</mark></strong> - 5&nbsp;месяца или 3&nbsp;месяца">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-14.jpg)">Credit Card 14</div>
+                    </div>
+                  </div>
+                  <div class="swiper-slide cards-slider__slide" data-card-title="Альфа-Банк Платежная карточка «А-курс»" data-card-text="<strong><mark>7 500 руб в месяц</mark></strong> - 6&nbsp;месяца или 18&nbsp;месяца">
+                    <div class="cards-slider-figure">
+                      <div class="cards-slider-img" style="background-image: url(img/credit-card-15.jpg)">Credit Card 15</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="flat-tabs__panels tabs__panels-js">
-                <div id="installmentCards" class="flat-tabs__panel tabs__panel-js">{{карты рассрочки}}</div>
-                <div id="installmentBanks" class="flat-tabs__panel tabs__panel-js">{{рассрочка банков}}</div>
-                <div id="credit" class="flat-tabs__panel tabs__panel-js">{{кредит}}</div>
+              <div class="cards-slider-nav">
+                <div class="cards-slider__prev cards-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="cards-slider__next cards-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
               </div>
+              <div class="credit-panel__content">
+                <div class="credit-info">
+                  <div class="credit-info__col">
+                    <div class="card-info">
+                      <strong class="card-info__title card-info__title-js">{{Заголовок}}</strong>
+                      <div class="card-info__content card-info__text-js">{{Описание}}</div>
+                    </div>
+                  </div>
+                  <div class="credit-info__col">
+                    <ul>
+                      <li>Подберем лучший вариант рассрочки</li>
+                      <li>Оформление по телефону</li>
+                      <li>Доставка рассрочки на дом</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="credit-note">
+                  <div class="credit-note__col">При покупке в рассрочку скидка на товар не действует</div>
+                  <div class="credit-note__col">
+                    <a href="#" class="btn-def-alt">Купить в рассрочку</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="installmentBanks" class="credit-panel tabs__panel-js">
+              <h3 class="credit-panel__title">{{Рассрочка банков}}</h3>
+              <div class="credit-panel__content">{{Рассрочка банков}}</div>
+            </div>
+            <div id="credit" class="credit-panel tabs__panel-js">
+              <h3 class="credit-panel__title">{{Кредит}}</h3>
+              <div class="credit-panel__content">{{Кредит}}</div>
             </div>
           </div>
         </div>
-
-        <div class="p-card-services">
-          <div class="p-card-services__item">
-            <strong>@@include("includes/svg/icon-helper-credit.svg") <span>Доставка</span></strong>
-            <p>По Минску <mark>курьером &mdash; сегодня, завтра, бесплатно</mark>.</p>
-            <p>По всей Беларуси курьером в течение <span class="nobr">1-3 дней</span>.</p>
-          </div>
-          <div class="p-card-services__item">
-            <strong>@@include("includes/svg/icon-helper-delivery.svg") <span>Оплата</span></strong>
-            <p>Наличными, банковской картой, картами рассрочек, безналичный платежом.</p>
-          </div>
-        </div>
       </div>
-      <!--product card content end-->
+      <!--product card aside end-->
     </section>
     <!--product card end-->
 
@@ -273,8 +386,14 @@
                     })
                   </div>
                 </div>
-                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
-                <div class="tape-slider__next tape-slider__next-js">Next</div>
+                <div class="tape-slider__prev tape-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="tape-slider__next tape-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
               </div>
             </div>
             <div class="tabs__panel-js" id="presentsMice">
@@ -410,8 +529,14 @@
                     })
                   </div>
                 </div>
-                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
-                <div class="tape-slider__next tape-slider__next-js">Next</div>
+                <div class="tape-slider__prev tape-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="tape-slider__next tape-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
               </div>
             </div>
             <div class="tabs__panel-js" id="presentsBags">
@@ -547,8 +672,14 @@
                     })
                   </div>
                 </div>
-                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
-                <div class="tape-slider__next tape-slider__next-js">Next</div>
+                <div class="tape-slider__prev tape-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="tape-slider__next tape-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
               </div>
             </div>
           </div>
@@ -702,8 +833,14 @@
                     })
                   </div>
                 </div>
-                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
-                <div class="tape-slider__next tape-slider__next-js">Next</div>
+                <div class="tape-slider__prev tape-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="tape-slider__next tape-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
               </div>
             </div>
             <div class="tabs__panel-js" id="similarMice">
@@ -839,8 +976,14 @@
                     })
                   </div>
                 </div>
-                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
-                <div class="tape-slider__next tape-slider__next-js">Next</div>
+                <div class="tape-slider__prev tape-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="tape-slider__next tape-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
               </div>
             </div>
             <div class="tabs__panel-js" id="similarBags">
@@ -976,8 +1119,14 @@
                     })
                   </div>
                 </div>
-                <div class="tape-slider__prev tape-slider__prev-js">Prev</div>
-                <div class="tape-slider__next tape-slider__next-js">Next</div>
+                <div class="tape-slider__prev tape-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="tape-slider__next tape-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
               </div>
             </div>
           </div>

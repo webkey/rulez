@@ -437,6 +437,56 @@ function slidersInit() {
     });
 
   }
+
+  /**credit cards slider*/
+  var $cardsSlider = $('.cards-slider-js');
+  if ($cardsSlider.length) {
+    $cardsSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisBtnNext = $thisSlider.next('.cards-slider-nav').find('.cards-slider__next-js'),
+          $thisBtnPrev = $thisSlider.next('.cards-slider-nav').find('.cards-slider__prev-js'),
+          $thisContainer = $thisSlider.closest('.cards-js'),
+          $cardTitleEl = $thisContainer.find('.card-info__title-js'),
+          $cardTextEl = $thisContainer.find('.card-info__text-js'),
+          currentClass = 'current-card',
+          cardsSliderJs;
+
+      cardsSliderJs = new Swiper($thisSlider, {
+        init: false,
+        slidesPerView: 'auto',
+        // centeredSlides: true,
+        // slideToClickedSlide: true,
+        navigation: {
+          nextEl: $thisBtnNext,
+          prevEl: $thisBtnPrev,
+        }
+      });
+
+      var changeInfo = function ($slide) {
+        $(cardsSliderJs.slides).removeClass(currentClass);
+        $slide.addClass(currentClass);
+        // cardsSliderJs.slideTo($slide.index(), 500);
+
+        var title = $slide.data('card-title'),
+            text = $slide.data('card-text');
+
+        $cardTitleEl.html(title);
+        $cardTextEl.html(text);
+      };
+
+      cardsSliderJs.on('init', function() {
+        $(cardsSliderJs.el).closest($thisSlider).addClass('is-loaded');
+        changeInfo($(cardsSliderJs.slides).eq(cardsSliderJs.activeIndex));
+      });
+
+      cardsSliderJs.init();
+
+      $(cardsSliderJs.slides).on('click', function () {
+        changeInfo($(cardsSliderJs.clickedSlide));
+      })
+    });
+
+  }
 }
 
 /**
