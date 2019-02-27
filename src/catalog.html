@@ -61,11 +61,10 @@
                 <li class="current"><span>Рассрочка</span></li>
                 <li><a href="index.html"><span>Оплата</span></a></li>
                 <li><a href="index.html"><span>Гарантия и доставка</span></a></li>
-                <li><a href="index.html"><span>Оплата</span></a></li>
-                <li><a href="index.html"><span>Гарантия</span></a></li>
-                <li><a href="index.html"><span>Рассрочка</span></a></li>
-                <li><a href="index.html"><span>Скидки</span></a></li>
-                <li><a href="index.html"><span>Акции и подарки</span></a></li>
+                <li><a href="index.html"><span>Услуги</span></a></li>
+                <li><a href="index.html"><span>Статьи</span></a></li>
+                <li><a href="index.html"><span>Кредит</span></a></li>
+                <li><a href="index.html"><span>Контакты</span></a></li>
               </ul>
             </nav>
           </div>
@@ -77,7 +76,8 @@
                 <li><a href="https://www.whatsapp.com/" target="_blank"><span>Whatsapp</span></a></li>
               </ul>
               <div class="phones phones-js">
-                <a href="tel:+375291231010" class="phones-opener-js"><span>+375 (29) <strong>123 10 10</strong></span><i>&nbsp;</i></a>
+                <a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a>
+                <i class="phones-opener phones-opener-js">&#9660;</i>
                 <ul class="phones-drop phones-drop-js">
                   <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
                   <li class="active-item"><a href="tel:+375291232017"><span>+375 (29) <strong>123 20 17</strong></span></a></li>
@@ -114,6 +114,7 @@
               </div>
             </div>
             <a href="#" class="cart-link cart-keeper-js" title="Оформить заказа">
+              <em class="counter counter-js">1</em>
               <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                   <path class="svg-ico-cart-circle" fill-rule="evenodd" clip-rule="evenodd" d="M15 30C23.2843 30 30 23.2843 30 15C30 6.71573 23.2843 0 15 0C6.71573 0 0 6.71573 0 15C0 23.2843 6.71573 30 15 30Z"></path>
                   <path class="svg-ico-cart-cart" fill-rule="evenodd" clip-rule="evenodd" d="M30 5.90258C30 6.40102 29.6057 6.80517 29.1192 6.80517H27.3482L21.4767 20.6447H9.34872L7 11.0172H18.4035C18.89 11.0172 19.2842 11.4212 19.2842 11.9198C19.2842 12.4182 18.89 12.8223 18.4035 12.8223H9.25645L10.7244 18.8396H20.3215L26.1931 5H29.1192C29.6059 5 30 5.40393 30 5.90258ZM14.8474 23.5028C14.8474 24.8797 13.7541 26 12.4106 26C11.0672 26 9.97399 24.8797 9.97399 23.5028C9.97399 22.1258 11.0672 21.0055 12.4106 21.0055C13.7541 21.0055 14.8474 22.1258 14.8474 23.5028ZM12.4106 22.2089C13.1067 22.2089 13.6731 22.7895 13.6731 23.5028C13.6731 24.2163 13.1067 24.7966 12.4106 24.7966C11.7147 24.7966 11.1482 24.2163 11.1482 23.5028C11.1482 22.7895 11.7147 22.2089 12.4106 22.2089ZM21.3235 23.5028C21.3235 24.8797 20.23 26 18.8866 26C17.5433 26 16.4501 24.8797 16.4501 23.5028C16.4501 22.1258 17.5433 21.0055 18.8866 21.0055C20.23 21.0055 21.3235 22.1258 21.3235 23.5028ZM18.8866 22.2089C19.5828 22.2089 20.1493 22.7895 20.1493 23.5028C20.1493 24.2163 19.5827 24.7966 18.8866 24.7966C18.1906 24.7966 17.6243 24.2163 17.6243 23.5028C17.6243 22.7895 18.1906 22.2089 18.8866 22.2089Z"></path>
@@ -122,7 +123,6 @@
                 <strong>Корзина</strong>
                 <span>300.00 руб</span>
               </div>
-              <em class="counter counter-js">1</em>
             </a>
           </div>
         </div>
@@ -1144,6 +1144,14 @@
                 <article class="products__item">
                   <div itemscope itemtype="http://schema.org/Product" class="product product-js">
                     <div class="product__main">
+                      <span class="product__sticker-wow">Wow!</span>
+                      <div class="product__stickers">
+                        <div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-sale.svg);">%</div>
+                        <div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-new.svg);">new</div>
+                        <div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-gift.svg);">Подарок</div>
+                        <div class="product__sticker" style="background-color: #96d728; background-image: url(img/sticker-top.svg);">ТОП</div>
+                        <div class="product__sticker product__sticker_text" style="background-color: #ef4180;">Рассрочка 0%</div>
+                      </div>
                       <a itemprop="url" href="product-card.html">
                         <div class="product__figure product-figure-js">
                           <img itemprop="image" src="img/img-product-01.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T" />
@@ -1155,15 +1163,8 @@
                           <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1178,26 +1179,29 @@
                       <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
                         <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
                         <div class="product__price">
-                          <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
+                          <div class="product__price-old"><strong>1500</strong>&nbsp;<em>р.</em></div>
+                          <div class="product__price-new"><strong itemprop="price" content="1500">1500</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
@@ -1207,6 +1211,10 @@
                 <article class="products__item">
                   <div itemscope itemtype="http://schema.org/Product" class="product product-js">
                     <div class="product__main">
+                      <div class="product__stickers">
+                        <div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-new.svg);">new</div>
+                        <div class="product__sticker" style="background-color: #96d728; background-image: url(img/sticker-top.svg);">ТОП</div>
+                      </div>
                       <a itemprop="url" href="product-card.html">
                         <div class="product__figure product-figure-js">
                           <img itemprop="image" src="img/img-product-02.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T" />
@@ -1218,15 +1226,8 @@
                           <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Добавлен к сравнению</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1244,23 +1245,25 @@
                           <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
@@ -1270,6 +1273,13 @@
                 <article class="products__item">
                   <div itemscope itemtype="http://schema.org/Product" class="product product-js">
                     <div class="product__main">
+                      <span class="product__sticker-wow">Wow!</span>
+                      <div class="product__stickers">
+                        <div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-sale.svg);">%</div>
+                        <div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-new.svg);">new</div>
+                        <div class="product__sticker" style="background-color: #96d728; background-image: url(img/sticker-top.svg);">ТОП</div>
+                        <div class="product__sticker product__sticker_text" style="background-color: #ef4180;">Рассрочка 0%</div>
+                      </div>
                       <a itemprop="url" href="product-card.html">
                         <div class="product__figure product-figure-js">
                           <img itemprop="image" src="img/img-product-03.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T" />
@@ -1281,15 +1291,8 @@
                           <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>Мне нравится</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1308,33 +1311,35 @@
                           <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-state-js added" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>Мне нравится</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
                     </div>
-                    <span class="product__sale">30%</span>
                   </div>
                 </article>
                 <article class="products__item">
                   <div itemscope itemtype="http://schema.org/Product" class="product product-js">
                     <div class="product__main">
+                      <span class="product__sticker-wow">Wow!</span>
                       <a itemprop="url" href="product-card.html">
                         <div class="product__figure product-figure-js">
                           <img itemprop="image" src="img/temp/img_640_01.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T" />
@@ -1346,15 +1351,8 @@
                           <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1372,35 +1370,37 @@
                           <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
-                    </div>
-                    <div class="product__labels">
-                      <div class="product__label product__label_day">Товар дня</div>
                     </div>
                   </div>
                 </article>
                 <article class="products__item">
                   <div itemscope itemtype="http://schema.org/Product" class="product product-js">
                     <div class="product__main">
+                      <div class="product__stickers">
+                        <div class="product__sticker product__sticker_text" style="background-color: #ef4180;">Рассрочка 0%</div>
+                      </div>
                       <a itemprop="url" href="product-card.html">
                         <div class="product__figure product-figure-js">
                           <img itemprop="image" src="img/temp/img_640_02.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T" />
@@ -1412,15 +1412,8 @@
                           <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1438,23 +1431,25 @@
                           <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
@@ -1475,15 +1470,8 @@
                           <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1501,23 +1489,25 @@
                           <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
@@ -1538,15 +1528,8 @@
                           <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1564,23 +1547,25 @@
                           <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
@@ -1601,15 +1586,8 @@
                           <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1627,23 +1605,25 @@
                           <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>
@@ -1664,15 +1644,8 @@
                           <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                           <meta itemprop="ratingCount" content="1">
                         </div>
-                        <div class="product__action">
-                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить" tabindex="0"><i><svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></i><span>Сравнить</span></a>
-                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i><span>В избранное</span></a>
-                        </div>
                       </div>
-                      <ul class="products__feature">
+                      <ul class="products__features">
                         <li>Операционная система: <span>Windows 10</span></li>
                         <li>Диагональ экрана: <span>15.6&quot;</span></li>
                         <li>Разрешение экрана: <span>1366x768(HD)</span></li>
@@ -1690,23 +1663,25 @@
                           <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                         </div>
                       </div>
-                      <div class="product__option">
-                        <div class="product__option-item hide-for-list">
-                          <a href="#" class="opt-btn-like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное" tabindex="0"><span>В избранное</span><i><svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
-                                <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
-                              </svg></i></a>
+                      <div class="product__options">
+                        <div class="product__action">
+                          <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
+                          <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                              <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
+                            </svg></a>
                         </div>
-                        <div class="product__option-item">
-                          <a href="#" class="opt-btn-buy add-to-cart-js" tabindex="0">
-                            <span class="opt-btn-buy__to-cart">В&nbsp;корзину</span>
-                            <span class="opt-btn-buy__buy">Купить</span>
-                            <span class="opt-btn-buy__in-cart">В&nbsp;корзине</span>
-                            <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
-                                <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
-                              </svg></i>
+                        <div class="product__purchase">
+                          <a href="#" class="purchase-btn add-to-cart-js">
+                            <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                            <span class="purchase-btn__buy">Купить</span>
+                            <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                            <svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
+                              <path d="M23 0.9C23 1.4 22.6 1.8 22.1 1.8H20.3L14.5 15.6H2.3L0 6H11.4C11.9 6 12.3 6.4 12.3 6.9 12.3 7.4 11.9 7.8 11.4 7.8H2.3L3.7 13.8H13.3L19.2 0H22.1C22.6 0 23 0.4 23 0.9ZM7.8 18.5C7.8 19.9 6.8 21 5.4 21 4.1 21 3 19.9 3 18.5 3 17.1 4.1 16 5.4 16 6.8 16 7.8 17.1 7.8 18.5ZM5.4 17.2C6.1 17.2 6.7 17.8 6.7 18.5 6.7 19.2 6.1 19.8 5.4 19.8 4.7 19.8 4.1 19.2 4.1 18.5 4.1 17.8 4.7 17.2 5.4 17.2ZM14.3 18.5C14.3 19.9 13.2 21 11.9 21 10.5 21 9.5 19.9 9.5 18.5 9.5 17.1 10.5 16 11.9 16 13.2 16 14.3 17.1 14.3 18.5ZM11.9 17.2C12.6 17.2 13.1 17.8 13.1 18.5 13.1 19.2 12.6 19.8 11.9 19.8 11.2 19.8 10.6 19.2 10.6 18.5 10.6 17.8 11.2 17.2 11.9 17.2Z"></path>
+                            </svg>
                           </a>
                         </div>
-                        <div class="product__option-item show-for-list">
+                        <div class="product__installment">
                           <a href="#" class="btn-def-alt">Купить в рассрочку</a>
                         </div>
                       </div>

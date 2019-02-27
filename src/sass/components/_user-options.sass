@@ -48,7 +48,7 @@ $uo-border-radius: 0 0 7px 7px
   &:last-child::after
     display: none
 
-  & > a, & > div
+  & > a, & > div, & > span, & > strong
     position: relative
     display: flex
     justify-content: center
@@ -58,11 +58,15 @@ $uo-border-radius: 0 0 7px 7px
     color: #131313
     text-decoration: none
     text-align: center
-
-    // убрать подсветку при клике на тачскринах
-    .touchevents &
-      user-select: none
-      -webkit-tap-highlight-color: transparent
+    cursor: default
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+    // transition
+    $prop: color, box-shadow, background-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
 
     // tooltip
     &[data-title]::before
@@ -117,8 +121,8 @@ $uo-border-radius: 0 0 7px 7px
       & ~ span.hide-text
         padding-left: 0
 
-    path
-      fill: $base-color
+      path
+        fill: $text-color-soft
 
     // text
     & > span
@@ -148,66 +152,47 @@ $uo-border-radius: 0 0 7px 7px
       border-radius: round-float($size / 2, 1)
       z-index: 10
 
-
   &:first-child
-    & > a, & > div
+    & > a, & > div, & > span, & > strong
       border-bottom-left-radius: nth($uo-border-radius, 4)
 
   &:last-child
-    & > a, & > div
+    & > a, & > div, & > span, & > strong
       border-bottom-right-radius: nth($uo-border-radius, 3)
-
-  & > div
-    cursor: default
 
   // tooltip align right for last item
   &:last-child
-    & > a, & > div
+    & > a, & > div, & > span, & > strong
       // tooltip
       &[data-title]::before
         left: auto
         right: 0
 
-  // hover
-  & > a, & > div
-    // tooltip
-    .no-touchevents &[data-title]:hover
-      &::before
-        transition-delay: 0.6s
-        opacity: 1
-        visibility: visible
-        $translate: 0, 0
-        transform: translate($translate)
-        transform: translate3d($translate, 0)
-
+  // Если ссылка
   & > a
-    // transition
-    $prop: color, box-shadow, background-color
-    transition:
-      property: $prop
-      duration: $animation-speed
-      timing-function: ease-in-out
+    cursor: pointer
 
-    path
-      // transition
-      $prop: fill
-      transition:
-        property: $prop
-        duration: $animation-speed
-        timing-function: ease-in-out
+    svg
+      path
+        fill: $base-color
 
-    //$color: white
+    // hover
     &:hover
-      //color: $color
-      //background-color: $base-color
       background-color: $bg-color
 
-      //path
-        fill: $color
+  // tooltip
+  .no-touchevents &[data-title]:hover
+    &::before
+      transition-delay: 0.6s
+      opacity: 1
+      visibility: visible
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
 
 // user-options__item_login
 .user-options__item_login
-  & > div, & > a
+  & > a, & > div, & > span, & > strong
     svg
       $size: 1.8rem
       width: $size
@@ -215,11 +200,21 @@ $uo-border-radius: 0 0 7px 7px
 
 // user-options__item_likes
 .user-options__item_likes
-  & > div, & > a
+  & > a, & > div, & > span, & > strong
     svg
       $size: 2.0rem
       width: $size
       height: $size
+
+      path
+        fill: transparent
+        stroke: $text-color-soft
+
+  & > a
+    svg
+      path
+        stroke: $base-color
+
 
 
 /* user options

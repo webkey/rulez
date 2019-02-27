@@ -4,7 +4,7 @@
 var resizeByWidth = true;
 
 var prevWidth = -1;
-$(window).resize(function () {
+$(window).on('debouncedresize', function () {
   var currentWidth = $('body').outerWidth();
   resizeByWidth = prevWidth !== currentWidth;
   if (resizeByWidth) {
@@ -94,27 +94,24 @@ function navExpander() {
     var navigation = $nav.okayNav({
       // align_right: true
       // toggle_icon_content: '<span /><span /><span />'
-      toggle_icon_content: '<span>' + label + '</span><i>&nbsp;</i>',
-      // swipe_enabled: true
-      itemHidden : function() {
-        $nav.addClass('after-hidden')
-      }
+      toggle_icon_content: '<span>' + label + '</span><i>&nbsp;</i>'
     });
+
+    if (navigation.length) {
+      $nav.addClass('ready');
+    }
   }
 
-  // var $page = $('html');
-  // var classResize = 'window-is-resize';
-  // var timeout;
+  var $page = $('html'), classResize = 'resizing', timeout;
 
-  // $(window).on('resizeByWidth', function () {
-  //   $page.addClass(classResize);
-  // }).on('debouncedresize', function () {
-  //   clearTimeout(timeout);
-  //
-  //   timeout = setTimeout(function () {
-  //     $page.removeClass(classResize);
-  //   }, 300);
-  // });
+  $(window).on('resize', function () {
+    $page.addClass(classResize);
+  }).on('debouncedresize', function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(function () {
+      $page.removeClass(classResize);
+    }, 50);
+  });
 }
 
 /**
@@ -320,14 +317,14 @@ function slidersInit() {
         // Events
         on: {
           slideChange: function (e) {
-            changeBgColor(promoSliderJs.activeIndex);
+            // changeBgColor(promoSliderJs.activeIndex);
           }
         }
       });
 
       promoSliderJs.on('init', function() {
         $(promoSliderJs.el).closest($thisSlider).addClass('is-loaded');
-        changeBgColor(promoSliderJs.activeIndex);
+        // changeBgColor(promoSliderJs.activeIndex);
       });
 
       promoSliderJs.init();
@@ -834,7 +831,7 @@ function tabs() {
     drop: '.ms-drop__drop-js',
     dropOption: '.ms-drop__drop-js a',
     dropOptionText: 'span',
-    initClass: 'ms-drop--initialized',
+    initClass: 'ms-drop-initialized',
     closeOutsideClick: true, // Close all if outside click
     closeEscClick: true, // Close all if click on escape key
     closeAfterSelect: true, // Close drop after selected option
