@@ -532,13 +532,13 @@
               </div>
             </div>
             <div class="credit tabs-js">
-              <div class="credit-thumbs">
-                <a href="#installmentCards" class="tabs-active tabs__anchor-js"><span>Карты рассрочки</span><em>▼</em></a>
-                <a href="#installmentBanks" class="tabs__anchor-js"><span>Рассрочка банков</span><em>▼</em></a>
-                <a href="#credit" class="tabs__anchor-js"><span>Кредит</span><em>▼</em></a>
+              <div class="credit-thumbs tabs__thumbs-js">
+                <a href="#installmentCards" class="tabs-active"><span>Карты рассрочки</span><em>▼</em></a>
+                <a href="#installmentBanks"><span>Рассрочка банков</span><em>▼</em></a>
+                <a href="#credit"><span>Кредит</span><em>▼</em></a>
               </div>
               <div class="tabs__panels-js">
-                <div id="installmentCards" class="credit-panel tabs__panel-js cards-js">
+                <div id="installmentCards" class="credit-panel cards-js">
                   <div class="swiper-container cards-slider cards-slider-js">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide cards-slider__slide" data-card-title="Карта Халва" data-card-text="<strong><mark>69 руб в месяц</mark></strong> - 3&nbsp;месяца, 6&nbsp;месяцев">
@@ -656,11 +656,11 @@
                     </div>
                   </div>
                 </div>
-                <div id="installmentBanks" class="credit-panel tabs__panel-js">
+                <div id="installmentBanks" class="credit-panel">
                   <h3 class="credit-panel__title">{{Рассрочка банков}}</h3>
                   <div class="credit-panel__content">{{Рассрочка банков}}</div>
                 </div>
-                <div id="credit" class="credit-panel tabs__panel-js">
+                <div id="credit" class="credit-panel">
                   <h3 class="credit-panel__title">{{Кредит}}</h3>
                   <div class="credit-panel__content">{{Кредит}}</div>
                 </div>
@@ -671,24 +671,24 @@
         </section>
         <!--product card end-->
         <!--product prompts-->
-        <section class="section section_p-prompts p-prompts-js">
+        <section class="section section_p-prompts tabs-js">
           <h2 class="section__title hide">Предложения</h2>
-          <div class="p-prompts__thumbs">
-            <a href="#promptsPresents" class="p-prompts__anchor-js tabs-active"><span>Подарки</span></a>
-            <a href="#promptsCheap" class="p-prompts__anchor-js"><span>Вместе дешевле</span></a>
-            <a href="#promptsAccessories" class="p-prompts__anchor-js"><span>Аксессуары</span></a>
-            <a href="#promptsSimilar" class="p-prompts__anchor-js"><span>Похожие товары</span></a>
+          <div class="divisions-tabs-thumbs p-prompts__thumbs tabs__thumbs-js">
+            <a href="#promptsPresents" class="tabs-active"><span>Подарки</span></a>
+            <a href="#promptsCheap"><span>Вместе дешевле</span></a>
+            <a href="#promptsAccessories"><span>Аксессуары</span></a>
+            <a href="#promptsSimilar"><span>Похожие товары</span></a>
           </div>
-          <div class="p-prompts__panels p-prompts__panels-js">
-            <div class="p-prompts__panel p-prompts__panel-js tabs-js" id="promptsPresents">
+          <div class="tabs__panels-js">
+            <div class="p-prompts__panel tabs-nested-js" id="promptsPresents">
               <h3 class="hide">Подарки</h3>
-              <div class="simple-tabs__thumbs">
-                <a href="#presentsHeadphones" class="tabs__anchor-js tabs-active"><span>Наушники</span></a>
-                <a href="#presentsMice" class="tabs__anchor-js"><span>Мышки</span></a>
-                <a href="#presentsBags" class="tabs__anchor-js"><span>Сумки для ноутбуков</span></a>
+              <div class="simple-tabs-thumbs p-prompts__panel-thumbs tabs-nested__thumbs-js">
+                <a href="#presentsHeadphones" class="tabs-active"><span>Наушники</span></a>
+                <a href="#presentsMice"><span>Мышки</span></a>
+                <a href="#presentsBags"><span>Сумки для ноутбуков</span></a>
               </div>
-              <div class="tabs__panels-js">
-                <div class="tabs__panel-js" id="presentsHeadphones">
+              <div class="tabs-nested__panels-js">
+                <div id="presentsHeadphones">
                   <div class="swiper-container tape-slider tape-slider-js">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide tape-slider__item">
@@ -1229,7 +1229,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tabs__panel-js" id="presentsMice">
+                <div id="presentsMice">
                   <div class="swiper-container tape-slider tape-slider-js">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide tape-slider__item">
@@ -1770,7 +1770,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tabs__panel-js" id="presentsBags">
+                <div id="presentsBags">
                   <div class="swiper-container tape-slider tape-slider-js">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide tape-slider__item">
@@ -2313,23 +2313,23 @@
                 </div>
               </div>
             </div>
-            <div class="p-prompts__panel p-prompts__panel-js" id="promptsCheap">
+            <div class="p-prompts__panel" id="promptsCheap">
               <h3 class="hide">Вместе дешевле</h3>
               {{Вместе дешевле}}
             </div>
-            <div class="p-prompts__panel p-prompts__panel-js" id="promptsAccessories">
+            <div class="p-prompts__panel" id="promptsAccessories">
               <h3 class="hide">Аксессуары</h3>
               {{Аксессуары}}
             </div>
-            <div class="p-prompts__panel p-prompts__panel-js tabs-js" id="promptsSimilar">
+            <div class="p-prompts__panel tabs-nested-js" id="promptsSimilar">
               <h3 class="hide">Похожие товары</h3>
-              <div class="simple-tabs__thumbs">
-                <a href="#similarHeadphones" class="tabs__anchor-js tabs-active"><span>Наушники</span></a>
-                <a href="#similarMice" class="tabs__anchor-js"><span>Мышки</span></a>
-                <a href="#similarBags" class="tabs__anchor-js"><span>Сумки для ноутбуков</span></a>
+              <div class="simple-tabs-thumbs p-prompts__panel-thumbs tabs-nested__thumbs-js">
+                <a href="#similarHeadphones" class="tabs-active"><span>Наушники</span></a>
+                <a href="#similarMice"><span>Мышки</span></a>
+                <a href="#similarBags"><span>Сумки для ноутбуков</span></a>
               </div>
-              <div class="tabs__panels-js">
-                <div class="tabs__panel-js" id="similarHeadphones">
+              <div class="tabs-nested__panels-js">
+                <div id="similarHeadphones">
                   <div class="swiper-container tape-slider tape-slider-js">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide tape-slider__item">
@@ -2870,7 +2870,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tabs__panel-js" id="similarMice">
+                <div id="similarMice">
                   <div class="swiper-container tape-slider tape-slider-js">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide tape-slider__item">
@@ -3411,7 +3411,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="tabs__panel-js" id="similarBags">
+                <div id="similarBags">
                   <div class="swiper-container tape-slider tape-slider-js">
                     <div class="swiper-wrapper">
                       <div class="swiper-slide tape-slider__item">
@@ -3957,19 +3957,362 @@
           </div>
         </section>
         <!--product prompts end-->
+        <!--product infobar-->
+        <section class="section section_p-infobar tabs-js">
+          <h2 class="section__title hide">Вся информации о товаре</h2>
+          <div class="divisions-tabs-thumbs p-infobar-tabs__thumbs tabs__thumbs-js">
+            <a href="#pInfobarCh" class="tabs-active">Характеристики</a>
+            <a href="#pInfobarDesc">Описание</a>
+            <a href="#pInfobarRev">Отзывы <em>15</em></a>
+            <a href="#pInfobarIns">Рассрочка и кредит</a>
+          </div>
+          <div class="tabs__panels-js">
+            <div id="pInfobarCh">
+              <h3 class="hide">Характеристики</h3>
+              <ul class="p-infobar-list">
+                <li>
+                  <h4>Экран</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Размер экрана</div>
+                      <div>15.6</div>
+                    </li>
+                    <li>
+                      <div>Разрешение экрана</div>
+                      <div>1920 x 1080</div>
+                    </li>
+                    <li>
+                      <div>Технология экрана</div>
+                      <div>TN+Film</div>
+                    </li>
+                    <li>
+                      <div>Тип экрана</div>
+                      <div>матовый</div>
+                    </li>
+                    <li>
+                      <div>LED-подсветка</div>
+                      <div>есть</div>
+                    </li>
+                    <li>
+                      <div>Соотношение сторон</div>
+                      <div>6:9</div>
+                    </li>
+                    <li>
+                      <div>Поддержка ввода пером</div>
+                      <div>Нету</div>
+                    </li>
+                    <li>
+                      <div>Сенсорный экран</div>
+                      <div>Нету</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Процессор</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Процессор</div>
+                      <div>Intel Core i5</div>
+                    </li>
+                    <li>
+                      <div>Код процессора</div>
+                      <div>2</div>
+                    </li>
+                    <li>
+                      <div>Частота процессора</div>
+                      <div>2500</div>
+                    </li>
+                    <li>
+                      <div>Turbo частота</div>
+                      <div>3100</div>
+                    </li>
+                    <li>
+                      <div>Кэш процессора</div>
+                      <div>3</div>
+                    </li>
+                    <li>
+                      <div>Платформа</div>
+                      <div>Intel Kaby Lake (2016)</div>
+                    </li>
+                    <li>
+                      <div>Чипсет</div>
+                      <div>Intel HM370</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Графика</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Тип видеокарты</div>
+                      <div>дискретный</div>
+                    </li>
+                    <li>
+                      <div>Основной графический адаптер</div>
+                      <div>AMD Radeon R7 M445</div>
+                    </li>
+                    <li>
+                      <div>Размер видеопамяти</div>
+                      <div>2048</div>
+                    </li>
+                    <li>
+                      <div>Тип видеопамяти</div>
+                      <div>GDDR5</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Оперативная память</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Объем памяти</div>
+                      <div>4 ГБ</div>
+                    </li>
+                    <li>
+                      <div>Максимальный объем памяти</div>
+                      <div>32 ГБ</div>
+                    </li>
+                    <li>
+                      <div>Количество слотов памяти</div>
+                      <div>2 слота</div>
+                    </li>
+                    <li>
+                      <div>Тип памяти</div>
+                      <div>DDR4</div>
+                    </li>
+                    <li>
+                      <div>Частота памяти</div>
+                      <div>2133</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Хранение данных</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Тип накопителя</div>
+                      <div>SSD</div>
+                    </li>
+                    <li>
+                      <div>Емкость накопителя(-лей)</div>
+                      <div>1000</div>
+                    </li>
+                    <li>
+                      <div>Скорость HDD</div>
+                      <div>5400</div>
+                    </li>
+                    <li>
+                      <div>Общая емкость SSD</div>
+                      <div>256</div>
+                    </li>
+                    <li>
+                      <div>Поддержка карт памяти</div>
+                      <div>SD</div>
+                    </li>
+                    <li>
+                      <div>Оптический привод</div>
+                      <div>DVD Multi</div>
+                    </li>
+                    <li>
+                      <div>Тип оптического привода</div>
+                      <div>DVD Multi</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Камера и звук</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Веб-камера</div>
+                      <div>есть</div>
+                    </li>
+                    <li>
+                      <div>Количество пикселей веб-камеры</div>
+                      <div>0.92</div>
+                    </li>
+                    <li>
+                      <div>Микрофон</div>
+                      <div>есть</div>
+                    </li>
+                    <li>
+                      <div>Наличие колонок</div>
+                      <div>есть</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Конструкция</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Цвета оформления корпуса</div>
+                      <div>черный</div>
+                    </li>
+                    <li>
+                      <div>Материал корпуса</div>
+                      <div>пластик</div>
+                    </li>
+                    <li>
+                      <div>Материал крышки</div>
+                      <div>пластик</div>
+                    </li>
+                    <li>
+                      <div>Подсветка корпуса</div>
+                      <div>Нету</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Размеры и вес</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Вес</div>
+                      <div>2360 г</div>
+                    </li>
+                    <li>
+                      <div>Ширина</div>
+                      <div>390 мм</div>
+                    </li>
+                    <li>
+                      <div>Толщина</div>
+                      <div>23.3 мм</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Клавиатура и тачпад</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Подсветка клавиатуры</div>
+                      <div>Нету</div>
+                    </li>
+                    <li>
+                      <div>Цифровое поле</div>
+                      <div>+</div>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <h4>Интерфейсы</h4>
+                  <ul class="dl-list">
+                    <li>
+                      <div>Bluetooth</div>
+                      <div>4.1</div>
+                    </li>
+                    <li>
+                      <div>LAN</div>
+                      <div>100 Mbit</div>
+                    </li>
+                    <li>
+                      <div>HDMI</div>
+                      <div>1 шт</div>
+                    </li>
+                    <li>
+                      <div>DisplayPort</div>
+                      <div>Нету</div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div id="pInfobarDesc">
+              <h3 class="hide">Описание</h3>
+              <ul class="p-infobar-list">
+                <li>
+                  <h4>Основные характеристики</h4>
+                  <p>13.9" 3000 x 2000 IPS, сенсорный, Intel Core i5 8250U 1600 МГц, 8 ГБ, SSD 256 ГБ, NVIDIA GeForce MX150 2 ГБ, Windows 10, цвет крышки серый, цвет корпуса серый</p>
+                </li>
+                <li>
+                  <h4>Большой экран с тонкими рамками</h4>
+                  <p>Первый ноутбук HUAWEI с экраном FullView. Соотношение экрана к корпусу 91% создает ощущение практически полного отсутствия рамок. Революционное решение, позволяющее уместить большой экран в сравнительно небольшом корпусе.</p>
+                </li>
+                <li>
+                  <h4>Яркие цвета, внимание к деталям</h4>
+                  <p>Экран 3K LTPS ноутбука HUAWEI MateBook X Pro с разрешением 3000 x 2000, плотностью пикселей 260 PPI, 100% цветового пространства sRGB, максимальным разрешением 450 нит и контрастностью 1500:1 притягивает взгляды. Окунитесь в яркий мир изображений в высоком разрешении и видео в формате 4K.</p>
+                </li>
+                <li>
+                  <h4>Простое управление</h4>
+                  <p>Сенсорный экран HUAWEI MateBook X Pro создан из тонкого стекла Corning Gorilla с покрытием, на котором не остаются отпечатки пальцев. Поддержка касаний по 10 точкам обеспечивает мгновенный отклик, точную навигацию и простоту управления ноутбуком прикосновениями пальцев.</p>
+                </li>
+                <li>
+                  <h4>Компактный и легкий</h4>
+                  <p>Ноутбук HUAWEI MateBook X Pro толщиной 14.6 мм и весом 1.33 кг такой тонкий и легкий, что вы можете брать его с собой везде — на работу, пикник или на вечеринку.</p>
+                </li>
+                <li>
+                  <h4>Скрытая камера</h4>
+                  <p>Хуавей Технолоджис Компани, ЛТД. Промышленная База Хуавей, По Бантиан Лонгганг, Шэньчжэне, Китай. Товар подлежит обязательной сертификации или декларированию соответствия.</p>
+                </li>
+                <li>
+                  <h4>Производитель</h4>
+                  <p>Камера ноутбука HUAWEI MateBook X Pro скрыта в клавиатуре. Когда вам нужна камера, просто нажмите на нее.</p>
+                </li>
+              </ul>
+            </div>
+            <div id="pInfobarRev">
+              <h3 class="hide">Отзывы</h3>
+              <h4>Пользователь скрыл свои данные</h4>
+              <h5>Достоинства:</h5>
+              <p>
+                - Безупречный дисплей. <br>
+                - Великолепная сборка. <br>
+                - Компактность, лёгкость. <br>
+                - Сканер отпечатков в кнопке включения. <br>
+                - Отсутствует лишний предустановленный софт <br>
+                (Остальное в комментарии)
+              </p>
+              <h5>Недостатки:</h5>
+              <p>
+                - Разумеется, очевидный минус - расположение камеры <br>
+                - При рассмотрении шарнира с задней стороны заметил два элемента, похожих на шлейфы. И если это действительно шлейфы (что логично, ведь даже нижняя рамка почти отсутствует), то не комильфо, что они не спрятаны внутрь чего бы то ни было, хоть конструкция шарнира и такова, что к ним крайне сложно подлезть.
+                <br>
+                - Переходника под видеоразъёмы не положили в комплект. В оф. магазине вроде его дарят сейчас с кучей прочих ништяков, но официально в комплекте с i5 его нет, а i7 у нас пока не планируется продавать.
+              </p>
+              <h5>Комментарий:</h5>
+              <p>
+                Слишком хорошо за свои деньги, компромиссов как таковых нет. Хотелось бы отметить несколько моментов: <br>
+                1. Микрофоны. Очень боялся за качество записи звука на встроенные микрофоны из-за их местоположения. Зря.<br>
+                2. Батарея. Действительно держит ну никак не меньше 6-7 часов.<br>
+                3. Масштабирование. Масштаб 200%, всё в меру крупное и при этом чёткое. С проблемами столкнулся только в фотошопе, он масштабироваться не хочет - шрифты микроскопические, элементы в панели инструментов едва крупнее рисового зерна. Но как-то это обходится, пока не вдавался.<br>
+                4. Звук. Отдельный респект. В наушниках ничего сверхъестественного не услышал, но и плохого ничего нет, фоновых помех во время простоя наушников нет совершенно. А вот встроенная акустика способна озвучить комнату квадратов до 20-25 точно. При прослушивании некоторых треков невольно задаёшься вопросом "откуда в нём столько??". Тягается с яблочными "прошками" спокойно, но у последних звук малость честнее.<br>
+                5. Клавиатура, тачпад. Никаких нареканий. Не ожидал в столь тонком устройстве увидеть клавиатуру вообще без компромиссов, ровно как и не ожидал встретить очень сносный тачпад. Мышь не нужна.<br>
+                6. Производительность, нагрев. Начинка стоит покруче конкурентов по классу за ту же цену. Дота2 на максималках в родном разрешении, HoMM5 тоже не задумывается, ничего мощнее пока не пробовал. При этом частоты под нагрузкой не сбрасывает, как его прямые конкуренты, но нагревается и шумит ощутимо. На всякий случай использую доп. охлаждение во время игры. В повседневке кулер если и пашет, то этого не слышно.<br>
+                7. Он выглядит и ощущается дорого. Будьте готовы к тому, что 90% зевак будет интересоваться ценой, как только вы включите дисплей.<br>
+                8. Все минусы ничтожны, ноутбук безбожно хорош.<br>
+              </p>
+            </div>
+            <div id="pInfobarIns">
+              <h3>Рассрочка на 24 месяца с первым взносом от 0%</h3>
+              <p><strong>Встречайте самое яркое предложение сезона!</strong></p>
+              <p>Рекордная рассрочка* на электронику и бытовую технику на 24 месяца. Кроме того, теперь Вы можете выбрать товар, заключить договор с возможностью первоначального взноса 0%! Можно получить товар и начать им пользоваться, а уже после этого начать выплату взносов по рассрочке.</p>
+              <p>Покупайте технику мировых брендов в РАССРОЧКУ на следующих условиях:</p>
+              <ul>
+                <li>от 0% первый взнос,</li>
+                <li>0% переплат,</li>
+                <li>24 месяцев – срок рассрочки,</li>
+                <li>сумма покупки от 50 рублей,</li>
+                <li>без справки о доходах.</li>
+              </ul>
+              <p>Воспользуйтесь кредитным калькулятором для расчета ежемесячного платежа и других параметров, чтобы выбрать наиболее подходящую для Вас рассрочку.</p>
+              <p>Итак, долой ограничения и трудные обязательства, порадуйте себя покупками, позвольте себе удовольствия! А «Rulezzz» поддержит Вас в начинаниях!</p>
+              <p>Хотите что-то уточнить? Спросите у нас по телефону 123 (единый мобильный номер) или 8-017-333-12-34 (городской).</p>
+              <hr>
+              <p><em>* Рассрочка с привлечением кредитных средств банка и возможностью первоначального взноса 0%. Размер первоначального взноса и ежемесячных платежей определяет банк.</em></p>
+            </div>
+          </div>
+        </section>
+        <!--product infobar end-->
         <section class="section section_collections tabs-js">
           <div class="collections">
             <h2 class="collections__title">Готовые подборки</h2>
             <div class="collections__content">
-              <div class="collections__thumbs">
-                <a href="#brand" class="tabs__anchor-js tabs-active"><span>По производителю</span></a>
-                <a href="#launch" class="tabs__anchor-js"><span>Дата выхода на рынок</span></a>
-                <a href="#screen" class="tabs__anchor-js"><span>Диагональ экрана</span></a>
-                <a href="#color" class="tabs__anchor-js"><span>Цвет корпуса</span></a>
-                <a href="#resolution" class="tabs__anchor-js"><span>Разрешение экрана</span></a>
+              <div class="collections__thumbs tabs__thumbs-js">
+                <a href="#brand" class="tabs-active"><span>По производителю</span></a>
+                <a href="#launch"><span>Дата выхода на рынок</span></a>
+                <a href="#screen"><span>Диагональ экрана</span></a>
+                <a href="#color"><span>Цвет корпуса</span></a>
+                <a href="#resolution"><span>Разрешение экрана</span></a>
               </div>
               <div class="tabs__panels-js">
-                <div class="tabs__panel-js" id="brand">
+                <div id="brand">
                   <ul class="float-list">
                     <li><span>ASUS</span></li>
                     <li><a href="#"><span>Acer</span></a></li>
@@ -3994,7 +4337,7 @@
                     <li><a href="#"><span>Xiaomi</span></a></li>
                   </ul>
                 </div>
-                <div class="tabs__panel-js" id="launch">
+                <div id="launch">
                   <ul class="float-list">
                     <li><a href="#"><span>2015</span></a></li>
                     <li><a href="#"><span>2016</span></a></li>
@@ -4003,7 +4346,7 @@
                     <li><a href="#"><span>2019</span></a></li>
                   </ul>
                 </div>
-                <div class="tabs__panel-js" id="screen">
+                <div id="screen">
                   <ul class="float-list">
                     <li><a href="#"><span>менее 12"</span></a></li>
                     <li><a href="#"><span>12-13"</span></a></li>
@@ -4013,7 +4356,7 @@
                     <li><a href="#"><span>18" и более</span></a></li>
                   </ul>
                 </div>
-                <div class="tabs__panel-js" id="color">
+                <div id="color">
                   <ul class="float-list">
                     <li><a href="#"><span>белый</span></a></li>
                     <li><a href="#"><span>бордовый</span></a></li>
@@ -4026,7 +4369,7 @@
                     <li><a href="#"><span>медный</span></a></li>
                   </ul>
                 </div>
-                <div class="tabs__panel-js" id="resolution">
+                <div id="resolution">
                   <ul class="float-list">
                     <li><a href="#"><span>HD/HD+ (768p/900p)</span></a></li>
                     <li><a href="#"><span>Full HD (1080p)</span></a></li>

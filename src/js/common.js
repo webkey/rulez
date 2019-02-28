@@ -72,7 +72,7 @@ function showOnScroll() {
     });
   }
 
-  var $gameZoneItem = $('.game-zone__item');
+  var $gameZoneItem = $('.gz-tiles__item');
 
   if ($gameZoneItem.length) {
     ScrollReveal().reveal($gameZoneItem, {
@@ -478,9 +478,11 @@ function slidersInit() {
 
       cardsSliderJs.init();
 
-      $(cardsSliderJs.slides).on('click', function () {
-        changeInfo($(cardsSliderJs.clickedSlide));
-      })
+      $(cardsSliderJs.slides).on('click mouseenter', function () {
+        var $slider = $(this);
+        changeInfo($slider);
+        // changeInfo($(cardsSliderJs.clickedSlide));
+      });
     });
 
   }
@@ -679,7 +681,7 @@ function gridLayout() {
         }
       });
     }, events = function () {
-      $element.on('click', config.anchor, function (event) {
+      $anchor.on('click', function (event) {
         event.preventDefault();
 
         var curId = $(this).attr('href').substring(1);
@@ -799,17 +801,27 @@ function gridLayout() {
 function tabs() {
   var $tabs = $('.tabs-js');
   if ($tabs.length) {
-    $tabs.msTabs();
+    var $tabsPanels = $('.tabs__panels-js');
+    $tabs.msTabs({
+      anchor: $('.tabs__thumbs-js').find('a'),
+      panels: $tabsPanels,
+      panel: $tabsPanels.children(),
+      modifiers: {
+        init: 'tabs-initialized',
+        activeClass: 'tabs-active'
+      }
+    });
   }
 
-  var $pPromptsTabs = $('.p-prompts-js');
-  if ($pPromptsTabs.length) {
-    $pPromptsTabs.msTabs({
-      anchor: '.p-prompts__anchor-js',
-      panels: '.p-prompts__panels-js',
-      panel: '.p-prompts__panel-js',
+  var $tabsNested = $('.tabs-nested-js');
+  if ($tabsNested.length) {
+    var $tabsNestedPanels = $('.tabs-nested__panels-js');
+    $tabsNested.msTabs({
+      anchor: $('.tabs-nested__thumbs-js').find('a'),
+      panels: $tabsNestedPanels,
+      panel: $tabsNestedPanels.children(),
       modifiers: {
-        init: 'tp-prompts-initialized',
+        init: 'tabs-nested-initialized',
         activeClass: 'tabs-active'
       }
     });

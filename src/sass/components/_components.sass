@@ -1921,6 +1921,55 @@ $search-btn-space: 0 0.5rem
 
 /* section end
 
+
+
+/* dl-list
+.dl-list
+  $dd-width: 18rem
+  $dl-space: 0.5rem
+  list-style: none
+  margin: 0
+  padding: 0
+
+  li
+    overflow: hidden
+    display: flex
+    justify-content: space-between
+    align-items: flex-start
+    margin: 0 -#{$dl-space}
+    cursor: default
+    background-color: white // Цвет фона можно перестилить через родителя при необходимости
+
+    & > div
+      position: relative
+      display: inline-block
+      vertical-align: top
+      padding: 0 $dl-space
+
+      &:first-child
+        max-width: calc(100% - #{$dd-width})
+
+        &::after
+          content: ""
+          display: block
+          position: absolute
+
+        &::after
+          left: 100%
+          bottom: 0.45em
+          width: 9999px
+          border-top: 1px dotted currentColor
+
+      &:last-child
+        max-width: #{$dd-width - 1}
+        background-color: inherit
+
+    // hover
+    &:hover
+      background-color: #f1f1f1
+
+/* dl-list end
+
 /* grid js
 .grid-js
   &:not(.grid-completed)
@@ -2352,14 +2401,12 @@ $advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figur
     & > span
       padding: 1.5rem 2rem
 
-
-
-
 /* advise end
 
 /* game-zone-anchor
 .game-zone-anchor
   display: block
+  position: relative
   text-decoration: none
   +font-bold
   font-size: 1.6rem
@@ -2375,7 +2422,17 @@ $advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figur
   background-size: cover
 
   & > span
-    display: none
+    display: flex
+    align-items: center
+    justify-content: center
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    text-align: center
+    padding: 2rem 1rem 2rem 9rem
+
 
 /* game-zone-anchor end
 
@@ -2616,13 +2673,105 @@ a.opinion
 /* topics-thumbs end
 
 /* tabs
-.tabs__panels-js
+.tabs__panels-js,
+.tabs-nested__panels-js
+  position: relative
   z-index: 1
 
-.tabs__panel-js
+.tabs__panels-js > div,
+.tabs-nested__panels-js > div
+  position: absolute
   opacity: 0
   visibility: hidden
   outline: none
+  width: 100%
+
+// simple tabs thumbs
+.simple-tabs-thumbs
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.4rem
+  line-height: 2.0rem
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+  a
+    color: #777
+    text-decoration: none
+    margin: 0.5rem 3rem 0.5rem 0
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    // touch
+    &.touchevents
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+    +underlinedAnchor(#777)
+
+    // active
+    &.tabs-active
+      color: #000
+      //+font-bold
+
+      & > span
+        border-color: transparent
+
+// divisions tabs thumbs
+.divisions-tabs-thumbs
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.8rem
+  line-height: 2.4rem
+  border-bottom: 1px solid #c5c5c5
+
+  &:last-child
+    margin-bottom: 0
+
+  a
+    color: #777
+    text-decoration: none
+    margin: 0 50px -2px 0
+    padding: 0 0 15px
+    border-bottom: 3px solid transparent
+    // transition
+    $prop: color, border-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    // touch
+    &.touchevents
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+    em
+      display: inline-block
+      font-family: inherit
+      font-style: inherit
+      color: $base-color
+
+    // hover
+    &:hover
+      color: #000
+
+    // active
+    &.tabs-active
+      color: #000
+      border-color: $base-color
+      cursor: default
 
 /* tabs end
 
@@ -3539,7 +3688,7 @@ $product-item-space: 2rem 2.4rem
     z-index: -1
 
   & > span
-    box-shadow: inset 0 -2px 0 rgba(white, 0.75)
+    box-shadow: none
     // transition
     $prop: box-shadow
     will-change: $prop
@@ -3552,7 +3701,7 @@ a.topic-banner
   &:hover
     .topic-banner__title
       & > span
-        box-shadow: none
+        box-shadow: inset 0 -2px 0 rgba(white, 0.75)
 
 /* topic-banner end
 
@@ -3703,7 +3852,7 @@ $tl-columns: 4
   &:last-child
     margin-bottom: 0
 
-.game-zone-caption
+.gz-caption
   display: flex
   align-items: center
   margin-bottom: 2.0rem
@@ -3711,7 +3860,7 @@ $tl-columns: 4
   &:last-child
     margin-bottom: 0
 
-.game-zone-caption__title
+.gz-caption__title
   margin-right: 5rem
   margin-bottom: 0
   +font-bold
@@ -3719,12 +3868,12 @@ $tl-columns: 4
   line-height: 42px
   color: white
 
-.game-zone__options
+.gz__options
   position: relative
   padding-top: 0.5rem
 
 // game-zone__links
-.game-zone__links
+.gz__links
   display: flex
   flex-wrap: wrap
 
@@ -3753,7 +3902,7 @@ $tl-columns: 4
 
 // game-zone__links end
 
-.game-zone__entry
+.gz__entry
   margin-bottom: 2rem
   column-count: 2
   column-gap: 4rem
@@ -3772,13 +3921,13 @@ $tl-columns: 4
 
 $gz-item-space: 18px
 $gz-columns: 4
-.game-zone__tiles
+.gz-tiles
   margin-bottom: $bottom-space
 
   &:last-child
     margin-bottom: 0
 
-.game-zone__list
+.gz-tiles__list
   margin-left: -#{round($gz-item-space / 2)}
   margin-right: -#{round($gz-item-space / 2)}
 
@@ -3786,7 +3935,7 @@ $gz-columns: 4
     overflow: hidden
     white-space: nowrap
 
-.game-zone__item
+.gz-tiles__item
   display: inline-block
   vertical-align: top
   width: round-float(100% / $gz-columns, 2)
@@ -3794,42 +3943,109 @@ $gz-columns: 4
   color: white
   text-decoration: none
 
-.game-zone__inner
+// gz-tiles-elem
+$gz-tiles-elem-space: 3.5rem 3.8rem
+.gz-tiles-elem
   height: 0
   display: block
   position: relative
+  overflow: hidden
+
+.gz-tiles-elem__bg
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
   background-color: #080f1f
   background-repeat: no-repeat
   background-position: center
   background-size: cover
   // transition
-  $prop: transform, box-shadow
+  $prop: transform
   will-change: $prop
   transition:
     property: $prop
-    duration: $animation-speed
+    duration: 1.5s
+    timing-function: ease-in-out
 
-  // hover
-  .no-touchevents &:hover
-    $size: 1rem
-    transform: translate(-$size, -$size)
-    box-shadow: $size $size 0.8rem rgba(black, 0.5)
-
-  // active
-  .no-touchevents &:active
-    // transition
-    transition: none
-    $size: 0
-    transform: translate(-$size, -$size)
-    box-shadow: $size $size 0 rgba(black, 0.5)
-
-.game-zone__title
+.gz-tiles-elem__title
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
   position: absolute
   left: 0
   top: 0
   width: 100%
-  padding: 2rem
-  +hide-text
+  height: 100%
+  padding: $gz-tiles-elem-space
+  +font-light
+  font-size: 2.4rem
+  line-height: 2.5rem
+  color: #c8c8c8
+
+  [data-align~="top"] &
+    align-items: flex-start
+
+  [data-align~="middle"] &
+    align-items: center
+    justify-content: flex-start
+
+  [data-align~="bottom"] &
+    align-items: flex-end
+    justify-content: flex-start
+
+  [data-align~="center"] &
+    justify-content: center
+    text-align: center
+
+  [data-align~="left"] &
+    justify-content: flex-start
+
+  [data-align~="right"] &
+    justify-content: flex-end
+    text-align: right
+
+// gz-tiles-elem (states)
+.gz-tiles-elem
+  // hover
+  &:hover
+    .gz-tiles-elem__bg
+      transition-duration: 1.0s
+      $scale: 1.1, 1.1
+      $translate: 0, 0
+      transform: scale($scale) translate($translate)
+      transform: scale3d($scale, 1) translate3d($translate, 0)
+
+  &[data-align~="top"][data-align~="left"]:hover
+    .gz-tiles-elem__bg
+      $scale: 1.1, 1.1
+      $translate: -4%, -4%
+      transform: scale($scale) translate($translate)
+      transform: scale3d($scale, 1) translate3d($translate, 0)
+
+  &[data-align~="top"][data-align~="right"]:hover
+    .gz-tiles-elem__bg
+      $scale: 1.1, 1.1
+      $translate: 4%, -4%
+      transform: scale($scale) translate($translate)
+      transform: scale3d($scale, 1) translate3d($translate, 0)
+
+  &[data-align~="middle"][data-align~="left"]:hover
+    .gz-tiles-elem__bg
+      $scale: 1.1, 1.1
+      $translate: -4%, 0
+      transform: scale($scale) translate($translate)
+      transform: scale3d($scale, 1) translate3d($translate, 0)
+
+  &[data-align~="middle"][data-align~="right"]:hover
+    .gz-tiles-elem__bg
+      $scale: 1.1, 1.1
+      $translate: 4%, 0
+      transform: scale($scale) translate($translate)
+      transform: scale3d($scale, 1) translate3d($translate, 0)
+
+
 
 /* quick-links end
 
@@ -3839,114 +4055,129 @@ $gz-columns: 4
 
 $at-item-space: 10px
 $at-columns: 5
-.article-tiles
+.articles-tiles
+  overflow: hidden
   margin-bottom: $bottom-space
 
   &:last-child
     margin-bottom: 0
 
-.article-tiles__list
-  margin-left: -#{round($at-item-space / 2)}
-  margin-right: -#{round($at-item-space / 2)}
+.articles-tiles__list
+  margin: -#{round($at-item-space / 2)}
 
   &:not(.grid-completed)
     overflow: hidden
     white-space: nowrap
 
-.article-tiles__item
+.articles-tiles__item
   display: inline-block
   vertical-align: top
   width: round-float(100% / $at-columns, 2)
-  padding: 0 round($at-item-space / 2) $at-item-space
+  padding: round-float($at-item-space / 2, 0)
 
-.article-tiles__item-wide
+  &:nth-child(1n) .articles-tiles-elem
+    height: 420px
+
+  &:nth-child(2n) .articles-tiles-elem
+    height: 205px
+
+  &:nth-child(3n) .articles-tiles-elem
+    height: 420px
+
+  &:nth-child(4n) .articles-tiles-elem
+    height: 205px
+
+  &:nth-child(5n) .articles-tiles-elem
+    height: 205px
+
+.articles-tiles__item_wide
   width: round-float(100% / $at-columns * 2, 2)
   
-.article-tiles__inner
-  position: relative
+$at-elem-space: 1.6rem 2.5rem
+.articles-tiles-elem
+  height: 0
   display: block
-  text-decoration: none
-  color: currentColor
+  position: relative
   overflow: hidden
+  text-decoration: none
 
-.article-tiles__figure
-  img
-    max-width: 100%
-    width: 100%
-
-.article-tiles__content
+.articles-tiles-elem__figure
   position: absolute
   left: 0
   top: 0
   width: 100%
-  padding: 1.8rem 2.5rem
-  z-index: 1
+  height: 100%
+  background-color: #080f1f
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
 
-.article-tiles__title
+.articles-tiles-elem__content
+  display: flex
+  flex-direction: column
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: flex-start
+  position: absolute
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  padding: $at-elem-space
+
+  [data-align~="top"] &
+    justify-content: flex-start
+
+  [data-align~="middle"] &
+    justify-content: center
+
+  [data-align~="bottom"] &
+    justify-content: flex-end
+
+  [data-align~="center"] &
+    align-items: center
+    text-align: center
+
+  [data-align~="left"] &
+    align-items: flex-start
+
+  [data-align~="right"] &
+    align-items: flex-end
+    text-align: right
+
+.articles-tiles-elem__title
   +font-bold
   font-size: 2.4rem
-  line-height: 3.4rem
-  text-decoration: underline
+  line-height: 3.5rem
   color: currentColor
 
-  &::before
-    content: ""
-    display: none
-    position: absolute
-    left: 0
-    bottom: 0
-    width: 100%
-    height: calc(100% + 6rem)
-    opacity: 0.6
-    $color: black
-    +linear-gradient(to top, $color 0%, rgba($color, 0) 100%)
-    z-index: -1
+  .articles-tiles__item_text-small &
+    font-size: 1.8rem
+    line-height: 2.7rem
 
-.article-tiles__label
+.articles-tiles-elem__label
   display: inline-block
   vertical-align: top
-  background-color: white
-  font-size: 1.2rem
+  padding: 0.4rem calc(1.2rem - 0.23em) 0.2rem 1.2rem
+  margin: 0 0 1.2rem
+  font-size: 1.0rem
   line-height: 1.6rem
   text-transform: uppercase
-  letter-spacing: 0.15em
-  padding: 0.3rem 1.2rem 0
-  margin-bottom: 1.5rem
+  letter-spacing: 0.23em
+  color: #000
+  background-color: white
 
   &:last-child
     margin-bottom: 0
 
-.article-tiles__date
-  display: inline-block
-  vertical-align: top
+.articles-tiles-elem__date
+  display: block
   font-size: 1.4rem
   line-height: 1.8rem
   margin-bottom: 0.5rem
 
   &:last-child
     margin-bottom: 0
-
-// text-small
-.article-tiles__item
-  &.text-small
-    .article-tiles__title
-      font-size: 1.8rem
-      line-height: 2.4rem
-
-  &.text-light
-    color: white
-
-  &.text-bottom-left
-    .article-tiles__content
-      position: absolute
-      top: auto
-      bottom: 0
-
-// hover
-a.article-tiles__inner
-  &:hover
-    .article-tiles__title
-      text-decoration: none
 
 /* articles main previews end
 
@@ -5786,7 +6017,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   display: flex
   flex-wrap: wrap
   justify-content: space-between
-  align-items: center
+  align-items: flex-start
   margin-bottom: 2rem
 
   &:last-child
@@ -5910,7 +6141,7 @@ $card-size: 85px 135px
   $transform: 0, 36px
   transform: translate($transform)
   transform: translate3d($transform, 0)
-  cursor: pointer
+  cursor: default
   +clear
 
 .cards-slider-figure
@@ -6114,98 +6345,58 @@ $swiper-button-size: 14px, 20px
   position: relative
 
 .p-prompts__thumbs
-  display: flex
-  flex-wrap: wrap
-  font-size: 1.8rem
-  line-height: 2.4rem
   margin: 0 2rem 1rem
-  border-bottom: 1px solid #c5c5c5
-
-  &:last-child
-    margin-bottom: 0
-
-  a
-    color: #777
-    text-decoration: none
-    margin: 0 50px -2px 0
-    padding: 0 0 15px
-    border-bottom: 3px solid transparent
-    // transition
-    $prop: color, border-color
-    transition:
-      property: $prop
-      duration: $animation-speed
-
-    // for ie 9
-    @if $ie9
-      .no-flexwrap &
-        display: inline-block
-        vertical-align: top
-
-    // touch
-    &.touchevents
-      user-select: none
-      -webkit-tap-highlight-color: transparent
-      
-    // hover
-    &:hover
-      color: #000
-
-    // active
-    &.tabs-active
-      color: #000
-      border-color: $base-color
-
-.simple-tabs__thumbs
-  display: flex
-  flex-wrap: wrap
-  font-size: 1.4rem
-  line-height: 2.0rem
-  margin-bottom: 1rem
-
-  &:last-child
-    margin-bottom: 0
-
-  a
-    color: #777
-    text-decoration: none
-    margin: 0.5rem 3rem 0.5rem 0
-
-    // for ie 9
-    @if $ie9
-      .no-flexwrap &
-        display: inline-block
-        vertical-align: top
-
-    // touch
-    &.touchevents
-      user-select: none
-      -webkit-tap-highlight-color: transparent
-
-    +underlinedAnchor(#777)
-
-    // active
-    &.tabs-active
-      color: #000
-      //+font-bold
-
-      & > span
-        border-color: transparent
 
 .p-prompts__panel
-  position: relative
-  outline: none
-
-  .simple-tabs__thumbs
-    position: absolute
-    left: 2rem
-    right: 10rem
-    top: 0
-    margin: 0
-    z-index: 5
-
-  .tape-slider__prev, .tape-slider__next
+  .tape-slider__prev,
+  .tape-slider__next
     margin-top: 0.8rem
     margin-right: 2rem
 
+.p-prompts__panel-thumbs
+  position: absolute
+  left: 2rem
+  right: 10rem
+  top: 0
+  margin: 0
+  z-index: 5
+
 /* product prompts end
+
+/* product infobar
+.section_p-infobar
+  padding: 2rem
+  background-color: white
+
+.p-infobar-tabs__thumbs
+  margin-bottom: 2rem
+
+// product info list
+.p-infobar-list
+  list-style: none
+  padding: 0
+  margin: 0 0 3rem
+  column-count: 3
+  column-gap: 7rem
+  font-size: 1.4rem
+  line-height: 2rem
+
+  +media('<desk-lg')
+    column-count: 2
+
+  &:last-child
+    margin-bottom: 0
+
+  & > li
+    display: inline-block
+    width: 100%
+    margin-bottom: 2.4rem
+
+    & > h4, & > strong
+      display: block
+      +font-bold
+      font-size: 1.4rem
+      line-height: 2rem
+      margin-bottom: 0.5rem
+
+/* product infobar end

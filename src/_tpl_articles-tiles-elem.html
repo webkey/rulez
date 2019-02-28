@@ -1,0 +1,8 @@
+<a href="#" class="articles-tiles-elem" style="color: @@color;">
+	<div class="articles-tiles-elem__figure" style="background-image: url(@@imgSrc); background-color: @@bgColor;">&nbsp;</div>
+	<div class="articles-tiles-elem__content">
+		@@if(context.label){<span class="articles-tiles-elem__label">@@label</span>}
+		@@if(context.date){<time class="articles-tiles-elem__date" datetime="@@datetime">@@date</time>}
+		@@if(context.title){<h3 class="articles-tiles-elem__title"><span>@@title</span></h3>}
+	</div>
+</a>
