@@ -397,28 +397,31 @@
         <!--CONTENT-->
         <!--product card-->
         <section itemscope itemtype="http://schema.org/Product" class="section p-card">
-          <!--product card heading-->
-          <div class="p-card-heading">
-            <h1 itemprop="name" class="p-card-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
-            <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-card-rate">
+          <!--product card caption-->
+          <div class="p-card__caption">
+            <h1 itemprop="name" class="p-card-title p-card__caption-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
+            <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-card-rate p-card__caption-rate">
               <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
               <meta itemprop="ratingCount" content="1">
             </div>
           </div>
-          <!--product card heading end-->
-          <div class="p-stickers p-card-stickers">
-            <div class="p-sticker p-sticker_sale p-stickers__item">%</div>
-            <div class="p-sticker p-sticker_new p-stickers__item">new</div>
-            <div class="p-sticker p-sticker_gif p-stickers__item">ТОП</div>
-            <div class="p-sticker p-sticker_top p-stickers__item">Подарок!</div>
-            <div class="p-sticker p-sticker_text p-sticker_installment p-stickers__item">Рассрочка 0%</div>
-            <div class="p-sticker p-sticker_wow p-stickers__item">WOW!</div>
-            <div class="p-sticker p-sticker_text p-sticker_last p-stickers__item"><strong>!</strong> Последний товар</div>
-            <div class="p-sticker p-sticker_text p-sticker_exclusive p-stickers__item">Эксклюзив</div>
-            <div class="p-sticker p-sticker_text p-sticker_premium p-stickers__item">Премиум</div>
-          </div>
+          <!--product card caption end-->
           <!--product card main-->
-          <div class="p-card-main">
+          <div class="p-card__main">
+            <!--product card stickers-->
+            <div class="p-stickers p-card-stickers">
+              <div class="p-sticker p-sticker_sale p-stickers__item">%</div>
+              <div class="p-sticker p-sticker_new p-stickers__item">new</div>
+              <div class="p-sticker p-sticker_gif p-stickers__item">ТОП</div>
+              <div class="p-sticker p-sticker_top p-stickers__item">Подарок!</div>
+              <div class="p-sticker p-sticker_text p-sticker_installment p-stickers__item">Рассрочка 0%</div>
+              <div class="p-sticker p-sticker_wow p-stickers__item">WOW!</div>
+              <div class="p-sticker p-sticker_text p-sticker_last p-stickers__item"><strong>!</strong> Последний товар</div>
+              <div class="p-sticker p-sticker_text p-sticker_exclusive p-stickers__item">Эксклюзив</div>
+              <div class="p-sticker p-sticker_text p-sticker_premium p-stickers__item">Премиум</div>
+            </div>
+            <!--product card stickers end-->
+            <!--product card gallery-->
             <div class="p-card-gallery p-card-gallery-js">
               <div class="swiper-container p-card-gallery-images p-card-gallery-images-js">
                 <div class="swiper-wrapper">
@@ -473,6 +476,8 @@
                 </div>
               </div>
             </div>
+            <!--product card gallery end-->
+            <!--product card services-->
             <div class="p-card-services">
               <div class="p-card-services__list">
                 <div class="p-card-services__item">
@@ -502,14 +507,15 @@
                 </div>
               </div>
             </div>
+            <!--product card services end-->
           </div>
           <!--product card main end-->
           <!--product card aside-->
-          <div class="p-card-aside">
+          <div class="p-card__aside">
             <div class="p-card-action">
-              <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+              <a href="#" class="action-btn action-btn_compare p-card-action__btn change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-              <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+              <a href="#" class="action-btn action-btn_like p-card-action__btn change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                   <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                 </svg></a>
             </div>
@@ -734,14 +740,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -792,14 +798,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -851,14 +857,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -909,14 +915,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -967,14 +973,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1025,14 +1031,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1083,14 +1089,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1141,14 +1147,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1199,14 +1205,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1275,14 +1281,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1333,14 +1339,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1392,14 +1398,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1450,14 +1456,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1508,14 +1514,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1566,14 +1572,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1624,14 +1630,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1682,14 +1688,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1740,14 +1746,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1816,14 +1822,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1874,14 +1880,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1933,14 +1939,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -1991,14 +1997,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2049,14 +2055,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2107,14 +2113,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2165,14 +2171,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2223,14 +2229,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2281,14 +2287,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2375,14 +2381,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2433,14 +2439,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2492,14 +2498,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2550,14 +2556,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2608,14 +2614,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2666,14 +2672,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2724,14 +2730,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2782,14 +2788,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2840,14 +2846,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2916,14 +2922,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -2974,14 +2980,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3033,14 +3039,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3091,14 +3097,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3149,14 +3155,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3207,14 +3213,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3265,14 +3271,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3323,14 +3329,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3381,14 +3387,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3457,14 +3463,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3515,14 +3521,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3574,14 +3580,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3632,14 +3638,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3690,14 +3696,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3748,14 +3754,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3806,14 +3812,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3864,14 +3870,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
@@ -3922,14 +3928,14 @@
                             </div>
                             <div class="product__options">
                               <div class="product__action">
-                                <a href="#" class="action-btn action-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                <a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
-                                <a href="#" class="action-btn action-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
+                                <a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                                     <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
                                   </svg></a>
                               </div>
                               <div class="product__purchase">
-                                <a href="#" class="purchase-btn add-to-cart-js">
+                                <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
                                   <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
                                   <span class="purchase-btn__buy">Купить</span>
                                   <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
