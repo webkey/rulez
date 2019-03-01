@@ -1,15 +1,15 @@
 <div itemscope itemtype="http://schema.org/Product" class="product product-js">
   <div class="product__main">
     @@if(context.wow){
-    <span class="product__sticker-wow">@@wow</span>
+    <span class="p-sticker p-sticker_wow product__sticker-wow">@@wow</span>
     }
     @@if(context.stickers){
-    <div class="product__stickers">
-      @@if(context.stickers.sale){<div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-sale.svg);">@@stickers.sale</div>}
-      @@if(context.stickers.new){<div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-new.svg);">@@stickers.new</div>}
-      @@if(context.stickers.gift){<div class="product__sticker" style="background-color: #8f77ed; background-image: url(img/sticker-gift.svg);">@@stickers.gift</div>}
-      @@if(context.stickers.top){<div class="product__sticker" style="background-color: #96d728; background-image: url(img/sticker-top.svg);">@@stickers.top</div>}
-      @@if(context.stickers.installment){<div class="product__sticker product__sticker_text" style="background-color: #ef4180;">@@stickers.installment</div>}
+    <div class="p-stickers product__stickers">
+      @@if(context.stickers.sale){<div class="p-sticker p-sticker_sale p-stickers__item">@@stickers.sale</div>}
+      @@if(context.stickers.new){<div class="p-sticker p-sticker_new p-stickers__item">@@stickers.new</div>}
+      @@if(context.stickers.gift){<div class="p-sticker p-sticker_gif p-stickers__item">@@stickers.gift</div>}
+      @@if(context.stickers.top){<div class="p-sticker p-sticker_top p-stickers__item">@@stickers.top</div>}
+      @@if(context.stickers.installment){<div class="p-sticker p-sticker_text p-sticker_installment p-stickers__item">@@stickers.installment</div>}
     </div>
     }
     <a itemprop="url" href="product-card.html">

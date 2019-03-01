@@ -185,7 +185,7 @@
   transform: translate($translate) !important
   transform: translate3d($translate, 0) !important
   //background-color: $base-color
-  background-color: $bg-popup-color
+  background-color: $bg-color-light
   box-shadow: 0 1px 2px rgba(black, 0.15)
   border-radius: 5px 0 5px 5px
   // transition
@@ -268,13 +268,13 @@
     pointer-events: none
 
   &:hover
-    background-color: $bg-popup-color
+    background-color: $bg-color-light
 
   &:active
     top: 1px
 
   &.icon--active
-    background-color: $bg-popup-color
+    background-color: $bg-color-light
     border-bottom-left-radius: 0
     border-bottom-right-radius: 0
 
@@ -381,11 +381,11 @@
       transform: rotate(0.125turn)
 
     &:hover
-      background-color: $bg-popup-color
+      background-color: $bg-color-light
 
   &.is-open
     .phones-opener
-      background-color: $bg-popup-color
+      background-color: $bg-color-light
       border-bottom-left-radius: 0
       border-bottom-right-radius: 0
 
@@ -411,7 +411,7 @@
   transform: translate($translate)
   transform: translate3d($translate, 0)
   //background-color: $base-color
-  background-color: $bg-popup-color
+  background-color: $bg-color-light
   box-shadow: 0 1px 2px rgba(black, 0.15)
   border-radius: 5px 0 5px 5px
   // transition
@@ -1921,7 +1921,97 @@ $search-btn-space: 0 0.5rem
 
 /* section end
 
+/* product stickers
+// --> single sticker <--
+$p-sticker-size: 2.6rem 2.6rem
+.p-sticker
+  height: nth($p-sticker-size, 1)
+  width: nth($p-sticker-size, 2)
+  padding: 1px 1rem 0
+  font-size: 1.2rem
+  line-height: nth($p-sticker-size, 1)
+  text-align: center
+  color: white
+  overflow: hidden
+  text-indent: -9999px
+  background-color: $bg-color-light
+  background-repeat: no-repeat
+  background-position: center
+  border-radius: round-float(nth($p-sticker-size, 1) / 2, 1)
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
+  & > b
+    +font-bold
+
+  & > strong
+    +font-extra-bold
+
+// --> type wow <--
+.p-sticker_wow
+  $p-sticker-size: 1.7rem 5.2rem
+  height: nth($p-sticker-size, 1)
+  width: nth($p-sticker-size, 2)
+  background-image: url(../../img/wow.svg)
+  background-color: transparent
+  background-size: contain
+
+// --> type sale <--
+.p-sticker_sale
+  background-color: $bg-color-light
+  background-image: url(../../img/sticker-sale.svg)
+
+// --> type new <--
+.p-sticker_new
+  background-color: $bg-color-light
+  background-image: url(../../img/sticker-new.svg)
+
+// --> type gif <--
+.p-sticker_gif
+  background-color: $bg-color-light
+  background-image: url(../../img/sticker-gift.svg)
+
+// --> type top <--
+.p-sticker_top
+  background-color: $mark-color-alt
+  background-image: url(../../img/sticker-top.svg)
+
+// --> type text <--
+.p-sticker_text
+  width: auto
+  text-indent: 0
+  cursor: default
+  +truncate(12rem)
+
+// --> type installment <--
+.p-sticker_installment
+  background-color: $mark-color
+
+// --> type exclusive <--
+.p-sticker_exclusive
+  background-color: $mark-color
+
+// --> type last <--
+.p-sticker_last
+  background-color: $bg-color-light
+
+// --> type premium <--
+.p-sticker_premium
+  color: black
+  background-color: $base-color-alt
+
+// --> stickers list <--
+.p-stickers
+  display: flex
+  flex-wrap: wrap
+  align-items: center
+  justify-content: flex-start
+
+// --> stickers list item <--
+.p-stickers__item
+  margin: 0 0.6rem 0.6rem 0
+
+/* product stickers end
 
 /* dl-list
 .dl-list
@@ -2790,21 +2880,14 @@ $product-item-space: 2rem 2.4rem
 // === product stickers ===
 // --> sticker wow <--
 .product__sticker-wow
-  $size: 1.7rem 5.2rem
   $space: 2.8rem 1.8rem
-  height: nth($size, 1)
-  width: nth($size, 2)
-  overflow: hidden
   position: absolute
   right: nth($space, 2)
   top: nth($space, 1)
-  text-indent: -9999px
-  background: url(../../img/wow.svg) no-repeat
-  background-size: cover
   z-index: 2
 
   & + .product__stickers
-    padding-right: nth($size, 2)
+    padding-right: 5.2rem
 
 // --> stickers <--
 .product__stickers
@@ -2816,33 +2899,6 @@ $product-item-space: 2rem 2.4rem
   right: nth($space, 2)
   top: nth($space, 1)
   z-index: 2
-
-.product__sticker
-  $size: 2.6rem 2.6rem
-  height: nth($size, 1)
-  width: nth($size, 2)
-  margin: 0 0.6rem 0.6rem 0
-  overflow: hidden
-  font-size: 1.2rem
-  line-height: nth($size, 1)
-  text-align: center
-  text-indent: -9999px
-  background-color: $base-color
-  background-repeat: no-repeat
-  background-position: center
-  border-radius: round-float(nth($size, 1) / 2, 1)
-
-// --> stickers text <--
-.product__sticker_text
-  $size: 2.6rem 2.6rem
-  text-indent: 0
-  height: nth($size, 1)
-  width: auto
-  padding: 0 1rem
-  font-size: 1.2rem
-  line-height: nth($size, 1)
-  color: white
-  +truncate(12rem)
 
 // === product main ===
 .product__main
@@ -3212,7 +3268,7 @@ $product-item-space: 2rem 2.4rem
 
     path
       fill: transparent
-      stroke: #ef4180
+      stroke: $mark-color
 
   & > span
     padding-top: 0.2rem
@@ -3230,7 +3286,7 @@ $product-item-space: 2rem 2.4rem
   &.added
     svg
       path
-        fill: #ef4180
+        fill: $mark-color
 
     &:hover
       svg
@@ -5397,7 +5453,7 @@ $card-cont-width: 520px // 520px (43.8%) на ширине 1280px
 
 // heading
 .p-card-heading
-  margin-bottom: 2rem
+  margin-bottom: 1rem
 
   .p-card-rate, .p-card-title
     display: inline-block
@@ -5407,8 +5463,8 @@ $card-cont-width: 520px // 520px (43.8%) на ширине 1280px
     margin-right: 2rem
 
 // === product card labels ===
-.p-card-labels
-  margin-bottom: 2rem
+.p-card-stickers
+  margin-bottom: 0.5rem
 
   &:last-child
     margin-bottom: 0
