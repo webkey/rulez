@@ -400,7 +400,7 @@
           <!--product card caption-->
           <div class="p-card__caption">
             <h1 itemprop="name" class="p-card-title p-card__caption-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
-            <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-card-rate p-card__caption-rate">
+            <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate_lg p-card__caption-rate">
               <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
               <meta itemprop="ratingCount" content="1">
             </div>
@@ -513,7 +513,7 @@
           <!--product card aside-->
           <div class="p-card__aside">
             <div class="p-card-action">
-              <a href="#" class="action-btn action-btn_compare p-card-action__btn change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+              <a href="#" class="action-btn action-btn_compare p-card-action__btn change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><em class="action-btn__counter">1</em><span>Сравнить</span> <svg class="svg-ico-compare" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M0 5.89474V16H3.36842V5.89474H0ZM0.842105 6.73684V15.1579H2.52632V6.73684H0.842105ZM4.21053 16V0H7.57895V16H4.21053ZM5.05263 15.1579V0.842105H6.73684V15.1579H5.05263ZM8.42105 2.52632V16H11.7895V2.52632H8.42105ZM9.26316 3.36842V15.1579H10.9474V3.36842H9.26316ZM12.6316 16V7.57895H16V16H12.6316ZM13.4737 15.1579V8.42105H15.1579V15.1579H13.4737Z" /></svg></a>
               <a href="#" class="action-btn action-btn_like p-card-action__btn change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> <svg class="svg-ico-like" xmlns="http://www.w3.org/2000/svg" width="19" height="17" viewBox="0 0 19 17">
                   <path d="M18 5.67611C18 3.09352 15.9446 1 13.4091 1C11.7535 1 10.3077 1.89561 9.49995 3.23407C8.69232 1.89561 7.24584 1 5.59027 1C3.05483 1 1 3.09352 1 5.67611C1 7.08219 1.61169 8.34013 2.57576 9.19676L9.08102 15.8233C9.19212 15.9364 9.34279 16 9.49995 16C9.65711 16 9.80778 15.9364 9.91888 15.8233L16.4241 9.19676C17.3882 8.34013 18 7.08219 18 5.67611Z"></path>
@@ -527,11 +527,11 @@
               <div class="p-card-offer__buy">
                 <div class="p-card-price">
                   <div class="p-card-price__old"><strong>1500</strong>&nbsp;<em>р.</em></div>
-                  <div class="p-card-price__new"><strong itemprop="price" content="@@price.val">1500</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
+                  <div class="p-card-price__new"><strong itemprop="price" content="1500">1500</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                 </div>
                 <div class="p-card-options">
                   <div class="p-card-options__item">
-                    <a href="#" class="btn-buy add-to-cart-js" tabindex="0">
+                    <a href="#" class="btn-buy open-buy-popup-js">
                       <span class="btn-buy__buy">Купить</span>
                       <span class="btn-buy__in-cart">В&nbsp;корзине</span>
                       <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="23" height="21" viewBox="0 0 23 21">
@@ -543,6 +543,40 @@
                     <a href="#" class="btn-outline">Купить в один клик</a>
                   </div>
                 </div>
+              </div>
+              <div class="buy-popup buy-popup-js stop-remove-class">
+                <div class="buy-prod buy-prod-js">
+                  <div class="buy-prod__figure">
+                    <img src="img/products/preview/01.jpg" alt="image description" />
+                  </div>
+                  <div class="buy-prod__content">
+                    <div class="buy-prod__title">Ноутбук Dell Inspiron 17 5770-6922</div>
+                    <div class="buy-prod__meta">
+                      <div class="buy-prod__rate p-rate">
+                        <span content="4.5" style="width: 90%;">4.5</span>
+                        <meta content="1">
+                      </div>
+                      <div class="buy-prod__stock p-stock on"><i>&nbsp;</i>В наличии</div>
+                    </div>
+                    <div class="buy-prod__options">
+                      <div class="buy-prod__counter">
+                        <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
+                      </div>
+                      <div class="buy-prod-price buy-prod__price">
+                        <div class="buy-prod-price__old"><strong>1500</strong>&nbsp;<em>р.</em></div>
+                        <div class="buy-prod-price__new"><strong>1500</strong>&nbsp;<em>р.</em></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="buy-prod__footer">
+                    <div class="buy-prod__total">
+                      <div class="buy-prod__total-label">Итого</div>
+                      <div class="buy-prod__total-sum"><strong>1500</strong> <em>р.</em></div>
+                    </div>
+                    <a href="#" class="btn-buy">Оформить заказ</a>
+                  </div>
+                </div>
+                <a href="#" class="close-buy-popup buy-popup-close-js">Закрыть</a>
               </div>
             </div>
             <div class="credit tabs-js">
@@ -715,7 +749,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -733,7 +767,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -773,7 +807,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -791,7 +825,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -831,7 +865,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -849,7 +883,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
@@ -890,7 +924,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -908,7 +942,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -948,7 +982,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -966,7 +1000,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1006,7 +1040,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1024,7 +1058,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1064,7 +1098,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1082,7 +1116,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1122,7 +1156,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1140,7 +1174,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1180,7 +1214,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1198,7 +1232,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1256,7 +1290,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1274,7 +1308,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1314,7 +1348,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1332,7 +1366,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1372,7 +1406,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1390,7 +1424,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
@@ -1431,7 +1465,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1449,7 +1483,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1489,7 +1523,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1507,7 +1541,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1547,7 +1581,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1565,7 +1599,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1605,7 +1639,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1623,7 +1657,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1663,7 +1697,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1681,7 +1715,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1721,7 +1755,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1739,7 +1773,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1797,7 +1831,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1815,7 +1849,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1855,7 +1889,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1873,7 +1907,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -1913,7 +1947,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1931,7 +1965,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
@@ -1972,7 +2006,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -1990,7 +2024,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2030,7 +2064,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2048,7 +2082,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2088,7 +2122,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2106,7 +2140,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2146,7 +2180,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2164,7 +2198,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2204,7 +2238,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2222,7 +2256,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2262,7 +2296,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2280,7 +2314,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2356,7 +2390,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2374,7 +2408,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2414,7 +2448,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2432,7 +2466,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2472,7 +2506,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2490,7 +2524,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
@@ -2531,7 +2565,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2549,7 +2583,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2589,7 +2623,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2607,7 +2641,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2647,7 +2681,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2665,7 +2699,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2705,7 +2739,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2723,7 +2757,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2763,7 +2797,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2781,7 +2815,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2821,7 +2855,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2839,7 +2873,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2897,7 +2931,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2915,7 +2949,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -2955,7 +2989,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -2973,7 +3007,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3013,7 +3047,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3031,7 +3065,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
@@ -3072,7 +3106,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3090,7 +3124,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3130,7 +3164,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3148,7 +3182,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3188,7 +3222,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3206,7 +3240,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3246,7 +3280,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3264,7 +3298,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3304,7 +3338,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3322,7 +3356,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3362,7 +3396,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3380,7 +3414,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3438,7 +3472,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3456,7 +3490,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3496,7 +3530,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3514,7 +3548,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3554,7 +3588,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3572,7 +3606,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-old"><strong>5199</strong>&nbsp;<em>р.</em></div>
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
@@ -3613,7 +3647,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3631,7 +3665,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3671,7 +3705,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3689,7 +3723,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3729,7 +3763,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3747,7 +3781,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3787,7 +3821,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3805,7 +3839,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/SoldOut" class="product__stock off"><i>&nbsp;</i>Нет в наличии</div>
+                              <div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>
                               <div class="product__price off">
                                 <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3845,7 +3879,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="3" style="width: 60%">3</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3863,7 +3897,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="4325">4325</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -3903,7 +3937,7 @@
                               <h3 itemprop="name" class="product__title"><span>Ноутбук SAMSUNG GL753VE-GC112T</span></h3>
                             </a>
                             <div class="product__meta">
-                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="product__rate">
+                              <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
                                 <span itemprop="ratingValue" content="5" style="width: 100%">5</span>
                                 <meta itemprop="ratingCount" content="1">
                               </div>
@@ -3921,7 +3955,7 @@
                           </div>
                           <div class="product__footer">
                             <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-                              <div itemprop="availability" content="http://schema.org/InStock" class="product__stock on"><i>&nbsp;</i>В наличии</div>
+                              <div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>
                               <div class="product__price">
                                 <div class="product__price-new"><strong itemprop="price" content="1457">1457</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
                               </div>
@@ -4314,6 +4348,89 @@
           </div>
         </section>
         <!--product infobar end-->
+        <!--useful-->
+        <section class="section useful">
+          <div class="useful__content">
+            <h2>Полезная информация</h2>
+            <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний ноутбук это очень лёгкое и ультратонкое устройство с большим объемом памяти. А прекрасное изображение на мониторе и высокая скорость работы способны поразить даже самых требовательных пользователей. При этом все современные производители ноутбуков, такие как Asus, HP, Acer и др в борьбе за внимание потребителей продолжают усовершенствовать существующие модели и выпускать превосходные новинки.</p>
+            <p>Если вы хотите купить ноутбук в Беларуси, то обязательно посетите наш магазин. Мы работаем в Минске и в других регионах. Мы предлагаем купить ноутбуки по выгодным ценам и в рассрочку, даже без процентов. Только у нас вы получите доступные цены и качественное обслуживание. Наши специалисты предоставят все необходимые консультации и помогут оформить простой и удобный кредит.</p>
+            <p>Мы осуществляем доставку в Минск, Гомель, Брест, Могилев, Гродно и Витебск, а также в любую точку Беларуси!</p>
+          </div>
+          <div class="useful__aside useful-advices">
+            <div class="useful-advices__list equal-height-js">
+              <div class="useful-advices__item">
+                <a href="#" class="advice advice_alt">
+                  <div class="advice__figure">
+                    <img src="img/img-opinion-01.jpg" alt="О том как не улететь в минус 15 хитростей при покупке ноута" />
+                  </div>
+                  <div class="advice__label advice__label_alt">Полезные советы</div>
+                  <div class="advice__text advice__text_alt">О том как не улететь в минус 15 хитростей при покупке ноута</div>
+                </a>
+              </div>
+              <div class="useful-advices__item">
+                <a href="#" class="advice">
+                  <div class="advice__figure">
+                    <img src="img/img-opinion-02.jpg" alt="Как выбрать компьютер, раскажет консультант 20 уровня" />
+                  </div>
+                  <div class="advice__label advice__label_alt">Полезные советы</div>
+                  <div class="advice__text advice__text_alt">Как выбрать компьютер, раскажет консультант 20 уровня</div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--useful end-->
+        <!--articles-->
+        <section class="section main-section_articles">
+          <h2 class="section__title">Статьи и обзоры, полезные советы</h2>
+          <div class="articles-tiles">
+            <div class="articles-tiles__list grid-js">
+              <div class="articles-tiles__item articles-tiles__item_wide grid-item-js" data-align="bottom left">
+                <a href="#" class="articles-tiles-elem" style="color: #fff;">
+                  <div class="articles-tiles-elem__figure" style="background-image: url(img/img-article-01.jpg); background-color: #bacbdf;">&nbsp;</div>
+                  <div class="articles-tiles-elem__content">
+                    <time class="articles-tiles-elem__date" datetime="2019-02-05">05.02.2019</time>
+                    <h3 class="articles-tiles-elem__title"><span>Обзор ультрабука Huawei<br> Matebook X Pro</span></h3>
+                  </div>
+                </a>
+              </div>
+              <div class="articles-tiles__item articles-tiles__item_wide grid-item-js" data-align="top left">
+                <a href="#" class="articles-tiles-elem" style="color: #000;">
+                  <div class="articles-tiles-elem__figure" style="background-image: url(img/img-article-02.jpg); background-color: #f8f4ed;">&nbsp;</div>
+                  <div class="articles-tiles-elem__content">
+                    <span class="articles-tiles-elem__label">Новости</span>
+                    <h3 class="articles-tiles-elem__title"><span>Предзаказ Xiaomi Mi<br> MIX 3</span></h3>
+                  </div>
+                </a>
+              </div>
+              <div class="articles-tiles__item grid-item-js" data-align="top left">
+                <a href="#" class="articles-tiles-elem" style="color: #000;">
+                  <div class="articles-tiles-elem__figure" style="background-image: url(img/img-article-03.jpg); background-color: #eaf4ff;">&nbsp;</div>
+                  <div class="articles-tiles-elem__content">
+                    <h3 class="articles-tiles-elem__title"><span>Подборка<br> подарков от</span></h3>
+                  </div>
+                </a>
+              </div>
+              <div class="articles-tiles__item articles-tiles__item_text-small grid-item-js" data-align="bottom left">
+                <a href="#" class="articles-tiles-elem" style="color: #fff;">
+                  <div class="articles-tiles-elem__figure" style="background-image: url(img/img-article-04.jpg); background-color: #fddb00;">&nbsp;</div>
+                  <div class="articles-tiles-elem__content">
+                    <h3 class="articles-tiles-elem__title"><span>Предзаказ Xiaomi<br> Mi MIX 3</span></h3>
+                  </div>
+                </a>
+              </div>
+              <div class="articles-tiles__item articles-tiles__item_text-small grid-item-js" data-align="bottom left">
+                <a href="#" class="articles-tiles-elem" style="color: #fff;">
+                  <div class="articles-tiles-elem__figure" style="background-image: url(img/img-article-05.jpg); background-color: #7c4b9c;">&nbsp;</div>
+                  <div class="articles-tiles-elem__content">
+                    <h3 class="articles-tiles-elem__title"><span>Обзор Iphone</span></h3>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!--articles end-->
         <section class="section section_collections tabs-js">
           <div class="collections">
             <h2 class="collections__title">Готовые подборки</h2>

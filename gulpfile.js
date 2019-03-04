@@ -130,6 +130,10 @@ gulp.task('mergeCssLibs', function () {
     'src/css/temp/*.css'
     , 'src/libs/select2/dist/css/select2.min.css'
     , 'src/libs/swiper/dist/css/swiper.min.css'
+    // jquery ui
+    , 'src/libs/jquery-ui/themes/base/base.css'
+    , 'src/libs/jquery-ui/themes/base/spinner.css'
+    , 'src/libs/jquery-ui/themes/base/tooltip.css'
     // , 'src/libs/priority-nav/dist/priority-nav-core.css'
     // , 'node_modules/okaynav/dist/css/common.min.css'
     // , 'node_modules/okaynav/dist/css/okayNav.min.css' // https://www.npmjs.com/package/okaynav
@@ -157,8 +161,9 @@ gulp.task('createCustomModernizr', function (done) {
  */
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
   return gulp.src([
+    'src/libs/jquery-ui/jquery-ui.min.js'
     // 'src/libs/device.js/lib/device.min.js' // определение устройств
-    'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
+    , 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
     , 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
     // , 'src/libs/jquery-form/dist/jquery.form.min.js' // jquery form для работы с ajax
     , 'src/libs/jquery-validation/dist/jquery.validate.min.js' // валидация форм

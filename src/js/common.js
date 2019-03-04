@@ -1264,13 +1264,13 @@ function toggleDropMenu() {
  */
 function toggleShutters() {
   // Toggle a search panel
-  var $searchSwitcher = $('.toggle-search-js'), searchPanel;
+  var $searchSwitcher = $('.toggle-search-js'), searchPanelJs;
   if ($searchSwitcher.length) {
-    searchPanel = $searchSwitcher.switchClass({
-      switcher: '.tc__switcher-js'
-      , adder: '.tc__opener-js'
-      , remover: '.tc__remover-js'
-      , switchClassTo: $('.site-nav')
+    searchPanelJs = $searchSwitcher.switchClass({
+      // switcher: '.tc__switcher-js'
+      // , adder: '.tc__opener-js'
+      // , remover: '.tc__remover-js'
+      switchClassTo: $('.site-nav')
       , modifiers: {
         activeClass: 'search-is-open'
       }
@@ -1290,9 +1290,9 @@ function toggleShutters() {
   }
 
   // Toggle a catalog shutter
-  var $catalogSwitcher = $('.catalog-opener-js'), catalogShutter;
+  var $catalogSwitcher = $('.catalog-opener-js'), catalogShutterJs;
   if ($catalogSwitcher.length) {
-    catalogShutter = $catalogSwitcher.switchClass({
+    catalogShutterJs = $catalogSwitcher.switchClass({
       switchClassTo: $('.catalog-shutter-js').add('.catalog-overlay-js').add('body')
       , modifiers: {
         activeClass: 'catalog-is-open'
@@ -1302,9 +1302,9 @@ function toggleShutters() {
   }
 
   // Toggle a filters shutter
-  var $filtersSwitcher = $('.btn-filters-js'), filtersShutter;
+  var $filtersSwitcher = $('.btn-filters-js'), filtersShutterJs;
   if ($filtersSwitcher.length) {
-    filtersShutter = $filtersSwitcher.switchClass({
+    filtersShutterJs = $filtersSwitcher.switchClass({
       switchClassTo: $('.shutter--filters-js').add('.p-filters-results-js')
       , modifiers: {
         activeClass: 'active'
@@ -1313,25 +1313,65 @@ function toggleShutters() {
     });
   }
 
+  // Toggle buy popup
+  var $buyPopupSwitcher = $('.open-buy-popup-js'), buyPopupJs;
+  if ($buyPopupSwitcher.length) {
+    var $buyPopup = $('.buy-popup-js');
+    buyPopupJs = $buyPopupSwitcher.switchClass({
+      switchClassTo: $buyPopup
+      , remover: '.buy-popup-close-js'
+      , modifiers: {
+        activeClass: 'buy-popup_opened'
+      }
+      , cssScrollFixed: false
+    });
+  }
 
   // При добавлении классов одним экземпляром плагина,
+  function catalogShutterRemoveClass() {
+    catalogShutterJs && catalogShutterJs.switchClass('remove');
+  }
+
+  function filtersShutterRemoveClass() {
+    filtersShutterJs && filtersShutterJs.switchClass('remove');
+  }
+
+  function buyPopupRemoveClass() {
+    buyPopupJs && buyPopupJs.switchClass('remove');
+  }
+
+  function searchPopupRemoveClass() {
+    searchPanelJs && searchPanelJs.switchClass('remove');
+  }
+
   // вызывать метод удаления классов другими
-  if (searchPanel) {
-    searchPanel.on('switchClass.beforeAdded', function () {
-      catalogShutter && catalogShutter.switchClass('remove');
-      filtersShutter && filtersShutter.switchClass('remove');
+  if (searchPanelJs) {
+    searchPanelJs.on('switchClass.beforeAdded', function () {
+      catalogShutterRemoveClass();
+      filtersShutterRemoveClass();
+      buyPopupRemoveClass();
     });
   }
-  if (catalogShutter) {
-    catalogShutter.on('switchClass.beforeAdded', function () {
-      searchPanel && searchPanel.switchClass('remove');
-      filtersShutter && filtersShutter.switchClass('remove');
+
+  if (catalogShutterJs) {
+    catalogShutterJs.on('switchClass.beforeAdded', function () {
+      searchPopupRemoveClass();
+      filtersShutterRemoveClass();
+      buyPopupRemoveClass();
     });
   }
-  if (filtersShutter) {
-    filtersShutter.on('switchClass.beforeAdded', function () {
-      catalogShutter && catalogShutter.switchClass('remove');
-      searchPanel && searchPanel.switchClass('remove');
+  if (filtersShutterJs) {
+    filtersShutterJs.on('switchClass.beforeAdded', function () {
+      searchPopupRemoveClass();
+      catalogShutterRemoveClass();
+      buyPopupRemoveClass();
+    });
+  }
+  if (buyPopupJs) {
+    buyPopupJs.on('switchClass.beforeAdded', function () {
+      searchPopupRemoveClass();
+      filtersShutterRemoveClass();
+      catalogShutterRemoveClass();
     });
   }
 }
@@ -2511,8 +2551,6 @@ function sortingState() {
   })
 }
 
-
-
 /**
  * !Only number input
  * */
@@ -2534,6 +2572,41 @@ function onlyNumberInput() {
       e.preventDefault();
     }
   });
+}
+
+/**
+ * !Spinner init
+ */
+function initSpinner ($_elem) {
+  if($_elem.length){
+    $.each($_elem, function () {
+      var $curSpinner = $(this);
+      $curSpinner.spinner({
+        min: $curSpinner.attr('min') || 0,
+        max: $curSpinner.attr('max') || null,
+        disabled: $curSpinner.data('disabled') || false
+      });
+    })
+  }
+
+  // Проверка на ввод значения из доступного диапазона
+  // Если значение больше или меньше доступных значений,
+  // то подставлять максимальное или минимальное доступное значение, соответственно
+  $('input[type="number"]').on('change keyup', function(event) {
+    // Во время удаления введенного или существующего значения
+    // с помощью клавишь DELETE или BACKSPACE проверку не делать
+    if(event.keyCode === 8 || event.keyCode === 46) {
+      return false;
+    }
+    var max = parseInt($(this).attr('max')),
+        min = parseInt($(this).attr('min'));
+    if ($(this).val() > max) {
+      $(this).val(max);
+    }
+    else if ($(this).val() < min) {
+      $(this).val(min);
+    }
+  })
 }
 
 /**
@@ -2594,6 +2667,7 @@ $(document).ready(function () {
   toggleViewInit();
   multiFiltersInit();
   sortingState();
+  initSpinner($('.spinner-js'));
 
   onlyNumberInput();
   formValidation();
