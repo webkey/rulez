@@ -1314,14 +1314,14 @@ function toggleShutters() {
   }
 
   // Toggle buy popup
-  var $buyPopupSwitcher = $('.open-buy-popup-js'), buyPopupJs;
-  if ($buyPopupSwitcher.length) {
-    var $buyPopup = $('.buy-popup-js');
-    buyPopupJs = $buyPopupSwitcher.switchClass({
-      switchClassTo: $buyPopup
-      , remover: '.buy-popup-close-js'
+  var $addFormPopupSwitcher = $('.open-p-add-form-popup-js'), addFormPopupJs;
+  if ($addFormPopupSwitcher.length) {
+    var $addFormPopup = $('.p-add-form-popup-js');
+    addFormPopupJs = $addFormPopupSwitcher.switchClass({
+      switchClassTo: $addFormPopup
+      , remover: '.p-add-form-popup-close-js'
       , modifiers: {
-        activeClass: 'buy-popup_opened'
+        activeClass: 'p-add-form-popup_opened'
       }
       , cssScrollFixed: false
     });
@@ -1336,8 +1336,8 @@ function toggleShutters() {
     filtersShutterJs && filtersShutterJs.switchClass('remove');
   }
 
-  function buyPopupRemoveClass() {
-    buyPopupJs && buyPopupJs.switchClass('remove');
+  function addFormPopupRemoveClass() {
+    addFormPopupJs && addFormPopupJs.switchClass('remove');
   }
 
   function searchPopupRemoveClass() {
@@ -1349,7 +1349,7 @@ function toggleShutters() {
     searchPanelJs.on('switchClass.beforeAdded', function () {
       catalogShutterRemoveClass();
       filtersShutterRemoveClass();
-      buyPopupRemoveClass();
+      addFormPopupRemoveClass();
     });
   }
 
@@ -1357,18 +1357,18 @@ function toggleShutters() {
     catalogShutterJs.on('switchClass.beforeAdded', function () {
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
-      buyPopupRemoveClass();
+      addFormPopupRemoveClass();
     });
   }
   if (filtersShutterJs) {
     filtersShutterJs.on('switchClass.beforeAdded', function () {
       searchPopupRemoveClass();
       catalogShutterRemoveClass();
-      buyPopupRemoveClass();
+      addFormPopupRemoveClass();
     });
   }
-  if (buyPopupJs) {
-    buyPopupJs.on('switchClass.beforeAdded', function () {
+  if (addFormPopupJs) {
+    addFormPopupJs.on('switchClass.beforeAdded', function () {
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
       catalogShutterRemoveClass();
@@ -2613,7 +2613,7 @@ function initSpinner ($_elem) {
  * !Form validation
  * */
 function formValidation() {
-  $('.user-form form').validate({
+  $('.user-form form, .quick-order form').validate({
     errorClass: "error",
     validClass: "success",
     errorElement: false,
@@ -2635,6 +2635,10 @@ function formValidation() {
           .closest('form').find('label[for="' + $(element).attr('id') + '"]')
           .removeClass(errorClass)
           .addClass(successClass);
+    },
+    submitHandler: function(form) {
+      alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
+      return false;
     }
   });
 }

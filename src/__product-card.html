@@ -102,7 +102,7 @@
             </div>
             <div class="p-card-options">
               <div class="p-card-options__item">
-                <a href="#" class="btn-buy open-buy-popup-js">
+                <a href="#" class="btn-buy open-p-add-form-popup-js">
                   <span class="btn-buy__buy">Купить</span>
                   <span class="btn-buy__in-cart">В&nbsp;корзине</span>
                   <i>@@include("includes/svg/icon-cart.svg")</i>
@@ -113,39 +113,53 @@
               </div>
             </div>
           </div>
-          <div class="buy-popup buy-popup-js stop-remove-class">
-            <div class="buy-prod buy-prod-js">
-              <div class="buy-prod__figure">
-                <img src="img/products/preview/01.jpg" alt="image description" />
+          <div class="p-add-form-popup p-add-form-popup-js stop-remove-class">
+            <div class="p-add-form p-add-form-js">
+              <div class="p-add-form__figure">
+                <img class="p-add-form__figure-img" src="img/products/preview/01.jpg" alt="image description" />
               </div>
-              <div class="buy-prod__content">
-                <div class="buy-prod__title">Ноутбук Dell Inspiron 17 5770-6922</div>
-                <div class="buy-prod__meta">
-                  <div class="buy-prod__rate p-rate">
+              <div class="p-add-form__content">
+                <div class="p-add-form__title">Ноутбук Dell Inspiron 17 5770-6922</div>
+                <div class="p-add-form__meta">
+                  <div class="p-add-form__rate p-rate">
                     <span content="4.5" style="width: 90%;">4.5</span>
                     <meta content="1">
                   </div>
-                  <div class="buy-prod__stock p-stock on"><i>&nbsp;</i>В наличии</div>
+                  <div class="p-add-form__stock p-stock on"><i>&nbsp;</i>В наличии</div>
                 </div>
-                <div class="buy-prod__options">
-                  <div class="buy-prod__counter">
-                    <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
+                <div class="p-add-form__options">
+                  <div class="p-add-form__counter">
+                    <input class="spinner spinner-js" max="100" min="0" type="number" name="value" value="0" data-only-number>
                   </div>
-                  <div class="buy-prod-price buy-prod__price">
-                    <div class="buy-prod-price__old"><strong>1500</strong>&nbsp;<em>р.</em></div>
-                    <div class="buy-prod-price__new"><strong>1500</strong>&nbsp;<em>р.</em></div>
+                  <div class="p-add-form-price p-add-form__price">
+                    <div class="p-add-form-price__old"><strong>1500</strong>&nbsp;<em>р.</em></div>
+                    <div class="p-add-form-price__new"><strong>1500</strong>&nbsp;<em>р.</em></div>
                   </div>
                 </div>
               </div>
-              <div class="buy-prod__footer">
-                <div class="buy-prod__total">
-                  <div class="buy-prod__total-label">Итого</div>
-                  <div class="buy-prod__total-sum"><strong>1500</strong> <em>р.</em></div>
+              <div class="p-add-form__footer">
+                <div class="p-add-form__total">
+                  <div class="p-add-form__total-label">Итого</div>
+                  <div class="p-add-form__total-sum"><strong>1500</strong> <em>р.</em></div>
                 </div>
-                <a href="#" class="btn-buy">Оформить заказ</a>
+                <a href="#" class="btn-buy p-add-form__btn-buy">Оформить заказ</a>
               </div>
             </div>
-            <a href="#" class="close-buy-popup buy-popup-close-js">Закрыть</a>
+            <div class="quick-order p-add-form__order">
+              <form action="#">
+                <div class="quick-order__form">
+                  <label for="f-wrap-validation-js" class="quick-order__label">Быстрый заказ: </label>
+                  <input class="quick-order__input field-js" id="f-wrap-validation-js" name="f-wrap-validation-js" placeholder="+375" type="text" required>
+                  <div class="error-note quick-order__error-note">Введите корректный номер телефона в формате +375 и 9 цифр</div>
+                  <!--<div class="success-note quick-order__success-note">Success text</div>-->
+                  <button class="quick-order__send-btn">
+                    @@include("includes/svg/icon-slider-arrow-r.svg")
+                    <span class="hide-text">Отправить</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+            <a href="#" class="close-p-add-form-popup p-add-form-popup-close-js">Закрыть</a>
           </div>
         </div>
         <div class="credit tabs-js">
@@ -288,8 +302,8 @@
     <section class="section section_p-prompts tabs-js">
       <h2 class="section__title hide">Предложения</h2>
       <div class="divisions-tabs-thumbs p-prompts__thumbs tabs__thumbs-js">
-        <a href="#promptsPresents" class="tabs-active"><span>Подарки</span></a>
-        <a href="#promptsCheap"><span>Вместе дешевле</span></a>
+        <a href="#promptsPresents"><span>Подарки</span></a>
+        <a href="#promptsSets" class="tabs-active"><span>Вместе дешевле</span></a>
         <a href="#promptsAccessories"><span>Аксессуары</span></a>
         <a href="#promptsSimilar"><span>Похожие товары</span></a>
       </div>
@@ -316,8 +330,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%", "new": "new", "gift": "Подарок!", "top": "ТОП", "installment": "Рассрочка 0%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -331,8 +345,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "true",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -346,8 +360,8 @@
                     "inFavorites": "added",
                     "inCart": "added",
                     "inCompare": "",
-                    "sale": "30%",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "sale": "%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -360,8 +374,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": { "day": "Товар дня" }
+                    "wow": "WOW!",
+                    "stickers": { "top": "ТОП" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -374,8 +388,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -388,8 +402,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -402,8 +416,8 @@
                     "price": {"val": "", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -416,8 +430,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -430,8 +444,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "new": "new" }
                     })
                   </div>
                 </div>
@@ -459,8 +473,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%", "new": "new", "gift": "Подарок!", "top": "ТОП", "installment": "Рассрочка 0%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -474,8 +488,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "true",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -489,8 +503,8 @@
                     "inFavorites": "added",
                     "inCart": "added",
                     "inCompare": "",
-                    "sale": "30%",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "sale": "%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -503,8 +517,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": { "day": "Товар дня" }
+                    "wow": "WOW!",
+                    "stickers": { "top": "ТОП" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -517,8 +531,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -531,8 +545,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -545,8 +559,8 @@
                     "price": {"val": "", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -559,8 +573,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -573,8 +587,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "new": "new" }
                     })
                   </div>
                 </div>
@@ -602,8 +616,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%", "new": "new", "gift": "Подарок!", "top": "ТОП", "installment": "Рассрочка 0%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -617,8 +631,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "true",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -632,8 +646,8 @@
                     "inFavorites": "added",
                     "inCart": "added",
                     "inCompare": "",
-                    "sale": "30%",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "sale": "%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -646,8 +660,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": { "day": "Товар дня" }
+                    "wow": "WOW!",
+                    "stickers": { "top": "ТОП" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -660,8 +674,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -674,8 +688,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -688,8 +702,8 @@
                     "price": {"val": "", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -702,8 +716,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -716,8 +730,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "new": "new" }
                     })
                   </div>
                 </div>
@@ -733,9 +747,55 @@
             </div>
           </div>
         </div>
-        <div class="p-prompts__panel" id="promptsCheap">
-          <h3 class="hide">Вместе дешевле</h3>
-          {{Вместе дешевле}}
+        <div class="p-prompts__panel" id="promptsSets">
+          <div class="sets-slider sets-slider-js swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide sets-slider__item">
+                <div class="set equal-height-js">
+                  <div class="set__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-01.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "1457", "unit": "р."},
+                    "price": {"val": "1457", "unit": "р."},
+                    "withoutCart": "true",
+                    "inCart": "",
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%" }
+                    })
+                  </div>
+                  <div class="set__sign set__sign_plus">+</div>
+                  <div class="set__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-01.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "25.50", "unit": "р."},
+                    "price": {"val": "0", "unit": "р."},
+                    "withoutCart": "true",
+                    "inCart": "",
+                    "wow": "",
+                    "stickers": { "gift": "Подарок!" }
+                    })
+                  </div>
+                  <div class="set__sign set__sign_equal">=</div>
+                  <div class="set__result">{{Общая цена}}</div>
+                </div>
+              </div>
+              <div class="swiper-slide">Slide 2</div>
+            </div>
+            <div class="tape-slider__prev tape-slider__prev-js">
+              @@include("includes/svg/icon-slider-arrow-l.svg")
+              <span>Prev</span>
+            </div>
+            <div class="tape-slider__next tape-slider__next-js">
+              @@include("includes/svg/icon-slider-arrow-r.svg")
+              <span>Next</span>
+            </div>
+          </div>
         </div>
         <div class="p-prompts__panel" id="promptsAccessories">
           <h3 class="hide">Аксессуары</h3>
@@ -763,8 +823,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%", "new": "new", "gift": "Подарок!", "top": "ТОП", "installment": "Рассрочка 0%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -778,8 +838,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "true",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -793,8 +853,8 @@
                     "inFavorites": "added",
                     "inCart": "added",
                     "inCompare": "",
-                    "sale": "30%",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "sale": "%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -807,8 +867,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": { "day": "Товар дня" }
+                    "wow": "WOW!",
+                    "stickers": { "top": "ТОП" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -821,8 +881,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -835,8 +895,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -849,8 +909,8 @@
                     "price": {"val": "", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -863,8 +923,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -877,8 +937,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "new": "new" }
                     })
                   </div>
                 </div>
@@ -906,8 +966,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%", "new": "new", "gift": "Подарок!", "top": "ТОП", "installment": "Рассрочка 0%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -921,8 +981,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "true",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -936,8 +996,8 @@
                     "inFavorites": "added",
                     "inCart": "added",
                     "inCompare": "",
-                    "sale": "30%",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "sale": "%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -950,8 +1010,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": { "day": "Товар дня" }
+                    "wow": "WOW!",
+                    "stickers": { "top": "ТОП" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -964,8 +1024,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -978,8 +1038,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -992,8 +1052,8 @@
                     "price": {"val": "", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1006,8 +1066,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1020,8 +1080,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "new": "new" }
                     })
                   </div>
                 </div>
@@ -1049,8 +1109,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%", "new": "new", "gift": "Подарок!", "top": "ТОП", "installment": "Рассрочка 0%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1064,8 +1124,8 @@
                     "inFavorites": "",
                     "inCart": "",
                     "inCompare": "true",
-                    "sale": "",
-                    "label": ""
+                    "wow": "WOW!",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1079,8 +1139,8 @@
                     "inFavorites": "added",
                     "inCart": "added",
                     "inCompare": "",
-                    "sale": "30%",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "sale": "%" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1093,8 +1153,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": { "day": "Товар дня" }
+                    "wow": "WOW!",
+                    "stickers": { "top": "ТОП" }
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1107,8 +1167,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1121,8 +1181,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1135,8 +1195,8 @@
                     "price": {"val": "", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1149,8 +1209,8 @@
                     "price": {"val": "4325", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": ""
                     })
                   </div>
                   <div class="swiper-slide tape-slider__item">
@@ -1163,8 +1223,8 @@
                     "price": {"val": "1457", "unit": "р."},
                     "inFavorites": "",
                     "inCart": "",
-                    "sale": "",
-                    "label": ""
+                    "wow": "",
+                    "stickers": { "new": "new" }
                     })
                   </div>
                 </div>
@@ -1585,102 +1645,6 @@
       </div>
     </section>
     <!--articles end-->
-
-    <section class="section section_collections tabs-js">
-      <div class="collections">
-        <h2 class="collections__title">Готовые подборки</h2>
-        <div class="collections__content">
-          <div class="collections__thumbs tabs__thumbs-js">
-            <a href="#brand" class="tabs-active"><span>По производителю</span></a>
-            <a href="#launch"><span>Дата выхода на рынок</span></a>
-            <a href="#screen"><span>Диагональ экрана</span></a>
-            <a href="#color"><span>Цвет корпуса</span></a>
-            <a href="#resolution"><span>Разрешение экрана</span></a>
-          </div>
-          <div class="tabs__panels-js">
-            <div id="brand">
-              <ul class="float-list">
-                <li><span>ASUS</span></li>
-                <li><a href="#"><span>Acer</span></a></li>
-                <li><a href="#"><span>Apple</span></a></li>
-                <li><a href="#"><span>ASUS</span></a></li>
-                <li><a href="#"><span>Dell</span></a></li>
-                <li><a href="#"><span>DEXP</span></a></li>
-                <li><a href="#"><span>Digma</span></a></li>
-                <li><a href="#"><span>Dream Machines</span></a></li>
-                <li><a href="#"><span>Fujitsu</span></a></li>
-                <li><a href="#"><span>HP</span></a></li>
-                <li><a href="#"><span>Huawei</span></a></li>
-                <li><a href="#"><span>IRBIS</span></a></li>
-                <li><a href="#"><span>Krez</span></a></li>
-                <li><a href="#"><span>Lenovo</span></a></li>
-                <li><a href="#"><span>MSI</span></a></li>
-                <li><a href="#"><span>Packard</span></a></li>
-                <li><a href="#"><span>Bell</span></a></li>
-                <li><a href="#"><span>PNY</span></a></li>
-                <li><a href="#"><span>Prestigio</span></a></li>
-                <li><a href="#"><span>Razer</span></a></li>
-                <li><a href="#"><span>Xiaomi</span></a></li>
-              </ul>
-            </div>
-            <div id="launch">
-              <ul class="float-list">
-                <li><a href="#"><span>2015</span></a></li>
-                <li><a href="#"><span>2016</span></a></li>
-                <li><a href="#"><span>2017</span></a></li>
-                <li><a href="#"><span>2018</span></a></li>
-                <li><a href="#"><span>2019</span></a></li>
-              </ul>
-            </div>
-            <div id="screen">
-              <ul class="float-list">
-                <li><a href="#"><span>менее 12"</span></a></li>
-                <li><a href="#"><span>12-13"</span></a></li>
-                <li><a href="#"><span>13.3-14"</span></a></li>
-                <li><a href="#"><span>15"</span></a></li>
-                <li><a href="#"><span>17"</span></a></li>
-                <li><a href="#"><span>18" и более</span></a></li>
-              </ul>
-            </div>
-            <div id="color">
-              <ul class="float-list">
-                <li><a href="#"><span>белый</span></a></li>
-                <li><a href="#"><span>бордовый</span></a></li>
-                <li><a href="#"><span>бронзовый</span></a></li>
-                <li><a href="#"><span>голубой</span></a></li>
-                <li><a href="#"><span>зеленый</span></a></li>
-                <li><a href="#"><span>золотистый</span></a></li>
-                <li><a href="#"><span>коричневый</span></a></li>
-                <li><a href="#"><span>красный</span></a></li>
-                <li><a href="#"><span>медный</span></a></li>
-              </ul>
-            </div>
-            <div id="resolution">
-              <ul class="float-list">
-                <li><a href="#"><span>HD/HD+ (768p/900p)</span></a></li>
-                <li><a href="#"><span>Full HD (1080p)</span></a></li>
-                <li><a href="#"><span>QHD (1440p)</span></a></li>
-                <li><a href="#"><span>Retina</span></a></li>
-                <li><a href="#"><span>QHD+ (1800p)</span></a></li>
-                <li><a href="#"><span>4K UHD (2160p)</span></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section section_helper">
-      <h2 class="hide">Помощь</h2>
-      <div class="helper">
-        <div class="helper__list">
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-call.svg") <span>Помощь экспертов в выборе товаров</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-credit.svg") <span>Рассрочка и кредит по выгодным условиям</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-delivery.svg") <span>Быстрая доставка по Минску курьером</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-service.svg") <span>Дополнительные услуги по сервисному обслуживанию</span></div></a>
-        </div>
-      </div>
-    </section>
     <!--CONTENT end-->
   </div>
 </div>
