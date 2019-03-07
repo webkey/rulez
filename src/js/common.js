@@ -486,6 +486,32 @@ function slidersInit() {
     });
 
   }
+
+  /**sets slider*/
+  var $setsSlider = $('.sets-slider-js');
+  if ($setsSlider.length) {
+    $setsSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisBtnNext = $thisSlider.find('.sets-slider__next-js'),
+          $thisBtnPrev = $thisSlider.find('.sets-slider__prev-js'),
+          setsSliderJs;
+
+      setsSliderJs = new Swiper($thisSlider, {
+        init: false,
+        navigation: {
+          nextEl: $thisBtnNext,
+          prevEl: $thisBtnPrev,
+        }
+      });
+
+      setsSliderJs.on('init', function() {
+        $(setsSliderJs.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      setsSliderJs.init();
+    });
+
+  }
 }
 
 /**
@@ -511,16 +537,16 @@ function gridLayout() {
 }
 
 /**
- * !jquery.ms-tabs.js
- * Version: 2018.1.0
+ * ! jquery.ms-tabs.js
+ * Version: 2019.1.0
  * Author: Astronim*
  * Description: Extended toggle class
  */
 
-(function($){
+(function ($) {
   'use strict';
 
-  var MsTabs = function(element, config){
+  var MsTabs = function (element, config) {
     var self,
         $element = $(element),
         $anchor = $element.find(config.anchor),
@@ -551,10 +577,10 @@ function gridLayout() {
         isAnimated = true;
 
         // Удалить активный класс со всех элементов
-        toggleClass([$panel, $anchor], false);
+        $panel.add($anchor).removeClass(config.modifiers.activeClass);
 
         // Добавить класс на каждый активный элемент
-        toggleClass([$activePanel, $activeAnchor], true);
+        $activePanel.add($activeAnchor).addClass(config.modifiers.activeClass);
 
         // Анимирование высоты табов
         $panels
@@ -578,7 +604,8 @@ function gridLayout() {
               $activePanel.css({
                 'position': 'relative',
                 'left': 'auto',
-                'top': 'auto'
+                'top': 'auto',
+                'pointer-events': ''
               }).attr('tabindex', 0);
 
               $panels.css({
@@ -604,7 +631,7 @@ function gridLayout() {
         isAnimated = true;
 
         // Удалить активный класс со всех элементов
-        toggleClass([$panel, $anchor], false);
+        $panel.add($anchor).removeClass(config.modifiers.activeClass);
 
         // Анимирование высоты табов
         $panels
@@ -615,8 +642,7 @@ function gridLayout() {
 
         hideTab($activePanel, function () {
           $panels.css({
-            'height': '',
-            'overflow': ''
+            'height': ''
           });
 
           isOpen = false;
@@ -640,7 +666,8 @@ function gridLayout() {
               'position': 'absolute',
               'left': 0,
               'top': 0,
-              'visibility': 'hidden'
+              'visibility': 'hidden',
+              'pointer-events': 'none'
             });
 
             // Анимация полностью завершена
@@ -648,38 +675,6 @@ function gridLayout() {
               callback();
             }
           });
-    }, toggleClass = function (arr) {
-      var remove = arguments[1] === false;
-      $.each(arr, function () {
-        var iElem = this;
-        // если массив, то устанавливаем класс на каждый из элемент этого массива
-        if ($.isArray(iElem)) {
-          $.each(iElem, function () {
-            var $curElem = $(this);
-            if ($curElem.length) {
-              // Если второй аргумент false, то удаляем класс
-              if (remove) {
-                $curElem.removeClass(config.modifiers.activeClass);
-              } else {
-                // Если второй аргумент не false, то добавляем класс
-                $curElem.addClass(config.modifiers.activeClass);
-              }
-            } else {
-              // В консоль вывести предупреждение,
-              // если указанного элемента не существует.
-              console.warn('Element "' + this + '" does not exist!')
-            }
-          });
-        } else {
-          // Если второй аргумент false, то удаляем класс
-          if (remove) {
-            $(iElem).removeClass(config.modifiers.activeClass);
-          } else {
-            // Если второй аргумент не false, то добавляем класс
-            $(iElem).addClass(config.modifiers.activeClass);
-          }
-        }
-      });
     }, events = function () {
       $anchor.on('click', function (event) {
         event.preventDefault();
@@ -719,6 +714,7 @@ function gridLayout() {
         'opacity': 0,
         'width': '100%',
         'visibility': 'hidden',
+        'pointer-events': 'none',
         'z-index': -1
       }).attr('tabindex', -1);
 
@@ -726,7 +722,7 @@ function gridLayout() {
         var $activePanel = $panel.filter('[id="' + activeId + '"]');
 
         // Добавить класс на каждый элемен
-        toggleClass([$activePanel], true);
+        $activePanel.addClass(config.modifiers.activeClass);
 
         // Показать активный таб
         $activePanel
@@ -736,6 +732,7 @@ function gridLayout() {
               'top': 'auto',
               'opacity': 1,
               'visibility': 'visible',
+              'pointer-events': '',
               'z-index': 2
             })
             .attr('tabindex', 0);
@@ -770,8 +767,7 @@ function gridLayout() {
         _[i].msTabs.init();
         _[i].msTabs.callbacks();
         _[i].msTabs.events();
-      }
-      else {
+      } else {
         ret = _[i].msTabs[opt].apply(_[i].msTabs, args);
       }
       if (typeof ret !== 'undefined') {

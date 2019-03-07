@@ -2226,6 +2226,7 @@ $p-sticker-size: 2.6rem 2.6rem
   .js &:not(.is-loaded)
     opacity: 0
     pointer-events: none
+    overflow: hidden
 
   &::before
     $left: 130px
@@ -2836,7 +2837,7 @@ $opinion-box-shadow-color: black
 /* caption-box
 .caption-box
   display: flex
-  align-items: center
+  align-items: flex-end
   margin-bottom: 2.5rem
 
   &:last-child
@@ -2902,15 +2903,11 @@ $opinion-box-shadow-color: black
 .tabs__panels-js, .tabs-nested__panels-js
 
   & > div
-    pointer-events: none
     position: absolute
     opacity: 0
     visibility: hidden
     outline: none
     width: 100%
-
-    &.tabs-active
-      pointer-events: auto
 
 // simple tabs thumbs
 .simple-tabs-thumbs
@@ -2951,11 +2948,13 @@ $opinion-box-shadow-color: black
 
 // divisions tabs thumbs
 .divisions-tabs-thumbs
+  position: relative
   display: flex
   flex-wrap: wrap
   font-size: 1.6rem
   line-height: 2.4rem
   border-bottom: 1px solid #c5c5c5
+  padding-bottom: 2px
 
   &:last-child
     margin-bottom: 0
@@ -2963,9 +2962,9 @@ $opinion-box-shadow-color: black
   a
     color: rgba(black, 0.7)
     text-decoration: none
-    margin: 0 5rem -0.2rem 0
-    padding: 0 0 1rem
-    border-bottom: 3px solid transparent
+    margin: 0 50px -5px 0
+    padding-bottom: 8px
+    border-bottom: 5px solid transparent
     // transition
     $prop: color, border-color
     transition:
@@ -3274,7 +3273,8 @@ $opinion-box-shadow-color: black
     font-style: normal
 
 .p-add-form__btn-buy
-  width: 245px
+  width: 46%
+  flex-basis: 46%
   flex-shrink: 0
 
 /* form add a product to a cart end
@@ -3292,6 +3292,7 @@ $opinion-box-shadow-color: black
   justify-content: space-between
 
 .quick-order__label
+  flex-grow: 1
   color: white
   margin: 0 2rem 0 0
 
@@ -3299,7 +3300,8 @@ $opinion-box-shadow-color: black
     color: white
 
 input[type="text"].quick-order__input
-  width: 243px
+  width: 46%
+  flex-basis: 46%
   flex-shrink: 0
   margin: 0
 
@@ -4198,7 +4200,7 @@ div:not([data-view="list-view"])
 /* product item end
 
 /* product item short
-$product-short-inner-space: 2.2rem 1.5rem 1.5rem
+$product-short-inner-space: 2.5rem 1.5rem 1.5rem
 .product-short
   position: relative
   background-color: white
@@ -4230,7 +4232,6 @@ $product-short-inner-space: 2.2rem 1.5rem 1.5rem
 
 // === short product main ===
 .product-short__main
-  border-bottom: 1px solid $border-color
   padding-bottom: 2rem
 
   & > a
@@ -4265,6 +4266,7 @@ $product-short-title-line-number: 2
   margin-bottom: 2rem
   overflow: hidden
   height: $product-short-title-line-height * $product-short-title-line-number
+  transition: color $animation-speed
 
   &:last-child
     margin-bottom: 0
@@ -4282,10 +4284,14 @@ $product-short-title-line-number: 2
     +linear-gradient(to right, rgba($color, 0) 0%, rgba($color, 1) 100%)
     z-index: 5
 
+  a:hover &
+    color: $base-color
+
 // === short product footer ===
 .product-short__footer
   padding: 1rem round-float(nth($product-short-inner-space, 2) / 2, 1) 0
   margin: 0 -#{round-float(nth($product-short-inner-space, 2) / 2, 1)}
+  border-top: 1px solid $border-color
 
 // === short product offer ===
 .product-short__offer
@@ -4293,66 +4299,48 @@ $product-short-title-line-number: 2
   justify-content: space-between
   line-height: 1
 
-.product-short__offer-item
-  flex-grow: 1
-
 // === short product price ===
-.product-short__price
+.p-short-price
   display: flex
+  flex-wrap: wrap
+  align-items: flex-end
   justify-content: space-between
   line-height: 1
 
-  // off
-  &.off
-    color: $text-color-soft
+.p-short-price__old
+  position: relative
+  margin-right: 0.5em
+  line-height: 1.2
 
-    .product__price-old,
-    .product__price-new
-      color: currentColor
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 50%
+    left: -0.1em
+    right: -0.1em
+    width: auto
+    height: 0
+    border-top: 1px solid currentColor
+    margin-top: -1px
 
-    & > svg path
-      fill: currentColor
+.p-short-price__old-val,
+.p-short-price__old-unit
+  display: inline-block
+  vertical-align: baseline
+  font-size: 1.3rem
+  font-style: normal
 
-.product-short__price-new,
-.product-short__price-old
-  line-height: 3.0rem
-  flex-grow: 1
-
-.product-short__price-old
-
-  .price-frame
-    display: inline-block
-    position: relative
-
-    &::after
-      content: ""
-      display: block
-      position: absolute
-      top: 50%
-      left: -0.3em
-      right: -0.3em
-      width: auto
-      height: 0
-      border-top: 1px solid currentColor
-      margin-top: -1px
-
-    & > strong, & > em
-      display: inline-block
-      vertical-align: baseline
-      font-size: 1.3rem
-      font-style: normal
-
-.product-short__price-new
-  margin-left: 0.4rem
+.p-short-price__new
   text-align: right
 
-  & > strong
-    +font-bold
-    font-size: 2.0rem
+.p-short-price__new-val
+  +font-bold
+  font-size: 2.0rem
 
-  & > em
-    font-style: normal
-    font-size: 1.4rem
+.p-short-price__new-unit
+  font-style: normal
+  font-size: 1.4rem
 
 /* product item short end
 
@@ -4863,6 +4851,17 @@ $at-elem-space: 1.6rem 2.5rem
   .articles-tiles__item_text-small &
     font-size: 1.8rem
     line-height: 2.7rem
+
+.rulez-text
+  display: block
+  +font-extra-bold
+  font-size: 3.6rem
+  line-height: 5.3rem
+  text-transform: uppercase
+  color: #131313
+
+  & > span
+    color: #7ed321
 
 .articles-tiles-elem__label
   display: inline-block
@@ -6547,6 +6546,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
         duration: $animation-speed * 2
         timing-function: cubic-bezier(0.18, 0.89, 0.32, 1.28)
 
+.btn-buy_stretch
+  display: block
+
 // options
 .p-card-options
   margin-bottom: 1rem
@@ -6559,9 +6561,6 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
   &:first-child
     margin-top: 0
-
-  .btn-buy, .btn-outline
-    display: block
 
 // p-card-offer
 .p-card-offer
@@ -6590,12 +6589,18 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   flex-wrap: wrap
   justify-content: space-between
 
-  .p-card-price, .p-card-options
-    flex-basis: 50%
-    flex-grow: 1
+  //.p-card-price, .p-card-options
+  //  flex-basis: 50%
+  //  flex-grow: 1
 
   .p-card-price
+    flex-grow: 1
+    flex-basis: 50%
     padding-right: 1rem
+
+  .p-card-options
+    flex-basis: 50%
+    flex-grow: 1
 
   &:last-child
     margin-bottom: 0
@@ -6787,9 +6792,6 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   flex-grow: 1
   flex-basis: 50%
 
-  [class*="btn"]
-    display: block
-
   &:first-child
     padding-right: 2rem
 
@@ -6950,7 +6952,7 @@ $card-size: 85px 135px
 /* tape slider
 .tape-slider
   position: relative
-  padding-top: 4.3rem
+  padding-top: 5.7rem
 
   .js &:not(.is-loaded)
     opacity: 0
@@ -7027,25 +7029,38 @@ $swiper-button-size: 14px, 20px
 /* tape slider end
 
 /* product prompts
-.section_p-prompts
+.p-prompts
   position: relative
 
 .p-prompts__thumbs
-  margin: 0 #{nth($section-inner-space, 2)} 1.1rem
+  margin: 0 #{nth($section-inner-space, 2)}
+  padding-bottom: 0
+  border: none
+  z-index: 5
 
 .p-prompts__panel
   .tape-slider__prev,
   .tape-slider__next
-    margin-top: 1.2rem
+    margin-top: 2.4rem
     margin-right: #{nth($section-inner-space, 2)}
 
 .p-prompts__panel-thumbs
   position: absolute
   left: #{nth($section-inner-space, 2)}
-  right: 10rem
+  right: #{nth($section-inner-space, 2)}
   top: 0
-  margin: 0
-  z-index: 5
+  padding: 1.1rem 0 0
+  margin: 2px 10rem 0 0
+  z-index: 3
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+    left: 0
+    right: -10rem
+    border-top: 1px solid #c5c5c5
 
 /* product prompts end
 
@@ -7213,6 +7228,73 @@ $advice-box-shadow-color: black
 
 /* useful end
 
+/* set result price
+.set-result-price
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-end
+  justify-content: space-between
+  line-height: 1
+
+.set-result-price__old
+  position: relative
+  margin-right: 0.5em
+  line-height: 1.2
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 50%
+    left: -0.1em
+    right: -0.1em
+    width: auto
+    height: 0
+    border-top: 1px solid currentColor
+    margin-top: -1px
+
+.set-result-price__old-val
+  +font-bold
+  font-size: 2.0rem
+
+.set-result-price__old-unit
+  font-style: normal
+  font-size: 1.4rem
+
+.set-result-price__new
+  text-align: right
+
+.set-result-price__new-val
+  +font-bold
+  font-size: 3.5rem
+
+.set-result-price__new-unit
+  font-style: normal
+  font-size: 2.4rem
+
+/* set result price end
+
+/* set result options
+.set-result-options
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.set-result-options__item
+  margin-bottom: 0.6rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* set result options end
+
+/* set result
+.set-result__price
+  margin-bottom: 1.5rem
+
+/* set result end
+
 /* set
 .set
   display: flex
@@ -7255,4 +7337,275 @@ $advice-box-shadow-color: black
   &::after
     margin-top: 5px
 
+.set__result
+  display: flex
+  align-items: center
+  width: 24.4rem
+
+  .set-result
+    flex-grow: 1
+
 /* set end
+
+/* sets slider
+.sets-slider
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+    overflow: hidden
+
+.sets-slider__item
+  background-color: white
+  padding-top: 5px
+
+// arrows
+$swiper-button-size: 14px, 20px
+.sets-slider__prev, .sets-slider__next
+  position: absolute
+  right: 0
+  top: 0
+  height: nth($swiper-button-size, 1)
+  width: nth($swiper-button-size, 2)
+  will-change: transform
+  cursor: pointer
+  z-index: 1
+  margin: nth($section-inner-space, 1) nth($section-inner-space, 1) 0 0
+  // transition
+  $prop: color
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  & > span
+    +hide-text
+
+  svg
+    $size: 13px 19px
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    height: nth($size, 1)
+    width: nth($size, 2)
+    margin: -#{round-float(nth($size, 1) / 2, 0)} 0 0 -#{round-float(nth($size, 2) / 2, 0)}
+
+    path
+      fill: currentColor
+
+  // hover
+  &:not(.swiper-button-disabled):hover
+    color: $base-color
+
+  // active
+  &:not(.swiper-button-disabled):active
+    transform: translate(0, 1px)
+
+  // disabled
+  &.swiper-button-disabled
+    pointer-events: auto
+    cursor: default
+    opacity: 0.3
+    outline: none
+
+// prev arrow
+.sets-slider__prev
+  right: #{nth($swiper-button-size, 2) + 24}
+
+  &::after
+    left: 0
+    border-right: none
+    transform-origin: left top
+    transform: rotate(-45deg)
+
+// next arrow
+.sets-slider__next
+  &::after
+    right: 0
+    border-left: none
+    transform: rotate(45deg)
+    transform-origin: right top
+
+/* sets slider end
+
+/* news preview element
+$news-elem-inner: 2.7rem 2rem 2.1rem
+.news-elem
+  display: block
+  position: relative
+  text-decoration: none
+  color: inherit
+  background-color: white
+  box-shadow: inset 0 0 0 1px $border-color
+
+.news-elem__figure
+  background-position: center
+  background-repeat: no-repeat
+  background-size: cover
+  height: 22.3rem
+
+.news-elem__content
+  position: relative
+  padding: $news-elem-inner
+
+.news-elem__category
+  +truncate(100%)
+  +font-normal
+  font-size: 1.2rem
+  line-height: 1.6rem
+  color: $base-color
+  margin-bottom: 1.3rem
+
+.news-elem__title
+  $line-height: 3.1rem
+  $line-length: 3
+  position: relative
+  overflow: hidden
+  height: $line-height * $line-length
+  +font-bold
+  font-size: 2.2rem
+  line-height: $line-height
+  color: $title-color
+  margin-bottom: 0.6rem
+  transition: color $animation-speed
+
+  &:last-child
+    margin-bottom: 0
+
+  +truncateCover($line-height, white)
+
+.news-elem__date
+  display: block
+  font-style: normal
+  font-size: 1.2rem
+  line-height: 1.7rem
+  color: $text-color-soft
+  margin-bottom: 0.6rem
+
+  &:last-child
+    margin-bottom: 0
+
+.news-elem__text
+  $line-height: 2.2rem
+  $line-length: 2
+  position: relative
+  overflow: hidden
+  height: $line-height * $line-length
+  font-size: 1.5rem
+  line-height: $line-height
+  color: $text-color-light
+  margin-bottom: 0.75rem
+
+  &:last-child
+    margin-bottom: 0
+
+  +truncateCover($line-height, white)
+
+// hover
+a.news-elem:hover
+  .news-elem__title
+    color: $base-color
+
+// alternative view
+.news-elem_alt
+  box-shadow: none
+
+  .news-elem__figure
+    height: 46.6rem
+
+  .news-elem__content
+    display: flex
+    flex-direction: column
+    align-content: flex-start
+    justify-content: flex-end
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    padding: 4.8rem 4.5rem
+    color: white
+
+  .news-elem__title
+    order: 2
+    height: auto
+    font-size: 3.0rem
+    line-height: 4.5rem
+    color: white
+    margin-bottom: 0
+
+    span
+      transition: box-shadow $animation-speed
+
+    &::after
+      content: none
+
+  .news-elem__text, .news-elem__category
+    display: none
+
+  .news-elem__date
+    order: 1
+    font-size: 1.4rem
+    line-height: 2.0rem
+    margin-bottom: 0.5rem
+    color: white
+
+  // hover
+  @at-root
+    a#{&}:hover
+      .news-elem__title
+        color: white
+
+        span
+          box-shadow: inset 0 -2px 0 white
+
+/* news preview element end
+
+/* news entry
+.section_news-entry
+  background-color: white
+  margin-bottom: 2.3rem
+  padding-top: nth($section-inner-space, 1)
+  padding-bottom: nth($section-inner-space, 1)
+
+.news-entry
+  overflow: hidden
+
+$news-entry-item-space-outer: 1.8rem 1.8rem
+.news-entry__list
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($news-entry-item-space-outer, 2) / 2, 1)} -#{nth($news-entry-item-space-outer, 1)}
+
+.news-entry__list-item
+  width: 25%
+  padding: 0 round-float(nth($news-entry-item-space-outer, 2) / 2, 1) nth($news-entry-item-space-outer, 1)
+
+.news-entry__list-item_large
+  width: 75%
+
+
+/* news entry end
+
+/* news previews list
+.section_news-entry
+  background-color: white
+  margin-bottom: 2.3rem
+
+.news
+  overflow: hidden
+
+$news-entry-item-space-outer: 1.8rem 1.8rem
+.news__list
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($news-entry-item-space-outer, 2) / 2, 1)} -#{nth($news-entry-item-space-outer, 1)}
+
+.news__list-item
+  width: 25%
+  padding: 0 round-float(nth($news-entry-item-space-outer, 2) / 2, 1) nth($news-entry-item-space-outer, 1)
+
+.news__list-item_large
+  width: 75%
+
+
+/* news previews list end

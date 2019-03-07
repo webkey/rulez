@@ -1,0 +1,203 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Новости",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная"],
+      "last": "Новости"
+    })
+
+    <!--CONTENT-->
+
+    <section class="section section_news-entry layout">
+      <div class="caption-box">
+        <h1 class="caption-box__title">Новости</h1>
+
+        <div class="caption-box__options">
+          <div class="topics-thumbs">
+            <a href="news.html"><span>Полезные советы</span></a>
+            <a href="news.html"><span>Как выбрать ноутбук</span></a>
+            <a href="news.html"><span>Как выбрать компьютер</span></a>
+            <a href="news.html"><span>Обзоры ноутбуков</span></a>
+            <a href="news.html"><span>Обзоры компьютеров</span></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="news-entry">
+        <div class="news-entry__list">
+          <div class="news-entry__list-item news-entry__list-item_large">
+            <a href="#" class="news-elem news-elem_alt">
+              @@include("_tpl_news-elem.html", {
+              "category": "",
+              "title": "Обзор ультрабука Huawei<br> Matebook X Pro",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-article-01.jpg",
+              "date": "20.03.2019",
+              "dateTime": "2019-03-20",
+              "text": ""
+              })
+            </a>
+          </div>
+          <div class="news-entry__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "График работы интернет-магазина в новогодние праздникия",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-01.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section layout">
+      <h2 class="section__title hide-text">Новости 1</h2>
+      <div class="news">
+        <div class="news__list">
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "График работы интернет-магазина в новогодние праздникия",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-02.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "«Рулез» запустил новый сервис",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-03.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "Как привязать карту «Рулез-Клуба» к электронному кошельку",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-04.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "График работы интернет-магазина в новогодние праздникия",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-05.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section layout">
+      <div class="banner">
+        <img src="img/banner-01.jpg" alt="Ноутбуки Samsung по суперцене 1000 р.">
+      </div>
+    </section>
+
+    <section class="section layout">
+      <h2 class="section__title hide-text">Новости 2</h2>
+      <div class="news">
+        <div class="news__list">
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "График работы интернет-магазина в новогодние праздникия",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-06.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "«Рулез» запустил новый сервис",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-07.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "Как привязать карту «Рулез-Клуба» к электронному кошельку",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-08.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+          <div class="news__list-item">
+            <a href="#" class="news-elem">
+              @@include("_tpl_news-elem.html", {
+              "category": "Полезные советы",
+              "title": "График работы интернет-магазина в новогодние праздникия",
+              "imgBg": "#bacbdf",
+              "imgSrc": "img/img-news-09.jpg",
+              "date": "19.03.2019",
+              "dateTime": "2019-03-19",
+              "text": "Изменения в графике работы интернет - магазина."
+              })
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

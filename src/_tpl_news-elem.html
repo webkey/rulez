@@ -1,0 +1,7 @@
+<div class="news-elem__figure" style="background-color: @@imgBg; background-image: url(@@imgSrc);">&nbsp;</div>
+<div class="news-elem__content">
+  @@if(context.category){<div class="news-elem__category">@@category</div>}
+  @@if(context.title){<div class="news-elem__title"><span>@@title</span></div>}
+  @@if(context.date){<time class="news-elem__date" datetime="@@datetime">@@date</time>}
+  @@if(context.text){<div class="news-elem__text">@@text</div>}
+</div>

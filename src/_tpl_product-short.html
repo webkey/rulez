@@ -24,18 +24,11 @@
   <div class="product-short__footer">
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-short__offer">
       @@if(context.price.val){
-      <div class="product-short__price product-short__offer-item">
+      <div class="p-short-price">
         @@if(context.priceOld.val){
-        <div class="product-short__price-old">
-          <div class="price-frame"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>
-        </div>
+        <div class="p-short-price__old"><strong class="p-short-price__old-val">@@priceOld.val</strong>&nbsp<em class="p-short-price__old-unit">@@priceOld.unit</em></div>
         }
-        <div class="product-short__price-new"><strong itemprop="price" content="@@price.val">@@price.val</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
-      </div>
-      }
-      @@if(!context.price.val){
-      <div class="product-short__price product-short__offer-item off">
-        <div class="product-short__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+        <div class="p-short-price__new"><strong class="p-short-price__new-val" itemprop="price" content="@@price.val">@@price.val</strong>&nbsp;<em class="p-short-price__new-unit" itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
       </div>
       }
 
