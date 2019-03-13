@@ -207,6 +207,77 @@ $spinner-btn-width: 35px
 
 /* figure on background of a page end
 
+/* default overlay
+.popup-overlay
+  position: fixed
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+  z-index: $z-overlay
+  background-color: rgba($base-color, 0.9)
+  user-select: none
+  pointer-events: none
+  opacity: 0
+  $prop: opacity
+  will-change: $prop
+  transition: $prop $animation-speed ease-in-out
+
+  //.is-open &
+  &
+    pointer-events: auto
+    opacity: 1
+
+/* default overlay end
+
+/* default popup
+.popup-def
+  position: fixed
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  z-index: $z-popup
+  display: flex
+  align-items: center
+  justify-content: center
+
+  border: solid white
+  border-width: 1rem nth($page-layout-space, 2)
+
+.popup-def__container
+  background-color: white
+  width: 44rem
+  padding: 3rem 4rem
+  max-width: 100%
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)
+
+.popup-def__heading
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-end
+  justify-content: space-between
+  margin-bottom: 2rem
+
+.popup-def__title
+  +font-bold
+  font-size: 2.4rem
+  line-height: 3.2rem
+  color: $title-color
+
+.popup-def__heading, .popup-def__footer
+  a
+    font-size: 1.4rem
+    line-height: 3.2rem
+    color: $base-color
+    text-decoration: none
+    transition: box-shadow $animation-speed
+
+    &:hover
+      box-shadow: inset 0 -2px 0 rgba($base-color, 0.6)
+
+/* default popup end
+
 /* ====================================
 /* ============== HEADER ==============
 /* ====================================
