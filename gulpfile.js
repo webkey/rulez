@@ -133,7 +133,8 @@ gulp.task('mergeCssLibs', function () {
     // jquery ui
     , 'src/libs/jquery-ui/themes/base/base.css'
     , 'src/libs/jquery-ui/themes/base/spinner.css'
-    , 'src/libs/jquery-ui/themes/base/tooltip.css'
+    // , 'src/libs/jquery-ui/themes/base/tooltip.css'
+    , 'src/libs/fancybox/dist/jquery.fancybox.min.css' // fancybox
     // , 'src/libs/priority-nav/dist/priority-nav-core.css'
     // , 'node_modules/okaynav/dist/css/common.min.css'
     // , 'node_modules/okaynav/dist/css/okayNav.min.css' // https://www.npmjs.com/package/okaynav
@@ -178,6 +179,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'node_modules/scrollreveal/dist/scrollreveal.min.js' // show elements
     // , 'src/libs/priority-nav/dist/priority-nav.min.js' // Лишние пункты меню скрываем в кнопку Ещё
     , 'node_modules/okaynav/dist/js/jquery.okayNav-min.js' // https://www.npmjs.com/package/okaynav
+    , 'src/libs/fancybox/dist/jquery.fancybox.min.js' // fancybox
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

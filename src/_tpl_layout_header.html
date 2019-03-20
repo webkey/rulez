@@ -25,14 +25,31 @@
             <li><a href="https://telegram.org/" target="_blank"><span>Telegram</span></a></li>
             <li><a href="https://www.whatsapp.com/" target="_blank"><span>Whatsapp</span></a></li>
           </ul>
-          <div class="phones phones-js">
+          <div class="h-contacts h-contacts-js">
             <a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a>
-            <i class="phones-opener phones-opener-js">&#9660;</i>
-            <ul class="phones-drop phones-drop-js">
-              <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
-              <li class="active-item"><a href="tel:+375291232017"><span>+375 (29) <strong>123 20 17</strong></span></a></li>
-              <li class="active-item"><a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
-            </ul>
+            <i class="h-contacts__opener h-contacts__opener-js">&#9660;</i>
+            <div class="h-contacts__drop h-contacts__drop-js">
+              <strong class="h-contacts__title">Контакты</strong>
+              <div class="h-contacts__content">
+                <ul class="h-contacts__phones">
+                  <li><a href="tel:+375291231010" class="operator_velcom"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+                  <li><a href="tel:+375291232017" class="operator_life"><span>+375 (29) <strong>123 20 17</strong></span></a></li>
+                  <li><a href="tel:+375291231010" class="operator_mts"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
+                </ul>
+                <div class="h-contacts__share">
+                  <div class="h-contacts__chats">
+                    <ul class="h-contacts__chats-list">
+                      <li><a href="https://www.viber.com/" target="_blank" class="chat-viber"><span>Viber</span></a></li>
+                      <li><a href="https://telegram.org/" target="_blank" class="chat-telegram"><span>Telegram</span></a></li>
+                      <li><a href="https://www.whatsapp.com/" target="_blank" class="chat-whatsapp"><span>Whatsapp</span></a></li>
+                    </ul>
+                  </div>
+                  <div class="h-contacts__email">
+                    <a href="mailto:info@rulez.by" class="h-contacts__link"><span>info@rulez.by</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         @@include('_tpl_user-options.html')

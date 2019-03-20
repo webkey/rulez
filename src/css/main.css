@@ -1403,6 +1403,10 @@ blockquote cite {
   background: #f8e71c;
   border: none;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+  will-change: box-shadow;
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 .btn-def, input.btn-def {
@@ -1417,7 +1421,6 @@ blockquote cite {
 
 .btn-def:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-  top: -1px;
 }
 
 .btn-def:active {
@@ -1447,6 +1450,10 @@ blockquote cite {
   background: #6e52dd;
   border-radius: 4px;
   box-shadow: none;
+  will-change: box-shadow;
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 
 .btn-alt, input.btn-alt {
@@ -1461,7 +1468,6 @@ blockquote cite {
 
 .btn-alt:hover {
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-  top: -1px;
 }
 
 .btn-alt:active {
@@ -1623,100 +1629,6 @@ blockquote cite {
 }
 
 /* btn-with-arrow end */
-/* button popup close */
-.btn-popup-close {
-  display: block;
-  width: 60px;
-  height: 60px;
-  background: #f3f3f3;
-  color: white;
-  text-decoration: none;
-  font-size: 0;
-  letter-spacing: -4px;
-  white-space: nowrap;
-  transition-property: background-color, opacity, visibility;
-  transition-duration: 0.2s;
-}
-
-@media (max-width: 639px) {
-  .btn-popup-close {
-    width: 45px;
-    height: 45px;
-  }
-}
-
-.btn-popup-close::before {
-  content: '';
-  display: inline-block;
-  height: 60px;
-  min-height: 100%;
-  vertical-align: middle;
-}
-
-.btn-popup-close > span {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-.btn-popup-close > span:active, .btn-popup-close > span:focus {
-  clip: auto;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-}
-
-.btn-popup-close > i {
-  display: inline-block;
-  vertical-align: middle;
-  position: relative;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  background-color: transparent;
-  width: 20px;
-  height: 3px;
-  border-radius: 2px;
-}
-
-.btn-popup-close > i::before, .btn-popup-close > i::after {
-  content: "";
-  display: block;
-  position: absolute;
-  left: 0;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  width: 20px;
-  height: 3px;
-  border-radius: 2px;
-  background: #4a4a4a;
-  transition-property: background-color;
-  transition-duration: 0.2s;
-}
-
-.btn-popup-close > i::before {
-  top: 0;
-  -ms-transform: rotate(-45deg);
-      transform: rotate(-45deg);
-}
-
-.btn-popup-close > i::after {
-  top: 0;
-  -ms-transform: rotate(45deg);
-      transform: rotate(45deg);
-}
-
-.no-touchevents .btn-popup-close:hover {
-  background-color: #ef4180;
-}
-
-/* button popup close end */
 /* === FORM'S ELEMENTS === */
 /* forms layout */
 .form-row, .input-wrap {
@@ -3516,29 +3428,10 @@ form .success + .select2 + .error-note + .success-note {
 /* default overlay end */
 /* default popup */
 .popup-def {
-  position: fixed;
-  left: 0;
-  top: 0;
+  display: none;
   width: 100%;
-  height: 100%;
-  z-index: 9995;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-align: center;
-      align-items: center;
-  -ms-flex-pack: center;
-      justify-content: center;
-  padding: 2rem 2rem;
-}
-
-.popup-def__container {
-  background-color: white;
-  width: 44rem;
-  max-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: 3rem 4rem;
-  max-width: 100%;
+  max-width: 44rem;
+  padding: 3rem 4.2rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -3563,6 +3456,10 @@ form .success + .select2 + .error-note + .success-note {
   margin-bottom: 2rem;
 }
 
+.popup-def__heading .popup-def__title {
+  margin: 0 2rem 0 0;
+}
+
 .popup-def__sub-title {
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
@@ -3573,15 +3470,23 @@ form .success + .select2 + .error-note + .success-note {
 }
 
 .popup-def__form {
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .popup-def__form:last-child {
   margin-bottom: 0;
 }
 
+.popup-def__form-input {
+  margin-bottom: 0.9rem;
+}
+
 .popup-def__form-input:last-child {
   margin-bottom: 0;
+}
+
+.popup-def__form-input_btn {
+  margin-top: 2.4rem;
 }
 
 .popup-def__btn {
@@ -3612,7 +3517,7 @@ form .success + .select2 + .error-note + .success-note {
 }
 
 .popup-def__meta {
-  margin-bottom: 4rem;
+  margin-bottom: 3.5rem;
 }
 
 .popup-def__meta:last-child {
@@ -3683,6 +3588,10 @@ form .success + .select2 + .error-note + .success-note {
   overflow: visible;
   position: static;
   width: auto;
+}
+
+.popup-def-wrap .fancybox-bg {
+  background-color: rgba(110, 82, 221, 0.9);
 }
 
 /* default popup end */
@@ -4029,14 +3938,14 @@ form .success + .select2 + .error-note + .success-note {
   box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.75);
 }
 
-.phones {
+.h-contacts {
   position: relative;
   padding-right: 2.5rem;
   line-height: 1;
   color: white;
 }
 
-.phones > a {
+.h-contacts > a {
   position: relative;
   display: inline-block;
   vertical-align: top;
@@ -4047,26 +3956,26 @@ form .success + .select2 + .error-note + .success-note {
   -webkit-tap-highlight-color: transparent;
 }
 
-.phones > a span {
+.h-contacts > a span {
   transition-property: box-shadow;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
 
-.phones > a:hover {
+.h-contacts > a:hover {
   color: white;
 }
 
-.phones > a:hover span {
+.h-contacts > a:hover span {
   box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.75);
 }
 
-.phones > a strong, .phones > a b {
+.h-contacts > a strong, .h-contacts > a b {
   font-family: "circe-extra-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
 
-.phones .phones-opener {
+.h-contacts__opener {
   position: absolute;
   top: 50%;
   right: 0;
@@ -4087,7 +3996,7 @@ form .success + .select2 + .error-note + .success-note {
   transition-duration: 0.2s;
 }
 
-.phones .phones-opener::before {
+.h-contacts__opener::before {
   content: "";
   display: block;
   position: absolute;
@@ -4102,25 +4011,16 @@ form .success + .select2 + .error-note + .success-note {
       transform: rotate(0.125turn);
 }
 
-.phones.is-open .phones-opener::before {
+.is-open > .h-contacts__opener::before {
   border-width: 1px 0 0 1px;
   margin-top: -0.1rem;
 }
 
-.phones-drop {
+.h-contacts__drop {
   position: absolute;
-  right: 0;
+  left: 0;
   top: 100%;
-  margin: 0;
-  padding: 1.6rem 1.8rem;
-  width: calc(9.5em + 3.6rem);
-  font-size: 1.6rem;
-  line-height: 2.0rem;
-  list-style: none;
-  text-align: right;
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  padding: 1.4rem 2rem 2.5rem 2rem;
   -ms-transform: translate(0, -2px);
       transform: translate(0, -2px);
   transform: translate3d(0, -2px, 0);
@@ -4132,7 +4032,7 @@ form .success + .select2 + .error-note + .success-note {
   transition-duration: 0.2s;
 }
 
-.is-open > .phones-drop {
+.is-open > .h-contacts__drop {
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
@@ -4141,36 +4041,194 @@ form .success + .select2 + .error-note + .success-note {
   transform: translate3d(0, 0, 0);
 }
 
-.phones-drop li {
-  margin-top: 0.7rem;
+.h-contacts__title {
+  display: block;
+  margin-bottom: 2.6rem;
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.6rem;
+  line-height: 2.3rem;
+  color: #000;
 }
 
-.phones-drop li:first-child {
+.h-contacts__content {
+  position: relative;
+  white-space: nowrap;
+}
+
+.h-contacts__phones {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0;
+  padding: 3px 1.6rem 0 0;
+  list-style: none;
+  font-size: 1.5rem;
+  line-height: 1.9rem;
+}
+
+.h-contacts__phones li {
+  margin-top: 1.4rem;
+}
+
+.h-contacts__phones li:first-child {
   margin-top: 0;
 }
 
-.phones-drop a {
+.h-contacts__phones a {
   text-decoration: none;
   color: #4a4a4a;
 }
 
-.phones-drop a span {
+.h-contacts__phones a span {
   transition-property: box-shadow;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
 
-.phones-drop a:hover {
+.h-contacts__phones a:hover {
   color: #4a4a4a;
 }
 
-.phones-drop a:hover span {
+.h-contacts__phones a:hover span {
   box-shadow: inset 0 -2px 0 rgba(74, 74, 74, 0.75);
 }
 
-.phones-drop a strong, .phones-drop a b {
+.h-contacts__phones a strong, .h-contacts__phones a b {
   font-family: "circe-extra-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
+}
+
+.h-contacts__phones a[class*="operator"] {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+  padding-left: 3.3rem;
+}
+
+.h-contacts__phones a[class*="operator"]::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 26px;
+  height: 26px;
+  -ms-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+  background: url(../img/sprite-operators.png) no-repeat;
+  background-repeat: no-repeat;
+  background-size: 26px;
+}
+
+.h-contacts__phones a.operator_velcom::before {
+  background-position: 0 1px;
+}
+
+.h-contacts__phones a.operator_life::before {
+  background-position: 0 -30px;
+}
+
+.h-contacts__phones a.operator_mts::before {
+  background-position: 0 -65px;
+}
+
+.h-contacts__share {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.h-contacts__share::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  opacity: 0.2;
+  border-right: 1px solid #979797;
+}
+
+.h-contacts__chats {
+  display: block;
+  overflow: hidden;
+  padding-left: 2rem;
+  margin-bottom: 2.6rem;
+}
+
+.h-contacts__chats:last-child {
+  margin-bottom: 0;
+}
+
+.h-contacts__chats-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 -1rem;
+}
+
+.h-contacts__chats-list::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.h-contacts__chats-list li {
+  float: left;
+  margin: 0 1rem 0.7rem 0;
+  padding: 0;
+}
+
+.h-contacts__chats-list li::before {
+  content: none;
+}
+
+.h-contacts__chats-list a {
+  display: block;
+  height: 2.54rem;
+  width: 2.54rem;
+  text-decoration: none;
+  text-indent: -9999px;
+  overflow: hidden;
+  background-repeat: no-repeat;
+  background-image: url(../img/sprite-chat.jpg);
+  background-size: 103px;
+}
+
+.h-contacts__chats-list a.chat-viber {
+  background-position: -5px -4px;
+}
+
+.h-contacts__chats-list a.chat-telegram {
+  background-position: -38px -4px;
+}
+
+.h-contacts__chats-list a.chat-whatsapp {
+  background-position: -73px -4px;
+}
+
+.h-contacts__email {
+  padding-left: 2rem;
+}
+
+.h-contacts__link {
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.6rem;
+  line-height: 2.3rem;
+  text-decoration: none;
+  color: #6e52dd;
+}
+
+.h-contacts__link span {
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.h-contacts__link:hover {
+  color: #6e52dd;
+}
+
+.h-contacts__link:hover span {
+  box-shadow: inset 0 -2px 0 rgba(110, 82, 221, 0.75);
 }
 
 /* header contacts end */

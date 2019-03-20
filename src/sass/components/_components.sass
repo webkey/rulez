@@ -231,7 +231,7 @@ $spinner-btn-width: 35px
 /* default overlay end
 
 /* default popup
-.popup-def
+//.popup-def
   position: fixed
   left: 0
   top: 0
@@ -243,7 +243,14 @@ $spinner-btn-width: 35px
   justify-content: center
   padding: 2rem nth($page-layout-space, 2)
 
-.popup-def__container
+.popup-def
+  display: none
+  width: 100%
+  max-width: 44rem
+  padding: 3rem 4.2rem
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3)
+
+//.popup-def__container
   background-color: white
   width: 44rem
   max-height: 100%
@@ -267,6 +274,9 @@ $spinner-btn-width: 35px
   color: $title-color
   margin-bottom: 2rem
 
+  .popup-def__heading &
+    margin: 0 2rem 0 0
+
 .popup-def__sub-title
   +font-bold
   font-size: 1.8rem
@@ -275,14 +285,19 @@ $spinner-btn-width: 35px
   margin-bottom: 2rem
 
 .popup-def__form
-  margin-bottom: 2rem
+  margin-bottom: 1.5rem
 
   &:last-child
     margin-bottom: 0
 
 .popup-def__form-input
+  margin-bottom: 0.9rem
+
   &:last-child
     margin-bottom: 0
+
+.popup-def__form-input_btn
+  margin-top: 2.4rem
 
 .popup-def__btn
   display: block
@@ -298,7 +313,7 @@ $spinner-btn-width: 35px
   +underlinedLinks($base-color)
 
 .popup-def__meta
-  margin-bottom: 4rem
+  margin-bottom: 3.5rem
 
   &:last-child
     margin-bottom: 0
@@ -343,6 +358,10 @@ $popup-def__soc-space-outer: 1rem 1rem
 
   & > span
     +hide-text
+
+.popup-def-wrap
+  .fancybox-bg
+    background-color: rgba($base-color, 0.9)
 
 /* default popup end
 
@@ -648,7 +667,7 @@ $popup-def__soc-space-outer: 1rem 1rem
 
     +underlinedLinks(white)
 
-.phones
+.h-contacts
   position: relative
   padding-right: 2.5rem
   line-height: 1
@@ -670,61 +689,54 @@ $popup-def__soc-space-outer: 1rem 1rem
     strong, b
       +font-extra-bold
 
-  .phones-opener
-    $size: 2.4rem 2.4rem
+.h-contacts__opener
+  $size: 2.4rem 2.4rem
+  position: absolute
+  top: 50%
+  right: 0
+  height: nth($size, 1)
+  width: nth($size, 2)
+  margin-top: -#{round-float(nth($size, 1) / 2, 1) + 0.2}
+  cursor: pointer
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  text-indent: -9999px
+  overflow: hidden
+  border-radius: 5px
+  // transition
+  $prop: background-color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  &::before
+    $size: 0.6rem
+    content: ""
+    display: block
     position: absolute
     top: 50%
-    right: 0
-    height: nth($size, 1)
-    width: nth($size, 2)
-    margin-top: -#{round-float(nth($size, 1) / 2, 1) + 0.2}
-    cursor: pointer
-    user-select: none
-    -webkit-tap-highlight-color: transparent
-    text-indent: -9999px
-    overflow: hidden
-    border-radius: 5px
-    // transition
-    $prop: background-color
-    will-change: $prop
-    transition:
-      property: $prop
-      duration: $animation-speed
+    left: 50%
+    width: $size
+    height: $size
+    margin: -0.4rem 0 0 -0.3rem
+    border: solid currentColor
+    border-width: 0 1px 1px 0
+    transform: rotate(0.125turn)
 
+  .is-open > &
     &::before
-      $size: 0.6rem
-      content: ""
-      display: block
-      position: absolute
-      top: 50%
-      left: 50%
-      width: $size
-      height: $size
-      margin: -0.4rem 0 0 -0.3rem
-      border: solid currentColor
-      border-width: 0 1px 1px 0
-      transform: rotate(0.125turn)
+      border-width: 1px 0 0 1px
+      margin-top: -0.1rem
 
-  &.is-open
-    .phones-opener
-      &::before
-        border-width: 1px 0 0 1px
-        margin-top: -0.1rem
-
-.phones-drop
+.h-contacts__drop
   position: absolute
-  right: 0
+  left: 0
   top: 100%
-  margin: 0
-  padding: 1.6rem 1.8rem
-  width: calc(9.5em + 3.6rem)
-  font-size: 1.6rem
-  line-height: 2.0rem
-  list-style: none
-  text-align: right
-  opacity: 0
-  visibility: hidden
-  pointer-events: none
+  padding: 1.4rem 2rem 2.5rem 2rem
+  //opacity: 0
+  //visibility: hidden
+  //pointer-events: none
   $translate: 0, -2px
   transform: translate($translate)
   transform: translate3d($translate, 0)
@@ -748,8 +760,29 @@ $popup-def__soc-space-outer: 1rem 1rem
     transform: translate($translate)
     transform: translate3d($translate, 0)
 
+.h-contacts__title
+  display: block
+  margin-bottom: 2.6rem
+  +font-bold
+  font-size: 1.6rem
+  line-height: 2.3rem
+  color: $title-color
+
+.h-contacts__content
+  position: relative
+  white-space: nowrap
+
+.h-contacts__phones
+  display: inline-block
+  vertical-align: top
+  margin: 0
+  padding: 3px 1.6rem 0 0
+  list-style: none
+  font-size: 1.5rem
+  line-height: 1.9rem
+
   li
-    margin-top: 0.7rem
+    margin-top: 1.4rem
 
     &:first-child
       margin-top: 0
@@ -762,6 +795,107 @@ $popup-def__soc-space-outer: 1rem 1rem
 
     strong, b
       +font-extra-bold
+
+    @at-root
+      #{&}[class*="operator"]
+        display: inline-block
+        vertical-align: top
+        position: relative
+        padding-left: 3.3rem
+
+        &::before
+          content: ""
+          display: block
+          position: absolute
+          left: 0
+          top: 50%
+          width: 26px
+          height: 26px
+          transform: translate(0, -50%)
+          background: url(../../img/sprite-operators.png) no-repeat
+          background-repeat: no-repeat
+          background-size: 26px
+
+      &.operator_velcom
+        &::before
+          background-position: 0 1px
+
+      &.operator_life
+        &::before
+          background-position: 0 -30px
+
+      &.operator_mts
+        &::before
+          background-position: 0 -65px
+
+.h-contacts__share
+  display: inline-block
+  vertical-align: top
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    top: 0
+    bottom: 0
+    opacity: 0.2
+    border-right: 1px solid #979797
+
+.h-contacts__chats
+  display: block
+  overflow: hidden
+  padding-left: 2rem
+  margin-bottom: 2.6rem
+
+  &:last-child
+    margin-bottom: 0
+
+.h-contacts__chats-list
+  list-style: none
+  padding: 0
+  margin: 0 0 -1rem
+  +clear
+
+  li
+    float: left
+    margin: 0 1rem 0.7rem 0
+    padding: 0
+
+    &::before
+      content: none
+
+  a
+    $size: 2.54rem
+    display: block
+    height: $size
+    width: $size
+    text-decoration: none
+    text-indent: -9999px
+    overflow: hidden
+    background-repeat: no-repeat
+    background-image: url(../../img/sprite-chat.jpg)
+    background-size: 103px
+
+    &.chat-viber
+      background-position: -5px -4px
+
+    &.chat-telegram
+      background-position: -38px -4px
+
+    &.chat-whatsapp
+      background-position: -73px -4px
+
+.h-contacts__email
+  padding-left: 2rem
+
+.h-contacts__link
+  +font-bold
+  font-size: 1.6rem
+  line-height: 2.3rem
+  text-decoration: none
+  color: $base-color
+  +underlinedLinks($base-color)
+
 
 /* header contacts end
 

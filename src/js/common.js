@@ -825,205 +825,6 @@ function tabs() {
 }
 
 /**
- * !jquery.ms-drop.js
- * Version: 2018.1.0
- * Author: Astronim*
- * Description: Toggle a drop menu
- */
-
-(function($){
-  var defaults = {
-    // container: '.ms-drop__container-js', // is element
-    opener: '.ms-drop__opener-js',
-    openerText: 'span',
-    drop: '.ms-drop__drop-js',
-    dropOption: '.ms-drop__drop-js a',
-    dropOptionText: 'span',
-    initClass: 'ms-drop-initialized',
-    closeOutsideClick: true, // Close all if outside click
-    closeEscClick: true, // Close all if click on escape key
-    closeAfterSelect: true, // Close drop after selected option
-    preventOption: false, // Add preventDefault on click to option
-    selectValue: true, // Display the selected value in the opener
-    modifiers: {
-      isOpen: 'is-open',
-      activeItem: 'active-item'
-    }
-
-    // Callback functions
-    // afterInit: function () {} // Fire immediately after initialized
-    // afterChange: function () {} // Fire immediately after added or removed an open-class
-  };
-
-  function MsDrop(element, options) {
-    var self = this;
-
-    self.config = $.extend(true, {}, defaults, options);
-
-    self.element = element;
-
-    self.callbacks();
-    self.event();
-    // close drop if clicked outside active element
-    if (self.config.closeOutsideClick) {
-      self.closeOnClickOutside();
-    }
-    // close drop if clicked escape key
-    if (self.config.closeEscClick) {
-      self.closeOnClickEsc();
-    }
-    self.eventDropItems();
-    self.init();
-  }
-
-  /** track events */
-  MsDrop.prototype.callbacks = function () {
-    var self = this;
-    $.each(self.config, function (key, value) {
-      if(typeof value === 'function') {
-        self.element.on(key + '.msDrop', function (e, param) {
-          return value(e, self.element, param);
-        });
-      }
-    });
-  };
-
-  MsDrop.prototype.event = function () {
-    var self = this;
-    self.element.on('click', self.config.opener, function (event) {
-      event.preventDefault();
-      var curContainer = $(this).closest(self.element);
-
-      if (curContainer.hasClass(self.config.modifiers.isOpen)) {
-
-        curContainer.removeClass(self.config.modifiers.isOpen);
-
-        // callback afterChange
-        self.element.trigger('afterChange.msDrop');
-        return;
-      }
-
-      self.element.removeClass(self.config.modifiers.isOpen);
-
-      curContainer.addClass(self.config.modifiers.isOpen);
-
-      // callback afterChange
-      self.element.trigger('afterChange.msDrop');
-    });
-  };
-
-  MsDrop.prototype.closeOnClickOutside = function () {
-
-    var self = this;
-    $(document).on('click', function(event){
-      if( $(event.target).closest(self.element).length ) {
-        return;
-      }
-
-      self.closeDrop();
-      event.stopPropagation();
-    });
-
-  };
-
-  MsDrop.prototype.closeOnClickEsc = function () {
-
-    var self = this;
-    $(document).keyup(function(e) {
-      if (e.keyCode === 27) {
-        self.closeDrop();
-      }
-    });
-
-  };
-
-  MsDrop.prototype.closeDrop = function (container) {
-
-    var self = this,
-        $element = $(container || self.element);
-
-    if ($element.hasClass(self.config.modifiers.isOpen)) {
-      $element.removeClass(self.config.modifiers.isOpen);
-    }
-
-  };
-
-  MsDrop.prototype.eventDropItems = function () {
-
-    var self = this;
-
-    self.element.on('click', self.config.dropOption, function (e) {
-      var cur = $(this);
-      var curParent = cur.parent();
-
-      if(curParent.hasClass(self.config.modifiers.activeItem)){
-        e.preventDefault();
-        return;
-      }
-      if(self.config.preventOption){
-        e.preventDefault();
-      }
-
-      var curContainer = cur.closest(self.element);
-
-      curContainer.find(self.config.dropOption).parent().removeClass(self.config.modifiers.activeItem);
-
-      curParent
-          .addClass(self.config.modifiers.activeItem);
-
-      if(self.config.selectValue){
-        curContainer
-            .find(self.config.opener).find(self.config.openerText)
-            .html(cur.find(self.config.dropOptionText).html());
-      }
-
-      if(self.config.closeAfterSelect) {
-        self.closeDrop();
-      }
-
-    });
-
-  };
-
-  MsDrop.prototype.init = function () {
-
-    this.element.addClass(this.config.initClass);
-
-    this.element.trigger('afterInit.msDrop');
-
-  };
-
-  $.fn.msDrop = function (options) {
-    'use strict';
-
-    return this.each(function(){
-      new MsDrop($(this), options);
-    });
-
-  };
-})(jQuery);
-
-/**
- * !Toggle dropdown menu
- */
-function toggleDropMenu() {
-  var $phones = $('.phones-js');
-
-  if ($phones.length) {
-    $phones.msDrop({
-      opener: '.phones-opener-js',
-      drop: '.phones-drop-js',
-      preventOption: true,
-      selectValue: false,
-      modifiers: {
-        isOpen: 'is-open',
-        activeItem: 'active-item'
-      }
-    })
-  }
-}
-
-/**
  * !jquery.ms-switch-class.js
  * Version: 2018.1.0
  * Author: *
@@ -1259,6 +1060,19 @@ function toggleDropMenu() {
  * !Toggle shutters panel, like a search panel, a catalog shutter etc.
  */
 function toggleShutters() {
+  // Toggle contacts in header
+  var $hContactsSwitcher = $('.h-contacts__opener-js'),
+      hContactsDropJs;
+  if ($hContactsSwitcher.length) {
+    hContactsDropJs = $hContactsSwitcher.switchClass({
+      switchClassTo: $('.h-contacts-js').add('.h-contacts__drop-js')
+      , modifiers: {
+        activeClass: 'is-open'
+      }
+      , cssScrollFixed: false
+    });
+  }
+
   // Toggle a search panel
   var $searchSwitcher = $('.toggle-search-js'), searchPanelJs;
   if ($searchSwitcher.length) {
@@ -1324,6 +1138,12 @@ function toggleShutters() {
   }
 
   // При добавлении классов одним экземпляром плагина,
+  // Удалять другие
+  // todo Добавить в плагин этот кусок
+  function hContactsSwitcherRemoveClass() {
+    hContactsDropJs && hContactsDropJs.switchClass('remove');
+  }
+
   function catalogShutterRemoveClass() {
     catalogShutterJs && catalogShutterJs.switchClass('remove');
   }
@@ -1340,9 +1160,19 @@ function toggleShutters() {
     searchPanelJs && searchPanelJs.switchClass('remove');
   }
 
-  // вызывать метод удаления классов другими
+  // Вызывать метод удаления классов другими
+  if (hContactsDropJs) {
+    hContactsDropJs.on('switchClass.beforeAdded', function () {
+      searchPopupRemoveClass();
+      catalogShutterRemoveClass();
+      filtersShutterRemoveClass();
+      addFormPopupRemoveClass();
+    });
+  }
+
   if (searchPanelJs) {
     searchPanelJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
       catalogShutterRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
@@ -1351,20 +1181,25 @@ function toggleShutters() {
 
   if (catalogShutterJs) {
     catalogShutterJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
     });
   }
+
   if (filtersShutterJs) {
     filtersShutterJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
       searchPopupRemoveClass();
       catalogShutterRemoveClass();
       addFormPopupRemoveClass();
     });
   }
+
   if (addFormPopupJs) {
     addFormPopupJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
       catalogShutterRemoveClass();
@@ -2606,6 +2441,39 @@ function initSpinner ($_elem) {
 }
 
 /**
+ * Popups
+ */
+function popupsInit() {
+
+  var $openPopupDef = $('.open-popup-def-js');
+  $openPopupDef.fancybox({
+    autoFocus: true,
+    closeExisting: true,
+    baseClass: "popup-def-wrap",
+    selectable: true,
+    // Internationalization
+    // ====================
+
+    lang: $('html').attr('lang'),
+    i18n: {
+      ru: {
+        CLOSE: "Закрыть",
+        NEXT: "Вперед",
+        PREV: "Назад",
+        ERROR: "Ошибка загрузки. <br/> Повторите запрос позднее.",
+        PLAY_START: "Начать демонстрацию",
+        PLAY_STOP: "Приостановить демонстрацию",
+        FULL_SCREEN: "На полный экран",
+        THUMBS: "Миниатюры",
+        DOWNLOAD: "Скачать",
+        SHARE: "Поделиться",
+        ZOOM: "Увеличить"
+      }
+    }
+  });
+}
+
+/**
  * !Form validation
  * */
 function formValidation() {
@@ -2666,7 +2534,6 @@ $(document).ready(function () {
   slidersInit();
   gridLayout();
   tabs();
-  toggleDropMenu();
   toggleShutters();
   changeState();
   addToCarAnimation();
@@ -2675,7 +2542,7 @@ $(document).ready(function () {
   multiFiltersInit();
   sortingState();
   initSpinner($('.spinner-js'));
-
   onlyNumberInput();
+  popupsInit();
   formValidation();
 });

@@ -91,30 +91,30 @@
   </div>
 </footer>
 
-<div class="popup-overlay"></div>
-<div class="popup-def">
-  <div class="popup-def__container">
+<!--Login-->
+<div class="popup-def" id="popup-login">
+  <div class="popup-def__container" data-selectable="true">
     <div class="popup-def__heading">
       <strong class="popup-def__title">Войти</strong>
-      <a class="popup-def__link" href="#"><span>Зарегистрироваться</span></a>
+      <a href="#popup-reg" class="popup-def__link open-popup-def-js" title="Зарегистрироваться"><span>Зарегистрироваться</span></a>
     </div>
 
     <form action="#" method="post" class="popup-def__form validate-js">
       <label class="input-wrap popup-def__form-input">
-        <input class="input-def" name="name" placeholder="Логин" required type="text">
+        <input class="input-def" name="name" placeholder="Логин" autofocus required type="text">
         @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
       </label>
       <label class="input-wrap popup-def__form-input">
-        <input class="input-def" name="name" placeholder="Пароль" required type="password">
+        <input class="input-def" name="pass" placeholder="Пароль" required type="password">
         @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
       </label>
-      <div class="input-wrap input-wrap_btn popup-def__form-input">
+      <div class="input-wrap input-wrap_btn popup-def__form-input popup-def__form-input_btn">
         <input class="btn-alt popup-def__btn" type="submit" value="Войти">
       </div>
     </form>
 
     <div class="popup-def__meta">
-      <a class="popup-def__link" href="#"><span>Восстановить пароль?</span></a>
+      <a href="#popup-password" class="popup-def__link open-popup-def-js" title="Востановление пароля"><span>Восстановить пароль?</span></a>
     </div>
 
     <div class="popup-def__sub-title">Войти через соцсети</div>
@@ -136,6 +136,58 @@
         @@include("includes/svg/icon-soc--google-plus.svg")
         <span>Google Plus</span>
       </a>
+    </div>
+  </div>
+</div>
+
+<!--Registration-->
+<div class="popup-def" id="popup-reg">
+  <div class="popup-def__container" data-selectable="true">
+    <div class="popup-def__heading">
+      <strong class="popup-def__title">Зарегистрироваться</strong>
+      <a href="#popup-login" class="popup-def__link open-popup-def-js" title="Вход в личный кабинет"><span>Войти</span></a>
+    </div>
+
+    <form action="#" method="post" class="popup-def__form validate-js">
+      <label class="input-wrap popup-def__form-input">
+        <input class="input-def" name="name" placeholder="Логин" autofocus required type="text">
+        @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+      </label>
+      <label class="input-wrap popup-def__form-input">
+        <input class="input-def" name="pass_1" placeholder="Пароль" required type="password">
+        @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+      </label>
+      <label class="input-wrap popup-def__form-input">
+        <input class="input-def" name="pass_2" placeholder="Повтортие пароль" required type="password">
+        @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+      </label>
+      <div class="input-wrap input-wrap_btn popup-def__form-input popup-def__form-input_btn">
+        <input class="btn-alt popup-def__btn" type="submit" value="Зарегистрироваться">
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--Restore password-->
+<div class="popup-def" id="popup-password">
+  <div class="popup-def__container" data-selectable="true">
+    <div class="popup-def__heading">
+      <strong class="popup-def__title">Восстановление пароля</strong>
+      <a href="#popup-login" class="popup-def__link open-popup-def-js" title="Вход в личный кабинет"><span>Назад</span></a>
+    </div>
+
+    <form action="#" method="post" class="popup-def__form validate-js">
+      <label class="input-wrap popup-def__form-input">
+        <input class="input-def" name="email" placeholder="Введите свой email" autofocus required type="email">
+        @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+      </label>
+      <div class="input-wrap input-wrap_btn popup-def__form-input popup-def__form-input_btn">
+        <input class="btn-alt popup-def__btn" type="submit" value="Восстановить">
+      </div>
+    </form>
+
+    <div class="popup-def__meta">
+      <a href="#popup-reg" class="popup-def__link open-popup-def-js" title="Зарегистрироваться"><span>Зарегистрироваться</span></a>
     </div>
   </div>
 </div>
