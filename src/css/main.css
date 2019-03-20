@@ -3132,12 +3132,7 @@ form .success + .select2 + .error-note + .success-note {
   fill: #6e52dd;
 }
 
-.user-options__item > a:hover {
-  background-color: #f5f5f5;
-}
-
-.no-touchevents .user-options__item[data-title]:hover::before {
-  transition-delay: 0.6s;
+.no-touchevents .user-options__item > a[data-title]:hover::before {
   opacity: 1;
   visibility: visible;
   -ms-transform: translate(0, 0);
@@ -3347,7 +3342,7 @@ form .success + .select2 + .error-note + .success-note {
   border-width: 1px 1px 0 0;
   -ms-transform: rotate(45deg);
       transform: rotate(45deg);
-  margin: 0 0 0 10px;
+  margin: -1px 0 1px 9px;
 }
 
 .breadcrumbs__list li:last-child::after {
@@ -3751,7 +3746,7 @@ form .success + .select2 + .error-note + .success-note {
   min-width: 150px;
   list-style: none;
   margin: 0;
-  padding: 1.6rem 1.8rem;
+  padding: 1.6rem 1.8rem 2.5rem;
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
@@ -3759,9 +3754,9 @@ form .success + .select2 + .error-note + .success-note {
   -ms-transform: translate(0, -2px) !important;
       transform: translate(0, -2px) !important;
   transform: translate3d(0, -2px, 0) !important;
-  background-color: #8f77ed;
+  background-color: white;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 5px 0 5px 5px;
+  border-radius: 5px;
   will-change: transform, opacity, visibility;
   transition-property: transform, opacity, visibility;
   transition-duration: 0.2s;
@@ -3779,7 +3774,7 @@ form .success + .select2 + .error-note + .success-note {
 .okayNav__nav--invisible li {
   font-size: 1.4rem;
   line-height: 1.8rem;
-  margin-top: 0.7rem;
+  margin-top: 1.3rem;
 }
 
 .okayNav__nav--invisible li:first-child {
@@ -3787,7 +3782,7 @@ form .success + .select2 + .error-note + .success-note {
 }
 
 .okayNav__nav--invisible a {
-  color: white;
+  color: #4a4a4a;
   text-decoration: none;
   transition-property: box-shadow;
   transition-duration: 0.2s;
@@ -3852,18 +3847,22 @@ form .success + .select2 + .error-note + .success-note {
   pointer-events: none;
 }
 
-.okayNav__menu-toggle:hover {
-  background-color: #8f77ed;
+.okayNav__menu-toggle:hover span {
+  transition-property: box-shadow;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+}
+
+.okayNav__menu-toggle:hover:hover {
+  color: white;
+}
+
+.okayNav__menu-toggle:hover:hover span {
+  box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.75);
 }
 
 .okayNav__menu-toggle:active {
   top: 1px;
-}
-
-.okayNav__menu-toggle.icon--active {
-  background-color: #8f77ed;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
 }
 
 .okayNav__menu-toggle.icon--active i {
@@ -4018,9 +4017,12 @@ form .success + .select2 + .error-note + .success-note {
 
 .h-contacts__drop {
   position: absolute;
-  left: 0;
+  right: 0;
   top: 100%;
   padding: 1.4rem 2rem 2.5rem 2rem;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   -ms-transform: translate(0, -2px);
       transform: translate(0, -2px);
   transform: translate3d(0, -2px, 0);
@@ -4400,7 +4402,6 @@ form .success + .select2 + .error-note + .success-note {
 }
 
 .no-touchevents .cart-link[data-title]:hover::before {
-  transition-delay: 0.6s;
   opacity: 1;
   visibility: visible;
   -ms-transform: translate(0, 0);
@@ -5964,12 +5965,10 @@ a.catalog-opener.catalog-is-open > i::after {
       align-items: center;
   -ms-flex-pack: start;
       justify-content: flex-start;
-  pointer-events: none;
 }
 
 .p-stickers__item {
   margin: 0 0.6rem 0.6rem 0;
-  pointer-events: none;
 }
 
 /* product stickers end */
@@ -7787,6 +7786,10 @@ input[type="text"].quick-order__input.success {
 .action-btn_like svg path {
   fill: transparent;
   stroke: #ef4180;
+}
+
+.action-btn_like.added svg path {
+  fill: #ef4180;
 }
 
 .product__options-btn_compare {

@@ -162,7 +162,7 @@ $spinner-btn-width: 35px
       border: solid rgba(white, 0.2)
       border-width: 1px 1px 0 0
       transform: rotate(45deg)
-      margin: 0 0 0 10px
+      margin: -1px 0 1px 9px
 
     &:last-child::after
       content: none
@@ -520,7 +520,7 @@ $popup-def__soc-space-outer: 1rem 1rem
   min-width: 150px
   list-style: none
   margin: 0
-  padding: 1.6rem 1.8rem
+  padding: 1.6rem 1.8rem 2.5rem
   opacity: 0
   visibility: hidden
   pointer-events: none
@@ -529,9 +529,9 @@ $popup-def__soc-space-outer: 1rem 1rem
   transform: translate($translate) !important
   transform: translate3d($translate, 0) !important
   //background-color: $base-color
-  background-color: $bg-color-light
+  background-color: white
   box-shadow: 0 1px 2px rgba(black, 0.15)
-  border-radius: 5px 0 5px 5px
+  border-radius: 5px
   // transition
   $prop: transform, opacity, visibility
   will-change: $prop
@@ -550,13 +550,13 @@ $popup-def__soc-space-outer: 1rem 1rem
   li
     font-size: 1.4rem
     line-height: 1.8rem
-    margin-top: 0.7rem
+    margin-top: 1.3rem
 
     &:first-child
       margin-top: 0
 
   a
-    color: white
+    color: $text-color
     text-decoration: none
     // transition
     $prop: box-shadow
@@ -612,15 +612,17 @@ $popup-def__soc-space-outer: 1rem 1rem
     pointer-events: none
 
   &:hover
-    background-color: $bg-color-light
+    //background-color: $bg-color-light
+
+    +underlinedLinks(white)
 
   &:active
     top: 1px
 
   &.icon--active
-    background-color: $bg-color-light
-    border-bottom-left-radius: 0
-    border-bottom-right-radius: 0
+    //background-color: $bg-color-light
+    //border-bottom-left-radius: 0
+    //border-bottom-right-radius: 0
 
     i
       border-width: 1px 0 0 1px
@@ -731,12 +733,12 @@ $popup-def__soc-space-outer: 1rem 1rem
 
 .h-contacts__drop
   position: absolute
-  left: 0
+  right: 0
   top: 100%
   padding: 1.4rem 2rem 2.5rem 2rem
-  //opacity: 0
-  //visibility: hidden
-  //pointer-events: none
+  opacity: 0
+  visibility: hidden
+  pointer-events: none
   $translate: 0, -2px
   transform: translate($translate)
   transform: translate3d($translate, 0)
@@ -1066,7 +1068,7 @@ $popup-def__soc-space-outer: 1rem 1rem
   // tooltip
   .no-touchevents &[data-title]:hover
     &::before
-      transition-delay: 0.6s
+      //transition-delay: 0.6s
       opacity: 1
       visibility: visible
       $translate: 0, 0
@@ -2417,12 +2419,12 @@ $p-sticker-size: 2.6rem 2.6rem
   flex-wrap: wrap
   align-items: center
   justify-content: flex-start
-  pointer-events: none
+  //pointer-events: none
 
 // --> stickers list item <--
 .p-stickers__item
   margin: 0 0.6rem 0.6rem 0
-  pointer-events: none
+  //pointer-events: none
 
 /* product stickers end
 
@@ -4044,6 +4046,11 @@ $product-item-space: 2rem 2.4rem
     path
       fill: transparent
       stroke: $mark-color
+
+  &.added
+    svg
+      path
+        fill: $mark-color
 
 // compare button in a product options
 .product__options-btn_compare

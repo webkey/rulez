@@ -177,18 +177,18 @@ $uo-border-radius: 0 0 7px 7px
         fill: $base-color
 
     // hover
-    &:hover
+    //&:hover
       background-color: $bg-color
 
-  // tooltip
-  .no-touchevents &[data-title]:hover
-    &::before
-      transition-delay: 0.6s
-      opacity: 1
-      visibility: visible
-      $translate: 0, 0
-      transform: translate($translate)
-      transform: translate3d($translate, 0)
+    // tooltip
+    .no-touchevents &[data-title]:hover
+      &::before
+        //transition-delay: 0.2s
+        opacity: 1
+        visibility: visible
+        $translate: 0, 0
+        transform: translate($translate)
+        transform: translate3d($translate, 0)
 
 // user-options__item_login
 .user-options__item_login
