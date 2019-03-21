@@ -78,54 +78,56 @@ $letter-spacing: normal !default
 
 // Heading h1
 $font-size-h1: 3.6rem !default
-$line-height-h1: round-float(5.2rem/$font-size-h1, 2) !default
+$line-height-h1: 5.2rem !default
+$line-height-h1-kef: $line-height-h1 / $font-size-h1
 // ----------------------------------------------------
-$font-size-h1--md: 3.4rem !default
-$line-height-h1--md: round-float(4.8rem/$font-size-h1--md, 2) !default
+$font-size-h1--tab: 3.4rem !default
+$line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h1--sm: 3.0rem !default
-$line-height-h1--sm: round-float(4.2rem/$font-size-h1--sm, 2) !default
+$font-size-h1--mob: 3.0rem !default
+$line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 =font-h1()
   font-size: $font-size-h1
   line-height: $line-height-h1
 
-  +media('<tab-lg')
-    font-size: $font-size-h1--md
-    line-height: $line-height-h1--md
+  +media('<desk-sm')
+    font-size: $font-size-h1--tab
+    line-height: $line-height-h1--tab
 
-  +media('<mob-lg')
-    font-size: $font-size-h1--sm
-    line-height: $line-height-h1--sm
+  +media('<tab-sm')
+    font-size: $font-size-h1--mob
+    line-height: $line-height-h1--mob
 
 // Heading h2
-$font-size-h2: round-float($font-size-h1*3.0rem/3.6rem, 1) !default
-$line-height-h2: round-float(4.2rem/3.0rem, 2) !default
+$font-size-h2: 3.0rem !default
+$line-height-h2: 4.2rem !default
+$line-height-h2-kef: $line-height-h2 / $font-size-h2
 // ----------------------------------------------------
-$font-size-h2--md: round-float($font-size-h1--md*0.84, 1) !default
-$line-height-h2--md: round-float(($line-height-h1--md*1.02), 2) !default
+$font-size-h2--tab: 2.8rem !default
+$line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h2--sm: round-float($font-size-h1--sm*0.87, 1) !default
-$line-height-h2--sm: round-float(($line-height-h1--sm*1.01), 2) !default
+$font-size-h2--mob: 2.4rem !default
+$line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 =font-h2()
   font-size: $font-size-h2
   line-height: $line-height-h2
 
-  +media('<tab-lg')
-    font-size: $font-size-h2--md
-    line-height: $line-height-h2--md
+  +media('<desk-sm')
+    font-size: $font-size-h2--tab
+    line-height: $line-height-h2--tab
 
-  +media('<mob-lg')
-    font-size: $font-size-h2--sm
-    line-height: $line-height-h2--sm
+  +media('<tab-sm')
+    font-size: $font-size-h2--mob
+    line-height: $line-height-h2--mob
 
 // Heading h3
 $font-size-h3: round-float($font-size-h1*2.4rem/4.8rem, 1) !default
 $line-height-h3: round-float(3.6rem/2.4rem, 2) !default
 // ----------------------------------------------------
-$font-size-h3--sm: round-float($font-size-h1--sm*0.73, 1) !default
-$line-height-h3--sm: round-float(($line-height-h1--sm*1.05), 2) !default
+$font-size-h3--sm: round-float($font-size-h1--tab*0.73, 1) !default
+$line-height-h3--sm: round-float(($line-height-h1--tab*1.05), 2) !default
 // ----------------------------------------------------
 =font-h3()
   font-size: $font-size-h3
@@ -160,17 +162,18 @@ $bottom-space--small: round-float($font-size*$line-height*0.75, 1) !default
 
 // Color of brands
 $base-color: #6e52dd !default
-$bg-color-light: #8f77ed !default
+$base-color-light: #8f77ed !default
 $base-color-alt: #f8e71c !default
 // ----------------------------------------------------
 $bg-color: #f5f5f5 !default
 $bg-color-alt: #f3f3f3 !default
 // ----------------------------------------------------
-$text-color: #4a4a4a !default
+//$text-color: #4a4a4a !default
+$text-color: #131313 !default
 $text-color-light: #7e7e7e !default
 $text-color-disabled: #9b9b9b !default
 $text-color-soft: #c3c3c3 !default
-$title-color: #000 !default
+$title-color: #131313 !default
 // ----------------------------------------------------
 $link-color: blue !default
 // ----------------------------------------------------
@@ -217,8 +220,10 @@ $text-layout-width: 80rem !default
 $flood-layout-width: 100rem !default
 // отступы внутри секций (большие лотические единици)
 $section-inner-space: 2rem 2.4rem !default
+$section-outer-space: 2.5rem 2rem !default
 // отступы внутри одиночных элементов (боксов)
 $box-inner-space: 1.8rem 2.0rem !default
+$box-outer-space: 2.0rem 2.0rem !default
 // отступы внутри элементов по типу плитки или сетки
 $grid-inner-space: 2.8rem 3rem !default
 $grid-inner-space--lg: 1.8rem 2rem !default
@@ -291,8 +296,8 @@ $btn-height: 50px !default
 $btn-bg-color: $base-color-alt !default
 $btn-bg-hover-color: $btn-bg-color !default
 $btn-text-color: #333 !default
-$btn-alt-bg-color: $base-color !default
-$btn-alt-bg-hover-color: $base-color !default
+$btn-alt-bg-color: $base-color-light !default
+$btn-alt-bg-hover-color: $base-color-light !default
 $btn-alt-text-color: white !default
 $btn-disabled-color: #ccc !default
 

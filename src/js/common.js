@@ -406,10 +406,10 @@ function slidersInit() {
     $tapeSlider.each(function () {
       var $thisSlider = $(this),
           $thisBtnNext = $('.tape-slider__next-js', $thisSlider),
-          $thisBtnPrev = $('.tape-slider__prev-js', $thisSlider);
-      var tapeSliderJs;
+          $thisBtnPrev = $('.tape-slider__prev-js', $thisSlider),
+          tapeSliderInited;
 
-      tapeSliderJs = new Swiper($thisSlider, {
+      tapeSliderInited = new Swiper($thisSlider, {
         init: false,
         loop: false,
         keyboardControl: true,
@@ -423,14 +423,49 @@ function slidersInit() {
         }
       });
 
-      tapeSliderJs.on('init', function() {
-        $(tapeSliderJs.slides).matchHeight({
+      tapeSliderInited.on('init', function() {
+        $(tapeSliderInited.slides).matchHeight({
           byRow: true, property: 'height', target: null, remove: false
         });
-        $(tapeSliderJs.el).closest($thisSlider).addClass('is-loaded');
+        $(tapeSliderInited.el).closest($thisSlider).addClass('is-loaded');
       });
 
-      tapeSliderJs.init();
+      tapeSliderInited.init();
+    });
+
+  }
+
+  /**tape slider*/
+  var $cartSimilarSlider = $('.cart-similar-slider-js');
+  if ($cartSimilarSlider.length) {
+    $cartSimilarSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisBtnNext = $('.cart-similar-slider__next-js', $thisSlider),
+          $thisBtnPrev = $('.cart-similar-slider__prev-js', $thisSlider),
+          cartSimilarSliderInited;
+
+      cartSimilarSliderInited = new Swiper($thisSlider, {
+        init: false,
+        loop: false,
+        keyboardControl: true,
+        slidesPerView: 5,
+        spaceBetween: 10,
+
+        // Navigation arrows
+        navigation: {
+          nextEl: $thisBtnNext,
+          prevEl: $thisBtnPrev,
+        }
+      });
+
+      cartSimilarSliderInited.on('init', function() {
+        $(cartSimilarSliderInited.slides).matchHeight({
+          byRow: true, property: 'height', target: null, remove: false
+        });
+        $(cartSimilarSliderInited.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      cartSimilarSliderInited.init();
     });
 
   }
@@ -2411,13 +2446,24 @@ function onlyNumberInput() {
 function initSpinner ($_elem) {
   if($_elem.length){
     $.each($_elem, function () {
-      var $curSpinner = $(this);
+      var $curSpinner = $(this),
+          minVal = +$curSpinner.attr('min') || 0,
+          maxVal = +$curSpinner.attr('max') || null;
+
+      $curSpinner.on( "spincreate spinstop", function( event ) {
+        var $curElem = $(event.currentTarget),
+            $curSpin = $curElem.closest('.ui-spinner');
+
+        $curSpin.find('.ui-spinner-down').toggleClass('disabled', +$curElem.val() <= minVal);
+        $curSpin.find('.ui-spinner-up').toggleClass('disabled', +$curElem.val() >= maxVal);
+      } );
+
       $curSpinner.spinner({
-        min: $curSpinner.attr('min') || 0,
-        max: $curSpinner.attr('max') || null,
+        min: minVal,
+        max: maxVal,
         disabled: $curSpinner.data('disabled') || false
       });
-    })
+    });
   }
 
   // Проверка на ввод значения из доступного диапазона
@@ -2477,14 +2523,24 @@ function popupsInit() {
  * !Form validation
  * */
 function formValidation() {
+  $.validator.setDefaults({
+    submitHandler: function() {
+      alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
+      return false;
+    }
+  });
+
+  // $("#commentForm").validate();
+
   var $form = $('.validate-js');
 
   if ($form.length) {
     var changeClasses = function (elem, remove, add) {
+      console.log('changeClasses');
       elem
           .removeClass(remove).addClass(add);
       elem
-          .closest('form').find('label[for="' + $elem.attr('id') + '"]')
+          .closest('form').find('label[for="' + elem.attr('id') + '"]')
           .removeClass(remove).addClass(add);
       elem
           .closest('.input-wrap')
@@ -2504,10 +2560,6 @@ function formValidation() {
         },
         unhighlight: function (element, errorClass, successClass) {
           changeClasses($(element), errorClass, successClass);
-        },
-        submitHandler: function(form) {
-          alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
-          return false;
         }
       });
     });

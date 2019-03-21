@@ -23,7 +23,7 @@
 /* btn-def
 .btn-def
   position: relative
-  padding: 1.2rem 2rem
+  padding: 1.4rem 2rem
   margin: 0
   +font-bold
   color: $btn-text-color
@@ -31,9 +31,8 @@
   border: none
   box-shadow: 0 1px 1px rgba(black, 0.4)
   // transition
-  $prop: box-shadow
-  will-change: $prop
-  transition:
+  //$prop: box-shadow
+  //transition:
     property: $prop
     duration: $animation-speed
     timing-function: ease-in-out
@@ -48,11 +47,10 @@
 
   // hover
   &:hover
-    box-shadow: 0 3px 6px rgba(black, 0.3)
+    box-shadow: 0 3px 6px rgba(black, 0.2)
 
   // active
   &:active
-    top: 0
     box-shadow: none
 
   // disabled
@@ -63,12 +61,15 @@
     &::before, &::after
       display: none
 
+.btn-def_full-width
+  width: 100%
+
 /* btn-def end
 
 /* btn-alt
 .btn-alt
   position: relative
-  padding: 1.3rem 2rem
+  padding: 1.4rem 2rem
   margin: 0
   +font-bold
   color: $btn-alt-text-color
@@ -77,9 +78,8 @@
   border-radius: 4px
   box-shadow: none
   // transition
-  $prop: box-shadow
-  will-change: $prop
-  transition:
+  //$prop: box-shadow
+  //transition:
     property: $prop
     duration: $animation-speed
     timing-function: ease-in-out
@@ -89,17 +89,16 @@
       border-radius: 4px
 
   &, & > span
+    //+font(1.8rem, 2.2rem)
     +font(1.4rem, 2.2rem)
     letter-spacing: normal
 
   // hover
   &:hover
-    box-shadow: 0 3px 6px rgba(black, 0.3)
-    //top: -1px
+    box-shadow: 0 3px 6px rgba($btn-alt-bg-color, 0.35)
 
   // active
   &:active
-    top: 0
     box-shadow: none
 
   // disabled
@@ -125,6 +124,12 @@
   background: white
   border: 1px solid $border-color
   box-shadow: none
+  // transition
+  //$prop: box-shadow
+  //transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
 
   &, & > span
     +font(1.4rem, 2.2rem)
@@ -132,12 +137,10 @@
 
   // hover
   &:hover
-    box-shadow: 0 3px 6px rgba(black, 0.3)
-    top: -1px
+    box-shadow: 0 3px 6px rgba(black, 0.2)
 
   // active
   &:active
-    top: 0
     box-shadow: none
 
   // disabled

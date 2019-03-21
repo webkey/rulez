@@ -21,34 +21,27 @@
     </a>
   </div>
 
-  <div class="product-short__footer">
+  <div class="product-short__footer@@if(!context.withoutCart){ has-cart-btn}">
     <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product-short__offer">
-      @@if(context.price.val){
       <div class="p-short-price">
         @@if(context.priceOld.val){
         <div class="p-short-price__old"><strong class="p-short-price__old-val">@@priceOld.val</strong>&nbsp<em class="p-short-price__old-unit">@@priceOld.unit</em></div>
         }
         <div class="p-short-price__new"><strong class="p-short-price__new-val" itemprop="price" content="@@price.val">@@price.val</strong>&nbsp;<em class="p-short-price__new-unit" itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
       </div>
-      }
-
-      @@if(!context.withoutCart){
-      @@if(!context.inCart){
-      <a href="#" class="purchase-btn add-to-cart-js">
-        <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
-        <span class="purchase-btn__buy">Купить</span>
-        <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
-        @@include("includes/svg/icon-cart.svg")
-      </a>
-      }
-      @@if(context.inCart) {
-      <a href="#" class="purchase-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
-        <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
-        <span class="purchase-btn__buy">Купить</span>
-        <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
-        @@include("includes/svg/icon-cart.svg")
-      </a>
-      }}
     </div>
+    @@if(!context.withoutCart){
+    @@if(!context.inCart){
+    <a href="#" class="purchase-sm-btn add-to-cart-js">
+      <span class="purchase-sm-btn__to-cart">Добавить в&nbsp;корзину</span>
+      @@include("includes/svg/icon-cart.svg")
+    </a>
+    }
+    @@if(context.inCart) {
+    <a href="#" class="purchase-sm-btn add-to-cart-js added">
+      <span class="purchase-sm-btn__to-cart">Добавить в&nbsp;корзину</span>
+      @@include("includes/svg/icon-cart.svg")
+    </a>
+    }}
   </div>
 </div>
