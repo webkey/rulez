@@ -18,7 +18,7 @@
 
     <!--CONTENT-->
     <!--cart container-->
-    <section class="cart-container">
+    <section class="cart-container equal-height-js">
       <div class="cart-main cart-container__main">
         <!--cart-->
         <div class="cart">
@@ -35,16 +35,27 @@
             "price": {"val": "1500.00", "unit": "р."},
             "rate": {"width": "90%", "val": "4.5"}
             })
+            @@include("_tpl_cart-item.html", {
+            "classes": "cart__list-item",
+            "href": "product-card.html",
+            "src": "img/img-product-06.jpg",
+            "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+            "priceOld": {"val": "298.00", "unit": "р."},
+            "price": {"val": "250.00", "unit": "р."},
+            "rate": {"width": "50%", "val": "2.5"}
+            })
           </div>
         </div>
         <!--cart end-->
         <!--cart-similar-->
         <div class="cart-similar tabs-js">
-          <h3>Подходящие товары</h3>
-          <div class="simple-tabs-thumbs tabs__thumbs-js">
-            <a href="#cartSimilarHeadphones" class="tabs-active"><span>Наушники</span></a>
-            <a href="#cartSimilarMice"><span>Мышки</span></a>
-            <a href="#cartSimilarBags"><span>Сумки для ноутбуков</span></a>
+          <div class="cart-widget-caption cart-similar__caption">
+            <h3 class="cart-similar__title">Подходящие товары</h3>
+            <div class="simple-tabs-thumbs tabs__thumbs-js">
+              <a href="#cartSimilarHeadphones" class="tabs-active"><span>Наушники</span></a>
+              <a href="#cartSimilarMice"><span>Мышки</span></a>
+              <a href="#cartSimilarBags"><span>Сумки для ноутбуков</span></a>
+            </div>
           </div>
           <div class="tabs__panels-js">
             <div id="cartSimilarHeadphones">

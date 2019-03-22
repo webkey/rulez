@@ -1,31 +1,31 @@
 <div class="cart-item@@if(context.classes){ @@classes}">
-  <div class="p-add-form p-add-form-js">
-    <div class="p-add-form__figure">
-      <img class="p-add-form__figure-img" src="@@src" alt="@@title" />
+  <div class="cart-item__box">
+    <div class="cart-item__figure">
+      <img class="cart-item__figure-img" src="@@src" alt="@@title" />
     </div>
-    <div class="p-add-form__content">
-      <div class="p-add-form__title">@@title</div>
-      <div class="p-add-form__meta">
-        <div class="p-add-form__rate p-rate">
+    <div class="cart-item__content">
+      <div class="cart-item__caption">
+        <div class="cart-item__title">@@title</div>
+        <div class="cart-item__rate p-rate">
           <span style="width: @@rate.width;">@@rate.val</span>
         </div>
-        <div class="p-add-form__stock p-stock on"><i>&nbsp;</i>В наличии</div>
       </div>
-      <div class="p-add-form__options">
-        <div class="p-add-form__counter">
-          <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
-        </div>
-        <div class="p-add-form-price p-add-form__price">
+      <div class="cart-item__order">
+        <div class="cart-item__stock p-stock on"><i>&nbsp;</i>В наличии</div>
+        <div class="cart-item__price">
           @@if(context.priceOld.val){
-          <div class="p-add-form-price__old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>
+          <div class="cart-item__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>
           }
-          <div class="p-add-form-price__new"><strong>@@price.val</strong>&nbsp;<em>@@price.unit</em></div>
+          <div class="cart-item__price-new"><strong>@@price.val</strong>&nbsp;<em>@@price.unit</em></div>
+        </div>
+        <div class="cart-item__counter">
+          <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
         </div>
       </div>
     </div>
   </div>
 
-  <a href="#" class="close-p-add-form-popup p-add-form-popup-close-js">
+  <a href="#" class="cart-item__remove">
     @@include("includes/svg/icon-cross-sm.svg")
     <span>Удалить из корзины</span>
   </a>

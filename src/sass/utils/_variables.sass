@@ -27,7 +27,7 @@ $font-alt: Georgia, serif !default
 // Main font
 =font-normal()
   font-family: $font-norm
-  +font-reset
+  //+font-reset
 
 =font-bold()
   font-family: $font-bold
@@ -123,19 +123,28 @@ $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !
     line-height: $line-height-h2--mob
 
 // Heading h3
-$font-size-h3: round-float($font-size-h1*2.4rem/4.8rem, 1) !default
-$line-height-h3: round-float(3.6rem/2.4rem, 2) !default
+$font-size-h3: 2.4rem !default
+$line-height-h3: 3.0rem !default
+$line-height-h3-kef: $line-height-h3 / $font-size-h3
 // ----------------------------------------------------
-$font-size-h3--sm: round-float($font-size-h1--tab*0.73, 1) !default
-$line-height-h3--sm: round-float(($line-height-h1--tab*1.05), 2) !default
+$font-size-h3--tab: 2.2rem !default
+$line-height-h3--tab: round-float($font-size-h3--tab * $line-height-h3-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+$font-size-h3--mob: 1.8rem !default
+$line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+
 // ----------------------------------------------------
 =font-h3()
   font-size: $font-size-h3
   line-height: $line-height-h3
 
-  +media('<mob-lg')
-    font-size: $font-size-h3--sm
-    line-height: $line-height-h3--sm
+  +media('<desk-sm')
+    font-size: $font-size-h3--tab
+    line-height: $line-height-h3--tab
+
+  +media('<tab-sm')
+    font-size: $font-size-h3--mob
+    line-height: $line-height-h3--mob
 
 // Heading h4
 $font-size-h4: round-float($font-size-h1*1.8rem/4.8rem, 1) !default

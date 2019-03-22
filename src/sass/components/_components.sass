@@ -75,7 +75,8 @@ $spinner-btn-width: 35px
   border-width: 0 1px 0 0
 
 .ui-button-icon-only .ui-icon
-  $this-icon-lines-size: 12px, 2px // width, height
+  $this-icon-lines-size: 12px, 2px
+  // width, height
 
   +size(nth($this-icon-lines-size, 1), nth($this-icon-lines-size, 2))
   position: absolute
@@ -251,6 +252,8 @@ $single-form-field-width: 21.9rem
 input[type="text"].single-form__input
   width: $single-form-field-width
   min-width: $single-form-field-width
+  padding: 9px 45px 10px 20px
+  height: 45px
   margin: 0
 
 .single-form__send-btn
@@ -539,7 +542,7 @@ $swiper-button-size: 14px, 20px
 /* shot slider
 .shot-slider
   position: relative
-  padding-top: 5.7rem
+  padding-top: 6.1rem
 
   .js &:not(.is-loaded)
     opacity: 0
@@ -547,6 +550,11 @@ $swiper-button-size: 14px, 20px
 
   .product
     background-color: white
+
+// slide
+.shot-slider__item
+  .product-short
+    height: 100%
 
 // arrows
 $swiper-button-size: 14px, 20px
@@ -1201,8 +1209,7 @@ $swiper-button-size: 14px, 20px
     $translate: 0, -2px
     transform: translate($translate)
     transform: translate3d($translate, 0)
-    //background-color: $base-color
-    background-color: $bg-color
+    background-color: white
     box-shadow: 0 2px 5px rgba(black, 0.15)
     border-radius: 2px
     // transition
@@ -1631,7 +1638,8 @@ a.catalog-opener
   transform-origin: 20rem top
   $translate: 0, -1rem
   $scale: 0.8, 0.8
-  transform: translate($translate) scale($scale) // for old browser
+  transform: translate($translate) scale($scale)
+  // for old browser
   transform: translate3d($translate, 0) scale3d($scale, 1)
   $prop: transform, opacity
   will-change: $prop
@@ -1642,7 +1650,8 @@ a.catalog-opener
   .catalog-is-open &
     $translate: 0, 0
     $scale: 1, 1
-    transform: translate($translate) // for old browser
+    transform: translate($translate)
+    // for old browser
     transform: translate3d($translate, 0)
 
   &:last-child
@@ -1661,8 +1670,8 @@ $cat-columns--desk-lg: 5
   padding: 0
   margin: 0 -#{round($cat-item-space / 2)}
 
-  //.catalog-menu &
-    margin-bottom: -#{$cat-item-space * 2}
+//.catalog-menu &
+  margin-bottom: -#{$cat-item-space * 2}
 
 .catalog-menu__item
   $width: calc(#{round-float(100% / $cat-columns, 2) - 0.01} - #{$cat-item-space})
@@ -1702,10 +1711,11 @@ $cat-columns--desk-lg: 5
     align-items: center
     font-size: 1.4rem
     line-height: 1.8rem
-    min-height: 3rem // Компенсировать разную высоту иконок
+    min-height: 3rem
+    // Компенсировать разную высоту иконок
     text-decoration: none
     color: $base-color
-    //margin-right: 1rem
+  //margin-right: 1rem
 
   & > a
     +underlinedLinks($base-color)
@@ -1738,7 +1748,8 @@ $cat-columns--desk-lg: 5
 
   .no-js &:not(.ms-rolls_initialized)
     ul
-      display: none // Важно! До инициализации скрипта, скрыть все панели, а после показать.
+      display: none
+  // Важно! До инициализации скрипта, скрыть все панели, а после показать.
 
   &:last-child
     margin-bottom: 0
@@ -2671,12 +2682,12 @@ $p-sticker-size: 2.6rem 2.6rem
   flex-wrap: wrap
   align-items: center
   justify-content: flex-start
-  //pointer-events: none
+//pointer-events: none
 
 // --> stickers list item <--
 .p-stickers__item
   margin: 0 0.6rem 0.6rem 0
-  //pointer-events: none
+//pointer-events: none
 
 /* product stickers end
 
@@ -2695,7 +2706,8 @@ $p-sticker-size: 2.6rem 2.6rem
     align-items: flex-start
     margin: 0 -#{$dl-space}
     cursor: default
-    background-color: white // Цвет фона можно перестилить через родителя при необходимости
+    background-color: white
+    // Цвет фона можно перестилить через родителя при необходимости
 
     & > div
       position: relative
@@ -2852,7 +2864,8 @@ $p-sticker-size: 2.6rem 2.6rem
   display: block
   overflow: hidden
   margin-bottom: 0.6em
-  max-height: round-float($line-height * 3, 1) // maximum 3 line
+  max-height: round-float($line-height * 3, 1)
+  // maximum 3 line
   +font($font-size, $line-height)
   letter-spacing: normal
   width: 43rem
@@ -2862,13 +2875,15 @@ $p-sticker-size: 2.6rem 2.6rem
   +media('<tab-lg')
     font-size: $font-size--tab
     line-height: $line-height--tab
-    max-height: round-float($line-height * 4, 1) // maximum 4 line
+    max-height: round-float($line-height * 4, 1)
+    // maximum 4 line
     width: auto
 
   +media('<mob-lg')
     font-size: $font-size--mob
     line-height: $line-height--mob
-    max-height: round-float($line-height * 5, 1) // maximum 5 line
+    max-height: round-float($line-height * 5, 1)
+  // maximum 5 line
 
   &:last-child
     margin-bottom: 0
@@ -3230,9 +3245,9 @@ $ql-columns--desk-lg: 4
   &.has-shadow
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25)
 
-  // show on scroll
-  //html:not(.no-js) &
-    visibility: hidden
+// show on scroll
+//html:not(.no-js) &
+  visibility: hidden
 
 .quick-links__item-wide
   width: calc(#{round-float(100% / $ql-columns * 2, 2)} - #{$ql-item-space})
@@ -3374,8 +3389,8 @@ $opinion-box-shadow-color: black
   margin-right: 5rem
   margin-bottom: 0
   +font-bold
-  font-size: 36px
-  line-height: 42px
+  font-size: 3.6rem
+  line-height: 4.2rem
   color: #131313
 
 .caption-box__options
@@ -3529,11 +3544,16 @@ $opinion-box-shadow-color: black
 
 /* rate
 .p-rate
-  $size: 12px 86px // размер звездочного рейтинга
-  $width: nth($size, 2) // ширина звездочного рейтинга
-  $star-width: 12px // ширина одной звезды
-  $space: round(($width - $star-width * 5) / 8) // расчетное значение отступов по бокам
-  $width-full: $width + $space * 2 // расчетное значение полной ширины звездочного рейтинга
+  $size: 12px 86px
+  // размер звездочного рейтинга
+  $width: nth($size, 2)
+  // ширина звездочного рейтинга
+  $star-width: 12px
+  // ширина одной звезды
+  $space: round(($width - $star-width * 5) / 8)
+  // расчетное значение отступов по бокам
+  $width-full: $width + $space * 2
+  // расчетное значение полной ширины звездочного рейтинга
   width: $width-full
   margin-left: -$space
   background: url(../../img/rate-l-empty.svg) no-repeat center
@@ -3549,11 +3569,16 @@ $opinion-box-shadow-color: black
     overflow: hidden
 
 .p-rate_lg
-  $size: 16px 129px // размер звездочного рейтинга
-  $width: nth($size, 2) // ширина звездочного рейтинга
-  $star-width: 17px // ширина одной звезды
-  $space: round(($width - $star-width * 5) / 8) // расчетное значение отступов по бокам
-  $width-full: $width + $space * 2 // расчетное значение полной ширины звездочного рейтинга
+  $size: 16px 129px
+  // размер звездочного рейтинга
+  $width: nth($size, 2)
+  // ширина звездочного рейтинга
+  $star-width: 17px
+  // ширина одной звезды
+  $space: round(($width - $star-width * 5) / 8)
+  // расчетное значение отступов по бокам
+  $width-full: $width + $space * 2
+  // расчетное значение полной ширины звездочного рейтинга
   width: $width-full
   margin-left: -$space
   background: url(../../img/rate-xl-empty.svg) no-repeat center
@@ -3684,66 +3709,26 @@ $opinion-box-shadow-color: black
 
 // price
 .p-add-form-price
-  line-height: 1
-
-  // off
-  &.off
-    color: $text-color-soft
-
-    .p-add-form-price__old,
-    .p-add-form-price__new
-      color: currentColor
-
-    & > svg path
-      fill: currentColor
-
-.p-add-form-price__old,
-.p-add-form-price__new
-  display: inline-block
-  vertical-align: baseline
   line-height: 3.2rem
 
 // price old
 .p-add-form-price__old
-  color: $text-color-soft
+  display: inline-block
+  vertical-align: baseline
   margin-right: 0.4rem
+  +oldPriceStyle(1.8rem)
 
-  & > strong, & > em
-    display: inline-block
-    vertical-align: baseline
-    +font-normal
-    font-size: 1.8rem
-
-  & > strong
-    position: relative
-
-    &::after
-      $size: 2em
-      content: ""
-      display: block
-      position: absolute
-      top: 50%
-      left: 50%
-      width: $size
-      height: 0
-      margin: -0.1em -#{round-float($size / 2, 1)}
-      border-top: 1px solid currentColor
-      transform: rotate(-42deg)
+  .p-add-form-price.off &
+    color: $text-color-soft
 
 // price new
 .p-add-form-price__new
-  color: #000
+  display: inline-block
+  vertical-align: baseline
+  +newPriceStyle(3.0rem, 3.0rem, #000)
 
-  & > strong, & > em
-    display: inline-block
-    vertical-align: baseline
-    font-size: 3.0rem
-
-  & > strong
-    +font-bold
-
-  & > em
-    font-style: normal
+  .p-add-form-price.off &
+    color: $text-color-soft
 
 // footer
 .p-add-form__footer
@@ -4059,12 +4044,12 @@ $product-item-space: 2rem 2.4rem
     max-height: 100%
     max-width: 100%
 
-  // Увеличение на hover нельяз сделать. Дергается изображение из-за центрирования
-  //&:hover
-    //transform: scale(1.1) translateZ(0)
-    //&::after
-      opacity: 0.15
-      transition-duration: 0.5s
+// Увеличение на hover нельяз сделать. Дергается изображение из-за центрирования
+//&:hover
+  //transform: scale(1.1) translateZ(0)
+  //&::after
+    opacity: 0.15
+    transition-duration: 0.5s
 
 // Если исспользовать эффект добавления в корзину
 .product-figure_copy-js
@@ -4151,60 +4136,24 @@ $product-item-space: 2rem 2.4rem
 .product__price
   flex-basis: 50%
   text-align: right
-  line-height: 1
-
-  // off
-  &.off
-    color: $text-color-soft
-
-    .product__price-old,
-    .product__price-new
-      color: currentColor
-
-    & > svg path
-      fill: currentColor
-
-.product__price-old,
-.product__price-new
-  display: inline-block
-  vertical-align: baseline
   line-height: 3.2rem
 
 .product__price-old
-  color: $text-color-soft
+  display: inline-block
+  vertical-align: baseline
+  +oldPriceStyle(1.6rem)
 
-  & > strong, & > em
-    display: inline-block
-    vertical-align: baseline
-    +font-normal
-
-  & > strong
-    position: relative
-
-    &::after
-      $size: 2em
-      content: ""
-      display: block
-      position: absolute
-      top: 50%
-      left: 50%
-      width: $size
-      height: 0
-      margin: -0.1em -#{round-float($size / 2, 1)}
-      border-top: 1px solid currentColor
-      transform: rotate(-42deg)
+  .product__price.off &
+    color: $text-color-soft
 
 .product__price-new
+  display: inline-block
+  vertical-align: baseline
   margin-left: 0.4rem
+  +newPriceStyle(2.4rem, 1.4rem, #000)
 
-  & > strong
-    +font-bold
-    font-size: 2.4rem
-
-  & > em
-    font-style: normal
-    font-size: 1.4rem
-
+  .product__price.off &
+    color: $text-color-soft
 
 // === product option ===
 // --> product action <--
@@ -4498,7 +4447,8 @@ $product-item-space: 2rem 2.4rem
   // === product figure ===
   .product__figure
     height: 22.8rem
-    margin-bottom: 3rem // Под изображением на абсолюте прикреплены кнопки сравнения и добавления в избранное
+    margin-bottom: 3rem
+  // Под изображением на абсолюте прикреплены кнопки сравнения и добавления в избранное
 
   // === [product align right] ===
   .product__stickers, .product__title, .product__meta, .products__features
@@ -4591,9 +4541,6 @@ $product-item-space: 2rem 2.4rem
   // === product price ===
   .product__price
     flex-basis: auto
-
-  .product__price-old,
-  .product__price-new
     line-height: 4rem
 
   .product__price-old
@@ -4744,6 +4691,8 @@ $product-item-space: 2rem 2.4rem
 /* product item short
 $product-short-inner-space: 2.5rem 1.5rem 1.5rem
 .product-short
+  display: flex
+  flex-direction: column
   position: relative
   background-color: white
   padding: $product-short-inner-space
@@ -4774,6 +4723,9 @@ $product-short-inner-space: 2.5rem 1.5rem 1.5rem
 
 // === short product main ===
 .product-short__main
+  //$height: 20.8rem
+  //min-height: $height
+  //max-height: $height
   padding-bottom: 2rem
 
   & > a
@@ -4834,6 +4786,7 @@ $product-short-title-line-number: 2
 
 // === short product footer ===
 .product-short__footer
+  flex-grow: 1
   padding: 1rem round-float(nth($product-short-inner-space, 2) / 2, 1) 0
   margin: 0 -#{round-float(nth($product-short-inner-space, 2) / 2, 1)}
   border-top: 1px solid $border-color
@@ -4841,6 +4794,8 @@ $product-short-title-line-number: 2
 // === short product offer ===
 .product-short__offer
   position: relative
+  //padding: 0.5rem 1rem 0.5rem 0
+  padding: 0 1rem 0 0
   line-height: 1
 
 // === short product price ===
@@ -4892,6 +4847,7 @@ $product-short-title-line-number: 2
   position: relative
   height: 2.8rem
   width: 3.3rem
+  min-width: 3.3rem
   border: 1px solid currentColor
   border-radius: 0.5rem
   color: $base-color
@@ -4925,7 +4881,6 @@ $product-short-title-line-number: 2
 
 .purchase-sm-btn__to-cart
   +hide-text
-
 
 // === footer has purchase btn ===
 .has-cart-btn
@@ -5337,7 +5292,6 @@ $gz-tiles-elem-space: 3.5rem 3.8rem
       transform: scale3d($scale, 1) translate3d($translate, 0)
 
 
-
 /* quick-links end
 
 /* articles main previews
@@ -5383,7 +5337,7 @@ $at-columns: 5
 
 .articles-tiles__item_wide
   width: round-float(100% / $at-columns * 2, 2)
-  
+
 $at-elem-space: 1.6rem 2.5rem
 .articles-tiles-elem
   height: 0
@@ -5669,9 +5623,11 @@ $m-container-space: 0 3rem !default
 $p-filters-width: 348px !default
 
 $p-filters-angle-size: 2.4rem !default
-$p-filters-angle-arrow-size: 0.8rem !default // width height
+$p-filters-angle-arrow-size: 0.8rem !default
+// width height
 
-$p-filters-space: 1.4rem 0 !default // v h
+$p-filters-space: 1.4rem 0 !default
+// v h
 
 $p-options-height--mob: 50px
 
@@ -5704,8 +5660,8 @@ $shutter-space: 20px 30px !default
     height: 100%
     border-right: 1px solid $border-color
 
-    //+media('<tab-lg')
-      content: none
+//+media('<tab-lg')
+  content: none
 
 // m-aside
 .m-aside
@@ -5718,7 +5674,8 @@ $shutter-space: 20px 30px !default
     padding-bottom: 10rem
 
   +media('<tab-lg')
-    overflow: hidden // необходим для скрытия скролла
+    overflow: hidden
+    // необходим для скрытия скролла
     left: 0
     bottom: 0
     background-color: white
@@ -5766,9 +5723,9 @@ $shutter-space: 20px 30px !default
   flex-basis: $width
   flex-grow: 1
 
-  //+media('<tab-lg')
-    width: auto
-    display: block
+//+media('<tab-lg')
+  width: auto
+  display: block
 
 .m-heading, .m-options, .m-tags, .m-description
   padding-left: nth($m-container-space, 2)
@@ -6656,7 +6613,8 @@ $collections-title-width: 12.5rem
 /* float-list end
 
 /* product card
-$card-cont-width: 520px // 520px (43.8%) на ширине 1280px
+$card-cont-width: 520px
+// 520px (43.8%) на ширине 1280px
 
 .p-card
   background-color: white
@@ -6713,7 +6671,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   //padding: 0 $gallery-thumbs-size 0 #{$gallery-thumbs-size + 30}
   padding: 0 100px 0 #{100 + $gallery-thumbs-size}
   margin-bottom: 2.4rem
-  
+
   &:last-child
     margin-bottom: 0
 
@@ -6807,8 +6765,8 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     $prop: opacity
     will-change: $prop
     transition:
-        property: $prop
-        duration: $animation-speed
+      property: $prop
+      duration: $animation-speed
 
   &.swiper-slide-thumb-active
     //border: 1px solid rgba($base-color, 0.1)
@@ -6841,6 +6799,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     transform: rotate(45deg)
     border: 0 solid #303030
     margin: -15px -10px
+
   &:focus
     outline: none
 
@@ -6990,67 +6949,26 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
 // price
 .p-card-price
-  line-height: 1
-
-  // off
-  &.off
-    color: $text-color-soft
-
-    .p-card-price__old,
-    .p-card-price__new
-      color: currentColor
-
-    & > svg path
-      fill: currentColor
-
-.p-card-price__old,
-.p-card-price__new
-  display: inline-block
-  vertical-align: baseline
   line-height: 5.8rem
-
 // price old
 .p-card-price__old
-  color: $text-color-soft
+  display: inline-block
+  vertical-align: baseline
   margin-right: 0.4rem
+  +oldPriceStyle()
 
-  & > strong, & > em
-    display: inline-block
-    vertical-align: baseline
-    +font-normal
-    font-size: 1.8rem
-
-  & > strong
-    position: relative
-
-    &::after
-      $size: 2em
-      content: ""
-      display: block
-      position: absolute
-      top: 50%
-      left: 50%
-      width: $size
-      height: 0
-      margin: -0.1em -#{round-float($size / 2, 1)}
-      border-top: 1px solid currentColor
-      transform: rotate(-42deg)
+  .p-card-price.off &
+    color: $text-color-soft
 
 // price new
 .p-card-price__new
-  color: #000
+  display: inline-block
+  vertical-align: baseline
+  line-height: inherit
+  +newPriceStyle(4.5rem, 2.4rem, #000)
 
-  & > strong, & > em
-    display: inline-block
-    vertical-align: baseline
-
-  & > strong
-    +font-bold
-    font-size: 4.5rem
-
-  & > em
-    font-style: normal
-    font-size: 2.4rem
+  .p-card-price.off &
+    color: $text-color-soft
 
 // button buy
 .btn-buy
@@ -7065,11 +6983,6 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   border: none
   border-radius: 4px
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4)
-  // transition
-  $prop: background-color, color, box-shadow
-  transition:
-    property: $prop
-    duration: $animation-speed
   user-select: none
   -webkit-tap-highlight-color: transparent
 
@@ -7822,6 +7735,7 @@ $advice-box-shadow-color: black
   line-height: 0
 
   $sign-size: 4px 40px
+
   &::before, &::after
     content: ""
     display: block
@@ -8115,20 +8029,218 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
 
 /* news previews list end
 
+/* cart item
+.cart-item
+  position: relative
+  padding: 0 6rem 0 #{nth($section-inner-space, 2)}
+
+.cart-item__box
+  $element: &
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  justify-content: flex-start
+  padding: 1.8rem 0
+
+// figure
+$cart-item-figure-width: 21.2rem
+$cart-item-figure-height: 14rem
+$cart-item-figure-space: 2.7rem
+.cart-item__figure
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: center
+  width: $cart-item-figure-width
+  height: $cart-item-figure-height
+  margin-right: $cart-item-figure-space
+
+.cart-item__figure-img
+  display: block
+  max-height: 100%
+  max-width: 100%
+
+// content
+.cart-item__content
+  display: flex
+  flex-grow: 1
+  justify-content: space-between
+  align-items: flex-start
+  $width: calc(100% - #{$cart-item-figure-width + $cart-item-figure-space})
+  flex-basis: $width
+  max-width: $width
+
+// caption
+.cart-item__caption
+  margin-bottom: 2rem
+  padding: 2rem nth($section-inner-space, 2) 0 0
+
+  &:last-child
+    margin-bottom: 0
+
+// title
+.cart-item__title
+  margin-bottom: 0.6rem
+  +font-bold
+  font-size: 1.6rem
+  line-height: 2.4rem
+  color: $title-color
+
+  &:last-child
+    margin-bottom: 0
+
+// rate
+.cart-item__rate
+  margin: 0 0 1.8rem -0.3rem
+
+  &:last-child
+    margin-bottom: 0
+
+// order
+.cart-item__order
+  text-align: right
+  min-width: 22rem
+  padding: 1.7rem 0 0
+
+// stock
+.cart-item__stock
+  margin-bottom: 1.8rem
+
+  &:last-child
+    margin-bottom: 0
+
+// counter
+.cart-item__counter
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+// price
+.cart-item__price
+  line-height: 3.2rem
+  margin-bottom: 1.1rem
+
+  &:last-child
+    margin-bottom: 0
+
+// price old
+.cart-item__price-old
+  margin-right: 0.4rem
+  display: inline-block
+  vertical-align: baseline
+  +oldPriceStyle()
+
+  .cart-item__price.off &
+    color: $text-color-soft
+
+// price new
+.cart-item__price-new
+  display: inline-block
+  vertical-align: baseline
+  +newPriceStyle(3.0rem, 3.0rem, #000)
+
+  .cart-item__price.off &
+    color: $text-color-soft
+
+// remove btn
+.cart-item__remove
+  $size: 1.8rem
+  $size-cross: 0.2rem 1rem
+  position: absolute
+  right: 1.2rem
+  top: 0.9rem
+  width: $size
+  height: $size
+  color: white
+  background-color: #d8d8d8
+  border-radius: round-float($size / 2, 1)
+  text-indent: -9999px
+  overflow: hidden
+  transform: rotate(-90deg) translateZ(0)
+  transition: background-color $animation-speed
+
+  svg
+    display: block
+    $size: 0.8rem
+    +size($size)
+    position: absolute
+    left: 50%
+    top: 50%
+    $space: round-float($size / 2, 1)
+    margin: -#{$space} 0 0 -#{$space}
+
+  path
+    fill: currentColor
+
+  // hover
+  &:hover
+    background-color: $base-color
+
+/* cart item end
+
 /* cart
+cart
+  position: relative
+
+.cart__list
+  margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
+
+.cart__list-item
+  .cart-item__box
+    border-top: 1px solid $border-color
+
+.cart__list-item:first-child
+  .cart-item__box
+    border-top: none
 
 /* cart end
 
+/* cart-widget-caption
+.cart-widget-caption
+  display: flex
+  align-items: center
+
+/* cart-widget-caption end
+
+/* cart similar
+.cart-similar
+  position: relative
+  //padding: 2rem #{nth($section-inner-space, 2)}
+  border-top: 1px solid $border-color
+
+  &:first-child
+    border-top: 0
+
+.cart-similar__caption
+  position: absolute
+  left: #{nth($section-inner-space, 2)}
+  right: #{nth($section-inner-space, 2)}
+  top: 0
+  margin: 1.5rem 10rem 0 0
+  z-index: 3
+
+.cart-similar__title
+  +font-bold
+  font-size: 1.8rem
+  line-height: 2.4rem
+  margin: 0 4rem 0 0
+
+/* cart similar end
+
 /* delivery
 .delivery
-  padding: 1rem #{nth($box-inner-space, 2)}
+  padding: 2rem #{nth($box-inner-space, 2)}
 
 .delivery-item
   display: flex
   align-items: center
   font-size: 1.4rem
   line-height: 2.0rem
-  margin-bottom: 1rem
+  margin-bottom: 2.4rem
 
   &:last-child
     margin-bottom: 0
@@ -8177,6 +8289,7 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
 .summary__total
   +font-bold
   font-size: 1.8rem
+  margin-top: 0.4rem
 
 /* summary end
 
@@ -8188,7 +8301,8 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
 .clearance__caption
   display: flex
   align-items: center
-  padding: 1rem #{nth($box-inner-space, 2)}
+  padding: 2.0rem #{nth($box-inner-space, 2)} 1.9rem
+  margin-bottom: 2.5rem
   font-size: 1.4rem
   line-height: 2.0rem
 
@@ -8216,19 +8330,19 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
 
 // __delivery
 .clearance__delivery
-  padding: 1rem #{nth($box-inner-space, 2)}
+  padding: 1.5rem #{nth($box-inner-space, 2)}
 
 // __promo-code
 .clearance__promo-code
-  padding: 1rem #{nth($box-inner-space, 2)}
+  padding: 1.5rem #{nth($box-inner-space, 2)}
 
 // __summary
 .clearance__summary
-  padding: 1rem #{nth($box-inner-space, 2)}
+  padding: 1.5rem #{nth($box-inner-space, 2)}
 
 // __buttons
 .clearance__buttons
-  padding: 1rem #{nth($box-inner-space, 2)}
+  padding: 1.5rem #{nth($box-inner-space, 2)}
 
 /* clearance end
 
@@ -8249,12 +8363,13 @@ $cart-container-aside-width-full: $cart-container-inside-space + $cart-container
   float: right
   width: $cart-container-aside-width
   margin-left: $cart-container-inside-space
+  padding: 0 0 1rem
   background-color: white
 
 .cart__heading
   position: relative
   border-bottom: 1px solid $border-color
-  padding: 4.8rem #{nth($box-inner-space, 2) 2rem}
+  padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
 
 .cart__title
   margin-bottom: 0

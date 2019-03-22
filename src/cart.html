@@ -130,7 +130,7 @@
                 </a>
               </div>
             </div>
-            <a href="#" class="cart-link cart-keeper-js" title="Оформить заказа">
+            <a href="cart.html" class="cart-link cart-keeper-js" title="Оформить заказа">
               <em class="counter counter-js">1</em>
               <i><svg class="svg-ico-cart" xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30">
                   <path class="svg-ico-cart-circle" fill-rule="evenodd" clip-rule="evenodd" d="M15 30C23.2843 30 30 23.2843 30 15C30 6.71573 23.2843 0 15 0C6.71573 0 0 6.71573 0 15C0 23.2843 6.71573 30 15 30Z"></path>
@@ -401,7 +401,7 @@
         </div>
         <!--CONTENT-->
         <!--cart container-->
-        <section class="cart-container">
+        <section class="cart-container equal-height-js">
           <div class="cart-main cart-container__main">
             <!--cart-->
             <div class="cart">
@@ -410,30 +410,61 @@
               </div>
               <div class="cart__list">
                 <div class="cart-item cart__list-item">
-                  <div class="p-add-form p-add-form-js">
-                    <div class="p-add-form__figure">
-                      <img class="p-add-form__figure-img" src="img/img-product-09.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T" />
+                  <div class="cart-item__box">
+                    <div class="cart-item__figure">
+                      <img class="cart-item__figure-img" src="img/img-product-09.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T" />
                     </div>
-                    <div class="p-add-form__content">
-                      <div class="p-add-form__title">Ноутбук SAMSUNG GL753VE-GC112T</div>
-                      <div class="p-add-form__meta">
-                        <div class="p-add-form__rate p-rate">
+                    <div class="cart-item__content">
+                      <div class="cart-item__caption">
+                        <div class="cart-item__title">Ноутбук SAMSUNG GL753VE-GC112T</div>
+                        <div class="cart-item__rate p-rate">
                           <span style="width: 90%;">4.5</span>
                         </div>
-                        <div class="p-add-form__stock p-stock on"><i>&nbsp;</i>В наличии</div>
                       </div>
-                      <div class="p-add-form__options">
-                        <div class="p-add-form__counter">
-                          <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
+                      <div class="cart-item__order">
+                        <div class="cart-item__stock p-stock on"><i>&nbsp;</i>В наличии</div>
+                        <div class="cart-item__price">
+                          <div class="cart-item__price-old"><strong>1500.00</strong>&nbsp;<em>р.</em></div>
+                          <div class="cart-item__price-new"><strong>1500.00</strong>&nbsp;<em>р.</em></div>
                         </div>
-                        <div class="p-add-form-price p-add-form__price">
-                          <div class="p-add-form-price__old"><strong>1500.00</strong>&nbsp;<em>р.</em></div>
-                          <div class="p-add-form-price__new"><strong>1500.00</strong>&nbsp;<em>р.</em></div>
+                        <div class="cart-item__counter">
+                          <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <a href="#" class="close-p-add-form-popup p-add-form-popup-close-js">
+                  <a href="#" class="cart-item__remove">
+                    <svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0.646447 1.35355L6.64645 7.35355L7.35355 6.64645L1.35355 0.646447L0.646447 1.35355ZM6.64645 0.646447L0.646447 6.64645L1.35355 7.35355L7.35355 1.35355L6.64645 0.646447Z"></path>
+                    </svg>
+                    <span>Удалить из корзины</span>
+                  </a>
+                </div>
+                <div class="cart-item cart__list-item">
+                  <div class="cart-item__box">
+                    <div class="cart-item__figure">
+                      <img class="cart-item__figure-img" src="img/img-product-06.jpg" alt="RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)" />
+                    </div>
+                    <div class="cart-item__content">
+                      <div class="cart-item__caption">
+                        <div class="cart-item__title">RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)</div>
+                        <div class="cart-item__rate p-rate">
+                          <span style="width: 50%;">2.5</span>
+                        </div>
+                      </div>
+                      <div class="cart-item__order">
+                        <div class="cart-item__stock p-stock on"><i>&nbsp;</i>В наличии</div>
+                        <div class="cart-item__price">
+                          <div class="cart-item__price-old"><strong>298.00</strong>&nbsp;<em>р.</em></div>
+                          <div class="cart-item__price-new"><strong>250.00</strong>&nbsp;<em>р.</em></div>
+                        </div>
+                        <div class="cart-item__counter">
+                          <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <a href="#" class="cart-item__remove">
                     <svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
                       <path d="M0.646447 1.35355L6.64645 7.35355L7.35355 6.64645L1.35355 0.646447L0.646447 1.35355ZM6.64645 0.646447L0.646447 6.64645L1.35355 7.35355L7.35355 1.35355L6.64645 0.646447Z"></path>
                     </svg>
@@ -445,11 +476,13 @@
             <!--cart end-->
             <!--cart-similar-->
             <div class="cart-similar tabs-js">
-              <h3>Подходящие товары</h3>
-              <div class="simple-tabs-thumbs tabs__thumbs-js">
-                <a href="#cartSimilarHeadphones" class="tabs-active"><span>Наушники</span></a>
-                <a href="#cartSimilarMice"><span>Мышки</span></a>
-                <a href="#cartSimilarBags"><span>Сумки для ноутбуков</span></a>
+              <div class="cart-widget-caption cart-similar__caption">
+                <h3 class="cart-similar__title">Подходящие товары</h3>
+                <div class="simple-tabs-thumbs tabs__thumbs-js">
+                  <a href="#cartSimilarHeadphones" class="tabs-active"><span>Наушники</span></a>
+                  <a href="#cartSimilarMice"><span>Мышки</span></a>
+                  <a href="#cartSimilarBags"><span>Сумки для ноутбуков</span></a>
+                </div>
               </div>
               <div class="tabs__panels-js">
                 <div id="cartSimilarHeadphones">

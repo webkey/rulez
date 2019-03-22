@@ -1160,6 +1160,68 @@
     span
       border-color: rgba($color, 1)
 
+// Стили для старой цены (дефолтные)
+// Устанавливает положение значения цены и валюты
+// А также перечеркивание
+=oldPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-soft)
+  font-size: $font-size
+  line-height: inherit
+  white-space: nowrap
+  color: $text-color
+
+  & > strong
+    position: relative
+    display: inline-block
+    vertical-align: baseline
+    +font-normal
+    font-weight: normal
+
+    &::after
+      //$size: 2.4em
+      $space: 0.2em
+      content: ""
+      display: block
+      position: absolute
+      top: 50%
+      left: 0
+      width: calc(100% + #{$space * 2})
+      height: 0
+      //margin: -0.1em -#{round-float($size / 2, 1)}
+      margin: -0.1em -#{$space}
+      border-top: 1px solid darken($text-color, 10%)
+      transform: rotate(-18deg)
+
+  & > em
+    display: inline-block
+    vertical-align: baseline
+    +font-normal
+    font-style: normal
+    font-size: $unit-font-size
+
+// Стили для новой цены (дефолтные)
+// Устанавливает положение значения цены и валюты
+// А также размеры текста
+=newPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-soft)
+  position: relative
+  font-size: $font-size
+  line-height: inherit
+  white-space: nowrap
+  color: $text-color
+
+  & > strong
+    display: inline-block
+    vertical-align: baseline
+    +font-bold
+    font-size: $val-font-size
+
+  & > em
+    display: inline-block
+    vertical-align: baseline
+    +font-normal
+    font-size: $unit-font-size
+    font-style: normal
+    //color: red
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ПРИМЕСИ ИСПОЛЬЗУЕМЫЕ В ТИПОГРАФИЧЕСКИХ СТИЛЯХ конец
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
