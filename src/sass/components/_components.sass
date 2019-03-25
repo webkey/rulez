@@ -2,6 +2,52 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
+/* === helper classes ===
+.mark
+  color: $mark-color
+  font-style: inherit
+  font-weight: inherit
+
+.push-auto
+  margin-left: auto
+  margin-right: auto
+
+.align-center
+  text-align: center
+
+.align-left
+  text-align: left
+
+.align-right
+  text-align: right
+
+.float-left
+  float: left
+
+.float-right
+  float: right
+
+.nobr
+  white-space: nowrap
+
+.hide-text
+  +hide-text
+
+.hide
+  display: none !important
+
+.desktop-only
+  +media('<tab-lg')
+    display: none
+
+.devices-only
+  +media('>=tab-lg')
+    display: none
+
+.mobile-only
+  +media('>=mob-lg')
+    display: none
+
 /* spinner
 $spinner-size: 32px 113px
 $spinner-btn-width: 35px
@@ -2719,6 +2765,64 @@ $search-btn-space: 0 0.5rem
     margin-bottom: 0
 
 /* section end
+
+/* page with sidebar
+.content-layout
+  position: relative
+  width: 100%
+  background-color: white
+  border-radius: 5px 5px 0 0
+  +clear
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: $sidebar-width
+    height: 100%
+    width: 0
+    border-right: 1px solid $border-color
+
+.content-align
+  float: left
+  width: 100%
+
+  .content
+    margin: 0 #{$sidebar-width} 0 #{$sidebar-width}
+    min-height: 32rem
+
+.sidebar
+  display: inline
+  float: left
+  margin: 0 0 0 -100%
+  width: $sidebar-width
+
+/* page with sidebar end
+
+/* article share
+.article-share
+  position: absolute
+  right: 2rem
+  top: 2rem
+
+.article-share__item
+  display: block
+  text-decoration: none
+  color: $text-color-soft
+
+  & > span
+    +hide-text
+
+  svg
+    $size: 2rem
+    display: inline-block
+    height: $size
+    width: $size
+
+  path
+    fill: currentColor
+
+/* article share end
 
 /* product stickers
 // --> single sticker <--

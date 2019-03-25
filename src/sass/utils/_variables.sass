@@ -66,14 +66,7 @@ $font-alt: Georgia, serif !default
 // ==========================================================================
 
 $font-size: 1.6rem !default
-$line-height: round-float(2.4rem/$font-size, 2) !default
-// ----------------------------------------------------
-$font-size--small: 1.4rem !default
-$line-height--small: round-float(2.4rem/$font-size--small, 2) !default
-// ----------------------------------------------------
-$font-size--smallest: 1.2rem !default
-$line-height--smallest: round-float(2.0rem/$font-size--smallest, 2) !default
-// ----------------------------------------------------
+$line-height: 2.4rem !default
 $letter-spacing: normal !default
 
 // Heading h1
@@ -147,23 +140,19 @@ $line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !
     line-height: $line-height-h3--mob
 
 // Heading h4
-$font-size-h4: round-float($font-size-h1*1.8rem/4.8rem, 1) !default
-$line-height-h4: round-float(3.0rem/1.8rem, 2) !default
+$font-size-h4: $font-size !default
+$line-height-h4: $line-height !default
 
 // Heading h5
 $font-size-h5: $font-size !default
 $line-height-h5: $line-height !default
 
 // Heading h6
-$font-size-h6: round-float($font-size*0.75, 1) !default
-$line-height-h6: round-float($line-height*1.25, 2) !default
+$font-size-h6: $font-size !default
+$line-height-h6: $line-height !default
 
 // Spaces
 $bottom-space: 1.5rem !default
-$bottom-space--large: round-float($font-size*$line-height*3, 1) !default
-$bottom-space--medium: round-float($font-size*$line-height*2.0, 1) !default
-$bottom-space--middle: round-float($font-size*$line-height*1.5, 1) !default
-$bottom-space--small: round-float($font-size*$line-height*0.75, 1) !default
 
 
 // Colors
@@ -184,7 +173,7 @@ $text-color-disabled: #9b9b9b !default
 $text-color-soft: #c3c3c3 !default
 $title-color: #131313 !default
 // ----------------------------------------------------
-$link-color: blue !default
+$link-color: $base-color !default
 // ----------------------------------------------------
 $border-color: #dbdbdb !default
 $border-color-light: #f1f1f1 !default
@@ -200,52 +189,44 @@ $mark-color-alt: #96d728 !default
 // .#{$user-content}
 //
 // @example css - Вывод CSS
-// .user-content
-$user-content: user-content !default
+// .article-content
+$user-content: article-content !default
 
 
 // Layout
 // ==========================================================================
 
 // минимальная ширина сайта
-//$page-layout-min: 320px !default
+// минимальная ширина сайта
+//$page-layout-min: 32rem !default
 $page-layout-min: 102.4rem !default
-// отступы для всего сайта
-$page-layout-space: 0 2rem !default
-$page-layout-space--mob: 0 1rem !default
-$page-layout-space-narrow: 0 9.7rem !default
-$page-layout-space-narrow--tab: 0 2rem !default
-$page-layout-space-narrow--mob: 0 1rem !default
 // максимальная ширина сайта
 $page-layout-width: 160rem !default
-// минимальные отступы у текствого блока
-$text-layout-space: 5rem 6rem !default
-$text-layout-space--md: 2.5rem 3rem !default
-$text-layout-space--sm: 1.3rem 1.5rem !default
-$text-layout-space--mob: 0.8rem 1rem !default
+// отступы для всего сайта
+$page-layout-space: 0 2rem !default
+// отступы для альтернативных элементов
+$page-layout-space-narrow: 0 9.7rem !default
+$page-layout-space-narrow--tab: 0 2rem !default
 // максимальная ширина текстового блока
-$text-layout-width: 80rem !default
+$text-layout-width: 70.2rem !default
 // максимальная ширина текстового блока выходящего за пределы текста
 $flood-layout-width: 100rem !default
-// отступы внутри секций (большие лотические единици)
+// внешние и внутренние отступы  секций (большие лотические единици)
 $section-inner-space: 2rem 2.4rem !default
 $section-outer-space: 2.5rem 2rem !default
-// отступы внутри одиночных элементов (боксов)
+// внешние и внутренние одиночных элементов (боксов)
 $box-inner-space: 1.8rem 2.0rem !default
 $box-outer-space: 2.0rem 2.0rem !default
 // отступы внутри элементов по типу плитки или сетки
 $grid-inner-space: 2.8rem 3rem !default
 $grid-inner-space--lg: 1.8rem 2rem !default
 $grid-inner-space--sm: 0.8rem 1.0rem !default
-// отступы в дефолтных списках
-$list-bullet-space: 3rem
 
 
 // Z-index
 // ==========================================================================
 $z-popup: 9995
 $z-overlay: 9990
-
 
 
 // Header
@@ -263,12 +244,8 @@ $header-top__r-width: 55rem !default
 
 // Sidebar
 // ==========================================================================
-$sidebar-width: 260px !default
+$sidebar-width: 24.3rem !default
 
-
-// Aside
-// ==========================================================================
-$aside-width: 160px !default
 
 // Footer
 // ==========================================================================
@@ -352,7 +329,7 @@ $form-letter-spacing: normal !default
 =selects-font()
   +inputs-font
 
-// Layout of forms
+// Layout of formsn
 $form-border-width: 1px !default
 $form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width*2)/2) !default
 // верхний паддинг округляем в нижнюю сторону
@@ -432,12 +409,6 @@ $select-arrow-width--small: 20px !default
 // ==========================================================================
 $animation-speed: 0.2s !default
 $animation-speed-mouseleave: 0.35s !default
-
-// No custom list
-// ==========================================================================
-$has-custom-list: '.layout-article' !default // parent elements of a list
-$no-custom-list-parent: ':not(.catalog-links)' !default // parent elements of a list
-$no-custom-list: ':not(.reset-list):not(.no-custom):not(.breadcrumbs__list):not(.slick-dots):not(.footer-grid__list):not(.footer-grid__phones):not(.nav__list):not(.okayNav__nav--invisible):not(.phones-drop):not(.chats):not(.c-nav__list):not(.advise-chat__list):not(.category-links__list):not(.catalog__list):not(.catalog-links)' !default
 
 // Support ie9
 // ==========================================================================

@@ -2,14 +2,11 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   padding: 0
   +font-bold
   color: $title-color
   margin: 0 0 $bottom-space
-
-  +media('<mob-lg')
-    margin-bottom: round-float($bottom-space*0.85, 1)
 
   &:last-child
     margin-bottom: 0
@@ -18,26 +15,26 @@ h1, h2, h3, h4, h5, h6
     text-decoration: none
     color: inherit
 
-    .no-touchevents &:hover
+    &:hover
       color: $base-color
       text-decoration: underline
 
-h1
+h1, .h1
   +font-h1
 
-h2
+h2, .h2
   +font-h2
 
-h3
+h3, .h3
   +font-h3
 
-h4
+h4, .h4
   +font($font-size-h4, $line-height-h4)
 
-h5
+h5, .h5
   +font($font-size-h5, $line-height-h5)
 
-h6
+h6, .h6
   +font($font-size-h6, $line-height-h6)
   text-transform: uppercase
 
@@ -57,7 +54,6 @@ a
   color: $link-color
   text-decoration: underline
   cursor: default
-  //outline: none
 
   &:link
     cursor: pointer
@@ -85,83 +81,7 @@ i, em
 i b, i strong, em b, em strong, b i, b em, strong i, strong em
   +font-bold-italic
 
-.hide
-  display: none !important
-
-.mark
-  color: $mark-color
-  font-style: inherit
-  font-weight: inherit
-
-.text-color-alt
-  color: $base-color
-
-.align-center
-  text-align: center
-
-.align-left
-  text-align: left
-
-.align-right
-  text-align: right
-
-.float-left
-  float: left
-
-.float-right
-  float: right
-
-.nobr
-  white-space: nowrap
-
-.hide-text
-  +hide-text
-
-// выравнивание по центру блочных элементов
-.push-auto
-  margin-left: auto
-  margin-right: auto
-
-/*content img
-.layout-article
-  & > img, .imgc
-    text-align: center
-    display: block
-    margin: 0 auto $bottom-space
-    width: $flood-layout-width
-    max-width: 100%
-    clear: both
-
-  .imgl
-    text-align: left
-    float: left
-    margin: 0 $bottom-space $bottom-space 0
-
-  .imgr
-    text-align: right
-    float: right
-    margin: 0 0 $bottom-space $bottom-space
-
-  .imgl, .imgr
-    max-width: 40%
-
-    +media('<tab-sm')
-      float: none
-      display: block
-      margin-left: auto
-      margin-right: auto
-      max-width: 100%
-
-.imgc, .imgl, .imgr
-  figcaption
-    display: block
-    padding: $bottom-space 0 0
-    margin: 0
-    +font($font-size--small, $line-height--small)
-
-/*content img end
-
-/*columnize
+/* columnize
 .columnize, .columnize--3, .columnize--4
   column-count: 2
   column-gap: 2em
@@ -189,103 +109,9 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
   +media('<tab-sm')
     column-count: 1
 
-/*columnize end
+/* columnize end
 
-/*columns
-$columns-gap: 2em
-.columns
-  +clear
-
-.column
-  float: left
-  width: calc(50% - #{round($columns-gap/2)})
-  margin: 0 round($columns-gap/2)
-
-  +media('<mob-lg')
-    float: none
-    width: auto
-    margin: 0 0 5rem
-
-    &:last-child
-      margin-bottom: 0
-
-  &:nth-child(odd)
-    margin-left: 0
-
-  &:nth-child(even)
-    margin-right: 0
-
-/*columns end
-
-.#{$user-content}
-  @each $tags in h2, h3, h4, h5
-    p + #{$tags},
-    ul + #{$tags},
-    ol + #{$tags},
-    hr + #{$tags},
-    table + #{$tags},
-    .table-auto + #{$tags}
-      margin-top: $bottom-space * 2
-
-/*list
-#{$has-custom-list}, .#{$user-content}
-  ul, ol
-    margin: 0 0 $bottom-space
-    padding: 0
-    list-style: none
-
-    li
-      padding-left: $list-bullet-space
-      margin: 0 0 round($bottom-space*0.5)
-      position: relative
-
-  ul
-    & > li
-      &::before
-        content: ''
-        display: block
-        float: left
-        +size(0)
-        margin: 0.4em 0 -0.5em -#{$list-bullet-space}
-        border: solid transparent
-          width: 5px 0 5px 9px
-          left-color: $base-color
-
-  ol
-    counter-reset: section
-
-    & > li
-      counter-increment: section
-      height: 1%
-      overflow: hidden
-
-      &::before
-        position: relative
-        display: inline-block
-        text-align: left
-        +font-alt-bold
-        color: $base-color
-        content: counter(section)
-        padding: 0 4px 0 0
-        min-width: $list-bullet-space
-        margin-left: -#{$list-bullet-space}
-
-  ul, ol
-    ul,
-    ol
-      margin: round-float($bottom-space*0.5, 1) 0
-
-// Выравнивать по центру,
-// если список лежит непостредственно в контейнере текстовой страницы (статьи)
-.layout-article
-  ul#{$no-custom-list},
-  ol#{$no-custom-list}
-    margin-left: auto
-    margin-right: auto
-
-/*list end
-
-/*table
+/* table
 table
   border-collapse: collapse
   border-spacing: 0
@@ -350,100 +176,181 @@ table
     border-color: $base-color
     border-top-width: 0
 
-/*table end
+/* table end
 
-/*blockquote
-blockquote
-  display: block
-  margin: 0 0 $bottom-space
-  padding: 0
-  background-color: white
+/* article elements
+.#{$user-content}
 
-  q
+  @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
+    p + #{$tags},
+    ul + #{$tags},
+    ol + #{$tags},
+    hr + #{$tags},
+    table + #{$tags},
+    .table-auto + #{$tags}
+      margin-top: 3rem
+
+  // figure
+  figure
     display: block
+    padding: 0
+    margin: 3rem 0 $bottom-space
+
+    img
+      display: block
+      max-width: 100%
+      margin-bottom: 2rem
+
+  figcaption
+    display: block
+    padding: 0
     margin: 0
-    padding: 0 0 10px
-    +font-normal
-    +font(round-float($font-size*1.25, 1), $line-height)
-    color: $text-color
-    text-align: center
+    color: $text-color-soft
+    font-size: 1.4rem
+    line-height: 1.8rem
 
-    &::before, &::after
-      +pseudo($pos: relative)
-      +font(4rem, 1)
-      text-align: left
-
-    &::before
-      content: '«'
-      padding-left: 17%
-      padding-bottom: 10px
-
-    &::after
-      content: '»'
-      text-align: right
-      padding-right: 18.5%
-      padding-top: 8px
-
-  cite
-    text-align: right
+  // blockquote
+  blockquote
     display: block
-    margin-left: auto
-    +font($font-size, $line-height)
-    color: $text-color-light
+    margin: 4rem 0
+    padding: 0
 
-/*blockquote end
+    q
+      position: relative
+      display: block
+      margin: 0 0 1rem
+      padding: 4rem 4rem 0
+      +font-normal
+      +font(round-float($font-size*1.25, 1), $line-height)
+      color: $text-color
+      text-align: center
 
-/*user spacer
-.user-spacer
-  display: block
-  height: $bottom-space--large
-  +font(0, 0)
-  +clear
+      &::before
+        display: block
+        position: absolute
+        left: 0
+        width: 100%
+        margin: -0.15em 0
+        +font(20rem, 1)
+        text-align: center
+        color: $base-color-light
+        pointer-events: none
 
-  +media('<desk-lg')
-    height: $bottom-space--middle
+      &::before
+        content: '“'
+        top: 0
 
-/*user spacer end
+      &::after
+        content: none
 
-/*datetime
-.datetime
-  display: block
-  font-style: normal
-  margin-bottom: $bottom-space
+    cite
+      text-align: right
+      display: block
+      margin-left: auto
+      +font-italic
+      +font(1.4rem, 1.8rem)
+      color: $base-color-light
 
-/*datetime end
+  // list
+  $list-space: 1.5rem !default
+  ul, ol
+    margin: 0 0 $bottom-space
+    padding: 0
+    list-style: none
 
-/*view print
-.view-print
-  +display-inline-block-top
-  padding: 6px 12px
-  margin-bottom: $bottom-space
-  background: #f9f9f9
-  line-height: 1
-  color: black
-  text-decoration: none
+    li
+      padding-left: $list-space
+      margin: 0 0 #{round-float($bottom-space / 2, 1)}
+      position: relative
 
-  +media('<desk-lg')
-    margin-bottom: $bottom-space--middle
+  ul
+    & > li
+      &::before
+        content: ''
+        display: block
+        float: left
+        margin: 0.4em 0 -0.5em -#{$list-space}
+        height: 0
+        width: 1rem
+        border-top: 0.1rem solid $base-color-light
 
-  +media('<tab-lg')
-    display: none
+  ol
+    $list-space: 1.5rem
+    counter-reset: section
 
-  &:last-child
-    margin-bottom: 0
+    & > li
+      counter-increment: section
+      padding-left: $list-space
 
-  .no-touchevents &:hover
-    background-color: #eaeaea
+      &::before
+        position: relative
+        top: -0.1em
+        display: inline-block
+        content: counter(section)
+        width: $list-space
+        margin: -0.5rem #{$list-space - 2.1rem} -0.5rem -#{$list-space}
+        padding: 0.1rem 0 0
+        text-align: center
+        color: white
+        background-color: $base-color-light
+        border-radius: 50%
 
-  svg
-    display: inline-block
-    vertical-align: middle
-    width: 20px
-    height: 20px
-    margin-right: 5px
+  ul, ol
+    ul, ol
+      margin: round-float($bottom-space * 0.5, 1) 0
 
-  span
-    display: inline-block
-    vertical-align: middle
+  & > p, & > ul, & > ol,
+  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
+  & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+  & > hr, & > mark, & > blockquote, & > figure,
+  & > .layout-text
+    max-width: $text-layout-width
+    +push-auto
 
-/*view print end
+  & > .layout-flood,
+  & > .layout-section
+    max-width: $flood-layout-width
+    +push-auto
+
+  & > img,
+  & > .layout-text img,
+  & > .layout-flood img,
+  & > .layout-section img
+    display: block
+    margin: 3rem auto 4rem
+
+    +media('<tab-lg')
+      margin-top: 2.5rem
+      margin-bottom: 3rem
+
+    +media('<mob-lg')
+      margin-top: 1.5rem
+      margin-bottom: 2rem
+
+    &[align="left"]
+      float: left
+      max-width: 45%
+      margin-right: 3rem
+
+      +media('<tab-lg')
+        margin-right: 2rem
+
+      +media('<mob-lg')
+        float: none
+        max-width: none
+        margin-right: auto
+
+    &[align="right"]
+      float: right
+      max-width: 45%
+      margin-left: 3rem
+
+      +media('<tab-lg')
+        margin-left: 2rem
+
+      +media('<mob-lg')
+        float: none
+        max-width: none
+        margin-left: auto
+
+/* article elements end
