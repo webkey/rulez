@@ -138,6 +138,7 @@ gulp.task('mergeCssLibs', function () {
     // , 'src/libs/priority-nav/dist/priority-nav-core.css'
     // , 'node_modules/okaynav/dist/css/common.min.css'
     // , 'node_modules/okaynav/dist/css/okayNav.min.css' // https://www.npmjs.com/package/okaynav
+    , 'node_modules/simplebar/dist/simplebar.min.css' // Custom scrollbar
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -180,6 +181,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     // , 'src/libs/priority-nav/dist/priority-nav.min.js' // Лишние пункты меню скрываем в кнопку Ещё
     , 'node_modules/okaynav/dist/js/jquery.okayNav-min.js' // https://www.npmjs.com/package/okaynav
     , 'src/libs/fancybox/dist/jquery.fancybox.min.js' // fancybox
+    , 'src/libs/classlist-polyfill/src/index.js' // Полифил для корректной работы кастомного скроллбара в старых браузерах
+    , 'node_modules/simplebar/dist/simplebar.min.js' // Custom scrollbar
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

@@ -17,40 +17,38 @@
     })
 
     <!--CONTENT-->
-    <!--cart container-->
-    <section class="cart-container equal-height-js">
-      <div class="cart-main cart-container__main">
-        <!--cart-->
-        <div class="cart">
-          <div class="cart__heading">
-            <h1 class="cart__title">Корзина</h1>
-          </div>
-          <div class="cart__list">
-            @@include("_tpl_cart-item.html", {
-            "classes": "cart__list-item",
-            "href": "product-card.html",
-            "src": "img/img-product-09.jpg",
-            "title": "Ноутбук SAMSUNG GL753VE-GC112T",
-            "priceOld": {"val": "1500.00", "unit": "р."},
-            "price": {"val": "1500.00", "unit": "р."},
-            "rate": {"width": "90%", "val": "4.5"}
-            })
-            @@include("_tpl_cart-item.html", {
-            "classes": "cart__list-item",
-            "href": "product-card.html",
-            "src": "img/img-product-06.jpg",
-            "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-            "priceOld": {"val": "298.00", "unit": "р."},
-            "price": {"val": "250.00", "unit": "р."},
-            "rate": {"width": "50%", "val": "2.5"}
-            })
-          </div>
+    <!--cart-->
+    <div class="cart">
+      <div class="cart__main">
+        <div class="cart__heading">
+          <h1 class="cart__title">Корзина</h1>
         </div>
+        <!--cart-->
+        <section class="cart__list">
+          @@include("_tpl_cart-item.html", {
+          "classes": "cart__list-item",
+          "href": "product-card.html",
+          "src": "img/img-product-09.jpg",
+          "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+          "priceOld": {"val": "1500.00", "unit": "р."},
+          "price": {"val": "1500.00", "unit": "р."},
+          "rate": {"width": "90%", "val": "4.5"}
+          })
+          @@include("_tpl_cart-item.html", {
+          "classes": "cart__list-item",
+          "href": "product-card.html",
+          "src": "img/img-product-06.jpg",
+          "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+          "priceOld": {"val": "298.00", "unit": "р."},
+          "price": {"val": "250.00", "unit": "р."},
+          "rate": {"width": "50%", "val": "2.5"}
+          })
+        </section>
         <!--cart end-->
-        <!--cart-similar-->
-        <div class="cart-similar tabs-js">
-          <div class="cart-widget-caption cart-similar__caption">
-            <h3 class="cart-similar__title">Подходящие товары</h3>
+        <!--cart similar-->
+        <section class="cart__similar tabs-js">
+          <div class="cart__similar-caption">
+            <h3 class="cart__similar-title">Подходящие товары</h3>
             <div class="simple-tabs-thumbs tabs__thumbs-js">
               <a href="#cartSimilarHeadphones" class="tabs-active"><span>Наушники</span></a>
               <a href="#cartSimilarMice"><span>Мышки</span></a>
@@ -353,104 +351,97 @@
               </div>
             </div>
           </div>
-        </div>
-        <!--cart-similar end-->
+        </section>
+        <!--cart similar end-->
         <!--cart-banner-->
-        <div class="cart-banner">
+        <section class="cart-banner">
           <a href="#"><img src="img/banner-02.jpg" alt="Все виды рассрочки"></a>
-        </div>
+        </section>
         <!--cart-banner end-->
       </div>
       <!--clearance-->
-      <div class="clearance cart-container__aside">
-        <div class="clearance__caption">
-          <div class="clearance__caption-icon">
-            @@include("includes/svg/icon-free.svg")
-          </div>
-          <div class="clearance__caption-text"><strong>Поздравляем!</strong> Вы получили бесплатную доставку на ваш заказ</div>
-        </div>
-        <div class="delivery clearance__delivery">
-          <div class="delivery-item">
-            <div class="delivery__icon">
-              @@include("includes/svg/icon-delivery-cube.svg")
+      <div class="clearance cart__aside">
+        <form action="#" class="validate-js">
+          <div class="clearance__caption">
+            <div class="clearance__caption-icon">
+              @@include("includes/svg/icon-free.svg")
             </div>
-            <div class="delivery__text"><strong>Доставка курьером</strong> Завтра, 2 февраля — <mark>бесплатно</mark></div>
+            <div class="clearance__caption-text"><strong>Поздравляем!</strong> Вы получили бесплатную доставку на ваш заказ</div>
           </div>
-          <div class="delivery-item">
-            <div class="delivery__icon">
-              @@include("includes/svg/icon-yourself.svg")
+          <div class="clearance__box">
+            <div class="delivery clearance__delivery">
+              <div class="delivery-item">
+                <div class="delivery__icon">
+                  @@include("includes/svg/icon-delivery-cube.svg")
+                </div>
+                <div class="delivery__text"><strong>Доставка курьером</strong> Завтра, 2 февраля — <mark>бесплатно</mark></div>
+              </div>
+              <div class="delivery-item">
+                <div class="delivery__icon">
+                  @@include("includes/svg/icon-yourself.svg")
+                </div>
+                <div class="delivery__text"><strong>Самовывоз</strong> Завтра, 2 февраля — <mark>бесплатно</mark></div>
+              </div>
+              <div class="delivery-item">
+                <div class="delivery__icon">
+                  @@include("includes/svg/icon-helper-delivery.svg")
+                </div>
+                <div class="delivery__text"><strong>Доставка почтой</strong> 6 – 8 февраля</div>
+              </div>
             </div>
-            <div class="delivery__text"><strong>Самовывоз</strong> Завтра, 2 февраля — <mark>бесплатно</mark></div>
-          </div>
-          <div class="delivery-item">
-            <div class="delivery__icon">
-              @@include("includes/svg/icon-helper-delivery.svg")
+            <div class="single-form clearance__promo-code">
+              <div class="single-form__layout single-form_has-btn">
+                <label for="promo-code" class="single-form__label">Промокод</label>
+                <input class="single-form__input field-js" id="promo-code" name="promo-code" type="text" required>
+                <div class="error-note single-form__error-note">Промокод неверный</div>
+                <button class="single-form__send-btn">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span class="hide-text">Отправить</span>
+                </button>
+              </div>
             </div>
-            <div class="delivery__text"><strong>Доставка почтой</strong> 6 – 8 февраля</div class="clearance__caption-text">
-          </div>
-        </div>
-        <div class="single-form clearance__promo-code">
-          <form action="#" method="post" class="validate-js">
-            <div class="single-form__form">
-              <label for="promo-code" class="single-form__label">Промокод</label>
-              <input class="single-form__input field-js" id="promo-code" name="promo-code" type="text" required>
-              <div class="error-note single-form__error-note">Промокод неверный</div>
-              <button class="single-form__send-btn">
-                @@include("includes/svg/icon-slider-arrow-r.svg")
-                <span class="hide-text">Отправить</span>
-              </button>
+            <div class="summary clearance__summary">
+              <div class="summary__item">
+                <div>Товары (1)</div> <div>67 900 ₽</div>
+              </div>
+              <div class="summary__item">
+                <div>Доставка</div> <div><mark>бесплатно</mark></div>
+              </div>
+              <div class="summary__total">
+                <div>Итого</div> <div>67 900 ₽</div>
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="summary clearance__summary">
-          <div class="summary__item">
-            <div>Товары (1)</div> <div>67 900 ₽</div>
-          </div>
-          <div class="summary__item">
-            <div>Доставка</div> <div><mark>бесплатно</mark></div>
-          </div>
-          <div class="summary__total">
-            <div>Итого</div> <div>67 900 ₽</div>
-          </div>
-        </div>
-        <div class="buttons clearance__buttons">
-          <div class="buttons__item">
-            <a href="#" class="btn-def">Продолжить оформление</a>
-          </div>
-          <div class="buttons__item">
-            <a href="#" class="btn-alt">Оформить в рассрочку</a>
-          </div>
-        </div>
-        <div class="single-form p-add-form__order">
-          <form action="#" class="validate-js">
-            <div class="single-form__form">
-              <label for="f-wrap-validation-js" class="single-form__label">Быстрый заказ: </label>
-              <input class="single-form__input field-js" id="f-wrap-validation-js" name="f-wrap-validation-js" placeholder="+375" type="text" required>
-              <div class="error-note single-form__error-note">Введите корректный номер телефона в формате +375 и 9 цифр</div>
-              <!--<div class="success-note single-form__success-note">Success text</div>-->
-              <button class="single-form__send-btn">
-                @@include("includes/svg/icon-slider-arrow-r.svg")
-                <span class="hide-text">Отправить</span>
-              </button>
+            <div class="buttons clearance__buttons">
+              <div class="buttons__item">
+                <a href="order.html" class="btn-def">Продолжить оформление</a>
+              </div>
+              <div class="buttons__item">
+                <a href="order.html" class="btn-alt">Оформить в рассрочку</a>
+              </div>
             </div>
-          </form>
-        </div>
+            <div class="single-form clearance__quick-order">
+              <div class="single-form__layout single-form_has-btn">
+                <label for="quick-order" class="single-form__label">Быстрый заказ</label>
+                <input class="single-form__input field-js" id="quick-order" name="quick-order" placeholder="+375" type="text" required>
+                <div class="error-note single-form__error-note">Введите корректный номер телефона в формате +375 и 9 цифр</div>
+                <!--<div class="success-note single-form__success-note">Success text</div>-->
+                <button class="single-form__send-btn">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span class="hide-text">Отправить</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
       <!--clearance end-->
-    </section>
-    <!--cart container end-->
+    </div>
+    <!--cart end-->
 
     <!--helper-->
-    <section class="section section_helper">
-      <h2 class="hide">Помощь</h2>
-      <div class="helper">
-        <div class="helper__list">
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-call.svg") <span>Помощь экспертов в выборе товаров</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-credit.svg") <span>Рассрочка и кредит по выгодным условиям</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-delivery.svg") <span>Быстрая доставка по Минску курьером</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-service.svg") <span>Дополнительные услуги по сервисному обслуживанию</span></div></a>
-        </div>
-      </div>
+    <section class="helper-alt-section">
+      <h2 class="hide">Сервисы</h2>
+      @@include('_tpl_helper-alt.html')
     </section>
     <!--helper end-->
     <!--CONTENT end-->

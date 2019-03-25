@@ -1,0 +1,305 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Оформление заказа",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная", "Корзина"],
+      "last": "Оформление заказа"
+    })
+
+    <!--CONTENT-->
+    <!--order-->
+    <div class="order">
+      <form action="#" method="post" class="validate-js">
+        <div class="order__main">
+          <div class="order__heading">
+            <h1 class="order__title">Оформление заказа</h1>
+          </div>
+          <section class="checkout">
+            <h2 class="checkout__title hide">Личные данные</h2>
+            <div class="checkout__row">
+              <div class="checkout__col">
+                <h3 class="checkout__subtitle">Личные данные</h3>
+                <label class="input-wrap">
+                  <input class="input-def" name="checkout-name" placeholder="Ваше имя" type="text" required>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <label class="input-wrap">
+                  <input class="input-def" name="checkout-email" placeholder="Пароль" type="email" required>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <label class="input-wrap">
+                  <input class="input-def" name="checkout-tel" placeholder="Телефон" type="text" required>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+              </div>
+              <div class="checkout__col">
+                <h3 class="checkout__subtitle">Доставка</h3>
+                <div class="radiocheck-text-group radiocheck-text-group_three">
+                  <label class="radiocheck-text">
+                    <input type="radio" name="delivery" checked>
+                    <span>Курьером</span>
+                  </label>
+                  <label class="radiocheck-text">
+                    <input type="radio" name="delivery">
+                    <span>Самовывоз</span>
+                  </label>
+                  <label class="radiocheck-text">
+                    <input type="radio" name="delivery">
+                    <span>Почтой</span>
+                  </label>
+                </div>
+                <label class="input-wrap">
+                  <input class="input-def" name="checkout-address" placeholder="Пароль" type="text" required>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Улица, дом, корпус", "success": "Текст успешной отправки"})
+                </label>
+                <div class="form-row">
+                  <label class="input-wrap">
+                    <input class="input-def" name="checkout-flat" placeholder="Квартира" type="text" required>
+                    @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                  </label>
+                  <label class="input-wrap">
+                    <input class="input-def" name="checkout-floor" placeholder="Этаж" type="text" required>
+                    @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="payment">
+            <h2 class="payment__title">Оплата</h2>
+            <!--rolls arrow svg-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol id="arr-roll" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </symbol>
+            </svg>
+            <!--rolls-->
+            <div class="rolls payment__methods rolls-js">
+              <div class="rolls__item rolls__item-js">
+                <div class="rolls__header rolls__header-js rolls__switcher-js rolls-active">
+                  <strong>Онлайн-оплата на сайте</strong>
+                  <em class="rolls__angle">
+                    <svg height="10" width="10" class="rolls__angle-icon" fill="none">
+                      <use xlink:href="#arr-roll" />
+                    </svg>
+                  </em>
+                </div>
+                <div class="rolls__panel-wrap-js">
+                  <div class="rolls__panel rolls__panel-js rolls-active">
+                    <div class="radiocheck-img-group radiocheck-img-group_two">
+                      <label class="radiocheck-img">
+                        <input type="radio" name="payment" checked>
+                        <em><img src="img/img-payment-card.png" alt="Банковская карта" /></em>
+                        <span>Банковская карта</span>
+                      </label>
+                      <label class="radiocheck-img">
+                        <input type="radio" name="payment">
+                        <em><img src="img/img-payment-raschet.png" alt="Система Расчет" /></em>
+                        <span>Система Расчет</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="rolls__item rolls__item-js">
+                <div class="rolls__header rolls__header-js rolls__switcher-js">
+                  <strong>Онлайн-оплата на сайте картами рассрочки</strong>
+                  <em class="rolls__angle">
+                    <svg height="10" width="10" class="rolls__angle-icon" fill="none">
+                      <use xlink:href="#arr-roll" />
+                    </svg>
+                  </em>
+                </div>
+                <div class="rolls__panel-wrap-js">
+                  <div class="rolls__panel rolls__panel-js">
+                    {{Онлайн-оплата на сайте картами рассрочки}}
+                  </div>
+                </div>
+              </div>
+              <div class="rolls__item rolls__item-js">
+                <div class="rolls__header rolls__header-js rolls__switcher-js">
+                  <strong>Наличными</strong>
+                  <em class="rolls__angle">
+                    <svg height="10" width="10" class="rolls__angle-icon" fill="none">
+                      <use xlink:href="#arr-roll" />
+                    </svg>
+                  </em>
+                </div>
+                <div class="rolls__panel-wrap-js">
+                  <div class="rolls__panel rolls__panel-js">
+                    {{Наличными}}
+                  </div>
+                </div>
+              </div>
+              <div class="rolls__item rolls__item-js">
+                <div class="rolls__header rolls__header-js rolls__switcher-js">
+                  <strong>Карты рассрочки (оформление карты)</strong>
+                  <em class="rolls__angle">
+                    <svg height="10" width="10" class="rolls__angle-icon" fill="none">
+                      <use xlink:href="#arr-roll" />
+                    </svg>
+                  </em>
+                </div>
+                <div class="rolls__panel-wrap-js">
+                  <div class="rolls__panel rolls__panel-js">
+                    {{Карты рассрочки}}
+                  </div>
+                </div>
+              </div>
+              <div class="rolls__item rolls__item-js">
+                <div class="rolls__header rolls__header-js rolls__switcher-js">
+                  <strong>Рассрочка банка</strong>
+                  <em class="rolls__angle">
+                    <svg height="10" width="10" class="rolls__angle-icon" fill="none">
+                      <use xlink:href="#arr-roll" />
+                    </svg>
+                  </em>
+                </div>
+                <div class="rolls__panel-wrap-js">
+                  <div class="rolls__panel rolls__panel-js">
+                    {{Рассрочка банка}}
+                  </div>
+                </div>
+              </div>
+              <div class="rolls__item rolls__item-js">
+                <div class="rolls__header rolls__header-js rolls__switcher-js">
+                  <strong>Кредит</strong>
+                  <em class="rolls__angle">
+                    <svg height="10" width="10" class="rolls__angle-icon" fill="none">
+                      <use xlink:href="#arr-roll" />
+                    </svg>
+                  </em>
+                </div>
+                <div class="rolls__panel-wrap-js">
+                  <div class="rolls__panel rolls__panel-js">
+                    {{Кредит}}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--rolls end-->
+          </section>
+        </div>
+        <!--clearance-->
+        <div class="clearance order__aside">
+          <div class="clearance__box">
+            <div class="consist clearance__consist">
+              <h3 class="consist__title">Состав заказа</h3>
+              <div class="consist__overflow">
+                <div class="consist__list" data-simplebar>
+                  <a href="#" class="consist__item">
+                    <div class="consist__item-figure">
+                      <img src="img/img-product-09.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T">
+                    </div>
+                    <div class="consist__item-content">
+                      <strong class="consist__item-title">Ноутбук SAMSUNG GL753VE-GC112T</strong>
+                      <div class="consist__item-meta">
+                        <div class="consist__item-count">1 шт</div>
+                        <div class="consist__item-price">1500.00 ₽</div>
+                      </div>
+                    </div>
+                  </a>
+                  <div class="consist__item">
+                    <div class="consist__item-figure">
+                      <img src="img/img-product-06.jpg" alt="RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)">
+                    </div>
+                    <div class="consist__item-content">
+                      <strong class="consist__item-title">RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)</strong>
+                      <div class="consist__item-meta">
+                        <span class="consist__item-count">1 шт</span>
+                        <strong class="consist__item-price">250.00 ₽</strong>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearance__divider"></div>
+            <div class="delivery clearance__delivery">
+              <div class="delivery-item">
+                <div class="delivery__icon">
+                  @@include("includes/svg/icon-helper-delivery.svg")
+                </div>
+                <div class="delivery__text"><strong>Доставка почтой</strong> 6 – 8 февраля <mark>бесплатно</mark></div>
+              </div>
+              <div class="delivery-item">
+                <div class="delivery__icon">
+                  @@include("includes/svg/icon-cards.svg")
+                </div>
+                <div class="delivery__text"><strong>Оплата</strong> Картой онлайн, наличными при получении</div>
+              </div>
+            </div>
+            <div class="clearance__divider"></div>
+            <div class="summary clearance__summary">
+              <div class="summary__item">
+                <div>Товары (1)</div> <div>67 900 ₽</div>
+              </div>
+              <div class="summary__item">
+                <div>Доставка</div> <div><mark>бесплатно</mark></div>
+              </div>
+              <div class="summary__total">
+                <div>Итого</div> <div>67 900 ₽</div>
+              </div>
+            </div>
+            <div class="buttons clearance__buttons">
+              <div class="buttons__item">
+                <a href="#" class="btn-def">Оформить заказ</a>
+              </div>
+            </div>
+            <div class="single-form ">
+              <div class="single-form__layout single-form_has-btn">
+                <label for="quick-order" class="single-form__label">Быстрый заказ</label>
+                <input class="single-form__input field-js" id="quick-order" name="quick-order" placeholder="+375" type="text" required>
+                <div class="error-note single-form__error-note">Введите корректный номер телефона в формате +375 и 9 цифр</div>
+                <button class="single-form__send-btn">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span class="hide-text">Отправить</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="clearance__box">
+            <div class="comment-form clearance__comment">
+              <label for="comment-order">Комментарий к заказу</label>
+              <textarea class="single-form__input field-js" id="comment-order" placeholder="Текст сообщения"></textarea>
+            </div>
+          </div>
+        </div>
+        <!--clearance end-->
+      </form>
+    </div>
+    <!--cart container end-->
+
+    <!--helper-->
+    <section class="section section_helper">
+      <h2 class="hide">Помощь</h2>
+      <div class="helper">
+        <div class="helper__list">
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-call.svg") <span>Помощь экспертов в выборе товаров</span></div></a>
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-credit.svg") <span>Рассрочка и кредит по выгодным условиям</span></div></a>
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-delivery.svg") <span>Быстрая доставка по Минску курьером</span></div></a>
+          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-service.svg") <span>Дополнительные услуги по сервисному обслуживанию</span></div></a>
+        </div>
+      </div>
+    </section>
+    <!--helper end-->
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

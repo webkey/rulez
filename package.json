@@ -42,6 +42,7 @@
     "bower": "^1.8.8",
     "object-fit-images": "^3.2.3",
     "okaynav": "^2.0.2",
-    "scrollreveal": "^4.0.5"
+    "scrollreveal": "^4.0.5",
+    "simplebar": "^3.1.4"
   }
 }

@@ -14,8 +14,7 @@
   -webkit-tap-highlight-color: transparent
 
   // hide default inputs
-  input[type="checkbox"],
-  input[type="radio"]
+  input[type="checkbox"], input[type="radio"]
     position: absolute
     +size(16px)
     padding: 0
@@ -136,3 +135,191 @@
           transform: scale3d($scale, 1)
 
 /* forms checkbox and radiobutton end
+
+/* checkbox and radiobutton text view
+.radiocheck-text-group
+  overflow: hidden
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: $form-bottom-space
+  border-radius: 4px
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    border-radius: inherit
+    border: 1px solid $border-color
+    pointer-events: none
+
+.radiocheck-text
+  flex-grow: 1
+  margin: 0
+  cursor: pointer
+
+  & > span
+    display: flex
+    align-items: center
+    justify-content: center
+    position: relative
+    height: $form-input-height
+    +font(1.4rem, 1.8rem)
+    color: $title-color
+    text-align: center
+    background-color: white
+    box-shadow: 0 0 0 1px $border-color
+    // transition
+    $prop: color, background-color, text-shadow, box-shadow
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  // hide default inputs
+  input[type="checkbox"], input[type="radio"]
+    position: absolute
+    width: 16px
+    height: 16px
+    padding: 0
+    margin: 0
+    display: none
+
+    &:checked ~ span
+      background-color: $base-color-light
+      text-shadow: 0 2px 1px rgba(0, 0, 0, 0.20)
+      box-shadow: inset 0 0 0 1px $base-color-light
+      color: white
+      z-index: 2
+
+    &:disabled ~ span
+      $bg-color: tint($form-bg-color--disabled, 25%)
+      background-color: $bg-color
+      box-shadow: inset 0 0 0 1px $bg-color
+      color: $form-text-color--disabled
+
+    &:checked:disabled ~ span
+      background-color: $form-bg-color--disabled
+      color: white
+      box-shadow: none
+      text-shadow: none
+
+.radiocheck-text-group_two
+  .radiocheck-text
+    $width: round-float(100% / 2, 2)
+    min-width: $width
+    max-width: $width
+
+.radiocheck-text-group_three
+  .radiocheck-text
+    $width: round-float(100% / 3, 2)
+    min-width: $width
+    max-width: $width
+
+.radiocheck-text-group_four
+  .radiocheck-text
+    $width: round-float(100% / 4, 2)
+    min-width: $width
+    max-width: $width
+
+/* checkbox and radiobutton text view end
+
+/* checkbox and radiobutton image view
+.radiocheck-img-group
+  overflow: hidden
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -#{round-float(nth($section-inner-space, 2) / 2, 1)}
+
+.radiocheck-img
+  $element: &
+  flex-grow: 1
+  margin: 0 #{round-float(nth($section-inner-space, 2) / 2, 1)}
+
+  & > span
+    +hide-text
+
+  & > em
+    display: flex
+    align-items: center
+    justify-content: center
+    height: 7rem
+    margin: 0
+    cursor: pointer
+    padding: 1.7rem
+    border: 1px solid $border-color
+    border-radius: 4px
+    // transition
+    $prop: border-color, box-shadow
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+    & > img
+      display: block
+      max-width: 100%
+      max-height: 100%
+
+  // hide default inputs
+  input[type="checkbox"], input[type="radio"]
+    position: absolute
+    width: 16px
+    height: 16px
+    padding: 0
+    margin: 0
+    display: none
+
+    &:checked ~ em
+      box-shadow: inset 0 0 0 2px $base-color
+      border-color: $base-color
+      color: white
+      z-index: 2
+
+    &:disabled ~ span
+      $bg-color: tint($form-bg-color--disabled, 25%)
+      background-color: $bg-color
+      box-shadow: inset 0 0 0 1px $bg-color
+      color: $form-text-color--disabled
+
+    &:checked:disabled ~ span
+      background-color: $form-bg-color--disabled
+      color: white
+      box-shadow: none
+      text-shadow: none
+
+  // hover
+  &:hover
+    & > em
+      border-color: $base-color
+
+.radiocheck-img-group_two
+  .radiocheck-img
+    $width: calc(#{round-float(100% / 2, 2)} - #{nth($section-inner-space, 2)})
+    min-width: $width
+    max-width: $width
+
+.radiocheck-img-group_three
+  .radiocheck-img
+    $width: calc(#{round-float(100% / 3, 2)} - #{nth($section-inner-space, 2)})
+    min-width: $width
+    max-width: $width
+
+.radiocheck-img-group_four
+  .radiocheck-img
+    $width: calc(#{round-float(100% / 4, 2)} - #{nth($section-inner-space, 2)})
+    min-width: $width
+    max-width: $width
+
+.radiocheck-img-group_five
+  .radiocheck-img
+    $width: calc(#{round-float(100% / 5, 2)} - #{nth($section-inner-space, 2)})
+    min-width: $width
+    max-width: $width
+
+/* checkbox and radiobutton image view end

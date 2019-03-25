@@ -125,6 +125,22 @@ $spinner-btn-width: 35px
 
 /* spinner end
 
+/* simple bar
+[data-simplebar]
+  opacity: 0
+
+  .no-js &
+    opacity: 1
+    overflow: auto
+
+[data-simplebar="init"]
+  opacity: 1
+
+.simplebar-track
+  z-index: 5
+
+/* simple bar end
+
 /* breadcrumbs
 .breadcrumbs
   margin-bottom: 0.8rem
@@ -234,8 +250,9 @@ $spinner-btn-width: 35px
 $single-form-field-width: 21.9rem
 .single-form
   padding: 1rem #{nth($box-inner-space, 2)}
+  background-color: white
 
-.single-form__form
+.single-form__layout
   position: relative
   display: flex
   align-items: center
@@ -252,13 +269,16 @@ $single-form-field-width: 21.9rem
 input[type="text"].single-form__input
   width: $single-form-field-width
   min-width: $single-form-field-width
-  padding: 9px 45px 10px 20px
+  padding: 10px 20px 9px 20px
   height: 45px
   margin: 0
 
+  .single-form_has-btn &
+    padding-right: 40px
+
 .single-form__send-btn
   position: absolute
-  $size: 5rem 5rem
+  $size: 4.5rem 4.5rem
   right: 0
   top: 50%
   height: nth($size, 1)
@@ -268,6 +288,7 @@ input[type="text"].single-form__input
   border: none
   background: none
   box-shadow: none
+  outline: none
   // transition
   transition: color $animation-speed
 
@@ -290,15 +311,117 @@ input[type="text"].single-form__input
 .single-form__success-note
   position: absolute
   left: 0
-  bottom: -1rem
-  margin: 0
-  max-width: 50%
+  top: 100%
+  height: auto
+  margin: 0.2rem 0 0
   font-size: 1.2rem
   line-height: 1.3rem
   white-space: normal
-  height: auto
+  text-align: right
 
 /* single form end
+
+/* comment form
+.comment-form
+  padding: 2rem #{nth($box-inner-space, 2)}
+  background-color: white
+
+  & > label
+    display: block
+    font-size: 1.6rem
+    line-height: 2.4rem
+    color: $title-color
+    margin-bottom: 1.5rem
+
+/* comment form end
+
+/* rolls
+.rolls
+  margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
+
+.rolls__item
+  border: 1px solid $border-color
+  border-radius: 4px
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.rolls__header
+  position: relative
+  padding: 1.5rem 5rem 1.5rem #{nth($section-inner-space, 2)}
+  +font(1.4rem, 1.8rem)
+  color: $text-color-light
+
+  & > strong
+    +font-normal
+    font-weight: normal
+
+.rolls__angle
+  $element: &
+  $size: 2.4rem
+  position: absolute
+  height: $size
+  width: $size
+  right: 1.6rem
+  top: 50%
+  margin-top: -#{round-float($size / 2, 1)}
+  color: $base-color
+  border: 1px solid $border-color
+  border-radius: $size
+  cursor: pointer
+  // transition
+  $prop: background-color, border-color, transform
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &:hover
+    border-color: $base-color
+    background-color: $base-color
+
+  .rolls-active &
+    transform: rotate(180deg)
+
+  @at-root
+    .rolls__angle-icon
+      $size: 1rem
+      position: absolute
+      top: 50%
+      left: 50%
+      height: $size
+      width: $size
+      margin: -#{round-float($size / 2, 1) - 0.1} 0 0 -#{round-float($size / 2, 1)}
+
+      use
+        stroke: $base-color
+        transition: stroke $animation-speed
+
+        #{$element}:hover &
+          stroke: white
+
+.rolls__panel
+  padding: 1rem #{nth($section-inner-space, 2)} 2rem
+
+.rolls__panel-js
+  //opacity: 0
+  opacity: 1
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .no-js &
+    opacity: 1
+
+/* rolls end
 
 /* default overlay
 .popup-overlay
@@ -2277,6 +2400,7 @@ $search-btn-space: 0 0.5rem
 
       i
         +font-normal
+        font-style: normal
 
     span
       // transition
@@ -5471,7 +5595,7 @@ $at-elem-space: 1.6rem 2.5rem
     duration: $animation-speed
 
   // for ie 9
-  @if $ie9
+  //@if $ie9
     .no-flexwrap &
       display: inline-block
       vertical-align: top
@@ -5522,8 +5646,7 @@ $at-elem-space: 1.6rem 2.5rem
       property: $prop
       duration: $animation-speed
 
-
-.helper__item
+a.helper__item
   // hover
   &:hover
     background-color: $base-color
@@ -5537,6 +5660,79 @@ $at-elem-space: 1.6rem 2.5rem
         color: white
 
 /* helper
+
+/* helper alt
+.helper-alt-section
+  margin-bottom: 0
+  background-color: white
+
+.helper-alt
+  overflow: hidden
+  padding: 3rem #{nth($section-inner-space, 2)} 2.6rem
+
+.helper-alt__list
+  display: flex
+  flex-wrap: wrap
+  margin: 0 -3rem
+
+.helper-alt__item
+  position: relative
+  flex-grow: 1
+  $width: 25.0%
+  flex-basis: $width
+  width: $width
+  padding: 0 3rem
+  font-size: 1.4rem
+  line-height: 1.8rem
+  color: $text-color-light
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 1rem
+    bottom: 0
+    border-left: 1px solid $border-color
+
+  &:first-child
+    &::before
+      content: none
+
+  & > strong
+    display: flex
+    align-items: center
+    position: relative
+    padding: 0 0 0 5.6rem
+    min-height: 4rem
+    margin-bottom: 1rem
+    +font-bold
+    font-size: 1.4rem
+    line-height: 2.0rem
+    color: $title-color
+    cursor: default
+
+    svg
+      $size: 3.4rem
+      display: inline-block
+      position: absolute
+      left: 0
+      top: 50%
+      width: $size
+      height: $size
+      margin-top: -#{round-float($size / 2, 1)}
+
+      path
+        fill: $base-color
+
+  p
+    margin: 0
+
+  mark
+    background: none
+    color: $base-color
+
+/* helper alt end
 
 /* products
 // variables
@@ -8180,14 +8376,22 @@ $cart-item-figure-space: 2.7rem
 /* cart item end
 
 /* cart
-cart
+.cart
   position: relative
 
-.cart__list
-  margin-bottom: 4rem
+.cart__heading
+  position: relative
+  padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
+  background-color: white
 
-  &:last-child
-    margin-bottom: 0
+.cart__title
+  margin-bottom: 0
+  margin-right: 2rem
+
+.cart__list
+  border: solid $border-color
+  border-width: 1px 0
+  background-color: white
 
 .cart__list-item
   .cart-item__box
@@ -8199,23 +8403,17 @@ cart
 
 /* cart end
 
-/* cart-widget-caption
-.cart-widget-caption
-  display: flex
-  align-items: center
-
-/* cart-widget-caption end
-
 /* cart similar
-.cart-similar
+.cart__similar
   position: relative
-  //padding: 2rem #{nth($section-inner-space, 2)}
-  border-top: 1px solid $border-color
+  background-color: white
 
   &:first-child
     border-top: 0
 
-.cart-similar__caption
+.cart__similar-caption
+  display: flex
+  align-items: center
   position: absolute
   left: #{nth($section-inner-space, 2)}
   right: #{nth($section-inner-space, 2)}
@@ -8223,7 +8421,7 @@ cart
   margin: 1.5rem 10rem 0 0
   z-index: 3
 
-.cart-similar__title
+.cart__similar-title
   +font-bold
   font-size: 1.8rem
   line-height: 2.4rem
@@ -8234,6 +8432,7 @@ cart
 /* delivery
 .delivery
   padding: 2rem #{nth($box-inner-space, 2)}
+  background-color: white
 
 .delivery-item
   display: flex
@@ -8250,7 +8449,7 @@ cart
 
   svg
     display: block
-    $size: 2.8rem
+    $size: 3.2rem
     height: $size
     width: $size
 
@@ -8273,6 +8472,7 @@ cart
 .summary
   padding: 1rem #{nth($box-inner-space, 2)}
   +font(1.4rem, 2.0rem)
+  background-color: white
 
 .summary__item,
 .summary__total
@@ -8293,21 +8493,129 @@ cart
 
 /* summary end
 
+/* consist
+.consist
+  padding: 1rem #{nth($box-inner-space, 2)}
+  background-color: white
+
+.consist__title
+  +font-bold
+  font-size: 2.4rem
+  line-height: 3.2rem
+  color: $title-color
+  margin-bottom: 2rem
+
+.consist__overflow
+  position: relative
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    height: 1.5rem
+    width: 100%
+    left: 0
+    z-index: 1
+
+  &::before
+    top: 0
+    $color: white
+    +linear-gradient(to bottom, $color 0, rgba($color, 0) 100%)
+
+  &::after
+    bottom: 0
+    $color: white
+    +linear-gradient(to top, $color 0, rgba($color, 0) 100%)
+
+.consist__list
+  margin-bottom: 4rem
+  max-height: 35rem
+
+  &:last-child
+    margin-bottom: 0
+
+.consist__item
+  $element: &
+  padding: 1rem 0
+  +clear
+
+.consist__item-figure
+  float: left
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 11.8rem
+  height: 7.8rem
+  margin-right: 2.0rem
+
+  img
+    display: block
+    max-width: 100%
+    max-height: 100%
+
+.consist__item-content
+  overflow: hidden
+
+.consist__item-title
+  display: block
+  margin-bottom: 1rem
+  +font-normal
+  font-weight: normal
+  font-size: 1.4rem
+  line-height: 2.0rem
+  color: $title-color
+  transition: color $animation-speed
+
+.consist__item-meta
+  font-size: 1.4rem
+  line-height: 2.0rem
+
+.consist__item-count
+  display: inline-block
+  color: $text-color-soft
+  margin-right: 0.5rem
+
+.consist__item-price
+  display: inline-block
+  +font-bold
+  color: $text-color
+
+// hover (if use link)
+a.consist__item
+  display: block
+  text-decoration: none
+  color: inherit
+
+  &:hover
+    .consist__item-title
+      color: $base-color
+
+/* consist end
+
 /* clearance
 .clearance
+  position: relative
+
+.clearance__box
+  margin-bottom: 2rem
+  padding: 1rem 0
   background-color: white
+
+  &:last-child
+    margin-bottom: 0
 
 // __caption
 .clearance__caption
   display: flex
   align-items: center
   padding: 2.0rem #{nth($box-inner-space, 2)} 1.9rem
-  margin-bottom: 2.5rem
   font-size: 1.4rem
   line-height: 2.0rem
-
-.clearance__caption
+  background-color: white
   border-bottom: 1px solid $border-color
+
+  &:last-child
+    margin-bottom: 0
 
 .clearance__caption-icon
   margin-right: 3rem
@@ -8329,6 +8637,14 @@ cart
     color: $base-color
 
 // __delivery
+.clearance__consist
+  padding: 1.5rem #{nth($box-inner-space, 2)}
+
+.clearance__divider
+  height: 0
+  border-bottom: 1px solid $border-color
+  margin: 1rem #{nth($box-inner-space, 2)}
+
 .clearance__delivery
   padding: 1.5rem #{nth($box-inner-space, 2)}
 
@@ -8343,36 +8659,126 @@ cart
 // __buttons
 .clearance__buttons
   padding: 1.5rem #{nth($box-inner-space, 2)}
+  background-color: white
+
+// __quick-order
+.clearance__quick-order
+  padding: 1.5rem #{nth($box-inner-space, 2)}
+
+// __comment
+.clearance__comment
+  padding: 1.5rem #{nth($box-inner-space, 2)}
 
 /* clearance end
 
-/* cart container
+/* cart
 $cart-container-inside-space: 2rem
 $cart-container-aside-width: 36.2rem
 $cart-container-aside-width-full: $cart-container-inside-space + $cart-container-aside-width
-.cart-container
+.cart
   margin-bottom: nth($section-outer-space, 1)
   +clear
 
-.cart-container__main
+  & > form
+    display: block
+    +clear
+
+.cart__main
   float: left
   width: calc(100% - #{$cart-container-aside-width-full})
-  background-color: white
 
-.cart-container__aside
+.cart__aside
   float: right
   width: $cart-container-aside-width
   margin-left: $cart-container-inside-space
   padding: 0 0 1rem
+
+/* cart end
+
+/* checkout
+.checkout
+  position: relative
+  margin-bottom: 2rem
+  padding: 2rem #{nth($section-inner-space, 2)}
   background-color: white
 
-.cart__heading
-  position: relative
-  border-bottom: 1px solid $border-color
-  padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
+  &:last-child
+    margin-bottom: 0
 
-.cart__title
+.checkout__title
+  width: 100%
+  min-width: 100%
+
+$checkout-col-inner-space: #{round-float(nth($section-inner-space, 2) / 2, 1)} // Половина горизонтального отступа
+.checkout__row
+  display: flex
+  flex-wrap: wrap
+  align-items: flex-start
+  margin: 0 -#{$checkout-col-inner-space}
+
+.checkout__col
+  $width: 50.0%
+  flex-basis: $width
+  min-width: $width
+  width: $width
+  padding: 0 #{$checkout-col-inner-space}
+
+.checkout__subtitle
+  +font-normal
+  font-weight: normal
+  +font(1.6rem, 2.4rem)
+  color: $title-color
+  margin-bottom: 1.5rem
+
+/* checkout end
+
+/* payment
+.payment
+  position: relative
+  margin-bottom: 2rem
+  padding: 2rem #{nth($section-inner-space, 2)}
+  background-color: white
+
+  &:last-child
+    margin-bottom: 0
+
+.payment__title
+  +font-normal
+  font-weight: normal
+  +font(1.6rem, 2.4rem)
+  color: $title-color
+  margin-bottom: 1.5rem
+
+/* payment end
+
+/* order
+$order-inside-space: 2rem
+$order-aside-width: 41.0rem
+$order-aside-width-full: $order-inside-space + $order-aside-width
+.order
+  margin-bottom: nth($section-outer-space, 1)
+  +clear
+
+  & > form
+    display: block
+    +clear
+
+.order__main
+  float: left
+  width: calc(100% - #{$order-aside-width-full})
+
+.order__heading
+  position: relative
+  padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
+  background-color: white
+
+.order__title
   margin-bottom: 0
   margin-right: 2rem
 
-/* cart container end
+.order__aside
+  float: right
+  width: $order-aside-width
+  margin-left: $order-inside-space
+
+/* order end
