@@ -48,6 +48,29 @@
   +media('>=mob-lg')
     display: none
 
+/* figure on background of a page
+.page-bg
+  position: absolute
+  width: 100%
+  height: 594px
+  overflow: hidden
+  background-color: $base-color
+
+  &::before
+    $left: 130px
+    $bottom: 100px
+    content: ''
+    display: block
+    width: calc(100% + #{($left + $bottom) * 2})
+    height: calc(70px + #{$bottom})
+    position: absolute
+    bottom: -#{$bottom}
+    left: -#{$left + $bottom}
+    background-color: $bg-color
+    border-radius: 50% 50% 0 0 / 100% 100% 0 0
+
+/* figure on background of a page end
+
 /* spinner
 $spinner-size: 32px 113px
 $spinner-btn-width: 35px
@@ -189,7 +212,7 @@ $spinner-btn-width: 35px
 
 /* breadcrumbs
 .breadcrumbs
-  margin-bottom: 0.8rem
+  margin-bottom: 1.1rem
   padding: 0 #{nth($section-inner-space, 2)}
 
   &:last-child
@@ -203,7 +226,7 @@ $spinner-btn-width: 35px
   line-height: 1.9rem
   color: white
 
-  &, .#{$user-content} &
+  &, .#{$article-content} &
     padding: 0
     margin: 0
     list-style: none
@@ -254,28 +277,115 @@ $spinner-btn-width: 35px
 
 /* breadcrumbs end
 
-/* figure on background of a page
-.page-bg
-  position: absolute
-  width: 100%
-  height: 594px
-  overflow: hidden
-  background-color: $base-color
+/* images gallery
+.images-gallery
+  position: relative
+  padding: 2rem 0 4.4rem
+  margin-bottom: $bottom-space
 
   &::before
-    $left: 130px
-    $bottom: 100px
-    content: ''
+    content: ""
     display: block
-    width: calc(100% + #{($left + $bottom) * 2})
-    height: calc(70px + #{$bottom})
     position: absolute
-    bottom: -#{$bottom}
-    left: -#{$left + $bottom}
-    background-color: $bg-color
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0
+    top: 0
+    left: -100rem
+    right: -100rem
+    height: 100%
+    background-color: white
 
-/* figure on background of a page end
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+    overflow: hidden
+
+  &.swiper-container
+    overflow: visible
+
+  .swiper-pagination
+    bottom: 1.8rem
+
+  .swiper-pagination-bullet
+    background-color: $base-color
+    transform: scale(0.571) translateZ(0)
+    +size(14px)
+
+  .swiper-pagination-bullet-active
+    transform: scale(1) translateZ(0)
+
+  .swiper-slide
+    user-select: none
+
+/* images gallery end
+
+/* description list
+.description-list
+  &, .#{$article-content} &
+    display: flex
+    flex-wrap: wrap
+    list-style: none
+    padding: 0 #{nth($section-inner-space, 2)}
+    margin: 0 auto
+    +font(1.4rem, 1.8rem)
+    letter-spacing: normal
+    color: $text-color-light
+
+    li
+      position: relative
+      flex-grow: 1
+      padding: 0 #{nth($section-inner-space, 2)}
+      margin: 0 0 4.5rem
+      $width: 50.0%
+      max-width: $width
+      min-width: $width
+
+      &:nth-child(odd)
+        padding-left: 0
+
+      &:nth-child(even)
+        padding-right: 0
+
+        &::after
+          content: ""
+          position: absolute
+          left: 0
+          margin-left: -1px
+          top: 1rem
+          bottom: 0
+          border-left: 2px solid $border-color
+
+      &::before
+        content: none
+
+      & > strong
+        $icon-size: 3.6rem
+        display: flex
+        align-items: center
+        position: relative
+        min-height: $icon-size
+        margin: 0 0 2rem
+        padding-left: 5.4rem
+        font-size: 1.4rem
+        line-height: 2.0rem
+        color: $title-color
+
+        svg
+          display: block
+          position: absolute
+          left: 0
+          top: 50%
+          +size($icon-size)
+          margin: -#{round-float($icon-size / 2, 1)} 0 0
+
+          path
+            fill: $base-color
+
+      p
+        margin-bottom: 1.8rem
+
+        &:last-child
+          margin-bottom: 0
+
+/* description list end
 
 /* buttons
 .buttons
@@ -401,6 +511,7 @@ input[type="text"].single-form__input
   padding: 1.5rem 5rem 1.5rem #{nth($section-inner-space, 2)}
   +font(1.4rem, 1.8rem)
   color: $text-color-light
+  cursor: pointer
 
   & > strong
     +font-normal
@@ -419,6 +530,8 @@ input[type="text"].single-form__input
   border: 1px solid $border-color
   border-radius: $size
   cursor: pointer
+  user-select: none
+  -webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, border-color, transform
   transition:
@@ -452,6 +565,10 @@ input[type="text"].single-form__input
 
 .rolls__panel
   padding: 1rem #{nth($section-inner-space, 2)} 2rem
+
+.rolls:not(.ms-rolls_initialized)
+  .rolls__panel
+    display: none // Важно! До инициализации скрипта, скрыть все панели, а после показать.
 
 .rolls__panel-js
   //opacity: 0
@@ -1431,16 +1548,17 @@ $swiper-button-size: 14px, 20px
     position: absolute
     left: 0.2rem
     top: 0.2rem
-    background-color: #e61f1f
     $size: 1.6rem
     width: $size
     height: $size
     padding: 0.1rem 0 0 0
+    +font-normal
     font-style: normal
     font-size: 1.2rem
     line-height: $size
     text-align: center
     color: white
+    background-color: #e61f1f
     border-radius: round-float($size / 2, 1)
     z-index: 10
 
@@ -2771,7 +2889,8 @@ $search-btn-space: 0 0.5rem
   position: relative
   width: 100%
   background-color: white
-  border-radius: 5px 5px 0 0
+  border-radius: 5px
+  margin-bottom: 2rem
   +clear
 
   &::before
@@ -2783,32 +2902,139 @@ $search-btn-space: 0 0.5rem
     width: 0
     border-right: 1px solid $border-color
 
+    +media('<desk-md')
+      left: $sidebar-min-width
+
 .content-align
+  overflow: hidden // Нужен для обрезки выходящих за пределы контента элементов
   float: left
   width: 100%
 
   .content
-    margin: 0 #{$sidebar-width} 0 #{$sidebar-width}
+    padding: 4rem
+    margin: 0 #{$aside-width} 0 #{$sidebar-width}
     min-height: 32rem
 
+    +media('<desk-md')
+      margin: 0 #{$aside-min-width} 0 #{$sidebar-min-width}
+
 .sidebar
+  position: relative
   display: inline
   float: left
   margin: 0 0 0 -100%
   width: $sidebar-width
+  background-color: white
+  border-radius: 5px
+  z-index: 1
+
+  +media('<desk-md')
+    width: $sidebar-min-width
+
+.articles-nav
+  &, & ul
+    list-style: none
+    margin: 0
+    padding: 0
+    +font(1.4rem, 1.8rem)
+    color: $text-color-light
+
+  ul
+    display: none
+    padding-top: 1.2rem
+
+  li
+    margin-top: 1.2rem
+    padding-left: 2rem
+    cursor: default
+
+    &.current
+      & > ul
+        display: block
+
+      & > a, & > span
+        +font-bold
+
+      & > span
+        color: $base-color-light
+
+  //$articles-nav-first-inner-space: 3.6rem #{nth($section-inner-space, 2)}
+  $articles-nav-first-inner-space: 3rem 4rem
+  & > li
+    border-top: 1px solid $border-color
+    padding: 0
+    margin: 0
+
+    &:first-child
+      border-top: none
+
+    & > a
+      display: block
+      padding: $articles-nav-first-inner-space
+      +font(1.6rem, 2.4rem)
+      color: #000
+
+    & > ul
+      padding: 0 nth($articles-nav-first-inner-space, 2) nth($articles-nav-first-inner-space, 1)
+
+      & > li
+        position: relative
+        padding-left: 2.4rem
+        margin-top: 1.3rem
+
+        &:first-child
+          margin-top: 0
+
+        &::before
+          content: ""
+          display: block
+          position: absolute
+          left: 0
+          top: 0.5em
+          width: 1.4rem
+          height: 0.2rem
+          background-color: $base-color-light
+
+  a
+    color: inherit
+    text-decoration: none
+    transition: color $animation-speed
+
+    &:hover
+      color: $base-color
 
 /* page with sidebar end
 
 /* article share
-.article-share
+.article-share-layout
   position: absolute
-  right: 2rem
-  top: 2rem
+  right: 5rem
+  top: 5rem
+  z-index: 3
+
+.article-share
+  display: inline-block
+  vertical-align: top
+  margin-left: auto
+  padding: 2rem
+  border-radius: 4px
+  background-color: rgba(white, 0.98)
 
 .article-share__item
   display: block
-  text-decoration: none
+  margin-bottom: 4rem
+  font-size: 1.4rem
+  line-height: 1.8rem
+  text-align: left
   color: $text-color-soft
+  text-decoration: none
+  transition: color $animation-speed
+
+  &:last-child
+    margin-bottom: 0
+
+  &:hover
+    color: $base-color-light
 
   & > span
     +hide-text
@@ -2816,6 +3042,7 @@ $search-btn-space: 0 0.5rem
   svg
     $size: 2rem
     display: inline-block
+    vertical-align: top
     height: $size
     width: $size
 
@@ -2921,49 +3148,58 @@ $p-sticker-size: 2.6rem 2.6rem
 
 /* dl-list
 .dl-list
-  $dd-width: 18rem
-  $dl-space: 0.5rem
-  list-style: none
-  margin: 0
-  padding: 0
+  &, .#{$article-content} &
+    $dd-width: 20rem
+    $dl-space: 0.5rem
+    list-style: none
+    margin: 0 0 $bottom-space
+    padding: 0
 
-  li
-    overflow: hidden
-    display: flex
-    justify-content: space-between
-    align-items: flex-start
-    margin: 0 -#{$dl-space}
-    cursor: default
-    background-color: white
-    // Цвет фона можно перестилить через родителя при необходимости
+    &:last-child
+      margin-bottom: 0
 
-    & > div
-      position: relative
-      display: inline-block
-      vertical-align: top
-      padding: 0 $dl-space
+    li
+      overflow: hidden
+      display: flex
+      justify-content: space-between
+      align-items: flex-start
+      margin: 0 -#{$dl-space}
+      padding: 0
+      cursor: default
+      background-color: white
+      // Цвет фона можно перестилить через родителя при необходимости
 
-      &:first-child
-        max-width: calc(100% - #{$dd-width})
+      &:before
+        content: none
 
-        &::after
-          content: ""
-          display: block
-          position: absolute
+      & > div
+        position: relative
+        display: inline-block
+        vertical-align: top
+        padding: 0 $dl-space
 
-        &::after
-          left: 100%
-          bottom: 0.45em
-          width: 9999px
-          border-top: 1px dotted currentColor
+        &:first-child
+          max-width: calc(100% - #{$dd-width})
 
-      &:last-child
-        max-width: #{$dd-width - 1}
-        background-color: inherit
+          &::after
+            content: ""
+            display: block
+            position: absolute
 
-    // hover
-    &:hover
-      background-color: #f1f1f1
+          &::after
+            left: 100%
+            bottom: 0.45em
+            width: 9999px
+            border-top: 1px dotted currentColor
+
+        &:last-child
+          max-width: #{$dd-width - 1}
+          background-color: inherit
+          text-align: right
+
+      // hover
+      &:hover
+        background-color: #f1f1f1
 
 /* dl-list end
 
@@ -3291,14 +3527,14 @@ $advise-content-space: nth($advise-figure-size, 2) + $advise-figure-space
   list-style: none
   +clear
 
-  &, .#{$user-content} &
+  &, .#{$article-content} &
     padding: 0
     margin: 0 -0.6rem -1rem
 
   li
     float: left
 
-  &, .#{$user-content} &
+  &, .#{$article-content} &
     li
       margin: 0 0.7rem 0.7rem 0
       padding: 0
@@ -3376,7 +3612,7 @@ $advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figur
     margin-left: $advise-content-space--small
 
   .advise-chat__list
-    &, .#{$user-content} &
+    &, .#{$article-content} &
       margin: 0 -0.2rem -1rem
 
     a
@@ -5055,8 +5291,9 @@ $product-short-title-line-number: 2
 .p-short-price__old-unit
   display: inline-block
   vertical-align: baseline
-  font-size: 1.3rem
+  +font-normal
   font-style: normal
+  font-size: 1.3rem
 
 .p-short-price__new
   text-align: right
@@ -5066,6 +5303,7 @@ $product-short-title-line-number: 2
   font-size: 2.0rem
 
 .p-short-price__new-unit
+  +font-normal
   font-style: normal
   font-size: 1.4rem
 
@@ -6495,7 +6733,7 @@ $shutter-space: 20px 30px !default
   overflow-y: auto
   max-height: 33rem
 
-  &, .#{$user-content} &
+  &, .#{$article-content} &
     list-style: none
     margin: 0
     padding: 0 nth($p-filters-space, 2) nth($p-filters-space, 1) - $item-space
@@ -6877,7 +7115,7 @@ $collections-title-width: 12.5rem
   line-height: 2.0rem
   cursor: default
 
-  &, .#{$user-content} &
+  &, .#{$article-content} &
     list-style: none
     margin: 0 0 2rem
     padding: 0
@@ -8886,3 +9124,268 @@ $order-aside-width-full: $order-inside-space + $order-aside-width
   margin-left: $order-inside-space
 
 /* order end
+
+/* review article
+.review
+  margin: 0 -#{nth($page-layout-space, 2)}
+
+.review-caption
+  display: flex
+  align-items: flex-start
+  max-width: 107.6rem
+  padding-top: 5rem
+  margin: 0 auto 4rem
+
+$author-photo-size: 14.8rem
+.review-caption__author
+  max-width: $author-photo-size
+  margin-right: 8rem
+
+.review-caption__author-photo
+  overflow: hidden
+  +size($author-photo-size)
+  border-radius: $author-photo-size
+  border: 0.7rem solid #efefef
+  margin-bottom: 2rem
+
+  img
+    display: block
+    max-width: none
+    width: 100%
+    height: 100%
+    +object-fit(cover)
+
+.review-caption__author-name
+  +font-normal
+  +font(2.0rem, 2.6rem)
+  color: white
+  text-align: center
+
+.review-caption__title
+  +font-bold
+  +font(5.5rem, 6.9rem)
+  color: white
+
+.review-caption__rate
+  .p-rate_lg
+    background-image: url(../../img/rate-xl-empty-alt.svg)
+    background-size: 129px 16px
+
+.review-article-gallery-wrap
+  position: relative
+  margin-bottom: $bottom-space
+
+  &:last-child
+    margin-bottom: 0
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    height: 100%
+    width: 10rem
+    top: 0
+    z-index: 2
+    pointer-events: none
+
+  &::before
+    $color: white
+    left: 0
+    +linear-gradient(to right, $color 0%, rgba($color, 0) 100%)
+
+  &::after
+    $color: white
+    right: 0
+    +linear-gradient(to left, $color 0%, rgba($color, 0) 100%)
+
+.review-article-gallery
+  position: relative
+  padding: 0 0 4.4rem
+  margin-bottom: $bottom-space
+
+  &:last-child
+    margin-bottom: 0
+
+  .js &:not(.is-loaded)
+    opacity: 0
+    pointer-events: none
+    overflow: hidden
+
+  &.swiper-container
+    overflow: visible
+
+  .swiper-pagination
+    bottom: 1.8rem
+
+  .swiper-pagination-bullet
+    background-color: $base-color
+    transform: scale(0.571) translateZ(0)
+    +size(14px)
+
+  .swiper-pagination-bullet-active
+    transform: scale(1) translateZ(0)
+
+  .swiper-slide
+    user-select: none
+
+.review-content
+  overflow: hidden
+  background-color: white
+  padding-bottom: 6rem
+  margin-bottom: 2rem
+  border-radius: 0 0 5px 5px
+
+  & > p, & > ul, & > ol,
+  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
+  & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+  & > hr, & > mark, & > blockquote,
+  & > .layout-text
+    max-width: $text-layout-width
+    +push-auto
+
+    &:last-child
+      margin-bottom: 0
+
+  .review-article-gallery
+    max-width: $text-layout-width + 5
+    +push-auto
+
+  & > figure
+    max-width: $text-layout-width + 18
+
+  figure
+    figcaption
+      text-align: center
+
+// review-features
+.review-features
+  margin-bottom: 4.0rem
+
+  &:last-child
+    margin-bottom: 0
+
+  h3
+    +font-bold
+    +font(1.8rem, 2.8rem)
+    text-transform: uppercase
+
+.review-features__thumbs
+  +font(2.0rem, 3.5rem)
+  margin-bottom: 5.3rem
+  cursor: default
+  user-select: none
+
+  a
+    display: inline-block
+    margin-right: 7.7rem
+    padding: 1.7rem 0.7rem 0
+    border-top: 0.8rem solid transparent
+    text-decoration: none
+    color: #000
+
+    &.tabs-active
+      color: $base-color
+      border-top-color: $base-color
+      cursor: default
+      pointer-events: none
+
+.read-more
+  text-align: center
+
+.btn-read-more
+  position: relative
+  display: inline-block
+  vertical-align: top
+  padding: 0.5rem 2.2rem 0.5rem 4.3rem
+  +font-bold
+  +font(1.4rem, 2.0rem)
+  color: $base-color
+  border: 2px solid #edebe6
+  border-radius: 3rem
+  transition: border-color $animation-speed
+
+  & > span + span
+    display: none
+
+  svg
+    display: block
+    position: absolute
+    left: 1.6rem
+    top: 50%
+    $size: 1rem
+    +size($size)
+    margin-top: -#{round-float($size / 2, 1)}
+    // transition
+    $prop: transform
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: ease-in-out
+
+  // activated
+  &.active
+    & > span
+      display: none
+
+    & > span + span
+      display: block
+
+    svg
+      transform: rotate(180deg) translateZ(0)
+
+  // hover
+  &:hover
+    border-color: $base-color
+
+  // active
+  &:active
+    top: 1px
+
+// conclusion
+.review-conclusion
+  display: flex
+  margin-bottom: $bottom-space
+  border: 1px solid $border-color
+
+  &:last-child
+    margin-bottom: 0
+
+.review-conclusion__item
+  flex-grow: 1
+  padding: 3rem
+  $width: 33.33%
+  max-width: $width
+  min-width: $width
+  +font(1.6rem, 2.3rem)
+  color: $text-color-light
+  text-align: center
+  box-shadow: 0 0 0 1px $border-color
+  background-color: white
+
+  p
+    margin-bottom: 2.3rem
+
+    &:last-child
+      margin-bottom: 0
+
+.review-conclusion__item-caption
+  margin-bottom: $bottom-space
+
+  svg
+    display: block
+    margin: 0 auto 2rem
+    $size: 5.8rem 6.8rem
+    height: nth($size, 1)
+    width: nth($size, 2)
+
+  h3, h4
+    +font-bold
+    +font(1.6rem, 2.3rem)
+    color: $title-color
+    margin-bottom: 2rem
+
+    &:last-child
+      margin-bottom: 0
+
+/* review article end

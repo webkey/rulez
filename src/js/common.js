@@ -272,6 +272,69 @@ function bannersSiblings() {
  * !Initial sliders on the project
  * */
 function slidersInit() {
+  /**images gallery*/
+  var $imagesGallery = $('.images-gallery-js');
+  if ($imagesGallery.length) {
+    $imagesGallery.each(function () {
+      var $thisSlider = $(this),
+          $thisPag = $('.swiper-pagination', $thisSlider),
+          imagesGalleryJs;
+
+      imagesGalleryJs = new Swiper($thisSlider, {
+        init: false,
+        centeredSlides: true,
+        spaceBetween: 10,
+        loop: true,
+        loopedSlides: 3,
+        // loopAdditionalSlides: 5,
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
+        longSwipesRatio: 0.05,
+        longSwipesMs: 200
+      });
+
+      imagesGalleryJs.on('init', function() {
+        $(imagesGalleryJs.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      imagesGalleryJs.init();
+    });
+  }
+
+  /**images gallery*/
+  var $reviewArticleGallery = $('.review-article-gallery-js');
+  if ($reviewArticleGallery.length) {
+    $reviewArticleGallery.each(function () {
+      var $thisSlider = $(this),
+          $thisPag = $('.swiper-pagination', $thisSlider),
+          reviewArticleGalleryJs;
+
+      reviewArticleGalleryJs = new Swiper($thisSlider, {
+        init: false,
+        centeredSlides: true,
+        spaceBetween: 10,
+        loop: true,
+        loopedSlides: 3,
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
+        longSwipesRatio: 0.05,
+        longSwipesMs: 200
+      });
+
+      reviewArticleGalleryJs.on('init', function() {
+        $(reviewArticleGalleryJs.el).closest($thisSlider).addClass('is-loaded');
+      });
+
+      reviewArticleGalleryJs.init();
+    });
+  }
+
   /**promo slider*/
   var $promoSlider = $('.promo-slider-js');
   if ($promoSlider.length) {
@@ -1718,6 +1781,14 @@ function addToCarAnimation() {
  * !Rolls
  */
 function rollsInit() {
+  /** Default Rolls */
+  var $defautlRolls = $('.rolls-js');
+
+  if ($defautlRolls.length) {
+    $defautlRolls.msRolls()
+  }
+
+  /** Catalog links */
   var $catalogLinks = $('.catalog-links-js');
 
   if ($catalogLinks.length) {

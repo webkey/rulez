@@ -13,7 +13,9 @@ $breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-m
 //$font-norm: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default
 $font-norm: 'circe-regular', Helvetica, Arial, sans-serif !default
 $font-bold: 'circe-bold', Helvetica, Arial, sans-serif !default
+$font-bold-italic: 'gilroy-bold-italic', Helvetica, Arial, sans-serif !default
 $font-extra-bold: 'circe-extra-bold', Helvetica, Arial, sans-serif !default
+$font-italic: 'gilroy-italic', Helvetica, Arial, sans-serif !default
 $font-light: 'circe-light', Helvetica, Arial, sans-serif !default
 $font-alt: Georgia, serif !default
 
@@ -38,12 +40,13 @@ $font-alt: Georgia, serif !default
   font-weight: normal
 
 =font-italic()
-  font-style: italic
+  font-family: $font-italic
+  font-style: normal
 
 =font-bold-italic()
-  font-family: $font-bold
+  font-family: $font-bold-italic
   font-weight: normal
-  font-style: italic
+  font-style: normal
 
 =font-light()
   font-family: $font-light
@@ -65,9 +68,12 @@ $font-alt: Georgia, serif !default
 // Base
 // ==========================================================================
 
-$font-size: 1.6rem !default
-$line-height: 2.4rem !default
-$letter-spacing: normal !default
+$font-size: 1.8rem !default
+$line-height: 2.8rem !default
+$letter-spacing: 0.025em !default
+
+// Spaces
+$bottom-space: $line-height !default
 
 // Heading h1
 $font-size-h1: 3.6rem !default
@@ -151,9 +157,6 @@ $line-height-h5: $line-height !default
 $font-size-h6: $font-size !default
 $line-height-h6: $line-height !default
 
-// Spaces
-$bottom-space: 1.5rem !default
-
 
 // Colors
 // ==========================================================================
@@ -166,8 +169,8 @@ $base-color-alt: #f8e71c !default
 $bg-color: #f5f5f5 !default
 $bg-color-alt: #f3f3f3 !default
 // ----------------------------------------------------
-//$text-color: #4a4a4a !default
-$text-color: #131313 !default
+//$text-color: #131313 !default
+$text-color: #4a4a4a !default // По дизайну используется на внутренней странице
 $text-color-light: #7e7e7e !default
 $text-color-disabled: #9b9b9b !default
 $text-color-soft: #c3c3c3 !default
@@ -190,7 +193,7 @@ $mark-color-alt: #96d728 !default
 //
 // @example css - Вывод CSS
 // .article-content
-$user-content: article-content !default
+$article-content: article-content !default
 
 
 // Layout
@@ -202,15 +205,16 @@ $user-content: article-content !default
 $page-layout-min: 102.4rem !default
 // максимальная ширина сайта
 $page-layout-width: 160rem !default
+//$page-layout-width: 128rem !default
 // отступы для всего сайта
 $page-layout-space: 0 2rem !default
 // отступы для альтернативных элементов
 $page-layout-space-narrow: 0 9.7rem !default
 $page-layout-space-narrow--tab: 0 2rem !default
 // максимальная ширина текстового блока
-$text-layout-width: 70.2rem !default
+$text-layout-width: 60rem !default
 // максимальная ширина текстового блока выходящего за пределы текста
-$flood-layout-width: 100rem !default
+$flood-layout-width: 103rem !default
 // внешние и внутренние отступы  секций (большие лотические единици)
 $section-inner-space: 2rem 2.4rem !default
 $section-outer-space: 2.5rem 2rem !default
@@ -242,9 +246,12 @@ $header-top__r-width: 55rem !default
 //$catalog-is-open: 'catalog-is-open'
 
 
-// Sidebar
+// Sidebar & Aside
 // ==========================================================================
-$sidebar-width: 24.3rem !default
+$sidebar-min-width: 24rem !default
+$sidebar-width: 19.3% !default
+$aside-min-width: 20rem !default
+$aside-width: 16.1% !default
 
 
 // Footer

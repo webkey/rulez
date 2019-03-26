@@ -5,6 +5,7 @@
 h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6
   padding: 0
   +font-bold
+  letter-spacing: normal
   color: $title-color
   margin: 0 0 $bottom-space
 
@@ -119,10 +120,14 @@ table
   margin-bottom: $bottom-space
 
   td, th
-    +font($font-size, $line-height)
+    +font(1.4rem, 2.0rem)
+    letter-spacing: normal
     color: inherit
-    padding: 8px 15px
+    padding: 1.2rem
     border-color: $text-color
+
+  th
+    font-size: 1.8rem
 
 .table-auto
   position: relative
@@ -140,46 +145,38 @@ table
   border: none
 
   td, th
+    padding: 1.9rem
+    +font-normal
+    +font(1.4rem, 2.0rem)
+    letter-spacing: normal
     color: $text-color
-    background-color: $bg-color
-    border: 0 solid $base-color
-    +font(1.4rem, 1.5)
+    background-color: white
+    border: 1px solid $border-color
 
     &:first-child, &:first-child
       border-left-width: 1px
 
     &:last-child, &:last-child
       border-right-width: 1px
-
-  tr:last-child
-    td
-      border-bottom-width: 0
-
-  td
-    border-top-width: 1px
-
-  tbody tr:first-child td
-    border-top-width: 0
-
-  tbody tr:nth-child(even) td
-    background: $base-color
-    color: $bg-color
+      
+  td:first-child
+    font-size: 1.8rem
+    color: #656b83
 
   th, thead td
-    +font-bold
-    font-size: 1.6rem
+    font-size: 1.8rem
     text-align: left
 
   th, thead td, tfoot td
-    background: $base-color
-    color: $bg-color
-    border-color: $base-color
-    border-top-width: 0
+    background: #e7e1ff
+    color: #656b83
+    border-color: #bdb4e3
 
 /* table end
 
 /* article elements
-.#{$user-content}
+.#{$article-content}
+  letter-spacing: $letter-spacing
 
   @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
     p + #{$tags},
@@ -187,14 +184,15 @@ table
     ol + #{$tags},
     hr + #{$tags},
     table + #{$tags},
+    figure + #{$tags},
     .table-auto + #{$tags}
-      margin-top: 3rem
+      margin-top: #{round-float($bottom-space * 1.5, 1)}
 
   // figure
   figure
     display: block
     padding: 0
-    margin: 3rem 0 $bottom-space
+    margin: #{round-float($bottom-space * 1.5, 1)} 0 $bottom-space
 
     img
       display: block
@@ -205,20 +203,21 @@ table
     display: block
     padding: 0
     margin: 0
+    +font-italic
+    font-size: 1.6rem
+    line-height: 2.4rem
     color: $text-color-soft
-    font-size: 1.4rem
-    line-height: 1.8rem
 
   // blockquote
   blockquote
     display: block
-    margin: 4rem 0
+    margin: 6rem 0
     padding: 0
 
     q
       position: relative
       display: block
-      margin: 0 0 1rem
+      margin: 0
       padding: 4rem 4rem 0
       +font-normal
       +font(round-float($font-size*1.25, 1), $line-height)
@@ -237,7 +236,8 @@ table
         pointer-events: none
 
       &::before
-        content: '“'
+        //content: '“'
+        content: '”'
         top: 0
 
       &::after
@@ -246,33 +246,34 @@ table
     cite
       text-align: right
       display: block
-      margin-left: auto
+      margin: 1rem 0 0
       +font-italic
       +font(1.4rem, 1.8rem)
+      text-align: right
       color: $base-color-light
 
   // list
   $list-space: 1.5rem !default
   ul, ol
     margin: 0 0 $bottom-space
-    padding: 0
+    padding: 0 #{nth($section-inner-space, 2)}
     list-style: none
+    font-size: 1.6rem
+    line-height: 2.4rem
 
     li
       padding-left: $list-space
-      margin: 0 0 #{round-float($bottom-space / 2, 1)}
+      margin: 0 0 1.2rem
       position: relative
 
   ul
     & > li
       &::before
-        content: ''
+        content: '—'
         display: block
         float: left
-        margin: 0.4em 0 -0.5em -#{$list-space}
-        height: 0
-        width: 1rem
-        border-top: 0.1rem solid $base-color-light
+        margin: 0 0 0 -#{$list-space}
+        color: $base-color-light
 
   ol
     $list-space: 1.5rem
@@ -283,17 +284,11 @@ table
       padding-left: $list-space
 
       &::before
-        position: relative
-        top: -0.1em
-        display: inline-block
-        content: counter(section)
-        width: $list-space
-        margin: -0.5rem #{$list-space - 2.1rem} -0.5rem -#{$list-space}
-        padding: 0.1rem 0 0
-        text-align: center
-        color: white
-        background-color: $base-color-light
-        border-radius: 50%
+        display: block
+        float: left
+        content: counter(section) "."
+        margin: 0 0 0 -#{$list-space}
+        color: $base-color-light
 
   ul, ol
     ul, ol
@@ -304,8 +299,11 @@ table
   & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
   & > hr, & > mark, & > blockquote, & > figure,
   & > .layout-text
-    max-width: $text-layout-width
+    max-width: 100rem
     +push-auto
+
+    &:last-child
+      margin-bottom: 0
 
   & > .layout-flood,
   & > .layout-section

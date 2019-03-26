@@ -8,7 +8,7 @@
 		display: block
 		width: 100%
 
-.#{$user-content}, .select
+.#{$article-content}, .select
   select
     +selectSelection
     display: block
@@ -35,15 +35,15 @@
   padding-left: $form-input-space-h--has-prefix
 
 //=== form-small
-.form-small select, .#{$user-content} select.form-small
+.form-small select, .#{$article-content} select.form-small
   height: $form-input-height--small
   padding-top: $form-input-space-vt--small
   padding-bottom: $form-input-space-vb--small
 
-.#{$user-content} select
+.#{$article-content} select
   padding-right: 0
 
-.#{$user-content} select, .select
+.#{$article-content} select, .select
   +forms-space
 
   &:last-child
@@ -90,7 +90,7 @@
       right: 8px
 
 // States
-.#{$user-content} select, .select
+.#{$article-content} select, .select
 
   &[disabled]
     cursor: default

@@ -6,13 +6,15 @@
 /* slider pagination
 .swiper-pagination
   pointer-events: none
+  line-height: 0
 
 .swiper-pagination-bullet
   display: inline-block
   vertical-align: top
   $size: 8px
   +size($size)
-  border-radius: round($size / 2)
+  outline: none
+  border-radius: $size
   border: none
   color: $base-color
   opacity: 0.3
@@ -20,7 +22,7 @@
   pointer-events: auto
   background: white
   // transition
-  $prop: opacity
+  $prop: opacity, transform
   will-change: $prop
   transition:
     property: $prop
