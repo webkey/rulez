@@ -1,13 +1,32 @@
-<div class="promo-slider__item swiper-slide" style="@@bgColor">
-	<div class="promo-slider__item-img" data-swiper-parallax="200">
-		<img src="@@src" alt="@@if(context.alt){@@alt}@@if(!context.alt){@@title}" />
-	</div>
-	<div class="promo-slider__item-content max-wrap">
-		@@if(context.title){
-		<div class="promo-slider__item-title" data-swiper-parallax="-700">@@title</div>
-		}
-		<div class="promo-slider__item-footer" data-swiper-parallax="-400">
-			@@include("includes/snippets/_tpl_snip_btn.html", {"text": "Получить"})
+@@if(context.imgSrc){
+<!--Slide with image and title-->
+<div class="i-promo-slide">
+	<div class="i-promo-slide__figure"
+			 data-swiper-parallax="200"
+			 style="background-image: url(@@imgSrc);">&nbsp;</div>
+	<div class="i-promo-slide__layout layout-narrow max-wrap">
+		<div class="i-promo-slide__content">
+			@@if(context.title){
+			<div class="i-promo-slide__title" data-swiper-parallax="-700">@@title</div>}
+			<div class="i-promo-slide__footer" data-swiper-parallax="-400">
+				@@include("includes/snippets/_tpl_snip_btn.html", {"text": "Получить", "classes": "btn-round i-promo-slide__btn"})
+			</div>
 		</div>
 	</div>
-</div>
+</div>}
+@@if(context.wordSrc){
+<!--Slide with long word-->
+<div class="w-promo-slide">
+	<div class="w-promo-slide__layout layout-narrow max-wrap">
+		<div class="w-promo-slide__figure">
+			<img src="@@wordSrc.img" class="word-img-parallax-js" alt="@@alt" />
+		</div>
+		<div class="w-promo-slide__content" data-swiper-parallax="-400">
+			@@if(context.title){
+			<div class="w-promo-slide__title">@@title</div>}
+			<div class="w-promo-slide__footer">
+				@@include("includes/snippets/_tpl_snip_btn.html", {"text": "Получить", "classes": "btn-round btn-round_small w-promo-slide__btn"})
+			</div>
+		</div>
+	</div>
+</div>}

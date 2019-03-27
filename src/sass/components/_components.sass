@@ -921,15 +921,18 @@ $swiper-button-size: 14px, 20px
   width: 100%
   min-width: $page-layout-min
   height: $header-height
+  max-height: $header-height
   z-index: 99
   // transition
-  $prop: box-shadow
+  $prop: box-shadow, max-height
   transition:
     property: $prop
     duration: $animation-speed
 
   .page-scrolled &
+    max-height: $header-height--scrolled
     box-shadow: 0 2px 5px rgba(black, 0.15)
+
 
   &.header_float
     position: relative
@@ -969,9 +972,20 @@ $swiper-button-size: 14px, 20px
   $width: calc(100% - 4rem - #{$header-top__r-width})
   width: $width
   max-width: $width
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .page-scrolled &
+    opacity: 0
+    pointer-events: none
 
   // for ie 9
-  @if $ie9
+  //@if $ie9
     .no-flexwrap &
       display: inline-block
       vertical-align: top
@@ -1656,15 +1670,35 @@ $swiper-button-size: 14px, 20px
   padding-bottom: 1rem
   z-index: 5
   +clear
+  // transition
+  $prop: transform
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  .page-scrolled &
+    z-index: 10
+    transform: translate(0, -6rem)
 
 /* header-common end
 
 /* logo
 .logo-wrap
   margin-top: -1.2rem
+  // transition
+  $prop: transform
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .page-scrolled &
+    transform: translate(0, 0.8rem)
 
   // for ie 9
-  @if $ie9
+  //@if $ie9
     .no-flexwrap &
       display: inline-block
       vertical-align: top
@@ -1672,13 +1706,45 @@ $swiper-button-size: 14px, 20px
 .logo
   position: relative
   float: left
-  background: url(../../img/logo.png) no-repeat
   width: 165px
   height: 63px
   text-indent: -9999px
   overflow: hidden
   margin: 0 2rem 0 0
   z-index: 5
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    +size(100%)
+    background-repeat: no-repeat
+    background-position: 0 50%
+    z-index: -1
+    // transition
+    $prop: opacity
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+  &::before
+    opacity: 1
+    background-image: url(../../img/logo.png)
+    background-size: 165px 63px
+
+    .page-scrolled &
+      opacity: 0
+
+  &::after
+    opacity: 0
+    background-image: url(../../img/logo-alt.png)
+    background-size: 165px 60px
+
+    .page-scrolled &
+      opacity: 1
 
   a, & > span
     display: block
@@ -1698,6 +1764,9 @@ $swiper-button-size: 14px, 20px
   $height: 5rem
   padding-top: 0.5rem
   padding-bottom: 0.5rem
+
+  .page-scrolled &
+    max-width: 40rem
 
   &::before
     content: ""
@@ -1777,7 +1846,7 @@ a.catalog-opener
   //display: none
   position: relative
   padding: 1rem 2rem 1rem 5rem
-  font-size: 1.4rem
+  font-size: 1.8rem
   line-height: 2.0rem
   color: #4a4a4a
   text-decoration: none
@@ -1788,6 +1857,12 @@ a.catalog-opener
   transition:
     property: $prop
     duration: $animation-speed
+
+  +media('<desk-lg')
+    font-size: 1.6rem
+
+  +media('<desk-ml')
+    font-size: 1.4rem
 
   //&:active
     transform: translate(0, 1px)
@@ -2186,6 +2261,9 @@ $cat-columns--desk-lg: 5
     transform: scale3d($scale, 1)
     transform: scale($scale)
 
+  .page-scrolled &
+    display: none
+
 .c-nav
   position: relative
 
@@ -2193,24 +2271,36 @@ $cat-columns--desk-lg: 5
   list-style: none
   margin: 0
   padding: 0
-  line-height: 1
+  line-height: 0
   +clear
 
   li
     float: left
-    margin: 0.25rem 2rem 0.25rem 0
+    margin: 0.25rem 3rem 0.25rem 0
+
+    +media('<desk-lg')
+      margin-right: 2rem
 
     +media('<desk-md')
-      margin: 0.25rem 1rem 0.25rem 0
+      margin-right: 1rem
 
   a, li > span
     display: block
     +font-bold
     color: #232323
-    font-size: 1.4rem
+    font-size: 1.8rem
+    line-height: 2.4rem
     padding-top: 0.5rem
     padding-bottom: 0.5rem
     cursor: default
+
+    +media('<desk-lg') // 1600
+      font-size: 1.6rem
+      line-height: 2.0rem
+
+    +media('<desk-ml') // 1440
+      font-size: 1.4rem
+      line-height: 1.8rem
 
   a
     text-decoration: none
@@ -2301,6 +2391,7 @@ $search-btn-space: 0 0.5rem
 .search-form__btn, .toggle-search
   height: nth($search-btn-size, 1)
   width: nth($search-btn-size, 2)
+  min-width: nth($search-btn-size, 2)
   border-radius: round-float(nth($search-btn-size, 1) / 2, 1)
   margin: 0 nth($search-btn-space, 2)
   // transition
@@ -3213,7 +3304,7 @@ $p-sticker-size: 2.6rem 2.6rem
 
 /* promo slider
 .main-section_promo
-  height: 575px
+  height: 57.6rem
   padding-top: 0
   padding-bottom: 0
   margin-bottom: -11.5rem
@@ -3221,6 +3312,144 @@ $p-sticker-size: 2.6rem 2.6rem
   &:last-child
     margin-bottom: 0
 
+// slide of promo slider
+// --> slide type 1 with image and title <--
+.i-promo-slide
+  position: relative
+  height: 100%
+
+.i-promo-slide__figure
+  position: absolute
+  +position(0)
+  +size(100%)
+  +font(0)
+  background-repeat: no-repeat
+  background-position: center
+  background-size: contain
+
+.i-promo-slide__layout
+  height: 100%
+
+.i-promo-slide__content
+  position: relative
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: flex-start
+  flex-basis: 100%
+  width: 100%
+  padding: $header-height + 2.1 0 15.8rem 41.5%
+  color: inherit
+  text-decoration: none
+  flex-grow: 1
+  height: 100%
+
+.i-promo-slide__title
+  $font-size: 3.6rem
+  $line-height: 4.0rem
+  $font-size--tab: 3.0rem
+  $line-height--tab: 3.6rem
+  $font-size--mob: 1.8rem
+  $line-height--mob: 2.2rem
+  // ===============
+  display: block
+  overflow: hidden
+  margin-bottom: 0.65em
+  max-height: round-float($line-height * 3, 1)
+  // maximum 3 line
+  +font($font-size, $line-height)
+  letter-spacing: normal
+  width: 43rem
+  max-width: 100%
+  color: white
+
+  +media('<tab-lg')
+    font-size: $font-size--tab
+    line-height: $line-height--tab
+    max-height: round-float($line-height * 4, 1)
+    // maximum 4 line
+    width: auto
+
+  +media('<mob-lg')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+    max-height: round-float($line-height * 5, 1)
+  // maximum 5 line
+
+  &:last-child
+    margin-bottom: 0
+
+.i-promo-slide__footer
+  position: relative
+
+.i-promo-slide__btn
+  min-width: 20.3rem
+
+// --> slide type 2 with long parallax word <--
+.w-promo-slide
+  position: relative
+  height: 100%
+
+.w-promo-slide__layout
+  display: flex
+  align-items: flex-end
+  height: 100%
+  padding-bottom: 17.8rem
+
+.w-promo-slide__figure
+  display: flex
+  align-items: center
+  position: absolute
+  height: 100%
+  top: 0
+  padding: 0 0 52px 13px
+
+  img
+    position: relative
+    display: block
+    max-width: none
+
+.w-promo-slide__content
+  position: relative
+  display: flex
+  align-items: center
+  justify-content: flex-end
+  width: 100%
+
+.w-promo-slide__title
+  $font-size: 2.4rem
+  $line-height: 3.6rem
+  $font-size--tab: 2.0rem
+  $line-height--tab: 2.8rem
+  $font-size--mob: 1.8rem
+  $line-height--mob: 2.4rem
+  // ===============
+  +font-extra-bold
+  font-size: $font-size
+  line-height: $line-height
+  margin-right: 3.5rem
+  max-width: 100%
+  color: white
+
+  +media('<tab-lg')
+    margin-right: 2rem
+    font-size: $font-size--tab
+    line-height: $line-height--tab
+
+  +media('<mob-lg')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+
+  &:last-child
+    margin-bottom: 0
+
+.w-promo-slide__footer
+  position: relative
+
+.w-promo-slide__btn
+  min-width: 14.7rem
+
+// promo slider
 .promo-slider
   height: 100%
   overflow: hidden
@@ -3231,9 +3460,21 @@ $p-sticker-size: 2.6rem 2.6rem
     pointer-events: none
     overflow: hidden
 
-  &::before
-    $left: 130px
-    $bottom: 100px
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    bottom: -13px
+    width: 100%
+    height: 77px
+    background: url(../../img/arc-mask-invert.png) no-repeat
+    background-size: 100% 100%
+    z-index: 9
+
+  //&::before
+    $left: 13rem
+    $bottom: 10rem
     content: ''
     display: block
     width: calc(100% + #{($left + $bottom) * 2})
@@ -3283,79 +3524,7 @@ $p-sticker-size: 2.6rem 2.6rem
     bottom: 132px
 
 .promo-slider__item
-  //display: flex
-  //flex-direction: column
-  //text-align: center
-  //justify-content: center
-  //align-items: center
-  position: relative
   overflow: hidden
-
-.promo-slider__item-img
-  position: absolute
-  +size(100%)
-  +position(0)
-
-  img
-    display: block
-    max-width: 100%
-    margin: 0 auto
-    +size(100%)
-    +object-fit(scale-down)
-
-.promo-slider__item-content
-  position: relative
-  display: flex
-  flex-direction: column
-  justify-content: center
-  align-items: flex-start
-  flex-basis: 100%
-  width: 100%
-  padding: $header-height 0 11.5rem 37%
-  color: inherit
-  text-decoration: none
-  flex-grow: 1
-  height: 100%
-
-.promo-slider__item-title
-  $font-size: 3.6rem
-  $line-height: 4.0rem
-  $font-size--tab: 3.0rem
-  $line-height--tab: 3.6rem
-  $font-size--mob: 1.8rem
-  $line-height--mob: 2.2rem
-  // ===============
-  display: block
-  overflow: hidden
-  margin-bottom: 0.6em
-  max-height: round-float($line-height * 3, 1)
-  // maximum 3 line
-  +font($font-size, $line-height)
-  letter-spacing: normal
-  width: 43rem
-  max-width: 100%
-  color: white
-
-  +media('<tab-lg')
-    font-size: $font-size--tab
-    line-height: $line-height--tab
-    max-height: round-float($line-height * 4, 1)
-    // maximum 4 line
-    width: auto
-
-  +media('<mob-lg')
-    font-size: $font-size--mob
-    line-height: $line-height--mob
-    max-height: round-float($line-height * 5, 1)
-  // maximum 5 line
-
-  &:last-child
-    margin-bottom: 0
-
-.promo-slider__item-footer
-
-  .btn-def
-    min-width: 20.3rem
 
 /* promo slider end
 
@@ -3380,8 +3549,11 @@ $p-sticker-size: 2.6rem 2.6rem
     height: 3rem
     margin-right: 1rem
 
-    path
+    path, rect, circle
       fill: $base-color
+
+      &[stroke]
+        stroke: $base-color
 
   & > strong
     display: inline-block
@@ -3842,9 +4014,11 @@ $opinion-box-shadow-color: black
 
 /* caption-box
 .caption-box
+  position: relative
   display: flex
   align-items: flex-end
   margin-bottom: 2.5rem
+  padding-right: 6rem
 
   &:last-child
     margin-bottom: 0
@@ -3860,12 +4034,39 @@ $opinion-box-shadow-color: black
 .caption-box__options
   position: relative
 
+.caption-box__all
+  position: absolute
+  right: 1rem
+  top: 50%
+  $line-height: 2.0rem
+  height: $line-height
+  margin-top: -#{round-float($line-height / 2, 1)}
+  +font(1.4rem, $line-height)
+  color: $base-color-light
+  text-decoration: none
+
+  svg
+    position: relative
+    top: 0.5rem
+    display: inline-block
+    vertical-align: top
+    $size: 1rem
+    +size($size)
+    transform: rotate(-90deg)
+
+    path
+      stroke: currentColor
+
+  &:hover
+    text-decoration: underline
+
 /* caption-box end
 
 /* topics-thumbs
 .topics-thumbs
   display: flex
   flex-wrap: wrap
+  +font(1.6rem, 2.4rem)
 
   a
     color: #646464
@@ -5588,6 +5789,7 @@ $tl-columns: 4
 .gz__links
   display: flex
   flex-wrap: wrap
+  +font(1.6rem, 2.4rem)
 
   a
     color: #c8c8c8

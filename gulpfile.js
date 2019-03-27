@@ -163,7 +163,9 @@ gulp.task('createCustomModernizr', function (done) {
  */
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
   return gulp.src([
-    'src/libs/jquery-ui/jquery-ui.min.js'
+    'src/libs/classlist-polyfill/src/index.js' // Полифил для корректной работы кастомного скроллбара в старых браузерах
+    , 'src/libs/lozad/dist/lozad.min.js' // Подкрузка изображений, айфреймов и т.д.
+    , 'src/libs/jquery-ui/jquery-ui.min.js'
     // 'src/libs/device.js/lib/device.min.js' // определение устройств
     , 'src/libs/jquery-smartresize/jquery.debouncedresize.js' // "умный" ресайз
     , 'src/libs/jquery-placeholder/jquery.placeholder.min.js' // поддержка плейсхолдера в старых браузерах
@@ -181,8 +183,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     // , 'src/libs/priority-nav/dist/priority-nav.min.js' // Лишние пункты меню скрываем в кнопку Ещё
     , 'node_modules/okaynav/dist/js/jquery.okayNav-min.js' // https://www.npmjs.com/package/okaynav
     , 'src/libs/fancybox/dist/jquery.fancybox.min.js' // fancybox
-    , 'src/libs/classlist-polyfill/src/index.js' // Полифил для корректной работы кастомного скроллбара в старых браузерах
-    , 'node_modules/simplebar/dist/simplebar.min.js' // Custom scrollbar
+    , 'node_modules/simplebar/dist/simplebar.min.js' // Custom scrollbar (Для подержки старых браузеров нужно подключить полифил, см. выше)
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

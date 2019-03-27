@@ -15,7 +15,54 @@
     <h2 class="hide">Промо слайдер</h2>
     <div class="promo-slider swiper-container promo-slider-js">
       <div class="swiper-wrapper">
-        @@loop("_tpl_sliders_promo-slider--items.html", "includes/json/sliders_promo-slider.json")
+        <div class="promo-slider__item swiper-slide" style="background-color: #6e52dd;">
+          @@include("_tpl_sliders_promo-slider--items.html", {
+          "imgSrc": "img/promo-slider-01.png",
+          "title": "При покупке ноутбука или компьютера - подарок",
+          "alt": "Подарок",
+          "text": ""
+          })
+        </div>
+        <div class="promo-slider__item swiper-slide" style="background: #4c30b9; background: linear-gradient(to bottom, #4c30b9 0%, #8f77ed 100%);">
+          @@include("_tpl_sliders_promo-slider--items.html", {
+          "wordSrc": {
+          "img": "img/promo-slider-rassrochka.png"
+          },
+          "title": "Рассрочка 0 рублей",
+          "alt": "Рассрочка",
+          "text": ""
+          })
+        </div>
+        <div class="promo-slider__item swiper-slide" style="background: #4d3cc0; background: linear-gradient(to bottom, #4d3cc0 0%, #c26bd6 100%);">
+          @@include("_tpl_sliders_promo-slider--items.html", {
+          "wordSrc": {
+            "img": "img/promo-slider-dostavka-verylong.png"
+          },
+          "title": "Доставка курьером",
+          "alt": "Доставка",
+          "text": ""
+          })
+        </div>
+        <div class="promo-slider__item swiper-slide" style="background: #684cd6; background: linear-gradient(to bottom, #684cd6 0%, #52da5b 100%);">
+          @@include("_tpl_sliders_promo-slider--items.html", {
+          "wordSrc": {
+            "img": "img/promo-slider-dostavka-long.png"
+          },
+          "title": "Доставка курьером",
+          "alt": "Доставка",
+          "text": ""
+          })
+        </div>
+        <div class="promo-slider__item swiper-slide" style="background: #ffbd04; background: linear-gradient(to bottom, #ffbd04 0%, #52da5b 100%);">
+          @@include("_tpl_sliders_promo-slider--items.html", {
+          "wordSrc": {
+            "img": "img/promo-slider-dostavka-short.png"
+          },
+          "title": "Доставка курьером",
+          "alt": "Доставка",
+          "text": ""
+          })
+        </div>
       </div>
       <div class="swiper-pagination"></div>
       <div class="slider-arrow slider-arrow_prev slider-arrow_prev-js">
@@ -34,7 +81,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Мониторы",
-          "icon": "@@include('includes/svg/icon-.svg')",
+          "icon": "@@include('includes/svg/icon-catalog-monitor.svg')",
           "count": "125",
           "links": ["17&quot;", "19&quot;", "21&quot;", "22&quot;", "24&quot;", "27&quot;"]
           })
@@ -42,7 +89,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Компьютеры",
-          "icon": "@@include('includes/svg/icon-.svg')",
+          "icon": "@@include('includes/svg/icon-catalog-computer.svg')",
           "count": "234",
           "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Игровой", "Для дизайна", "Мощные", "Для видеомонтажа", "Универсальный"]
           })
@@ -50,7 +97,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Ноутбуки",
-          "icon": "@@include('includes/svg/icon-.svg')",
+          "icon": "@@include('includes/svg/icon-catalog-notebook.svg')",
           "count": "345",
           "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Игровой", "Для дизайна", "Мощные", "Для видеомонтажа", "Универсальный", "Для работы в дороге"]
           })
@@ -58,7 +105,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Моноблоки",
-          "icon": "@@include('includes/svg/icon-.svg')",
+          "icon": "@@include('includes/svg/icon-catalog-monoblock.svg')",
           "count": "5171",
           "links": ["Dell", "HP", "ACER", "Lenovo", "Asus"]
           })
@@ -100,7 +147,7 @@
   </section>
 
   <section class="main-section main-section_topics tabs-js max-wrap layout">
-    <div class="caption-box ">
+    <div class="caption-box">
       <h2 class="caption-box__title">Лучшая цена</h2>
       <div class="caption-box__options">
         <div class="topics-thumbs tabs__thumbs-js">
@@ -113,6 +160,10 @@
           <a href="#game-zone"><span>Game Zone</span></a>
         </div>
       </div>
+      <a href="catalog.html" class="caption-box__all">
+        Все
+        @@include("includes/svg/icon-arr-roll.svg")
+      </a>
     </div>
     <div class="topics-tabs">
       <div class="topics-tabs__panels tabs__panels-js">
@@ -658,6 +709,10 @@
           <a href="#game-zone2"><span>Game Zone</span></a>
         </div>
       </div>
+      <a href="catalog.html" class="caption-box__all">
+        Все
+        @@include("includes/svg/icon-arr-roll.svg")
+      </a>
     </div>
     <div class="topics-tabs">
       <div class="topics-tabs__panels tabs__panels-js">

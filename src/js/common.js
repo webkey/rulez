@@ -135,7 +135,7 @@ function detectScroll() {
   var $page = $('html'),
       // $fixedElement = $('.main-nav'),
       // var minScrollTop = $fixedElement.offset().top,
-      minScrollTop = 100,
+      minScrollTop = 130,
       currentScrollTop = $(window).scrollTop();
 
   $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
@@ -337,65 +337,103 @@ function slidersInit() {
 
   /**promo slider*/
   var $promoSlider = $('.promo-slider-js');
+
   if ($promoSlider.length) {
     $promoSlider.each(function () {
       var $thisSlider = $(this),
           $thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
           $thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
-          $thisPag = $('.swiper-pagination', $thisSlider);
-      var promoSliderJs;
+          $thisPag = $('.swiper-pagination', $thisSlider),
+          $thisWordImg = $('.word-img-parallax-js', $thisSlider),
+          promoSliderJs;
 
-      promoSliderJs = new Swiper($thisSlider, {
-        init: false,
+      function initPromoSlider() {
+        promoSliderJs = new Swiper($thisSlider, {
+          init: false,
+          speed: 900,
 
-        // Optional parameters
-        loop: true,
-        // Keyboard
-        keyboardControl: true,
-        // Parallax
-        parallax: true,
+          // Optional parameters
+          loop: true,
+          // Keyboard
+          keyboardControl: true,
+          // Parallax
+          parallax: true,
 
-        // Navigation arrows
-        navigation: {
-          nextEl: $thisBtnNext,
-          prevEl: $thisBtnPrev,
-        },
+          // Navigation arrows
+          navigation: {
+            nextEl: $thisBtnNext,
+            prevEl: $thisBtnPrev,
+          },
 
-        // Pagination
-        pagination: {
-          el: $thisPag,
-          type: 'bullets',
-          clickable: true
-        },
+          // Pagination
+          pagination: {
+            el: $thisPag,
+            type: 'bullets',
+            clickable: true
+          },
 
-        longSwipesRatio: 0.05,
-        longSwipesMs: 200,
+          longSwipesRatio: 0.05,
+          longSwipesMs: 200,
 
-        breakpoints: {
-          768: {
-            parallax: false
-          }
-        },
+          breakpoints: {
+            768: {
+              parallax: false
+            }
+          },
 
-        // Events
-        on: {
-          slideChange: function (e) {
-            // changeBgColor(promoSliderJs.activeIndex);
+          // Events
+          // on: {
+          //   slideChange: function (e) {
+          //     // changeBgColor(promoSliderJs.activeIndex);
+          //   }
+          // }
+        });
+
+        promoSliderJs.on('init', function() {
+          $(promoSliderJs.el).closest($thisSlider).addClass('is-loaded');
+          // changeBgColor(promoSliderJs.activeIndex);
+        });
+
+        promoSliderJs.init();
+        // function changeBgColor(index) {
+        //   var bgColor = $(promoSliderJs.slides).eq(index).css('background-color');
+        //   $('.header-bg').css('background-color', bgColor);
+        // }
+      }
+
+      var total_images = $thisWordImg.length,
+          images_loaded = 0,
+          layoutWidth = window.innerWidth,
+          addSpace = Math.round(layoutWidth / 4);
+          // addSpace = 100;
+
+      console.log("layoutWidth: ", layoutWidth);
+
+      $thisWordImg.each(function() {
+        var $curImg = $(this),
+            $parallaxElem = $curImg.parent();
+        if(this.complete) {
+          // Определения размера смещения изображения
+          // Размер смещения равен сумме:
+          // 1/ ширина страницы
+          // 2/ минус расстояние от левого края слайда до обертки изображения (елемет, которы будет параллакситься)
+          // 3/ минус ширина изображения
+          // 4/ минус дополнительный отступ в "px" (addSpace),
+          // который равен запланированному расстоянию
+          // от правого края изображения до правого края слайда
+          // в момет, когда слайд полностью скрывается или начинает появляться
+          console.log("addSpace: ", addSpace);
+          var translate = layoutWidth - $curImg.width() - $parallaxElem.position().left - addSpace;
+          // ;
+          console.log(translate);
+          // Добавить на родительский контейнер data-swiper-parallax с определенным выше смещением
+          $parallaxElem.attr('data-swiper-parallax', translate);
+          images_loaded++;
+          if (images_loaded >= total_images) {
+            initPromoSlider();
           }
         }
       });
-
-      promoSliderJs.on('init', function() {
-        $(promoSliderJs.el).closest($thisSlider).addClass('is-loaded');
-        // changeBgColor(promoSliderJs.activeIndex);
-      });
-
-      promoSliderJs.init();
-
-      function changeBgColor(index) {
-        var bgColor = $(promoSliderJs.slides).eq(index).css('background-color');
-        $('.header-bg').css('background-color', bgColor);
-      }
     });
 
   }

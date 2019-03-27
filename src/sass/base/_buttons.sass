@@ -66,6 +66,61 @@
 
 /* btn-def end
 
+/* btn-round
+.btn-round, .btn-round_small
+  position: relative
+  padding: 1.2rem 2rem
+  margin: 0
+  color: #515151
+  background: $btn-bg-color
+  border: none
+  box-shadow: none
+  // transition
+  //$prop: box-shadow
+  //transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  @at-root
+    &, input#{&}
+      border-radius: 2.5rem
+
+  &, & > span
+    +font(1.8rem, 2.6rem)
+    letter-spacing: normal
+
+  // hover
+  &:hover
+    box-shadow: 0 3px 6px rgba(black, 0.2)
+
+  // active
+  &:active
+    box-shadow: none
+
+  // disabled
+  &:disabled, &.disabled, &[data-disabled]
+    cursor: default
+    background-color: $btn-disabled-color !important
+
+    &::before, &::after
+      display: none
+
+// full parent container width
+.btn-round_full-width
+  width: 100%
+
+// small variant
+.btn-round_small
+  padding: 0.6rem 1.5rem 0.5rem
+
+  &, & > span
+    +font(1.6rem, 2.4rem)
+    letter-spacing: normal
+
+
+/* btn-round end
+
 /* btn-alt
 .btn-alt
   position: relative
@@ -112,7 +167,7 @@
 .btn-alt_full-width
   display: block
 
-/* btn-def-alt end
+/* btn-alt end
 
 /* btn-outline
 .btn-outline
@@ -151,7 +206,8 @@
     &::before, &::after
       display: none
 
-.btn-outline_stretch
+
+.btn-outline_full-width
   display: block
 
 /* btn-outline end
