@@ -97,17 +97,17 @@ i b, i strong, em b, em strong, b i, b em, strong i, strong em
   column-count: 4
   font-size: 0.8em
 
-  +media('<desk-sm')
+  +media('<net')
     column-count: 3
 
 .columnize--3, .columnize--4
 
-  +media('<tab-lg')
+  +media('<tab')
     column-count: 2
 
 .columnize, .columnize--3, .columnize--4
 
-  +media('<tab-sm')
+  +media('<tab-s')
     column-count: 1
 
 /* columnize end
@@ -317,11 +317,11 @@ table
     display: block
     margin: 3rem auto 4rem
 
-    +media('<tab-lg')
+    +media('<tab')
       margin-top: 2.5rem
       margin-bottom: 3rem
 
-    +media('<mob-lg')
+    +media('<mob')
       margin-top: 1.5rem
       margin-bottom: 2rem
 
@@ -330,10 +330,10 @@ table
       max-width: 45%
       margin-right: 3rem
 
-      +media('<tab-lg')
+      +media('<tab')
         margin-right: 2rem
 
-      +media('<mob-lg')
+      +media('<mob')
         float: none
         max-width: none
         margin-right: auto
@@ -343,10 +343,10 @@ table
       max-width: 45%
       margin-left: 3rem
 
-      +media('<tab-lg')
+      +media('<tab')
         margin-left: 2rem
 
-      +media('<mob-lg')
+      +media('<mob')
         float: none
         max-width: none
         margin-left: auto

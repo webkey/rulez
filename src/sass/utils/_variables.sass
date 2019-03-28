@@ -6,17 +6,17 @@
 // ==========================================================================
 
 // Medium query
-$breakpoints: ('desk-qhd': 2560px, 'desk-hd': 1920px, 'desk-lg': 1600px, 'desk-ml': 1440px, 'desk-md': 1280px, 'desk-sm': 1200px, 'tab-lg': 992px, 'tab-sm': 768px, 'mob-lg': 640px, 'mob-md': 480px, 'mob-sm': 320px)
+$breakpoints: ("desk-l": 1600px, "lap-l": 1440px, "lap": 1366px, "lap-s": 1280px, "net": 1200px, "tab": 992px, "tab-s": 768px, "mob": 640px, "mob-s": 480px)
 
 // Fonts style
 // ==========================================================================
 //$font-norm: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !default
-$font-norm: 'circe-regular', Helvetica, Arial, sans-serif !default
-$font-bold: 'circe-bold', Helvetica, Arial, sans-serif !default
-$font-bold-italic: 'gilroy-bold-italic', Helvetica, Arial, sans-serif !default
-$font-extra-bold: 'circe-extra-bold', Helvetica, Arial, sans-serif !default
-$font-italic: 'gilroy-italic', Helvetica, Arial, sans-serif !default
-$font-light: 'circe-light', Helvetica, Arial, sans-serif !default
+$font-norm: "circe-regular", Helvetica, Arial, sans-serif !default
+$font-bold: "circe-bold", Helvetica, Arial, sans-serif !default
+$font-bold-italic: "gilroy-bold-italic", Helvetica, Arial, sans-serif !default
+$font-extra-bold: "circe-extra-bold", Helvetica, Arial, sans-serif !default
+$font-italic: "gilroy-italic", Helvetica, Arial, sans-serif !default
+$font-light: "circe-light", Helvetica, Arial, sans-serif !default
 $font-alt: Georgia, serif !default
 
 // Reset font-weight and font-style
@@ -90,11 +90,11 @@ $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !
   font-size: $font-size-h1
   line-height: $line-height-h1
 
-  +media('<desk-sm')
+  +media('<net')
     font-size: $font-size-h1--tab
     line-height: $line-height-h1--tab
 
-  +media('<tab-sm')
+  +media('<tab-s')
     font-size: $font-size-h1--mob
     line-height: $line-height-h1--mob
 
@@ -113,11 +113,11 @@ $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !
   font-size: $font-size-h2
   line-height: $line-height-h2
 
-  +media('<desk-sm')
+  +media('<net')
     font-size: $font-size-h2--tab
     line-height: $line-height-h2--tab
 
-  +media('<tab-sm')
+  +media('<tab-s')
     font-size: $font-size-h2--mob
     line-height: $line-height-h2--mob
 
@@ -137,11 +137,11 @@ $line-height-h3--mob: round-float($font-size-h3--mob * $line-height-h3-kef, 1) !
   font-size: $font-size-h3
   line-height: $line-height-h3
 
-  +media('<desk-sm')
+  +media('<net')
     font-size: $font-size-h3--tab
     line-height: $line-height-h3--tab
 
-  +media('<tab-sm')
+  +media('<tab-s')
     font-size: $font-size-h3--mob
     line-height: $line-height-h3--mob
 
@@ -361,7 +361,7 @@ $form-input-space-h--small: 12px !default
 =forms-space()
   margin: 0 0 $form-bottom-space
 
-  +media('<mob-lg')
+  +media('<mob')
     margin: 0 0 $form-bottom-space--mob
 
 // Checkboxes

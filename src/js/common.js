@@ -2680,6 +2680,7 @@ function formValidation() {
  */
 
 $(document).ready(function () {
+  $('html').addClass('document-ready');
   // showOnScroll();
   objectFitImages(); // object-fit-images initial
   placeholderInit();

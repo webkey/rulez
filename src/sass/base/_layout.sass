@@ -10,7 +10,7 @@ html
     +scroll-blocked
 
   &.css-scroll-fixed.open-only-mob
-    +media('<tab-lg')
+    +media('<tab')
       +scroll-blocked
 
 body
@@ -38,7 +38,7 @@ body
   @if nth($page-layout-space-narrow, 2) != 0
     +padding-horizontal(nth($page-layout-space-narrow, 2))
 
-    +media('<desk-md')
+    +media('<lap-s')
       +padding-horizontal(nth($page-layout-space-narrow--tab, 2))
 
 .wrapper
