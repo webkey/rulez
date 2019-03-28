@@ -126,26 +126,78 @@ function initTooltip() {
 }
 
 /**
- * !Detect scroll page
+ * !Detect scroll page and transform header
  */
 function detectScroll() {
-  // external js:
-  // 1) resizeByWidth (resize only width);
-
   var $page = $('html'),
-      // $fixedElement = $('.main-nav'),
-      // var minScrollTop = $fixedElement.offset().top,
+      $header = $('.header'),
       minScrollTop = 130,
-      currentScrollTop = $(window).scrollTop();
+      timeoutChanged, timeoutShow,
+      headerIsChanged;
 
-  $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
+  function toggleClassOnScroll(topPos) {
+    $page.toggleClass('page-scrolled', (topPos > minScrollTop));
+  }
 
-  $(window).on('load resizeByWidth scroll', function () {
+  function changeHeightOnScroll(topPos, hideDelay, changeDelay) {
+    /**
+     * hideDelay - С какой задержкой происходит скрытие шапки после остановки скролла.
+     * Задержка нужна, чтобы не происходило моргание в точке изменения шапки.
+     *
+     * changeDelay - С какой задержкой добавляется класс изменения шапки на уменшеный вариант.
+     * Задежка нужна, чтобы успела отработать анимация скрытия шапки.
+     */
+    
+    if (topPos <= minScrollTop && !headerIsChanged) {
+      clearTimeout(timeoutChanged);
+      $header.removeClass('start-hidden');
+    }
 
-    // minScrollTop = $fixedElement.offset().top;
-    currentScrollTop = $(window).scrollTop();
-    $page.toggleClass('page-scrolled', (currentScrollTop > minScrollTop));
-  })
+    if (topPos > minScrollTop && headerIsChanged) {
+      clearTimeout(timeoutChanged);
+      $header.removeClass('start-hidden');
+    }
+
+    clearTimeout(timeoutShow);
+
+    timeoutShow = setTimeout(function () {
+      if (topPos > minScrollTop && !headerIsChanged) {
+        $header.addClass('start-hidden');
+
+        clearTimeout(timeoutChanged);
+
+        timeoutChanged = setTimeout(function () {
+          headerIsChanged = true;
+          $header.addClass('header-changed');
+          $header.removeClass('start-hidden');
+        }, changeDelay);
+      }
+
+      if (topPos <= minScrollTop && headerIsChanged) {
+        $header.addClass('start-hidden');
+
+        timeoutChanged = setTimeout(function () {
+          headerIsChanged = false;
+          $header.removeClass('header-changed');
+          $header.removeClass('start-hidden');
+        }, changeDelay);
+      }
+    }, hideDelay);
+  }
+
+  $(window).on('resizeByWidth scroll', function () {
+    var scrollTop = $(window).scrollTop();
+    toggleClassOnScroll(scrollTop);
+    changeHeightOnScroll(scrollTop, 100, 250);
+  });
+
+  setTimeout(function () {
+    $header.addClass('header-ready');
+  }, 200);
+
+  var scrollTop = $(window).scrollTop();
+  changeHeightOnScroll(scrollTop, 0, 0);
+  toggleClassOnScroll(scrollTop);
 }
 
 /**
@@ -407,8 +459,6 @@ function slidersInit() {
           addSpace = Math.round(layoutWidth / 4);
           // addSpace = 100;
 
-      console.log("layoutWidth: ", layoutWidth);
-
       $thisWordImg.each(function() {
         var $curImg = $(this),
             $parallaxElem = $curImg.parent();
@@ -422,10 +472,7 @@ function slidersInit() {
           // который равен запланированному расстоянию
           // от правого края изображения до правого края слайда
           // в момет, когда слайд полностью скрывается или начинает появляться
-          console.log("addSpace: ", addSpace);
           var translate = layoutWidth - $curImg.width() - $parallaxElem.position().left - addSpace;
-          // ;
-          console.log(translate);
           // Добавить на родительский контейнер data-swiper-parallax с определенным выше смещением
           $parallaxElem.attr('data-swiper-parallax', translate);
           images_loaded++;
@@ -2680,7 +2727,7 @@ function formValidation() {
  */
 
 $(document).ready(function () {
-  $('html').addClass('document-ready');
+  // $('html').addClass('document-ready');
   // showOnScroll();
   objectFitImages(); // object-fit-images initial
   placeholderInit();

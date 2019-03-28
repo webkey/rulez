@@ -924,18 +924,26 @@ $swiper-button-size: 14px, 20px
   max-height: $header-height
   z-index: 99
   // transition
-  //$prop: box-shadow, max-height
-  //transition:
+  $prop: box-shadow, transform
+  will-change: $prop
+  transition:
     property: $prop
     duration: $animation-speed
 
-  html:not(.document-ready) &
+  &:not(.header-ready)
     opacity: 0
 
-  .page-scrolled &
-    max-height: $header-height--scrolled
-    box-shadow: 0 2px 5px rgba(black, 0.15)
+  .no-js &
+    opacity: 1
 
+  &.start-hidden
+    transform: translate(0, -100%) translateZ(0)
+
+  &.header-changed
+    max-height: $header-height--scrolled
+
+  .page-scrolled &
+    box-shadow: 0 2px 5px rgba(black, 0.15)
 
   &.header_float
     position: relative
@@ -977,7 +985,7 @@ $swiper-button-size: 14px, 20px
     property: $prop
     duration: $animation-speed
 
-  .page-scrolled &
+  .header-changed &
     transform: translate(0, 1rem)
 
 .header-top__l
@@ -985,7 +993,7 @@ $swiper-button-size: 14px, 20px
   width: $width
   max-width: $width
 
-  .page-scrolled &
+  .header-changed &
     opacity: 0
     pointer-events: none
 
@@ -1028,7 +1036,7 @@ $uo-border-radius: 7px
   background-color: white
   box-shadow: 0 0 1px rgba(black, 0.15)
 
-  .page-scrolled &
+  .header-changed &
     border-radius: $uo-border-radius
 
 .user-options__item
@@ -1171,14 +1179,14 @@ $uo-border-radius: 7px
     & > a, & > div, & > span, & > strong
       border-bottom-left-radius: $uo-border-radius
 
-      .page-scrolled &
+      .header-changed &
         border-top-left-radius: $uo-border-radius
 
   &:last-child
     & > a, & > div, & > span, & > strong
       border-bottom-right-radius: $uo-border-radius
 
-      .page-scrolled &
+      .header-changed &
         border-top-right-radius: $uo-border-radius
 
   // tooltip align right for last item
@@ -1905,7 +1913,7 @@ $uo-border-radius: 7px
     property: $prop
     duration: $animation-speed
 
-  .page-scrolled &
+  .header-changed &
     z-index: 10
     transform: translate(0, -6rem)
     visibility: hidden // Необходимо скрыть контейнер, чтобы элементы под ним были доступны для клика
@@ -1922,7 +1930,7 @@ $uo-border-radius: 7px
     property: $prop
     duration: $animation-speed
 
-  .page-scrolled &
+  .header-changed &
     transform: translate(0, 0.8rem)
     visibility: visible // Родительская обертка скрыта, а логотип нужно показать
 
@@ -1964,7 +1972,7 @@ $uo-border-radius: 7px
     background-image: url(../../img/logo.png)
     background-size: 165px 63px
 
-    .page-scrolled &
+    .header-changed &
       opacity: 0
 
   &::after
@@ -1972,7 +1980,7 @@ $uo-border-radius: 7px
     background-image: url(../../img/logo-alt.png)
     background-size: 165px 60px
 
-    .page-scrolled &
+    .header-changed &
       opacity: 1
 
   a, & > span
@@ -1995,9 +2003,15 @@ $uo-border-radius: 7px
   padding-bottom: 0.5rem
   //transition: max-width $animation-speed
 
-  .page-scrolled &
+  .header-changed &
     max-width: 60rem
     visibility: visible // Родительская обертка скрыта, а меню нужно показать
+
+    +media('<desk-s')
+      max-width: 48rem
+
+    +media('<lap')
+      max-width: 40rem
 
   &::before
     content: ""
@@ -2091,7 +2105,7 @@ a.catalog-opener
     property: $prop
     duration: $animation-speed
 
-  +media('<desk-l')
+  +media('<desk-s')
     font-size: 1.6rem
 
   +media('<lap-l')
@@ -2151,11 +2165,11 @@ a.catalog-opener
 
   // text
   .catalog-opener__text-full
-    .page-scrolled &
+    .header-changed &
       display: none
 
   .catalog-opener__text-short
-    html:not(.page-scrolled) &
+    .header:not(.header-changed) &
       display: none
 
   // hover
@@ -2277,7 +2291,7 @@ $cat-columns--desk-lg: 5
   margin: 0 round($cat-item-space / 2) $cat-item-space * 2
   //outline: 1px solid lightgrey
 
-  +media('<desk-l')
+  +media('<desk-s')
     $width: calc(#{round-float(100% / $cat-columns--desk-lg, 2) - 0.01} - #{$cat-item-space})
     width: $width
     max-width: $width
@@ -2495,7 +2509,7 @@ $cat-columns--desk-lg: 5
     transform: scale3d($scale, 1)
     transform: scale($scale)
 
-  .page-scrolled &
+  .header-changed &
     display: none
 
 .c-nav
@@ -2512,7 +2526,7 @@ $cat-columns--desk-lg: 5
     float: left
     margin: 0.25rem 3rem 0.25rem 0
 
-    +media('<desk-l')
+    +media('<desk-s')
       margin-right: 2rem
 
     +media('<lap-s')
@@ -2528,7 +2542,7 @@ $cat-columns--desk-lg: 5
     padding-bottom: 0.5rem
     cursor: default
 
-    +media('<desk-l') // 1600
+    +media('<desk-s') // 1600
       font-size: 1.6rem
       line-height: 2.0rem
 
@@ -4109,7 +4123,7 @@ $ql-columns--desk-lg: 4
   width: calc(#{round-float(100% / $ql-columns, 2)} - #{$ql-item-space})
   margin: 0 round($ql-item-space / 2) $ql-item-space
 
-  +media('<desk-l')
+  +media('<desk-s')
     width: calc(#{round-float(100% / $ql-columns--desk-lg, 2)} - #{$ql-item-space})
 
   &.has-shadow
@@ -4122,7 +4136,7 @@ $ql-columns--desk-lg: 4
 .quick-links__item-wide
   width: calc(#{round-float(100% / $ql-columns * 2, 2)} - #{$ql-item-space})
 
-  +media('<desk-l')
+  +media('<desk-s')
     width: calc(#{round-float(100% / $ql-columns--desk-lg * 2, 2)} - #{$ql-item-space})
 
 /* quick-links end
@@ -4250,7 +4264,7 @@ $opinion-box-shadow-color: black
 .caption-box
   position: relative
   display: flex
-  align-items: flex-end
+  align-items: center
   margin-bottom: 2.5rem
   padding-right: 6rem
 
@@ -4258,8 +4272,11 @@ $opinion-box-shadow-color: black
     margin-bottom: 0
 
 .caption-box__title
-  margin-right: 5rem
+  margin-right: 2rem
   margin-bottom: 0
+  $width: 35rem
+  min-width: $width
+  max-width: $width
   +font-bold
   font-size: 3.6rem
   line-height: 4.2rem
@@ -4267,6 +4284,7 @@ $opinion-box-shadow-color: black
 
 .caption-box__options
   position: relative
+  padding-top: 0.2rem
 
 .caption-box__all
   position: absolute
@@ -4291,8 +4309,7 @@ $opinion-box-shadow-color: black
     path
       stroke: currentColor
 
-  &:hover
-    text-decoration: underline
+  +underlinedLinks($base-color-light)
 
 /* caption-box end
 
@@ -4312,8 +4329,11 @@ $opinion-box-shadow-color: black
       property: $prop
       duration: $animation-speed
 
+    +media('<lap')
+      margin-right: 2.5rem
+
     // for ie 9
-    @if $ie9
+    //@if $ie9
       .no-flexwrap &
         display: inline-block
         vertical-align: top
@@ -5886,12 +5906,12 @@ $tl-columns: 4
     height: 100%
 
   .topics__list:not(.topics__list_with-banners) &:last-child
-    +media('<desk-l')
+    +media('<desk-s')
       display: none
 
 
   .topics__list_with-banners &:nth-last-child(2)
-    +media('<desk-l')
+    +media('<desk-s')
       display: none
 
 /* topics end
@@ -6034,6 +6054,9 @@ $tl-columns: 4
     transition:
       property: $prop
       duration: $animation-speed
+
+    +media('<lap')
+      margin-right: 2.5rem
 
     // for ie 9
     @if $ie9
@@ -6534,7 +6557,7 @@ $products-border-width: 1px
   width: $width
   flex-basis: $width
 
-  +media('<desk-l')
+  +media('<desk-s')
     $width: 33.33%
     width: $width
     flex-basis: $width
@@ -7660,7 +7683,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   max-width: 500px
   min-width: $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
 
-  +media('<desk-l')
+  +media('<desk-s')
     max-width: 380px
 
 .p-card-gallery-images__item
@@ -8476,7 +8499,7 @@ $card-size: 85px 135px
   font-size: 1.4rem
   line-height: 2rem
 
-  +media('<desk-l')
+  +media('<desk-s')
     column-count: 2
 
   &:last-child
