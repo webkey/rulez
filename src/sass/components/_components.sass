@@ -36,16 +36,34 @@
 .hide
   display: none !important
 
+// Только на разрешениях больше планшетных (условно, больше 991px)
 .desktop-only
   +media('<tab')
     display: none
 
-.devices-only
+// Только на планшетных и мобильных разрешениях (условно, меньш 992px)
+.no-desktop-only
   +media('>=tab')
     display: none
 
+// Только на планшетных разрешениях (условно, от 992px до 641 включительно)
+.tablet-only
+  +media('>=tab', '<mob')
+    display: none
+
+// Только не на планшетных разрешениях (условно, от 993px и выше, и от 640 и ниже)
+.no-tablet-only
+  +media('<tab', '>=mob')
+    display: none
+
+// Только на мобильных разрешениях (условно, с 640px и ниже)
 .mobile-only
   +media('>=mob')
+    display: none
+
+// Только не на мобильных разрешениях (условно, с 641px и выше)
+.no-mobile-only
+  +media('<mob')
     display: none
 
 /* figure on background of a page
@@ -993,10 +1011,6 @@ $swiper-button-size: 14px, 20px
   width: $width
   max-width: $width
 
-  .header-changed &
-    opacity: 0
-    pointer-events: none
-
   // for ie 9
   //@if $ie9
     .no-flexwrap &
@@ -1154,6 +1168,9 @@ $uo-border-radius: 7px
       letter-spacing: normal
       text-align: left
 
+      +media('<net')
+        display: none
+
     // counter
     .counter
       display: block
@@ -1247,31 +1264,6 @@ $uo-border-radius: 7px
 /* user options
 
 /* navigation
-.nav
-  position: relative
-  float: left
-  font-size: 1.5rem
-  line-height: 2.1rem
-  white-space: nowrap
-  height: 2.9rem
-  opacity: 0
-  // transition
-  $prop: opacity
-  will-change: $prop
-  transition:
-    property: $prop
-    duration: $animation-speed
-
-  .no-js &
-    opacity: 1
-    height: auto
-
-  &.ready
-    opacity: 1
-
-  .resizing &
-    overflow: hidden
-
 .nav__list
   overflow: hidden
   white-space: nowrap
@@ -1305,6 +1297,9 @@ $uo-border-radius: 7px
     transition:
       property: $prop
       duration: $animation-speed
+
+    +media('<lap-s')
+      padding: 0.4rem 0.8rem
 
   a
     +underlinedLinks(white)
@@ -1363,7 +1358,7 @@ $uo-border-radius: 7px
       timing-function: ease-in-out
 
     &:hover
-      box-shadow: inset 0 -2px 0 rgba(white, 0.5)
+      box-shadow: inset 0 -2px 0 rgba($text-color, 0.5)
 
 .okayNav__menu-toggle
   position: relative
@@ -1381,6 +1376,9 @@ $uo-border-radius: 7px
     property: $prop
     duration: $animation-speed
     timing-function: ease-in-out
+
+  +media('<lap-s')
+    padding: 0.4rem 2.8rem 0.4rem 0.6rem
 
   &.okay-invisible
     position: absolute
@@ -1434,6 +1432,39 @@ $uo-border-radius: 7px
 
     +underlinedLinksReset
 
+.nav
+  position: relative
+  float: left
+  font-size: 1.5rem
+  line-height: 2.1rem
+  white-space: nowrap
+  height: 2.9rem
+  opacity: 0
+  // transition
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  +media('<lap-s')
+    font-size: 1.4rem
+
+  .no-js &
+    opacity: 1
+    height: auto
+
+  &.ready
+    opacity: 1
+
+  .resizing &
+    overflow: hidden
+
+  // header is changed
+  .header-changed &, .header-changed & *
+    opacity: 0
+    pointer-events: none
+
 /* navigation end
 
 /* header contacts
@@ -1444,6 +1475,9 @@ $uo-border-radius: 7px
 
   .header-top &
     margin-right: 2rem
+
+    +media('<lap-s')
+      margin-right: 1rem
 
 .chats
   width: 100%
@@ -1707,15 +1741,21 @@ $uo-border-radius: 7px
   text-decoration: none
   color: white
   padding: 0.6rem 0.8rem 0.7rem
-  border-radius: 0 0 0.7rem 0.7rem
+  border-radius: 0 0 7px 7px
   // transition
   $prop: background-color, color
   transition:
     property: $prop
     duration: $animation-speed
 
+  .header-changed &
+    border-radius: 0.7rem
+
   .header-top &
     margin-left: 2.8rem
+
+    +media('<lap-s')
+      margin-left: 1.5rem
 
   // for ie 9
   @if $ie9
@@ -1846,7 +1886,7 @@ $uo-border-radius: 7px
 
 // hover
 .cart-link
-  &:hover
+  &:hover, &.quick-cart_opened
     color: $base-color
     //background-color: white
     background-color: $bg-color
@@ -1871,6 +1911,10 @@ $uo-border-radius: 7px
       $translate: 0, 0
       transform: translate($translate)
       transform: translate3d($translate, 0)
+
+  .no-touchevents &.quick-cart_opened[data-title]:hover
+    &::before
+      opacity: 0
 
   // push in cart
   &.push
@@ -1897,6 +1941,162 @@ $uo-border-radius: 7px
       transform: translate(0, 0) scale(1)
 
 /* cart-link end
+
+/* quick cart
+.quick-cart
+  position: absolute
+  right: nth($page-layout-space, 2)
+  top: 100%
+  width: 39rem
+  margin-top: 0.5rem
+  padding-top: 3rem
+  background-color: white
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18)
+  border-radius: 4px
+  opacity: 0
+  pointer-events: none
+  user-select: none
+  $prop: transform, opacity, top
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  &.quick-cart_opened
+    opacity: 1
+    pointer-events: auto
+    user-select: auto
+
+.quick-cart__overflow
+  position: relative
+  border-bottom: 1px solid $border-color
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    height: 2rem
+    width: 100%
+    left: 0
+    z-index: 1
+
+  &::before
+    top: 0
+    border-radius: 4px 4px 0 0
+    $color: white
+    +linear-gradient(to bottom, $color 0, rgba($color, 0) 100%)
+
+  &::after
+    bottom: 0
+    border-radius: 0 0 4px 4px
+    $color: white
+    +linear-gradient(to top, $color 0, rgba($color, 0) 100%)
+
+.quick-cart__list
+  padding: 0 #{nth($box-inner-space, 2)}
+  max-height: 38rem
+
+.quick-cart__item
+  $element: &
+  padding: 1.5rem 0
+  border-top: 1px solid $border-color
+  +clear
+
+  &:first-child
+    border: none
+
+.quick-cart__item-figure
+  float: left
+  display: flex
+  align-items: center
+  justify-content: center
+  width: 11.8rem
+  height: 7.8rem
+  margin-right: 2.0rem
+
+  img
+    display: block
+    max-width: 100%
+    max-height: 100%
+
+.quick-cart__item-content
+  overflow: hidden
+
+.quick-cart__item-title
+  display: block
+  margin-bottom: 1rem
+  +font-normal
+  font-weight: normal
+  font-size: 1.4rem
+  line-height: 2.0rem
+  color: $title-color
+  transition: color $animation-speed
+
+.quick-cart__item-meta
+  font-size: 1.4rem
+  line-height: 2.0rem
+
+.quick-cart__item-count
+  display: inline-block
+  color: $text-color-soft
+  margin-right: 0.5rem
+
+.quick-cart__item-price
+  display: inline-block
+  +font-bold
+  color: $text-color
+
+// hover (if use link)
+a.quick-cart__item
+  display: block
+  text-decoration: none
+  color: inherit
+
+  &:hover
+    .quick-cart__item-title
+      color: $base-color
+
+.quick-cart__footer
+  padding: 2rem #{nth($box-inner-space, 2)}
+
+.quick-cart__btn
+  display: block
+  width: 100%
+
+.quick-cart__remove
+  $size: 1.8rem
+  $size-cross: 0.2rem 1rem
+  position: absolute
+  right: 1.2rem
+  top: 0.9rem
+  width: $size
+  height: $size
+  color: white
+  background-color: #d8d8d8
+  border-radius: round-float($size / 2, 1)
+  text-indent: -9999px
+  overflow: hidden
+  transform: rotate(-90deg) translateZ(0)
+  transition: background-color $animation-speed
+
+  svg
+    display: block
+    $size: 0.8rem
+    +size($size)
+    position: absolute
+    left: 50%
+    top: 50%
+    $space: round-float($size / 2, 1)
+    margin: -#{$space} 0 0 -#{$space}
+
+  path
+    fill: currentColor
+
+  // hover
+  &:hover
+    background-color: $base-color
+
+/* quick cart end
 
 /* header-common
 .header-common
@@ -1949,6 +2149,9 @@ $uo-border-radius: 7px
   overflow: hidden
   margin: 0 2rem 0 0
   z-index: 5
+
+  +media('<lap-s')
+    margin-right: 1rem
 
   &::before, &::after
     content: ""
@@ -2013,6 +2216,9 @@ $uo-border-radius: 7px
     +media('<lap')
       max-width: 40rem
 
+    +media('<net')
+      max-width: 28rem
+
   &::before
     content: ""
     display: block
@@ -2058,11 +2264,11 @@ $uo-border-radius: 7px
   margin: 0 0.5rem
 
   & > div
-  // for ie 9
-  @if $ie9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
 
   &:last-child
     flex-grow: 1
@@ -2111,6 +2317,11 @@ a.catalog-opener
   +media('<lap-l')
     font-size: 1.4rem
 
+  +media('<lap-s')
+    padding: 0
+    height: 4rem
+    width: 4rem
+
   // крест
   &::before, &::after
     content: ""
@@ -2129,12 +2340,17 @@ a.catalog-opener
       delay: 0s
       timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
+    +media('<lap-s')
+      left: 11px
+
   // бутерброд
   & > i
     position: absolute
     left: 14px
     top: 50%
     +size($btn-menu-lines-width, $btn-menu-lines-height)
+    font-size: 0
+    line-height: 0
     background-color: $btn-menu-lines-color
     margin-top: -#{round($btn-menu-lines-height / 2)}
     backface-visibility: hidden
@@ -2142,6 +2358,9 @@ a.catalog-opener
       property: opacity
       duration: $btn-menu-animation-speed
       delay: $btn-menu-animation-delay
+
+    +media('<lap-s')
+      left: 11px
 
     &::before, &::after
       content: ''
@@ -2164,6 +2383,10 @@ a.catalog-opener
       top: #{$btn-menu-lines-height + $btn-menu-lines-space}
 
   // text
+  & > span
+    +media('<lap-s')
+      display: none
+
   .catalog-opener__text-full
     .header-changed &
       display: none
@@ -2218,7 +2441,7 @@ a.catalog-opener
 .catalog-shutter
   position: fixed
   left: 0
-  top: $header-height
+  top: $header-height + 1
   width: 100%
   height: calc(100% - #{$header-height})
   //background-color: rgba(black, 0.3)
@@ -2226,11 +2449,14 @@ a.catalog-opener
   opacity: 0
   pointer-events: none
   user-select: none
-  $prop: transform, opacity
+  $prop: transform, opacity, top
   will-change: $prop
   transition:
-    property: transform, opacity
+    property: $prop
     duration: $animation-speed
+
+  .header-changed ~ &
+    top: $header-height--scrolled + 0.5
 
   &.catalog-is-open
     opacity: 1
@@ -2249,7 +2475,6 @@ a.catalog-opener
   $translate: 0, -1rem
   $scale: 0.8, 0.8
   transform: translate($translate) scale($scale)
-  // for old browser
   transform: translate3d($translate, 0) scale3d($scale, 1)
   $prop: transform, opacity
   will-change: $prop
@@ -2261,7 +2486,6 @@ a.catalog-opener
     $translate: 0, 0
     $scale: 1, 1
     transform: translate($translate)
-    // for old browser
     transform: translate3d($translate, 0)
 
   &:last-child
@@ -2530,7 +2754,7 @@ $cat-columns--desk-lg: 5
       margin-right: 2rem
 
     +media('<lap-s')
-      margin-right: 1rem
+      margin-right: 1.5rem
 
   a, li > span
     display: block
@@ -2607,7 +2831,7 @@ $search-btn-space: 0 0.5rem
   position: relative
   margin: 0
   z-index: auto
-  padding-right: nth($search-btn-space, 2) * 2 + nth($search-btn-size, 2)
+  padding-right: nth($search-btn-space, 2) + nth($search-btn-size, 2)
 
   .search-form__input
     $font-size: 1.6rem
@@ -2641,7 +2865,7 @@ $search-btn-space: 0 0.5rem
   width: nth($search-btn-size, 2)
   min-width: nth($search-btn-size, 2)
   border-radius: round-float(nth($search-btn-size, 1) / 2, 1)
-  margin: 0 nth($search-btn-space, 2)
+  margin: 0 0 0 nth($search-btn-space, 2)
   // transition
   $prop: background-color, color
   transition:
@@ -2741,8 +2965,11 @@ $search-btn-space: 0 0.5rem
 
 .footer__holder
   cursor: default
-  padding-top: nth($footer-space, 1)
-  padding-bottom: nth($footer-space, 3)
+  padding-top: 5rem
+  padding-bottom: 2rem
+
+  +media('<lap-s')
+    padding-top: 3rem
 
 /* footer-common
 .footer-common
@@ -2844,7 +3071,6 @@ $search-btn-space: 0 0.5rem
   a
     color: rgba(white, 0.6)
     text-decoration: none
-    padding-top: 0.5em
     // transition
     $prop: color
     transition:
@@ -2881,13 +3107,16 @@ $search-btn-space: 0 0.5rem
   margin: 0 0 3rem
   padding: 0
   font-size: 1.4rem
-  line-height: 1.5
+  line-height: 1.8rem
 
   &:last-child
     margin-bottom: 0
 
   li
     margin-bottom: 2rem
+
+    +media('<lap-s')
+      margin-bottom: 1rem
 
     &:last-child
       margin-bottom: 0
@@ -2987,6 +3216,12 @@ $search-btn-space: 0 0.5rem
 /* soc-footer end
 
 /* btn-subs
+.subs
+  margin-bottom: 1.3rem
+
+  &:last-child
+    margin-bottom: 0
+
 .btn-subs
   position: relative
   display: inline-block
@@ -3037,6 +3272,16 @@ $search-btn-space: 0 0.5rem
         fill: currentColor
 
 /* btn-subs end
+
+/* pay cards
+.pay-cards
+  position: relative
+
+  img
+    mix-blend-mode: normal
+    opacity: 0.38
+
+/* pay cards end
 
 /* footer bottom
 .footer-bottom
@@ -3101,31 +3346,14 @@ $search-btn-space: 0 0.5rem
 
 /* developer
 .developer
-  display: inline-block
-
-  a
-    text-decoration: none
-
-    .no-touchevents &:hover
-      text-decoration: none
-
-.developer__label
-  +media('<mob')
-    display: block
-
-  i
-    +media('<mob')
-      display: none
-
-.developer__logo
-  +display-inline-block-top
   position: relative
-  top: 5px
-  padding-right: 3px
+  display: inline-block
+  vertical-align: top
   +size(154px, 20px)
   text-align: left
   text-indent: -9999px
-  opacity: 0.3
+  text-decoration: none
+  opacity: 0.5
   // transition
   $prop: opacity
   will-change: $prop
@@ -3779,13 +4007,15 @@ $p-sticker-size: 2.6rem 2.6rem
 /* category-links
 .category-links
   background-color: white
-  padding: 1.6rem
+  padding: 3.2rem 1rem 1.2rem 1.6rem
 
 .category-links__title
-  margin-bottom: 2rem
+  margin-bottom: 3.1rem
   display: flex
   justify-content: flex-start
   align-items: center
+  font-size: 1.6rem
+  line-height: 2.2rem
 
   &:last-child
     margin-bottom: 0
@@ -3794,7 +4024,7 @@ $p-sticker-size: 2.6rem 2.6rem
     display: inline-block
     vertical-align: top
     width: 3rem
-    height: 3rem
+    height: 2.2rem
     margin-right: 1rem
 
     path, rect, circle
@@ -3807,8 +4037,6 @@ $p-sticker-size: 2.6rem 2.6rem
     display: inline-block
     vertical-align: top
     +font-bold
-    font-size: 1.6rem
-    line-height: 2.0rem
     color: #000
     margin-right: 1rem
 
@@ -3824,7 +4052,6 @@ $p-sticker-size: 2.6rem 2.6rem
     +font-light
     font-style: normal
     font-size: 1.4rem
-    line-height: 2.0rem
     color: $base-color
 
 .category-links__list
@@ -3845,7 +4072,7 @@ $p-sticker-size: 2.6rem 2.6rem
     font-size: 1.4rem
     line-height: 1.8rem
     letter-spacing: normal
-    padding: 0 0.5rem 1rem 0
+    padding: 0 0.8rem 1.5rem 0
 
     // for ie 9
     @if $ie9
@@ -3859,8 +4086,9 @@ $p-sticker-size: 2.6rem 2.6rem
     color: currentColor
     text-align: center
     min-height: 3.2rem
+    min-width: 3.2rem
     border-radius: 1.6rem
-    padding: 0.7rem 0.9rem 0.5rem
+    padding: 0.7rem 0.9rem
     box-shadow: inset 0 0 0 1px rgba(#bdbdbd, 0.3)
     text-decoration: none
     // transition
@@ -4100,7 +4328,7 @@ $ql-columns--desk-lg: 4
 .main-section_quick-links
   position: relative
   padding-top: 0
-  padding-bottom: 2rem
+  padding-bottom: 0.6rem
   z-index: 5
 
 .quick-links
@@ -4142,15 +4370,15 @@ $ql-columns--desk-lg: 4
 /* quick-links end
 
 /* opinion
-$opinion-figure-size: 6.4rem 6.4rem
-$opinion-figure-space: 2rem
+$opinion-figure-size: 6.8rem 6.8rem
+$opinion-figure-space: 3.8rem
 $opinion-box-shadow-size--start: 0 2px 4px
 $opinion-box-shadow-size--end: 0 5px 8px
 $opinion-box-shadow-color: black
 .opinion
   position: relative
   display: block
-  padding: 3.0rem 4.5rem
+  padding: 3.0rem 4.8rem
   background-color: white
   text-decoration: none
   color: #000
@@ -4200,9 +4428,9 @@ $opinion-box-shadow-color: black
   margin-left: nth($opinion-figure-size, 2) + $opinion-figure-space
   font-size: 1.4rem
   line-height: 2.0rem
-  letter-spacing: 0.2em
+  letter-spacing: 0.24em
   color: $base-color
-  margin-bottom: 1rem
+  margin-bottom: 0.9rem
 
   &:last-child
     margin-bottom: 0
@@ -4228,7 +4456,7 @@ $opinion-box-shadow-color: black
 
 /* opinions
 .main-section_opinions
-  padding-bottom: 3.5rem
+  padding-bottom: 4.1rem
 
 .opinions
   margin-bottom: $bottom-space
@@ -4264,42 +4492,71 @@ $opinion-box-shadow-color: black
 .caption-box
   position: relative
   display: flex
-  align-items: center
-  margin-bottom: 2.5rem
-  padding-right: 6rem
+  align-items: flex-start
+  margin-bottom: 1.7rem
+  padding-right: 8rem
 
   &:last-child
     margin-bottom: 0
 
+  +media('<lap-s')
+    flex-direction: column
+    padding-right: 0
+
 .caption-box__title
-  margin-right: 2rem
+  flex-shrink: 0
+  margin-right: 5rem
   margin-bottom: 0
-  $width: 35rem
-  min-width: $width
-  max-width: $width
+  //$width: 35rem
+  //min-width: $width
+  //max-width: $width
   +font-bold
-  font-size: 3.6rem
-  line-height: 4.2rem
+  $fz: 3.6rem
+  $lh: 4.2rem
+  font-size: $fz
+  line-height: $lh
+  $lh-kef: $lh / $fz // Отношение line-height к font-size
   color: #131313
+
+  +media('<lap-s')
+    margin-right: 0
+    margin-bottom: 0.5rem
+    font-size: 3.2rem
+    line-height: round-float(3.2rem * $lh-kef, 1)
 
 .caption-box__options
   position: relative
-  padding-top: 0.2rem
+  //padding-top: 0.2rem // If align center
+  padding-top: 0.7rem // If align top
+
+  +media('<lap-s')
+    padding-top: 0
 
 .caption-box__all
   position: absolute
-  right: 1rem
-  top: 50%
-  $line-height: 2.0rem
+  right: 0
+  //top: 50% // If align center
+  top: 0.7rem // If align top
+  $line-height: 3rem
   height: $line-height
-  margin-top: -#{round-float($line-height / 2, 1)}
+  //margin-top: -#{round-float($line-height / 2, 1)}
+  padding: 0 1.4rem
   +font(1.4rem, $line-height)
   color: $base-color-light
   text-decoration: none
+  background-color: white
+  box-shadow: 0 1px 1px rgba(black, 0.3)
+  border-radius: $line-height
+  // transition
+  $prop: background-color, color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
 
   svg
     position: relative
-    top: 0.5rem
+    top: 1rem
     display: inline-block
     vertical-align: top
     $size: 1rem
@@ -4309,7 +4566,14 @@ $opinion-box-shadow-color: black
     path
       stroke: currentColor
 
-  +underlinedLinks($base-color-light)
+  // hover
+  &:hover
+    color: white
+    background-color: $base-color-light
+
+  // active
+  &:active
+    transform: translate(0, 1px)
 
 /* caption-box end
 
@@ -4323,6 +4587,8 @@ $opinion-box-shadow-color: black
     color: #646464
     text-decoration: none
     margin: 0.5rem 4rem 0.5rem 0
+    user-select: none
+    -webkit-tap-highlight-color: transparent
     // transition
     $prop: opacity
     transition:
@@ -4333,15 +4599,10 @@ $opinion-box-shadow-color: black
       margin-right: 2.5rem
 
     // for ie 9
-    //@if $ie9
+    @if $ie9
       .no-flexwrap &
         display: inline-block
         vertical-align: top
-
-    // touch
-    &.touchevents
-      user-select: none
-      -webkit-tap-highlight-color: transparent
 
     +underlinedAnchor(#646464)
 
@@ -4349,6 +4610,8 @@ $opinion-box-shadow-color: black
     &.tabs-active
       color: #000
       +font-bold
+      cursor: default
+      pointer-events: none
 
       & > span
         border-color: transparent
@@ -4901,9 +5164,12 @@ $product-item-space: 2rem 2.4rem
 // === product main ===
 .product__main
   width: 100%
-  min-height: 36.7rem
+  min-height: 36.5rem
   margin-bottom: 2rem
   padding: nth($product-item-space, 1) nth($product-item-space, 2) 0
+
+  +media('<lap-s')
+    min-height: 32rem
 
   &:last-child
     margin-bottom: 0
@@ -4954,6 +5220,9 @@ $product-item-space: 2rem 2.4rem
       property: $prop
       duration: 0.5s
       timing-function: ease-in-out
+
+  +media('<lap-s')
+    height: 20rem
 
   &:last-child
     margin-bottom: 0
@@ -5041,19 +5310,20 @@ $product-item-space: 2rem 2.4rem
 .product__offer
   display: flex
   justify-content: space-between
-  align-items: center
+  align-items: flex-end
   margin: 1rem 0
   min-height: 3.2rem
 
 // === product stock ===
 .product__stock
-  flex-basis: 50%
+  //flex-basis: 50%
   display: inline-block
   vertical-align: top
+  margin-bottom: 0.7rem
 
 // === product price ===
 .product__price
-  flex-basis: 50%
+  //flex-basis: 50%
   text-align: right
   line-height: 3.2rem
 
@@ -5438,6 +5708,7 @@ $product-item-space: 2rem 2.4rem
   // === product stock ===
   .product__stock
     padding: 0.5rem 0 0.5rem 3rem
+    margin-bottom: 0
 
     & > i
       $size: 2.2rem
@@ -5831,6 +6102,15 @@ $product-short-title-line-number: 2
     property: $prop
     duration: $animation-speed
 
+  img
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    +object-fit(cover)
+
 .topic-banner__title
   position: absolute
   left: 0
@@ -5839,7 +6119,7 @@ $product-short-title-line-number: 2
   +font-bold
   font-size: 2.4rem
   line-height: 3.5rem
-  padding: 1rem 1.4rem 5rem
+  padding: 1rem 2.2rem 2.7rem
   z-index: 1
 
   &::before
@@ -5875,26 +6155,78 @@ a.topic-banner
 /* topics
 .main-section_topics
   position: relative
+  //padding-bottom: 3.6rem
+  padding-bottom: 2rem
 
 $tl-item-space: 18px
-$tl-columns: 4
 .topics__list
   display: flex
   margin-left: -#{round($tl-item-space / 2)}
   margin-right: -#{round($tl-item-space / 2)}
   margin-bottom: $bottom-space
+  //+clear
 
   &:last-child
     margin-bottom: 0
 
+  &.swiper-container
+    display: block // Если список явдяеься слайдером то перебить display: flex
+
+  // Обнулить стили заданные скриптом слайдера
+  +media('>=tab')
+    &.swiper-container
+      margin-left: -#{round($tl-item-space / 2)}
+      margin-right: -#{round($tl-item-space / 2)}
+      position: static
+      overflow: visible
+      z-index: auto
+
+    .swiper-wrapper
+      transform: none !important
+      display: flex
+      position: static
+      width: auto
+      height: auto
+      z-index: auto
+      box-sizing: border-box
+
+    .swiper-slide
+      flex-shrink: 1
+      position: static
+      height: auto
+
+    .swiper-button-prev,
+    .swiper-button-next,
+    .swiper-pagination
+      display: none
+
+// Обнулить стили заданные скриптом слайдера END
+
+.topics-slider__prev,
+.topics-slider__next
+  display: none
+
 .topics__item
-  width: calc(#{round-float(100% / $tl-columns, 2)} - #{$tl-item-space})
-  margin: 0 round($tl-item-space / 2) $tl-item-space
-  background-color: white
+  //float: left
+  height: 100%
+  $width: #{round-float(100% / 5, 2)}
+  max-width: $width
+  min-width: $width
+  padding: 0 round($tl-item-space / 2)
 
   // show on scroll
   //html:not(.no-js) &
     visibility: hidden
+
+  +media('<desk-s')
+    $width: #{round-float(100% / 4, 2)}
+    max-width: $width
+    min-width: $width
+
+  +media('<net')
+    $width: #{round-float(100% / 3, 2)}
+    max-width: $width
+    min-width: $width
 
   // for ie 9
   @if $ie9
@@ -5904,14 +6236,22 @@ $tl-columns: 4
 
   .product, .topic-banner
     height: 100%
+    background-color: white
 
   .topics__list:not(.topics__list_with-banners) &:last-child
     +media('<desk-s')
       display: none
 
+  .topics__list:not(.topics__list_with-banners) &:nth-last-child(2)
+    +media('<net')
+      display: none
 
   .topics__list_with-banners &:nth-last-child(2)
     +media('<desk-s')
+      display: none
+
+  .topics__list_with-banners &:nth-last-child(3)
+    +media('<net')
       display: none
 
 /* topics end
@@ -5922,14 +6262,22 @@ $tl-columns: 4
   padding-top: 0
 
 .banner
+  text-align: center
+
+  +media('<lap-s')
+    height: 18rem
+
   img
     width: 100%
     max-width: none
 
-  .main-section_banners &
+    +media('<lap-s')
+      width: 100%
+      height: 100%
+      +object-fit(cover)
 
+  .main-section_banners &
     img
-      display: block
       margin: 0 auto
       width: auto
       max-width: 100%
@@ -6011,18 +6359,18 @@ $tl-columns: 4
 
 /* quick-links
 .main-section_game-zone
-  padding-top: 3rem
-  padding-bottom: 3rem
+  padding-top: 4rem
+  padding-bottom: 4rem
   +linear-gradient(to bottom, #30203c 0%, #2f2c31 100%)
-  margin-bottom: 4rem
-
-  &:last-child
-    margin-bottom: 0
 
 .gz-caption
   display: flex
-  align-items: center
-  margin-bottom: 2.0rem
+  align-items: flex-start
+  margin-bottom: 1rem
+
+  +media('<lap-s')
+    flex-direction: column
+    padding-right: 0
 
   &:last-child
     margin-bottom: 0
@@ -6031,13 +6379,25 @@ $tl-columns: 4
   margin-right: 5rem
   margin-bottom: 0
   +font-bold
-  font-size: 36px
-  line-height: 42px
+  $fz: 3.6rem
+  $lh: 4.2rem
+  font-size: $fz
+  line-height: $lh
+  $lh-kef: $lh / $fz // Отношение line-height к font-size
   color: white
+
+  +media('<lap-s')
+    margin-right: 0
+    margin-bottom: 0.5rem
+    font-size: 3.2rem
+    line-height: round-float(3.2rem * $lh-kef, 1)
 
 .gz__options
   position: relative
   padding-top: 0.5rem
+
+  +media('<lap-s')
+    padding-top: 0
 
 // game-zone__links
 .gz__links
@@ -6074,7 +6434,7 @@ $tl-columns: 4
 // game-zone__links end
 
 .gz__entry
-  margin-bottom: 2rem
+  margin-bottom: 1.4rem
   column-count: 2
   column-gap: 4rem
   font-size: 1.4rem
@@ -6091,6 +6451,7 @@ $tl-columns: 4
       margin-bottom: 0
 
 $gz-item-space: 18px
+$gz-item-space--tab: 10px
 $gz-columns: 4
 .gz-tiles
   margin-bottom: $bottom-space
@@ -6101,6 +6462,10 @@ $gz-columns: 4
 .gz-tiles__list
   margin-left: -#{round($gz-item-space / 2)}
   margin-right: -#{round($gz-item-space / 2)}
+
+  +media('<lap-s')
+    margin-left: -#{round($gz-item-space--tab / 2)}
+    margin-right: -#{round($gz-item-space--tab / 2)}
 
   &:not(.grid-completed)
     overflow: hidden
@@ -6114,8 +6479,10 @@ $gz-columns: 4
   color: white
   text-decoration: none
 
+  +media('<lap-s')
+    padding: 0 round($gz-item-space--tab / 2) $gz-item-space--tab
+
 // gz-tiles-elem
-$gz-tiles-elem-space: 3.5rem 3.8rem
 .gz-tiles-elem
   height: 0
   display: block
@@ -6149,11 +6516,20 @@ $gz-tiles-elem-space: 3.5rem 3.8rem
   top: 0
   width: 100%
   height: 100%
-  padding: $gz-tiles-elem-space
+  padding: 3.5rem 3.8rem
   +font-light
-  font-size: 2.4rem
-  line-height: 2.5rem
+  $fz: 2.4rem
+  $lh: 2.5rem
+  font-size: $fz
+  line-height: $lh
+  $kef-lh: $lh / $fz
   color: #c8c8c8
+
+  +media('<lap-s')
+    padding: $section-inner-space
+    $fz: 2rem
+    font-size: $fz
+    line-height: #{round-float($fz * $kef-lh, 1)}
 
   [data-align~="top"] &
     align-items: flex-start
@@ -6222,8 +6598,10 @@ $gz-tiles-elem-space: 3.5rem 3.8rem
 /* articles main previews
 .main-section_articles
   position: relative
+  padding-top: 4.2rem
+  padding-bottom: 0
 
-$at-item-space: 10px
+$at-item-space: 1rem
 $at-columns: 5
 .articles-tiles
   overflow: hidden
@@ -6243,22 +6621,37 @@ $at-columns: 5
   display: inline-block
   vertical-align: top
   width: round-float(100% / $at-columns, 2)
-  padding: round-float($at-item-space / 2, 0)
+  padding: round-float($at-item-space / 2, 1)
 
   &:nth-child(1n) .articles-tiles-elem
-    height: 420px
+    height: 42rem
+
+    +media('<lap-s')
+      height: 37rem
 
   &:nth-child(2n) .articles-tiles-elem
-    height: 205px
+    height: 20.5rem
+
+    +media('<lap-s')
+      height: 18rem
 
   &:nth-child(3n) .articles-tiles-elem
-    height: 420px
+    height: 42rem
+
+    +media('<lap-s')
+      height: 37rem
 
   &:nth-child(4n) .articles-tiles-elem
-    height: 205px
+    height: 20.5rem
+
+    +media('<lap-s')
+      height: 18rem
 
   &:nth-child(5n) .articles-tiles-elem
-    height: 205px
+    height: 20.5rem
+
+    +media('<lap-s')
+      height: 18rem
 
 .articles-tiles__item_wide
   width: round-float(100% / $at-columns * 2, 2)
@@ -6317,21 +6710,45 @@ $at-elem-space: 1.6rem 2.5rem
 
 .articles-tiles-elem__title
   +font-bold
-  font-size: 2.4rem
-  line-height: 3.5rem
+  $fz: 2.4rem
+  $lh: 3.5rem
+  font-size: $fz
+  line-height: $lh
+  $kef-lh: $lh / $fz
   color: currentColor
 
+  +media('<lap-s')
+    $fz: 2rem
+    font-size: $fz
+    line-height: round-float($fz * $kef-lh, 1)
+
   .articles-tiles__item_text-small &
-    font-size: 1.8rem
-    line-height: 2.7rem
+    $fz: 1.8rem
+    $lh: 2.7rem
+    font-size: $fz
+    line-height: $lh
+    $kef-lh: $lh / $fz
+
+    +media('<lap-s')
+      $fz: 1.6rem
+      font-size: $fz
+      line-height: round-float($fz * $kef-lh, 1)
 
 .rulez-text
   display: block
   +font-extra-bold
-  font-size: 3.6rem
-  line-height: 5.3rem
+  $fz: 3.6rem
+  $lh: 5.3rem
+  font-size: $fz
+  line-height: $lh
+  $kef-lh: $lh / $fz
   text-transform: uppercase
   color: #131313
+
+  +media('<lap-s')
+    $fz: 3.0rem
+    font-size: $fz
+    line-height: round-float($fz * $kef-lh, 1)
 
   & > span
     color: #7ed321

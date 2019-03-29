@@ -43,11 +43,9 @@ function equalHeight() {
   // equal height of elements
   var $equalHeight = $('.equal-height-js');
 
-  if($equalHeight.length) {
-    $equalHeight.children().matchHeight({
-      byRow: true, property: 'height', target: null, remove: false
-    });
-  }
+  $equalHeight.children().not(':hidden').matchHeight({
+    byRow: true, property: 'height', target: null, remove: false
+  });
 }
 
 /**
@@ -356,7 +354,7 @@ function slidersInit() {
     });
   }
 
-  /**images gallery*/
+  /**review article gallery*/
   var $reviewArticleGallery = $('.review-article-gallery-js');
   if ($reviewArticleGallery.length) {
     $reviewArticleGallery.each(function () {
@@ -389,7 +387,6 @@ function slidersInit() {
 
   /**promo slider*/
   var $promoSlider = $('.promo-slider-js');
-
   if ($promoSlider.length) {
     $promoSlider.each(function () {
       var $thisSlider = $(this),
@@ -483,6 +480,44 @@ function slidersInit() {
       });
     });
 
+  }
+
+  /**topics slider*/
+  var $topicsSlider = $('.topics-slider-js');
+  if ($topicsSlider.length) {
+    $topicsSlider.each(function () {
+      var $thisSlider = $(this),
+          $thisBtnNext = $('.swiper-button-prev', $thisSlider),
+          $thisBtnPrev = $('.swiper-button-next', $thisSlider),
+          topicsSliderJs;
+
+      topicsSliderJs = new Swiper($thisSlider, {
+        init: false,
+        loop: false,
+        slidesPerView: 'auto',
+        allowTouchMove: false,
+        navigation: {
+          nextEl: $thisBtnNext,
+          prevEl: $thisBtnPrev,
+        },
+        breakpoints: {
+          991: {
+            allowTouchMove: false
+          }
+        },
+      });
+
+      topicsSliderJs.on('init', function() {
+        $(topicsSliderJs.el).closest($thisSlider).addClass('is-loaded');
+        // .not(':hidden') необходим для того,
+        // чтобы скрытые элементы не учитывались при определении высоты
+        $(topicsSliderJs.slides).not(':hidden').matchHeight({
+          byRow: true, property: 'height', target: null, remove: false
+        });
+      });
+
+      topicsSliderJs.init();
+    });
   }
 
   /**card gallery*/
@@ -1315,6 +1350,20 @@ function toggleShutters() {
       , remover: '.p-add-form-popup-close-js'
       , modifiers: {
         activeClass: 'p-add-form-popup_opened'
+      }
+      , cssScrollFixed: false
+    });
+  }
+
+  // Toggle quick cart
+  var $quickCartSwitcher = $('.cart-keeper-js'), quickCartJs;
+  if ($quickCartSwitcher.length) {
+    var $quickCart = $('.quick-cart-js');
+    quickCartJs = $quickCartSwitcher.switchClass({
+      switchClassTo: $quickCart
+      , remover: '.quick-cart-close-js'
+      , modifiers: {
+        activeClass: 'quick-cart_opened'
       }
       , cssScrollFixed: false
     });

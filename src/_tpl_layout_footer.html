@@ -61,6 +61,9 @@
             <div class="subs">
               <a href="#" class="btn-subs">@@include("includes/svg/icon-rss.svg") <span>Подписать на рассылку</span></a>
             </div>
+            <div class="pay-cards">
+              <img src="img/img-payment.jpg" alt="Банковские карты" />
+            </div>
           </div>
         </div>
       </div>
@@ -78,11 +81,7 @@
         </div>
         <div class="footer-bottom__col">
           <!--developer-->
-          <div class="developer">
-            <a href="http://astronim.by/" target="_blank" title="Разработка сайта">
-              <span class="developer__logo">Astronim*Support</span>
-            </a>
-          </div>
+          <a class="developer" href="http://astronim.by/" target="_blank" title="Разработка сайта компания Astronim*Support">Astronim*Support</a>
           <!--developer end-->
         </div>
       </div>
@@ -109,6 +108,7 @@
         @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
       </label>
       <div class="input-wrap input-wrap_btn popup-def__form-input popup-def__form-input_btn">
+        <input class="btn-alt popup-def__btn" type="submit" value="Войти">
         <input class="btn-alt popup-def__btn" type="submit" value="Войти">
       </div>
     </form>
