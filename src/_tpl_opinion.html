@@ -1,7 +1,9 @@
 <a href="@@href" class="opinion@@if(context.alt){ opinion_alt}@@if(context.classes){ @@classes}">
-  <div class="opinion__figure">
-    <img src="@@src" alt="@@text" />
+  <div class="opinion__layout">
+    <div class="opinion__figure">
+      <img src="@@src" alt="@@text" />
+    </div>
+    <div class="opinion__label opinion__label_alt">@@label</div>
+    <div class="opinion__text opinion__text_alt">@@text</div>
   </div>
-  <div class="opinion__label opinion__label_alt">@@label</div>
-  <div class="opinion__text opinion__text_alt">@@text</div>
 </a>

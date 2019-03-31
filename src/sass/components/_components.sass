@@ -760,6 +760,10 @@ $popup-def__soc-space-outer: 1rem 1rem
   .fancybox-bg
     background-color: rgba($base-color, 0.9)
 
+.fancybox-button
+  svg
+    pointer-events: none
+
 /* default popup end
 
 /* tape slider
@@ -939,7 +943,7 @@ $swiper-button-size: 14px, 20px
   width: 100%
   min-width: $page-layout-min
   height: $header-height
-  max-height: $header-height
+  //max-height: $header-height
   z-index: 99
   // transition
   $prop: box-shadow, transform
@@ -948,6 +952,9 @@ $swiper-button-size: 14px, 20px
     property: $prop
     duration: $animation-speed
 
+  +media('<tab')
+    height: $header-height--tab
+
   &:not(.header-ready)
     opacity: 0
 
@@ -955,10 +962,12 @@ $swiper-button-size: 14px, 20px
     opacity: 1
 
   &.start-hidden
-    transform: translate(0, -100%) translateZ(0)
+    +media('>=tab')
+      transform: translate(0, -100%) translateZ(0)
 
   &.header-changed
-    max-height: $header-height--scrolled
+    +media('>=tab')
+      max-height: $header-height--scrolled
 
   .page-scrolled &
     box-shadow: 0 2px 5px rgba(black, 0.15)
@@ -975,13 +984,16 @@ $swiper-button-size: 14px, 20px
   width: 100%
   height: 100%
   background-color: $base-color
-  // transition
-  //$prop: background-color, opacity
-  //will-change: $prop
-  //transition:
-    property: $prop
-    duration: 0.12s
-    timing-function: ease-in-out
+
+  // Add transition special for tablets width
+  &
+    +media('<tab')
+      $prop: background-color, opacity
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: 0.12s
+        timing-function: ease-in-out
 
   .home-page &
     opacity: 0
@@ -1003,13 +1015,22 @@ $swiper-button-size: 14px, 20px
     property: $prop
     duration: $animation-speed
 
+  +media('<tab')
+    justify-content: flex-end
+    height: 100%
+
   .header-changed &
-    transform: translate(0, 1rem)
+    +media('>=tab')
+      transform: translate(0, 1rem)
+
 
 .header-top__l
   $width: calc(100% - 4rem - #{$header-top__r-width})
   width: $width
   max-width: $width
+
+  +media('<tab')
+    display: none
 
   // for ie 9
   //@if $ie9
@@ -1029,6 +1050,9 @@ $swiper-button-size: 14px, 20px
       display: inline-block
       vertical-align: top
 
+  +media('<tab')
+    width: auto
+
   & > div
     // for ie 9
     @if $ie9
@@ -1038,7 +1062,6 @@ $swiper-button-size: 14px, 20px
 
 /* user options
 $uo-item-size: 4.3rem 5.4rem
-// height min-width
 $uo-space: 3rem
 $uo-icon-size: 1.6rem
 $uo-border-radius: 7px
@@ -1050,19 +1073,30 @@ $uo-border-radius: 7px
   background-color: white
   box-shadow: 0 0 1px rgba(black, 0.15)
 
+  +media('<tab')
+    background: none
+    box-shadow: none
+    border-radius: 0
+
   .header-changed &
-    border-radius: $uo-border-radius
+    +media('>=tab')
+      border-radius: $uo-border-radius
 
 .user-options__item
   position: relative
   height: nth($uo-item-size, 1)
   min-width: nth($uo-item-size, 2)
 
+  +media('<tab')
+    height: auto
+    min-width: 0
+
   // for ie 9
   .no-flexwrap &
     display: inline-block
     vertical-align: top
 
+  // Vertical separators between items
   &::before, &::after
     $size: 1.8rem 0.2rem
     content: ""
@@ -1074,6 +1108,10 @@ $uo-border-radius: 7px
     margin: -#{round-float(nth($size, 1) / 2, 1)} 0
     background-color: #979797
     opacity: 0.2
+
+    // Remove vertical separators between items
+    +media('<tab')
+      display: none
 
   &::before
     left: 0
@@ -1104,6 +1142,10 @@ $uo-border-radius: 7px
       property: $prop
       duration: $animation-speed
       timing-function: ease-in-out
+
+    +media('<tab')
+      height: $header-height--tab
+      padding: $header-btn-space--tab
 
     // tooltip
     &[data-title]::before
@@ -1142,23 +1184,35 @@ $uo-border-radius: 7px
         timing-function: ease-in-out
 
     // icon
-    svg
-      display: inline-block
-      vertical-align: middle
+    & > i
+      display: flex
+      align-items: center
+      justify-content: center
       +size($uo-icon-size)
 
-      & ~ span
-        padding-left: 12px
+      +media('<tab')
+        overflow: hidden
+        background-color: white
+        +size($header-btn-icon-size--tab)
+        border-radius: $header-btn-icon-size--tab
 
-        // скрыть текст для мобил
-        +media('<mob')
-          display: none
+      svg
+        display: block
+        +size($uo-icon-size)
 
-      & ~ span.hide-text
-        padding-left: 0
+        +media('<tab')
+          $size: 1.8rem
+          height: $size
+          width: $size
+
+        & ~ span.hide-text
+          padding-left: 0
 
       path
         fill: $text-color-soft
+
+      & ~ span
+        padding-left: 12px
 
     // text
     & > span
@@ -1179,8 +1233,7 @@ $uo-border-radius: 7px
       top: 50%
       background-color: #e61f1f
       $size: 1rem
-      width: $size
-      height: $size
+      +size($size)
       margin: -0.8rem -1.5rem
       padding: 0.1rem 0 0 0.1rem
       +font-normal
@@ -1189,22 +1242,36 @@ $uo-border-radius: 7px
       line-height: $size
       text-align: center
       color: white
-      border-radius: round-float($size / 2, 1)
+      border-radius: $size
       z-index: 10
+
+      +media('<tab')
+        margin: 0
+        padding: 0.1rem 0 0
+        left: auto
+        right: 0.2rem
+        top: 0.6rem
+        $size: 1.2rem
+        +size($size)
+        font-size: 1rem
+        line-height: $size
+        border-radius: $size
 
   &:first-child
     & > a, & > div, & > span, & > strong
       border-bottom-left-radius: $uo-border-radius
 
       .header-changed &
-        border-top-left-radius: $uo-border-radius
+        +media('>=tab')
+          border-top-left-radius: $uo-border-radius
 
   &:last-child
     & > a, & > div, & > span, & > strong
       border-bottom-right-radius: $uo-border-radius
 
       .header-changed &
-        border-top-right-radius: $uo-border-radius
+        +media('>=tab')
+          border-top-right-radius: $uo-border-radius
 
   // tooltip align right for last item
   &:last-child
@@ -1462,22 +1529,31 @@ $uo-border-radius: 7px
 
   // header is changed
   .header-changed &, .header-changed & *
-    opacity: 0
-    pointer-events: none
+    +media('>=tab')
+      opacity: 0
+      pointer-events: none
 
 /* navigation end
 
 /* header contacts
 .cont
   position: relative
-  padding-top: 5px
   min-width: 14rem
+  padding-top: 5px
+  -webkit-tap-highlight-color: transparent
+
+  +media('<tab')
+    min-width: 0
+    padding-top: 0
 
   .header-top &
     margin-right: 2rem
 
     +media('<lap-s')
       margin-right: 1rem
+
+    +media('<tab')
+      margin-right: 0
 
 .chats
   width: 100%
@@ -1489,6 +1565,9 @@ $uo-border-radius: 7px
   line-height: 1.6rem
   color: white
   +clear
+
+  +media('<tab')
+    display: none
 
   li
     float: left
@@ -1506,7 +1585,14 @@ $uo-border-radius: 7px
   line-height: 1
   color: white
 
-  // opener
+  +media('<tab')
+    display: flex
+    align-items: center
+    justify-content: center
+    height: $header-height--tab
+    padding: $header-btn-space--tab
+    color: $base-color
+
   & > a
     position: relative
     display: inline-block
@@ -1518,6 +1604,9 @@ $uo-border-radius: 7px
     -webkit-tap-highlight-color: transparent
 
     +underlinedLinks(white)
+
+    +media('<tab')
+      display: none
 
     strong, b
       +font-extra-bold
@@ -1531,17 +1620,28 @@ $uo-border-radius: 7px
   width: nth($size, 2)
   margin-top: -#{round-float(nth($size, 1) / 2, 1) + 0.2}
   cursor: pointer
+  border-radius: 5px
   user-select: none
   -webkit-tap-highlight-color: transparent
-  text-indent: -9999px
-  overflow: hidden
-  border-radius: 5px
   // transition
   $prop: background-color
   will-change: $prop
   transition:
     property: $prop
     duration: $animation-speed
+
+  +media('<tab')
+    position: relative
+    left: auto
+    top: auto
+    margin: 0
+    overflow: hidden
+    display: flex
+    align-items: center
+    justify-content: center
+    background-color: white
+    +size($header-btn-icon-size--tab)
+    border-radius: $header-btn-icon-size--tab
 
   &::before
     $size: 0.6rem
@@ -1557,10 +1657,25 @@ $uo-border-radius: 7px
     border-width: 0 1px 1px 0
     transform: rotate(0.125turn)
 
+    +media('<tab')
+      display: none
+
   .is-open > &
     &::before
       border-width: 1px 0 0 1px
       margin-top: -0.1rem
+
+  // Icon for tablets
+  svg
+    display: none
+
+    +media('<tab')
+      display: block
+      $size: 1.8rem
+      +size($size)
+
+    path
+      fill: $base-color
 
 .h-contacts__drop
   position: absolute
@@ -1748,14 +1863,25 @@ $uo-border-radius: 7px
     property: $prop
     duration: $animation-speed
 
+  +media('<tab')
+    padding: $header-btn-space--tab
+
   .header-changed &
-    border-radius: 0.7rem
+    +media('>=tab')
+      border-radius: 0.7rem
 
   .header-top &
     margin-left: 2.8rem
 
     +media('<lap-s')
       margin-left: 1.5rem
+
+    +media('<tab')
+      height: $header-height--tab
+      margin-left: 0
+      margin-right: -#{nth($header-btn-space--tab, 2)}
+      -webkit-tap-highlight-color: transparent
+      user-select: none
 
   // for ie 9
   @if $ie9
@@ -1797,19 +1923,28 @@ $uo-border-radius: 7px
       delay: 0s
       duration: $animation-speed
 
+    +media('<tab')
+      display: none
+
   & > i
     $size: 3rem
-    display: inline-block
-    vertical-align: top
+    overflow: hidden
+    display: flex
+    align-items: center
+    justify-content: center
     background-color: white
-    width: $size
-    height: $size
-    border-radius: round-float($size / 2, 1)
+    +size($size)
+    border-radius: $size
     // transition
     $prop: background-color
     transition:
       property: $prop
       duration: $animation-speed
+
+    +media('<tab')
+      +size($header-btn-icon-size--tab)
+      border-radius: $header-btn-icon-size--tab
+      background-color: white
 
     svg
       display: inline-block
@@ -1842,7 +1977,7 @@ $uo-border-radius: 7px
     $size: 1.6rem
     width: $size
     height: $size
-    padding: 0.1rem 0 0 0
+    padding: 0.1rem 0 0
     +font-normal
     font-style: normal
     font-size: 1.2rem
@@ -1850,8 +1985,21 @@ $uo-border-radius: 7px
     text-align: center
     color: white
     background-color: #e61f1f
-    border-radius: round-float($size / 2, 1)
+    border-radius: $size
     z-index: 10
+
+    +media('<tab')
+      margin: 0
+      padding: 0.1rem 0 0
+      left: auto
+      right: 0.2rem
+      top: 0.6rem
+      $size: 1.2rem
+      width: $size
+      height: $size
+      font-size: 1rem
+      line-height: $size
+      border-radius: $size
 
   &.push
     .counter
@@ -1880,6 +2028,9 @@ $uo-border-radius: 7px
   line-height: 1
   color: currentColor
 
+  +media('<tab')
+    display: none
+
   & > strong, & > span
     +font-normal
     display: block
@@ -1887,22 +2038,25 @@ $uo-border-radius: 7px
 // hover
 .cart-link
   &:hover, &.quick-cart_opened
-    color: $base-color
-    //background-color: white
-    background-color: $bg-color
+    // Hover only no touchevents screen
+    .no-touchevents &
+      color: $base-color
+      //background-color: white
+      background-color: $bg-color
 
-    & > i
-      background-color: $base-color
+      & > i
+        background-color: $base-color
 
-      svg
-        path
-          &.svg-ico-cart-circle
-            fill: $base-color
+        svg
+          path
+            &.svg-ico-cart-circle
+              fill: $base-color
 
-          &.svg-ico-cart-cart
-            fill: $bg-color
+            &.svg-ico-cart-cart
+              fill: $bg-color
 
   // tooltip
+  // Tooltip show only no touchevents screen
   .no-touchevents &[data-title]:hover
     &::before
       //transition-delay: 0.6s
@@ -1912,10 +2066,12 @@ $uo-border-radius: 7px
       transform: translate($translate)
       transform: translate3d($translate, 0)
 
+  // If quick cart is opened tooltip must be hidden
   .no-touchevents &.quick-cart_opened[data-title]:hover
     &::before
       opacity: 0
 
+  // Visual animation cart button
   // push in cart
   &.push
     & > i
@@ -2078,6 +2234,8 @@ a.quick-cart__item
   overflow: hidden
   transform: rotate(-90deg) translateZ(0)
   transition: background-color $animation-speed
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
   svg
     display: block
@@ -2114,25 +2272,36 @@ a.quick-cart__item
     duration: $animation-speed
 
   .header-changed &
+    +media('>=tab')
+      z-index: 10
+      transform: translate(0, -6rem)
+      visibility: hidden // Необходимо скрыть контейнер, чтобы элементы под ним были доступны для клика
+
+  +media('<tab')
+    display: flex
+    align-items: center
+    position: absolute
+    top: 0
+    left: 0
+    right: 21.5rem // Место занятое кнопками справа
+    height: 100%
+    padding: 0 0 0 #{nth($page-layout-space, 2)}
     z-index: 10
-    transform: translate(0, -6rem)
-    visibility: hidden // Необходимо скрыть контейнер, чтобы элементы под ним были доступны для клика
 
 /* header-common end
 
 /* logo
 .logo-wrap
   margin-top: -1.2rem
-  // transition
-  //$prop: transform
-  //will-change: $prop
-  //transition:
-    property: $prop
-    duration: $animation-speed
 
   .header-changed &
-    transform: translate(0, 0.8rem)
-    visibility: visible // Родительская обертка скрыта, а логотип нужно показать
+    +media('>=tab')
+      transform: translate(0, 0.8rem)
+      visibility: visible // Родительская обертка скрыта, а логотип нужно показать
+
+  +media('<tab')
+    flex-shrink: 0
+    margin-top: 0
 
   // for ie 9
   //@if $ie9
@@ -2151,7 +2320,11 @@ a.quick-cart__item
   z-index: 5
 
   +media('<lap-s')
-    margin-right: 1rem
+    margin-right: 0.5rem
+
+  +media('<tab')
+    width: 136px
+    height: auto
 
   &::before, &::after
     content: ""
@@ -2176,7 +2349,18 @@ a.quick-cart__item
     background-size: 165px 63px
 
     .header-changed &
-      opacity: 0
+      +media('>=tab')
+        opacity: 0
+
+    +media('<tab')
+      position: relative
+      left: auto
+      top: auto
+      height: 0
+      width: 100%
+      +ratio(164, 50)
+      background-image: url(../../img/logo-mob.svg)
+      background-size: contain
 
   &::after
     opacity: 0
@@ -2184,11 +2368,19 @@ a.quick-cart__item
     background-size: 165px 60px
 
     .header-changed &
-      opacity: 1
+      +media('>=tab')
+        opacity: 1
 
   a, & > span
     display: block
     height: 100%
+
+    +media('<tab')
+      position: absolute
+      left: 0
+      top: 0
+      height: 100%
+      width: 100%
 
 /* logo end
 
@@ -2219,6 +2411,9 @@ a.quick-cart__item
     +media('<net')
       max-width: 28rem
 
+    +media('<tab')
+      max-width: none
+
   &::before
     content: ""
     display: block
@@ -2229,17 +2424,24 @@ a.quick-cart__item
     height: 100%
     background-color: #fff
     z-index: -1
-  // transition
-  //$prop: background-color
-  //will-change: $prop
-  //transition:
-    property: $prop
-    duration: $animation-speed
+    // transition
+    //$prop: background-color
+    //will-change: $prop
+    //transition:
+      property: $prop
+      duration: $animation-speed
+
+    +media('<tab')
+      display: none
 
   &.search-is-open
     &::before
       background-color: $base-color
       box-shadow: 0 0 2px rgba(black, 0.15)
+
+      +media('<tab')
+        background: none
+        box-shadow: none
 
   &, &::before
     border-radius: round-float($height / 2, 1)
@@ -2278,7 +2480,6 @@ a.quick-cart__item
 
 /* catalog opener
 a.catalog-opener
-  $btn-menu-size: $header-height--sm
   $btn-menu-lines-width: 18px
   $btn-menu-lines-height: 2px
   $btn-menu-lines-space: 3px
@@ -2322,13 +2523,18 @@ a.catalog-opener
     height: 4rem
     width: 4rem
 
+  +media('<tab')
+    +size($header-btn-icon-size--tab)
+    border-radius: $header-btn-icon-size--tab
+    background-color: white
+
   // крест
   &::before, &::after
     content: ""
     display: block
     position: absolute
     top: 50%
-    left: 14px
+    left: 1.4rem
     +size($user-options-cross-width, $user-options-cross-height)
     background-color: $user-options-cross-color
     margin-top: -#{round($user-options-cross-height / 2)}
@@ -2341,12 +2547,15 @@ a.catalog-opener
       timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
     +media('<lap-s')
-      left: 11px
+      left: 1.1rem
+
+    +media('<tab')
+      left: 0.6rem
 
   // бутерброд
   & > i
     position: absolute
-    left: 14px
+    left: 1.4rem
     top: 50%
     +size($btn-menu-lines-width, $btn-menu-lines-height)
     font-size: 0
@@ -2360,7 +2569,10 @@ a.catalog-opener
       delay: $btn-menu-animation-delay
 
     +media('<lap-s')
-      left: 11px
+      left: 1.1rem
+
+    +media('<tab')
+      left: 0.6rem
 
     &::before, &::after
       content: ''
@@ -2389,11 +2601,13 @@ a.catalog-opener
 
   .catalog-opener__text-full
     .header-changed &
-      display: none
+      +media('>=tab')
+        display: none
 
   .catalog-opener__text-short
     .header:not(.header-changed) &
-      display: none
+      +media('>=tab')
+        display: none
 
   // hover
   &:hover
@@ -2443,7 +2657,7 @@ a.catalog-opener
   left: 0
   top: $header-height + 1
   width: 100%
-  height: calc(100% - #{$header-height})
+  height: calc(100% - #{$header-height + 1})
   //background-color: rgba(black, 0.3)
   z-index: 9999
   opacity: 0
@@ -2456,7 +2670,13 @@ a.catalog-opener
     duration: $animation-speed
 
   .header-changed ~ &
-    top: $header-height--scrolled + 0.5
+    +media('>=tab')
+      top: $header-height--scrolled + 0.5
+      height: calc(100% - #{$header-height--scrolled + 0.5})
+
+  +media('<tab')
+    top: $header-height--tab
+    height: calc(100% - #{$header-height--tab})
 
   &.catalog-is-open
     opacity: 1
@@ -2726,6 +2946,9 @@ $cat-columns--desk-lg: 5
     property: $prop
     duration: $animation-speed
 
+  +media('<tab')
+    display: none
+
   .search-is-open &
     opacity: 0
     visibility: hidden
@@ -2734,7 +2957,8 @@ $cat-columns--desk-lg: 5
     transform: scale($scale)
 
   .header-changed &
-    display: none
+    +media('>=tab')
+      display: none
 
 .c-nav
   position: relative
@@ -2793,6 +3017,7 @@ $cat-columns--desk-lg: 5
 /* search panel
 $search-form-size: 4rem 100%
 $search-btn-size: 4rem 4rem
+$search-btn-size--tab: $header-btn-icon-size--tab
 $search-btn-space: 0 0.5rem
 .search-form
   position: absolute
@@ -2804,22 +3029,16 @@ $search-btn-space: 0 0.5rem
   z-index: 99
   opacity: 0
   visibility: hidden
-  //$scale: 1, 1
-  //transform: scale3d($scale, 1)
-  //transform: scale($scale)
-  // transition
-  //$prop: transform, opacity, visibility
-  //will-change: $prop
-  //transition:
-    property: $prop
-    duration: $animation-speed
+
+  +media('<tab')
+    opacity: 1
+    visibility: visible
+    background-color: white
+    border-radius: nth($search-form-size, 1)
 
   .search-is-open &
     opacity: 1
     visibility: visible
-  //$scale: 1, 1
-  //transform: scale3d($scale, 1)
-  //transform: scale($scale)
 
   form
     display: block
@@ -2832,6 +3051,9 @@ $search-btn-space: 0 0.5rem
   margin: 0
   z-index: auto
   padding-right: nth($search-btn-space, 2) + nth($search-btn-size, 2)
+
+  +media('<tab')
+    padding-right: nth($search-btn-space, 2) + $search-btn-size--tab
 
   .search-form__input
     $font-size: 1.6rem
@@ -2851,6 +3073,9 @@ $search-btn-space: 0 0.5rem
     font-size: $font-size
     line-height: $line-height
 
+    +media('<tab')
+      background: none
+
     &:not([disabled]):not(.error):not(.success):not(.filled)
       &.focused
         box-shadow: none
@@ -2863,24 +3088,35 @@ $search-btn-space: 0 0.5rem
 .search-form__btn, .toggle-search
   height: nth($search-btn-size, 1)
   width: nth($search-btn-size, 2)
-  min-width: nth($search-btn-size, 2)
-  border-radius: round-float(nth($search-btn-size, 1) / 2, 1)
+  flex-shrink: 0
+  //min-width: nth($search-btn-size, 2)
+  border-radius: nth($search-btn-size, 1)
   margin: 0 0 0 nth($search-btn-space, 2)
+  user-select: none
+  -webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, color
   transition:
     property: $prop
     duration: $animation-speed
 
+  +media('<tab')
+    +size($search-btn-size--tab)
+    border-radius: nth($search-btn-size--tab, 1)
+
   & > svg
-    $size: 2.4rem
     display: block
     position: absolute
     left: 50%
     top: 50%
-    width: $size
-    height: $size
+    $size: 2.4rem
+    +size($size)
     margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)}
+
+    +media('<lap')
+      $size: 2.2rem
+      +size($size)
+      margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)}
 
     path
       fill: currentColor
@@ -2899,8 +3135,12 @@ $search-btn-space: 0 0.5rem
   background-color: $base-color
   color: white
 
-  & > span
-    +hide-text
+  +media('<tab')
+    right: 0.5rem
+    margin-top: -#{round-float($search-btn-size--tab / 2, 1)}
+    margin-left: 0
+    background: none
+    color: $base-color
 
   & > input
     position: absolute
@@ -2913,17 +3153,18 @@ $search-btn-space: 0 0.5rem
     margin: 0
 
   & > svg
-    $size: 20px
-    display: block
-    position: absolute
-    left: 50%
-    top: 50%
-    width: $size
-    height: $size
+    //display: block
+    //position: absolute
+    //left: 50%
+    //top: 50%
+    $size: 2rem
+    +size($size)
     margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)}
 
-    path
-      fill: currentColor
+    +media('<tab')
+      $size: 2.2rem
+      +size($size)
+      margin: -#{round-float($size / 2, 1)} 0 0 -#{round-float($size / 2, 1)}
 
   // hover
   &:hover
@@ -2937,6 +3178,9 @@ $search-btn-space: 0 0.5rem
   background-color: white
   color: $base-color
 
+  +media('<tab')
+    display: none
+
   .search-is-open &
     opacity: 0
     visibility: hidden
@@ -2948,8 +3192,9 @@ $search-btn-space: 0 0.5rem
 
   // hover
   &:hover
-    background-color: $base-color
-    color: white
+    .no-touchevents &
+      background-color: $base-color
+      color: white
 
 /* search panel end
 
@@ -3393,6 +3638,9 @@ $search-btn-space: 0 0.5rem
   clear: both
   padding-top: $header-height + 2
 
+  +media('<tab')
+    padding-top: $header-height--tab + 2
+
   .header_float ~ &
     padding-top: 1.4rem
 
@@ -3783,7 +4031,11 @@ $p-sticker-size: 2.6rem 2.6rem
   height: 57.6rem
   padding-top: 0
   padding-bottom: 0
-  margin-bottom: -11.5rem
+  margin-bottom: -#{$promo-section-bottom}
+
+  +media('<tab')
+    height: 50rem
+    margin-bottom: -#{$promo-section-bottom--tab}
 
   &:last-child
     margin-bottom: 0
@@ -3870,7 +4122,10 @@ $p-sticker-size: 2.6rem 2.6rem
   display: flex
   align-items: flex-end
   height: 100%
-  padding-bottom: 17.8rem
+  padding-bottom: #{$promo-section-bottom + 6.3}
+
+  +media('<tab')
+    padding-bottom: #{$promo-section-bottom--tab + 4}
 
 .w-promo-slide__figure
   display: flex
@@ -3878,7 +4133,11 @@ $p-sticker-size: 2.6rem 2.6rem
   position: absolute
   height: 100%
   top: 0
-  padding: 0 0 52px 13px
+  padding: 0 0 5.2rem 1.3rem
+
+  +media('<tab')
+    padding-left: 0
+    padding-bottom: 12rem
 
   img
     position: relative
@@ -3895,10 +4154,6 @@ $p-sticker-size: 2.6rem 2.6rem
 .w-promo-slide__title
   $font-size: 2.4rem
   $line-height: 3.6rem
-  $font-size--tab: 2.0rem
-  $line-height--tab: 2.8rem
-  $font-size--mob: 1.8rem
-  $line-height--mob: 2.4rem
   // ===============
   +font-extra-bold
   font-size: $font-size
@@ -3906,15 +4161,6 @@ $p-sticker-size: 2.6rem 2.6rem
   margin-right: 3.5rem
   max-width: 100%
   color: white
-
-  +media('<tab')
-    margin-right: 2rem
-    font-size: $font-size--tab
-    line-height: $line-height--tab
-
-  +media('<mob')
-    font-size: $font-size--mob
-    line-height: $line-height--mob
 
   &:last-child
     margin-bottom: 0
@@ -3941,31 +4187,19 @@ $p-sticker-size: 2.6rem 2.6rem
     display: block
     position: absolute
     left: 0
-    bottom: -13px
+    bottom: -1.3rem
     width: 100%
-    height: 77px
+    height: 7.7rem
     background: url(../../img/arc-mask-invert.png) no-repeat
     background-size: 100% 100%
     z-index: 9
 
-  //&::before
-    $left: 13rem
-    $bottom: 10rem
-    content: ''
-    display: block
-    width: calc(100% + #{($left + $bottom) * 2})
-    height: calc(70px + #{$bottom})
-    position: absolute
-    bottom: -#{$bottom}
-    left: -#{$left + $bottom}
-    background-color: $bg-color
-    //+linear-gradient(180deg, red 0%, blue 100%)
-    //clip-path: circle(3000px at 50% -2200px)
-    border-radius: 50% 50% 0 0 / 100% 100% 0 0
-    z-index: 9
+    +media('<tab')
+      height: 4rem
+      bottom: -0.5rem
 
   // arrows
-  .slider-arrow
+  //.slider-arrow
     display: none
     top: auto
     bottom: 140px
@@ -3987,17 +4221,20 @@ $p-sticker-size: 2.6rem 2.6rem
       background-color: $base-color
       z-index: -1
 
-  .slider-arrow_prev
+  //.slider-arrow_prev
     &::after
       transform-origin: bottom right
 
-  .slider-arrow_next
+  //.slider-arrow_next
     &::after
       transform-origin: top left
 
   .swiper-pagination
     line-height: 0
-    bottom: 132px
+    bottom: #{$promo-section-bottom + 1.7}
+
+    +media('<tab')
+      bottom: #{$promo-section-bottom--tab + 1.5}
 
 .promo-slider__item
   overflow: hidden
@@ -4023,6 +4260,7 @@ $p-sticker-size: 2.6rem 2.6rem
   & > svg
     display: inline-block
     vertical-align: top
+    flex-shrink: 0
     width: 3rem
     height: 2.2rem
     margin-right: 1rem
@@ -4300,10 +4538,11 @@ $advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figur
   text-transform: uppercase
   text-align: center
   +ratio(259, 123)
+  //+ratio(268, 173)
   border-radius: 1rem
   overflow: hidden
   background-repeat: no-repeat
-  background-position: center
+  background-position: left bottom
   background-size: cover
 
   & > span
@@ -4324,12 +4563,16 @@ $advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figur
 /* quick-links
 $ql-item-space: 12px
 $ql-columns: 5
-$ql-columns--desk-lg: 4
+$ql-columns--lap: 4
+$ql-columns--tab: 3
 .main-section_quick-links
   position: relative
   padding-top: 0
   padding-bottom: 0.6rem
   z-index: 5
+
+  //opacity: 0.2
+  //pointer-events: none
 
 .quick-links
   margin-bottom: $bottom-space
@@ -4352,7 +4595,10 @@ $ql-columns--desk-lg: 4
   margin: 0 round($ql-item-space / 2) $ql-item-space
 
   +media('<desk-s')
-    width: calc(#{round-float(100% / $ql-columns--desk-lg, 2)} - #{$ql-item-space})
+    width: calc(#{round-float(100% / $ql-columns--lap, 2)} - #{$ql-item-space})
+
+  +media('<tab')
+    width: calc(#{round-float(100% / $ql-columns--tab, 2)} - #{$ql-item-space})
 
   &.has-shadow
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25)
@@ -4365,20 +4611,27 @@ $ql-columns--desk-lg: 4
   width: calc(#{round-float(100% / $ql-columns * 2, 2)} - #{$ql-item-space})
 
   +media('<desk-s')
-    width: calc(#{round-float(100% / $ql-columns--desk-lg * 2, 2)} - #{$ql-item-space})
+    width: calc(#{round-float(100% / $ql-columns--lap * 2, 2)} - #{$ql-item-space})
+
+  +media('<tab')
+    width: calc(#{round-float(100% / $ql-columns--tab * 2, 2)} - #{$ql-item-space})
 
 /* quick-links end
 
 /* opinion
-$opinion-figure-size: 6.8rem 6.8rem
+$opinion-figure-size: 6.8rem
+$opinion-figure-size--tab: 6.4rem
 $opinion-figure-space: 3.8rem
+$opinion-figure-space--tab: 2rem
 $opinion-box-shadow-size--start: 0 2px 4px
 $opinion-box-shadow-size--end: 0 5px 8px
 $opinion-box-shadow-color: black
 .opinion
   position: relative
-  display: block
-  padding: 3.0rem 4.8rem
+  display: flex
+  align-items: flex-start
+  justify-content: center
+  padding: 5.3% 4.8rem
   background-color: white
   text-decoration: none
   color: #000
@@ -4390,47 +4643,66 @@ $opinion-box-shadow-color: black
   transition:
     property: $prop
     duration: $animation-speed
-
   +clear
 
   .touchevents &
     user-select: none
     -webkit-tap-highlight-color: transparent
 
+  +media('<tab')
+    padding: 8% #{nth($box-inner-space, 2)}
+    box-shadow: none
+
   &:hover
-    box-shadow: $opinion-box-shadow-size--end rgba($opinion-box-shadow-color, 0.18)
-    z-index: 1
+    .no-touchevents &
+      box-shadow: $opinion-box-shadow-size--end rgba($opinion-box-shadow-color, 0.18)
+      z-index: 1
 
 .opinion_alt
   background-color: $base-color
   color: white
 
+.opinion__layout
+  max-width: 46rem
+
+  +media('<tab')
+    max-width: 36rem
+
 .opinion__figure
   float: left
   padding: 0
+  +size($opinion-figure-size)
   margin-right: $opinion-figure-space
-  height: nth($opinion-figure-size, 1)
-  width: nth($opinion-figure-size, 2)
-  border-radius: round-float(nth($opinion-figure-size, 1) / 2, 1)
+  border-radius: $opinion-figure-size
   overflow: hidden
   position: relative
   border: 3px solid white
 
+  +media('<tab')
+    +size($opinion-figure-size--tab)
+    margin-right: $opinion-figure-space--tab
+    border-radius: $opinion-figure-size--tab
+
   img
     display: block
-    border-radius: round-float(nth($opinion-figure-size, 1) / 2, 1)
+    border-radius: $opinion-figure-size
     width: 100%
     height: 100%
     max-width: none
 
+    +media('<tab')
+      border-radius: $opinion-figure-size--tab
+
 .opinion__label
   display: block
-  margin-left: nth($opinion-figure-size, 2) + $opinion-figure-space
-  font-size: 1.4rem
-  line-height: 2.0rem
+  margin-left: $opinion-figure-size + $opinion-figure-space
+  +font(1.4rem, 2.0rem)
   letter-spacing: 0.24em
   color: $base-color
   margin-bottom: 0.9rem
+
+  +media('<tab')
+    margin-left: $opinion-figure-size--tab + $opinion-figure-space--tab
 
   &:last-child
     margin-bottom: 0
@@ -4440,11 +4712,13 @@ $opinion-box-shadow-color: black
 
 .opinion__text
   display: block
-  margin-left: nth($opinion-figure-size, 2) + $opinion-figure-space
+  margin-left: $opinion-figure-size + $opinion-figure-space
   +font-bold
-  font-size: 1.8rem
-  line-height: 2.6rem
+  +font(1.8rem, 2.6rem)
   margin-bottom: 1rem
+
+  +media('<tab')
+    margin-left: $opinion-figure-size--tab + $opinion-figure-space--tab
 
   &:last-child
     margin-bottom: 0
@@ -4457,6 +4731,9 @@ $opinion-box-shadow-color: black
 /* opinions
 .main-section_opinions
   padding-bottom: 4.1rem
+
+  +media('<tab')
+    padding-bottom: 2rem
 
 .opinions
   margin-bottom: $bottom-space
@@ -6158,22 +6435,67 @@ a.topic-banner
   //padding-bottom: 3.6rem
   padding-bottom: 2rem
 
-$tl-item-space: 18px
+$tl-item-size--tab: 49.8rem 29.6rem
+$tl-item-space: 1.8rem
+$tl-item-space--tab: 1rem
+.topics-tabs__panels
+  position: relative
+
+  $space--tab: round-float($tl-item-space--tab / 2, 1)
+  &::before, &::after
+    content: ""
+    display: none
+    position: absolute
+    top: 0
+    height: 100%
+    width: $space--tab
+    z-index: 5
+    
+    +media('<tab')
+      display: block
+
+  &::before
+    left: -#{$space--tab}
+    $color: $bg-color
+    +linear-gradient(to right, $color 0%, rgba($color, 0) 100%)
+
+  &::after
+    right: -#{$space--tab}
+    $color: $bg-color
+    +linear-gradient(to left, $color 0%, rgba($color, 0) 100%)
+
 .topics__list
   display: flex
-  margin-left: -#{round($tl-item-space / 2)}
-  margin-right: -#{round($tl-item-space / 2)}
+  $space: round-float($tl-item-space / 2, 1)
+  margin-left: -#{$space}
+  margin-right: -#{$space}
   margin-bottom: $bottom-space
   //+clear
+
+  +media('<tab')
+    display: block
+    height: #{nth($tl-item-size--tab, 1) + 0.6} !important
+    white-space: nowrap
+    overflow: hidden
+    $space: round-float($tl-item-space--tab / 2, 1)
+    margin-left: -#{$space}
+    margin-right: -#{$space}
+    width: calc(100% + #{$space} * 2)
+    +clear-spacing
+
+    .no-touchevents &:hover, .touchevents &
+      overflow-x: auto
+      overflow-y: hidden
+      -webkit-overflow-scrolling: touch
 
   &:last-child
     margin-bottom: 0
 
-  &.swiper-container
-    display: block // Если список явдяеься слайдером то перебить display: flex
+  //&.swiper-container
+    display: block // Если список является слайдером то перебить display: flex
 
   // Обнулить стили заданные скриптом слайдера
-  +media('>=tab')
+  //+media('>=tab')
     &.swiper-container
       margin-left: -#{round($tl-item-space / 2)}
       margin-right: -#{round($tl-item-space / 2)}
@@ -6202,8 +6524,8 @@ $tl-item-space: 18px
 
 // Обнулить стили заданные скриптом слайдера END
 
-.topics-slider__prev,
-.topics-slider__next
+//.topics-slider__prev,
+//.topics-slider__next
   display: none
 
 .topics__item
@@ -6212,7 +6534,9 @@ $tl-item-space: 18px
   $width: #{round-float(100% / 5, 2)}
   max-width: $width
   min-width: $width
-  padding: 0 round($tl-item-space / 2)
+  padding: 0 #{round-float($tl-item-space / 2, 1)}
+  letter-spacing: normal
+  white-space: normal
 
   // show on scroll
   //html:not(.no-js) &
@@ -6222,11 +6546,20 @@ $tl-item-space: 18px
     $width: #{round-float(100% / 4, 2)}
     max-width: $width
     min-width: $width
+    padding: 0 #{round-float($tl-item-space--tab / 2, 1)}
 
   +media('<net')
+    display: inline-block
+    vertical-align: top
     $width: #{round-float(100% / 3, 2)}
     max-width: $width
     min-width: $width
+
+  +media('<tab')
+    max-width: none
+    min-width: 0
+    height: nth($tl-item-size--tab, 1)
+    width: nth($tl-item-size--tab, 2)
 
   // for ie 9
   @if $ie9
@@ -6239,19 +6572,19 @@ $tl-item-space: 18px
     background-color: white
 
   .topics__list:not(.topics__list_with-banners) &:last-child
-    +media('<desk-s')
+    +media('<desk-s', '>=tab')
       display: none
 
   .topics__list:not(.topics__list_with-banners) &:nth-last-child(2)
-    +media('<net')
+    +media('<net', '>=tab')
       display: none
 
   .topics__list_with-banners &:nth-last-child(2)
-    +media('<desk-s')
+    +media('<desk-s', '>=tab')
       display: none
 
   .topics__list_with-banners &:nth-last-child(3)
-    +media('<net')
+    +media('<net', '>=tab')
       display: none
 
 /* topics end
@@ -6337,6 +6670,7 @@ $tl-item-space: 18px
 
   img
     // transition
+    max-width: calc(100% - 2rem)
     $prop: transform
     transition:
       property: $prop
@@ -6431,6 +6765,21 @@ $tl-item-space: 18px
 
     +underlinedLinks(white)
 
+    span
+      box-shadow: inset 0 -2px 0 rgba(#c8c8c8, 0.75)
+      // transition
+      $prop: box-shadow
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+    &:hover
+      color: rgba(#c8c8c8, 1)
+
+      span
+        box-shadow: inset 0 0 0 transparent
+
 // game-zone__links end
 
 .gz__entry
@@ -6450,8 +6799,11 @@ $tl-item-space: 18px
     &:last-child
       margin-bottom: 0
 
-$gz-item-space: 18px
-$gz-item-space--tab: 10px
+//$gz-item-size--tab: 35.8rem 38.4rem // h w Размеры по дизайну
+$gz-item-size--tab: 25rem 32rem // h w Подобранные размеры, чтобы более-менее нормально отображались картинки
+$gz-item-space: 1.8rem
+$gz-item-space--lap: 1rem
+$gz-item-space--tab: 1.8rem
 $gz-columns: 4
 .gz-tiles
   margin-bottom: $bottom-space
@@ -6460,12 +6812,30 @@ $gz-columns: 4
     margin-bottom: 0
 
 .gz-tiles__list
-  margin-left: -#{round($gz-item-space / 2)}
-  margin-right: -#{round($gz-item-space / 2)}
+  $space: round-float($gz-item-space / 2, 1)
+  margin-left: -#{$space}
+  margin-right: -#{$space}
 
   +media('<lap-s')
-    margin-left: -#{round($gz-item-space--tab / 2)}
-    margin-right: -#{round($gz-item-space--tab / 2)}
+    $space: round-float($gz-item-space--lap / 2, 1)
+    margin-left: -#{$space}
+    margin-right: -#{$space}
+
+  +media('<tab')
+    display: block
+    height: #{nth($gz-item-size--tab, 1) + 0.6} !important
+    white-space: nowrap
+    overflow: hidden
+    $space: round-float($gz-item-space--tab / 2, 1)
+    margin-left: -#{$space}
+    margin-right: -#{$space}
+    width: calc(100% + #{$space} * 2)
+    +clear-spacing
+
+    .no-touchevents &:hover, .touchevents &
+      overflow-x: auto
+      overflow-y: hidden
+      -webkit-overflow-scrolling: touch
 
   &:not(.grid-completed)
     overflow: hidden
@@ -6475,12 +6845,23 @@ $gz-columns: 4
   display: inline-block
   vertical-align: top
   width: round-float(100% / $gz-columns, 2)
-  padding: 0 round($gz-item-space / 2) $gz-item-space
+  padding: 0 round-float($gz-item-space / 2, 1) $gz-item-space
   color: white
   text-decoration: none
 
   +media('<lap-s')
-    padding: 0 round($gz-item-space--tab / 2) $gz-item-space--tab
+    padding: 0 round-float($gz-item-space--lap / 2, 1) $gz-item-space--lap
+
+  +media('<tab')
+    display: inline-block
+    vertical-align: top
+    position: relative !important // Перебить js стили
+    left: auto !important // Перебить js стили
+    top: auto !important // Перебить js стили
+    width: auto !important // Перебить js стили
+    padding: 0 round-float($gz-item-space--tab / 2, 1)
+    white-space: normal
+    letter-spacing: normal
 
 // gz-tiles-elem
 .gz-tiles-elem
@@ -6488,6 +6869,13 @@ $gz-columns: 4
   display: block
   position: relative
   overflow: hidden
+
+  +media('<tab')
+    //padding-top: #{round-float(358 / 384 * 100%, 2)} !important // Перебить инлайн стили
+    padding: 0 !important // Перебить инлайн стили
+    height: nth($gz-item-size--tab, 1)
+    width: nth($gz-item-size--tab, 2)
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.88)
 
 .gz-tiles-elem__bg
   position: absolute
@@ -6507,6 +6895,9 @@ $gz-columns: 4
     duration: 1.5s
     timing-function: ease-in-out
 
+  +media('<tab')
+    background-position: right bottom
+
 .gz-tiles-elem__title
   display: flex
   align-items: flex-start
@@ -6522,12 +6913,19 @@ $gz-columns: 4
   $lh: 2.5rem
   font-size: $fz
   line-height: $lh
+  +font($fz, $lh)
   $kef-lh: $lh / $fz
+  letter-spacing: normal
   color: #c8c8c8
 
   +media('<lap-s')
     padding: $section-inner-space
     $fz: 2rem
+    font-size: $fz
+    line-height: #{round-float($fz * $kef-lh, 1)}
+
+  +media('<tab')
+    $fz: 2.5rem
     font-size: $fz
     line-height: #{round-float($fz * $kef-lh, 1)}
 
@@ -6538,13 +6936,23 @@ $gz-columns: 4
     align-items: center
     justify-content: flex-start
 
+    +media('<tab')
+      align-items: flex-start
+
   [data-align~="bottom"] &
     align-items: flex-end
     justify-content: flex-start
 
+    +media('<tab')
+      align-items: flex-start
+
   [data-align~="center"] &
     justify-content: center
     text-align: center
+
+    +media('<tab')
+      text-align: left
+      justify-content: flex-start
 
   [data-align~="left"] &
     justify-content: flex-start
@@ -6553,45 +6961,53 @@ $gz-columns: 4
     justify-content: flex-end
     text-align: right
 
+    +media('<tab')
+      text-align: left
+      justify-content: flex-start
+
 // gz-tiles-elem (states)
 .gz-tiles-elem
   // hover
   &:hover
-    .gz-tiles-elem__bg
-      transition-duration: 1.0s
-      $scale: 1.1, 1.1
-      $translate: 0, 0
-      transform: scale($scale) translate($translate)
-      transform: scale3d($scale, 1) translate3d($translate, 0)
+    .no-touchevents &
+      .gz-tiles-elem__bg
+        transition-duration: 1.0s
+        $scale: 1.1, 1.1
+        $translate: 0, 0
+        transform: scale($scale) translate($translate)
+        transform: scale3d($scale, 1) translate3d($translate, 0)
 
   &[data-align~="top"][data-align~="left"]:hover
-    .gz-tiles-elem__bg
-      $scale: 1.1, 1.1
-      $translate: -4%, -4%
-      transform: scale($scale) translate($translate)
-      transform: scale3d($scale, 1) translate3d($translate, 0)
+    .no-touchevents &
+      .gz-tiles-elem__bg
+        $scale: 1.1, 1.1
+        $translate: -4%, -4%
+        transform: scale($scale) translate($translate)
+        transform: scale3d($scale, 1) translate3d($translate, 0)
 
   &[data-align~="top"][data-align~="right"]:hover
-    .gz-tiles-elem__bg
-      $scale: 1.1, 1.1
-      $translate: 4%, -4%
-      transform: scale($scale) translate($translate)
-      transform: scale3d($scale, 1) translate3d($translate, 0)
+    .no-touchevents &
+      .gz-tiles-elem__bg
+        $scale: 1.1, 1.1
+        $translate: 4%, -4%
+        transform: scale($scale) translate($translate)
+        transform: scale3d($scale, 1) translate3d($translate, 0)
 
   &[data-align~="middle"][data-align~="left"]:hover
-    .gz-tiles-elem__bg
-      $scale: 1.1, 1.1
-      $translate: -4%, 0
-      transform: scale($scale) translate($translate)
-      transform: scale3d($scale, 1) translate3d($translate, 0)
+    .no-touchevents &
+      .gz-tiles-elem__bg
+        $scale: 1.1, 1.1
+        $translate: -4%, 0
+        transform: scale($scale) translate($translate)
+        transform: scale3d($scale, 1) translate3d($translate, 0)
 
   &[data-align~="middle"][data-align~="right"]:hover
-    .gz-tiles-elem__bg
-      $scale: 1.1, 1.1
-      $translate: 4%, 0
-      transform: scale($scale) translate($translate)
-      transform: scale3d($scale, 1) translate3d($translate, 0)
-
+    .no-touchevents &
+      .gz-tiles-elem__bg
+        $scale: 1.1, 1.1
+        $translate: 4%, 0
+        transform: scale($scale) translate($translate)
+        transform: scale3d($scale, 1) translate3d($translate, 0)
 
 /* quick-links end
 
@@ -6601,17 +7017,59 @@ $gz-columns: 4
   padding-top: 4.2rem
   padding-bottom: 0
 
+$at-item-size--tab: 25rem 32rem // h w Подобранные размеры, чтобы более-менее нормально отображались картинки
 $at-item-space: 1rem
+$at-item-space--tab: 1.8rem
 $at-columns: 5
+$at-elem-space: 1.6rem 2.5rem
 .articles-tiles
-  overflow: hidden
+  //overflow: hidden
+  position: relative
   margin-bottom: $bottom-space
+
+  $space--tab: round-float($at-item-space--tab / 2, 1)
+  &::before, &::after
+    content: ""
+    display: none
+    position: absolute
+    top: 0
+    height: 100%
+    width: $space--tab
+    z-index: 5
+
+    +media('<tab')
+      display: block
+
+  &::before
+    left: -#{$space--tab}
+    $color: $bg-color
+    +linear-gradient(to right, $color 0%, rgba($color, 0) 100%)
+
+  &::after
+    right: -#{$space--tab}
+    $color: $bg-color
+    +linear-gradient(to left, $color 0%, rgba($color, 0) 100%)
 
   &:last-child
     margin-bottom: 0
 
 .articles-tiles__list
   margin: -#{round($at-item-space / 2)}
+
+  +media('<tab')
+    display: block
+    height: #{nth($at-item-size--tab, 1) + 0.6} !important
+    white-space: nowrap
+    overflow: hidden
+    $space: round-float($at-item-space--tab / 2, 1)
+    margin: 0 -#{$space}
+    width: calc(100% + #{$space} * 2)
+    +clear-spacing
+
+    .no-touchevents &:hover, .touchevents &
+      overflow-x: auto
+      overflow-y: hidden
+      -webkit-overflow-scrolling: touch
 
   &:not(.grid-completed)
     overflow: hidden
@@ -6623,46 +7081,65 @@ $at-columns: 5
   width: round-float(100% / $at-columns, 2)
   padding: round-float($at-item-space / 2, 1)
 
-  &:nth-child(1n) .articles-tiles-elem
-    height: 42rem
-
-    +media('<lap-s')
-      height: 37rem
-
-  &:nth-child(2n) .articles-tiles-elem
-    height: 20.5rem
-
-    +media('<lap-s')
-      height: 18rem
-
-  &:nth-child(3n) .articles-tiles-elem
-    height: 42rem
-
-    +media('<lap-s')
-      height: 37rem
-
-  &:nth-child(4n) .articles-tiles-elem
-    height: 20.5rem
-
-    +media('<lap-s')
-      height: 18rem
-
-  &:nth-child(5n) .articles-tiles-elem
-    height: 20.5rem
-
-    +media('<lap-s')
-      height: 18rem
+  +media('<tab')
+    display: inline-block
+    vertical-align: top
+    position: relative !important // Перебить js стили
+    left: auto !important // Перебить js стили
+    top: auto !important // Перебить js стили
+    width: auto !important // Перебить js стили
+    padding: 0 round-float($at-item-space--tab / 2, 1)
+    white-space: normal
+    letter-spacing: normal
 
 .articles-tiles__item_wide
   width: round-float(100% / $at-columns * 2, 2)
 
-$at-elem-space: 1.6rem 2.5rem
 .articles-tiles-elem
   height: 0
   display: block
   position: relative
   overflow: hidden
   text-decoration: none
+
+  .articles-tiles__item:nth-child(1n) &
+    +media('>=lap-s')
+      height: 42rem
+
+    +media('<lap-s', '>=tab')
+      height: 37rem
+
+  .articles-tiles__item:nth-child(2n) &
+    +media('>=lap-s')
+      height: 20.5rem
+
+    +media('<lap-s', '>=tab')
+      height: 18rem
+
+  .articles-tiles__item:nth-child(3n) &
+    +media('>=lap-s')
+      height: 42rem
+
+    +media('<lap-s', '>=tab')
+      height: 37rem
+
+  .articles-tiles__item:nth-child(4n) &
+    +media('>=lap-s')
+      height: 20.5rem
+
+    +media('<lap-s', '>=tab')
+      height: 18rem
+
+  .articles-tiles__item:nth-child(5n) &
+    +media('>=lap-s')
+      height: 20.5rem
+
+    +media('<lap-s', '>=tab')
+      height: 18rem
+
+  +media('<tab')
+    height: nth($gz-item-size--tab, 1)
+    width: nth($gz-item-size--tab, 2)
 
 .articles-tiles-elem__figure
   position: absolute
@@ -7117,14 +7594,8 @@ $shutter-space: 20px 30px !default
     .no-touchevents &:hover
       overflow-y: auto
 
-  +media('<mob')
-    height: calc(100% - #{$header-height--sm})
-
-    .no-touchevents &
-      overflow-y: auto
-
 .m-aside__header
-  height: $header-height--sm
+  height: $header-height--tab
   display: none
 
   +media('<mob')
@@ -7481,7 +7952,7 @@ $shutter-space: 20px 30px !default
   position: relative
   background-color: $bg-color
   +font-bold
-  +font(14px, $header-height--sm)
+  +font(14px, $header-height--tab)
   letter-spacing: 0.1em
   text-align: left
   color: #fff
@@ -7816,7 +8287,7 @@ label.checkbox_value
 
     // hover
     .no-touchevents &:hover
-      color: $header-bg
+      color: $text-color-light
       background-color: white
 
 // btn-clear-filters

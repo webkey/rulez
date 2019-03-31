@@ -79,12 +79,7 @@
     <div class="quick-links">
       <div class="quick-links__list grid-js">
         <div class="quick-links__item has-shadow grid-item-js">
-          @@include("_tpl_quick-links-category.html", {
-          "title": "Мониторы",
-          "icon": "@@include('includes/svg/icon-catalog-monitor.svg')",
-          "count": "125",
-          "links": ["17&quot;", "19&quot;", "21&quot;", "22&quot;", "24&quot;", "27&quot;"]
-          })
+          @@include("_tpl_advise.html", {"addClasses": "advise_small"})
         </div>
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
@@ -104,14 +99,19 @@
         </div>
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
+          "title": "Мониторы",
+          "icon": "@@include('includes/svg/icon-catalog-monitor.svg')",
+          "count": "125",
+          "links": ["17&quot;", "19&quot;", "21&quot;", "22&quot;", "24&quot;", "27&quot;"]
+          })
+        </div>
+        <div class="quick-links__item has-shadow grid-item-js">
+          @@include("_tpl_quick-links-category.html", {
           "title": "Моноблоки",
           "icon": "@@include('includes/svg/icon-catalog-monoblock.svg')",
           "count": "5171",
           "links": ["Dell", "HP", "ACER", "Lenovo", "Asus"]
           })
-        </div>
-        <div class="quick-links__item has-shadow grid-item-js">
-          @@include("_tpl_advise.html", {"addClasses": "advise_small"})
         </div>
         <div class="quick-links__item grid-item-js">
           <a href="#gameZone" class="game-zone-anchor" style="background-image: url(img/img-game-zone.jpg);"><span>Game Zone</span></a>
@@ -718,74 +718,69 @@
     <div class="topics-tabs">
       <div class="topics-tabs__panels tabs__panels-js">
         <div id="laptops2">
-          <div class="swiper-container topics__list topics__list_with-banners topics-slider-js">
-            <div class="swiper-wrapper">
-              <article class="swiper-slide topics__item">
-                @@include("_tpl_product.html", {
-                "href": "#",
-                "src": "img/img-product-02.jpg",
-                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
-                "rate": "4.5", "rateWidth": "90%",
-                "priceOld": {"val": "", "unit": "р."},
-                "price": {"val": "", "unit": "р."},
-                "inFavorites": "",
-                "inCart": "",
-                "wow": "",
-                "stickers": ""
-                })
-              </article>
-              <article class="swiper-slide topics__item">
-                @@include("_tpl_product.html", {
-                "href": "#",
-                "src": "img/img-product-01.jpg",
-                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
-                "rate": "3", "rateWidth": "60%",
-                "priceOld": {"val": "5199", "unit": "р."},
-                "price": {"val": "4325", "unit": "р."},
-                "inFavorites": "added",
-                "inCart": "added",
-                "wow": "",
-                "stickers": ""
-                })
-              </article>
-              <article class="swiper-slide topics__item">
-                @@include("_tpl_product.html", {
-                "href": "#",
-                "src": "img/img-product-02.jpg",
-                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
-                "rate": "5", "rateWidth": "100%",
-                "priceOld": {"val": "", "unit": "р."},
-                "price": {"val": "4325", "unit": "р."},
-                "inFavorites": "",
-                "inCart": "",
-                "wow": "",
-                "stickers": ""
-                })
-              </article>
-              <article class="swiper-slide topics__item">
-                @@include("_tpl_product.html", {
-                "href": "#",
-                "src": "img/img-product-01.jpg",
-                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
-                "rate": "5", "rateWidth": "100%",
-                "priceOld": {"val": "", "unit": "р."},
-                "price": {"val": "1457", "unit": "р."},
-                "inFavorites": "",
-                "inCart": "",
-                "wow": "",
-                "stickers": ""
-                })
-              </article>
-              <article class="swiper-slide topics__item">
-                <a href="review.html" class="topic-banner">
-                  <img src="img/topic-banner.jpg" alt="banner" />
-                  <div class="topic-banner__title"><span>Обзор ультрабука Huawei Matebook X Pro</span></div>
-                </a>
-              </article>
-            </div>
-
-            <div class="swiper-button-prev topics-slider__prev topics-slider__prev-js"></div>
-            <div class="swiper-button-next topics-slider__next topics-slider__next-js"></div>
+          <div class="topics__list topics__list_with-banners equal-height-js">
+            <article class="topics__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-02.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "4.5", "rateWidth": "90%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "wow": "",
+              "stickers": ""
+              })
+            </article>
+            <article class="topics__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-01.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "3", "rateWidth": "60%",
+              "priceOld": {"val": "5199", "unit": "р."},
+              "price": {"val": "4325", "unit": "р."},
+              "inFavorites": "added",
+              "inCart": "added",
+              "wow": "",
+              "stickers": ""
+              })
+            </article>
+            <article class="topics__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-02.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "5", "rateWidth": "100%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "4325", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "wow": "",
+              "stickers": ""
+              })
+            </article>
+            <article class="topics__item">
+              @@include("_tpl_product.html", {
+              "href": "#",
+              "src": "img/img-product-01.jpg",
+              "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+              "rate": "5", "rateWidth": "100%",
+              "priceOld": {"val": "", "unit": "р."},
+              "price": {"val": "1457", "unit": "р."},
+              "inFavorites": "",
+              "inCart": "",
+              "wow": "",
+              "stickers": ""
+              })
+            </article>
+            <article class="topics__item">
+              <a href="review.html" class="topic-banner">
+                <img src="img/topic-banner.jpg" alt="banner" />
+                <div class="topic-banner__title"><span>Обзор ультрабука Huawei Matebook X Pro</span></div>
+              </a>
+            </article>
           </div>
         </div>
         <div id="monoblocks2">

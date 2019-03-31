@@ -424,11 +424,11 @@ function slidersInit() {
           longSwipesRatio: 0.05,
           longSwipesMs: 200,
 
-          breakpoints: {
-            768: {
-              parallax: false
-            }
-          },
+          // breakpoints: {
+          //   768: {
+          //     parallax: false
+          //   }
+          // },
 
           // Events
           // on: {

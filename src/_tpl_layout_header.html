@@ -26,7 +26,9 @@
         </ul>
         <div class="h-contacts h-contacts-js">
           <a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a>
-          <i class="h-contacts__opener h-contacts__opener-js">&#9660;</i>
+          <i class="h-contacts__opener h-contacts__opener-js">
+            @@include("includes/svg/icon-phone.svg")
+          </i>
           <div class="h-contacts__drop h-contacts__drop-js">
             <strong class="h-contacts__title">Контакты</strong>
             <div class="h-contacts__content">
@@ -53,12 +55,14 @@
       </div>
       @@include('_tpl_user-options.html')
       <a href="cart.html" class="cart-link cart-keeper-js" title="Оформить заказа">
-        <em class="counter counter-js">1</em>
-        <i>@@include("includes/svg/icon-cart-circle.svg")</i>
+        <i>
+          @@include("includes/svg/icon-cart-circle.svg")
+        </i>
         <div class="cart-link__text">
           <strong>Корзина</strong>
           <span>300.00 руб</span>
         </div>
+        <em class="counter counter-js">1</em>
       </a>
       <div class="quick-cart quick-cart-js">
         <div class="quick-cart__overflow">
