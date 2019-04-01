@@ -4771,14 +4771,12 @@ $opinion-box-shadow-color: black
   display: flex
   align-items: flex-start
   margin-bottom: 1.7rem
-  padding-right: 8rem
 
   &:last-child
     margin-bottom: 0
 
   +media('<lap-s')
     flex-direction: column
-    padding-right: 0
 
 .caption-box__title
   flex-shrink: 0
@@ -4805,6 +4803,7 @@ $opinion-box-shadow-color: black
   position: relative
   //padding-top: 0.2rem // If align center
   padding-top: 0.7rem // If align top
+  padding-right: 8rem // Space for button All
 
   +media('<lap-s')
     padding-top: 0
@@ -4813,7 +4812,8 @@ $opinion-box-shadow-color: black
   position: absolute
   right: 0
   //top: 50% // If align center
-  top: 0.7rem // If align top
+  //top: 0.7rem // If align top
+  bottom: 0.5rem // If align bottom
   $line-height: 3rem
   height: $line-height
   //margin-top: -#{round-float($line-height / 2, 1)}
@@ -4854,11 +4854,72 @@ $opinion-box-shadow-color: black
 
 /* caption-box end
 
+/* topics-nav
+.topics-nav
+  position: relative
+
+/* topics-nav end
+
+/* topics-thumbs-select
+.topics-thumbs-select
+  position: relative
+  display: inline-block
+  vertical-align: top
+  cursor: pointer
+  padding: 4px 8px
+  margin-bottom: 10px
+  background-color: lightseagreen
+  color: white
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
+  +media('>=tab')
+    display: none
+
+  & > i
+    display: inline-block
+    vertical-align: top
+    margin-left: 5px
+
+  &:active
+    top: 1px
+
+  &.tabs-select-open
+    & > i
+      transform: rotate(-180deg)
+
+/* topics-thumbs-select end
+
 /* topics-thumbs
 .topics-thumbs
   display: flex
   flex-wrap: wrap
   +font(1.6rem, 2.4rem)
+
+  +media('<tab')
+    display: block // Not flex
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    background-color: white
+    border-radius: 5px
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    $translate: 0, -2px
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
 
   a
     color: #646464
@@ -4872,9 +4933,6 @@ $opinion-box-shadow-color: black
       property: $prop
       duration: $animation-speed
 
-    +media('<lap')
-      margin-right: 2.5rem
-
     // for ie 9
     @if $ie9
       .no-flexwrap &
@@ -4882,6 +4940,22 @@ $opinion-box-shadow-color: black
         vertical-align: top
 
     +underlinedAnchor(#646464)
+
+    //+media('<lap')
+      margin-right: 2.5rem
+
+    +media('<tab')
+      display: block
+      margin: 0
+      padding: 1.4rem 1.6rem
+
+      span
+        border: none
+
+    &:hover
+      .no-touchevents &
+        +media('<tab')
+          color: $base-color-light
 
     // active
     &.tabs-active
@@ -4892,6 +4966,20 @@ $opinion-box-shadow-color: black
 
       & > span
         border-color: transparent
+
+      +media('<tab')
+        color: white
+        background-color: $base-color-light
+
+  // Select opened
+  &.tabs-select-open
+    +media('<tab')
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
 
 /* topics-thumbs end
 
