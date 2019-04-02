@@ -3076,6 +3076,9 @@ $search-btn-space: 0 0.5rem
     +media('<tab')
       background: none
 
+    +placeholder-focus
+      opacity: 1
+
     &:not([disabled]):not(.error):not(.success):not(.filled)
       &.focused
         box-shadow: none
@@ -4808,12 +4811,9 @@ $opinion-box-shadow-color: black
   +media('<lap-s')
     padding-top: 0
 
-.caption-box__all
-  position: absolute
-  right: 0
-  //top: 50% // If align center
-  //top: 0.7rem // If align top
-  bottom: 0.5rem // If align bottom
+.link-all
+  display: inline-block
+  vertical-align: top
   $line-height: 3rem
   height: $line-height
   //margin-top: -#{round-float($line-height / 2, 1)}
@@ -4831,16 +4831,21 @@ $opinion-box-shadow-color: black
     property: $prop
     duration: $animation-speed
 
+  .caption-box &
+    position: absolute
+    right: 0
+    bottom: 0.5rem // If align bottom
+
   svg
     position: relative
-    top: 1rem
+    top: 1.2rem
     display: inline-block
     vertical-align: top
-    $size: 1rem
-    +size($size)
+    width: 1rem
+    height: 0.6rem
     transform: rotate(-90deg)
 
-    path
+    path, use
       stroke: currentColor
 
   // hover
@@ -4862,14 +4867,8 @@ $opinion-box-shadow-color: black
 
 /* topics-thumbs-select
 .topics-thumbs-select
-  position: relative
-  display: inline-block
-  vertical-align: top
-  cursor: pointer
-  padding: 4px 8px
-  margin-bottom: 10px
-  background-color: lightseagreen
-  color: white
+  +selects-font
+  +select-selection
   user-select: none
   -webkit-tap-highlight-color: transparent
 
@@ -4877,16 +4876,7 @@ $opinion-box-shadow-color: black
     display: none
 
   & > i
-    display: inline-block
-    vertical-align: top
-    margin-left: 5px
-
-  &:active
-    top: 1px
-
-  &.tabs-select-open
-    & > i
-      transform: rotate(-180deg)
+    +select-arrow
 
 /* topics-thumbs-select end
 
@@ -4904,16 +4894,18 @@ $opinion-box-shadow-color: black
     top: 0
     width: 24rem
     background-color: white
-    border-radius: 5px
+    border-radius: 4px
     box-shadow: 0 1px 2px rgba(black, 0.15)
     z-index: 9
     // hide
     opacity: 0
     visibility: hidden
     pointer-events: none
-    $translate: 0, -2px
-    transform: translate($translate)
-    transform: translate3d($translate, 0)
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
     // transition
     $prop: transform, opacity, visibility
     will-change: $prop
@@ -4955,7 +4947,8 @@ $opinion-box-shadow-color: black
     &:hover
       .no-touchevents &
         +media('<tab')
-          color: $base-color-light
+          color: white
+          background-color: $base-color-light
 
     // active
     &.tabs-active
@@ -4968,8 +4961,8 @@ $opinion-box-shadow-color: black
         border-color: transparent
 
       +media('<tab')
-        color: white
-        background-color: $base-color-light
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
 
   // Select opened
   &.tabs-select-open
@@ -4978,8 +4971,9 @@ $opinion-box-shadow-color: black
       visibility: visible
       pointer-events: auto
       $translate: 0, 0
-      transform: translate($translate)
-      transform: translate3d($translate, 0)
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
 
 /* topics-thumbs end
 
@@ -6523,10 +6517,10 @@ a.topic-banner
   //padding-bottom: 3.6rem
   padding-bottom: 2rem
 
-$tl-item-size--tab: 49.8rem 29.6rem
+$tl-item-size--tab: 45.6rem 29.6rem
 $tl-item-space: 1.8rem
 $tl-item-space--tab: 1rem
-.topics-tabs__panels
+.topics-tabs
   position: relative
 
   $space--tab: round-float($tl-item-space--tab / 2, 1)
@@ -6538,7 +6532,7 @@ $tl-item-space--tab: 1rem
     height: 100%
     width: $space--tab
     z-index: 5
-    
+
     +media('<tab')
       display: block
 
@@ -6552,12 +6546,18 @@ $tl-item-space--tab: 1rem
     $color: $bg-color
     +linear-gradient(to left, $color 0%, rgba($color, 0) 100%)
 
+.topics-tabs__panels
+  position: relative
+
+  .link-all
+    display: none
+
 .topics__list
   display: flex
   $space: round-float($tl-item-space / 2, 1)
   margin-left: -#{$space}
   margin-right: -#{$space}
-  margin-bottom: $bottom-space
+  //margin-bottom: $bottom-space
   //+clear
 
   +media('<tab')
@@ -6576,7 +6576,7 @@ $tl-item-space--tab: 1rem
       overflow-y: hidden
       -webkit-overflow-scrolling: touch
 
-  &:last-child
+  //&:last-child
     margin-bottom: 0
 
   //&.swiper-container
@@ -6776,6 +6776,9 @@ $tl-item-space--tab: 1rem
 /* main-section_brands
 .main-section_brands
   position: relative
+
+  .main-section + &
+    padding-top: 0
 
 /* main-section_brands end
 
@@ -7353,6 +7356,7 @@ $at-elem-space: 1.6rem 2.5rem
 
 .helper__list
   display: flex
+  flex-wrap: wrap
   margin-bottom: 2rem
 
   &:last-child
@@ -7363,19 +7367,28 @@ $at-elem-space: 1.6rem 2.5rem
   justify-content: center
   align-items: center
   flex-grow: 1
-  flex-basis: 25%
+  flex-shrink: 0
+  $width: 25%
+  flex-basis: $width
+  max-width: $width
+  padding: $box-inner-space
   min-height: 12rem
   text-align: center
   text-decoration: none
   color: currentColor
   background-color: white
-  border: solid $border-color
+  border: solid $border-color-light
   border-width: 0 0 0 1px
   // transition
   $prop: background-color
   transition:
     property: $prop
     duration: $animation-speed
+
+  // touch
+  .touchevents &
+    user-select: none
+    -webkit-tap-highlight-color: transparent
 
   // for ie 9
   //@if $ie9
@@ -7384,13 +7397,21 @@ $at-elem-space: 1.6rem 2.5rem
       vertical-align: top
       width: calc(20% - 6px)
 
-  // touch
-  .touchevents &
-    user-select: none
-    -webkit-tap-highlight-color: transparent
-
   &:first-child
-    border: none
+    border-left: none
+
+  +media('<tab')
+    $width: 50%
+    flex-basis: $width
+    max-width: $width
+    min-height: 6rem
+    border-width: 1px 0 0 1px
+
+    &:nth-child(2n - 1)
+      border-left: none
+
+    &:nth-child(-n + 2)
+      border-top: none
 
 .helper__inner
   width: calc(100% - 4rem)

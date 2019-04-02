@@ -807,7 +807,7 @@ function gridLayout() {
       return false;
     }, changeSelect = function () {
       // Изменить контент селекта при изменении активного таба
-      $select.html($anchor.filter('[href="#' + activeId + '"]').html() + '<i>&#9660;</i>');
+      $select.html($anchor.filter('[href="#' + activeId + '"]').html() + config.compactView.arrowTpl);
       $element.trigger('msTabs.afterSelectValChange');
     }, eventsSelect = function () {
       // Открыть переключатели табов
@@ -897,8 +897,17 @@ function gridLayout() {
       }
 
       // callback after showed tab
-      $element.trigger('msTabs.afterOpen');
-      $element.trigger('msTabs.afterChange');
+      var eventData = {
+        '$tabs': $element,
+        '$anchor': $anchor,
+        'activeId': activeId,
+        '$activeAnchor': $activeAnchor,
+        '$panels': $panels,
+        '$panel': $panel,
+        '$activePanel': $activePanel
+      };
+      $element.trigger('msTabs.afterOpen', eventData);
+      $element.trigger('msTabs.afterChange', eventData);
     }, hide = function () {
       // Определить текущий таб
       var $activePanel = $panel.filter('[id="' + activeId + '"]');
@@ -929,8 +938,15 @@ function gridLayout() {
       }
 
       // callback after tab hidden
-      $element.trigger('msTabs.afterClose');
-      $element.trigger('msTabs.afterChange');
+      var eventData = {
+        '$tabs': $element,
+        '$anchor': $anchor,
+        '$panels': $panels,
+        '$panel': $panel,
+        '$activePanel': $activePanel
+      };
+      $element.trigger('msTabs.afterClose', eventData);
+      $element.trigger('msTabs.afterChange', eventData);
     }, hideTab = function ($_panel) {
       var callback = arguments[1];
       $_panel
@@ -984,6 +1000,8 @@ function gridLayout() {
       });
     }, init = function () {
       activeId = $anchor.filter('.' + pluginClasses.active).length && $anchor.filter('.' + pluginClasses.active).attr('href').substring(1);
+      var $activeAnchor = $anchor.filter('[href="#' + activeId + '"]'),
+          $activePanel;
 
       // console.log("activeId (сразу после инициализации): ", !!activeId);
 
@@ -1008,7 +1026,7 @@ function gridLayout() {
       // .attr('tabindex', -1);
 
       if (activeId) {
-        var $activePanel = $panel.filter('[id="' + activeId + '"]');
+        $activePanel = $panel.filter('[id="' + activeId + '"]');
 
         // Добавить класс на каждый элемен
         $activePanel.addClass(mixedClasses.active);
@@ -1048,7 +1066,16 @@ function gridLayout() {
       // если указан в опициях, пользовательский класс
       $element.addClass(mixedClasses.initialized);
 
-      $element.trigger('msTabs.afterInit');
+      var eventData = {
+        '$tabs': $element,
+        '$anchor': $anchor,
+        'activeId': activeId,
+        '$activeAnchor': $activeAnchor,
+        '$panels': $panels,
+        '$panel': $panel,
+        '$activePanel': $activePanel
+      };
+      $element.trigger('msTabs.afterInit', [$element, eventData]);
     };
 
     self = {
@@ -1098,6 +1125,7 @@ function gridLayout() {
     compactView: {
       elem: null, // Элемент, который будет селектом
       drop: null, // Элемент, который будет выпадающим списком селекта
+      arrowTpl: '<i>&#9660;</i>',
       closeByClickOutside: true, // Закрывать выпадающий список селекта по клику на "пустом" месте
       closeByClickEsc: true, // Закрывать выпадающий список селекта по клавише Esc
       openClass: null // Класс, который добавляется после открытия списка селекта
@@ -1115,16 +1143,38 @@ function gridLayout() {
  */
 function tabs() {
   var $tabs = $('.tabs-js');
+
+  // Копировать ссылку на все товары из текущего таба,
+  // и помещать ее в контейнер с переключателями
+  function setLinkAll(tabs) {
+    var $linkAll = $('.link-all', tabs.$activePanel),
+        $captionBox = $('.caption-box', $(tabs.$tabs));
+
+    // Удалить ранее добавленную ссылку
+    $('.link-all', $captionBox).remove();
+
+    if ($linkAll.length) {
+      // Добавить ссылку с текущего таба
+      $linkAll.clone().attr('data-id', tabs.activeId).appendTo($captionBox);
+    }
+  }
+
   if ($tabs.length) {
     var $tabsPanels = $('.tabs__panels-js');
-    $tabs.msTabs({
+    $tabs.on('msTabs.afterInit', function (e, el, tabs) {
+      setLinkAll(tabs);
+    }).msTabs({
       anchor: $('.tabs__thumbs-js').find('a'),
       panels: $tabsPanels,
       panel: $tabsPanels.children(),
       compactView: {
         elem: '.tabs__select-js',
         drop: '.tabs__select-drop-js',
+        arrowTpl: '<i><svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></i>',
         openClass: 'tabs-select-open'
+      },
+      afterOpen: function (e, el, tabs) {
+        setLinkAll(tabs);
       }
     });
   }

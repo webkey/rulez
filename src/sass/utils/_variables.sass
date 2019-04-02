@@ -340,9 +340,6 @@ $form-letter-spacing: normal !default
     letter-spacing: $form-letter-spacing
   color: $form-text-color
 
-=selects-font()
-  +inputs-font
-
 // Layout of formsn
 $form-border-width: 1px !default
 $form-input-space-vt: floor(($form-input-height - $form-line-height - $form-border-width*2)/2) !default
@@ -387,9 +384,14 @@ $multiple-item-space: 3px !default
 $select-arrow-width--small: 20px !default
 
 // Style Selection
-=selectSelection()
+// ----------------------------------------
+=selects-font()
+  +inputs-font
+
+// ----------------------------------------
+=select-selection($width: 100%)
   height: $form-input-height
-  width: 100%
+  width: $width
   padding: $form-input-space-vt $select-arrow-width $form-input-space-vb $form-input-space-h
   background: $form-bg-color
   border: #{$form-border-width} solid #{$form-border-color}
@@ -397,6 +399,28 @@ $select-arrow-width--small: 20px !default
   box-shadow: none
   text-indent: 0
   outline: none
+// ----------------------------------------
+
+=select-arrow()
+  display: block
+  position: absolute
+  right: 0
+  top: 0
+  +size($select-arrow-width, $select-arrow-height)
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
+  svg
+    display: block
+    position: absolute
+    left: 50%
+    top: 50%
+    height: 0.6rem
+    width: 1rem
+    transform: translate(-50%, -50%)
+
+    path, use
+      stroke: $base-color
 
 // States
 =form-success()

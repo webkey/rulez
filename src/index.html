@@ -286,7 +286,7 @@
             <div class="search-form" id="searchPanel">
               <form action="#" method="post" onsubmit="alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.'); return false;">
                 <div class="search-form__field input-wrap">
-                  <input type="search" class="search-form__input stop-remove-class field-js" />
+                  <input type="search" placeholder="Я ищу..." class="search-form__input stop-remove-class field-js" />
                   <div class="search-form__btn">
                     <svg width="23" height="23" viewBox="0 0 23 23" xmlns="http://www.w3.org/2000/svg">
                       <path d="M21.8852 21.3288L22.2394 20.9758L22.239 20.9754L21.8852 21.3288ZM15.7668 15.2019L15.4195 14.8423L15.0537 15.1955L15.413 15.5553L15.7668 15.2019ZM21.8737 21.8894L22.2129 22.2568L22.2135 22.2561L21.8737 21.8894ZM21.2915 21.8783L21.6463 21.526L21.6453 21.525L21.2915 21.8783ZM15.1582 15.7364L15.512 15.3831L15.1959 15.0665L14.8462 15.3457L15.1582 15.7364ZM22.239 20.9754L16.1206 14.8486L15.413 15.5553L21.5315 21.6821L22.239 20.9754ZM22.2135 22.2561C22.5849 21.912 22.597 21.3345 22.2394 20.9758L21.5311 21.6817C21.5119 21.6625 21.4994 21.6328 21.5 21.6012C21.5007 21.5695 21.5144 21.5407 21.5339 21.5226L22.2135 22.2561ZM21.5884 22.5C21.8102 22.5 22.0358 22.4203 22.2129 22.2568L21.5346 21.522C21.5519 21.506 21.5724 21.5 21.5884 21.5V22.5ZM20.9367 22.2306C21.118 22.4132 21.3567 22.5 21.5884 22.5V21.5C21.6034 21.5 21.6264 21.506 21.6463 21.526L20.9367 22.2306ZM14.8044 16.0897L20.9377 22.2316L21.6453 21.525L15.512 15.3831L14.8044 16.0897ZM9.64711 18.1522C11.8563 18.1522 13.8866 17.3915 15.4702 16.1271L14.8462 15.3457C13.4354 16.4721 11.624 17.1522 9.64711 17.1522V18.1522ZM0.5 9.3261C0.5 14.2111 4.6207 18.1522 9.64711 18.1522V17.1522C5.13699 17.1522 1.5 13.6235 1.5 9.3261H0.5ZM9.64711 0.5C4.6207 0.5 0.5 4.44105 0.5 9.3261H1.5C1.5 5.02865 5.13699 1.5 9.64711 1.5V0.5ZM18.7942 9.3261C18.7942 4.44105 14.6735 0.5 9.64711 0.5V1.5C14.1572 1.5 17.7942 5.02865 17.7942 9.3261H18.7942ZM16.1141 15.5616C17.7657 13.9668 18.7942 11.7619 18.7942 9.3261H17.7942C17.7942 11.4728 16.8891 13.4231 15.4195 14.8423L16.1141 15.5616ZM9.64711 16.3592C5.59117 16.3592 2.32353 13.1862 2.32353 9.3261H1.32353C1.32353 13.7738 5.07488 17.3592 9.64711 17.3592V16.3592ZM16.9707 9.3261C16.9707 13.1862 13.7027 16.3592 9.64711 16.3592V17.3592C14.2189 17.3592 17.9707 13.7738 17.9707 9.3261H16.9707ZM9.64711 2.29296C13.7031 2.29296 16.9707 5.46597 16.9707 9.3261H17.9707C17.9707 4.87837 14.2193 1.29296 9.64711 1.29296V2.29296ZM2.32353 9.3261C2.32353 5.46597 5.59117 2.29296 9.64711 2.29296V1.29296C5.07488 1.29296 1.32353 4.87837 1.32353 9.3261H2.32353Z"></path>
@@ -740,6 +740,13 @@
         </div>
       </section>
       <section class="main-section main-section_topics tabs-js max-wrap layout">
+        <!--link all icon svg-->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <symbol id="icon-angle" viewBox="0 0 10 6">
+            <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </symbol>
+        </svg>
+        <!--link all icon-->
         <div class="caption-box">
           <h2 class="caption-box__title">Лучшая цена</h2>
           <div class="caption-box__options">
@@ -756,12 +763,6 @@
               </div>
             </div>
           </div>
-          <a href="catalog.html" class="caption-box__all">
-            <span>Все</span>
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L5 5L9 1" stroke="#6E52DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </a>
         </div>
         <div class="topics-tabs">
           <div class="topics-tabs__panels tabs__panels-js">
@@ -1070,6 +1071,12 @@
                   </div>
                 </article>
               </div>
+              <a href="catalog.html#1" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="monoblocks">
               <div class="topics__list equal-height-js">
@@ -1365,6 +1372,12 @@
                   </div>
                 </article>
               </div>
+              <a href="catalog.html#2" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="computers">
               <div class="topics__list equal-height-js">
@@ -1660,6 +1673,12 @@
                   </div>
                 </article>
               </div>
+              <a href="catalog.html#3" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="monitors">
               <div class="topics__list equal-height-js">
@@ -1955,6 +1974,12 @@
                   </div>
                 </article>
               </div>
+              <a href="catalog.html#4" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="printers">
               <div class="topics__list equal-height-js">
@@ -2250,6 +2275,12 @@
                   </div>
                 </article>
               </div>
+              <a href="catalog.html#5" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="tablets">
               <div class="topics__list equal-height-js">
@@ -2545,6 +2576,12 @@
                   </div>
                 </article>
               </div>
+              <a href="catalog.html#6" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="game-zone">
               <div class="topics__list equal-height-js">
@@ -2840,6 +2877,12 @@
                   </div>
                 </article>
               </div>
+              <a href="catalog.html#7" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
@@ -2851,28 +2894,29 @@
         </div>
       </section>
       <section class="main-section main-section_topics tabs-js max-wrap layout">
+        <!--link all icon svg-->
+        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+          <symbol id="icon-angle" viewBox="0 0 10 6">
+            <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </symbol>
+        </svg>
+        <!--link all icon-->
         <div class="caption-box">
           <h2 class="caption-box__title">Идеи для подарков</h2>
           <div class="caption-box__options">
             <div class="topics-nav">
               <div class="topics-thumbs-select tabs__select-js"></div>
               <div class="topics-thumbs tabs__thumbs-js tabs__select-drop-js">
-                <a href="#laptops2" class="tabs-active"><span>Ноутбуки</span></a>
+                <a href="#laptops2"><span>Ноутбуки</span></a>
                 <a href="#monoblocks2"><span>Моноблоки</span></a>
                 <a href="#computers2"><span>Компьютеры</span></a>
-                <a href="#monitors2"><span>Мониторы</span></a>
+                <a href="#monitors2" class="tabs-active"><span>Мониторы</span></a>
                 <a href="#printers2"><span>Принтеры МФУ</span></a>
                 <a href="#tablets2"><span>Планшеты</span></a>
                 <a href="#game-zone2"><span>Game Zone</span></a>
               </div>
             </div>
           </div>
-          <a href="catalog.html" class="caption-box__all">
-            <span>Все</span>
-            <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M1 1L5 5L9 1" stroke="#6E52DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </a>
         </div>
         <div class="topics-tabs">
           <div class="topics-tabs__panels tabs__panels-js">
@@ -3118,6 +3162,12 @@
                   </a>
                 </article>
               </div>
+              <a href="catalog.html#1" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="monoblocks2">
               <div class="topics__list topics__list_with-banners equal-height-js">
@@ -3361,6 +3411,12 @@
                   </a>
                 </article>
               </div>
+              <a href="catalog.html#2" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="computers2">
               <div class="topics__list topics__list_with-banners equal-height-js">
@@ -3604,6 +3660,12 @@
                   </a>
                 </article>
               </div>
+              <a href="catalog.html#3" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="monitors2">
               <div class="topics__list topics__list_with-banners equal-height-js">
@@ -3847,6 +3909,12 @@
                   </a>
                 </article>
               </div>
+              <a href="catalog.html#4" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="printers2">
               <div class="topics__list topics__list_with-banners equal-height-js">
@@ -4090,6 +4158,12 @@
                   </a>
                 </article>
               </div>
+              <a href="catalog.html#5" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="tablets2">
               <div class="topics__list topics__list_with-banners equal-height-js">
@@ -4333,6 +4407,12 @@
                   </a>
                 </article>
               </div>
+              <a href="catalog.html#6" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
             <div id="game-zone2">
               <div class="topics__list topics__list_with-banners equal-height-js">
@@ -4576,6 +4656,12 @@
                   </a>
                 </article>
               </div>
+              <a href="catalog.html#7" class="link-all">
+                <span>Все</span>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-angle"></use>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
