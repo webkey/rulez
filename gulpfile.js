@@ -164,6 +164,7 @@ gulp.task('createCustomModernizr', function (done) {
 gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
   return gulp.src([
     'src/libs/classlist-polyfill/src/index.js' // Полифил для корректной работы кастомного скроллбара в старых браузерах
+    , 'node_modules/intersection-observer/intersection-observer.js' // Полифил для корректной работы lozad в старых браузерах
     , 'src/libs/lozad/dist/lozad.min.js' // Подкрузка изображений, айфреймов и т.д.
     , 'src/libs/jquery-ui/jquery-ui.min.js'
     // 'src/libs/device.js/lib/device.min.js' // определение устройств

@@ -89,6 +89,21 @@
 
 /* figure on background of a page end
 
+/* lozad
+//.lozad
+  opacity: 0
+  $prop: opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: 0.5s
+    timing-function: ease-in-out
+
+  &[data-loaded="true"]
+    opacity: 1
+
+/* lozad end
+
 /* spinner
 $spinner-size: 32px 113px
 $spinner-btn-width: 35px
@@ -4544,6 +4559,7 @@ $advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figur
   //+ratio(268, 173)
   border-radius: 1rem
   overflow: hidden
+  background-color: $base-color
   background-repeat: no-repeat
   background-position: left bottom
   background-size: cover
@@ -6683,6 +6699,9 @@ $tl-item-space--tab: 1rem
   padding-top: 0
 
 .banner
+  display: flex
+  align-items: center
+  justify-content: center
   text-align: center
 
   +media('<lap-s')
@@ -6960,6 +6979,7 @@ $gz-columns: 4
   display: block
   position: relative
   overflow: hidden
+  background-color: #31223f
 
   +media('<tab')
     //padding-top: #{round-float(358 / 384 * 100%, 2)} !important // Перебить инлайн стили
@@ -6979,11 +6999,11 @@ $gz-columns: 4
   background-position: center
   background-size: cover
   // transition
-  $prop: transform
+  $prop: transform, opacity // transition opacity for lozad
   will-change: $prop
   transition:
     property: $prop
-    duration: 1.5s
+    duration: 1.5s, 0.5s
     timing-function: ease-in-out
 
   +media('<tab')

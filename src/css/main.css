@@ -3009,6 +3009,8 @@ form .success + .select2 + .error-note + .success-note {
 }
 
 /* figure on background of a page end */
+/* lozad */
+/* lozad end */
 /* spinner */
 .ui-spinner {
   width: 113px;
@@ -8343,6 +8345,7 @@ a.catalog-opener.catalog-is-open > i::after {
   padding-top: 47.49%;
   border-radius: 1rem;
   overflow: hidden;
+  background-color: #6e52dd;
   background-repeat: no-repeat;
   background-position: left bottom;
   background-size: cover;
@@ -10780,6 +10783,12 @@ a.topic-banner:hover .topic-banner__title > span {
 }
 
 .banner {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   text-align: center;
 }
 
@@ -11111,6 +11120,7 @@ a.topic-banner:hover .topic-banner__title > span {
   display: block;
   position: relative;
   overflow: hidden;
+  background-color: #31223f;
 }
 
 @media (max-width: 991px) {
@@ -11132,9 +11142,9 @@ a.topic-banner:hover .topic-banner__title > span {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  will-change: transform;
-  transition-property: transform;
-  transition-duration: 1.5s;
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-duration: 1.5s, 0.5s;
   transition-timing-function: ease-in-out;
 }
 

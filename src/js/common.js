@@ -20,6 +20,12 @@ var TOUCH = Modernizr.touchevents;
 var DESKTOP = !TOUCH;
 
 /**
+ * !Detected touchscreen devices
+ * */
+var observer = lozad(); // lazy loads elements with default selector as '.lozad'
+observer.observe();
+
+/**
  * !Add placeholder for old browsers
  * */
 function placeholderInit() {
@@ -1159,10 +1165,22 @@ function tabs() {
     }
   }
 
+  function lazyLoadImages(coolImage) {
+    console.log("coolImage: ", coolImage);
+    $.each(coolImage, function (index, el) {
+      observer.triggerLoad(el);
+    });
+  }
+
   if ($tabs.length) {
     var $tabsPanels = $('.tabs__panels-js');
     $tabs.on('msTabs.afterInit', function (e, el, tabs) {
       setLinkAll(tabs);
+      // lazyLoadImages($('img', tabs.$activePanel));
+      // На изображения добавить класс ленивой подгрузки
+      $('img', tabs.$activePanel).addClass('lozad');
+      // И возобновить наблюдение за изображениями
+      observer.observe();
     }).msTabs({
       anchor: $('.tabs__thumbs-js').find('a'),
       panels: $tabsPanels,
@@ -1175,6 +1193,8 @@ function tabs() {
       },
       afterOpen: function (e, el, tabs) {
         setLinkAll(tabs);
+        // Подгрузить изображения после открытия таба
+        lazyLoadImages($('img', tabs.$activePanel));
       }
     });
   }
