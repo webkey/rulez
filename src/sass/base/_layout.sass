@@ -9,7 +9,8 @@ html
   &.css-scroll-fixed:not(.open-only-mob)
     +scroll-blocked
 
-  &.css-scroll-fixed.open-only-mob
+  &.css-scroll-fixed.open-only-mob,
+  &.touchevents.css-scroll-fixed_only-mob
     +media('<tab')
       +scroll-blocked
 

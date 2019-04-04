@@ -90,19 +90,19 @@ function showOnScroll() {
  * !Expand navigation
  */
 function navExpander() {
-  var $nav = $('.nav');
+  var $navExpander = $('.nav-expander-js');
 
-  if ($nav.length) {
-    var label = $nav.attr('data-btn-more') || 'More...';
+  if ($navExpander.length) {
+    var label = $navExpander.attr('data-btn-more') || 'More...';
 
-    var navigation = $nav.okayNav({
+    var navigation = $navExpander.okayNav({
       // align_right: true
       // toggle_icon_content: '<span /><span /><span />'
       toggle_icon_content: '<span>' + label + '</span><i>&nbsp;</i>'
     });
 
     if (navigation.length) {
-      $nav.addClass('ready');
+      $navExpander.addClass('ready');
     }
   }
 
@@ -140,6 +140,7 @@ function detectScroll() {
       headerIsChanged;
 
   function toggleClassOnScroll(topPos) {
+    minScrollTop = $header.outerHeight();
     $page.toggleClass('page-scrolled', (topPos > minScrollTop));
   }
 
@@ -151,6 +152,8 @@ function detectScroll() {
      * changeDelay - С какой задержкой добавляется класс изменения шапки на уменшеный вариант.
      * Задежка нужна, чтобы успела отработать анимация скрытия шапки.
      */
+
+    minScrollTop = $header.outerHeight();
     
     if (topPos <= minScrollTop && !headerIsChanged) {
       clearTimeout(timeoutChanged);
@@ -1486,7 +1489,7 @@ function toggleShutters() {
   }
 
   // Toggle a catalog shutter
-  var $catalogSwitcher = $('.catalog-opener-js'), catalogShutterJs;
+  var $catalogSwitcher = $('.catalog-opener-js'), catalogShutterJs, $html = $('html');
   if ($catalogSwitcher.length) {
     catalogShutterJs = $catalogSwitcher.switchClass({
       switchClassTo: $('.catalog-shutter-js').add('.catalog-overlay-js').add('body')
@@ -1494,6 +1497,12 @@ function toggleShutters() {
         activeClass: 'catalog-is-open'
       }
       , cssScrollFixed: false
+      , afterAdded: function () {
+        $html.addClass('css-scroll-fixed_only-mob');
+      }
+      , afterRemoved: function () {
+        $html.removeClass('css-scroll-fixed_only-mob');
+      }
     });
   }
 
@@ -2090,14 +2099,34 @@ function rollsInit() {
     $defautlRolls.msRolls()
   }
 
+  /** Catalog list */
+  // Первый уровень меню каталога
+  var $catalogList = $('.catalog-list-rolls-js'),
+      $catalogListAngle = $('.catalog-list-angle-js');
+
+  if ($catalogList.length) {
+    $catalogList.msRolls({
+      item: $catalogList.children(),
+      header: $catalogListAngle.parent(),
+      hand: '.catalog-list-angle-js',
+      panel: '.catalog-links-rolls-js',
+      animationSpeed: 200,
+      collapsed: false,
+      modifiers: {
+        activeClass: 'active'
+      }
+    })
+  }
+
   /** Catalog links */
-  var $catalogLinks = $('.catalog-links-js');
+  // Второй и ниже уровни меню каталога
+  var $catalogLinks = $('.catalog-links-rolls-js');
 
   if ($catalogLinks.length) {
     $catalogLinks.msRolls({
       item: 'li',
-      header: 'li > em',
-      hand: 'li > em',
+      header: '.catalog-menu-angle-js',
+      hand: '.catalog-menu-angle-js',
       panel: 'ul',
       animationSpeed: 200,
       collapsed: false,

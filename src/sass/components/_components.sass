@@ -572,13 +572,6 @@ input[type="text"].single-form__input
     duration: $animation-speed
     timing-function: ease-in-out
 
-  &:hover
-    border-color: $base-color
-    background-color: $base-color
-
-  .rolls-active &
-    transform: rotate(180deg)
-
   @at-root
     .rolls__angle-icon
       $size: 1rem
@@ -588,18 +581,28 @@ input[type="text"].single-form__input
       height: $size
       width: $size
       margin: -#{round-float($size / 2, 1) - 0.1} 0 0 -#{round-float($size / 2, 1)}
+      stroke: $base-color
+      transition: stroke $animation-speed
 
-      use
-        stroke: $base-color
-        transition: stroke $animation-speed
-
-        #{$element}:hover &
+      #{$element}:hover &
+        .no-touchevents &
           stroke: white
+
+  &:hover
+    .no-touchevents &
+      border-color: $base-color
+      background-color: $base-color
+
+      .rolls__angle-icon
+        stroke: white
+
+  &.rolls-active
+    transform: rotate(0.5turn)
 
 .rolls__panel
   padding: 1rem #{nth($section-inner-space, 2)} 2rem
 
-.rolls:not(.ms-rolls_initialized)
+.js .rolls:not(.ms-rolls_initialized)
   .rolls__panel
     display: none // Важно! До инициализации скрипта, скрыть все панели, а после показать.
 
@@ -1514,13 +1517,7 @@ $uo-border-radius: 7px
 
     +underlinedLinksReset
 
-.nav
-  position: relative
-  float: left
-  font-size: 1.5rem
-  line-height: 2.1rem
-  white-space: nowrap
-  height: 2.9rem
+.nav-expander-js
   opacity: 0
   // transition
   $prop: opacity
@@ -1529,15 +1526,23 @@ $uo-border-radius: 7px
     property: $prop
     duration: $animation-speed
 
-  +media('<lap-s')
-    font-size: 1.4rem
-
   .no-js &
     opacity: 1
     height: auto
 
   &.ready
     opacity: 1
+
+.nav
+  position: relative
+  float: left
+  font-size: 1.5rem
+  line-height: 2.1rem
+  white-space: nowrap
+  height: 2.9rem
+
+  +media('<lap-s')
+    font-size: 1.4rem
 
   .resizing &
     overflow: hidden
@@ -2670,9 +2675,9 @@ a.catalog-opener
 .catalog-shutter
   position: fixed
   left: 0
-  top: $header-height + 1
+  top: $header-height
   width: 100%
-  height: calc(100% - #{$header-height + 1})
+  height: calc(100% - #{$header-height})
   //background-color: rgba(black, 0.3)
   z-index: 9999
   opacity: 0
@@ -2686,8 +2691,8 @@ a.catalog-opener
 
   .header-changed ~ &
     +media('>=tab')
-      top: $header-height--scrolled + 0.5
-      height: calc(100% - #{$header-height--scrolled + 0.5})
+      top: $header-height--scrolled
+      height: calc(100% - #{$header-height--scrolled})
 
   +media('<tab')
     top: $header-height--tab
@@ -2698,11 +2703,16 @@ a.catalog-opener
     pointer-events: auto
     user-select: auto
 
+.catalog-shutter__layout
+  height: 100%
+  padding-top: 1rem
+  padding-bottom: 1rem
+
 .catalog-menu
-  max-height: calc(100vh - #{$header-height} - 2rem)
+  max-height: 100%
+  //max-height: calc(100vh - #{$header-height} - 2rem)
   overflow: auto
   margin-bottom: $bottom-space
-  padding: 3rem
   background: white
   box-shadow: 0 12px 10px rgba(0, 0, 0, 0.17)
   border-radius: 7px
@@ -2727,34 +2737,73 @@ a.catalog-opener
     margin-bottom: 0
 
 // catalog list
-$cat-item-space: 20px
-$cat-columns: 6
-$cat-columns--desk-lg: 5
-.catalog-menu__list
+$catalog-item-space: 2rem
+$catalog-item-space-vertical: 4rem
+$catalog-item-space-vertical--tab: 2.5rem
+$catalog-columns-length: 6
+$catalog-columns-length--lap: 5
+$catalog-columns-length--net: 4
+$catalog-columns-length--tab: 3
+
+.catalog-menu__list-wrap
+  overflow: hidden
+  padding: 2.4rem 3rem
+  
+  +media('<tab')
+    padding: $section-inner-space
+    border-bottom: 1px solid $border-color
+
+.catalog-menu__list, .nav-mob__list
   display: flex
   justify-content: flex-start
   align-items: flex-start
   flex-wrap: wrap
   list-style: none
   padding: 0
-  margin: 0 -#{round($cat-item-space / 2)}
+  margin: -#{$catalog-item-space-vertical} -#{round-float($catalog-item-space / 2, 1)} 0
 
-//.catalog-menu &
-  margin-bottom: -#{$cat-item-space * 2}
+  // Важно! До инициализации скрипта, скрыть все панели, а после показать
+  .js &:not(.ms-rolls_initialized)
+    .catalog-menu__links
+      display: none
 
-.catalog-menu__item
-  $width: calc(#{round-float(100% / $cat-columns, 2) - 0.01} - #{$cat-item-space})
+  +media('<tab')
+    margin-top: -#{$catalog-item-space-vertical--tab}
+
+.catalog-menu__item, .nav-mob__list > li
+  flex-shrink: 0
+  $width: round-float(100% / $catalog-columns-length, 2) - 0.01
   width: $width
   max-width: $width
   flex-basis: $width
-  margin: 0 round($cat-item-space / 2) $cat-item-space * 2
+  padding: #{$catalog-item-space-vertical} #{round-float($catalog-item-space / 2, 1)} 0
   //outline: 1px solid lightgrey
 
+  // Перебить стили утановленные скриптом пока они не нужны
+  +media('>=tab')
+    & > .rolls-panel-wrap-js
+      position: static !important
+      overflow: visible !important
+      height: auto !important
+
   +media('<desk-s')
-    $width: calc(#{round-float(100% / $cat-columns--desk-lg, 2) - 0.01} - #{$cat-item-space})
+    $width: round-float(100% / $catalog-columns-length--lap, 2) - 0.01
     width: $width
     max-width: $width
     flex-basis: $width
+
+  +media('<net')
+    $width: round-float(100% / $catalog-columns-length--net, 2) - 0.01
+    width: $width
+    max-width: $width
+    flex-basis: $width
+
+  +media('<tab')
+    $width: round-float(100% / $catalog-columns-length--tab, 2) - 0.01
+    width: $width
+    max-width: $width
+    flex-basis: $width
+    padding-top: $catalog-item-space-vertical--tab
 
   // for ie 9
   @if $ie9
@@ -2762,19 +2811,60 @@ $cat-columns--desk-lg: 5
       display: inline-block
       vertical-align: top
 
+// submenu open angle
+$catalog-menu-angle-size: 2.4rem // Размер стрелки для открытия подменю
+.catalog-menu-angle
+  display: block
+  position: relative
+  height: $catalog-menu-angle-size
+  width: $catalog-menu-angle-size
+  color: $base-color
+  border: 1px solid $border-color
+  border-radius: $catalog-menu-angle-size
+  cursor: pointer
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  // transition
+  $prop: background-color, border-color, transform
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  &.active
+    transform: rotate(180deg)
+
+  @at-root
+    .catalog-menu-angle__icon
+      $size: 1rem
+      position: absolute
+      top: 50%
+      left: 50%
+      height: $size
+      width: $size
+      margin: -#{round-float($size / 2, 1) - 0.1} 0 0 -#{round-float($size / 2, 1)}
+      stroke: $base-color
+      transition: stroke $animation-speed
+
+  &:hover
+    .no-touchevents &
+      border-color: $base-color
+      background-color: $base-color
+
+      .catalog-menu-angle__icon
+        stroke: white
+
 .catalog-menu__title
-  margin-bottom: 2rem
   display: flex
   justify-content: flex-start
   align-items: center
-
-  &:last-child
-    margin-bottom: 0
 
   .current &
     +font-bold
 
   & > a, & > span, & > strong
+    //display: inline-block
+    //vertical-align: top
     display: flex
     justify-content: flex-start
     align-items: center
@@ -2784,10 +2874,15 @@ $cat-columns--desk-lg: 5
     // Компенсировать разную высоту иконок
     text-decoration: none
     color: $base-color
-  //margin-right: 1rem
+
+    +media('<tab')
+      font-size: 1.6rem
+      line-height: 2.4rem
 
   & > a
-    +underlinedLinks($base-color)
+    //+underlinedLinks($base-color)
+    &:hover
+      text-decoration: underline
 
   & > a, & > span
 
@@ -2799,7 +2894,8 @@ $cat-columns--desk-lg: 5
 
     & > svg
       display: inline-block
-      vertical-align: top
+      vertical-align: middle
+      flex-shrink: 0
       //width: 3rem
       //height: 3rem
       margin-right: 1rem
@@ -2807,18 +2903,41 @@ $cat-columns--desk-lg: 5
       path
         fill: black
 
+    & > span
+      display: inline-block
+      vertical-align: middle
+
+.catalog-list__angle
+  flex-shrink: 0
+  margin-left: 1rem
+
+  // Перебить стили утановленные скриптом пока они не нужны
+  +media('>=tab')
+    display: none
+
 .catalog-menu__links
-  $angle-size: 2.0rem
-  $arrow-size: 0.6rem
-
   list-style: none
-  margin: 0 0 2rem
+  margin: 2rem 0
   padding: 0
+  line-height: 1
 
-  .no-js &:not(.ms-rolls_initialized)
+  // Важно! До инициализации скрипта, скрыть все панели, а после показать
+  .js &:not(.ms-rolls_initialized)
     ul
       display: none
-  // Важно! До инициализации скрипта, скрыть все панели, а после показать.
+
+  // Перебить стили утановленные скриптом пока они не нужны
+  +media('>=tab')
+    position: relative !important
+    left: auto !important
+    top: auto !important
+    width: auto !important
+    opacity: 1 !important
+    user-select: auto !important
+    z-index: auto !important
+
+  +media('<tab')
+    margin-top: 1rem
 
   &:last-child
     margin-bottom: 0
@@ -2826,7 +2945,6 @@ $cat-columns--desk-lg: 5
   li
     color: #131313
     font-size: 0
-    line-height: 1
     letter-spacing: -4px
     white-space: nowrap
     padding: 0 0 1.2rem
@@ -2846,61 +2964,23 @@ $cat-columns--desk-lg: 5
 
     &.has-items
       & > a, & > span
-        margin-right: $angle-size + 0.8
+        margin-right: $catalog-menu-angle-size + 0.8
 
     a
       text-decoration: none
       cursor: pointer
-      +underlinedLinks(#131313)
-
-    & > em
-      position: relative
-      display: inline-block
-      vertical-align: middle
-      width: $angle-size
-      height: $angle-size
-      margin-left: -$angle-size
-      text-indent: -9999px
-      overflow: hidden
-      cursor: pointer
-      z-index: 5
-      color: currentColor
-      border: 1px solid currentColor
-      border-radius: round-float($angle-size / 2, 1)
-      user-select: none
-      -webkit-tap-highlight-color: transparent
-      // transition
-      $prop: transform, color
-      will-change: $prop
-      transition:
-        property: $prop
-        duration: $animation-speed
-
-      &::before, &::after
-        content: ""
-        display: block
-        position: absolute
-        top: 50%
-        height: 0.2rem
-        width: $arrow-size
-        background-color: currentColor
-        pointer-events: none
-        margin: -0.1rem -0.5rem
-
-      &::before
-        transform: rotate(45deg)
-        left: 50%
-
-      &::after
-        transform: rotate(-45deg)
-        right: 50%
+      //+underlinedLinks(#131313)
+      transition: color $animation-speed
 
       &:hover
         color: $base-color
 
   ul
     list-style: none
-    padding: 1.2rem 0 0 2rem
+    padding: 1rem 1.2rem
+    margin: 0.8rem 0 0
+    background-color: $bg-color-alt
+    border-radius: 4px
     opacity: 0
     // transition
     $prop: opacity
@@ -2926,17 +3006,53 @@ $cat-columns--desk-lg: 5
       & > a
         +underlinedLinks($base-color)
 
-  // active
-  li.active
-    & > em
-      $rotate: -0.5turn
-      transform: rotate($rotate)
-
   ul.active
     opacity: 1
 
+.catalog-menu__angle
+  position: relative
+  display: inline-block
+  vertical-align: middle
+  margin: -0.2rem 0 -0.2rem -#{$catalog-menu-angle-size}
+  z-index: 5
+
 // catalog list end
-    
+
+/* mobile navigation
+.nav-mob
+  overflow: hidden
+  padding: $section-inner-space
+
+  +media('>=tab')
+    display: none
+
+.nav-mob__list
+  +font(1.6rem, 2.0rem)
+  margin-top: -1.5rem
+
+  & > li
+    padding-top: 1.5rem
+
+  a,
+  li > span
+    color: $base-color
+    text-decoration: none
+    -webkit-tap-highlight-color: transparent
+    // transition
+    $prop: color
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+  a
+    +underlinedLinks($base-color)
+
+  .current a, .current > span
+    opacity: 0.56
+    pointer-events: none
+
+    +underlinedLinksReset
+
 //=== Catalog is open ===
 .main, .footer
   // transition
@@ -2949,6 +3065,8 @@ $cat-columns--desk-lg: 5
 .catalog-is-open
   .main, .footer
     filter: blur(3px)
+
+/* mobile navigation end
 
 /* catalog shutter end
 

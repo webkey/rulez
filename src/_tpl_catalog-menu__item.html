@@ -1,13 +1,22 @@
 <div class="catalog-menu__title">
 	<a href="catalog.html">@@icon<span>@@title</span></a>
+	<em class="catalog-menu-angle catalog-list__angle catalog-list-angle-js">
+		<svg height="10" width="10" class="catalog-menu-angle__icon" fill="none">
+			<use xlink:href="#catalog-menu-angle" />
+		</svg>
+	</em>
 </div>
-<ul class="catalog-menu__links catalog-links-js">
+<ul class="catalog-menu__links catalog-links-rolls-js">
 	@@if(context.current){<li class="current"><span>@@current</span></li>}
 	@@for (var i = 0; i < links.length; i++){<li><a href="catalog.html"><span>`+links[i]+`</span></a></li>}
 	@@if(context.hasSubLinks){
 	<li class="has-items">
 		<a href="catalog.html"><span>@@hasSubLinks</span></a>
-		<em>▼</em>
+		<em class="catalog-menu-angle catalog-menu__angle catalog-menu-angle-js">
+			<svg height="10" width="10" class="catalog-menu-angle__icon" fill="none">
+				<use xlink:href="#catalog-menu-angle" />
+			</svg>
+		</em>
 		<ul>
 			@@for (var i = 0; i < subLinks.length; i++){<li><a href="catalog.html"><span>`+subLinks[i]+`</span></a></li>}
 		</ul>
