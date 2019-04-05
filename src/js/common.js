@@ -1169,7 +1169,6 @@ function tabs() {
   }
 
   function lazyLoadImages(coolImage) {
-    console.log("coolImage: ", coolImage);
     $.each(coolImage, function (index, el) {
       observer.triggerLoad(el);
     });
@@ -1450,8 +1449,7 @@ function tabs() {
  */
 function toggleShutters() {
   // Toggle contacts in header
-  var $hContactsSwitcher = $('.h-contacts__opener-js'),
-      hContactsDropJs;
+  var $hContactsSwitcher = $('.h-contacts__opener-js'), hContactsDropJs;
   if ($hContactsSwitcher.length) {
     hContactsDropJs = $hContactsSwitcher.switchClass({
       switchClassTo: $('.h-contacts-js').add('.h-contacts__drop-js')
@@ -1569,6 +1567,10 @@ function toggleShutters() {
     searchPanelJs && searchPanelJs.switchClass('remove');
   }
 
+  function quickCartRemoveClass() {
+    quickCartJs && quickCartJs.switchClass('remove');
+  }
+
   // Вызывать метод удаления классов другими
   if (hContactsDropJs) {
     hContactsDropJs.on('switchClass.beforeAdded', function () {
@@ -1576,6 +1578,7 @@ function toggleShutters() {
       catalogShutterRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickCartRemoveClass();
     });
   }
 
@@ -1585,6 +1588,7 @@ function toggleShutters() {
       catalogShutterRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickCartRemoveClass();
     });
   }
 
@@ -1594,6 +1598,7 @@ function toggleShutters() {
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickCartRemoveClass();
     });
   }
 
@@ -1603,6 +1608,7 @@ function toggleShutters() {
       searchPopupRemoveClass();
       catalogShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickCartRemoveClass();
     });
   }
 
@@ -1612,6 +1618,17 @@ function toggleShutters() {
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
       catalogShutterRemoveClass();
+      quickCartRemoveClass();
+    });
+  }
+
+  if (quickCartJs) {
+    quickCartJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
+      searchPopupRemoveClass();
+      filtersShutterRemoveClass();
+      catalogShutterRemoveClass();
+      addFormPopupRemoveClass();
     });
   }
 }

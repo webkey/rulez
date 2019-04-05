@@ -1,6 +1,24 @@
 <div class="catalog-shutter catalog-shutter-js">
   <div class="catalog-shutter__layout max-wrap layout">
     <div class="catalog-menu stop-remove-class">
+      <div class="user-options-mob">
+        <div class="user-options-mob__list">
+          <div class="user-options-mob__item user-options-mob__item_likes">
+            <a href="#" title="Избранное">
+              @@include("includes/svg/icon-like.svg")
+              <span>Избранное</span>
+              <em class="counter">1</em>
+            </a>
+          </div>
+          <div class="user-options-mob__item user-options-mob__item_compare">
+            <a href="#" title="Перейти к сравнению">
+              @@include("includes/svg/icon-compare.svg")
+              <span>Сравнить</span>
+              <em class="counter">3</em>
+            </a>
+          </div>
+        </div>
+      </div>
       <div class="catalog-menu__list-wrap">
         <!--submenu open angle svg-->
         <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
