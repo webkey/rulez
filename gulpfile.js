@@ -67,7 +67,7 @@ gulp.task('html:buildAllPages', ['htmlCompilation'], function () {
   return gulp.src(['!src/typography.html', '!src/forms.html', '!src/layouts.html', '!src/all-pages.html', '!src/__*.html', '!src/_tpl_*.html', '!src/_temp_*.html', './src/*.html'])
       .pipe(index({
         // written out before index contents
-        'prepend-to-output': () => `<head> <title>All pages</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"><link rel="shortcut icon" href="favicon.ico"></head><body>`,
+        'prepend-to-output': () => `<head> <title>All pages</title><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0"><link rel="shortcut icon" href="favicon.ico"><link rel="stylesheet" href="css/main.css"></head><body class="` + pref + `__page">`,
         'title': 'All pages',
         'title-template': (title) => `<h1 class="` + pref + `__title">${title}</h1>`,
         'section-template': (sectionContent) => `<section class="` + pref + `__section"> ${sectionContent}</section>`,

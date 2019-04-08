@@ -213,7 +213,7 @@ $page-layout-width: 160rem !default
 //$page-layout-width: 128rem !default
 // отступы для всего сайта
 $page-layout-space: 0 2rem !default
-$page-layout-space--mob: 0 1rem !default
+$page-layout-space--mob: 2rem 1rem !default
 // отступы для альтернативных элементов
 $page-layout-space-narrow: 0 9.7rem !default
 $page-layout-space-narrow--tab: 0 2rem !default
@@ -223,7 +223,7 @@ $text-layout-width: 60rem !default
 $flood-layout-width: 103rem !default
 // внешние и внутренние отступы  секций (большие лотические единици)
 $section-inner-space: 2rem 2.4rem !default
-$section-inner-space--mob: 1.2rem 1.5rem !default
+$section-inner-space--mob: 1.2rem 1rem !default
 $section-outer-space: 2.5rem 2rem !default
 // внешние и внутренние одиночных элементов (боксов)
 $box-inner-space: 1.8rem 2.0rem !default
@@ -273,6 +273,7 @@ $aside-width: 16.1% !default
 // ==========================================================================
 $footer-grid-space: 0 4.4rem !default
 $footer-grid-space--tab: 0 2rem !default
+$footer-grid-space--mob: 0 1rem !default
 // v h
 
 // Sliders
@@ -454,6 +455,19 @@ $select-arrow-width--small: 20px !default
 =form-on-focus()
   //color: $form-border-focus-color
   border-color: $form-border-color--focus
+
+
+// Main section title
+// ==========================================================================
+$main-section-title-font-size: 3.6rem
+$main-section-title-line-height: 3.6rem
+$main-section-title-kef: round-float($main-section-title-line-height / $main-section-title-line-height, 1)
+// ----------------------------------------
+$main-section-title-font-size--tab: 3.2rem
+$main-section-title-line-height--tab: round-float($main-section-title-font-size--tab * $main-section-title-kef, 1)
+// ----------------------------------------
+$main-section-title-font-size--mob: 2.6rem
+$main-section-title-line-height--mob: round-float($main-section-title-font-size--mob * $main-section-title-kef, 1)
 
 
 // Animation

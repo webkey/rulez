@@ -3351,7 +3351,8 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
 
 .catalog-is-open
   .main, .footer
-    filter: blur(3px)
+    +media('>=tab')
+      filter: blur(3px)
 
 /* mobile navigation end
 
@@ -3709,7 +3710,8 @@ $search-btn-space: 0 0.5rem
   padding-bottom: 2rem
 
   +media('<lap-s')
-    padding-top: 3rem
+    padding-top: nth($page-layout-space--mob, 1)
+    padding-bottom: nth($page-layout-space--mob, 1)
 
 /* footer-common
 .footer-common
@@ -3724,6 +3726,10 @@ $search-btn-space: 0 0.5rem
   +media('<lap-s')
     margin-left: -#{nth($footer-grid-space--tab, 2)}
     margin-right: -#{round-float(nth($footer-grid-space--tab, 2) / 2, 1)}
+
+  +media('<mob')
+    margin-left: -#{nth($footer-grid-space--mob, 2)}
+    margin-right: -#{round-float(nth($footer-grid-space--mob, 2) / 2, 1)}
 
 .footer-grid__item
   display: flex
@@ -3744,6 +3750,9 @@ $search-btn-space: 0 0.5rem
     $white: 50%
     flex-basis: $white
     max-width: $white
+
+  +media('<mob')
+    padding-bottom: 3rem
 
   //for ie 9
   @if $ie9
@@ -3779,6 +3788,10 @@ $search-btn-space: 0 0.5rem
   +media('<lap-s')
     padding: 0 round-float(nth($footer-grid-space--tab, 2) / 2, 1) 0 nth($footer-grid-space--tab, 2)
 
+  +media('<mob')
+    padding: 0 round-float(nth($footer-grid-space--mob, 2) / 2, 1) 0 nth($footer-grid-space--mob, 2)
+    margin-bottom: 2rem
+
   &:last-child
     margin-bottom: 0
 
@@ -3806,6 +3819,9 @@ $search-btn-space: 0 0.5rem
 
   +media('<lap-s')
     padding: 0 round-float(nth($footer-grid-space--tab, 2) / 2, 1) 0 nth($footer-grid-space--tab, 2)
+
+  +media('<mob')
+    padding: 0 round-float(nth($footer-grid-space--mob, 2) / 2, 1) 0 nth($footer-grid-space--mob, 2)
 
 .footer-grid__list
   list-style: none
@@ -3862,6 +3878,9 @@ $search-btn-space: 0 0.5rem
 
     +media('<lap-s')
       column-gap: 3rem
+
+    +media('<mob')
+      column-gap: nth($page-layout-space--mob, 2) * 2
 
 .footer-grid__phones
   list-style: none
@@ -4003,6 +4022,10 @@ $search-btn-space: 0 0.5rem
     property: $prop
     duration: $animation-speed
 
+  +media('<mob')
+    white-space: normal
+    padding: 0.7rem 1.3rem
+
   &:last-child
     margin-bottom: 0
 
@@ -4015,6 +4038,9 @@ $search-btn-space: 0 0.5rem
     height: $size
     width: $size
     margin-top: -#{round($size / 2)}
+
+    +media('<mob')
+      display: none
 
     path, circle
       fill: #888
@@ -4175,6 +4201,9 @@ $search-btn-space: 0 0.5rem
   .home-page &
     padding-top: 0
 
+    +media('<mob')
+      padding-bottom: nth($page-layout-space--mob, 1)
+
   .no-js &
     padding-top: 2rem
 
@@ -4184,12 +4213,27 @@ $search-btn-space: 0 0.5rem
   padding-top: 2rem
   padding-bottom: 2rem
 
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
+
 .main-section__title
   +font-bold
-  font-size: 3.6rem
-  line-height: 4.2rem
+  font-size: $main-section-title-font-size
+  line-height: $main-section-title-line-height
   color: #131313
-  margin-bottom: 2rem
+  margin-bottom: 0.56em
+
+  +media('<lap-s')
+    margin-right: 0
+    font-size: $main-section-title-font-size--tab
+    line-height: $main-section-title-line-height--tab
+
+  +media('<mob')
+    margin-bottom: 0.5em
+    font-size: $main-section-title-font-size--mob
+    line-height: $main-section-title-line-height--mob
 
   &:last-child
     margin-bottom: 0
@@ -4607,6 +4651,11 @@ $p-sticker-size: 2.6rem 2.6rem
   +media('<tab')
     padding: $header-height--tab + 2.1 0 #{$promo-section-bottom--tab + 4} 41.5%
 
+  +media('<mob')
+    align-items: flex-end
+    padding: $header-height--mob + 2.1 0 #{$promo-section-bottom--tab + 4} 37%
+    text-align: right
+
 .i-promo-slide__title
   $font-size: 3.6rem
   $line-height: 4.0rem
@@ -4649,6 +4698,9 @@ $p-sticker-size: 2.6rem 2.6rem
 .i-promo-slide__btn
   min-width: 20.3rem
 
+  +media('<mob')
+    min-width: 0
+
 // --> slide type 2 with long parallax word <--
 .w-promo-slide
   position: relative
@@ -4690,6 +4742,9 @@ $p-sticker-size: 2.6rem 2.6rem
   align-items: center
   justify-content: flex-end
   width: 100%
+
+  +media('<mob-s')
+    justify-content: space-between
 
 .w-promo-slide__title
   $font-size: 2.4rem
@@ -5137,6 +5192,11 @@ $ql-columns--mob: 1
   padding-bottom: 2rem
   z-index: 5
 
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
+
   //opacity: 0.2
   //pointer-events: none
 
@@ -5281,6 +5341,11 @@ $categories-item-col: 3
   +media('>=tab-s')
     display: none
 
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
+
 /* main section categories (only mob) end
 
 /* opinion
@@ -5383,11 +5448,18 @@ $opinion-box-shadow-color: black
   display: block
   margin-left: $opinion-figure-size + $opinion-figure-space
   +font-bold
-  +font(1.8rem, 2.6rem)
+  $font-size: 1.8rem
+  $line-height: 2.6rem
+  font-size: $font-size
+  line-height: $line-height
   margin-bottom: 1rem
 
   +media('<tab')
     margin-left: $opinion-figure-size--tab + $opinion-figure-space--tab
+
+  +media('<mob')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
 
   &:last-child
     margin-bottom: 0
@@ -5403,6 +5475,11 @@ $opinion-box-shadow-color: black
 
   +media('<tab')
     padding-bottom: 2rem
+
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
 
 .opinions
   margin-bottom: $bottom-space
@@ -5464,18 +5541,20 @@ $opinion-box-shadow-color: black
   //min-width: $width
   //max-width: $width
   +font-bold
-  $fz: 3.6rem
-  $lh: 4.2rem
-  font-size: $fz
-  line-height: $lh
-  $lh-kef: $lh / $fz // Отношение line-height к font-size
+  font-size: $main-section-title-font-size
+  line-height: $main-section-title-line-height
   color: #131313
 
   +media('<lap-s')
     margin-right: 0
     margin-bottom: 0.5rem
-    font-size: 3.2rem
-    line-height: round-float(3.2rem * $lh-kef, 1)
+    font-size: $main-section-title-font-size--tab
+    line-height: $main-section-title-line-height--tab
+
+  +media('<mob')
+    margin-bottom: 1rem
+    font-size: $main-section-title-font-size--mob
+    line-height: $main-section-title-line-height--mob
 
 .caption-box__options
   position: relative
@@ -7225,8 +7304,12 @@ a.topic-banner
 /* topics
 .main-section_topics
   position: relative
-  //padding-bottom: 3.6rem
   padding-bottom: 2rem
+
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
 
 $tl-item-size--tab: 45.6rem 29.6rem
 $tl-item-space: 1.8rem
@@ -7283,6 +7366,9 @@ $tl-item-space--tab: 1rem
     white-space: nowrap
     overflow: hidden
     +clear-spacing
+
+    .touchevents &
+      height: #{nth($tl-item-size--tab, 1)} !important
 
     .no-touchevents &:hover, .touchevents &
       overflow-x: auto
@@ -7395,20 +7481,25 @@ $tl-item-space--tab: 1rem
   position: relative
   padding-top: 0
 
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
+
 .banner
   display: flex
   align-items: center
   justify-content: center
   text-align: center
 
-  +media('<lap-s')
+  //+media('<lap-s')
     height: 18rem
 
   img
     width: 100%
     max-width: none
 
-    +media('<lap-s')
+    //+media('<lap-s')
       width: 100%
       height: 100%
       +object-fit(cover)
@@ -7497,8 +7588,18 @@ $tl-item-space--tab: 1rem
 .main-section_brands
   position: relative
 
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
+
   .main-section + &
     padding-top: 0
+
+    +media('<mob')
+      $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+      padding-bottom: $space
+      padding-top: $space
 
 /* main-section_brands end
 
@@ -7507,6 +7608,14 @@ $tl-item-space--tab: 1rem
   padding-top: 4rem
   padding-bottom: 4rem
   +linear-gradient(to bottom, #30203c 0%, #2f2c31 100%)
+
+  +media('<mob')
+    $space: nth($page-layout-space--mob, 1)
+    padding-bottom: $space
+    padding-top: $space
+    $space-outer: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    margin-bottom: $space-outer
+    margin-top: $space-outer
 
 .gz-caption
   display: flex
@@ -7517,6 +7626,9 @@ $tl-item-space--tab: 1rem
     flex-direction: column
     padding-right: 0
 
+  +media('<mob')
+    margin-bottom: 2rem
+
   &:last-child
     margin-bottom: 0
 
@@ -7524,18 +7636,20 @@ $tl-item-space--tab: 1rem
   margin-right: 5rem
   margin-bottom: 0
   +font-bold
-  $fz: 3.6rem
-  $lh: 4.2rem
-  font-size: $fz
-  line-height: $lh
-  $lh-kef: $lh / $fz // Отношение line-height к font-size
+  font-size: $main-section-title-font-size
+  line-height: $main-section-title-line-height
   color: white
 
   +media('<lap-s')
     margin-right: 0
     margin-bottom: 0.5rem
-    font-size: 3.2rem
-    line-height: round-float(3.2rem * $lh-kef, 1)
+    font-size: $main-section-title-font-size--tab
+    line-height: $main-section-title-line-height--tab
+
+  +media('<mob')
+    margin-bottom: 0.5rem
+    font-size: $main-section-title-font-size--mob
+    line-height: $main-section-title-line-height--mob
 
 .gz__options
   position: relative
@@ -7549,6 +7663,10 @@ $tl-item-space--tab: 1rem
   display: flex
   flex-wrap: wrap
   +font(1.6rem, 2.4rem)
+
+  +media('<mob')
+    font-size: 1.4rem
+    line-height: 1.8rem
 
   a
     color: #c8c8c8
@@ -7616,6 +7734,7 @@ $tl-item-space--tab: 1rem
 
 //$gz-item-size--tab: 35.8rem 38.4rem // h w Размеры по дизайну
 $gz-item-size--tab: 25rem 32rem // h w Подобранные размеры, чтобы более-менее нормально отображались картинки
+$gz-item-size--mob: 20rem 25.6rem // h w Подобранные размеры, чтобы более-менее нормально отображались картинки
 $gz-item-space: 1.8rem
 $gz-item-space--lap: 1rem
 $gz-item-space--tab: 1.8rem
@@ -7651,6 +7770,9 @@ $gz-columns: 4
       overflow-x: auto
       overflow-y: hidden
       -webkit-overflow-scrolling: touch
+
+  +media('<mob')
+    height: #{nth($gz-item-size--mob, 1) + 0.6} !important
 
   &:not(.grid-completed)
     overflow: hidden
@@ -7692,6 +7814,10 @@ $gz-columns: 4
     height: nth($gz-item-size--tab, 1)
     width: nth($gz-item-size--tab, 2)
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.88)
+
+  +media('<mob')
+    height: nth($gz-item-size--mob, 1)
+    width: nth($gz-item-size--mob, 2)
 
 .gz-tiles-elem__bg
   position: absolute
@@ -7833,7 +7959,13 @@ $gz-columns: 4
   padding-top: 4.2rem
   padding-bottom: 0
 
+  +media('<mob')
+    $space: round-float(nth($page-layout-space--mob, 1) / 2, 1)
+    padding-bottom: $space
+    padding-top: $space
+
 $at-item-size--tab: 25rem 32rem // h w Подобранные размеры, чтобы более-менее нормально отображались картинки
+$at-item-size--mob: 20rem 25.6rem // h w Подобранные размеры, чтобы более-менее нормально отображались картинки
 $at-item-space: 1rem
 $at-item-space--tab: 1.8rem
 $at-columns: 5
@@ -7882,10 +8014,19 @@ $at-elem-space: 1.6rem 2.5rem
     width: calc(100% + #{$space} * 2)
     +clear-spacing
 
+    .touchevents &
+      height: #{nth($at-item-size--tab, 1)} !important
+
     .no-touchevents &:hover, .touchevents &
       overflow-x: auto
       overflow-y: hidden
       -webkit-overflow-scrolling: touch
+
+  +media('<mob')
+    height: #{nth($at-item-size--mob, 1) + 0.6} !important
+
+    .touchevents &
+      height: #{nth($at-item-size--mob, 1)} !important
 
   &:not(.grid-completed)
     overflow: hidden
@@ -7917,6 +8058,7 @@ $at-elem-space: 1.6rem 2.5rem
   position: relative
   overflow: hidden
   text-decoration: none
+  -webkit-tap-highlight-color: transparent
 
   .articles-tiles__item:nth-child(1n) &
     +media('>=lap-s')
@@ -7954,8 +8096,12 @@ $at-elem-space: 1.6rem 2.5rem
       height: 18rem
 
   +media('<tab')
-    height: nth($gz-item-size--tab, 1)
-    width: nth($gz-item-size--tab, 2)
+    height: nth($at-item-size--tab, 1)
+    width: nth($at-item-size--tab, 2)
+
+  +media('<mob')
+    height: nth($at-item-size--mob, 1)
+    width: nth($at-item-size--mob, 2)
 
 .articles-tiles-elem__figure
   position: absolute
@@ -7980,6 +8126,9 @@ $at-elem-space: 1.6rem 2.5rem
   width: 100%
   height: 100%
   padding: $at-elem-space
+
+  +media('<mob')
+    padding: $page-layout-space--mob
 
   [data-align~="top"] &
     justify-content: flex-start
@@ -8217,6 +8366,12 @@ a.helper__item
     padding:
       left: 0
       right: 0
+
+  +media('<mob')
+    padding:
+      top: 0
+      bottom: 0
+
 
 .helper-alt__list
   display: flex

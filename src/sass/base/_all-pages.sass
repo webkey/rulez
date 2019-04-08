@@ -1,0 +1,16 @@
+@import ../utils/variables
+@import ../utils/mixins
+@import ../../libs/include-media/dist/include-media
+
+$all-pages-color: lighten(invert($base-color), 35%)
+.all-pages__page
+  padding: 2rem
+  background-color: $base-color
+  color: $all-pages-color
+
+.all-pages__title
+  color: $all-pages-color
+
+.all-pages__list
+  a
+    color: $all-pages-color
