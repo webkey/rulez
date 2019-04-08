@@ -35,12 +35,21 @@ body
   @if nth($page-layout-space, 2) != 0
     +padding-horizontal(nth($page-layout-space, 2))
 
+  +media('<mob')
+    @if nth($page-layout-space--mob, 2) != 0
+      +padding-horizontal(nth($page-layout-space--mob, 2))
+
 .layout-narrow
   @if nth($page-layout-space-narrow, 2) != 0
     +padding-horizontal(nth($page-layout-space-narrow, 2))
 
     +media('<lap-s')
-      +padding-horizontal(nth($page-layout-space-narrow--tab, 2))
+      @if nth($page-layout-space-narrow--tab, 2) != 0
+        +padding-horizontal(nth($page-layout-space-narrow--tab, 2))
+
+    +media('<mob')
+      @if nth($page-layout-space--mob, 2) != 0
+        +padding-horizontal(nth($page-layout-space--mob, 2))
 
 .wrapper
   display: flex

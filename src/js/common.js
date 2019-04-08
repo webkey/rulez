@@ -33,16 +33,6 @@ function placeholderInit() {
 }
 
 /**
- * !Show print page by click on the button
- * */
-function printShow() {
-  $('.view-print').on('click', function (e) {
-    e.preventDefault();
-    window.print();
-  })
-}
-
-/**
  * !Equal height of blocks by maximum height of them
  */
 function equalHeight() {
@@ -127,6 +117,21 @@ function initTooltip() {
     var $curElem = $(this);
     $curElem.attr('data-title', $curElem.attr('title')).attr('title','');
   })
+}
+
+/**
+ * !Custom srollbar
+ */
+function initCustomScrollBar() {
+  if (DESKTOP) {
+    $('.quick-cart__list').each(function (index, element) {
+      new SimpleBar(element);
+    });
+
+    $('.consist__list').each(function (index, element) {
+      new SimpleBar(element);
+    });
+  }
 }
 
 /**
@@ -1448,6 +1453,8 @@ function tabs() {
  * !Toggle shutters panel, like a search panel, a catalog shutter etc.
  */
 function toggleShutters() {
+  var scrollFixedOnlyMobClass = 'css-scroll-fixed_only-mob';
+
   // Toggle contacts in header
   var $hContactsSwitcher = $('.h-contacts__opener-js'), hContactsDropJs;
   if ($hContactsSwitcher.length) {
@@ -1496,10 +1503,10 @@ function toggleShutters() {
       }
       , cssScrollFixed: false
       , afterAdded: function () {
-        $html.addClass('css-scroll-fixed_only-mob');
+        $html.addClass(scrollFixedOnlyMobClass);
       }
       , afterRemoved: function () {
-        $html.removeClass('css-scroll-fixed_only-mob');
+        $html.removeClass(scrollFixedOnlyMobClass);
       }
     });
   }
@@ -1541,6 +1548,12 @@ function toggleShutters() {
         activeClass: 'quick-cart_opened'
       }
       , cssScrollFixed: false
+      , afterAdded: function () {
+        $html.addClass(scrollFixedOnlyMobClass);
+      }
+      , afterRemoved: function () {
+        $html.removeClass(scrollFixedOnlyMobClass);
+      }
     });
   }
 
@@ -2996,8 +3009,8 @@ $(document).ready(function () {
   placeholderInit();
   navExpander();
   initTooltip();
+  initCustomScrollBar();
   detectScroll();
-  printShow();
   equalHeight();
   inputFocusClass();
   inputHasValueClass();

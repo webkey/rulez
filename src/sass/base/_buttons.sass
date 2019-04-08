@@ -86,6 +86,9 @@
     duration: $animation-speed
     timing-function: ease-in-out
 
+  +media('<mob')
+    padding: 1.2rem 2em
+
   @at-root
     &, input#{&}
       border-radius: 2.5rem
@@ -122,6 +125,8 @@
     +font(1.6rem, 2.4rem)
     letter-spacing: normal
 
+    +media('<mob')
+      font-size: 1.8rem
 
 /* btn-round end
 
