@@ -2,36 +2,15 @@
 @import ../utils/mixins
 @import ../../libs/include-media/dist/include-media
 
-[class|="btn"], [class*=" btn-"], input[type="submit"], input[type="button"], input[type="reset"], button
-  display: inline-block
-  vertical-align: top
-  position: relative
-  text-align: center
-  text-decoration: none
-  cursor: pointer
-
-[class|="btn"], [class*=" btn-"]
-  & input[type="submit"], & input[type="button"], & input[type="reset"]
-    background: url("../../img/empty.png") repeat
-    display: block
-    +cover-abs()
-    padding: 0
-    border: none
-    z-index: 99
-    opacity: 0
-
 /* btn-def
 .btn-def
-  position: relative
+  +btn-base
   padding: 1.4rem 2rem
-  margin: 0
   +font-bold
   color: $btn-text-color
   background: $btn-bg-color
   border: none
   box-shadow: 0 1px 1px rgba(black, 0.4)
-  user-select: none
-  -webkit-tap-highlight-color: transparent
   // transition
   //$prop: box-shadow
   //transition:
@@ -70,9 +49,8 @@
 
 /* btn-round
 .btn-round, .btn-round_small
-  position: relative
+  +btn-base
   padding: 1.2rem 2rem
-  margin: 0
   color: #515151
   background: $btn-bg-color
   border: none
@@ -119,6 +97,7 @@
 
 // small variant
 .btn-round_small
+  +btn-base
   padding: 0.6rem 1.5rem 0.5rem
 
   &, & > span
@@ -132,9 +111,8 @@
 
 /* btn-alt
 .btn-alt
-  position: relative
+  +btn-base
   padding: 1.4rem 2rem
-  margin: 0
   +font-bold
   color: $btn-alt-text-color
   border: none
@@ -182,9 +160,8 @@
 
 /* btn-outline
 .btn-outline
-  position: relative
+  +btn-base
   padding: 1.3rem 2rem
-  margin: 0
   +font-bold
   color: #000
   background: white

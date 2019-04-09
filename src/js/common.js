@@ -1061,6 +1061,7 @@ function gridLayout() {
         // console.log("activeId (Предыдущий): ", activeId);
 
         if (isAnimated || !collapsible && curId === activeId) {
+          closeSelect();
           return false;
         }
 

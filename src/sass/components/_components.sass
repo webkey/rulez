@@ -5745,7 +5745,6 @@ $opinion-box-shadow-color: black
       color: #000
       +font-bold
       cursor: default
-      pointer-events: none
 
       & > span
         border-color: transparent
@@ -7234,6 +7233,73 @@ $product-short-title-line-number: 2
 
 /* product item short end
 
+/* banner-element
+.banner-element
+  position: relative
+  display: block
+  overflow: hidden
+  background-repeat: no-repeat
+  background-position: center
+  background-size: cover
+  text-decoration: none
+  color: white
+  // transition
+  $prop: background-size
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  img
+    display: block
+    //position: absolute
+    //left: 0
+    //top: 0
+    width: 100%
+    height: 100%
+    +object-fit(cover)
+
+.banner-element__title
+  position: absolute
+  left: 0
+  bottom: 0
+  width: 100%
+  +font-bold
+  font-size: 2.4rem
+  line-height: 3.5rem
+  padding: 1rem 2.2rem 2.7rem
+  z-index: 1
+
+  &::before
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    bottom: 0
+    width: 100%
+    height: calc(100% + 6rem)
+    opacity: 0.6
+    +linear-gradient(to top, black 0%, rgba(black, 0) 100%)
+    z-index: -1
+
+  & > span
+    box-shadow: none
+    // transition
+    $prop: box-shadow
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+// hover
+a.banner-element
+  &:hover
+    .banner-element__title
+      & > span
+        box-shadow: inset 0 -2px 0 rgba(white, 0.75)
+
+/* banner-element end
+
 /* topic-banner
 .topic-banner
   position: relative
@@ -7253,9 +7319,9 @@ $product-short-title-line-number: 2
 
   img
     display: block
-    position: absolute
-    left: 0
-    top: 0
+    //position: absolute
+    //left: 0
+    //top: 0
     width: 100%
     height: 100%
     +object-fit(cover)
@@ -8484,25 +8550,44 @@ $products-border-width: 1px
     margin-bottom: 0
 
 .products__list
+  overflow: hidden
   display: flex
   justify-content: stretch
   flex-flow: row wrap
-  margin: 0 -#{$products-border-width}
-  background-color: white
+  margin: 0 -#{$products-border-width} 4rem
+  padding-bottom: #{$products-border-width}
+
+  &:last-child
+    margin-bottom: 0
 
 .products__item
+  position: relative
   $width: 25.0%
   width: $width
   flex-basis: $width
+  background-color: white // Нужно для перекрытия соседних бордеров
+  //background-color: #ff8484 // Нужно для перекрытия соседних бордеров
+  box-shadow: 0 0 0 #{$products-border-width} $border-color
 
   +media('<desk-s')
     $width: 33.33%
     width: $width
     flex-basis: $width
 
+  .product
+    z-index: auto
+    height: 100%
+
+// banner in products list
+.products__item-banner
+  height: 100%
+
+  [data-view="list-view"] &
+    max-height: 30rem
+
 // Добавить сетку из одинарного бордера
-.products__list,
-.products__item
+//.products__list,
+//.products__item
   position: relative
 
   &::before, &:after
@@ -8515,7 +8600,7 @@ $products-border-width: 1px
     pointer-events: none
     -webkit-tap-highlight-color: transparent
 
-.products__list
+//.products__list
   &::before
     right: 0
     top: 0
@@ -8528,7 +8613,7 @@ $products-border-width: 1px
     border-top-width: $products-border-width
     width: 9999px
 
-.products__item
+//.products__item
   &::before
     left: 0
     top: 0
@@ -8550,6 +8635,18 @@ $products-border-width: 1px
     width: auto
 
 /* products end
+
+/* load more products
+// Елемент, который размещен после списка продуктов,
+// содержит кнопку подгрузки дополнительных продуктов
+.load-more
+  text-align: center
+  margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* load more products end
 
 /* m-container
 // variables
@@ -8672,6 +8769,7 @@ $shutter-space: 20px 30px !default
 
 .m-options
   margin-bottom: 2rem
+  line-height: 1
 
   .p-sorting
     display: inline-block
@@ -8847,13 +8945,16 @@ $shutter-space: 20px 30px !default
     position: relative
     display: inline-block
     vertical-align: top
-    padding: 2px 10px 2px 25px
+    padding: 3px 10px 3px 25px
     margin-right: 10px
     color: #777
     font-size: 1.4rem
-    line-height: 2.0rem
+    line-height: 1.8rem
     text-decoration: none
     border-radius: 4px
+
+    & > span
+      transition: box-shadow $animation-speed
 
     & > em
       position: absolute
@@ -8906,13 +9007,18 @@ $shutter-space: 20px 30px !default
 
     // active
     &.active
-      $color: white
-      background-color: $base-color
+      $color: $base-color
+      //background-color: $base-color
       color: $color
 
       & > em
         &::before, &::after
           background-color: $color
+
+    // hover
+    &:hover
+      & > span
+        box-shadow: inset 0 -1px 0 currentColor
 
     // order-top
     &.order-top > em
