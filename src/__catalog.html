@@ -84,7 +84,7 @@
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена ввод", "group": "price2", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена", "group": "price2", "modGroup": "" })
                     <li>
                       <div class="form-row">
                         <div class="input-wrap has-prefix">
@@ -390,7 +390,7 @@
       <div class="m-content">
         <div class="m-heading">
           <h1>Ноутбуки</h1>
-          <div class="view-switcher view-switcher-products-js" data-toggle-view-switcher="products">
+          <div class="view-switcher view-switcher-products-js" data-toggle-view-for="products">
             <a href="#" class="active" data-mod="grid-view" title="Продукты плиткой">
               @@include("includes/svg/icon-grid-view.svg")
               <span>Плиткой</span>
@@ -421,9 +421,9 @@
           </label>
         </div>
         <section class="banner">
-          <a href="#"><img src="img/banner-02.jpg" alt="Все виды рассрочки" /></a>
+          <a href="#"><img class="lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" /></a>
         </section>
-        <div class="products" data-toggle-view-panels="products">
+        <div class="products" data-toggle-view-id="products">
           <section class="products__list equal-height-js">
             <article class="products__item">
               @@include("_tpl_product.html", {

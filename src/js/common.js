@@ -20,16 +20,82 @@ var TOUCH = Modernizr.touchevents;
 var DESKTOP = !TOUCH;
 
 /**
- * !Detected touchscreen devices
+ * !Load images on load page or scroll page
+ * Add to image class '.lozad'
  * */
-var observer = lozad(); // lazy loads elements with default selector as '.lozad'
+var observer = lozad();
 observer.observe();
+
+function preloadOtherImages() {
+  var $img = $('img', '.products__list');
+  $.each($img, function (index, element) {
+    var observer = lozad(element);
+    observer.observe();
+  });
+}
 
 /**
  * !Add placeholder for old browsers
  * */
 function placeholderInit() {
   $('[placeholder]').placeholder();
+}
+
+/**
+ * !Change cookies
+ */
+function setCookie(name, value, options) {
+  /**
+   * @param name - name of cookie
+   * @param value - value of cookie (string)
+   * @param options - object with additional properties
+   * @param options.expires - time life cookie
+   * @param options.path - path/url
+   * @param options.domain - domain
+   * @param options.secure - only secure protocol
+   */
+  // https://learn.javascript.ru/cookie
+  options = options || {};
+
+  var expires = options.expires;
+
+  if (typeof expires === "number" && expires) {
+    var d = new Date();
+    d.setTime(d.getTime() + expires * 1000);
+    expires = options.expires = d;
+  }
+  if (expires && expires.toUTCString) {
+    options.expires = expires.toUTCString();
+  }
+
+  value = encodeURIComponent(value);
+
+  var updatedCookie = name + "=" + value;
+
+  for (var propName in options) {
+    updatedCookie += "; " + propName;
+    var propValue = options[propName];
+    if (propValue !== true) {
+      updatedCookie += "=" + propValue;
+    }
+  }
+
+  document.cookie = updatedCookie;
+}
+
+function getCookie(name) {
+  // https://learn.javascript.ru/cookie
+  var matches = document.cookie.match(new RegExp(
+      "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+  ));
+  return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+function deleteCookie(name) {
+  // https://learn.javascript.ru/cookie
+  setCookie(name, "", {
+    expires: -1
+  })
 }
 
 /**
@@ -1173,9 +1239,12 @@ function tabs() {
     }
   }
 
-  function lazyLoadImages(coolImage) {
-    $.each(coolImage, function (index, el) {
-      observer.triggerLoad(el);
+  function lazyLoadImages($_image) {
+    // Подгрузить изображения после переключения таба
+    $.each($_image, function (index, element) {
+      var observer = lozad(element);
+      observer.observe();
+      // observer.triggerLoad(coolImage);
     });
   }
 
@@ -1183,11 +1252,8 @@ function tabs() {
     var $tabsPanels = $('.tabs__panels-js');
     $tabs.on('msTabs.afterInit', function (e, el, tabs) {
       setLinkAll(tabs);
-      // lazyLoadImages($('img', tabs.$activePanel));
-      // На изображения добавить класс ленивой подгрузки
-      $('img', tabs.$activePanel).addClass('lozad');
-      // И возобновить наблюдение за изображениями
-      observer.observe();
+      // Подгрузить изображения в открытом табе сразу после инициализации плагина
+      lazyLoadImages($('img', tabs.$activePanel));
     }).msTabs({
       anchor: $('.tabs__thumbs-js').find('a'),
       panels: $tabsPanels,
@@ -2171,6 +2237,10 @@ function rollsInit() {
  * !Toggle view plugin
  * */
 (function($){
+  /**
+   * @extends: setCookie(), getCookie(), deleteCookie()
+   */
+
   var defaults = {
     anchor: 'a',
     initClass: 'toggle-view_initialized',
@@ -2186,9 +2256,11 @@ function rollsInit() {
     self.anchor = $(self.config.anchor, $(self.element));
 
     self.data = {
-      switcher: 'data-toggle-view-switcher',
-      panel: 'data-toggle-view-panels'
+      switcher: 'data-toggle-view-for',
+      panel: 'data-toggle-view-id'
     };
+
+    self.productViewCookieName = 'productView';
 
     self.callbacks();
     self.event();
@@ -2218,6 +2290,14 @@ function rollsInit() {
 
       if ( currentAnchor.hasClass(self.config.activeClass) ) return;
 
+      // Записать значение mod в куку
+      var date = new Date;
+      setCookie(self.productViewCookieName, mod, {
+        expires: date.setDate(date.getDate() + 365),
+        // domain: ".domain.by",
+        path: "/"
+      });
+
       self.anchor.removeClass(self.config.activeClass);
       currentAnchor.addClass(self.config.activeClass);
 
@@ -2234,16 +2314,20 @@ function rollsInit() {
   ToggleView.prototype.init = function () {
     var self = this;
 
-    var activeAnchor = self.anchor.filter('.' + self.config.activeClass),
-        mod = activeAnchor.attr('data-mod');
+    var cookieMod = getCookie(self.productViewCookieName),
+        activeAnchor = self.anchor.filter('.' + self.config.activeClass);
+
+    var mod = cookieMod || activeAnchor.attr('data-mod');
 
     var id = activeAnchor.closest(self.element).attr(self.data.switcher);
     // Add modifier to a panel
     $('[' + self.data.panel + '="' + id + '"]').attr('data-view', mod);
     // Add modifier to a switcher
     $(self.element).attr('data-view', mod);
+    $(self.anchor).filter('[data-mod="' + mod + '"]').trigger('click');
 
     self.element.addClass(self.config.initClass);
+    $('[' + self.data.panel + '="' + $(self.element).attr(self.data.switcher) + '"]').addClass(self.config.initClass);
     self.element.trigger('created.toggleView');
   };
 
@@ -2264,7 +2348,7 @@ function toggleViewInit() {
   if ( $productsSwitcher.length ) {
     $productsSwitcher.toggleView({
       'changed.toggleView': function () {
-        $.fn.matchHeight._update()
+        $.fn.matchHeight._update();
       }
     });
   }
@@ -3006,6 +3090,7 @@ $(document).ready(function () {
   // $('html').addClass('document-ready');
   // showOnScroll();
   objectFitImages(); // object-fit-images initial
+  preloadOtherImages();
   placeholderInit();
   navExpander();
   initTooltip();

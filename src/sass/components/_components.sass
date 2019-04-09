@@ -2307,11 +2307,11 @@ $quick-cart-footer-height--mob: 7rem
     overflow: auto
 
   +media('<tab')
-    height: calc(100vh - #{$header-height--tab} - #{$quick-cart-footer-height--tab} - #{nth($page-layout-space, 2)})
+    max-height: calc(100vh - #{$header-height--tab} - #{$quick-cart-footer-height--tab} - #{nth($page-layout-space, 2)})
 
   +media('<mob')
     padding: 0 #{nth($page-layout-space--mob, 2)}
-    height: calc(100vh - #{$header-height--mob} - #{$quick-cart-footer-height--mob} - #{nth($page-layout-space--mob, 2)})
+    max-height: calc(100vh - #{$header-height--mob} - #{$quick-cart-footer-height--mob} - #{nth($page-layout-space--mob, 2)})
     max-width: none
 
 .quick-cart__item
@@ -8472,6 +8472,14 @@ $products-border-width: 1px
   overflow: hidden
   margin-bottom: 4rem
 
+  &:not(.toggle-view_initialized)
+    opacity: 0
+    pointer-events: none
+
+  .no-js &
+    opacity: 1
+    pointer-events: auto
+
   &:last-child
     margin-bottom: 0
 
@@ -8690,10 +8698,17 @@ $shutter-space: 20px 30px !default
 .view-switcher
   $size: 2.8rem
   $space: 1rem
-
   position: relative
   width: $size * 2 + $space
   +clear
+
+  &:not(.toggle-view_initialized)
+    opacity: 0
+    pointer-events: none
+
+  .no-js &
+    opacity: 1
+    pointer-events: auto
 
   &::before
     content: ""

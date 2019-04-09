@@ -14,7 +14,7 @@
     }
     <a itemprop="url" href="product-card.html">
       <div class="product__figure product-figure-js">
-        <img itemprop="image" src="img/preloader.svg" data-src="@@src" alt="@@title" />
+        <img itemprop="image" @@if(context.preloadOnLoad){class="lozad"} src="img/preloader.svg" data-src="@@src" alt="@@title" />
       </div>
       <h3 itemprop="name" class="product__title"><span>@@title</span></h3>
     </a>
