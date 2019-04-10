@@ -411,10 +411,72 @@
             <div class="p-filters-activated p-filters-activated-js hide">0</div>
             @@include("includes/svg/icon-filters.svg") <span>Фильтр</span>
           </a>
-          <div class="p-sorting p-sorting-js">
-            <a href="#byPrice" class="active"><em>▼</em><span>По цене</span></a>
-            <a href="#byPopular"><em>▼</em><span>По популярности</span></a>
+          <!--.cs - control-sort // Sorting products-->
+          <!--cs-container-->
+          <div class="p-sorting cs-container cs-js">
+            <!--angle icon svg-->
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol id="icon-sort-angle" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+              </symbol>
+            </svg>
+            <!--angle icon svg end-->
+            <!--cs-selector-->
+            <div class="cs-selector cs__selector-js">
+              <span>Сортировать</span>
+              <i>
+                <svg height="6" width="10" fill="none">
+                  <use xlink:href="#icon-sort-angle"></use>
+                </svg>
+              </i>
+            </div>
+
+            <!--cs-drop-->
+            <div class="cs-drop cs__drop-js">
+              <!--cs-item-->
+              <div class="cs-drop__item cs__item-js">
+                <!--cs-elem-->
+                <!--for list view-->
+                <a href="#?priceToggle" class="cs-drop__elem cs-drop__elem_toggle cs__toggle-js">
+                  <span>По цене</span>
+                  <i>
+                    <svg height="6" width="10" fill="none">
+                      <use xlink:href="#icon-sort-angle"></use>
+                    </svg>
+                  </i>
+                </a>
+                <!--for select view-->
+                <a href="#?priceDesc" class="cs-drop__elem cs-drop__elem_option cs__option-js" data-cs-trend="desc">По цене по убыванию</a>
+                <a href="#?priceAsc" class="cs-drop__elem cs-drop__elem_option cs__option-js" data-cs-trend="asc">По цене по возрастанию</a>
+              </div>
+              <div class="cs-drop__item cs__item-js">
+                <a href="#?popularToggle" class="cs-drop__elem cs-drop__elem_toggle cs__toggle-js">
+                  <span>По популярности</span>
+                  <i>
+                    <svg height="6" width="10" fill="none">
+                      <use xlink:href="#icon-sort-angle"></use>
+                    </svg>
+                  </i>
+                </a>
+                <a href="#?popularDesc" class="cs-drop__elem cs-drop__elem_option cs__option-js" data-cs-trend="desc">По популярности по убыванию</a>
+                <a href="#?popularAsc" class="cs-drop__elem cs-drop__elem_option cs__option-js" data-cs-trend="asc">По популярности по возрастанию</a>
+              </div>
+              <div class="cs-drop__item cs__item-js">
+                <a href="#?newToggle" class="cs-drop__elem cs-drop__elem_toggle cs__toggle-js">
+                  <span>По новизне</span>
+                  <i>
+                    <svg height="6" width="10" fill="none">
+                      <use xlink:href="#icon-sort-angle"></use>
+                    </svg>
+                  </i>
+                </a>
+                <a href="#?newDesc" class="cs-drop__elem cs-drop__elem_option cs__option-js" data-cs-trend="desc">По новизне по убыванию</a>
+                <a href="#?newAsc" class="cs-drop__elem cs-drop__elem_option cs__option-js" data-cs-trend="asc">По новизне по возрастанию</a>
+              </div>
+            </div>
           </div>
+          <!--.cs end-->
+
           <label class="check-label">
             <input type="checkbox" name="stock">
             <span>Товар в наличии</span>

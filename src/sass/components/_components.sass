@@ -2706,9 +2706,10 @@ a.catalog-opener
 
   //display: none
   position: relative
-  padding: 1rem 2rem 1rem 5rem
+  padding: 0.8rem 2rem 0.8rem 5rem
+  +font-bold
   font-size: 1.8rem
-  line-height: 2.0rem
+  line-height: 2.4rem
   color: #4a4a4a
   text-decoration: none
   border-radius: 2rem
@@ -2727,12 +2728,13 @@ a.catalog-opener
   +media('<lap-l')
     font-size: 1.4rem
 
-  +media('<lap-s')
-    padding: 0
-    height: 4rem
-    width: 4rem
+  +media('<net')
+    padding-right: 0.5em
 
   +media('<tab')
+    padding: 0
+    //height: 4rem
+    //width: 4rem
     +size($header-btn-size--tab)
     border-radius: $header-btn-size--tab
     background-color: white
@@ -2759,7 +2761,7 @@ a.catalog-opener
       delay: 0s
       timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
-    +media('<lap-s')
+    +media('<tab')
       left: 50%
       margin-left: -#{round($user-options-cross-width / 2)}
 
@@ -2779,7 +2781,7 @@ a.catalog-opener
       duration: $btn-menu-animation-speed
       delay: $btn-menu-animation-delay
 
-    +media('<lap-s')
+    +media('<tab')
       left: 50%
       margin-left: -#{round($btn-menu-lines-width / 2)}
 
@@ -2804,18 +2806,24 @@ a.catalog-opener
       top: #{$btn-menu-lines-height + $btn-menu-lines-space}
 
   // text
-  & > span
-    +media('<lap-s')
+  //& > span
+    +media('<tab')
       display: none
 
   .catalog-opener__text-full
+    +media('<net')
+      display: none
+
     .header-changed &
       +media('>=tab')
         display: none
 
   .catalog-opener__text-short
+    +media('<tab')
+      display: none
+
     .header:not(.header-changed) &
-      +media('>=tab')
+      +media('>=net')
         display: none
 
   // hover
@@ -2910,6 +2918,10 @@ a.catalog-opener
   box-shadow: 0 12px 10px rgba(0, 0, 0, 0.17)
   border-radius: 7px
   transform-origin: 20rem top
+  $translate: 0, -0.5rem
+  $scale: 0.85, 0.85
+  transform: translate($translate) scale($scale)
+  transform: translate3d($translate, 0) scale3d($scale, 1)
   $prop: transform, opacity
   will-change: $prop
   transition:
@@ -3404,7 +3416,7 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
   a, li > span
     display: block
     +font-bold
-    color: #232323
+    color: $text-color
     font-size: 1.8rem
     line-height: 2.4rem
     padding-top: 0.5rem
@@ -3422,16 +3434,19 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
   a
     text-decoration: none
     cursor: pointer
+    transition: color $animation-speed
 
-    +underlinedLinks(#232323)
+    &:hover
+      color: $base-color
 
   // current item
   .current
     a, & > span
-      color: $base-color
+      color: $base-color-light
 
     a
-      +underlinedLinks($base-color)
+      &:hover
+        color: $base-color
 
 /* categories nav end
 
@@ -4439,6 +4454,7 @@ $search-btn-space: 0 0.5rem
 // --> single sticker <--
 $p-sticker-size: 2.6rem 2.6rem
 .p-sticker
+  flex-shrink: 0
   height: nth($p-sticker-size, 1)
   width: nth($p-sticker-size, 2)
   padding: 1px 1rem 0
@@ -5576,7 +5592,7 @@ $opinion-box-shadow-color: black
   color: $base-color-light
   text-decoration: none
   background-color: white
-  box-shadow: 0 1px 1px rgba(black, 0.3)
+  box-shadow: 0 1px 2px rgba(black, 0.3)
   border-radius: $line-height
   // transition
   $prop: background-color, color
@@ -5624,49 +5640,10 @@ $opinion-box-shadow-color: black
 
 /* topics-thumbs-select
 .topics-thumbs-select
-  display: inline-block
-  vertical-align: top
-  $line-height: 3rem
-  height: $line-height
-  padding: 0 2.8rem 0 1.4rem
-  +font(1.4rem, $line-height)
-  color: $base-color-light
-  text-decoration: none
-  background-color: white
-  box-shadow: 0 1px 1px rgba(black, 0.3)
-  border-radius: $line-height
-  user-select: none
-  -webkit-tap-highlight-color: transparent
-  // transition
-  $prop: background-color, color
-  will-change: $prop
-  transition:
-    property: $prop
-    duration: $animation-speed
+  +pseudo-select-common($base-color-light)
 
   +media('>=tab')
     display: none
-
-  & > i
-    display: block
-    position: absolute
-    right: 0
-    top: 0
-    +size(3rem, 100%)
-    user-select: none
-    -webkit-tap-highlight-color: transparent
-
-    svg
-      display: block
-      position: absolute
-      left: 50%
-      top: 50%
-      height: 0.6rem
-      width: 1rem
-      transform: translate(-50%, -50%)
-
-      path, use
-        stroke: $base-color-light
 
 /* topics-thumbs-select end
 
@@ -8930,100 +8907,196 @@ $shutter-space: 20px 30px !default
 
 /* options panel end
 
-/* p-sorting
-.p-sorting
-  $angle-size: 2.0rem
-  $arrow-size: 0.7rem
+/* control sort
+// container
+.cs-container
+  position: relative
 
-  list-style: none
-  margin: 0
+// selector
+.cs-selector
+  +pseudo-select-common($base-color)
 
-  &:last-child
-    margin-bottom: 0
+  & > span > span
+    display: none
 
-  a
-    position: relative
+  &.asc > span > span[data-cs-trend="asc"]
     display: inline-block
-    vertical-align: top
-    padding: 3px 10px 3px 25px
-    margin-right: 10px
-    color: #777
-    font-size: 1.4rem
-    line-height: 1.8rem
-    text-decoration: none
-    border-radius: 4px
 
-    & > span
-      transition: box-shadow $animation-speed
+  &.desc > span > span[data-cs-trend="desc"]
+    display: inline-block
 
-    & > em
-      position: absolute
-      left: 3px
-      top: 50%
-      width: $angle-size
-      height: $angle-size
-      margin: -#{round-float($angle-size / 2, 1)} 0
-      text-indent: -9999px
-      overflow: hidden
-      cursor: pointer
-      z-index: 5
-      border-radius: 0.4rem
-      user-select: none
-      -webkit-tap-highlight-color: transparent
+  +media('>=tab')
+    display: none
+
+.cs-drop
+  +media('<tab')
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    +font(1.6rem, 2.4rem)
+    background-color: white
+    border-radius: 12px
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+  // Select opened
+  &.cs_select-open
+    +media('<tab')
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
+
+.cs-drop__item
+  display: inline-block
+  vertical-align: top
+
+  +media('<tab')
+    display: block
+
+.cs-drop__elem
+  position: relative
+  display: inline-block
+  vertical-align: top
+  color: $text-color-light
+  font-size: 1.4rem
+  line-height: 1.8rem
+  text-decoration: none
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
+  @at-root
+    // Переключатели
+    .cs-drop__elem_toggle
+      margin-right: 5rem
+      padding: 0.3rem 0 0.3rem 2.4rem
+
+      // Скрыть переключатели со стрелочками
+      // на маленьких разрешениях
+      +media('<tab')
+        display: none
+
+      & > span
+        transition: box-shadow $animation-speed
+
+      & > i
+        position: absolute
+        left: 0
+        top: 0
+        +size(1rem, 100%)
+        z-index: 5
+        // transition
+        $prop: transform
+        will-change: $prop
+        transition:
+          property: $prop
+          duration: $animation-speed
+
+        // Сортировать по убыванию
+        .desc &
+          $rotate: 0turn
+          transform: rotate($rotate) translateZ(0)
+
+        // Сортировать по возрастанию
+        .asc &
+          $rotate: -0.5turn
+          transform: rotate($rotate) translateZ(0)
+
+        svg
+          display: block
+          position: absolute
+          left: 50%
+          top: 50%
+          height: 0.6rem
+          width: 1rem
+          transform: translate(-50%, -50%)
+          stroke: $base-color
+
+          path
+            stroke: $base-color
+
+      // active
+      .cs_active &
+        color: $base-color
+
+        & > i
+          svg
+            stroke: $base-color
+
+      // click
+      &:active
+        top: 1px
+
+      // hover
+      &:hover
+        .no-touchevents &
+          & > span
+            box-shadow: inset 0 -1px 0 currentColor
+  @at-root
+    // Элетенты селекта
+    .cs-drop__elem_option
+      display: block
+      padding: 1.2rem 1.4rem
       // transition
-      $prop: transform
+      $prop: background-color, color
       will-change: $prop
       transition:
         property: $prop
         duration: $animation-speed
 
-      &::before, &::after
-        content: ""
-        display: block
-        position: absolute
-        top: 50%
-        height: 0.2rem
-        width: $arrow-size
-        background-color: $base-color
-        pointer-events: none
-        margin: -0.1rem -0.5rem
-        // transition
-        $prop: background-color
-        transition:
-          property: $prop
-          duration: $animation-speed
+      // Скрыть опшины (элементы меню селекта)
+      // на больших разрешениях
+      +media('>=tab')
+        display: none
 
-      &::before
-        transform: rotate(45deg)
-        left: 50%
+      // hover
+      &:hover
+        color: white
+        background-color: $base-color-light
 
-      &::after
-        transform: rotate(-45deg)
-        right: 50%
+      // active
+      .cs_active.desc &[data-cs-trend="desc"]
+        +font-bold
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
 
-    // click
-    &:active
-      top: 1px
+      .cs_active.asc &[data-cs-trend="asc"]
+        +font-bold
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
 
-    // active
-    &.active
-      $color: $base-color
-      //background-color: $base-color
-      color: $color
+/* control sort end
 
-      & > em
-        &::before, &::after
-          background-color: $color
+/* p-sorting
+.p-sorting
+  list-style: none
+  margin: 0
 
-    // hover
-    &:hover
-      & > span
-        box-shadow: inset 0 -1px 0 currentColor
+  +media('<tab')
+    width: 24rem
 
-    // order-top
-    &.order-top > em
-      $rotate: -0.5turn
-      transform: rotate($rotate)
+  &:last-child
+    margin-bottom: 0
 
 /* p-sorting end
 

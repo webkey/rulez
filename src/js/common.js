@@ -2910,28 +2910,297 @@ $(function () {
 /**
  * !Change sorting state
  * */
-function sortingState() {
-  var $sortingContainer = $('.p-sorting-js'),
-      _ascending = 'order-top',
-      _descending = 'order-bottom',
-      activeClass = 'active';
+(function ($) {
+  'use strict';
 
-  var $sortingItems = $('a', $sortingContainer);
+  var MsControlSort = function (element, config) {
+    var self,
+        $element = $(element),
+        $selector = $element.find(config.selector),
+        $drop = $element.find(config.drop),
+        $elemGroup = $element.find(config.elemGroup),
+        $toggle = $element.find(config.toggleElem), // Переключатель для вида "list"
+        $option = $element.find(config.optionElem), // Переключатель для вида "select"
+        $html = $('html'),
+        _isSelectOpen = false,
+        pref = 'cs',
+        pluginClasses = {
+          initialized: pref + '_initialized',
+          active: pref + '_active',
+          desc: 'desc',
+          asc: 'asc',
+          selectOpen: pref + '_select-open'
+        },
+        mixedClasses = {
+          initialized: pluginClasses.initialized + ' ' + (config.modifiers.initClass || ''),
+          active: pluginClasses.active + ' ' + (config.modifiers.activeClass || ''),
+          desc: pluginClasses.desc + ' ' + (config.modifiers.descendingClass || ''),
+          asc: pluginClasses.asc + ' ' + (config.modifiers.ascendingClass || ''),
+          selectOpen: pluginClasses.selectOpen + ' ' + (config.modifiers.openClass || '')
+        };
 
-  $sortingItems.on('click', function (e) {
-    var $this = $(this);
-    if (!$this.hasClass(activeClass)) {
-      $sortingItems.removeClass(activeClass);
-      $this.addClass(activeClass);
-      return;
+    var callbacks = function () {
+      /** track events */
+      $.each(config, function (key, value) {
+        if (typeof value === 'function') {
+          $element.on('msControlSort.' + key, function (e, param) {
+            return value(e, $element, param);
+          });
+        }
+      });
+    }, prevent = function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      return false;
+    }, eventsSelect = function () {
+      $selector.on('click', function () {
+        if (_isSelectOpen) {
+          closeSelect();
+        } else {
+          openSelect();
+        }
+
+        prevent(event);
+      })
+    }, openSelect = function () {
+      _isSelectOpen = true;
+      $element.add($selector).add($drop).addClass(mixedClasses.selectOpen);
+      $element.trigger('msTabs.afterSelectOpen');
+    }, closeSelect = function () {
+      _isSelectOpen = false;
+      $element.add($selector).add($drop).removeClass(mixedClasses.selectOpen);
+      $element.trigger('msTabs.afterSelectClose');
+    }, closeSelectByClickOutside = function () {
+      $html.on('click', function (event) {
+        if (_isSelectOpen && config.closeByClickOutside && !$(event.target).closest($drop).length) {
+          closeSelect();
+        }
+      });
+    }, closeSelectByClickEsc = function () {
+      $html.keyup(function (event) {
+        if (_isSelectOpen && config.closeByClickEsc && event.keyCode === 27) {
+          closeSelect();
+        }
+      });
+    }, events = function () {
+      $toggle.on('click', function (event) {
+        // Если нужно параметр prevented имеет значение true,
+        // то отключать нативное поведение ссылки переключателя
+        if (config.prevented) {
+          event.preventDefault();
+        }
+
+        var $curToggle = $(this),
+            $curElemGroup = $curToggle.closest(config.elemGroup),
+            hasActiveClass = $curElemGroup.hasClass(pluginClasses.active) || $curElemGroup.hasClass(config.modifiers.activeClass);
+
+        if (hasActiveClass) {
+          // 1. Текущий переключатель содержит активный класс.
+          // (Текущий переключатель уже содержит один из классов сортировки)
+          // 1.2. На переключателе и селекторе
+          // переключить класс направления сотрировки на противоположный.
+          $curElemGroup.add($selector).toggleClass(mixedClasses.asc + ' ' + mixedClasses.desc);
+        } else if ($curElemGroup.hasClass(pluginClasses.asc)) {
+          // 2. Текущий переключатель не содержит активный класс,
+          // но содержит класс сортировки по возрастанию (asc).
+          // 2.1. Со всех переключателей удалить активный класс,
+          // но оставить класс направления сортировки.
+          $elemGroup.removeClass(mixedClasses.active);
+          // 2.2. На активный переключатель добавить активный класс.
+          $curElemGroup.addClass(mixedClasses.active);
+          // 2.3. На селектор добавить класс сортировки по возрастанию (asc),
+          // и удалить класс соритровки по убыванию, если такой уже установлен.
+          $selector.removeClass(mixedClasses.desc).addClass(mixedClasses.asc);
+        } else {
+          // 3. Текущий переключатель не содержит активный класс,
+          // и не содержит класс сортировки по возрастанию (asc).
+          // 3.2. Со всех переключателей удалить активный класс,
+          // но оставить класс направления сортировки.
+          $elemGroup.removeClass(mixedClasses.active);
+          // 3.1. Добавить на текущий переключатель
+          // активный класс и класс соритровки по убыванию (desc, этот класс является приоритетнее).
+          $curElemGroup.addClass(mixedClasses.active).addClass(mixedClasses.desc);
+          // 3.3. На селекторе удалить класс сортировки по возрастанию (asc), если такой есть,
+          // и добавить класс соритровки по убыванию.
+          $selector.removeClass(mixedClasses.asc).addClass(mixedClasses.desc);
+        }
+
+        $element.trigger('msControlSort.changeTrend');
+
+        // Добавить в селектор опшины с текущей группы
+        changeSelector($curToggle);
+      });
+
+      $option.on('click', function (event) {
+        // Если нужно параметр prevented имеет значение true,
+        // то отключать нативное поведение ссылки переключателя
+        if (config.prevented) {
+          event.preventDefault();
+        }
+
+        var $curOption = $(this),
+            $curElemGroup = $curOption.closest(config.elemGroup),
+            trend = $curOption.data('cs-trend'),
+            hasActiveClass = $curElemGroup.hasClass(pluginClasses.active) || $curElemGroup.hasClass(config.modifiers.activeClass);
+
+        // Если текущая группа активна, то выполнее функции прекратить
+        // if ($curElemGroup.hasClass(pluginClasses.active)) {
+        //   return false;
+        // }
+
+        function toggleActiveClass() {
+          // Со всех групп удалить активный класс
+          $elemGroup.removeClass(mixedClasses.active);
+          // На текущую группу добавить активный класс
+          $curElemGroup.addClass(mixedClasses.active);
+        }
+
+        // Закрыть меню селекта
+        closeSelect();
+
+        switch (trend) {
+          case 'desc':
+            // Если текущий опшин активен, то выполнее функции прекратить
+            if (hasActiveClass && $curElemGroup.hasClass(pluginClasses.desc)) {
+              event.preventDefault();
+              return false;
+            }
+
+            $curElemGroup.add($selector)
+                .addClass(mixedClasses.desc)
+                .removeClass(mixedClasses.asc);
+
+            toggleActiveClass();
+            // Добавить в селектор опшины с текущей группы
+            changeSelector($curOption);
+
+            break;
+
+          case 'asc':
+            // Если текущий опшин активен, то выполнее функции прекратить
+            if (hasActiveClass && $curElemGroup.hasClass(pluginClasses.asc)) {
+              event.preventDefault();
+              return false;
+            }
+
+            $curElemGroup.add($selector)
+                .addClass(mixedClasses.asc)
+                .removeClass(mixedClasses.desc);
+
+            toggleActiveClass();
+            // Добавить в селектор опшины с текущей группы
+            changeSelector($curOption);
+
+            break;
+
+          default:
+            $elemGroup.add($selector)
+                .removeClass(mixedClasses.active)
+                .removeClass(mixedClasses.desc)
+                .removeClass(mixedClasses.asc);
+
+            // Добавить в селектор опшины с текущей группы
+            changeSelector($curOption);
+
+            break;
+        }
+
+        $element.trigger('msControlSort.changeTrend');
+      });
+
+    }, changeSelector = function ($_item) {
+      // Добавить в селектор опшины с текущей группы
+      var $selectorContent = $selector.children('span');
+      $selectorContent.empty(); // Перед добавлением удалить старое содержимое
+      $.each($_item.closest(config.elemGroup).find(config.optionElem), function (index, el) {
+        var content = $(el).html(),
+            attr = $(el).attr('data-cs-trend');
+        $('<span data-cs-trend="' + attr + '">' + content + '</span>').appendTo($selectorContent);
+      });
+
+      $element.trigger('msControlSort.changeSelector');
+    }, init = function () {
+      $toggle.filter('.' + pluginClasses.active).addClass(mixedClasses.active);
+
+      // После инициализации плагина добавить внутренний класс и,
+      // если указан в опициях, пользовательский класс
+      $element.addClass(mixedClasses.initialized);
+
+      $element.trigger('msControlSort.afterInit');
+    };
+
+    self = {
+      callbacks: callbacks,
+      eventsSelect: eventsSelect,
+      closeSelectByClickOutside: closeSelectByClickOutside,
+      closeSelectByClickEsc: closeSelectByClickEsc,
+      events: events,
+      init: init
+    };
+
+    return self;
+  };
+
+  $.fn.msControlSort = function () {
+    var _ = this,
+        opt = arguments[0],
+        args = Array.prototype.slice.call(arguments, 1),
+        l = _.length,
+        i,
+        ret;
+    for (i = 0; i < l; i++) {
+      if (typeof opt === 'object' || typeof opt === 'undefined') {
+        _[i].msControlSort = new MsControlSort(_[i], $.extend(true, {}, $.fn.msControlSort.defaultOptions, opt));
+        _[i].msControlSort.init();
+        _[i].msControlSort.callbacks();
+        _[i].msControlSort.eventsSelect();
+        _[i].msControlSort.closeSelectByClickOutside();
+        _[i].msControlSort.closeSelectByClickEsc();
+        _[i].msControlSort.events();
+      } else {
+        ret = _[i].msControlSort[opt].apply(_[i].msControlSort, args);
+      }
+      if (typeof ret !== 'undefined') {
+        return ret;
+      }
     }
+    return _;
+  };
 
-    if (!$this.hasClass(_ascending) && !$this.hasClass(_descending)) {
-      $this.addClass(_ascending);
-    } else {
-      $this.toggleClass(_ascending + ' ' + _descending);
+  $.fn.msControlSort.defaultOptions = {
+    selector: '.cs__selector-js',
+    drop: '.cs__drop-js',
+    elemGroup: '.cs__item-js',
+    toggleElem: '.cs__toggle-js',
+    optionElem: '.cs__option-js',
+    closeByClickOutside: true, // Закрывать выпадающий список селекта по клику на "пустом" месте
+    closeByClickEsc: true, // Закрывать выпадающий список селекта по клавише Esc
+    prevented: false,
+    modifiers: {
+      initClass: null,
+      activeClass: null,
+      descendingClass: null,
+      ascendingClass: null,
+      openClass: null
     }
-  })
+  };
+
+})(jQuery);
+
+function sortProducts() {
+  var $controlSort = $('.cs-js');
+
+  if ($controlSort.length) {
+    $controlSort.msControlSort({
+      // modifiers: {
+      //   initClass: 'INIT',
+      //   activeClass: 'SELECTED',
+      //   descendingClass: 'BOTTOM',
+      //   ascendingClass: 'TOP',
+      //   openClass: 'OPEN'
+      // }
+    });
+  }
 }
 
 /**
@@ -3111,7 +3380,7 @@ $(document).ready(function () {
   rollsInit();
   toggleViewInit();
   multiFiltersInit();
-  sortingState();
+  sortProducts();
   initSpinner($('.spinner-js'));
   onlyNumberInput();
   popupsInit();
