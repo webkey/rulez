@@ -1722,12 +1722,10 @@ function qCartRremoveItem() {
   if ($btnRemove.length) {
     $btnRemove.on('click', function () {
       var $curItem = $(this).closest('.quick-cart__item');
-      $curItem.animate({'opacity': 0}, 200, function () {
+      $curItem.stop().animate({'opacity': 0}, 200, function () {
         var $curCart = $curItem.closest('.quick-cart');
         $curItem.detach();
-        console.log(": ", $curCart.find('.quick-cart__item'));
         if (!$curCart.find('.quick-cart__item').length) {
-          console.log('empty');
           $('.quick-cart-empty', $curCart).show();
           $('.quick-cart__btn', $curCart).addClass('disabled');
           $('.cart-keeper-js').addClass('disabled').find('.counter').hide();
@@ -2960,6 +2958,8 @@ $(function () {
           active: pluginClasses.active + ' ' + (config.modifiers.activeClass || ''),
           desc: pluginClasses.desc + ' ' + (config.modifiers.descendingClass || ''),
           asc: pluginClasses.asc + ' ' + (config.modifiers.ascendingClass || ''),
+          // desc: pluginClasses.desc,
+          // asc: pluginClasses.asc,
           selectOpen: pluginClasses.selectOpen + ' ' + (config.modifiers.openClass || '')
         };
 
@@ -3144,7 +3144,35 @@ $(function () {
 
       $element.trigger('msControlSort.changeSelector');
     }, init = function () {
-      $toggle.filter('.' + pluginClasses.active).addClass(mixedClasses.active);
+      $elemGroup.filter('.' + pluginClasses.active).addClass(mixedClasses.active);
+      $elemGroup.filter('.' + config.modifiers.activeClass).addClass(mixedClasses.active);
+
+      var $activeElemGroup = $elemGroup.filter('.' + pluginClasses.active);
+
+      changeSelector($activeElemGroup);
+
+      var hasClassDesc = $activeElemGroup.hasClass(pluginClasses.desc),
+          hasClassAsc = $activeElemGroup.hasClass(pluginClasses.asc),
+          hasClassDescCustom = $activeElemGroup.hasClass(config.modifiers.descendingClass),
+          hasClassAscCustom = $activeElemGroup.hasClass(config.modifiers.ascendingClass);
+
+      if (!hasClassDesc && !hasClassDescCustom && !hasClassAsc && !hasClassAscCustom) {
+        $activeElemGroup.addClass(mixedClasses.desc);
+        $selector.removeClass(mixedClasses.asc);
+        $selector.addClass(mixedClasses.desc);
+      }
+
+      if (hasClassDesc || hasClassDescCustom) {
+        $activeElemGroup.addClass(mixedClasses.desc);
+        $selector.removeClass(mixedClasses.asc);
+        $selector.addClass(mixedClasses.desc);
+      }
+
+      if (hasClassAsc || hasClassAscCustom) {
+        $activeElemGroup.addClass(mixedClasses.asc);
+        $selector.removeClass(mixedClasses.desc);
+        $selector.addClass(mixedClasses.asc);
+      }
 
       // После инициализации плагина добавить внутренний класс и,
       // если указан в опициях, пользовательский класс

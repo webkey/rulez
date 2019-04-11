@@ -2862,7 +2862,7 @@ a.catalog-opener
   +media('<lap-l')
     font-size: 1.4rem
 
-  +media('<net')
+  +media('<net', '>=tab')
     padding-right: 1em
 
     .header-changed &
@@ -3566,6 +3566,9 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
     +media('<lap-s')
       margin-right: 1.5rem
 
+    +media('<net')
+      margin-right: 1.2rem
+
   a, li > span
     display: block
     +font-bold
@@ -3648,7 +3651,7 @@ $search-btn-space: 0 0.5rem
       duration: $animation-speed
       timing-function: ease-in-out
 
-  .search-is-open &, .header-changed &
+  .search-is-open &
     opacity: 1
     visibility: visible
 
@@ -3656,6 +3659,11 @@ $search-btn-space: 0 0.5rem
       $translate: 0, 0
       transform: translate($translate)
       transform: translate3d($translate, 0)
+
+  .header-changed &
+    +media('>=mob')
+      opacity: 1
+      visibility: visible
 
   form
     display: block
@@ -3844,7 +3852,7 @@ $search-btn-space: 0 0.5rem
     content: ""
     +add-cross
 
-  .search-is-open &, .header-changed &
+  .search-is-open &
     +media('>=tab')
       opacity: 0
       visibility: hidden
@@ -3856,6 +3864,11 @@ $search-btn-space: 0 0.5rem
     // Лупу спрятать
     svg
       opacity: 0
+
+  .header-changed &
+    +media('>=tab')
+      opacity: 0
+      visibility: hidden
 
   // active
   //&:active
@@ -5762,6 +5775,13 @@ $opinion-box-shadow-color: black
     property: $prop
     duration: $animation-speed
 
+  +media('<mob')
+    $line-height: 3.6rem
+    height: $line-height
+    padding: 0 1.4rem 0 2rem
+    +font(1.6rem, $line-height)
+    border-radius: $line-height
+
   .caption-box &
     position: absolute
     right: 0
@@ -5778,6 +5798,10 @@ $opinion-box-shadow-color: black
     width: 1rem
     height: 0.6rem
     transform: rotate(-90deg)
+
+    +media('<mob')
+      top: 1.5rem
+      margin-left: 0.2rem
 
     path, use
       stroke: currentColor
@@ -8805,14 +8829,13 @@ $products-border-width: 1px
 // variables
 $m-container-space: 0 3rem !default
 
-$p-filters-width: 348px !default
+$p-filters-width: 34.8rem !default
+$p-filters-width--lap: 28rem !default
 
 $p-filters-angle-size: 2.4rem !default
-$p-filters-angle-arrow-size: 0.8rem !default
-// width height
+$p-filters-angle-arrow-size: 1rem !default // width height
 
-$p-filters-space: 1.4rem 0 !default
-// v h
+$p-filters-space: 1.4rem 0 !default // v h
 
 $p-options-height--mob: 50px
 
@@ -8840,10 +8863,13 @@ $shutter-space: 20px 30px !default
     content: ""
     display: block
     position: absolute
-    left: $p-filters-width - 1
+    left: $p-filters-width - 0.1
     top: 0
     height: 100%
     border-right: 1px solid $border-color
+
+    +media('<desk-s')
+      left: $p-filters-width--lap - 0.1
 
 //+media('<tab')
   content: none
@@ -8852,11 +8878,10 @@ $shutter-space: 20px 30px !default
 .m-aside
   $width: $p-filters-width
   width: $width
+  max-width: $width
   flex-basis: $width
+  flex-shrink: 0
   align-self: flex-start
-
-  .filters-results-show &
-    padding-bottom: 10rem
 
   +media('<tab')
     overflow: hidden
@@ -8865,6 +8890,15 @@ $shutter-space: 20px 30px !default
     bottom: 0
     background-color: white
     z-index: 10000
+
+  +media('<desk-s')
+    $width: $p-filters-width--lap
+    width: $width
+    max-width: $width
+    flex-basis: $width
+
+  .filters-results-show &
+    padding-bottom: 10rem
 
   &, & .m-aside__holder
     +media('<tab')
@@ -8898,9 +8932,17 @@ $shutter-space: 20px 30px !default
 // m-content
 .m-content
   $width: calc(100% - #{$p-filters-width})
-  width: $width
   flex-basis: $width
   flex-grow: 1
+  flex-shrink: 0
+  width: $width
+  max-width: $width
+
+  +media('<desk-s')
+    $width: calc(100% - #{$p-filters-width--lap})
+    flex-basis: $width
+    width: $width
+    max-width: $width
 
 //+media('<tab')
   width: auto
@@ -9087,6 +9129,16 @@ $shutter-space: 20px 30px !default
 // container
 .cs-container
   position: relative
+  opacity: 0
+  pointer-events: none
+
+  .no-js &
+    opacity: 1
+    pointer-events: auto
+
+  &.cs_initialized
+    opacity: 1
+    pointer-events: auto
 
 // selector
 .cs-selector
@@ -9220,7 +9272,7 @@ $shutter-space: 20px 30px !default
             stroke: $base-color
 
       // click
-      &:active
+      //&:active
         top: 1px
 
       // hover
@@ -9430,6 +9482,7 @@ $shutter-space: 20px 30px !default
   top: 50%
   +size($p-filters-angle-size)
   margin-top: -#{round-float($p-filters-angle-size / 2, 1)}
+  color: $base-color
   border: 1px solid $border-color
   border-radius: round-float($p-filters-angle-size / 2, 1)
   user-select: none
@@ -9441,18 +9494,19 @@ $shutter-space: 20px 30px !default
     property: $prop
     duration: $animation-speed
 
-  & > i
+  & > svg
     display: block
     position: absolute
     left: 50%
     top: 50%
     height: $p-filters-angle-arrow-size
     width: $p-filters-angle-arrow-size
-    margin:
-    border: solid $base-color
-    border-width: 0 0 0.2rem 0.2rem
-    margin: -0.5rem -0.4rem
-    transform: rotate(-45deg)
+    $space: round-float($p-filters-angle-arrow-size / 2, 1)
+    margin: -#{$space} -#{$space}
+    //transform: rotate(-45deg)
+
+    &, path
+      stroke: currentColor
 
 // counter
 .p-filters-selected
@@ -9591,7 +9645,7 @@ label.checkbox_value
   align-items: center
   position: absolute
   bottom: 0
-  height: 50px
+  height: 5rem
   width: $p-filters-width
   background-color: $base-color-alt
   color: #000
@@ -9603,6 +9657,9 @@ label.checkbox_value
     property: opacity, visibility
     duration: $animation-speed
     delay: 0.5s
+
+  +media('<desk-s')
+    width: $p-filters-width--lap
 
   +media('<mob')
     width: 100%

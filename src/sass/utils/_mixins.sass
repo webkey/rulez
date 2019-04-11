@@ -1294,6 +1294,13 @@
     property: $prop
     duration: $animation-speed
 
+  +media('<mob')
+    padding: 0 3.6rem 0 2rem
+    $line-height: 3.6rem
+    height: $line-height
+    +font(1.6rem, $line-height)
+    border-radius: $line-height
+
   & > i
     display: block
     position: absolute
@@ -1302,6 +1309,9 @@
     +size(3rem, 100%)
     user-select: none
     -webkit-tap-highlight-color: transparent
+
+    +media('<mob')
+      width: 3.6rem
 
     svg
       display: block
