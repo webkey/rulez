@@ -1101,7 +1101,8 @@ $uo-border-radius: 7px
 
   .header-changed &
     +media('>=tab')
-      border-radius: $uo-border-radius
+      //border-radius: $uo-border-radius
+      border-radius: 4rem
 
 .user-options__item
   position: relative
@@ -1296,7 +1297,8 @@ $uo-border-radius: 7px
 
       .header-changed &
         +media('>=tab')
-          border-top-left-radius: $uo-border-radius
+          //border-top-left-radius: $uo-border-radius
+          border-radius: 4rem 0 0 4rem
 
   &:last-child
     & > a, & > div, & > span, & > strong
@@ -1304,7 +1306,8 @@ $uo-border-radius: 7px
 
       .header-changed &
         +media('>=tab')
-          border-top-right-radius: $uo-border-radius
+          //border-top-right-radius: $uo-border-radius
+          border-radius: 0 4rem 4rem 0
 
   // tooltip align right for last item
   &:last-child
@@ -1519,7 +1522,7 @@ $uo-border-radius: 7px
 
     +underlinedLinks(white)
 
-  &:active
+  //&:active
     top: 1px
 
   &.icon--active
@@ -1649,13 +1652,43 @@ $uo-border-radius: 7px
     color: currentColor
     -webkit-tap-highlight-color: transparent
 
-    +underlinedLinks(white)
+    span
+      display: inline-block
+      vertical-align: top
+      padding: 0.2rem 0 0 // Отцентрировать по вертикали. Текст уходит вверх почему-то.
+      margin: 0 0 -0.2rem // Отцентрировать по вертикали. Текст уходит вверх почему-то.
+      // transition
+      $prop: box-shadow
+      transition:
+        property: $prop
+        duration: $animation-speed
+        timing-function: ease-in-out
+
+    &:hover
+      span
+        box-shadow: inset 0 -2px 0 rgba(white, 0.75)
 
     +media('<tab')
       display: none
 
     strong, b
+      display: inline-block
+      vertical-align: top
       +font-extra-bold
+
+    & > em
+      display: inline-block
+      vertical-align: top
+
+      svg
+        display: inline-block
+        vertical-align: top
+        $size: 2rem
+        height: $size
+        width: $size
+
+        &, path
+          fill: currentColor
 
 .h-contacts__opener
   $size: 2.4rem 2.4rem
@@ -1664,7 +1697,7 @@ $uo-border-radius: 7px
   right: 0
   height: nth($size, 1)
   width: nth($size, 2)
-  margin-top: -#{round-float(nth($size, 1) / 2, 1) + 0.2}
+  margin-top: -#{round-float(nth($size, 1) / 2, 1)}
   cursor: pointer
   border-radius: 5px
   user-select: none
@@ -1752,6 +1785,7 @@ $uo-border-radius: 7px
   position: absolute
   right: 0
   top: 100%
+  margin-top: 0.5rem
   padding: 1.4rem 2rem 2.5rem 2rem
   opacity: 0
   visibility: hidden
@@ -1770,6 +1804,9 @@ $uo-border-radius: 7px
   transition:
     property: $prop
     duration: $animation-speed
+
+  +media('<tab')
+    margin-top: 0
 
   +media('<mob')
     position: fixed
@@ -1963,8 +2000,11 @@ $uo-border-radius: 7px
   justify-content: flex-start
   text-decoration: none
   color: white
+  cursor: pointer
   padding: 0.6rem 0.8rem 0.7rem
   border-radius: 0 0 7px 7px
+  user-select: none
+  -webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, color
   transition:
@@ -1978,8 +2018,10 @@ $uo-border-radius: 7px
     padding: $header-btn-space--mob
 
   .header-changed &
-    +media('>=tab')
-      border-radius: 0.7rem
+    border-radius: 4rem
+    //+media('>=tab')
+      //border-radius: 0.7rem
+      border-radius: 4rem
 
   .header-top &
     margin-left: 2.8rem
@@ -2068,13 +2110,22 @@ $uo-border-radius: 7px
 
     &::after
       content: ""
-      +add-cross
+      +add-cross(block)
+
+      +media('>=tab')
+        left: 2.6rem
 
     svg
       display: inline-block
       vertical-align: top
       width: 100%
       height: 100%
+      // transition
+      $prop: opacity
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: $animation-speed
 
       path
         // transition
@@ -2160,13 +2211,11 @@ $uo-border-radius: 7px
     display: block
 
 // hover
-.cart-link
-  &:hover, &.quick-cart_opened
-    // Hover only no touchevents screen
-    .no-touchevents &
+.cart-link:not(.disabled)
+  .no-touchevents &:not(.quick-cart_opened):hover, &.quick-cart_opened
+    +media('>=tab')
       color: $base-color
-      //background-color: white
-      background-color: $bg-color
+      background-color: white
 
       & > i
         background-color: $base-color
@@ -2177,16 +2226,18 @@ $uo-border-radius: 7px
               fill: $base-color
 
             &.svg-ico-cart-cart
-              fill: $bg-color
+              fill: white
 
   &.quick-cart_opened
-    +media('<tab')
-      & > i
-        &::after
-          opacity: 1
+    & > i
+      +media('>=tab')
+        background-color: inherit
 
-        svg
-          display: none
+      &::after
+        opacity: 1
+
+      svg
+        opacity: 0
 
   // tooltip
   // Tooltip show only no touchevents screen
@@ -2229,6 +2280,14 @@ $uo-border-radius: 7px
     100%
       transform: translate(0, 0) scale(1)
 
+// If cart button isn't active
+.cart-link.disabled
+  cursor: default
+  pointer-events: none
+
+  & > i svg path.svg-ico-cart-cart
+    fill: $text-color-soft
+
 /* cart-link end
 
 /* quick cart
@@ -2265,6 +2324,7 @@ $quick-cart-footer-height--mob: 7rem
     right: nth($page-layout-space--mob, 2)
     max-width: calc(100vw - #{nth($page-layout-space--mob, 2) * 2})
 
+  //.cart-link:not(.disabled) ~ &.quick-cart_opened
   &.quick-cart_opened
     opacity: 1
     $translate: 0, 0
@@ -2281,6 +2341,7 @@ $quick-cart-footer-height--mob: 7rem
     content: ""
     display: block
     position: absolute
+    pointer-events: none
     height: 2rem
     width: 100%
     left: 0
@@ -2301,6 +2362,7 @@ $quick-cart-footer-height--mob: 7rem
 .quick-cart__list
   padding: 0 #{nth($box-inner-space, 2)}
   max-height: 38rem
+  min-height: 10rem
   overflow-y: auto
 
   &[data-simplebar*="init"]
@@ -2315,12 +2377,16 @@ $quick-cart-footer-height--mob: 7rem
     max-width: none
 
 .quick-cart__item
+  position: relative
   display: flex
   align-items: center
   $element: &
-  padding: 1.5rem 0
+  padding: 1.5rem 3rem 1.5rem 0
   border-top: 1px solid $border-color
   +clear
+
+  +media('<mob')
+    padding-right: 3.5rem
 
   &:first-child
     border: none
@@ -2381,6 +2447,62 @@ $quick-cart-footer-height--mob: 7rem
   +font-bold
   color: $text-color
 
+.quick-cart__item-remove
+  position: absolute
+  right: 0.5rem
+  top: 1.5rem
+  $size: 1.8rem
+  width: $size
+  height: $size
+  color: white
+  //background-color: #d8d8d8
+  //background-color: $base-color-light
+  background-color: #cecece
+  border-radius: $size
+  text-indent: -9999px
+  cursor: pointer
+  overflow: hidden
+  transform: rotate(-90deg) translateZ(0)
+  transition: background-color $animation-speed
+  outline: none
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+
+  +media('<mob')
+    $size: 2.4rem
+    width: $size
+    height: $size
+    border-radius: $size
+
+  svg
+    display: block
+    $size: 0.8rem
+    +size($size)
+    position: absolute
+    left: 50%
+    top: 50%
+    $space: round-float($size / 2, 1)
+    margin: -#{$space} 0 0 -#{$space}
+
+    +media('<mob')
+      $size: 1.4rem
+      +size($size)
+      $space: round-float($size / 2, 1)
+      margin: -#{$space} 0 0 -#{$space}
+
+    &, path
+      fill: currentColor
+
+  // hover
+  &:hover
+    .no-touchevents &
+      background-color: $base-color
+
+  // focus
+  &:focus
+    .no-touchevents &
+      box-shadow: 0 0 0 2px rgba($focus-color, 0.5)
+
 // hover (if use link)
 a.quick-cart__item
   display: block
@@ -2415,7 +2537,7 @@ a.quick-cart__item
   width: $size
   height: $size
   color: white
-  background-color: #d8d8d8
+  background-color: #cecece
   border-radius: round-float($size / 2, 1)
   text-indent: -9999px
   overflow: hidden
@@ -2443,6 +2565,10 @@ a.quick-cart__item
   // hover
   &:hover
     background-color: $base-color
+
+.quick-cart-empty
+  display: none
+  padding: 1.5rem 0
 
 /* quick cart end
 
@@ -2601,22 +2727,6 @@ a.quick-cart__item
   padding-bottom: 0.5rem
   //transition: max-width $animation-speed
 
-  .header-changed &
-    max-width: 60rem
-    visibility: visible // Родительская обертка скрыта, а меню нужно показать
-
-    +media('<desk-s')
-      max-width: 48rem
-
-    +media('<lap')
-      max-width: 40rem
-
-    +media('<net')
-      max-width: 28rem
-
-    +media('<tab')
-      max-width: none
-
   &::before
     content: ""
     display: block
@@ -2662,6 +2772,30 @@ a.quick-cart__item
         display: inline-block
         vertical-align: top
 
+  // If header is change
+  .header-changed &
+    //max-width: 60rem
+    max-width: calc(100% - 65rem)
+    visibility: visible // Родительская обертка скрыта, а меню нужно показать
+
+    //+media('<desk-s')
+    //  max-width: 48rem
+    //
+    //+media('<lap')
+    //  max-width: 45rem
+    //
+    //+media('<net')
+    //  max-width: 41rem
+    //
+    //+media('<1099px')
+    //  max-width: 28rem
+
+    +media('<tab')
+      max-width: none
+
+    &::before
+      content: none
+
 .site-nav__grid
   position: relative
   display: flex
@@ -2706,7 +2840,7 @@ a.catalog-opener
 
   //display: none
   position: relative
-  padding: 0.8rem 2rem 0.8rem 5rem
+  padding: 0.8rem 1.5rem 0.8rem 5rem
   +font-bold
   font-size: 1.8rem
   line-height: 2.4rem
@@ -2729,7 +2863,12 @@ a.catalog-opener
     font-size: 1.4rem
 
   +media('<net')
-    padding-right: 0.5em
+    padding-right: 1em
+
+    .header-changed &
+      +size($header-btn-size)
+      border-radius: $header-btn-size
+      padding: 0
 
   +media('<tab')
     padding: 0
@@ -2761,6 +2900,11 @@ a.catalog-opener
       delay: 0s
       timing-function: cubic-bezier(0.65, 0.05, 0.36, 1)
 
+    +media('<net')
+      .header-changed &
+        left: 50%
+        margin-left: -#{round($user-options-cross-width / 2)}
+
     +media('<tab')
       left: 50%
       margin-left: -#{round($user-options-cross-width / 2)}
@@ -2780,6 +2924,11 @@ a.catalog-opener
       property: opacity
       duration: $btn-menu-animation-speed
       delay: $btn-menu-animation-delay
+
+    +media('<net')
+      .header-changed &
+        left: 50%
+        margin-left: -#{round($user-options-cross-width / 2)}
 
     +media('<tab')
       left: 50%
@@ -2819,6 +2968,10 @@ a.catalog-opener
         display: none
 
   .catalog-opener__text-short
+    +media('<net')
+      .header-changed &
+        display: none
+
     +media('<tab')
       display: none
 
@@ -2856,7 +3009,7 @@ a.catalog-opener
       &::after
         transform: translate(0, -#{$btn-menu-lines-height + $btn-menu-lines-space}) translateZ(0)
 
-  .search-is-open &
+  .search-is-open &, .header-changed &
     +media('>=tab')
       color: white
 
@@ -3495,7 +3648,7 @@ $search-btn-space: 0 0.5rem
       duration: $animation-speed
       timing-function: ease-in-out
 
-  .search-is-open &
+  .search-is-open &, .header-changed &
     opacity: 1
     visibility: visible
 
@@ -3546,6 +3699,9 @@ $search-btn-space: 0 0.5rem
     +media('<mob')
       padding: #{round-float((nth($search-form-size--mob, 1) - $line-height) / 2, 1)} #{nth($page-layout-space--mob, 2)}
       height: nth($search-form-size--mob, 1)
+
+    .header-changed &
+      border-radius: nth($search-form-size, 1)
 
     +placeholder-focus
       opacity: 1
@@ -3640,6 +3796,10 @@ $search-btn-space: 0 0.5rem
   +media('<mob')
     margin-top: -#{round-float($search-btn-size--mob / 2, 1)}
 
+  // If header is change
+  .header-changed &
+    background: none
+
   & > input
     position: absolute
     width: 100%
@@ -3649,6 +3809,7 @@ $search-btn-space: 0 0.5rem
     box-shadow: none
     padding: 0
     margin: 0
+    cursor: pointer
 
   & > svg
     $size: 2rem
@@ -3683,7 +3844,7 @@ $search-btn-space: 0 0.5rem
     content: ""
     +add-cross
 
-  .search-is-open &
+  .search-is-open &, .header-changed &
     +media('>=tab')
       opacity: 0
       visibility: hidden
@@ -6225,7 +6386,7 @@ input[type="text"].quick-order__input
   width: $size
   height: $size
   color: white
-  background-color: #d8d8d8
+  background-color: #cecece
   border-radius: round-float($size / 2, 1)
   text-indent: -9999px
   overflow: hidden
@@ -6303,11 +6464,16 @@ $product-item-space: 2rem 2.4rem
     display: block
     margin-bottom: 0.7rem
     text-decoration: none
-    color: currentColor
+    color: inherit
+    transition: color $animation-speed
     -webkit-tap-highlight-color: transparent
 
     &:last-child
       margin-bottom: 0
+
+    &:hover
+      .no-touchevents &
+        color: $base-color
 
 // === product figure ===
 .product__figure
@@ -6388,10 +6554,8 @@ $product-item-space: 2rem 2.4rem
   +font-bold
   font-size: 1.6rem
   line-height: 2.4rem
-  color: #000
+  color: currentColor
   margin-bottom: 2rem
-
-  +underlinedLinks(black)
 
   &:last-child
     margin-bottom: 0
@@ -6579,7 +6743,7 @@ $product-item-space: 2rem 2.4rem
   line-height: 1.6rem
   text-decoration: none
   text-align: center
-  color: #000
+  color: currentColor
   // transition
   $prop: background-color, color
   transition:
@@ -6615,11 +6779,12 @@ $product-item-space: 2rem 2.4rem
 
   // hover
   &:hover
-    background-color: $base-color
-    color: white
+    .no-touchevents &
+      background-color: $base-color
+      color: white
 
-    svg path
-      fill: white
+      svg path
+        fill: white
 
   // added
   &.added
@@ -7766,6 +7931,9 @@ $tl-item-space--tab: 1rem
     column-count: 1
     column-gap: 0
 
+  +media('<mob')
+    display: none
+
   &:last-child
     margin-bottom: 0
 
@@ -8276,11 +8444,20 @@ $at-elem-space: 1.6rem 2.5rem
     padding:
       left: $space
       right: $space
+      top: 4rem
+      bottom: 4rem
 
     +media('<lap-s')
       padding:
         left: 0
         right: 0
+        top: 3rem
+        bottom: 3rem
+
+    +media('<tab')
+      padding:
+        top: 1rem
+        bottom: 1rem
 
 .helper
   position: relative
@@ -8403,7 +8580,7 @@ a.helper__item
 
 .helper-alt
   overflow: hidden
-  padding: 2rem #{nth($section-inner-space, 2) * 2} 2.6rem
+  padding: 1rem #{nth($section-inner-space, 2) * 2} 1.6rem
 
   +media('<lap-s')
     padding:
@@ -8414,7 +8591,6 @@ a.helper__item
     padding:
       top: 0
       bottom: 0
-
 
 .helper-alt__list
   display: flex
@@ -8434,7 +8610,7 @@ a.helper__item
   flex-basis: $width
   width: $width
   padding: 0 3rem
-  margin: 1rem 0
+  margin: 2rem 0
   font-size: 1.4rem
   line-height: 1.8rem
   color: $text-color-light
@@ -9050,7 +9226,8 @@ $shutter-space: 20px 30px !default
       // hover
       &:hover
         .no-touchevents &
-          & > span
+          color: $base-color
+          //& > span
             box-shadow: inset 0 -1px 0 currentColor
   @at-root
     // Элетенты селекта
@@ -11268,7 +11445,7 @@ $cart-item-figure-space: 2.7rem
   width: $size
   height: $size
   color: white
-  background-color: #d8d8d8
+  background-color: #cecece
   border-radius: round-float($size / 2, 1)
   text-indent: -9999px
   overflow: hidden

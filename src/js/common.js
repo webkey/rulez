@@ -1568,13 +1568,13 @@ function toggleShutters() {
       , modifiers: {
         activeClass: 'catalog-is-open'
       }
-      , cssScrollFixed: false
-      , afterAdded: function () {
-        $html.addClass(scrollFixedOnlyMobClass);
-      }
-      , afterRemoved: function () {
-        $html.removeClass(scrollFixedOnlyMobClass);
-      }
+      , cssScrollFixed: true
+      // , afterAdded: function () {
+      //   $html.addClass(scrollFixedOnlyMobClass);
+      // }
+      // , afterRemoved: function () {
+      //   $html.removeClass(scrollFixedOnlyMobClass);
+      // }
     });
   }
 
@@ -1614,13 +1614,13 @@ function toggleShutters() {
       , modifiers: {
         activeClass: 'quick-cart_opened'
       }
-      , cssScrollFixed: false
-      , afterAdded: function () {
-        $html.addClass(scrollFixedOnlyMobClass);
-      }
-      , afterRemoved: function () {
-        $html.removeClass(scrollFixedOnlyMobClass);
-      }
+      , cssScrollFixed: true
+      // , afterAdded: function () {
+      //   $html.addClass(scrollFixedOnlyMobClass);
+      // }
+      // , afterRemoved: function () {
+      //   $html.removeClass(scrollFixedOnlyMobClass);
+      // }
     });
   }
 
@@ -1710,6 +1710,31 @@ function toggleShutters() {
       catalogShutterRemoveClass();
       addFormPopupRemoveClass();
     });
+  }
+}
+
+/**
+ * !Quick cart remove item (temporary, test)
+ * */
+function qCartRremoveItem() {
+  var $btnRemove = $('.quick-cart__item-remove-js');
+
+  if ($btnRemove.length) {
+    $btnRemove.on('click', function () {
+      var $curItem = $(this).closest('.quick-cart__item');
+      $curItem.animate({'opacity': 0}, 200, function () {
+        var $curCart = $curItem.closest('.quick-cart');
+        $curItem.detach();
+        console.log(": ", $curCart.find('.quick-cart__item'));
+        if (!$curCart.find('.quick-cart__item').length) {
+          console.log('empty');
+          $('.quick-cart-empty', $curCart).show();
+          $('.quick-cart__btn', $curCart).addClass('disabled');
+          $('.cart-keeper-js').addClass('disabled').find('.counter').hide();
+          $('.cart-keeper-js').switchClass('remove');
+        }
+      })
+    })
   }
 }
 
@@ -2060,7 +2085,6 @@ function addToCarAnimation() {
             // Если текущий пункт не содержит панелей,
             // то выполнение функции прекратится
             if (!$currentHand.closest(config.item).has(config.panel).length) {
-              console.log(1);
               return false;
             }
 
@@ -3322,7 +3346,6 @@ function formValidation() {
 
   if ($form.length) {
     var changeClasses = function (elem, remove, add) {
-      console.log('changeClasses');
       elem
           .removeClass(remove).addClass(add);
       elem
@@ -3375,6 +3398,7 @@ $(document).ready(function () {
   gridLayout();
   tabs();
   toggleShutters();
+  qCartRremoveItem();
   changeState();
   addToCarAnimation();
   rollsInit();

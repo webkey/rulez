@@ -17,7 +17,18 @@
           <li><a href="https://www.whatsapp.com/" target="_blank"><span>Whatsapp</span></a></li>
         </ul>
         <div class="h-contacts h-contacts-js">
-          <a href="tel:+375291231010"><span>+375 (29) <strong>123 10 10</strong></span></a>
+          <a href="tel:+375291231010">
+            <em>
+              @@include("includes/svg/icon-tel-life.svg")
+            </em>
+            <em>
+              @@include("includes/svg/icon-tel-a1.svg")
+            </em>
+            <em>
+              @@include("includes/svg/icon-tel-mts.svg")
+            </em>
+            <span><strong>123 10 10</strong></span>
+          </a>
           <i class="h-contacts__opener h-contacts__opener-js">
             @@include("includes/svg/icon-phone.svg")
           </i>
@@ -26,7 +37,7 @@
             <div class="h-contacts__content">
               <ul class="h-contacts__phones">
                 <li><a href="tel:+375291231010" class="operator_velcom"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
-                <li><a href="tel:+375291232017" class="operator_life"><span>+375 (29) <strong>123 20 17</strong></span></a></li>
+                <li><a href="tel:+375291231010" class="operator_life"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
                 <li><a href="tel:+375291231010" class="operator_mts"><span>+375 (29) <strong>123 10 10</strong></span></a></li>
               </ul>
               <div class="h-contacts__share">
@@ -46,6 +57,7 @@
         </div>
       </div>
       @@include('_tpl_user-options.html')
+      <!--Add class ".disabled" if cart button isn't active-->
       <a href="cart.html" class="cart-link cart-keeper-js" title="Оформить заказа">
         <i>
           @@include("includes/svg/icon-cart-circle.svg")
@@ -56,9 +68,16 @@
         </div>
         <em class="counter counter-js">1</em>
       </a>
-      <div class="quick-cart quick-cart-js">
+      <div class="quick-cart quick-cart-js stop-remove-class">
         <div class="quick-cart__overflow">
-          <div class="quick-cart__list stop-remove-class">
+          <!--cross icon svg-->
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="icon-del-qc-item" viewBox="0 0 8 8">
+              <path d="M0.646447 1.35355L6.64645 7.35355L7.35355 6.64645L1.35355 0.646447L0.646447 1.35355ZM6.64645 0.646447L0.646447 6.64645L1.35355 7.35355L7.35355 1.35355L6.64645 0.646447Z"></path>
+            </symbol>
+          </svg>
+          <!--cross icon svg end-->
+          <div class="quick-cart__list">
             <a href="#" class="quick-cart__item">
               <div class="quick-cart__item-figure">
                 <img src="img/img-product-09.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T">
@@ -69,6 +88,12 @@
                   <div class="quick-cart__item-count">1 шт</div>
                   <div class="quick-cart__item-price">1500.00 ₽</div>
                 </div>
+              </div>
+              <div class="quick-cart__item-remove quick-cart__item-remove-js" tabindex="0">
+                <svg width="8" height="8">
+                  <use xlink:href="#icon-del-qc-item"></use>
+                </svg>
+                <span>Удалить из корзины</span>
               </div>
             </a>
             <div class="quick-cart__item">
@@ -82,17 +107,11 @@
                   <strong class="quick-cart__item-price">250.00 ₽</strong>
                 </div>
               </div>
-            </div>
-            <div class="quick-cart__item">
-              <div class="quick-cart__item-figure">
-                <img src="img/img-product-06.jpg" alt="RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)">
-              </div>
-              <div class="quick-cart__item-content">
-                <strong class="quick-cart__item-title">RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)</strong>
-                <div class="quick-cart__item-meta">
-                  <span class="quick-cart__item-count">1 шт</span>
-                  <strong class="quick-cart__item-price">250.00 ₽</strong>
-                </div>
+              <div class="quick-cart__item-remove quick-cart__item-remove-js" tabindex="0">
+                <svg width="8" height="8">
+                  <use xlink:href="#icon-del-qc-item"></use>
+                </svg>
+                <span>Удалить из корзины</span>
               </div>
             </div>
             <div class="quick-cart__item">
@@ -106,17 +125,11 @@
                   <strong class="quick-cart__item-price">250.00 ₽</strong>
                 </div>
               </div>
-            </div>
-            <div class="quick-cart__item">
-              <div class="quick-cart__item-figure">
-                <img src="img/img-product-06.jpg" alt="RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)">
-              </div>
-              <div class="quick-cart__item-content">
-                <strong class="quick-cart__item-title">RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)</strong>
-                <div class="quick-cart__item-meta">
-                  <span class="quick-cart__item-count">1 шт</span>
-                  <strong class="quick-cart__item-price">250.00 ₽</strong>
-                </div>
+              <div class="quick-cart__item-remove quick-cart__item-remove-js" tabindex="0">
+                <svg width="8" height="8">
+                  <use xlink:href="#icon-del-qc-item"></use>
+                </svg>
+                <span>Удалить из корзины</span>
               </div>
             </div>
             <div class="quick-cart__item">
@@ -130,6 +143,12 @@
                   <strong class="quick-cart__item-price">250.00 ₽</strong>
                 </div>
               </div>
+              <div class="quick-cart__item-remove quick-cart__item-remove-js" tabindex="0">
+                <svg width="8" height="8">
+                  <use xlink:href="#icon-del-qc-item"></use>
+                </svg>
+                <span>Удалить из корзины</span>
+              </div>
             </div>
             <div class="quick-cart__item">
               <div class="quick-cart__item-figure">
@@ -142,16 +161,59 @@
                   <strong class="quick-cart__item-price">250.00 ₽</strong>
                 </div>
               </div>
+              <div class="quick-cart__item-remove quick-cart__item-remove-js" tabindex="0">
+                <svg width="8" height="8">
+                  <use xlink:href="#icon-del-qc-item"></use>
+                </svg>
+                <span>Удалить из корзины</span>
+              </div>
             </div>
+            <div class="quick-cart__item">
+              <div class="quick-cart__item-figure">
+                <img src="img/img-product-06.jpg" alt="RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)">
+              </div>
+              <div class="quick-cart__item-content">
+                <strong class="quick-cart__item-title">RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)</strong>
+                <div class="quick-cart__item-meta">
+                  <span class="quick-cart__item-count">1 шт</span>
+                  <strong class="quick-cart__item-price">250.00 ₽</strong>
+                </div>
+              </div>
+              <div class="quick-cart__item-remove quick-cart__item-remove-js" tabindex="0">
+                <svg width="8" height="8">
+                  <use xlink:href="#icon-del-qc-item"></use>
+                </svg>
+                <span>Удалить из корзины</span>
+              </div>
+            </div>
+            <div class="quick-cart__item">
+              <div class="quick-cart__item-figure">
+                <img src="img/img-product-06.jpg" alt="RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)">
+              </div>
+              <div class="quick-cart__item-content">
+                <strong class="quick-cart__item-title">RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)</strong>
+                <div class="quick-cart__item-meta">
+                  <span class="quick-cart__item-count">1 шт</span>
+                  <strong class="quick-cart__item-price">250.00 ₽</strong>
+                </div>
+              </div>
+              <div class="quick-cart__item-remove quick-cart__item-remove-js" tabindex="0">
+                <svg width="8" height="8">
+                  <use xlink:href="#icon-del-qc-item"></use>
+                </svg>
+                <span>Удалить из корзины</span>
+              </div>
+            </div>
+            <div class="quick-cart-empty" style="display: none;">В корзине нет товаров</div>
           </div>
         </div>
         <div class="quick-cart__footer">
           <a href="cart.html" class="btn-def quick-cart__btn">Оформить заказ</a>
         </div>
-        <a href="#" class="quick-cart__remove quick-cart-close-js">
+        <!--<a href="#" class="quick-cart__remove quick-cart-close-js">
           @@include("includes/svg/icon-cross-sm.svg")
           <span>Закрыть</span>
-        </a>
+        </a>-->
       </div>
     </div>
   </div>

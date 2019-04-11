@@ -1232,7 +1232,7 @@
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 // Добавить крестик для закрытия выпадах в шапке
-=add-cross()
+=add-cross($display: none)
   position: absolute
   left: 50%
   top: 50%
@@ -1250,7 +1250,7 @@
     property: $prop
     duration: $animation-speed
 
-  display: none
+  display: $display
 
   +media('<tab')
     display: block
