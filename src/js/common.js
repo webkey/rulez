@@ -1720,7 +1720,8 @@ function qCartRremoveItem() {
   var $btnRemove = $('.quick-cart__item-remove-js');
 
   if ($btnRemove.length) {
-    $btnRemove.on('click', function () {
+    $btnRemove.on('click', function (e) {
+      e.preventDefault();
       var $curItem = $(this).closest('.quick-cart__item');
       $curItem.stop().animate({'opacity': 0}, 200, function () {
         var $curCart = $curItem.closest('.quick-cart');
@@ -1729,7 +1730,9 @@ function qCartRremoveItem() {
           $('.quick-cart-empty', $curCart).show();
           $('.quick-cart__btn', $curCart).addClass('disabled');
           $('.cart-keeper-js').addClass('disabled').find('.counter').hide();
-          $('.cart-keeper-js').switchClass('remove');
+          setTimeout(function () {
+            $('.cart-keeper-js').switchClass('remove');
+          }, 800);
         }
       })
     })

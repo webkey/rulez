@@ -51,7 +51,23 @@ body
       @if nth($page-layout-space--mob, 2) != 0
         +padding-horizontal(nth($page-layout-space--mob, 2))
 
-.wrapper
+// Прижать футер к низу страницы
+// На html, body необходимо задать высоту 100% (Задано в reset.sass)
+body
+  display: flex
+  flex-direction: column
+
+.header
+  flex-shrink: 0
+
+.main
+  flex-shrink: 0
+
+.footer
+  margin-top: auto
+  flex-shrink: 0
+
+//.wrapper
   display: flex
   flex-direction: column
   justify-content: space-between

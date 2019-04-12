@@ -397,7 +397,7 @@
       <div class="m-content">
         <div class="m-heading">
           <h1>Ноутбуки</h1>
-          <div class="view-switcher view-switcher-products-js" data-toggle-view-for="products">
+          <div class="view-switcher m-heading__switcher view-switcher-products-js" data-toggle-view-for="products">
             <a href="#" class="active" data-mod="grid-view" title="Продукты плиткой">
               @@include("includes/svg/icon-grid-view.svg")
               <span>Плиткой</span>
@@ -743,15 +743,8 @@
     </section>
 
     <section class="section section_helper">
-      <h2 class="hide">Помощь</h2>
-      <div class="helper">
-        <div class="helper__list">
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-call.svg") <span>Помощь экспертов в выборе товаров</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-credit.svg") <span>Рассрочка и кредит по выгодным условиям</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-delivery.svg") <span>Быстрая доставка по Минску курьером</span></div></a>
-          <a href="#" class="helper__item"><div class="helper__inner">@@include("includes/svg/icon-helper-service.svg") <span>Дополнительные услуги по сервисному обслуживанию</span></div></a>
-        </div>
-      </div>
+      <h2 class="hide">Сервисы</h2>
+      @@include("_tpl_helper-alt.html")
     </section>
     <!--CONTENT end-->
   </div>
