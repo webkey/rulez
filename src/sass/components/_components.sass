@@ -622,29 +622,6 @@ input[type="text"].single-form__input
 
 /* rolls end
 
-/* default overlay
-.popup-overlay
-  position: fixed
-  width: 100%
-  height: 100%
-  left: 0
-  top: 0
-  z-index: $z-overlay
-  background-color: rgba($base-color, 0.9)
-  user-select: none
-  pointer-events: none
-  opacity: 0
-  $prop: opacity
-  will-change: $prop
-  transition: $prop $animation-speed ease-in-out
-
-  //.is-open &
-  &
-    pointer-events: auto
-    opacity: 1
-
-/* default overlay end
-
 /* default popup
 //.popup-def
   position: fixed
@@ -1243,7 +1220,7 @@ $uo-border-radius: 7px
           padding-left: 0
 
       path
-        fill: $text-color-soft
+        fill: $text-color-ultra-light
 
       & ~ span
         padding-left: 12px
@@ -1360,7 +1337,7 @@ $uo-border-radius: 7px
 
       path
         fill: transparent
-        stroke: $text-color-soft
+        stroke: $text-color-ultra-light
 
   & > a
     svg
@@ -2286,7 +2263,7 @@ $uo-border-radius: 7px
   pointer-events: none
 
   & > i svg path.svg-ico-cart-cart
-    fill: $text-color-soft
+    fill: $text-color-ultra-light
 
 /* cart-link end
 
@@ -2437,7 +2414,7 @@ $quick-cart-footer-height--mob: 7rem
 
 .quick-cart__item-count
   display: inline-block
-  color: $text-color-soft
+  color: $text-color-ultra-light
   margin-right: 0.5rem
 
 .quick-cart__item-price
@@ -4603,7 +4580,7 @@ $search-btn-space: 0 0.5rem
   font-size: 1.4rem
   line-height: 1.8rem
   text-align: left
-  color: $text-color-soft
+  color: $text-color-ultra-light
   text-decoration: none
   transition: color $animation-speed
 
@@ -6151,7 +6128,7 @@ $opinion-box-shadow-color: black
 
   // off
   &.off
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
     & > i
       border-color: currentColor
@@ -6238,7 +6215,7 @@ $opinion-box-shadow-color: black
   +oldPriceStyle(1.8rem)
 
   .p-add-form-price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 // price new
 .p-add-form-price__new
@@ -6247,7 +6224,7 @@ $opinion-box-shadow-color: black
   +newPriceStyle(3.0rem, 3.0rem, #000)
 
   .p-add-form-price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 // footer
 .p-add-form__footer
@@ -6673,7 +6650,7 @@ $product-item-space: 2rem 2.4rem
   +oldPriceStyle(1.6rem)
 
   .product__price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 .product__price-new
   display: inline-block
@@ -6682,7 +6659,7 @@ $product-item-space: 2rem 2.4rem
   +newPriceStyle(2.4rem, 1.4rem, #000)
 
   .product__price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 // === product option ===
 // --> product action <--
@@ -8953,7 +8930,7 @@ $btn-disabled: #ccc
       duration: $animation-speed
       timing-function: ease-in-out
 
-    &.active
+    &.filters_is-open
       transform: translate(0, 0)
       transform: translateX(0)
 
@@ -9162,20 +9139,60 @@ $btn-disabled: #ccc
 .filters-switcher_mob
   display: none
   position: relative
-  color: currentColor
-  user-select: none
+  margin: 0 0 0 auto
+  padding-left: 1rem
   +font-bold
   +font(1.4rem, 20px)
-  letter-spacing: 0.1em
-  text-transform: uppercase
-  border: 1px solid $border-color
-  padding: 9px 20px 9px 40px
-  background-color: #fff
+  color: inherit
+  text-decoration: none
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  // transition
+  $prop: background-color, color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
 
-  +media('<tab')
+  +media('<#{$p-filters-breakpoint}')
+    display: flex
+    align-items: center
+
+  & > em
+    display: inline-block
+    position: relative
+    $size: 3.0rem
+    height: $size
+    width: $size
+    color: $base-color-ultra-light
+    background-color: $base-color
+    border-radius: $size
+
+    &::before
+      content: ""
+      display: block
+      +add-cross($color: white)
+
+  svg
     display: block
-    +padding-vertical(14px)
-    border-color: transparent
+    position: absolute
+    left: 50%
+    top: 50%
+    $size: 1.8rem
+    +size($size)
+    $half-space: round-float($size / 2, 1)
+    margin: -#{$half-space} 0 0 -#{$half-space}
+
+    &, path
+      fill: currentColor
+
+  & > span
+    margin-right: 1rem
+    //display: none
+
+  & > em + span
+    margin-right: 0
+    margin-left: 1rem
 
   .p-filters-activated
     position: absolute
@@ -9191,21 +9208,24 @@ $btn-disabled: #ccc
     &.hide
       display: none
 
-  svg
-    display: block
-    position: absolute
-    left: 12px
-    top: 50%
-    +size(18px)
-    margin-top: -9px
-
-  path
-    fill: currentColor
-
   // hover
   .no-touchevents &:hover
-    +media('>=mob')
-      border-color: $form-border-color--focus
+    color: $base-color
+
+    & > em
+      background-color: $base-color
+      color: white
+
+  // is open
+  &.filters_is-open
+    color: $base-color
+
+    & > em
+      &::before
+        opacity: 1
+
+      svg
+        opacity: 0
 
 /* options panel end
 
@@ -9406,7 +9426,7 @@ $btn-disabled: #ccc
 /* p-sorting
 .p-sorting
   list-style: none
-  margin: 0
+  margin: 0 #{nth($section-inner-space, 2)} 0 0
 
   +media('<tab')
     width: 24rem
@@ -9514,7 +9534,7 @@ $btn-disabled: #ccc
     position: relative
     display: inline-block
 
-  .p-filters-activated
+  .p-filters-active
     +font-bold
     color: $base-color
     +font(10px, 1)
@@ -10385,7 +10405,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 .p-card-code
   font-size: 1.4rem
   line-height: 1.6rem
-  color: $text-color-soft
+  color: $text-color-ultra-light
 
 // price
 .p-card-price
@@ -10398,7 +10418,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   +oldPriceStyle()
 
   .p-card-price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 // price new
 .p-card-price__new
@@ -10408,7 +10428,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   +newPriceStyle(4.5rem, 2.4rem, #000)
 
   .p-card-price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 // button buy
 .btn-buy
@@ -11339,7 +11359,7 @@ $news-elem-inner: 2.7rem 2rem 2.1rem
   font-style: normal
   font-size: 1.2rem
   line-height: 1.7rem
-  color: $text-color-soft
+  color: $text-color-ultra-light
   margin-bottom: 0.6rem
 
   &:last-child
@@ -11572,7 +11592,7 @@ $cart-item-figure-space: 2.7rem
   +oldPriceStyle()
 
   .cart-item__price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 // price new
 .cart-item__price-new
@@ -11581,7 +11601,7 @@ $cart-item-figure-space: 2.7rem
   +newPriceStyle(3.0rem, 3.0rem, #000)
 
   .cart-item__price.off &
-    color: $text-color-soft
+    color: $text-color-ultra-light
 
 // remove btn
 .cart-item__remove
@@ -11820,7 +11840,7 @@ $cart-item-figure-space: 2.7rem
 
 .consist__item-count
   display: inline-block
-  color: $text-color-soft
+  color: $text-color-ultra-light
   margin-right: 0.5rem
 
 .consist__item-price
@@ -12232,7 +12252,7 @@ $author-photo-size: 14.8rem
       duration: $animation-speed
       timing-function: ease-in-out
 
-  // activated
+  // active
   &.active
     & > span
       display: none
@@ -12298,3 +12318,32 @@ $author-photo-size: 14.8rem
       margin-bottom: 0
 
 /* review article end
+
+/* default overlay
+.popup-overlay,
+.filters-shutter-overlay
+  position: fixed
+  width: 100%
+  height: 100%
+  left: 0
+  top: 0
+  z-index: $z-overlay
+  background-color: rgba($base-color, 0.9)
+  user-select: none
+  pointer-events: none
+  opacity: 0
+  $prop: opacity
+  will-change: $prop
+  transition: $prop $animation-speed
+
+//.is-open &
+//&
+  pointer-events: auto
+  opacity: 1
+
+.filters-shutter-overlay.filters_is-open
+  +media('<#{$p-filters-breakpoint}')
+    pointer-events: auto
+    opacity: 1
+
+/* default overlay end

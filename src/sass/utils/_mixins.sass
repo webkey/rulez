@@ -1163,7 +1163,7 @@
 // Стили для старой цены (дефолтные)
 // Устанавливает положение значения цены и валюты
 // А также перечеркивание
-=oldPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-soft)
+=oldPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-ultra-light)
   font-size: $font-size
   line-height: inherit
   white-space: nowrap
@@ -1201,7 +1201,7 @@
 // Стили для новой цены (дефолтные)
 // Устанавливает положение значения цены и валюты
 // А также размеры текста
-=newPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-soft)
+=newPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-ultra-light)
   position: relative
   font-size: $font-size
   line-height: inherit
@@ -1232,7 +1232,7 @@
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 // Добавить крестик для закрытия выпадах в шапке
-=add-cross($display: none)
+=add-cross($display: none, $color: null)
   position: absolute
   left: 50%
   top: 50%
@@ -1241,7 +1241,10 @@
   height: $size
   $space: round-float($size / 2, 1)
   margin: -#{$space} 0 0 -#{$space}
-  background: url(../../img/icon-close.svg) no-repeat
+  @if $color == white
+    background: url(../../img/icon-close-white.svg) no-repeat
+  @if $color != white
+    background: url(../../img/icon-close.svg) no-repeat
   background-size: contain
   opacity: 0
   $prop: opacity

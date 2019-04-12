@@ -1520,7 +1520,8 @@ function tabs() {
  * !Toggle shutters panel, like a search panel, a catalog shutter etc.
  */
 function toggleShutters() {
-  var scrollFixedOnlyMobClass = 'css-scroll-fixed_only-mob';
+  // var scrollFixedOnlyMobClass = 'css-scroll-fixed_only-mob';
+  var showOnlyMobClass = 'open-only-mob';
 
   // Toggle contacts in header
   var $hContactsSwitcher = $('.h-contacts__opener-js'), hContactsDropJs;
@@ -1582,11 +1583,17 @@ function toggleShutters() {
   var $filtersSwitcher = $('.btn-filters-js'), filtersShutterJs;
   if ($filtersSwitcher.length) {
     filtersShutterJs = $filtersSwitcher.switchClass({
-      switchClassTo: $('.shutter--filters-js').add('.p-filters-results-js')
+      switchClassTo: $('.shutter--filters-js').add('.p-filters-results-js').add('.filters-shutter-overlay')
       , modifiers: {
-        activeClass: 'active'
+        activeClass: 'filters_is-open'
       }
-      , cssScrollFixed: false
+      , cssScrollFixed: true
+      , afterAdded: function () {
+        $html.addClass(showOnlyMobClass);
+      }
+      , afterRemoved: function () {
+        $html.removeClass(showOnlyMobClass);
+      }
     });
   }
 

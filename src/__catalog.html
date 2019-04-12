@@ -414,10 +414,6 @@
           </div>
         </div>
         <div class="m-options">
-          <a href="#" class="filters-switcher_mob btn-filters-js" title="Показать фильтры">
-            <div class="p-filters-activated p-filters-activated-js hide">0</div>
-            @@include("includes/svg/icon-filters.svg") <span>Фильтр</span>
-          </a>
           <!--.cs - control-sort // Sorting products-->
           <!--cs-container-->
           <div class="p-sorting cs-container cs-js">
@@ -488,6 +484,12 @@
             <input type="checkbox" name="stock">
             <span>Товар в наличии</span>
           </label>
+
+          <a href="#" class="filters-switcher_mob btn-filters-js" title="Показать фильтры">
+            <div class="p-filters-activated p-filters-activated-js hide">0</div>
+            <span>Фильтр</span>
+            <em>@@include("includes/svg/icon-filters.svg")</em>
+          </a>
         </div>
         <section class="banner">
           <a href="#"><img class="lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" /></a>
@@ -656,6 +658,8 @@
       </div>
 
       <div class="loader-cover">&nbsp;</div>
+
+      <div class="filters-shutter-overlay">&nbsp;</div>
     </div>
 
     <section class="section section_collections tabs-js">
