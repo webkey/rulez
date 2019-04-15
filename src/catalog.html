@@ -700,10 +700,11 @@
       <!--CONTENT-->
       <!--Во время подбора результатов нужно добавлять класс js-loading на контейнер p-filters-js-->
       <div class="m-container p-filters-js">
-        <div class="m-aside shutter--filters-js">
+        <div class="m-aside shutter--filters-js stop-remove-class">
           <div class="m-aside__header">
+            Фильтр
+            <span class="p-filters-activated p-filters-activated-js hide">0</span>
             <a href="#" class="btn-filters-close js-btn-shutter-close" title="Закрыть фильтр">
-              <div><span>Фильтр</span> <span class="p-filters-activated p-filters-activated-js hide">0</span></div>
               <svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
                 <path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
               </svg>
@@ -2122,20 +2123,18 @@
             <p>Мы осуществляем доставку в Минск, Гомель, Брест, Могилев, Гродно и Витебск, а также в любую точку Беларуси!</p>
           </div>
         </div>
-        <div class="p-filters-results p-filters-results-js">
-          <div class="p-filters-results__selected">
-            <div class="p-filters-results__selected__label">Выбрано</div>
-            <div class="p-filters-results__selected__count"><span class="cur">712</span> из 1202</div>
+        <div class="p-results p-filters-results-js stop-remove-class">
+          <div class="p-results__layout">
+            <div class="p-results__selected">
+              <strong>Выбрано</strong>
+              <span><em>712</em> из 1202</span>
+            </div>
+            <div class="p-results__options">
+              <button class="btn-filters-apply">Показать <em>(712)</em></button>
+              <button class="btn-filters-clear btn-filters-clear-js">Сбросить</button>
+            </div>
           </div>
-          <div class="p-filters-results__apply">
-            <a href="#" class="btn-filters-apply">подобрать</a>
-          </div>
-          <button class="btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
-            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24">
-              <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zm2.46-7.12l1.41-1.41L12 12.59l2.12-2.12 1.41 1.41L13.41 14l2.12 2.12-1.41 1.41L12 15.41l-2.12 2.12-1.41-1.41L10.59 14l-2.13-2.12zM15.5 4l-1-1h-5l-1 1H5v2h14V4z" />
-            </svg>
-          </button>
-          <div class="results-loading">Подбор результатов...</div>
+          <div class="p-results-loading">Подбор результатов...</div>
         </div>
         <div class="loader-cover">&nbsp;</div>
         <div class="filters-shutter-overlay">&nbsp;</div>

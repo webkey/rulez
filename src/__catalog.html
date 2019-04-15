@@ -19,10 +19,11 @@
     <!--CONTENT-->
     <!--Во время подбора результатов нужно добавлять класс js-loading на контейнер p-filters-js-->
     <div class="m-container p-filters-js">
-      <div class="m-aside shutter--filters-js">
+      <div class="m-aside shutter--filters-js stop-remove-class">
         <div class="m-aside__header">
+          Фильтр
+          <span class="p-filters-activated p-filters-activated-js hide">0</span>
           <a href="#" class="btn-filters-close js-btn-shutter-close" title="Закрыть фильтр">
-            <div><span>Фильтр</span> <span class="p-filters-activated p-filters-activated-js hide">0</span></div>
             @@include("includes/svg/icon-close.svg")
           </a>
         </div>
@@ -643,22 +644,20 @@
         </div>
       </div>
 
-      <div class="p-filters-results p-filters-results-js">
-        <div class="p-filters-results__selected">
-          <div class="p-filters-results__selected__label">Выбрано</div>
-          <div class="p-filters-results__selected__count"><span class="cur">712</span> из 1202</div>
+      <div class="p-results p-filters-results-js stop-remove-class">
+        <div class="p-results__layout">
+          <div class="p-results__selected">
+            <strong>Выбрано</strong>
+            <span><em>712</em> из 1202</span>
+          </div>
+          <div class="p-results__options">
+            <button class="btn-filters-apply">Показать <em>(712)</em></button>
+            <button class="btn-filters-clear btn-filters-clear-js">Сбросить</button>
+          </div>
         </div>
-        <div class="p-filters-results__apply">
-          <a href="#" class="btn-filters-apply">подобрать</a>
-        </div>
-        <button class="btn-clear-filters btn-clear-filters-js" title="Сбросить фильтры">
-          @@include("includes/svg/icon-bin.svg")
-        </button>
-        <div class="results-loading">Подбор результатов...</div>
+        <div class="p-results-loading">Подбор результатов...</div>
       </div>
-
       <div class="loader-cover">&nbsp;</div>
-
       <div class="filters-shutter-overlay">&nbsp;</div>
     </div>
 

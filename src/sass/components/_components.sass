@@ -7186,7 +7186,7 @@ $product-item-space: 2rem 2.4rem
           fill: $base-color
 
     // active
-    &:active
+    //&:active
       top: 0
       box-shadow: none
 
@@ -8818,15 +8818,21 @@ $products-border-width: 1px
 
 .products__item
   position: relative
+  flex-shrink: 0
   $width: 25.0%
-  width: $width
   flex-basis: $width
+  width: $width
   background-color: white // Нужно для перекрытия соседних бордеров
   //background-color: #ff8484 // Нужно для перекрытия соседних бордеров
   box-shadow: 0 0 0 #{$products-border-width} $border-color
 
   +media('<desk-s')
     $width: 33.33%
+    width: $width
+    flex-basis: $width
+
+  +media('<tab-s')
+    $width: 50%
     width: $width
     flex-basis: $width
 
@@ -8919,12 +8925,8 @@ $p-filters-angle-arrow-size: 1rem // width height
 
 $p-filters-space: 1.4rem 0 // v h
 
-$p-options-height--mob: 50px
-
-$btn-bg: #000
-$btn-bg-hover: white
-$btn-text: white
-$btn-disabled: #ccc
+$p-results-height: 5.2rem
+$p-results-fixed-height: 7rem
 
 .m-container
   position: relative
@@ -8989,6 +8991,7 @@ $btn-disabled: #ccc
     top: 0
     height: 100%
     width: $p-filters-width--tab
+    padding-top: $header-height--tab
     max-width: none
     background-color: white
     z-index: $z-popup
@@ -9001,14 +9004,18 @@ $btn-disabled: #ccc
     transition:
       property: $prop
       duration: $animation-speed
-      timing-function: ease-in-out
 
     &.filters_is-open
       transform: translate(0, 0)
       transform: translateX(0)
 
   .filters-results-show &
-    padding-bottom: 10rem
+    padding-bottom: $p-results-height
+
+    .filters-result-fixed &
+      // Только до того, как фильтры перестиливаются в попап
+      +media('>=#{$p-filters-breakpoint}')
+        padding-bottom: $p-results-fixed-height
 
   &, & .m-aside__holder
     // Фильтры - попапом
@@ -9035,12 +9042,52 @@ $btn-disabled: #ccc
     .no-touchevents &:hover
       overflow-y: auto
 
-.m-aside__header
-  height: $header-height--tab
-  display: none
+// btn-filters-close
+.btn-filters-close
+  display: inline-block
+  position: relative
+  $size: 4rem
+  +size($size)
+  cursor: pointer
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
-  +media('<mob')
+  svg
     display: block
+    +size(2rem)
+    position: absolute
+    left: 50%
+    top: 50%
+    margin: -1rem 0 0 -1rem
+
+    path
+      fill: currentColor
+
+.m-aside__header
+  display: none
+  position: absolute
+  left: 0
+  top: 0
+  align-items: center
+  width: 100%
+  height: $header-height--tab
+  padding: 0.5rem 5rem 0.5rem 2rem
+  font-size: 2.0rem
+  line-height: 2.4rem
+  border-bottom: 1px solid $border-color
+
+  .p-filters-activated
+    display: none
+
+  // Фильтры - попапом
+  +media('<#{$p-filters-breakpoint}')
+    display: flex
+
+  .btn-filters-close
+    position: absolute
+    right: 1rem
+    top: 50%
+    margin-top: -2rem
 
 // m-content
 .m-content
@@ -9120,6 +9167,197 @@ $btn-disabled: #ccc
       margin-bottom: 0
 
 /* m-container end
+
+/* filters-results
+.p-results
+  position: absolute
+  bottom: 0
+  height: $p-results-height
+  width: $p-filters-width
+  background-color: white
+  border: 0 solid $border-color
+  border-width: 1px 1px 0 0
+  z-index: 1
+  opacity: 0
+  visibility: hidden
+  pointer-events: none
+  $prop: opacity, visibility, transform
+  will-change: $prop
+  transition:
+    property: opacity, visibility, transform
+    duration: $animation-speed
+    delay: 0.5s
+
+  +media('<desk-s')
+    width: $p-filters-width--lap
+
+  +media('<lap-s')
+    width: $p-filters-width--net
+
+  // Фильтры - попапом
+  +media('<#{$p-filters-breakpoint}')
+    position: fixed
+    left: 0
+    bottom: 0
+    width: $p-filters-width--tab
+    z-index: $z-popup + 1
+    $translate: -100%, 0
+    transform: translate($translate)
+    transform: translate3d($translate, 0)
+
+    &.filters_is-open
+      transform: translate(0, 0)
+      transform: translateX(0)
+
+  .filters-results-show &
+    opacity: 1
+    visibility: visible
+    pointer-events: auto
+    transition:
+      delay: 0s
+
+  .filters-result-fixed &
+    // Только до того, как фильтры перестиливаются в попап
+    +media('>=#{$p-filters-breakpoint}')
+      height: $p-results-fixed-height
+      position: fixed
+      bottom: -1px
+
+.p-results__layout
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 1rem 2rem
+
+  // Фильтры - попапом
+  +media('<#{$p-filters-breakpoint}')
+    display: block
+    margin: 0 -0.5rem
+
+// selected results
+.p-results__selected
+  color: $text-color-light
+
+  // Фильтры - попапом
+  +media('<#{$p-filters-breakpoint}')
+    display: none
+
+  & > strong
+    display: block
+    +font-normal
+    +font(1.4rem, 1.6rem)
+    font-weight: normal
+
+  & > span
+    display: block
+    +font(1.4rem, 1.6rem)
+    white-space: nowrap
+
+    & > em
+      +font-bold
+      color: $text-color
+
+// apply results
+.btn-filters-apply
+  display: none
+  padding: 0.7rem 1.2rem
+  +font-normal
+  font-size: 1.4rem
+  line-height: 1.8rem
+  text-decoration: none
+  text-align: center
+  white-space: nowrap
+  cursor: pointer
+  color: $btn-text-color
+  background-color: $btn-bg-color
+  border: none
+  border-radius: 0.4rem
+  box-shadow: 0 1px 1px rgba(black, 0.4)
+  outline: none
+  z-index: 1
+
+  // Фильтры - попапом
+  +media('<#{$p-filters-breakpoint}')
+    display: inline-block
+
+  & > em
+    +font-bold
+    color: $base-color
+    font-style: normal
+
+  // hover
+  .no-touchevents &:hover
+    box-shadow: 0 2px 2px rgba(black, 0.4)
+
+  &:disabled
+    box-shadow: none !important
+    background-color: $btn-disabled-color !important
+    color: white !important
+    cursor: default
+
+// clear results
+.btn-filters-clear
+  padding: 0.7rem 1.2rem
+  +font-normal
+  font-size: 1.4rem
+  line-height: 1.8rem
+  text-decoration: none
+  text-align: center
+  cursor: pointer
+  color: $btn-text-color
+  background: $border-color
+  border: none
+  border-radius: 0.4rem
+  box-shadow: 0 1px 1px rgba(black, 0.4)
+  outline: none
+  z-index: 1
+
+  // hover
+  .no-touchevents &:hover
+    box-shadow: 0 2px 2px rgba(black, 0.4)
+
+  &:disabled
+    box-shadow: none !important
+    background-color: $btn-disabled-color !important
+    color: white !important
+    cursor: default
+
+// results options
+.p-results__options
+  display: flex
+  align-items: center
+
+  & > button, & > a
+    margin-left: 1rem
+
+    // Фильтры - попапом
+    +media('<#{$p-filters-breakpoint}')
+      margin: 0 0.5rem
+      flex-grow: 1
+
+// results loading
+.p-results-loading
+  +size(calc(100% + 2px))
+  position: absolute
+  left: -1px
+  top: -1px
+  +font-bold
+  +font(1.4rem, 50px)
+  color: white
+  text-align: center
+  z-index: 5
+  background-color: rgba(153, 153, 153, 1)
+  opacity: 0
+  visibility: hidden
+  transition:
+    property: opacity, visibility
+    duration: $animation-speed
+
+  .js-loading &
+    opacity: 1
+    visibility: visible
+
+/* filters-results end
 
 /* view-switcher
 .view-switcher
@@ -9268,14 +9506,20 @@ $btn-disabled: #ccc
     margin-left: 1rem
 
   .p-filters-activated
+    $size: 1.6rem
     position: absolute
-    right: 5px
-    top: 5px
-    +font-bold
-    font-size: 10px
-    line-height: 1
+    right: -0.5rem
+    top: -0.5rem
+    +size($size)
+    +font-normal
+    font-size: 1.2rem
+    line-height: $size
+    text-align: center
     letter-spacing: normal
-    color: $base-color
+    color: white
+    background-color: $base-color-ultra-light
+    border: 1px solid $base-color-ultra-light
+    border-radius: $size
     z-index: 2
 
     &.hide
@@ -9585,50 +9829,6 @@ $btn-disabled: #ccc
 
 /* filters tags end
 
-/* btn-filters-close
-.btn-filters-close
-  display: block
-  position: relative
-  background-color: $bg-color
-  +font-bold
-  +font(14px, $header-height--tab)
-  letter-spacing: 0.1em
-  text-align: left
-  color: #fff
-  text-transform: uppercase
-  padding: 0 nth($p-filters-space, 2)
-  border: 1px solid #666
-  z-index: 5
-
-  +media('<mob')
-    +padding-horizontal(15px)
-
-  & > div
-    position: relative
-    display: inline-block
-
-  .p-filters-active
-    +font-bold
-    color: $base-color
-    +font(10px, 1)
-    position: absolute
-    top: 50%
-    left: 100%
-    margin: -10px 0 0 5px
-
-  .svg-ico-close
-    display: block
-    +size(20px)
-    position: absolute
-    right: 15px
-    top: 50%
-    margin-top: -10px
-
-    path
-      fill: currentColor
-
-/* btn-filters-close end
-
 /* filters
 .p-filters-list
   position: relative
@@ -9833,158 +10033,7 @@ label.checkbox_value
 
 /* filters end
 
-/* filters-results
-.p-filters-results
-  display: flex
-  justify-content: space-between
-  align-items: center
-  position: absolute
-  bottom: 0
-  height: 5rem
-  width: $p-filters-width
-  background-color: $base-color-alt
-  color: #000
-  z-index: 1
-  opacity: 0
-  visibility: hidden
-  pointer-events: none
-  transition:
-    property: opacity, visibility
-    duration: $animation-speed
-    delay: 0.5s
-
-  +media('<desk-s')
-    width: $p-filters-width--lap
-
-  +media('<lap-s')
-    width: $p-filters-width--net
-
-  // Фильтры - попапом
-  +media('<#{$p-filters-breakpoint}')
-    width: $p-filters-width--tab
-
-  +media('<mob')
-    width: 100%
-
-  .filters-results-show &
-    opacity: 1
-    visibility: visible
-    pointer-events: auto
-    transition:
-      delay: 0s
-
-  .filters-result-fixed &
-    height: 75px
-    padding-bottom: 25px
-    position: fixed
-    bottom: -1px
-
-  &, .filters-result-fixed &
-    +media('<tab')
-      z-index: 10100
-      position: fixed
-      left: 0
-      bottom: 0
-
-  .results-loading
-    +size(calc(100% + 2px))
-    position: absolute
-    left: -1px
-    top: -1px
-    +font-bold
-    +font(1.4rem, 50px)
-    color: white
-    text-align: center
-    z-index: 5
-    background-color: rgba(153, 153, 153, 1)
-    opacity: 0
-    visibility: hidden
-    transition:
-      property: opacity, visibility
-      duration: $animation-speed
-
-    .js-loading &
-      opacity: 1
-      visibility: visible
-
-// selected
-.p-filters-results__selected
-  padding: 0.5rem 1rem
-  flex-grow: 1
-
-.p-filters-results__selected__align
-  text-align: left
-
-.p-filters-results__selected__label
-  +font-light
-  +font(1.2rem, 1.6rem)
-  text-transform: uppercase
-
-.p-filters-results__selected__count
-  +font-bold
-  +font(1.4rem, round-float(16/14, 2))
-  letter-spacing: normal
-
-  .cur
-    color: $base-color
-
-// apply btn
-.p-filters-results__apply
-  padding: 0.5rem 1rem
-  flex-grow: 1
-
-  .btn-filters-apply
-    display: block
-    padding: 1.2rem 1rem 1rem
-    +font-bold
-    font-size: 1.4rem
-    line-height: 1.8rem
-    text-transform: uppercase
-    background-color: $base-color
-    border-radius: 2rem
-    color: white
-    z-index: 1
-    // transition
-    $prop: background-color, color
-    //will-change: $prop
-    transition:
-      property: $prop
-      duration: $animation-speed
-
-    // hover
-    .no-touchevents &:hover
-      color: $text-color-light
-      background-color: white
-
-// btn-clear-filters
-.btn-clear-filters
-  +size(5rem)
-  padding: 0
-  background-color: #ff622e
-  border: none
-  color: white
-  // transition
-  $prop: background-color, color
-  //will-change: $prop
-  transition:
-    property: $prop
-    duration: $animation-speed
-
-  svg
-    +size(36px)
-
-  path
-    fill: currentColor
-
-  // hover
-  .no-touchevents &:hover
-    background-color: #ff2b0a
-
-  // focus
-  &:disabled
-    background-color: $btn-disabled-color !important
-    color: white !important
-
+/* loading cover
 .loader-cover
   +size(100%)
   position: absolute
@@ -10021,7 +10070,7 @@ label.checkbox_value
     background-position: center
     background-size: contain
 
-/* filters-results end
+/* loading cover end
 
 /* collections
 //$collections-space: 2.2rem 4.7rem

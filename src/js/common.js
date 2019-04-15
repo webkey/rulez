@@ -1584,6 +1584,7 @@ function toggleShutters() {
   if ($filtersSwitcher.length) {
     filtersShutterJs = $filtersSwitcher.switchClass({
       switchClassTo: $('.shutter--filters-js').add('.p-filters-results-js').add('.filters-shutter-overlay')
+      , remover: $('.js-btn-shutter-close')
       , modifiers: {
         activeClass: 'filters_is-open'
       }
@@ -2897,7 +2898,7 @@ function multiFiltersInit() {
       // filter: '.p-filters-drop-list input[type="checkbox"]',
       labelText: '.p-filters-label-text-js',
       btnReset: '.btn-reset-js',
-      btnResetAll: '.btn-clear-filters-js',
+      btnResetAll: '.btn-filters-clear-js',
       tagsContainer: '.p-filters-tags-js',
       tagsItem: '.p-filters-tags-item-js',
       tagTextContainer: '.p-filters-tag-text-js',
