@@ -10,6 +10,14 @@
 
 <!--MAIN-->
 <div class="main">
+  <!--link all icon svg-->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-angle" viewBox="0 0 10 6">
+      <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+    </symbol>
+  </svg>
+  <!--link all icon-->
+
   <!--CONTENT-->
   <section class="main-section main-section_promo">
     <h2 class="hide">Промо слайдер</h2>
@@ -78,6 +86,15 @@
   <section class="main-section main-section_quick-links layout-narrow max-wrap">
     <h2 class="hide">Быстрые ссылки</h2>
     <div class="quick-links">
+      <!--quick links icons svg-->
+      <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        @@include("includes/symbol/icon-catalog-computer.svg")
+        @@include("includes/symbol/icon-catalog-notebook.svg")
+        @@include("includes/symbol/icon-catalog-monitor.svg")
+        @@include("includes/symbol/icon-catalog-monoblock.svg")
+      </svg>
+      <!--quick links icons svg end-->
+      <div class="header-bg">&nbsp;</div>
       <div class="quick-links__list grid-js">
         <div class="quick-links__item quick-links__item_advise has-shadow grid-item-js">
           @@include("_tpl_advise.html", {"addClasses": "advise_small"})
@@ -85,7 +102,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Компьютеры",
-          "icon": "@@include('includes/svg/icon-catalog-computer.svg')",
+          "icon": "<svg width='35' height='21'><use xlink:href='#icon-catalog-computer'></use></svg>",
           "count": "234",
           "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Игровой", "Для дизайна", "Мощные", "Для видеомонтажа", "Универсальный"]
           })
@@ -93,7 +110,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Ноутбуки",
-          "icon": "@@include('includes/svg/icon-catalog-notebook.svg')",
+          "icon": "<svg width='28' height='17'><use xlink:href='#icon-catalog-notebook'></use></svg>",
           "count": "345",
           "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Игровой", "Для дизайна", "Мощные", "Для видеомонтажа", "Универсальный", "Для работы в дороге"]
           })
@@ -101,7 +118,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Мониторы",
-          "icon": "@@include('includes/svg/icon-catalog-monitor.svg')",
+          "icon": "<svg width='23' height='22'><use xlink:href='#icon-catalog-monitor'></use></svg>",
           "count": "125",
           "links": ["17&quot;", "19&quot;", "21&quot;", "22&quot;", "24&quot;", "27&quot;"]
           })
@@ -109,7 +126,7 @@
         <div class="quick-links__item has-shadow grid-item-js">
           @@include("_tpl_quick-links-category.html", {
           "title": "Моноблоки",
-          "icon": "@@include('includes/svg/icon-catalog-monoblock.svg')",
+          "icon": "<svg width='25' height='23'><use xlink:href='#icon-catalog-monoblock'></use></svg>",
           "count": "5171",
           "links": ["Dell", "HP", "ACER", "Lenovo", "Asus"]
           })
@@ -128,63 +145,63 @@
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Ноутбуки",
-          "icon": "@@include('includes/svg/icon-catalog-notebook-alt.svg')",
+          "icon": "<svg width='28' height='17'><use xlink:href='#icon-catalog-notebook-alt'></use></svg>",
           "count": ""
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Моноблоки",
-          "icon": "@@include('includes/svg/icon-catalog-monoblock-alt.svg')",
+          "icon": "<svg width='27' height='25'><use xlink:href='#icon-catalog-monoblock-alt'></use></svg>",
           "count": "100"
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Компьютеры",
-          "icon": "@@include('includes/svg/icon-catalog-computer-all.svg')",
+          "icon": "<svg width='42' height='25'><use xlink:href='#icon-catalog-computer-all'></use></svg>",
           "count": "100"
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Аксессуары",
-          "icon": "@@include('includes/svg/icon-catalog-accessory-alt.svg')",
+          "icon": "<svg width='17' height='17'><use xlink:href='#icon-catalog-accessory-alt'></use></svg>",
           "count": "100"
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Мониторы",
-          "icon": "@@include('includes/svg/icon-catalog-monitor-alt.svg')",
+          "icon": "<svg width='29' height='25'><use xlink:href='#icon-catalog-monitor-alt'></use></svg>",
           "count": "100"
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Планшеты",
-          "icon": "@@include('includes/svg/icon-catalog-tablet-alt.svg')",
+          "icon": "<svg width='20' height='26'><use xlink:href='#icon-catalog-tablet-alt'></use></svg>",
           "count": "100"
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Принтеры",
-          "icon": "@@include('includes/svg/icon-catalog-printer-alt.svg')",
+          "icon": "<svg width='30' height='25'><use xlink:href='#icon-catalog-printer-alt'></use></svg>",
           "count": "100"
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Gamezone",
-          "icon": "@@include('includes/svg/icon-catalog-game-alt.svg')",
+          "icon": "<svg width='29' height='29'><use xlink:href='#icon-catalog-game-alt'></use></svg>",
           "count": "100"
           })
         </li>
         <li class="categories__item">
           @@include("_tpl_categories__item.html", {
           "title": "Скидки",
-          "icon": "@@include('includes/svg/icon-catalog-sale-alt.svg')",
+          "icon": "<svg width='19' height='17'><use xlink:href='#icon-catalog-sale-alt'></use></svg>",
           "count": "100"
           })
         </li>
@@ -219,13 +236,6 @@
   </section>
 
   <section class="main-section main-section_topics tabs-js max-wrap layout">
-    <!--link all icon svg-->
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="icon-angle" viewBox="0 0 10 6">
-        <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </symbol>
-    </svg>
-    <!--link all icon-->
     <div class="caption-box">
       <h2 class="caption-box__title">Лучшая цена</h2>
       <div class="caption-box__options">
@@ -817,13 +827,6 @@
   </section>
 
   <section class="main-section main-section_topics tabs-js max-wrap layout">
-    <!--link all icon svg-->
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-      <symbol id="icon-angle" viewBox="0 0 10 6">
-        <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-      </symbol>
-    </svg>
-    <!--link all icon-->
     <div class="caption-box">
       <h2 class="caption-box__title">Идеи для подарков</h2>
       <div class="caption-box__options">

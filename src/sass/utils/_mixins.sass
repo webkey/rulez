@@ -1334,6 +1334,18 @@
     vertical-align: top
     +truncate(100%)
 
+=icon($height: 2.4rem, $width: $height)
+  display: inline-block
+  background-size: contain
+  background-position: 50%
+  background-repeat: no-repeat
+  +font(0, 0)
+  @if $height
+    height: $height
+  @if $width
+    width: $width
+
+
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 // ДОПОЛНИТЕЛЬНЫЕ ПРИМЕСИ конец
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//

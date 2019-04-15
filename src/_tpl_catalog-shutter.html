@@ -1,3 +1,17 @@
+<!--catalog menu and categories icons svg-->
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  @@include("includes/symbol/catalog-menu-angle.svg")
+  @@include("includes/symbol/icon-catalog-notebook-alt.svg")
+  @@include("includes/symbol/icon-catalog-monoblock-alt.svg")
+  @@include("includes/symbol/icon-catalog-computer-all.svg")
+  @@include("includes/symbol/icon-catalog-accessory-alt.svg")
+  @@include("includes/symbol/icon-catalog-monitor-alt.svg")
+  @@include("includes/symbol/icon-catalog-tablet-alt.svg")
+  @@include("includes/symbol/icon-catalog-printer-alt.svg")
+  @@include("includes/symbol/icon-catalog-game-alt.svg")
+  @@include("includes/symbol/icon-catalog-sale-alt.svg")
+</svg>
+<!--catalog menu and categories icons svg end-->
 <div class="catalog-shutter catalog-shutter-js">
   <div class="catalog-shutter__layout max-wrap layout">
     <div class="catalog-menu stop-remove-class">
@@ -20,18 +34,12 @@
         </div>
       </div>
       <div class="catalog-menu__list-wrap">
-        <!--submenu open angle svg-->
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-          <symbol id="catalog-menu-angle" viewBox="0 0 10 6">
-            <path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-          </symbol>
-        </svg>
-        <!--submenu open angle svg end-->
         <ul class="catalog-menu__list catalog-list-rolls-js">
           <li class="catalog-menu__item current">
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Ноутбуки",
             "icon": "@@include('includes/svg/icon-catalog-notebook-alt.svg')",
+            "icon": "<svg width='28' height='17'><use xlink:href='#icon-catalog-notebook-alt'></use></svg>",
             "count": "",
             "current": "Бюджетный",
             "links": ["Для дома и учебы", "Домашний", "Рабочий", "Для дизайна"],
@@ -43,6 +51,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Моноблоки",
             "icon": "@@include('includes/svg/icon-catalog-monoblock-alt.svg')",
+            "icon": "<svg width='27' height='25'><use xlink:href='#icon-catalog-monoblock-alt'></use></svg>",
             "count": "100",
             "links": ["Dell", "HP", "ACER", "Lenovo", "Asus"],
             "hasSubLinks": "У этого элемента есть подпункты, и для тестирования увеличим строку, чтобы знать, как она себая поведет, даже если таких длинных пунктов никогда не будет",
@@ -53,6 +62,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Компьютеры",
             "icon": "@@include('includes/svg/icon-catalog-computer-all.svg')",
+            "icon": "<svg width='42' height='25'><use xlink:href='#icon-catalog-computer-all'></use></svg>",
             "count": "100",
             "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Для дизайна", "Мощные", "Для видеомонтажа"]
             })
@@ -61,6 +71,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Аксессуары",
             "icon": "@@include('includes/svg/icon-catalog-accessory-alt.svg')",
+            "icon": "<svg width='17' height='17'><use xlink:href='#icon-catalog-accessory-alt'></use></svg>",
             "count": "100",
             "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Для дизайна", "Мощные", "Очень"]
             })
@@ -69,6 +80,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Мониторы",
             "icon": "@@include('includes/svg/icon-catalog-monitor-alt.svg')",
+            "icon": "<svg width='29' height='25'><use xlink:href='#icon-catalog-monitor-alt'></use></svg>",
             "count": "100",
             "links": ["17&quot;", "19&quot;", "21&quot;", "22&quot;", "24&quot;", "27&quot;"]
             })
@@ -77,6 +89,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Планшеты",
             "icon": "@@include('includes/svg/icon-catalog-tablet-alt.svg')",
+            "icon": "<svg width='20' height='26'><use xlink:href='#icon-catalog-tablet-alt'></use></svg>",
             "count": "100",
             "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Для дизайна", "Мощные"]
             })
@@ -85,6 +98,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Принтеры",
             "icon": "@@include('includes/svg/icon-catalog-printer-alt.svg')",
+            "icon": "<svg width='30' height='25'><use xlink:href='#icon-catalog-printer-alt'></use></svg>",
             "count": "100",
             "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Для дизайна"]
             })
@@ -93,6 +107,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Gamezone",
             "icon": "@@include('includes/svg/icon-catalog-game-alt.svg')",
+            "icon": "<svg width='29' height='29'><use xlink:href='#icon-catalog-game-alt'></use></svg>",
             "count": "100",
             "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Для дизайна"]
             })
@@ -101,6 +116,7 @@
             @@include("_tpl_catalog-menu__item.html", {
             "title": "Скидки",
             "icon": "@@include('includes/svg/icon-catalog-sale-alt.svg')",
+            "icon": "<svg width='19' height='17'><use xlink:href='#icon-catalog-sale-alt'></use></svg>",
             "count": "100",
             "links": ["Бюджетный", "Для дома и учебы", "Домашний", "Рабочий", "Для дизайна", "Мощные"]
             })
