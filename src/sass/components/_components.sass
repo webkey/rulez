@@ -248,6 +248,12 @@ $spinner-btn-width: 35px
   margin-bottom: 1.1rem
   padding: 0 #{nth($section-inner-space, 2)}
 
+  +media('<lap-s')
+    padding: 0 #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding: 0 #{nth($section-inner-space--mob, 2)}
+
   &:last-child
     margin-bottom: 0
 
@@ -362,6 +368,12 @@ $spinner-btn-width: 35px
     letter-spacing: normal
     color: $text-color-light
 
+    +media('<lap-s')
+      padding: 0 #{nth($section-inner-space--tab, 2)}
+
+    +media('<mob')
+      padding: 0 #{nth($section-inner-space--mob, 2)}
+
     li
       position: relative
       flex-grow: 1
@@ -370,6 +382,12 @@ $spinner-btn-width: 35px
       $width: 50.0%
       max-width: $width
       min-width: $width
+
+      +media('<lap-s')
+        padding: 0 #{nth($section-inner-space--tab, 2)}
+
+      +media('<mob')
+        padding: 0 #{nth($section-inner-space--mob, 2)}
 
       &:nth-child(odd)
         padding-left: 0
@@ -546,6 +564,12 @@ input[type="text"].single-form__input
   color: $text-color-light
   cursor: pointer
 
+  +media('<lap-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+
   & > strong
     +font-normal
     font-weight: normal
@@ -601,6 +625,12 @@ input[type="text"].single-form__input
 
 .rolls__panel
   padding: 1rem #{nth($section-inner-space, 2)} 2rem
+
+  +media('<lap-s')
+    padding: 1rem #{nth($section-inner-space--tab, 2)} 2rem
+
+  +media('<mob')
+    padding: 1rem #{nth($section-inner-space--mob, 2)} 2rem
 
 .js .rolls:not(.ms-rolls_initialized)
   .rolls__panel
@@ -794,6 +824,12 @@ $swiper-button-size: 14px, 20px
     property: $prop
     duration: $animation-speed
 
+  +media('<lap-s')
+    margin-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    margin-right: #{nth($section-inner-space--mob, 2)}
+
   & > span
     +hide-text
 
@@ -879,6 +915,12 @@ $swiper-button-size: 14px, 20px
   transition:
     property: $prop
     duration: $animation-speed
+
+  +media('<lap-s')
+    margin-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    margin-right: #{nth($section-inner-space--mob, 2)}
 
   & > span
     +hide-text
@@ -3111,9 +3153,11 @@ $catalog-columns-length--mob: 1
 .catalog-menu__list-wrap, .user-options-mob
   overflow: hidden
   padding: 2.4rem 3rem
-  
+
+  +media('<lap-s')
+    padding: $section-inner-space--tab
+
   +media('<tab')
-    padding: $section-inner-space
     border-bottom: 1px solid $border-color
 
   +media('<mob')
@@ -3440,6 +3484,9 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
 .nav-mob
   overflow: hidden
   padding: $section-inner-space
+
+  +media('<lap-s')
+    padding: $section-inner-space--tab
 
   +media('>=tab')
     display: none
@@ -4533,7 +4580,6 @@ $search-btn-space: 0 0.5rem
       & > span
         color: $base-color-light
 
-  //$articles-nav-first-inner-space: 3.6rem #{nth($section-inner-space, 2)}
   $articles-nav-first-inner-space: 3rem 4rem
   & > li
     border-top: 1px solid $border-color
@@ -5161,6 +5207,9 @@ $advise-content-space--net: nth($advise-figure-size--net, 2) + $advise-figure-sp
   box-shadow: 0 0 3px rgba(black, 0.17)
   z-index: 1
   +clear
+
+  +media('<mob')
+    padding: 2.5rem #{nth($section-inner-space--mob, 2)}
 
 .advise__figure
   float: left
@@ -5861,7 +5910,8 @@ $opinion-box-shadow-color: black
 .topics-thumbs
   display: flex
   flex-wrap: wrap
-  +font(1.6rem, 2.4rem)
+  font-size: 1.6rem
+  line-height: 2.4rem
 
   +media('<tab')
     display: block // Not flex
@@ -5871,7 +5921,7 @@ $opinion-box-shadow-color: black
     top: 0
     width: 24rem
     background-color: white
-    border-radius: 12px
+    border-radius: 1.2rem
     box-shadow: 0 1px 2px rgba(black, 0.15)
     z-index: 9
     // hide
@@ -5891,7 +5941,7 @@ $opinion-box-shadow-color: black
       duration: $animation-speed
 
   a
-    color: #646464
+    color: $text-color-light
     text-decoration: none
     margin: 0.5rem 4rem 0.5rem 0
     user-select: none
@@ -5908,9 +5958,9 @@ $opinion-box-shadow-color: black
         display: inline-block
         vertical-align: top
 
-    +underlinedAnchor(#646464)
+    +underlinedAnchor($text-color-light)
 
-    //+media('<lap')
+    +media('<lap-s')
       margin-right: 2.5rem
 
     +media('<tab')
@@ -5921,16 +5971,15 @@ $opinion-box-shadow-color: black
       span
         border: none
 
-    &:hover
-      .no-touchevents &
-        +media('<tab')
-          color: white
-          background-color: $base-color-light
+      &:hover
+        .no-touchevents &
+            color: white
+            background-color: $base-color-light
 
     // active
     &.tabs-active
       color: #000
-      +font-bold
+      //+font-bold
       cursor: default
 
       & > span
@@ -6265,6 +6314,12 @@ $opinion-box-shadow-color: black
   margin-right: nth($section-inner-space, 2)
   margin-top: 0.8rem
 
+  +media('<lap-s')
+    margin-right: nth($section-inner-space--tab, 2)
+
+  +media('<mob')
+    margin-right: nth($section-inner-space--mob, 2)
+
 .p-add-form__total-label
   position: relative
   padding-right: 0.8rem
@@ -6463,6 +6518,8 @@ input[type="text"].quick-order__input
 
 /* product item
 $product-item-space: 2rem 2.4rem
+$product-item-space--tab: 2rem 2rem
+
 .product
   position: relative
   display: flex
@@ -6505,6 +6562,7 @@ $product-item-space: 2rem 2.4rem
 
   +media('<lap-s')
     min-height: 30rem
+    padding: nth($product-item-space--tab, 1) nth($product-item-space--tab, 2) 0
 
   &:last-child
     margin-bottom: 0
@@ -6643,6 +6701,9 @@ $product-item-space: 2rem 2.4rem
 // === product footer ===
 .product__footer
   padding: 0 nth($product-item-space, 2)
+
+  +media('<lap-s')
+    padding: 0 nth($product-item-space--tab, 2)
 
 // === product offer ===
 .product__offer
@@ -6866,6 +6927,9 @@ $product-item-space: 2rem 2.4rem
   margin: 0 -#{nth($product-item-space, 2)}
   z-index: 1
 
+  +media('<lap-s')
+    margin: 0 -#{nth($product-item-space--tab, 2)}
+
   &::before, &::after
     content: ""
     display: block
@@ -6946,6 +7010,8 @@ $product-item-space: 2rem 2.4rem
 // Перестиливание элементов превью товара для отображения в виде списка (детальный вид)
 [data-view="list-view"]
   $product-item-space: 3.2rem 2.6rem
+  $product-item-space--tab: $section-inner-space--tab
+  $product-item-space--mob: $section-inner-space--mob
   $offer-width: 23.6rem
 
   // === product ===
@@ -6965,6 +7031,9 @@ $product-item-space: 2rem 2.4rem
 
     +media('<net')
       padding-bottom: nth($product-item-space, 1) + 4 // Снизу нужно добавить отступ для кнопок "сравнить" и "в избранное"
+
+    +media('<lap-s')
+      padding: #{nth($product-item-space--tab, 1)} #{nth($product-item-space--tab, 2)} #{nth($product-item-space--tab, 1) + 4} // Снизу нужно добавить отступ для кнопок "сравнить" и "в избранное"
 
     & > a
       display: inline
@@ -7046,6 +7115,9 @@ $product-item-space: 2rem 2.4rem
     margin: 0
     padding: nth($product-item-space, 1) 0
 
+    +media('<lap-s')
+      padding: nth($product-item-space--tab, 1) 0
+
     &::before
       content: ""
       display: block
@@ -7054,6 +7126,10 @@ $product-item-space: 2rem 2.4rem
       bottom: nth($product-item-space, 1)
       width: 0
       border-left: 1px solid $border-color
+
+      +media('<lap-s')
+        top: nth($product-item-space--tab, 1)
+        bottom: nth($product-item-space--tab, 1)
 
   // === product offer ===
   .product__offer
@@ -7064,6 +7140,9 @@ $product-item-space: 2rem 2.4rem
     min-height: 10rem
     margin: 0 0 2rem
     padding: 0 nth($product-item-space, 2)
+
+    +media('<lap-s')
+      padding: 0 nth($product-item-space--tab, 2)
 
   // === product stock ===
   .product__stock
@@ -7119,10 +7198,14 @@ $product-item-space: 2rem 2.4rem
     position: absolute
     left: 0
     bottom: nth($product-item-space, 2)
-    margin: 0
     padding-right: round-float(nth($product-item-space, 2) / 2, 1)
+    margin: 0
     text-align: center
     cursor: default
+
+    +media('<lap-s')
+      bottom: nth($product-item-space--tab, 2)
+      padding-right: round-float(nth($product-item-space--tab, 2) / 2, 1)
 
     +media('<net')
       width: calc(100% - #{$offer-width})
@@ -7222,6 +7305,9 @@ $product-item-space: 2rem 2.4rem
     display: block
     margin: 0
     padding: 0 nth($product-item-space, 2)
+
+    +media('<lap-s')
+      padding: 0 nth($product-item-space--tab, 2)
 
     &::before, &::after
       display: none
@@ -7554,8 +7640,16 @@ a.banner-element
   +font-bold
   font-size: 2.4rem
   line-height: 3.5rem
-  padding: 1rem 2.2rem 2.7rem
+  padding: 1rem #{nth($section-inner-space, 2)} 2.7rem
   z-index: 1
+
+  +media('<tab-s')
+    padding: $section-inner-space--tab
+
+  +media('<mob')
+    padding: $section-inner-space--mob
+    font-size: 1.8rem
+    line-height: 2.4rem
 
   &::before
     content: ""
@@ -7777,6 +7871,7 @@ $tl-item-space--tab: 1rem
   align-items: center
   justify-content: center
   text-align: center
+  text-decoration: none
 
   //+media('<lap-s')
     height: 18rem
@@ -8150,7 +8245,7 @@ $gz-columns: 4
   color: #c8c8c8
 
   +media('<lap-s')
-    padding: $section-inner-space
+    padding: $section-inner-space--tab
     $fz: 2rem
     font-size: $fz
     line-height: #{round-float($fz * $kef-lh, 1)}
@@ -8159,6 +8254,9 @@ $gz-columns: 4
     $fz: 2.5rem
     font-size: $fz
     line-height: #{round-float($fz * $kef-lh, 1)}
+
+  +media('<mob')
+    padding: $section-inner-space--mob
 
   [data-align~="top"] &
     align-items: flex-start
@@ -8792,7 +8890,10 @@ a.helper__item
 $products-border-width: 1px
 .products
   overflow: hidden
-  margin-bottom: 4rem
+  margin-bottom: 3rem
+
+  +media('<tab-s')
+    margin-bottom: 2rem
 
   &:not(.toggle-view_initialized)
     opacity: 0
@@ -8905,6 +9006,12 @@ $products-border-width: 1px
   text-align: center
   margin-bottom: 4rem
 
+  +media('<tab-s')
+    margin-bottom: 3rem
+
+  +media('<mob')
+    margin-bottom: 2rem
+
   &:last-child
     margin-bottom: 0
 
@@ -8913,7 +9020,9 @@ $products-border-width: 1px
 /* m-container
 // variables
 $p-filters-breakpoint: 'tab'
-$m-container-space: 0 3rem
+$m-container-space: 0 3rem 3rem
+$m-container-space--tab: 0 2rem 2rem
+$m-container-space--mob: 0 1rem 1.8rem
 
 $p-filters-width: 34.8rem
 $p-filters-width--lap: 28rem
@@ -8933,13 +9042,20 @@ $p-results-fixed-height: 7rem
   display: flex
   background-color: white
   margin-bottom: 2.5rem
+  padding-bottom: nth($m-container-space, 3)
 
-  &:last-child
-    margin-bottom: 0
+  +media('<lap-s')
+    padding-bottom: nth($m-container-space--tab, 3)
 
   // Фильтры - попапом
   +media('<#{$p-filters-breakpoint}')
     display: block
+
+  +media('<mob')
+    padding-bottom: nth($m-container-space--mob, 3)
+
+  &:last-child
+    margin-bottom: 0
 
   &::before
     content: ""
@@ -9076,12 +9192,15 @@ $p-results-fixed-height: 7rem
   line-height: 2.4rem
   border-bottom: 1px solid $border-color
 
-  .p-filters-activated
-    display: none
-
   // Фильтры - попапом
   +media('<#{$p-filters-breakpoint}')
     display: flex
+
+  +media('<mob')
+    padding-left: nth($section-inner-space--mob, 2)
+
+  .p-filters-activated
+    display: none
 
   .btn-filters-close
     position: absolute
@@ -9118,12 +9237,20 @@ $p-results-fixed-height: 7rem
   padding-left: nth($m-container-space, 2)
   padding-right: nth($m-container-space, 2)
 
+  +media('<lap-s')
+    padding-left: nth($m-container-space--tab, 2)
+    padding-right: nth($m-container-space--tab, 2)
+
+  +media('<mob')
+    padding-left: nth($m-container-space--mob, 2)
+    padding-right: nth($m-container-space--mob, 2)
+
 .m-heading
   display: flex
   justify-content: space-between
   align-items: center
   padding-top: 1.5rem
-  padding-bottom: 1.5rem
+  padding-bottom: 1rem
 
   h1, .h1
     font-size: 3.6rem
@@ -9136,20 +9263,36 @@ $p-results-fixed-height: 7rem
   flex-shrink: 0
   margin-left: nth($section-inner-space, 2)
 
+  +media('<lap-s')
+    margin-left: nth($section-inner-space--tab, 2)
+
   +media('<mob')
     margin-left: nth($section-inner-space--mob, 2)
 
 .m-options
+  $vertical-space: 0.5rem
   display: flex
   flex-wrap: wrap
   align-items: center
   justify-content: flex-start
-  margin-bottom: 1.5rem
+  margin-bottom: 1rem
   line-height: 1
+
+  & > *
+    margin: #{$vertical-space} #{nth($section-inner-space, 2)} #{$vertical-space} 0
+
+    +media('<lap-s')
+      margin-right: #{nth($section-inner-space--tab, 2)}
+
+    +media('<mob')
+      margin-right: #{nth($section-inner-space--mob, 2)}
 
   .p-sorting
     display: inline-block
     vertical-align: top
+
+    +media('<tab')
+      width: 24rem
 
   .check-label
     line-height: 2.4rem
@@ -9159,6 +9302,9 @@ $p-results-fixed-height: 7rem
   font-size: 1.4rem
   line-height: 2.2rem
   margin-bottom: 4rem
+
+  &:last-child
+    margin-bottom: 0
 
   p
     margin-bottom: 2.2rem
@@ -9447,14 +9593,11 @@ $p-results-fixed-height: 7rem
 /* view-switcher end
 
 /* options panel
-.filters-switcher_mob
+.filters-switcher
   display: none
   position: relative
-  margin: 0 0 0 auto
-  padding-left: 1rem
-  +font-bold
   +font(1.4rem, 20px)
-  color: inherit
+  color: $text-color-light
   text-decoration: none
   user-select: none
   -webkit-tap-highlight-color: transparent
@@ -9740,19 +9883,6 @@ $p-results-fixed-height: 7rem
 
 /* control sort end
 
-/* p-sorting
-.p-sorting
-  list-style: none
-  margin: 0 #{nth($section-inner-space, 2)} 0 0
-
-  +media('<tab')
-    width: 24rem
-
-  &:last-child
-    margin-bottom: 0
-
-/* p-sorting end
-
 /* filters tags
 .m-tags
   display: none
@@ -9834,11 +9964,17 @@ $p-results-fixed-height: 7rem
   position: relative
   padding: 0 2rem
 
+  +media('<mob')
+    padding: 0 #{nth($section-inner-space--mob, 2)}
+
 .p-filters-item
   position: relative
   border: solid $border-color
   padding: 1.9rem 0
   border-width: 0 0 1px
+
+  +media('<mob')
+    padding: 1.2rem 0
 
 // switcher
 .p-filters-select
@@ -9927,7 +10063,7 @@ $p-results-fixed-height: 7rem
   &, .#{$article-content} &
     list-style: none
     margin: 0
-    padding: 0 nth($p-filters-space, 2) nth($p-filters-space, 1) - $item-space
+    padding: nth($p-filters-space, 1) nth($p-filters-space, 2) nth($p-filters-space, 1) - $item-space
 
     li
       position: relative
@@ -10073,8 +10209,9 @@ label.checkbox_value
 /* loading cover end
 
 /* collections
-//$collections-space: 2.2rem 4.7rem
 $collections-space: $section-inner-space
+$collections-space--tab: $section-inner-space--tab
+$collections-space--mob: $section-inner-space--mob
 $collections-title-width: 12.5rem
 .collections
   position: relative
@@ -10082,6 +10219,15 @@ $collections-title-width: 12.5rem
   display: flex
   align-items: center
   background-color: white
+
+  +media('<lap-s')
+    padding: $collections-space--tab
+
+  +media('<tab')
+    display: block
+
+  +media('<mob')
+    padding: $collections-space--mob
 
   &::before
     content: ""
@@ -10093,39 +10239,120 @@ $collections-title-width: 12.5rem
     width: 0
     border-left: 1px solid $border-color
 
+    +media('<lap-s')
+      top: nth($collections-space--tab, 1) + 0.5
+      bottom: nth($collections-space--tab, 1) + 0.5
+      left: $collections-title-width + nth($collections-space--tab, 2)
+
+    +media('<tab-s')
+      display: none
+
+    //+media('<mob')
+      top: nth($collections-space--mob, 1) + 0.5
+      bottom: nth($collections-space--mob, 1) + 0.5
+      left: $collections-title-width + nth($collections-space--mob, 2)
+
 .collections__title
-  width: $collections-title-width
+  flex-shrink: 0
   flex-basis: $collections-title-width
+  max-width: $collections-title-width
   +font-bold
-  color: #000
+  color: $title-color
   font-size: 2.1rem
   line-height: 2.2rem
   margin: 0
 
+  +media('<tab-s')
+    max-width: none
+    margin-bottom: 2rem
+
+    &:last-child
+      margin-bottom: 0
+
 .collections__content
   flex-grow: 1
-  flex-basis: calc(100% - #{$collections-title-width + nth($collections-space, 2)})
-  padding: 0 0 0 3.7rem
+  padding: 0 0 0 #{nth($collections-space, 2) + 1.3}
+
+  +media('<lap-s')
+    padding-left: #{nth($collections-space--tab, 2) + 1.3}
+
+  +media('<tab-s')
+    padding-left: 0
+
+  //+media('<mob')
+    padding-left: #{nth($collections-space--mob, 2) + 1.3}
 
   // for ie 9
   @if $ie9
     .no-flexwrap &
       margin-left: $collections-title-width
 
+/* topics-nav
+.collections__nav
+  position: relative
+  margin-bottom: 1rem
+
+  +media('<tab')
+    max-width: 24rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* topics-nav end
+
+/* topics-thumbs-select
+.collections__select
+  +pseudo-select-common($base-color-light)
+
+  +media('>=tab')
+    display: none
+
+/* topics-thumbs-select end
+
 .collections__thumbs
   display: flex
   flex-wrap: wrap
   font-size: 1.4rem
   line-height: 2.0rem
-  margin-bottom: 1rem
 
-  &:last-child
-    margin-bottom: 0
+  +media('<tab')
+    display: block // Not flex
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    background-color: white
+    border-radius: 1.2rem
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
 
   a
-    color: #777
+    color: $text-color-light
     text-decoration: none
     margin: 0.5rem 4rem 0.5rem 0
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+    // transition
+    $prop: opacity
+    transition:
+      property: $prop
+      duration: $animation-speed
 
     // for ie 9
     @if $ie9
@@ -10133,20 +10360,47 @@ $collections-title-width: 12.5rem
         display: inline-block
         vertical-align: top
 
-    // touch
-    &.touchevents
-      user-select: none
-      -webkit-tap-highlight-color: transparent
+    +underlinedAnchor($text-color-light)
 
-    +underlinedAnchor(#777)
+    +media('<lap-s')
+      margin-right: 2.5rem
+
+    +media('<tab')
+      display: block
+      margin: 0
+      padding: 1.2rem 1.4rem
+
+      span
+        border: none
+
+      &:hover
+        .no-touchevents &
+          color: white
+          background-color: $base-color-light
 
     // active
     &.tabs-active
       color: #000
       //+font-bold
+      cursor: default
 
       & > span
         border-color: transparent
+
+      +media('<tab')
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
+
+  // Select opened
+  &.tabs-select-open
+    +media('<tab')
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
 
 /* collections end
 
@@ -10203,6 +10457,12 @@ $card-cont-width: 520px
   padding: 4.8rem nth($section-inner-space, 2) 4.2rem
   margin-bottom: 4.8rem
   +clear
+
+  +media('<lap-s')
+    padding: 4.8rem nth($section-inner-space--tab, 2) 4.2rem
+
+  +media('<mob')
+    padding: 4.8rem nth($section-inner-space--mob, 2) 4.2rem
 
   &:last-child
     margin-bottom: 0
@@ -11046,6 +11306,12 @@ $card-size: 85px 135px
   border: none
   z-index: 5
 
+  +media('<lap-s')
+    margin: 0 #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    margin: 0 #{nth($section-inner-space--mob, 2)}
+
 .p-prompts__panel-thumbs
   position: absolute
   left: #{nth($section-inner-space, 2)}
@@ -11054,6 +11320,14 @@ $card-size: 85px 135px
   padding: 1.1rem 0 0
   margin: 2px 10rem 0 0
   z-index: 3
+
+  +media('<lap-s')
+    left: #{nth($section-inner-space--tab, 2)}
+    right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    left: #{nth($section-inner-space--mob, 2)}
+    right: #{nth($section-inner-space--mob, 2)}
 
   &::after
     content: ""
@@ -11070,6 +11344,12 @@ $card-size: 85px 135px
 .section_p-infobar
   padding: #{nth($section-inner-space, 1)} #{nth($section-inner-space, 2)}
   background-color: white
+
+  +media('<lap-s')
+    padding: #{nth($section-inner-space--tab, 1)} #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding: #{nth($section-inner-space--mob, 1)} #{nth($section-inner-space--mob, 2)}
 
 .p-infobar-tabs__thumbs
   margin-bottom: 2rem
@@ -11193,6 +11473,12 @@ $advice-box-shadow-color: black
   line-height: 2.1rem
   color: $text-color-light
 
+  +media('<lap-s')
+    padding: $section-inner-space--tab
+
+  +media('<mob')
+    padding: $section-inner-space--mob
+
   h2
     +font-bold
     font-size: 1.6rem
@@ -11216,6 +11502,12 @@ $advice-box-shadow-color: black
 .useful__content
   padding-right: nth($section-inner-space, 1)
   flex-grow: 1
+
+  +media('<lap-s')
+    padding-right: nth($section-inner-space--tab, 1)
+
+  +media('<mob')
+    padding-right: nth($section-inner-space--mob, 1)
 
 .useful__aside
   $width: 40rem
@@ -11378,6 +11670,12 @@ $swiper-button-size: 14px, 20px
   transition:
     property: $prop
     duration: $animation-speed
+
+  +media('<lap-s')
+    margin: nth($section-inner-space--tab, 1) nth($section-inner-space--tab, 1) 0 0
+
+  +media('<mob')
+    margin: nth($section-inner-space--mob, 1) nth($section-inner-space--mob, 1) 0 0
 
   & > span
     +hide-text
@@ -11570,6 +11868,14 @@ a.news-elem:hover
   padding-top: nth($section-inner-space, 1)
   padding-bottom: nth($section-inner-space, 1)
 
+  +media('<lap-s')
+    padding-top: nth($section-inner-space--tab, 1)
+    padding-bottom: nth($section-inner-space--tab, 1)
+
+  +media('<mob')
+    padding-top: nth($section-inner-space--mob, 1)
+    padding-bottom: nth($section-inner-space--mob, 1)
+
 .news-entry
   overflow: hidden
 
@@ -11616,6 +11922,12 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
   position: relative
   padding: 0 6rem 0 #{nth($section-inner-space, 2)}
 
+  +media('<lap-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+
 .cart-item__box
   $element: &
   display: flex
@@ -11656,6 +11968,12 @@ $cart-item-figure-space: 2.7rem
 .cart-item__caption
   margin-bottom: 2rem
   padding: 2rem nth($section-inner-space, 2) 0 0
+
+  +media('<lap-s')
+    padding-right: nth($section-inner-space--tab, 2)
+
+  +media('<mob')
+    padding-right: nth($section-inner-space--mob, 2)
 
   &:last-child
     margin-bottom: 0
@@ -11806,6 +12124,14 @@ $cart-item-figure-space: 2.7rem
   top: 0
   margin: 1.5rem 10rem 0 0
   z-index: 3
+
+  +media('<lap-s')
+    left: #{nth($section-inner-space--tab, 2)}
+    right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    left: #{nth($section-inner-space--mob, 2)}
+    right: #{nth($section-inner-space--mob, 2)}
 
 .cart__similar-title
   +font-bold
@@ -12092,6 +12418,12 @@ $cart-container-aside-width-full: $cart-container-inside-space + $cart-container
   padding: 2rem #{nth($section-inner-space, 2)}
   background-color: white
 
+  +media('<lap-s')
+    padding: 2rem #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding: 1.2rem #{nth($section-inner-space--mob, 2)}
+
   &:last-child
     margin-bottom: 0
 
@@ -12128,6 +12460,12 @@ $checkout-col-inner-space: #{round-float(nth($section-inner-space, 2) / 2, 1)} /
   margin-bottom: 2rem
   padding: 2rem #{nth($section-inner-space, 2)}
   background-color: white
+
+  +media('<lap-s')
+    padding: 2rem #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding: 2rem #{nth($section-inner-space--mob, 2)}
 
   &:last-child
     margin-bottom: 0

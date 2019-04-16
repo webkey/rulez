@@ -415,6 +415,12 @@
           </div>
         </div>
         <div class="m-options">
+          <a href="#" class="filters-switcher btn-filters-js" title="Показать фильтры">
+            <div class="p-filters-activated p-filters-activated-js hide">0</div>
+            <span>Фильтр</span>
+            <em>@@include("includes/svg/icon-filters.svg")</em>
+          </a>
+
           <!--.cs - control-sort // Sorting products-->
           <!--cs-container-->
           <div class="p-sorting cs-container cs-js">
@@ -485,16 +491,11 @@
             <input type="checkbox" name="stock">
             <span>Товар в наличии</span>
           </label>
-
-          <a href="#" class="filters-switcher_mob btn-filters-js" title="Показать фильтры">
-            <div class="p-filters-activated p-filters-activated-js hide">0</div>
-            <span>Фильтр</span>
-            <em>@@include("includes/svg/icon-filters.svg")</em>
-          </a>
         </div>
-        <section class="banner">
-          <a href="#"><img class="lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" /></a>
-        </section>
+        <a href="#" class="banner">
+          <img class="no-mobile-only lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" />
+          <img class="mobile-only lozad" src="img/banner-01-mob.jpg" data-src="img/banner-01-mob.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." data-loaded="true">
+        </a>
         <div class="products" data-toggle-view-id="products">
           <section class="products__list equal-height-js">
             <article class="products__item">
@@ -665,12 +666,15 @@
       <div class="collections">
         <h2 class="collections__title">Готовые подборки</h2>
         <div class="collections__content">
-          <div class="collections__thumbs tabs__thumbs-js">
-            <a href="#brand" class="tabs-active"><span>По производителю</span></a>
-            <a href="#launch"><span>Дата выхода на рынок</span></a>
-            <a href="#screen"><span>Диагональ экрана</span></a>
-            <a href="#color"><span>Цвет корпуса</span></a>
-            <a href="#resolution"><span>Разрешение экрана</span></a>
+          <div class="collections__nav">
+            <div class="collections__select tabs__select-js"></div>
+            <div class="collections__thumbs tabs__thumbs-js tabs__select-drop-js">
+              <a href="#brand" class="tabs-active"><span>По производителю</span></a>
+              <a href="#launch"><span>Дата выхода на рынок</span></a>
+              <a href="#screen"><span>Диагональ экрана</span></a>
+              <a href="#color"><span>Цвет корпуса</span></a>
+              <a href="#resolution"><span>Разрешение экрана</span></a>
+            </div>
           </div>
           <div class="tabs__panels-js">
             <div id="brand">
