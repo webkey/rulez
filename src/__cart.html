@@ -355,7 +355,10 @@
         <!--cart similar end-->
         <!--cart-banner-->
         <section class="cart-banner">
-          <a href="#"><img src="img/banner-02.jpg" alt="Все виды рассрочки"></a>
+          <a href="#">
+            <img class="no-mobile-only lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" />
+            <img class="mobile-only lozad" src="img/banner-01-mob.jpg" data-src="img/banner-01-mob.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." data-loaded="true">
+          </a>
         </section>
         <!--cart-banner end-->
       </div>
@@ -364,7 +367,7 @@
         <form action="#" class="validate-js">
           <div class="clearance__caption">
             <div class="clearance__caption-icon">
-              @@include("includes/svg/icon-free.svg")
+              <i class="icon-free"></i>
             </div>
             <div class="clearance__caption-text"><strong>Поздравляем!</strong> Вы получили бесплатную доставку на ваш заказ</div>
           </div>
@@ -372,19 +375,19 @@
             <div class="delivery clearance__delivery">
               <div class="delivery-item">
                 <div class="delivery__icon">
-                  @@include("includes/svg/icon-delivery-cube.svg")
+                  <i class="icon-delivery"></i>
                 </div>
                 <div class="delivery__text"><strong>Доставка курьером</strong> Завтра, 2 февраля — <mark>бесплатно</mark></div>
               </div>
               <div class="delivery-item">
                 <div class="delivery__icon">
-                  @@include("includes/svg/icon-yourself.svg")
+                  <i class="icon-yourself"></i>
                 </div>
                 <div class="delivery__text"><strong>Самовывоз</strong> Завтра, 2 февраля — <mark>бесплатно</mark></div>
               </div>
               <div class="delivery-item">
                 <div class="delivery__icon">
-                  @@include("includes/svg/icon-helper-delivery.svg")
+                  <i class="icon-delivery-alt"></i>
                 </div>
                 <div class="delivery__text"><strong>Доставка почтой</strong> 6 – 8 февраля</div>
               </div>

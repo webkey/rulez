@@ -1,4 +1,4 @@
-<div class="cart-item@@if(context.classes){ @@classes}">
+<a href="product-card.html" class="cart-item@@if(context.classes){ @@classes}">
   <div class="cart-item__box">
     <div class="cart-item__figure">
       <img class="cart-item__figure-img" src="@@src" alt="@@title" />
@@ -25,8 +25,8 @@
     </div>
   </div>
 
-  <a href="#" class="cart-item__remove">
+  <div class="cart-item__remove">
     @@include("includes/svg/icon-cross-sm.svg")
     <span>Удалить из корзины</span>
-  </a>
-</div>
+  </div>
+</a>

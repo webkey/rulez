@@ -584,7 +584,7 @@ function slidersInit() {
           991: {
             allowTouchMove: false
           }
-        },
+        }
       });
 
       topicsSliderJs.on('init', function() {
@@ -705,30 +705,41 @@ function slidersInit() {
       var $thisSlider = $(this),
           $thisBtnNext = $('.cart-similar-slider__next-js', $thisSlider),
           $thisBtnPrev = $('.cart-similar-slider__prev-js', $thisSlider),
-          cartSimilarSliderInited;
+          cartSimilarSliderJs;
 
-      cartSimilarSliderInited = new Swiper($thisSlider, {
+      cartSimilarSliderJs = new Swiper($thisSlider, {
         init: false,
         loop: false,
         keyboardControl: true,
-        slidesPerView: 5,
+        slidesPerView: 6,
         spaceBetween: 10,
 
         // Navigation arrows
         navigation: {
           nextEl: $thisBtnNext,
           prevEl: $thisBtnPrev,
+        },
+        breakpoints: {
+          1599: {
+            slidesPerView: 5
+          },
+          1279: {
+            slidesPerView: 4
+          },
+          1099: {
+            slidesPerView: 3
+          }
         }
       });
 
-      cartSimilarSliderInited.on('init', function() {
-        $(cartSimilarSliderInited.slides).matchHeight({
+      cartSimilarSliderJs.on('init', function() {
+        $(cartSimilarSliderJs.slides).matchHeight({
           byRow: true, property: 'height', target: null, remove: false
         });
-        $(cartSimilarSliderInited.el).closest($thisSlider).addClass('is-loaded');
+        $(cartSimilarSliderJs.el).closest($thisSlider).addClass('is-loaded');
       });
 
-      cartSimilarSliderInited.init();
+      cartSimilarSliderJs.init();
     });
 
   }
