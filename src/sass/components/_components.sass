@@ -74,7 +74,7 @@
   overflow: hidden
   background-color: $base-color
 
-  &::before
+  //&::before
     $left: 130px
     $bottom: 100px
     content: ''
@@ -86,6 +86,21 @@
     left: -#{$left + $bottom}
     background-color: $bg-color
     border-radius: 50% 50% 0 0 / 100% 100% 0 0
+
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    bottom: -1.3rem
+    width: 100%
+    height: 7.7rem
+    background: url(../../img/arc-mask-invert.png) no-repeat
+    background-size: 100% 100%
+
+    +media('<tab')
+      height: 4rem
+      bottom: -0.5rem
 
 /* figure on background of a page end
 
@@ -136,7 +151,7 @@ $spinner-btn-width: 35px
   margin: 0
   padding: 7px 4px
   +font-normal
-  +font(12px, 15px)
+  +font(12px, 16px)
   vertical-align: top
   text-align: center
   border: none
@@ -149,6 +164,11 @@ $spinner-btn-width: 35px
   &::-webkit-inner-spin-button,
   &::-webkit-outer-spin-button
     -webkit-appearance: none
+
+  +media('<mob-s')
+    height: 36px
+    padding: 9px 4px
+    +font(16px, 18px)
 
   &:focus, &:hover
     box-shadow: none !important
@@ -167,6 +187,9 @@ $spinner-btn-width: 35px
 .ui-spinner a.ui-spinner-button
   border-color: inherit
   border-style: solid
+  outline: none
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
 .ui-spinner-up
   right: 0
@@ -209,21 +232,22 @@ $spinner-btn-width: 35px
       &::before, &::after
         background-color: $text-color-disabled !important
 
-// hover
-.ui-spinner-button:hover
-  .ui-button-icon
-    &::before, &::after
-      background-color: $base-color
+.ui-spinner-button
+  // hover
+  &:hover
+    .ui-button-icon
+      &::before, &::after
+        background-color: $base-color
 
-// active
-.ui-spinner-button:active
-  .ui-button-icon
-    transform: translate(0, 1px)
+  // active
+  //.ui-spinner-button:active
+    .ui-button-icon
+      transform: translate(0, 1px)
 
-// disabled
-.ui-spinner-button.disabled
-  opacity: 0.5
-  pointer-events: none
+  // disabled
+  &.disabled
+    opacity: 0.5
+    pointer-events: none
 
 /* spinner end
 
@@ -242,6 +266,23 @@ $spinner-btn-width: 35px
   z-index: 5
 
 /* simple bar end
+
+/* tabs
+.tabs__panels-js,
+.tabs-nested__panels-js
+  position: relative
+  z-index: 1
+
+.tabs__panels-js, .tabs-nested__panels-js
+
+  & > div
+    position: absolute
+    opacity: 0
+    visibility: hidden
+    outline: none
+    width: 100%
+
+/* tabs end
 
 /* breadcrumbs
 .breadcrumbs
@@ -442,6 +483,14 @@ $spinner-btn-width: 35px
 .buttons
   padding: 1rem #{nth($box-inner-space, 2)}
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 .buttons__item
   margin-top: 1.2rem
 
@@ -454,11 +503,18 @@ $spinner-btn-width: 35px
 /* buttons end
 
 /* single form
-$single-form-field-width: 21.9rem
-$single-form-field-width--sm: 16rem
+$single-form-label-width: 10.3rem
 .single-form
   padding: 1rem #{nth($box-inner-space, 2)}
   background-color: white
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 .single-form__layout
   position: relative
@@ -466,25 +522,38 @@ $single-form-field-width--sm: 16rem
   align-items: center
   justify-content: space-between
 
+  +media('<mob-s')
+    display: block
+
 .single-form__label
   flex-grow: 1
-  margin: 0 0.5rem 0 0
+  padding-right: 0.5rem
+  margin: 0
+  width: $single-form-label-width
   +font-bold
   font-size: 1.4rem
   line-height: 2.0rem
   color: $text-color
 
+  +media('<mob-s')
+    display: inline-block
+    vertical-align: top
+    width: auto
+    padding-right: 0
+    margin-bottom: 1rem
+
 input[type="text"].single-form__input
   flex-shrink: 0
-  flex-basis: $single-form-field-width
-  max-width: $single-form-field-width
+  $width: calc(100% - #{$single-form-label-width})
+  flex-basis: $width
+  max-width: $width
   padding: 10px 20px 9px 20px
   height: 45px
   margin: 0
 
-  +media('<lap-s')
-    flex-basis: $single-form-field-width--sm
-    max-width: $single-form-field-width--sm
+  +media('<mob-s')
+    width: 100%
+    max-width: none
 
   .single-form_has-btn &
     padding-right: 40px
@@ -504,6 +573,11 @@ input[type="text"].single-form__input
   outline: none
   // transition
   transition: color $animation-speed
+
+  +media('<mob-s')
+    margin-top: 0
+    top: auto
+    bottom: 0
 
   &:hover
     color: $base-color
@@ -538,6 +612,14 @@ input[type="text"].single-form__input
 .comment-form
   padding: 2rem #{nth($box-inner-space, 2)}
   background-color: white
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
   & > label
     display: block
@@ -892,6 +974,9 @@ $swiper-button-size: 14px, 20px
   position: relative
   padding-top: 6.1rem
 
+  //+media('<mob')
+    padding-top: 9.5rem
+
   .js &:not(.is-loaded)
     opacity: 0
     pointer-events: none
@@ -910,12 +995,16 @@ $swiper-button-size: 14px, 20px
   position: absolute
   right: 0
   top: 0
+  //bottom: 100%
   height: nth($swiper-button-size, 1)
   width: nth($swiper-button-size, 2)
   margin-top: 2.4rem
   margin-right: #{nth($section-inner-space, 2)}
   will-change: transform
   cursor: pointer
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  outline: none
   // transition
   $prop: color
   transition:
@@ -927,6 +1016,7 @@ $swiper-button-size: 14px, 20px
 
   +media('<mob')
     margin-right: #{nth($section-inner-space--mob, 2)}
+    margin-top: 2.1rem
 
   & > span
     +hide-text
@@ -2414,6 +2504,10 @@ $quick-cart-footer-height--mob: 7rem
   +media('<tab')
     max-height: calc(100vh - #{$header-height--tab} - #{$quick-cart-footer-height--tab} - #{nth($page-layout-space, 2)})
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
   +media('<mob')
     padding: 0 #{nth($page-layout-space--mob, 2)}
     max-height: calc(100vh - #{$header-height--mob} - #{$quick-cart-footer-height--mob} - #{nth($page-layout-space--mob, 2)})
@@ -2563,6 +2657,10 @@ a.quick-cart__item
   +media('<tab')
     height: $quick-cart-footer-height--tab
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
   +media('<mob')
     height: $quick-cart-footer-height--mob
     padding: 1rem #{nth($page-layout-space--mob, 2)}
@@ -2573,7 +2671,6 @@ a.quick-cart__item
 
 .quick-cart__remove
   $size: 1.8rem
-  $size-cross: 0.2rem 1rem
   position: absolute
   right: 1.2rem
   top: 0.9rem
@@ -5618,6 +5715,389 @@ $categories-item-col: 3
 
 /* main section categories (only mob) end
 
+/* topics tabs
+// topics nav
+.topics-nav
+  position: relative
+
+// topics thumbs select
+.topics-thumbs-select
+  +pseudo-select-common($base-color-light)
+
+  +media('>=tab')
+    display: none
+
+// topics thumbs
+.topics-thumbs
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.6rem
+  line-height: 2.4rem
+
+  +media('<tab')
+    display: block // Not flex
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    background-color: white
+    border-radius: 1.2rem
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+  a
+    color: $text-color-light
+    text-decoration: none
+    margin: 0.5rem 4rem 0.5rem 0
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+    // transition
+    $prop: opacity
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    +underlinedAnchor($text-color-light)
+
+    +media('<lap-s')
+      margin-right: 2.5rem
+
+    +media('<tab')
+      display: block
+      margin: 0
+      padding: 1.2rem 1.4rem
+
+      span
+        border: none
+
+      &:hover
+        .no-touchevents &
+            color: white
+            background-color: $base-color-light
+
+    // active
+    &.tabs-active
+      color: #000
+      cursor: default
+
+      & > span
+        border-color: transparent
+
+      +media('<tab')
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
+
+  // Select opened
+  &.tabs-select-open
+    +media('<tab')
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
+
+// topics tabs panel
+.topics-tabs__panel
+  position: relative
+
+/* topics tabs end
+
+/* caption box
+.caption-box
+  position: relative
+  display: flex
+  align-items: flex-start
+  margin-bottom: 1.7rem
+
+  &:last-child
+    margin-bottom: 0
+
+  +media('<lap-s')
+    flex-direction: column
+
+.caption-box__title
+  flex-shrink: 0
+  margin-right: 5rem
+  margin-bottom: 0
+  //$width: 35rem
+  //min-width: $width
+  //max-width: $width
+  +font-bold
+  font-size: $main-section-title-font-size
+  line-height: $main-section-title-line-height
+  color: #131313
+
+  +media('<lap-s')
+    margin-right: 0
+    margin-bottom: 1rem
+    font-size: $main-section-title-font-size--tab
+    line-height: $main-section-title-line-height--tab
+
+  +media('<mob')
+    font-size: $main-section-title-font-size--mob
+    line-height: $main-section-title-line-height--mob
+
+.caption-box__options
+  position: relative
+  //padding-top: 0.2rem // If align center
+  padding-top: 0.7rem // If align top
+  padding-right: 8rem // Space for button All
+
+  +media('<lap-s')
+    padding-top: 0
+
+.link-all
+  display: inline-block
+  vertical-align: top
+  $line-height: 3rem
+  height: $line-height
+  //margin-top: -#{round-float($line-height / 2, 1)}
+  padding: 0 1.4rem
+  +font(1.4rem, $line-height)
+  color: $base-color-light
+  text-decoration: none
+  background-color: white
+  box-shadow: 0 1px 2px rgba(black, 0.3)
+  border-radius: $line-height
+  // transition
+  $prop: background-color, color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  +media('<mob')
+    $line-height: 3.6rem
+    height: $line-height
+    padding: 0 1.4rem 0 2rem
+    +font(1.6rem, $line-height)
+    border-radius: $line-height
+
+  .caption-box &
+    position: absolute
+    right: 0
+    bottom: 0.5rem // If align bottom
+
+    +media('<tab')
+      bottom: 0
+
+  svg
+    position: relative
+    top: 1.2rem
+    display: inline-block
+    vertical-align: top
+    width: 1rem
+    height: 0.6rem
+    transform: rotate(-90deg)
+
+    +media('<mob')
+      top: 1.5rem
+      margin-left: 0.2rem
+
+    path, use
+      stroke: currentColor
+
+  // hover
+  &:hover
+    color: white
+    background-color: $base-color-light
+
+  // active
+  &:active
+    transform: translate(0, 1px)
+
+/* caption box end
+
+/* simple tabs
+// simple tabs nav
+.simple-tabs__nav
+  position: relative
+  margin-bottom: 1rem
+
+  +media('<tab')
+    max-width: 24rem
+
+  &:last-child
+    margin-bottom: 0
+
+// simple tabs thumbs select
+.simple-tabs__select
+  +pseudo-select-common($base-color-light)
+
+  +media('>=tab')
+    display: none
+
+// simple tabs thumbs
+.simple-tabs-thumbs
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.4rem
+  line-height: 2.0rem
+
+  +media('<tab')
+    display: block // Not flex
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    background-color: white
+    border-radius: 1.2rem
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+  a
+    color: $text-color-light
+    text-decoration: none
+    margin: 0.5rem 3rem 0.5rem 0
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+    // transition
+    $prop: opacity
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    +underlinedAnchor($text-color-light)
+
+    +media('<lap-s')
+      margin-right: #{nth($section-inner-space--tab, 2)}
+
+    +media('<tab')
+      display: block
+      margin: 0
+      padding: 1.2rem 1.4rem
+
+      span
+        border: none
+
+      &:hover
+        .no-touchevents &
+          color: white
+          background-color: $base-color-light
+
+    // active
+    &.tabs-active
+      color: #000
+      cursor: default
+
+      & > span
+        border-color: transparent
+
+      +media('<tab')
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
+
+  // Select opened
+  &.tabs-select-open
+    +media('<tab')
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
+
+// divisions tabs thumbs
+.divisions-tabs-thumbs
+  position: relative
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.6rem
+  line-height: 2.4rem
+  border-bottom: 1px solid #c5c5c5
+  padding-bottom: 2px
+
+  &:last-child
+    margin-bottom: 0
+
+  a
+    color: rgba(black, 0.7)
+    text-decoration: none
+    margin: 0 50px -5px 0
+    padding-bottom: 8px
+    border-bottom: 5px solid transparent
+    // transition
+    $prop: color, border-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+    // for ie 9
+    @if $ie9
+      .no-flexwrap &
+        display: inline-block
+        vertical-align: top
+
+    // touch
+    &.touchevents
+      user-select: none
+      -webkit-tap-highlight-color: transparent
+
+    em
+      display: inline-block
+      font-family: inherit
+      font-style: inherit
+      color: $base-color
+
+    // hover
+    &:hover
+      color: #000
+
+    // active
+    &.tabs-active
+      color: #000
+      border-color: $base-color
+      cursor: default
+
+/* simple tabs end
+
 /* opinion
 $opinion-figure-size: 6.8rem
 $opinion-figure-size--tab: 6.4rem
@@ -5653,9 +6133,13 @@ $opinion-box-shadow-color: black
     padding: 8% #{nth($box-inner-space, 2)}
     box-shadow: none
 
-  +media('<tab')
-    padding-top: 2rem
-    padding-bottom: 2rem
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
   &:hover
     .no-touchevents &
@@ -5784,336 +6268,6 @@ $opinion-box-shadow-color: black
 
 /* opinions end
 
-/* topics-tabs
-.topics-tabs__panel
-  position: relative
-
-/* topics-tabs end
-
-/* caption-box
-.caption-box
-  position: relative
-  display: flex
-  align-items: flex-start
-  margin-bottom: 1.7rem
-
-  &:last-child
-    margin-bottom: 0
-
-  +media('<lap-s')
-    flex-direction: column
-
-.caption-box__title
-  flex-shrink: 0
-  margin-right: 5rem
-  margin-bottom: 0
-  //$width: 35rem
-  //min-width: $width
-  //max-width: $width
-  +font-bold
-  font-size: $main-section-title-font-size
-  line-height: $main-section-title-line-height
-  color: #131313
-
-  +media('<lap-s')
-    margin-right: 0
-    margin-bottom: 0.5rem
-    font-size: $main-section-title-font-size--tab
-    line-height: $main-section-title-line-height--tab
-
-  +media('<mob')
-    margin-bottom: 1rem
-    font-size: $main-section-title-font-size--mob
-    line-height: $main-section-title-line-height--mob
-
-.caption-box__options
-  position: relative
-  //padding-top: 0.2rem // If align center
-  padding-top: 0.7rem // If align top
-  padding-right: 8rem // Space for button All
-
-  +media('<lap-s')
-    padding-top: 0
-
-.link-all
-  display: inline-block
-  vertical-align: top
-  $line-height: 3rem
-  height: $line-height
-  //margin-top: -#{round-float($line-height / 2, 1)}
-  padding: 0 1.4rem
-  +font(1.4rem, $line-height)
-  color: $base-color-light
-  text-decoration: none
-  background-color: white
-  box-shadow: 0 1px 2px rgba(black, 0.3)
-  border-radius: $line-height
-  // transition
-  $prop: background-color, color
-  will-change: $prop
-  transition:
-    property: $prop
-    duration: $animation-speed
-
-  +media('<mob')
-    $line-height: 3.6rem
-    height: $line-height
-    padding: 0 1.4rem 0 2rem
-    +font(1.6rem, $line-height)
-    border-radius: $line-height
-
-  .caption-box &
-    position: absolute
-    right: 0
-    bottom: 0.5rem // If align bottom
-
-    +media('<tab')
-      bottom: 0
-
-  svg
-    position: relative
-    top: 1.2rem
-    display: inline-block
-    vertical-align: top
-    width: 1rem
-    height: 0.6rem
-    transform: rotate(-90deg)
-
-    +media('<mob')
-      top: 1.5rem
-      margin-left: 0.2rem
-
-    path, use
-      stroke: currentColor
-
-  // hover
-  &:hover
-    color: white
-    background-color: $base-color-light
-
-  // active
-  &:active
-    transform: translate(0, 1px)
-
-/* caption-box end
-
-/* topics-nav
-.topics-nav
-  position: relative
-
-/* topics-nav end
-
-/* topics-thumbs-select
-.topics-thumbs-select
-  +pseudo-select-common($base-color-light)
-
-  +media('>=tab')
-    display: none
-
-/* topics-thumbs-select end
-
-/* topics-thumbs
-.topics-thumbs
-  display: flex
-  flex-wrap: wrap
-  font-size: 1.6rem
-  line-height: 2.4rem
-
-  +media('<tab')
-    display: block // Not flex
-    overflow: hidden
-    position: absolute
-    left: 0
-    top: 0
-    width: 24rem
-    background-color: white
-    border-radius: 1.2rem
-    box-shadow: 0 1px 2px rgba(black, 0.15)
-    z-index: 9
-    // hide
-    opacity: 0
-    visibility: hidden
-    pointer-events: none
-    transform-origin: left top
-    $translate: -0.2rem, -0.2rem
-    $scale: 0.8, 0.8
-    transform: translate($translate) scale($scale)
-    transform: translate3d($translate, 0) scale3d($scale, 1)
-    // transition
-    $prop: transform, opacity, visibility
-    will-change: $prop
-    transition:
-      property: $prop
-      duration: $animation-speed
-
-  a
-    color: $text-color-light
-    text-decoration: none
-    margin: 0.5rem 4rem 0.5rem 0
-    user-select: none
-    -webkit-tap-highlight-color: transparent
-    // transition
-    $prop: opacity
-    transition:
-      property: $prop
-      duration: $animation-speed
-
-    // for ie 9
-    @if $ie9
-      .no-flexwrap &
-        display: inline-block
-        vertical-align: top
-
-    +underlinedAnchor($text-color-light)
-
-    +media('<lap-s')
-      margin-right: 2.5rem
-
-    +media('<tab')
-      display: block
-      margin: 0
-      padding: 1.2rem 1.4rem
-
-      span
-        border: none
-
-      &:hover
-        .no-touchevents &
-            color: white
-            background-color: $base-color-light
-
-    // active
-    &.tabs-active
-      color: #000
-      //+font-bold
-      cursor: default
-
-      & > span
-        border-color: transparent
-
-      +media('<tab')
-        color: $base-color
-        background-color: rgba($base-color-light, 0.2)
-
-  // Select opened
-  &.tabs-select-open
-    +media('<tab')
-      opacity: 1
-      visibility: visible
-      pointer-events: auto
-      $translate: 0, 0
-      $scale: 1, 1
-      transform: translate($translate) scale($scale)
-      transform: translate3d($translate, 0) scale3d($scale, 1)
-
-/* topics-thumbs end
-
-/* tabs
-.tabs__panels-js,
-.tabs-nested__panels-js
-  position: relative
-  z-index: 1
-
-.tabs__panels-js, .tabs-nested__panels-js
-
-  & > div
-    position: absolute
-    opacity: 0
-    visibility: hidden
-    outline: none
-    width: 100%
-
-// simple tabs thumbs
-.simple-tabs-thumbs
-  display: flex
-  flex-wrap: wrap
-  font-size: 1.4rem
-  line-height: 2.0rem
-  margin-bottom: 1rem
-
-  &:last-child
-    margin-bottom: 0
-
-  a
-    color: #777
-    text-decoration: none
-    margin: 0.5rem 3rem 0.5rem 0
-
-    // for ie 9
-    @if $ie9
-      .no-flexwrap &
-        display: inline-block
-        vertical-align: top
-
-    // touch
-    &.touchevents
-      user-select: none
-      -webkit-tap-highlight-color: transparent
-
-    +underlinedAnchor(#777)
-
-    // active
-    &.tabs-active
-      color: #000
-      //+font-bold
-
-      & > span
-        border-color: transparent
-
-// divisions tabs thumbs
-.divisions-tabs-thumbs
-  position: relative
-  display: flex
-  flex-wrap: wrap
-  font-size: 1.6rem
-  line-height: 2.4rem
-  border-bottom: 1px solid #c5c5c5
-  padding-bottom: 2px
-
-  &:last-child
-    margin-bottom: 0
-
-  a
-    color: rgba(black, 0.7)
-    text-decoration: none
-    margin: 0 50px -5px 0
-    padding-bottom: 8px
-    border-bottom: 5px solid transparent
-    // transition
-    $prop: color, border-color
-    transition:
-      property: $prop
-      duration: $animation-speed
-
-    // for ie 9
-    @if $ie9
-      .no-flexwrap &
-        display: inline-block
-        vertical-align: top
-
-    // touch
-    &.touchevents
-      user-select: none
-      -webkit-tap-highlight-color: transparent
-
-    em
-      display: inline-block
-      font-family: inherit
-      font-style: inherit
-      color: $base-color
-
-    // hover
-    &:hover
-      color: #000
-
-    // active
-    &.tabs-active
-      color: #000
-      border-color: $base-color
-      cursor: default
-
-/* tabs end
-
 /* rate
 .p-rate
   $size: 12px 86px
@@ -6223,6 +6377,14 @@ $opinion-box-shadow-color: black
   align-items: flex-start
   justify-content: flex-start
   padding: 2rem #{nth($box-inner-space, 2)} 1.1rem
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 // figure
 .p-add-form__figure
@@ -6375,6 +6537,14 @@ $opinion-box-shadow-color: black
   padding: 1.1rem #{nth($box-inner-space, 2)}
   color: white
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 .quick-order__form
   position: relative
   display: flex
@@ -6489,7 +6659,6 @@ input[type="text"].quick-order__input
 
 .close-p-add-form-popup
   $size: 1.8rem
-  $size-cross: 0.2rem 1rem
   position: absolute
   right: 1.5rem
   top: 1.5rem
@@ -7881,7 +8050,7 @@ $tl-item-space--tab: 1rem
   text-align: center
   text-decoration: none
 
-  img
+  //img
     margin: 0 auto
 
     &[data-loaded="true"]
@@ -8775,7 +8944,7 @@ a.helper__item
       left: 0
       right: 0
 
-  +media('<mob')
+  //+media('<mob')
     padding:
       top: 0
       bottom: 0
@@ -10233,7 +10402,7 @@ $collections-title-width: 12.5rem
   +media('<lap-s')
     padding: $collections-space--tab
 
-  +media('<tab')
+  +media('<tab-s')
     display: block
 
   +media('<mob')
@@ -10297,7 +10466,7 @@ $collections-title-width: 12.5rem
     .no-flexwrap &
       margin-left: $collections-title-width
 
-/* topics-nav
+// collections nav
 .collections__nav
   position: relative
   margin-bottom: 1rem
@@ -10308,17 +10477,14 @@ $collections-title-width: 12.5rem
   &:last-child
     margin-bottom: 0
 
-/* topics-nav end
-
-/* topics-thumbs-select
+// collections thumbs select
 .collections__select
   +pseudo-select-common($base-color-light)
 
   +media('>=tab')
     display: none
 
-/* topics-thumbs-select end
-
+// collections thumbs
 .collections__thumbs
   display: flex
   flex-wrap: wrap
@@ -10738,6 +10904,12 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   text-align: right
   cursor: default
 
+  +media('<tab-s')
+    padding: 0 #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding: 0 #{nth($section-inner-space--mob, 2)}
+
   &:last-child
     margin-bottom: 0
 
@@ -11068,6 +11240,14 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 .credit-panel__content
   background-color: white
   padding: 2.2rem nth($box-inner-space, 2) 2rem
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 // credit row
 .credit-info
@@ -11928,43 +12108,101 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
 /* news previews list end
 
 /* cart item
+// figure
+$cart-item-figure-width: 23.9rem
+$cart-item-figure-height: 14rem
+$cart-item-figure-kef: $cart-item-figure-height / $cart-item-figure-width
+$cart-item-figure-space: 2.7rem
+// ==
+$cart-item-figure-width--tab: 18rem
+$cart-item-figure-height--tab: round-float($cart-item-figure-width--tab * $cart-item-figure-kef, 1)
+$cart-item-figure-space--tab: 2rem
+// ==
+$cart-item-figure-width--mob: 16rem
+$cart-item-figure-height--mob: round-float($cart-item-figure-width--mob * $cart-item-figure-kef, 1)
+$cart-item-figure-space--mob: 0
+
 .cart-item
+  $element: &
   display: block
   text-decoration: none
   position: relative
   color: $title-color
   padding: 0 6rem 0 #{nth($section-inner-space, 2)}
-  transition: color $animation-speed
-
   +media('<lap-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding: 0 4rem 0 #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
     padding-left: #{nth($section-inner-space--mob, 2)}
 
-  &:hover
+  +media('<mob-s')
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
+//@at-root
+  a#{$element}:hover
     color: $base-color
 
 .cart-item__box
   $element: &
   display: flex
-  flex-wrap: wrap
+  //flex-wrap: wrap
   align-items: flex-start
-  justify-content: flex-start
+  //justify-content: flex-start
+  justify-content: space-between
   padding: 1.8rem 0
 
-// figure
-$cart-item-figure-width: 21.2rem
-$cart-item-figure-height: 14rem
-$cart-item-figure-space: 2.7rem
+  +media('<mob')
+    align-items: flex-end
+
+  +media('<mob-s')
+    display: block
+
+.cart-item__main
+  display: flex
+  align-items: flex-start
+  justify-content: flex-start
+  padding-right: nth($section-inner-space, 2)
+
+  +media('<lap-s')
+    padding-right: nth($section-inner-space--tab, 2)
+
+  +media('<mob')
+    display: block
+    padding-right: nth($section-inner-space--mob, 2)
+
+  +media('<mob-s')
+    padding-right: 0
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
 .cart-item__figure
   position: relative
   display: flex
+  flex-shrink: 0
   align-items: center
   justify-content: center
   width: $cart-item-figure-width
   height: $cart-item-figure-height
-  margin-right: $cart-item-figure-space
+  padding-right: $cart-item-figure-space
+  text-decoration: none
+  color: inherit
+
+  +media('<lap-s')
+    width: $cart-item-figure-width--tab
+    height: $cart-item-figure-height--tab
+    padding-right: $cart-item-figure-space--tab
+
+  +media('<mob')
+    width: $cart-item-figure-width--mob
+    height: $cart-item-figure-height--mob
+    padding-right: $cart-item-figure-space--mob
+    margin-bottom: 1rem
+
+  +media('<mob-s')
+    width: auto
+    justify-content: flex-start
 
 .cart-item__figure-img
   display: block
@@ -11972,39 +12210,53 @@ $cart-item-figure-space: 2.7rem
   max-width: 100%
 
 // content
-.cart-item__content
+//.cart-item__content
   display: flex
   flex-grow: 1
+  flex-shrink: 0
   justify-content: space-between
   align-items: flex-start
-  $width: calc(100% - #{$cart-item-figure-width + $cart-item-figure-space})
+  $width: calc(100% - #{$cart-item-figure-width})
   flex-basis: $width
   max-width: $width
+
+  +media('<lap-s')
+    $width: calc(100% - #{$cart-item-figure-width--tab})
+    flex-basis: $width
+    max-width: $width
 
 // caption
 .cart-item__caption
   margin-bottom: 2rem
-  padding: 2rem nth($section-inner-space, 2) 0 0
-
-  +media('<lap-s')
-    padding-right: nth($section-inner-space--tab, 2)
+  padding-top: 2rem
 
   +media('<mob')
-    padding-right: nth($section-inner-space--mob, 2)
+    padding-top: 0
 
   &:last-child
     margin-bottom: 0
 
 // title
 .cart-item__title
+  display: block
   margin-bottom: 0.6rem
   +font-bold
   font-size: 1.6rem
   line-height: 2.4rem
+  text-decoration: none
   color: currentColor
+  transition: color $animation-speed
+
+  +media('<mob')
+    font-size: 1.8rem
 
   &:last-child
     margin-bottom: 0
+
+  .cart-item__figure:hover ~ .cart-item__content &,
+  &:hover
+    .no-touchevents &
+      color: $base-color
 
 // rate
 .cart-item__rate
@@ -12015,13 +12267,30 @@ $cart-item-figure-space: 2.7rem
 
 // order
 .cart-item__order
+  flex-shrink: 0
   text-align: right
-  min-width: 22rem
+  $width: 22rem
+  min-width: $width
+  max-width: $width
   padding: 1.7rem 0 0
+
+  +media('<lap-s')
+    $width: 20rem
+    min-width: $width
+    max-width: $width
+
+  +media('<mob-s')
+    min-width: 0
+    max-width: none
+    padding: 0
+    text-align: left
 
 // stock
 .cart-item__stock
   margin-bottom: 1.8rem
+
+  +media('<mob-s')
+    display: none
 
   &:last-child
     margin-bottom: 0
@@ -12036,17 +12305,32 @@ $cart-item-figure-space: 2.7rem
 // price
 .cart-item__price
   line-height: 3.2rem
+  // Это значение важно! Оно выравнивает старую и новую цену по базовой линии
+  // Для старой и новой цен line-height устанавливить в значение inherit
   margin-bottom: 1.1rem
+
+  +media('<mob-s')
+    direction: rtl
+    margin-bottom: 0.5rem
 
   &:last-child
     margin-bottom: 0
 
 // price old
 .cart-item__price-old
-  margin-right: 0.4rem
   display: inline-block
   vertical-align: baseline
-  +oldPriceStyle()
+  +oldPriceStyle(1.8rem, 1.8rem, $text-color-ultra-light)
+
+  +media('<lap-s')
+    & > strong
+      font-size: 1.6rem
+
+    & > em
+      font-size: 1.6rem
+
+  +media('<mob-s')
+    direction: ltr
 
   .cart-item__price.off &
     color: $text-color-ultra-light
@@ -12055,7 +12339,18 @@ $cart-item-figure-space: 2.7rem
 .cart-item__price-new
   display: inline-block
   vertical-align: baseline
-  +newPriceStyle(3.0rem, 3.0rem, #000)
+  margin-left: 0.4rem
+  +newPriceStyle(3.0rem, 3.0rem, $title-color)
+
+  +media('<lap-s')
+    & > strong
+      font-size: 2.4rem
+
+    & > em
+      font-size: 2.4rem
+
+  +media('<mob-s')
+    direction: ltr
 
   .cart-item__price.off &
     color: $text-color-ultra-light
@@ -12063,19 +12358,25 @@ $cart-item-figure-space: 2.7rem
 // remove btn
 .cart-item__remove
   $size: 1.8rem
-  $size-cross: 0.2rem 1rem
   position: absolute
   right: 1.2rem
   top: 0.9rem
   width: $size
   height: $size
   color: white
+  cursor: pointer
   background-color: #cecece
-  border-radius: round-float($size / 2, 1)
+  border-radius: $size
   text-indent: -9999px
   overflow: hidden
   transform: rotate(-90deg) translateZ(0)
   transition: background-color $animation-speed
+
+  +media('<mob')
+    $size: 2.4rem
+    width: $size
+    height: $size
+    border-radius: $size
 
   svg
     display: block
@@ -12087,6 +12388,12 @@ $cart-item-figure-space: 2.7rem
     $space: round-float($size / 2, 1)
     margin: -#{$space} 0 0 -#{$space}
 
+    +media('<mob')
+      $size: 1.4rem
+      +size($size)
+      $space: round-float($size / 2, 1)
+      margin: -#{$space} 0 0 -#{$space}
+
   path
     fill: currentColor
 
@@ -12097,13 +12404,18 @@ $cart-item-figure-space: 2.7rem
 /* cart item end
 
 /* cart
-.cart
-  position: relative
-
 .cart__heading
   position: relative
   padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
   background-color: white
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 .cart__title
   margin-bottom: 0
@@ -12113,6 +12425,10 @@ $cart-item-figure-space: 2.7rem
   border: solid $border-color
   border-width: 1px 0
   background-color: white
+
+  +media('<tab')
+    margin-bottom: #{nth($section-outer-space--tab, 1)}
+    border-bottom: none
 
 .cart__list-item
   .cart-item__box
@@ -12128,27 +12444,38 @@ $cart-item-figure-space: 2.7rem
 .cart__similar
   position: relative
   background-color: white
+  padding-top: 1.5rem
 
   &:first-child
     border-top: 0
 
 .cart__similar-caption
   display: flex
+  flex-wrap: wrap
   align-items: center
-  position: absolute
-  left: #{nth($section-inner-space, 2)}
-  right: #{nth($section-inner-space, 2)}
-  top: 0
-  margin: 1.5rem 10rem 0 0
+  //position: absolute
+  position: relative
+  //left: #{nth($section-inner-space, 2)}
+  //right: #{nth($section-inner-space, 2)}
+  padding-left: #{nth($section-inner-space, 2)}
+  padding-right: #{nth($section-inner-space, 2)}
+  //top: 0
+  margin: 0 10rem -4.5rem 0
   z-index: 3
 
   +media('<lap-s')
-    left: #{nth($section-inner-space--tab, 2)}
-    right: #{nth($section-inner-space--tab, 2)}
+    //left: #{nth($section-inner-space--tab, 2)}
+    //right: #{nth($section-inner-space--tab, 2)}
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+    margin-right: 8rem
 
   +media('<mob')
-    left: #{nth($section-inner-space--mob, 2)}
-    right: #{nth($section-inner-space--mob, 2)}
+    display: block
+    //left: #{nth($section-inner-space--mob, 2)}
+    //right: #{nth($section-inner-space--mob, 2)}
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 .cart__similar-title
   +font-bold
@@ -12156,23 +12483,39 @@ $cart-item-figure-space: 2.7rem
   line-height: 2.4rem
   margin: 0 4rem 0 0
 
+  +media('<lap-s')
+    margin-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    margin: 0 0 1rem
+
 /* cart similar end
 
-/* catr banner
+/* cart banner
 .cart-banner
-  img
+  display: block
+  text-decoration: none
+
+  //img
     margin: 0 auto
+    max-width: 10rem
 
     &[data-loaded="true"]
       width: 100%
       max-width: none
 
-/* catr banner end
+/* cart banner end
 
 /* delivery
 .delivery
   padding: 2rem #{nth($box-inner-space, 2)}
   background-color: white
+
+  +media('<tab-s')
+    padding: 2rem #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding: 2rem #{nth($section-inner-space--mob, 2)}
 
 .delivery-item
   display: flex
@@ -12189,6 +12532,12 @@ $cart-item-figure-space: 2.7rem
 
   +media('<lap-s')
     margin-right: 2rem
+
+  +media('<tab-s')
+    margin-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    margin-right: #{nth($section-inner-space--mob, 2)}
 
   & > i
     $size: 2.8rem
@@ -12222,6 +12571,14 @@ $cart-item-figure-space: 2.7rem
   +font(1.4rem, 2.0rem)
   background-color: white
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 .summary__item,
 .summary__total
   display: flex
@@ -12245,6 +12602,14 @@ $cart-item-figure-space: 2.7rem
 .consist
   padding: 1rem #{nth($box-inner-space, 2)}
   background-color: white
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 .consist__title
   +font-bold
@@ -12349,22 +12714,59 @@ a.consist__item
   position: relative
 
 .clearance__box
+  position: relative
   margin-bottom: 2rem
-  padding: 1rem 0
+  padding: 0 0 1rem
   background-color: white
+
+  +media('<tab')
+    +clear
 
   &:last-child
     margin-bottom: 0
+
+// __meta
+.clearance__meta
+
+  &::after
+    content: ""
+    display: none
+    position: absolute
+    left: 50%
+    top: 0
+    bottom: 0
+    border-right: 1px solid $border-color
+
+  +media('<tab', '>=mob')
+    float: left
+    clear: left
+    width: 50%
+
+    &::after
+      display: block
 
 // __caption
 .clearance__caption
   display: flex
   align-items: center
   padding: 2.0rem #{nth($box-inner-space, 2)} 1.9rem
+  margin-bottom: 1rem
   font-size: 1.4rem
   line-height: 2.0rem
   background-color: white
   border-bottom: 1px solid $border-color
+
+  +media('<tab-s')
+    padding-left: nth($section-inner-space--tab, 2)
+    padding-right: nth($section-inner-space--tab, 2)
+
+  +media('<tab')
+    border: none
+    margin-bottom: 0
+
+  +media('<mob')
+    padding-left: nth($section-inner-space--mob, 2)
+    padding-right: nth($section-inner-space--mob, 2)
 
   &:last-child
     margin-bottom: 0
@@ -12391,6 +12793,12 @@ a.consist__item
   +media('<lap-s')
     margin-right: 2rem
 
+  +media('<tab-s')
+    margin-right: nth($section-inner-space--tab, 2)
+
+  +media('<mob')
+    margin-right: nth($section-inner-space--mob, 2)
+
   & > i
     $size: 2.8rem
     height: $size
@@ -12416,34 +12824,111 @@ a.consist__item
 .clearance__consist
   padding: 1.5rem #{nth($box-inner-space, 2)}
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 .clearance__divider
   height: 0
   border-bottom: 1px solid $border-color
   margin: 1rem #{nth($box-inner-space, 2)}
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 .clearance__delivery
-  padding: 1.5rem #{nth($box-inner-space, 2)}
+  padding-top: 1.5rem
+  padding-bottom: 1.5rem
 
 // __promo-code
 .clearance__promo-code
   padding: 1.5rem #{nth($box-inner-space, 2)}
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<tab', '>=mob')
+    float: right
+    clear: right
+    width: 50%
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 // __summary
 .clearance__summary
   padding: 1.5rem #{nth($box-inner-space, 2)}
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<tab', '>=mob')
+    float: right
+    clear: right
+    width: 50%
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 // __buttons
 .clearance__buttons
   padding: 1.5rem #{nth($box-inner-space, 2)}
   background-color: white
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<tab', '>=mob')
+    float: right
+    clear: right
+    width: 50%
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 // __quick-order
 .clearance__quick-order
   padding: 1.5rem #{nth($box-inner-space, 2)}
 
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<tab', '>=mob')
+    float: right
+    clear: right
+    width: 50%
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 // __comment
 .clearance__comment
   padding: 1.5rem #{nth($box-inner-space, 2)}
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 /* clearance end
 
@@ -12462,12 +12947,19 @@ $cart-container-aside-width-full--tab: $cart-container-aside-width--tab + $cart-
   margin-bottom: nth($section-outer-space, 1)
   +clear
 
+  +media('<tab-s')
+    margin-bottom: nth($section-outer-space--tab, 1)
+
+    &::after
+      content: none
+
   & > form
     display: block
     +clear
 
-.cart__main
+.cart__main, .cart__similar, .cart-banner
   float: left
+  clear: left
   width: calc(100% - #{$cart-container-aside-width-full})
 
   +media('<net')
@@ -12476,17 +12968,34 @@ $cart-container-aside-width-full--tab: $cart-container-aside-width--tab + $cart-
   +media('<lap-s')
     width: calc(100% - #{$cart-container-aside-width-full--tab})
 
+  +media('<tab')
+    float: none
+    width: auto
+    margin-bottom: nth($section-outer-space--tab, 1)
+
+  &:last-child
+    margin-bottom: 0
+
 .cart__aside
   float: right
+  clear: right
   width: $cart-container-aside-width
   margin-left: $cart-container-inside-space
-  padding: 0 0 1rem
+  //padding: 0 0 1rem
 
   +media('<net')
     width: $cart-container-aside-width--net
 
   +media('<lap-s')
     width: $cart-container-aside-width--tab
+
+  +media('<tab')
+    float: none
+    width: auto
+    margin: 0 0 nth($section-outer-space--tab, 1)
+
+  &:last-child
+    margin-bottom: 0
 
 /* cart end
 
@@ -12578,6 +13087,14 @@ $order-aside-width-full: $order-inside-space + $order-aside-width
   position: relative
   padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
   background-color: white
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 .order__title
   margin-bottom: 0

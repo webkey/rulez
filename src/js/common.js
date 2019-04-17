@@ -683,7 +683,13 @@ function slidersInit() {
         navigation: {
           nextEl: $thisBtnNext,
           prevEl: $thisBtnPrev,
+        },
+        breakpoints: {
+          1599: {
+            slidesPerView: 4
+          }
         }
+
       });
 
       tapeSliderInited.on('init', function() {
@@ -728,6 +734,15 @@ function slidersInit() {
           },
           1099: {
             slidesPerView: 3
+          },
+          991: {
+            slidesPerView: 4
+          },
+          819: {
+            slidesPerView: 3
+          },
+          649: {
+            slidesPerView: 2
           }
         }
       });

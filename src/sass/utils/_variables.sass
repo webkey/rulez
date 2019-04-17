@@ -85,10 +85,13 @@ $font-size-h1: 3.6rem !default
 $line-height-h1: 5.2rem !default
 $line-height-h1-kef: $line-height-h1 / $font-size-h1
 // ----------------------------------------------------
-$font-size-h1--tab: 3.4rem !default
+$font-size-h1--net: 3.4rem !default
+$line-height-h1--net: round-float($font-size-h1--net * $line-height-h1-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+$font-size-h1--tab: 3.0rem !default
 $line-height-h1--tab: round-float($font-size-h1--tab * $line-height-h1-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h1--mob: 3.0rem !default
+$font-size-h1--mob: 2.6rem !default
 $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 =font-h1()
@@ -96,10 +99,14 @@ $line-height-h1--mob: round-float($font-size-h1--mob * $line-height-h1-kef, 1) !
   line-height: $line-height-h1
 
   +media('<net')
+    font-size: $font-size-h1--net
+    line-height: $line-height-h1--net
+
+  +media('<tab-s')
     font-size: $font-size-h1--tab
     line-height: $line-height-h1--tab
 
-  +media('<tab-s')
+  +media('<mob')
     font-size: $font-size-h1--mob
     line-height: $line-height-h1--mob
 
@@ -108,10 +115,13 @@ $font-size-h2: 3.0rem !default
 $line-height-h2: 4.2rem !default
 $line-height-h2-kef: $line-height-h2 / $font-size-h2
 // ----------------------------------------------------
-$font-size-h2--tab: 2.8rem !default
+$font-size-h2--net: 2.8rem !default
+$line-height-h2--net: round-float($font-size-h2--net * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
+// ----------------------------------------------------
+$font-size-h2--tab: 2.4rem !default
 $line-height-h2--tab: round-float($font-size-h2--tab * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
-$font-size-h2--mob: 2.4rem !default
+$font-size-h2--mob: 2.0rem !default
 $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !default // Использовать рассчетное значение, если нет в дизайне
 // ----------------------------------------------------
 =font-h2()
@@ -119,10 +129,14 @@ $line-height-h2--mob: round-float($font-size-h2--mob * $line-height-h2-kef, 1) !
   line-height: $line-height-h2
 
   +media('<net')
+    font-size: $font-size-h2--net
+    line-height: $line-height-h2--net
+
+  +media('<tab-s')
     font-size: $font-size-h2--tab
     line-height: $line-height-h2--tab
 
-  +media('<tab-s')
+  +media('<mob')
     font-size: $font-size-h2--mob
     line-height: $line-height-h2--mob
 
@@ -227,8 +241,10 @@ $flood-layout-width: 103rem !default
 // внешние и внутренние отступы  секций (большие лотические единици)
 $section-inner-space: 3rem 2.4rem !default
 $section-inner-space--tab: 2.5rem 2rem !default // '<tab-s' <768
-$section-inner-space--mob: 1.2rem 1rem !default // '<mob' <640
+$section-inner-space--mob: 1.2rem 1.5rem !default // '<mob' <640
 $section-outer-space: 2.5rem 2rem !default
+$section-outer-space--tab: 2rem 2rem !default
+$section-outer-space--mob: 1.2rem 1.2rem !default
 // внешние и внутренние одиночных элементов (боксов)
 $box-inner-space: 1.8rem 2.0rem !default
 $box-outer-space: 2.0rem 2.0rem !default

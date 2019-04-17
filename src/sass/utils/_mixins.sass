@@ -1164,7 +1164,7 @@
 // Устанавливает положение значения цены и валюты
 // А также перечеркивание
 =oldPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-ultra-light)
-  font-size: $font-size
+  font-size: inherit
   line-height: inherit
   white-space: nowrap
   color: $text-color
@@ -1174,6 +1174,8 @@
     display: inline-block
     vertical-align: baseline
     +font-normal
+    font-size: $font-size
+    line-height: inherit
     font-weight: normal
 
     &::after
@@ -1197,13 +1199,15 @@
     +font-normal
     font-style: normal
     font-size: $unit-font-size
+    line-height: inherit
 
 // Стили для новой цены (дефолтные)
 // Устанавливает положение значения цены и валюты
 // А также размеры текста
 =newPriceStyle($val-font-size: 1.8rem, $unit-font-size: $val-font-size, $text-color: $text-color-ultra-light)
   position: relative
-  font-size: $font-size
+  //font-size: $font-size
+  font-size: inherit
   line-height: inherit
   white-space: nowrap
   color: $text-color

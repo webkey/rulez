@@ -1,32 +1,33 @@
-<a href="product-card.html" class="cart-item@@if(context.classes){ @@classes}">
+<div class="cart-item@@if(context.classes){ @@classes}">
   <div class="cart-item__box">
-    <div class="cart-item__figure">
-      <img class="cart-item__figure-img" src="@@src" alt="@@title" />
-    </div>
-    <div class="cart-item__content">
+    <div class="cart-item__main">
+      <a href="product-card.html" class="cart-item__figure">
+        <img class="cart-item__figure-img lozad" src="img/preloader.svg" data-src="@@src" alt="@@title" />
+      </a>
       <div class="cart-item__caption">
-        <div class="cart-item__title">@@title</div>
+        <a href="product-card.html" class="cart-item__title">@@title</a>
         <div class="cart-item__rate p-rate">
           <span style="width: @@rate.width;">@@rate.val</span>
         </div>
       </div>
-      <div class="cart-item__order">
-        <div class="cart-item__stock p-stock on"><i>&nbsp;</i>В наличии</div>
-        <div class="cart-item__price">
-          @@if(context.priceOld.val){
-          <div class="cart-item__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>
-          }
-          <div class="cart-item__price-new"><strong>@@price.val</strong>&nbsp;<em>@@price.unit</em></div>
-        </div>
-        <div class="cart-item__counter">
-          <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
-        </div>
+    </div>
+
+    <div class="cart-item__order">
+      <div class="cart-item__stock p-stock on"><i>&nbsp;</i>В наличии</div>
+      <div class="cart-item__price">
+        @@if(context.priceOld.val){
+        <div class="cart-item__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>
+        }
+        <div class="cart-item__price-new"><strong>@@price.val</strong>&nbsp;<em>@@price.unit</em></div>
+      </div>
+      <div class="cart-item__counter">
+        <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
       </div>
     </div>
   </div>
 
-  <div class="cart-item__remove">
+  <a href="#" class="cart-item__remove">
     @@include("includes/svg/icon-cross-sm.svg")
     <span>Удалить из корзины</span>
-  </div>
-</a>
+  </a>
+</div>
