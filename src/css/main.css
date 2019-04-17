@@ -16143,7 +16143,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 
 .p-card-gallery {
   position: relative;
-  padding: 0 100px 0 150px;
+  padding: 0 5rem 0 10rem;
   margin-bottom: 2.4rem;
 }
 
@@ -16158,17 +16158,23 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 
 .p-card-gallery-images {
   margin: 0 auto;
-  max-width: 500px;
-  min-width: 386px;
+  max-width: 50rem;
+  height: 38.6rem;
 }
 
 @media (max-width: 1599px) {
   .p-card-gallery-images {
-    max-width: 380px;
+    max-width: 38rem;
   }
 }
 
 .p-card-gallery-images__item {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -16176,25 +16182,9 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
   -webkit-tap-highlight-color: transparent;
 }
 
-.p-card-gallery-images__item::before {
-  content: "";
-  position: relative;
-  display: block;
-  overflow: hidden;
-  height: 0;
-  padding-top: 100%;
-}
-
 .p-card-gallery-images__item img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  height: 100%;
-  width: 100%;
-  max-width: none;
-  -o-object-fit: scale-down;
-     object-fit: scale-down;
-  font-family: "object-fit: scale-down";
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .p-card-gallery-thumbs {
@@ -16209,7 +16199,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
   position: absolute;
   left: 0;
   top: 0;
-  width: 50px;
+  width: 5rem;
   min-height: 100%;
 }
 
@@ -16220,7 +16210,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
       flex-wrap: wrap;
   -ms-flex-align: center;
       align-items: center;
-  height: 306px;
+  height: 30.6rem;
   width: 100%;
 }
 
@@ -16237,8 +16227,8 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
   -ms-flex-align: center;
       align-items: center;
   cursor: pointer;
-  width: 50px;
-  height: 50px;
+  width: 5rem;
+  height: 5rem;
   border: 1px solid #dbdbdb;
   border-radius: 2px;
   will-change: border-color;
@@ -17502,6 +17492,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 }
 
 .set-result-price__old-unit {
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-size: 1.4rem;
 }
@@ -17517,6 +17508,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 }
 
 .set-result-price__new-unit {
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-size: 2.4rem;
 }

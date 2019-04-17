@@ -10666,9 +10666,9 @@ $card-cont-width: 520px
 
 // === product card main ===
 // =========================
-$gallery-thumbs-size: 50px
-$gallery-thumbs-item-space: 14px
-$gallery-thumbs-arrow-size: 40px 100%
+$gallery-thumbs-size: 5rem
+$gallery-thumbs-item-space: 1.4rem
+$gallery-thumbs-arrow-size: 4rem 100%
 $gallery-thumbs-height: $gallery-thumbs-size * 5 + $gallery-thumbs-item-space * 4
 $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-space * 2
 .p-card__main
@@ -10687,7 +10687,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 .p-card-gallery
   position: relative
   //padding: 0 $gallery-thumbs-size 0 #{$gallery-thumbs-size + 30}
-  padding: 0 100px 0 #{100 + $gallery-thumbs-size}
+  padding: 0 5rem 0 #{5 + $gallery-thumbs-size}
   margin-bottom: 2.4rem
 
   &:last-child
@@ -10701,17 +10701,21 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 // card gallery images
 .p-card-gallery-images
   margin: 0 auto
-  max-width: 500px
-  min-width: $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
+  max-width: 50rem
+  //min-width: $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
+  height: $gallery-thumbs-height + nth($gallery-thumbs-arrow-size, 1) * 2
 
   +media('<desk-s')
-    max-width: 380px
+    max-width: 38rem
 
 .p-card-gallery-images__item
+  display: flex
+  align-items: center
+  justify-content: center
   user-select: none
   -webkit-tap-highlight-color: transparent
 
-  &::before
+  //&::before
     content: ""
     position: relative
     display: block
@@ -10719,13 +10723,15 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     +ratio(1, 1)
 
   img
-    position: absolute
-    left: 0
-    top: 0
-    height: 100%
-    width: 100%
-    max-width: none
-    +object-fit(scale-down)
+    //position: absolute
+    //left: 0
+    //top: 0
+    //height: 100%
+    //width: 100%
+    //max-width: none
+    //+object-fit(scale-down)
+    max-width: 100%
+    max-height: 100%
 
 // card gallery thumbs
 .p-card-gallery-thumbs
@@ -11742,6 +11748,7 @@ $advice-box-shadow-color: black
   font-size: 2.0rem
 
 .set-result-price__old-unit
+  +font-normal
   font-style: normal
   font-size: 1.4rem
 
@@ -11753,6 +11760,7 @@ $advice-box-shadow-color: black
   font-size: 3.5rem
 
 .set-result-price__new-unit
+  +font-normal
   font-style: normal
   font-size: 2.4rem
 
