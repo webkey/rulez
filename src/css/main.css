@@ -17380,12 +17380,12 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 
 .credit-nav {
   position: relative;
-  margin-bottom: 1rem;
 }
 
 @media (max-width: 639px) {
   .credit-nav {
     max-width: 24rem;
+    margin-bottom: 1rem;
   }
 }
 
