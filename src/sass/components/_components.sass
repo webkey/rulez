@@ -2311,6 +2311,14 @@ $uo-border-radius: 7px
       line-height: $size
       border-radius: $size
 
+    +media('<mob')
+      $size: 1.6rem
+      width: $size
+      height: $size
+      font-size: 1rem
+      line-height: $size
+      border-radius: $size
+
   &.push
     .counter
       animation: incCount 0.8s cubic-bezier(0.18, 0.89, 0.32, 1.28)
@@ -6147,9 +6155,6 @@ $categories-item-col: 3
         display: inline-block
         vertical-align: top
 
-    +media('<lap-s')
-      margin-right: #{nth($section-inner-space--tab, 2)}
-
     // touch
     &.touchevents
       user-select: none
@@ -6165,10 +6170,14 @@ $categories-item-col: 3
     &:hover
       color: #000
 
+    +media('<lap-s')
+      margin-right: #{nth($section-inner-space--tab, 2)}
+
     +media('<tab')
       display: block
       margin: 0
       padding: 1.2rem 1.4rem
+      border: none
 
       span
         border: none
@@ -6216,9 +6225,9 @@ $opinion-box-shadow-color: black
   align-items: flex-start
   justify-content: center
   padding: 5.3% 4.8rem
-  background-color: white
   text-decoration: none
   color: #000
+  background-color: white
   box-shadow: $opinion-box-shadow-size--start rgba($opinion-box-shadow-color, 0.18)
   transition: box-shadow $animation-speed
   // transition
@@ -6227,11 +6236,8 @@ $opinion-box-shadow-color: black
   transition:
     property: $prop
     duration: $animation-speed
+  -webkit-tap-highlight-color: transparent
   +clear
-
-  .touchevents &
-    user-select: none
-    -webkit-tap-highlight-color: transparent
 
   +media('<tab')
     padding: 8% #{nth($box-inner-space, 2)}
@@ -6306,10 +6312,8 @@ $opinion-box-shadow-color: black
   display: block
   margin-left: $opinion-figure-size + $opinion-figure-space
   +font-bold
-  $font-size: 1.8rem
-  $line-height: 2.6rem
-  font-size: $font-size
-  line-height: $line-height
+  font-size: 1.8rem
+  line-height: 2.6rem
   margin-bottom: 1rem
 
   +media('<tab')
@@ -6348,21 +6352,17 @@ $opinion-box-shadow-color: black
 .opinions__list
   display: flex
 
+  +media('<tab-s')
+    display: block
+
 .opinions__item
   flex-shrink: 0
-  flex-grow: 1
-  flex-basis: 50%
-  width: 50%
-
-  // for ie 9
-  @if $ie9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
+  $width: 50%
+  flex-basis: $width
+  max-width: $width
 
   +media('<tab-s')
-    flex-basis: 100%
-    width: 100%
+    max-width: none
 
     &:first-child ~ &
       display: none
@@ -11678,6 +11678,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       display: block
       margin: 0
       padding: 1.2rem 1.4rem
+      border-radius: 0
 
       span
         border: none
@@ -12105,6 +12106,10 @@ $card-size: 85px 135px
   +media('<mob')
     padding: 2rem #{nth($section-inner-space--mob, 2)}
 
+  p, ul, ol
+    &:last-child
+      margin-bottom: 0
+
 .p-infobar-tabs__nav
   margin-bottom: 2rem
 
@@ -12154,8 +12159,10 @@ $card-size: 85px 135px
 /* product infobar end
 
 /* advice
-$advice-figure-size: 6.4rem 6.4rem
+$advice-figure-size: 6.4rem
+$advice-figure-size--tab: 6rem
 $advice-figure-space: 3.5rem
+$advice-figure-space--tab: 1.8rem
 $advice-box-shadow-size--start: 0 0 0
 $advice-box-shadow-size--end: 0 5px 8px
 $advice-box-shadow-color: black
@@ -12163,21 +12170,35 @@ $advice-box-shadow-color: black
   position: relative
   display: block
   padding: 3.0rem 2rem 3.0rem 3.5rem
-  background-color: white
+  height: 100%
   text-decoration: none
   border: 1px solid #f2f2f2
   color: #000
   box-shadow: $advice-box-shadow-size--start rgba($advice-box-shadow-color, 0.18)
+  background-color: white
   transition: box-shadow $animation-speed
+  -webkit-tap-highlight-color: transparent
   +clear
 
-  .touchevents &
-    user-select: none
-    -webkit-tap-highlight-color: transparent
+  +media('<tab')
+    display: flex
+    align-items: flex-start
+    justify-content: center
+    padding: 8% #{nth($box-inner-space, 2)}
+    box-shadow: none
+
+  +media('<tab-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
   &:hover
-    box-shadow: $advice-box-shadow-size--end rgba($advice-box-shadow-color, 0.18)
-    z-index: 2
+    .no-touchevents &
+      box-shadow: $advice-box-shadow-size--end rgba($advice-box-shadow-color, 0.18)
+      z-index: 2
 
 .advice_alt
   position: relative
@@ -12187,32 +12208,49 @@ $advice-box-shadow-color: black
   color: white
   z-index: 1
 
+.advice__layout
+  max-width: 46rem
+
+  +media('<tab')
+    max-width: 36rem
+
 .advice__figure
   float: left
   padding: 0
   margin-right: $advice-figure-space
-  height: nth($advice-figure-size, 1)
-  width: nth($advice-figure-size, 2)
-  border-radius: round-float(nth($advice-figure-size, 1) / 2, 1)
+  height: $advice-figure-size
+  width: $advice-figure-size
+  border-radius: $advice-figure-size
   overflow: hidden
   position: relative
   border: 3px solid white
 
+  +media('<tab')
+    +size($advice-figure-size--tab)
+    margin-right: $advice-figure-space--tab
+    border-radius: $advice-figure-size--tab
+
   img
     display: block
-    border-radius: round-float(nth($advice-figure-size, 1) / 2, 1)
+    border-radius: $advice-figure-size
     width: 100%
     height: 100%
     max-width: none
 
+    +media('<tab')
+      border-radius: $advice-figure-size--tab
+
 .advice__label
   display: block
-  margin-left: nth($advice-figure-size, 2) + $advice-figure-space
+  margin-left: $advice-figure-size + $advice-figure-space
   font-size: 1.4rem
   line-height: 2.0rem
   letter-spacing: 0.2em
   color: $base-color
   margin-bottom: 1rem
+
+  +media('<tab')
+    margin-left: $advice-figure-size--tab + $advice-figure-space--tab
 
   &:last-child
     margin-bottom: 0
@@ -12222,10 +12260,20 @@ $advice-box-shadow-color: black
 
 .advice__text
   display: block
-  margin-left: nth($advice-figure-size, 2) + $advice-figure-space
+  margin-left: $advice-figure-size + $advice-figure-space
   +font-bold
   font-size: 1.6rem
   line-height: 2.4rem
+
+  +media('<tab')
+    margin-left: $advice-figure-size--tab + $advice-figure-space--tab
+
+  +media('<mob')
+    font-size: $font-size--mob
+    line-height: $line-height--mob
+
+  &:last-child
+    margin-bottom: 0
 
 .advice__text_alt
   color: currentColor
@@ -12298,6 +12346,29 @@ $advice-box-shadow-color: black
 
   &:last-child
     margin-bottom: 0
+
+.useful-advices__list
+  +media('<tab')
+    display: flex
+
+  +media('<tab-s')
+    display: block
+
+.useful-advices__item
+  +media('<tab')
+    flex-shrink: 0
+    $width: 50%
+    flex-basis: $width
+    max-width: $width
+
+  +media('<tab-s')
+    max-width: none
+
+    &:first-child ~ &
+      display: none
+
+  .advice
+    height: 100%
 
 /* useful end
 
@@ -12412,6 +12483,7 @@ $advice-box-shadow-color: black
 
   +media('<mob-s')
     max-width: none
+    border: 1px solid $border-color
 
   .product-short
     height: 100%
@@ -12528,6 +12600,8 @@ $advice-box-shadow-color: black
 
   +media('<mob-s')
     max-width: none
+    padding: 1.5rem
+    border: 1px solid $border-color
 
   .set-result
     flex-grow: 1
@@ -12546,8 +12620,7 @@ $advice-box-shadow-color: black
   padding-top: 5px
 
   +media('<mob-s')
-    padding-top: 3.5rem
-    padding-bottom: 2rem
+    padding: 3.5rem #{nth($section-inner-space--mob, 2)} 1.5rem
 
 // arrows
 $swiper-button-size: 14px, 20px

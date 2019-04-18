@@ -700,6 +700,7 @@ function slidersInit() {
             slidesPerView: 2
           },
           639: {
+            slidesPerView: 2,
             spaceBetween: 0
           }
         }
@@ -836,6 +837,7 @@ function slidersInit() {
 
       setsSliderJs = new Swiper($thisSlider, {
         init: false,
+        spaceBetween: 20,
         navigation: {
           nextEl: $thisBtnNext,
           prevEl: $thisBtnPrev,
