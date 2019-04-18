@@ -643,6 +643,11 @@ function slidersInit() {
             navigation: {
               nextEl: $galleryThumbsArrNext,
               prevEl: $galleryThumbsArrPrev,
+            },
+            breakpoints: {
+              767: {
+                direction: 'horizontal'
+              }
             }
           },
         },
@@ -687,6 +692,15 @@ function slidersInit() {
         breakpoints: {
           1599: {
             slidesPerView: 4
+          },
+          1199: {
+            slidesPerView: 3
+          },
+          879: {
+            slidesPerView: 2
+          },
+          639: {
+            spaceBetween: 0
           }
         }
 
@@ -3361,6 +3375,22 @@ function initSpinner ($_elem) {
   })
 }
 
+function calcPriceOrder() {
+  var $spin = $('.p-add-form__counter-js').find('input[type="number"]');
+
+  $spin.on('change keyup spinstop', function (event) {
+    var $curSpin = $(this),
+        $curForm = $curSpin.closest('.p-add-form-js');
+
+    var total = +$curForm.find('.p-add-form-price-js').attr('data-price') * +$curSpin.val();
+    total = parseFloat(total).toFixed(2);
+
+    $curForm.find('.p-add-form-total-js').html(total).attr('data-total', +total);
+  });
+
+  $spin.trigger('change');
+}
+
 /**
  * Popups
  */
@@ -3472,6 +3502,7 @@ $(document).ready(function () {
   sortProducts();
   initSpinner($('.spinner-js'));
   onlyNumberInput();
+  calcPriceOrder();
   popupsInit();
   formValidation();
 });

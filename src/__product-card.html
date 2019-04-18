@@ -63,32 +63,14 @@
           </div>
         </div>
         <!--product card gallery end-->
-        <!--product card services-->
-        <div class="p-card-services">
-          <div class="p-card-services__list">
-            <div class="p-card-services__item">
-              <strong>@@include("includes/svg/icon-helper-credit.svg") <span>Доставка</span></strong>
-              <p>По Минску <mark>курьером &mdash; сегодня, завтра, бесплатно</mark>.</p>
-              <p>По всей Беларуси курьером в течение <span class="nobr">1-3 дней</span>.</p>
-            </div>
-            <div class="p-card-services__item">
-              <strong>@@include("includes/svg/icon-helper-delivery.svg") <span>Оплата</span></strong>
-              <p>Наличными, банковской картой, картами рассрочек, безналичный платежом.</p>
-            </div>
-            <div class="p-card-services__item">
-              <strong>@@include("includes/svg/icon-helper-call.svg") <span>Помощь экспертов</span></strong>
-              <p>Консультации специалистов по телефону и в удобных мессенджерах, пишите нам!</p>
-            </div>
-          </div>
-        </div>
-        <!--product card services end-->
       </div>
       <!--product card main end-->
+
       <!--product card aside-->
       <div class="p-card__aside">
         <div class="p-card-action">
-          <a href="#" class="action-btn action-btn_compare p-card-action__btn change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><em class="action-btn__counter">1</em><span>Сравнить</span> @@include("includes/svg/icon-compare.svg")</a>
           <a href="#" class="action-btn action-btn_like p-card-action__btn change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> @@include("includes/svg/icon-like.svg")</a>
+          <a href="#" class="action-btn action-btn_compare p-card-action__btn change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><em class="action-btn__counter">1</em><span>Сравнить</span> @@include("includes/svg/icon-compare.svg")</a>
         </div>
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="p-card-offer">
           <div class="p-card-offer__meta">
@@ -97,19 +79,19 @@
           </div>
           <div class="p-card-offer__buy">
             <div class="p-card-price">
-              <div class="p-card-price__old"><strong>1500</strong>&nbsp;<em>р.</em></div>
-              <div class="p-card-price__new"><strong itemprop="price" content="1500">1500</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
+              <div class="p-card-price__old"><strong>1700.50</strong>&nbsp;<em>р.</em></div>
+              <div class="p-card-price__new"><strong itemprop="price" content="1500.23">1500.23</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">р.</em></div>
             </div>
             <div class="p-card-options">
               <div class="p-card-options__item">
-                <a href="#" class="btn-buy btn-buy_stretch open-p-add-form-popup-js">
+                <a href="#" class="btn-buy p-card-options__btn open-p-add-form-popup-js">
                   <span class="btn-buy__buy">Купить</span>
                   <span class="btn-buy__in-cart">В&nbsp;корзине</span>
                   <i>@@include("includes/svg/icon-cart.svg")</i>
                 </a>
               </div>
               <div class="p-card-options__item">
-                <a href="#" class="btn-outline btn-outline_stretch">Купить в один клик</a>
+                <a href="#" class="btn-outline p-card-options__btn">Купить в один клик</a>
               </div>
             </div>
           </div>
@@ -128,19 +110,19 @@
                   <div class="p-add-form__stock p-stock on"><i>&nbsp;</i>В наличии</div>
                 </div>
                 <div class="p-add-form__options">
-                  <div class="p-add-form__counter">
-                    <input class="spinner spinner-js" max="100" min="0" type="number" name="value" value="0" data-only-number>
-                  </div>
                   <div class="p-add-form-price p-add-form__price">
-                    <div class="p-add-form-price__old"><strong>1500</strong>&nbsp;<em>р.</em></div>
-                    <div class="p-add-form-price__new"><strong>1500</strong>&nbsp;<em>р.</em></div>
+                    <div class="p-add-form-price__old"><strong>1700.50</strong>&nbsp;<em>р.</em></div>
+                    <div class="p-add-form-price__new"><strong class="p-add-form-price-js" data-price="1500.23">1500.23</strong>&nbsp;<em>р.</em></div>
+                  </div>
+                  <div class="p-add-form__counter p-add-form__counter-js">
+                    <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
                   </div>
                 </div>
               </div>
               <div class="p-add-form__footer">
                 <div class="p-add-form__total">
                   <div class="p-add-form__total-label">Итого</div>
-                  <div class="p-add-form__total-sum"><strong>1500</strong> <em>р.</em></div>
+                  <div class="p-add-form__total-sum"><strong class="p-add-form-total-js">1500.23</strong> <em>р.</em></div>
                 </div>
                 <a href="cart.html" class="btn-def p-add-form__btn-buy">Оформить заказ</a>
               </div>
@@ -166,10 +148,13 @@
           </div>
         </div>
         <div class="credit tabs-js">
-          <div class="credit-thumbs tabs__thumbs-js">
-            <a href="#installmentCards" class="tabs-active"><span>Карты рассрочки</span><em>▼</em></a>
-            <a href="#installmentBanks"><span>Рассрочка банков</span><em>▼</em></a>
-            <a href="#credit"><span>Кредит</span><em>▼</em></a>
+          <div class="credit-nav">
+            <div class="credit-select tabs__select-js"></div>
+            <div class="credit-thumbs tabs__thumbs-js tabs__select-drop-js">
+              <a href="#installmentCards" class="tabs-active"><span>Карты рассрочки</span><em>▼</em></a>
+              <a href="#installmentBanks"><span>Рассрочка банков</span><em>▼</em></a>
+              <a href="#credit"><span>Кредит</span><em>▼</em></a>
+            </div>
           </div>
           <div class="tabs__panels-js">
             <div id="installmentCards" class="credit-panel cards-js">
@@ -298,26 +283,61 @@
         </div>
       </div>
       <!--product card aside end-->
+
+      <!--product card services-->
+      <div class="p-card-services p-card__services">
+        <div class="p-card-services__list">
+          <div class="p-card-services__item">
+            <strong>
+              <i class="icon-helper-delivery-color">&nbsp;</i>
+              <span>Доставка</span>
+            </strong>
+            <p>По Минску <mark>курьером &mdash; сегодня, завтра, бесплатно</mark>.</p>
+            <p>По всей Беларуси курьером в течение <span class="nobr">1-3 дней</span>.</p>
+          </div>
+          <div class="p-card-services__item">
+            <strong>
+              <i class="icon-helper-credit-color">&nbsp;</i>
+              <span>Оплата</span>
+            </strong>
+            <p>Наличными, банковской картой, картами рассрочек, безналичный платежом.</p>
+          </div>
+          <div class="p-card-services__item">
+            <strong>
+              <i class="icon-helper-call-color">&nbsp;</i>
+              <span>Помощь экспертов</span>
+            </strong>
+            <p>Консультации специалистов по телефону и в удобных мессенджерах, пишите нам!</p>
+          </div>
+        </div>
+      </div>
+      <!--product card services end-->
     </section>
     <!--product card end-->
 
     <!--product prompts-->
     <section class="section section_p-prompts tabs-js">
       <h2 class="section__title hide">Предложения</h2>
-      <div class="p-prompt">
-        <div class="divisions-tabs-thumbs p-prompts__thumbs tabs__thumbs-js">
-          <a href="#promptsPresents"><span>Подарки</span></a>
-          <a href="#promptsSets" class="tabs-active"><span>Вместе дешевле</span></a>
-          <a href="#promptsAccessories"><span>Аксессуары</span></a>
-          <a href="#promptsSimilar"><span>Похожие товары</span></a>
+      <div class="p-prompts">
+        <div class="divisions-tabs__nav p-prompts-tabs__nav">
+          <div class="divisions-tabs__select tabs__select-js"></div>
+          <div class="divisions-tabs-thumbs tabs__thumbs-js tabs__select-drop-js">
+            <a href="#promptsPresents"><span>Подарки</span></a>
+            <a href="#promptsSets" class="tabs-active"><span>Вместе дешевле</span></a>
+            <a href="#promptsAccessories"><span>Аксессуары</span></a>
+            <a href="#promptsSimilar"><span>Похожие товары</span></a>
+          </div>
         </div>
         <div class="tabs__panels-js">
-          <div class="p-prompts__panel tabs-nested-js" id="promptsPresents">
+          <div class="p-prompts-tabs__panel tabs-nested-js" id="promptsPresents">
             <h3 class="hide">Подарки</h3>
-            <div class="simple-tabs-thumbs p-prompts__panel-thumbs tabs-nested__thumbs-js">
-              <a href="#presentsHeadphones" class="tabs-active"><span>Наушники</span></a>
-              <a href="#presentsMice"><span>Мышки</span></a>
-              <a href="#presentsBags"><span>Сумки для ноутбуков</span></a>
+            <div class="simple-tabs__nav p-prompts-tabs__panel-nav">
+              <div class="simple-tabs__select tabs__select-js"></div>
+              <div class="simple-tabs-thumbs p-prompts-tabs__panel-thumbs tabs-nested__thumbs-js tabs__select-drop-js">
+                <a href="#presentsHeadphones" class="tabs-active"><span>Наушники</span></a>
+                <a href="#presentsMice"><span>Мышки</span></a>
+                <a href="#presentsBags"><span>Сумки для ноутбуков</span></a>
+              </div>
             </div>
             <div class="tabs-nested__panels-js">
               <div id="presentsHeadphones">
@@ -751,7 +771,7 @@
               </div>
             </div>
           </div>
-          <div class="p-prompts__panel" id="promptsSets">
+          <div class="p-prompts-tabs__panel" id="promptsSets">
             <div class="sets-slider sets-slider-js swiper-container">
               <div class="swiper-wrapper">
                 <div class="swiper-slide sets-slider__item">
@@ -809,14 +829,14 @@
                         </div>
                         <div class="set-result-options">
                           <div class="set-result-options__item">
-                            <a href="#" class="btn-buy btn-buy_stretch add-to-cart-js">
+                            <a href="#" class="btn-buy set-result__btn add-to-cart-js">
                               <span class="btn-buy__buy">Купить</span>
                               <span class="btn-buy__in-cart">В&nbsp;корзине</span>
                               <i>@@include("includes/svg/icon-cart.svg")</i>
                             </a>
                           </div>
                           <div class="set-result-options__item">
-                            <a href="#" class="btn-alt btn-alt_full-width">Купить в рассрочку</a>
+                            <a href="#" class="btn-alt set-result__btn">Купить в рассрочку</a>
                           </div>
                         </div>
                       </div>
@@ -888,7 +908,7 @@
               </div>
             </div>
           </div>
-          <div class="p-prompts__panel" id="promptsAccessories">
+          <div class="p-prompts-tabs__panel" id="promptsAccessories">
             <h3 class="hide">Аксессуары</h3>
             <div class="sets-slider sets-slider-js swiper-container">
               <div class="swiper-wrapper">
@@ -1011,12 +1031,15 @@
               </div>
             </div>
           </div>
-          <div class="p-prompts__panel tabs-nested-js" id="promptsSimilar">
+          <div class="p-prompts-tabs__panel tabs-nested-js" id="promptsSimilar">
             <h3 class="hide">Похожие товары</h3>
-            <div class="simple-tabs-thumbs p-prompts__panel-thumbs tabs-nested__thumbs-js">
-              <a href="#similarHeadphones" class="tabs-active"><span>Наушники</span></a>
-              <a href="#similarMice"><span>Мышки</span></a>
-              <a href="#similarBags"><span>Сумки для ноутбуков</span></a>
+            <div class="simple-tabs__nav p-prompts-tabs__panel-nav">
+              <div class="simple-tabs__select tabs__select-js"></div>
+              <div class="simple-tabs-thumbs p-prompts-tabs__panel-thumbs tabs-nested__thumbs-js tabs__select-drop-js">
+                <a href="#similarHeadphones" class="tabs-active"><span>Наушники</span></a>
+                <a href="#similarMice"><span>Мышки</span></a>
+                <a href="#similarBags"><span>Сумки для ноутбуков</span></a>
+              </div>
             </div>
             <div class="tabs-nested__panels-js">
               <div id="similarHeadphones">
@@ -1458,11 +1481,14 @@
     <!--product infobar-->
     <section class="section section_p-infobar tabs-js">
       <h2 class="section__title hide">Вся информации о товаре</h2>
-      <div class="divisions-tabs-thumbs p-infobar-tabs__thumbs tabs__thumbs-js">
-        <a href="#pInfobarCh" class="tabs-active">Характеристики</a>
-        <a href="#pInfobarDesc">Описание</a>
-        <a href="#pInfobarRev">Отзывы <em>15</em></a>
-        <a href="#pInfobarIns">Рассрочка и кредит</a>
+      <div class="divisions-tabs__nav p-infobar-tabs__nav">
+        <div class="divisions-tabs__select tabs__select-js"></div>
+        <div class="divisions-tabs-thumbs tabs__thumbs-js tabs__select-drop-js">
+          <a href="#pInfobarCh" class="tabs-active">Характеристики</a>
+          <a href="#pInfobarDesc">Описание</a>
+          <a href="#pInfobarRev">Отзывы <em>15</em></a>
+          <a href="#pInfobarIns">Рассрочка и кредит</a>
+        </div>
       </div>
       <div class="tabs__panels-js">
         <div id="pInfobarCh">

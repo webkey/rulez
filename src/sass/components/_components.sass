@@ -2843,6 +2843,8 @@ a.quick-cart__item
   a, & > span
     display: block
     height: 100%
+    user-select: none
+    -webkit-tap-highlight-color: transparent
 
     +media('<tab')
       position: absolute
@@ -4887,12 +4889,17 @@ $p-sticker-size: 2.6rem 2.6rem
       overflow: hidden
       display: flex
       justify-content: space-between
-      align-items: flex-start
-      margin: 0 -#{$dl-space}
+      align-items: flex-end
+      margin: 0.5rem -#{$dl-space}
       padding: 0
       cursor: default
       background-color: white
       // Цвет фона можно перестилить через родителя при необходимости
+
+      +media('<mob-s')
+        display: block
+        margin-left: 0
+        margin-right: 0.4rem
 
       &:before
         content: none
@@ -4903,28 +4910,48 @@ $p-sticker-size: 2.6rem 2.6rem
         vertical-align: top
         padding: 0 $dl-space
 
+        +media('<mob-s')
+          display: inline
+          padding: 0
+
         &:first-child
           max-width: calc(100% - #{$dd-width})
+
+          +media('<mob-s')
+            max-width: none
 
           &::after
             content: ""
             display: block
             position: absolute
-
-          &::after
             left: 100%
             bottom: 0.45em
             width: 9999px
             border-top: 1px dotted currentColor
+
+            +media('<mob-s')
+              display: inline
+              content: ":"
+              border: none
+              position: static
+              width: auto
+              left: auto
+              bottom: auto
 
         &:last-child
           max-width: #{$dd-width - 1}
           background-color: inherit
           text-align: right
 
+          +media('<mob-s')
+            text-align: left
+            max-width: none
+            +font-bold
+
       // hover
       &:hover
-        background-color: #f1f1f1
+        .no-touchevents &
+          background-color: #f1f1f1
 
 /* dl-list end
 
@@ -6044,25 +6071,70 @@ $categories-item-col: 3
       transform: translate($translate) scale($scale)
       transform: translate3d($translate, 0) scale3d($scale, 1)
 
-// divisions tabs thumbs
-.divisions-tabs-thumbs
+/* simple tabs end
+
+/* divisions tabs
+// divisions tabs thumbs select
+.divisions-tabs__nav
   position: relative
-  display: flex
-  flex-wrap: wrap
-  font-size: 1.6rem
-  line-height: 2.4rem
-  border-bottom: 1px solid #c5c5c5
-  padding-bottom: 2px
+  border-bottom: 0.1rem solid #c5c5c5
+  padding-bottom: 0.2rem
+
+  +media('<tab')
+    max-width: 24rem
+    border: none
+    padding-bottom: 0
 
   &:last-child
     margin-bottom: 0
 
+.divisions-tabs__select
+  +pseudo-select-common($base-color-light)
+
+  +media('>=tab')
+    display: none
+
+// divisions tabs thumbs
+.divisions-tabs-thumbs
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.6rem
+  line-height: 2.4rem
+
+  +media('<tab')
+    display: block // Not flex
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    background-color: white
+    border-radius: 1.2rem
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+
   a
     color: rgba(black, 0.7)
     text-decoration: none
-    margin: 0 50px -5px 0
-    padding-bottom: 8px
-    border-bottom: 5px solid transparent
+    margin: 0 5rem -0.5rem 0
+    padding-bottom: 0.8rem
+    border-bottom: 0.5rem solid transparent
+    -webkit-tap-highlight-color: transparent
     // transition
     $prop: color, border-color
     transition:
@@ -6074,6 +6146,9 @@ $categories-item-col: 3
       .no-flexwrap &
         display: inline-block
         vertical-align: top
+
+    +media('<lap-s')
+      margin-right: #{nth($section-inner-space--tab, 2)}
 
     // touch
     &.touchevents
@@ -6090,13 +6165,42 @@ $categories-item-col: 3
     &:hover
       color: #000
 
+    +media('<tab')
+      display: block
+      margin: 0
+      padding: 1.2rem 1.4rem
+
+      span
+        border: none
+
+      &:hover
+        .no-touchevents &
+          color: white
+          background-color: $base-color-light
+
     // active
     &.tabs-active
       color: #000
       border-color: $base-color
       cursor: default
 
-/* simple tabs end
+      +media('<tab')
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
+        border: none
+
+  // Select opened
+  &.tabs-select-open
+    +media('<tab')
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
+
+/* divisions tabs end
 
 /* opinion
 $opinion-figure-size: 6.8rem
@@ -6383,6 +6487,7 @@ $opinion-box-shadow-color: black
     padding-right: #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
+    display: block
     padding-left: #{nth($section-inner-space--mob, 2)}
     padding-right: #{nth($section-inner-space--mob, 2)}
 
@@ -6396,6 +6501,9 @@ $opinion-box-shadow-color: black
   margin-right: 2.2rem
   margin-bottom: 3.3rem
 
+  +media('<mob')
+    display: none
+
 .p-add-form__figure-img
   display: block
   max-height: 100%
@@ -6408,6 +6516,10 @@ $opinion-box-shadow-color: black
   padding-top: 2.1rem
   margin-bottom: 4rem
 
+  +media('<mob')
+    margin-bottom: 1rem
+    padding-top: 0
+
 // title
 .p-add-form__title
   flex-grow: 1
@@ -6417,11 +6529,18 @@ $opinion-box-shadow-color: black
   line-height: 2.4rem
   color: #000
 
+  +media('<mob')
+    padding-right: 3.5rem // Отступ под крестик
+    margin-bottom: 2rem
+
 // meta
 .p-add-form__meta
   display: flex
   align-items: center
   justify-content: space-between
+
+  +media('<mob')
+    display: none
 
 // rate
 .p-add-form__rate
@@ -6434,8 +6553,13 @@ $opinion-box-shadow-color: black
 // options
 .p-add-form__options
   display: flex
+  flex-direction: row-reverse
   align-items: center
   justify-content: space-between
+  line-height: 1
+
+  +media('<mob')
+    display: block
 
 // counter
 .p-add-form__counter
@@ -6445,11 +6569,17 @@ $opinion-box-shadow-color: black
 .p-add-form-price
   line-height: 3.2rem
 
+  +media('<mob')
+    direction: rtl
+    text-align: left
+    margin-bottom: 1rem
+
 // price old
 .p-add-form-price__old
   display: inline-block
   vertical-align: baseline
   margin-right: 0.4rem
+  direction: ltr
   +oldPriceStyle(1.8rem)
 
   .p-add-form-price.off &
@@ -6459,7 +6589,14 @@ $opinion-box-shadow-color: black
 .p-add-form-price__new
   display: inline-block
   vertical-align: baseline
+  direction: ltr
   +newPriceStyle(3.0rem, 3.0rem, #000)
+
+  +media('<mob')
+    margin-right: 1rem
+
+    & > strong, & > em
+      font-size: 2.6rem
 
   .p-add-form-price.off &
     color: $text-color-ultra-light
@@ -6468,30 +6605,37 @@ $opinion-box-shadow-color: black
 .p-add-form__footer
   flex-grow: 1
   display: flex
-  flex-wrap: wrap
+  //flex-wrap: wrap
   justify-content: space-between
   align-items: center
 
+  +media('<mob')
+    display: block
+
 .p-add-form__total
   display: flex
-  align-items: flex-start
-  justify-content: space-between
   flex-grow: 1
+  align-items: flex-end
+  justify-content: space-between
   overflow: hidden
-  line-height: 3.2rem
   margin-right: nth($section-inner-space, 2)
   margin-top: 0.8rem
+  line-height: 1
 
   +media('<lap-s')
     margin-right: nth($section-inner-space--tab, 2)
 
   +media('<mob')
-    margin-right: nth($section-inner-space--mob, 2)
+    //margin-right: nth($section-inner-space--mob, 2)
+    justify-content: flex-start
+    margin: 0 0 2rem
 
 .p-add-form__total-label
   position: relative
   padding-right: 0.8rem
   font-size: 1.8rem
+  line-height: 2.4rem
+  margin-bottom: 0.2rem
 
   &::before
     content: ""
@@ -6510,11 +6654,15 @@ $opinion-box-shadow-color: black
     pointer-events: none
     -webkit-tap-highlight-color: transparent
 
+    +media('<mob')
+      display: none
+
 .p-add-form__total-sum
   position: relative
   background-color: white
   padding-left: 1rem
   font-size: 3.0rem
+  line-height: 3.4rem
   color: #000
 
   & > strong
@@ -6525,9 +6673,13 @@ $opinion-box-shadow-color: black
     font-style: normal
 
 .p-add-form__btn-buy
-  width: 46%
-  flex-basis: 46%
   flex-shrink: 0
+  $width: 46%
+  width: $width
+  flex-basis: $width
+
+  +media('<mob')
+    width: auto
 
 /* form add a product to a cart end
 
@@ -6555,20 +6707,44 @@ $opinion-box-shadow-color: black
   flex-grow: 1
   color: white
   margin: 0 2rem 0 0
+  font-size: 1.8rem
+  line-height: 2.4rem
+
+  +media('<mob-s')
+    font-size: 1.6rem
+    line-height: 2.0rem
+    margin-right: 1rem
 
   &.error, &.success
     color: white
 
 input[type="text"].quick-order__input
-  width: 46%
-  flex-basis: 46%
   flex-shrink: 0
+  $width: 46%
+  width: $width
+  flex-basis: $width
   margin: 0
+  border-color: white
+
+  +media('<mob')
+    $width: calc(100% - 15rem)
+    width: $width
+    flex-basis: $width
+
+  +media('<mob-s')
+    $width: calc(100% - 10rem)
+    width: $width
+    flex-basis: $width
+
+  +media('<mob-xs')
+    $width: calc(100% - 10rem)
+    width: $width
+    flex-basis: $width
 
   &:focus, &.focused
     &:not([disabled]):not(.error):not(.success)
       border-color: white
-      box-shadow: inset 0 0 0 1px $base-color
+      box-shadow: none
 
   &.error
     border-color: white
@@ -6614,11 +6790,18 @@ input[type="text"].quick-order__input
   left: 0
   bottom: -1rem
   margin: 0
+  height: auto
   max-width: 50%
   font-size: 1.2rem
   line-height: 1.3rem
   white-space: normal
-  height: auto
+  text-align: left
+
+  +media('<mob')
+    max-width: 100%
+    bottom: auto
+    top: 100%
+    margin-top: 1.5rem
 
 .quick-order__error-note
   color: #ff7b66
@@ -6649,6 +6832,9 @@ input[type="text"].quick-order__input
     duration: $animation-speed
     timing-function: ease-in-out
 
+  +media('<mob')
+    width: 100%
+
 // opened
 .p-add-form-popup_opened
   pointer-events: auto
@@ -6669,8 +6855,16 @@ input[type="text"].quick-order__input
   border-radius: round-float($size / 2, 1)
   text-indent: -9999px
   overflow: hidden
+  user-select: none
+  -webkit-tap-highlight-color: transparent
   transform: rotate(-90deg) translateZ(0)
   transition: background-color $animation-speed
+
+  +media('<mob')
+    $size: 2.4rem
+    width: $size
+    height: $size
+    border-radius: $size
 
   svg
     display: block
@@ -6681,6 +6875,12 @@ input[type="text"].quick-order__input
     top: 50%
     $space: round-float($size / 2, 1)
     margin: -#{$space} 0 0 -#{$space}
+
+    +media('<mob')
+      $size: 1.4rem
+      +size($size)
+      $space: round-float($size / 2, 1)
+      margin: -#{$space} 0 0 -#{$space}
 
   path
     fill: currentColor
@@ -6925,8 +7125,6 @@ $product-item-space--tab: 2rem 2rem
   position: relative
   display: inline-block
   padding: 0.3rem 0 0.3rem 3.6rem
-  +font-normal
-  font-style: normal
   font-size: 1.4rem
   line-height: 1.8rem
   text-decoration: none
@@ -6974,6 +7172,8 @@ $product-item-space--tab: 2rem 2rem
     padding: 0.1rem 0 0 0
     font-style: normal
     font-size: 1.2rem
+    +font-normal
+    font-style: normal
     line-height: $size
     text-align: center
     color: white
@@ -7561,6 +7761,10 @@ $product-short-inner-space: 2.5rem 1.5rem 1.5rem
   align-items: center
   justify-content: center
 
+  +media('<tab-s')
+    height: 8rem
+    margin-bottom: 1rem
+
   img
     display: block
     max-width: 100%
@@ -7616,7 +7820,7 @@ $product-short-title-line-number: 2
 .product-short__offer
   position: relative
   //padding: 0.5rem 1rem 0.5rem 0
-  padding: 0 1rem 0 0
+  //padding: 0 1rem 0 0
   line-height: 1
 
 // === short product price ===
@@ -7671,9 +7875,10 @@ $product-short-title-line-number: 2
   height: 2.8rem
   width: 3.3rem
   min-width: 3.3rem
+  margin-left: 1rem
+  color: $base-color
   border: 1px solid currentColor
   border-radius: 0.5rem
-  color: $base-color
   // transition
   $prop: color, background-color, border-color
   transition:
@@ -10625,7 +10830,8 @@ $collections-title-width: 12.5rem
 /* float-list end
 
 /* product card
-$card-cont-width: 520px
+$card-cont-width: 52rem
+$card-cont-width--net: 40rem
 // 520px (43.8%) на ширине 1280px
 
 .p-card
@@ -10634,11 +10840,20 @@ $card-cont-width: 520px
   margin-bottom: 4.8rem
   +clear
 
+  +media('<net')
+    padding-top: 3rem
+    padding-bottom: 3rem
+
   +media('<lap-s')
-    padding: 4.8rem nth($section-inner-space--tab, 2) 4.2rem
+    padding-left: nth($section-inner-space--tab, 2)
+    padding-right: nth($section-inner-space--tab, 2)
+
+  +media('<tab')
+    margin-bottom: 3rem
 
   +media('<mob')
-    padding: 4.8rem nth($section-inner-space--mob, 2) 4.2rem
+    padding-left: nth($section-inner-space--mob, 2)
+    padding-right: nth($section-inner-space--mob, 2)
 
   &:last-child
     margin-bottom: 0
@@ -10674,7 +10889,16 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 .p-card__main
   position: relative
   float: left
+  clear: left
   width: calc(100% - #{$card-cont-width})
+  margin-bottom: 2rem
+
+  +media('<net')
+    width: calc(100% - #{$card-cont-width--net})
+
+  +media('<tab')
+    float: none
+    width: auto
 
 // === product card labels ===
 .p-card-stickers
@@ -10689,6 +10913,16 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   //padding: 0 $gallery-thumbs-size 0 #{$gallery-thumbs-size + 30}
   padding: 0 5rem 0 #{5 + $gallery-thumbs-size}
   margin-bottom: 2.4rem
+
+  +media('<lap-s')
+    padding: 0 2rem 0 #{2 + $gallery-thumbs-size}
+
+  +media('<tab-s')
+    padding: 0
+
+  +media('<mob-s')
+    margin-left: -#{nth($section-inner-space--mob, 2)}
+    margin-right: -#{nth($section-inner-space--mob, 2)}
 
   &:last-child
     margin-bottom: 0
@@ -10707,6 +10941,14 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
   +media('<desk-s')
     max-width: 38rem
+
+  +media('<tab-s')
+    max-width: none
+    margin-bottom: 2rem
+    height: 32rem
+
+  +media('<mob')
+    height: 20rem
 
 .p-card-gallery-images__item
   display: flex
@@ -10737,7 +10979,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 .p-card-gallery-thumbs
   display: flex
   flex-direction: column
-  flex-wrap: wrap
+  //flex-wrap: wrap
   justify-content: center
   position: absolute
   left: 0
@@ -10745,12 +10987,23 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   width: $gallery-thumbs-size
   min-height: 100%
 
+  +media('<tab-s')
+    flex-direction: row
+    position: relative
+    left: auto
+    top: auto
+    width: auto
+    height: $gallery-thumbs-size
+
   .swiper-container
     display: flex
     flex-wrap: wrap
     align-items: center
     height: $gallery-thumbs-height
     width: 100%
+
+    +media('<tab-s')
+      height: auto
 
   .swiper-wrapper
     height: auto
@@ -10806,11 +11059,16 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 .p-card-gallery-thumbs__arrow-prev,
 .p-card-gallery-thumbs__arrow-next
   position: relative
-  height: 40px
+  height: 4rem
   //background-color: $base-color
   cursor: pointer
   user-select: none
   -webkit-tap-highlight-color: transparent
+
+  +media('<tab-s')
+    flex-shrink: 0
+    width: 3rem
+    height: 100%
 
   &::after
     top: 50%
@@ -10819,10 +11077,13 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     position: absolute
     opacity: 1
     pointer-events: none
-    +size(12px)
+    +size(1.2rem)
     transform: rotate(45deg)
     border: 0 solid #303030
-    margin: -15px -10px
+    margin: -1.5rem -1rem
+
+    +media('<tab-s')
+      transform: rotate(-45deg)
 
   &:focus
     outline: none
@@ -10836,7 +11097,10 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     border-width: 2px 0 0 2px
     margin: -4px -5px
 
-  &:active
+    +media('<tab-s')
+      margin: -7px -4px
+
+  //&:active
     top: -1px
 
 .p-card-gallery-thumbs__arrow-next
@@ -10844,20 +11108,39 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     border-width: 0 2px 2px 0
     margin: -9px -5px
 
-  &:active
-    top: 1px
+    +media('<tab-s')
+      margin: -7px -8px
 
 // p-card-services
-.p-card-services
+.p-card__services
+  float: left
+  clear: left
   overflow: hidden
+  width: calc(100% - #{$card-cont-width})
+  padding-right: 5rem
 
-  .p-card__main &
-    padding-right: 5rem
+  +media('<net')
+    width: calc(100% - #{$card-cont-width--net})
+
+  +media('<lap-s')
+    padding-right: nth($section-inner-space--tab, 2)
+
+  +media('<tab')
+    float: none
+    width: auto
+
+  +media('<mob')
+    padding-right: nth($section-inner-space--mob, 2)
 
 .p-card-services__list
   display: flex
-  flex-wrap: wrap
   margin: 0 -2rem
+
+  +media('>=tab', '<net')
+    display: block
+
+  +media('<tab-s')
+    display: block
 
 .p-card-services__item
   flex-grow: 1
@@ -10865,21 +11148,51 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   flex-basis: $width
   width: $width
   padding: 0 2rem
-  font-size: 1.2rem
-  line-height: 1.9rem
+  font-size: 1.4rem
+  line-height: 2.0rem
   color: $text-color-light
   border-left: 2px solid $border-color-light
+
+  +media('>=tab', '<net')
+    width: auto
+    margin-top: 2rem
+
+    &:first-child
+      margin-top: 0
+
+  +media('<tab-s')
+    width: auto
+    margin-top: 3rem
+
+    &:first-child
+      margin-top: 0
 
   & > strong
     display: block
     position: relative
     +font-bold
-    font-size: 1.4rem
-    line-height: 1.8rem
+    font-size: 1.6rem
+    line-height: 2.0rem
     color: #000
-    padding: 0.2rem 0 0.2rem 3.8rem
+    padding: 0.2rem 0 0.2rem 4.2rem
     margin-bottom: 2rem
     cursor: default
+
+    +media('>=tab', '<net')
+      margin-bottom: 1rem
+
+    +media('<tab-s')
+      margin-bottom: 1rem
+
+    & > i
+      $size: 3rem
+      display: inline-block
+      position: absolute
+      left: 0
+      top: 50%
+      width: $size
+      height: $size
+      margin-top: -#{round-float($size / 2, 1)}
 
     svg
       $size: 2.4rem
@@ -10908,12 +11221,19 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   padding: 0 #{nth($box-inner-space, 2)}
   margin-bottom: 0.7rem
   text-align: right
+  white-space: nowrap
   cursor: default
+  direction: rtl // Чтобы при переполнении контента, содержимое уходило влево, а не вправо, как по дефолту
 
-  +media('<tab-s')
+  +media('<tab')
+    text-align: left
+    direction: ltr
+    padding: 0
+
+  //+media('<tab-s')
     padding: 0 #{nth($section-inner-space--tab, 2)}
 
-  +media('<mob')
+  //+media('<mob')
     padding: 0 #{nth($section-inner-space--mob, 2)}
 
   &:last-child
@@ -10921,6 +11241,34 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
 .p-card-action__btn
   margin: 0 0 1rem 5rem
+  direction: ltr
+
+  +media('<net')
+    margin-left: 2rem
+
+  +media('<tab')
+    margin-left: auto
+    margin-right: 2rem
+
+  +media('<mob-s')
+    vertical-align: middle
+
+  &.action-btn_like
+    +media('<mob-s')
+      $size: 3.2rem
+      height: $size
+      width: $size
+      padding: 0
+      border-radius: $size
+      border: 1px solid #ef4180
+
+      & > span
+        display: none
+
+      & > svg
+        left: 50%
+        top: 50%
+        transform: translate(-50%, -50%)
 
 // card aside stock
 .p-card-stock
@@ -10980,12 +11328,23 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 // price
 .p-card-price
   line-height: 5.8rem
+
+  +media('<net')
+    display: flex
+    flex-direction: column-reverse // Снадала новая цена, потом старая
+    line-height: 1
+
 // price old
 .p-card-price__old
   display: inline-block
   vertical-align: baseline
   margin-right: 0.4rem
   +oldPriceStyle()
+
+  +media('<net')
+    display: block
+    width: 100%
+    margin-right: 0
 
   .p-card-price.off &
     color: $text-color-ultra-light
@@ -10996,6 +11355,15 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   vertical-align: baseline
   line-height: inherit
   +newPriceStyle(4.5rem, 2.4rem, #000)
+
+  +media('<net')
+    display: block
+    width: 100%
+    margin-bottom: 0.5rem
+
+  +media('<mob')
+    & > strong
+      font-size: 3.8rem
 
   .p-card-price.off &
     color: $text-color-ultra-light
@@ -11050,12 +11418,14 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   // button buy states
   // hover
   &:hover
-    color: #000
-    box-shadow: 0 3px 6px rgba(black, 0.15)
+    .no-touchevents &
+      color: #000
+      box-shadow: 0 3px 6px rgba(black, 0.15)
 
   // active
   &:active
-    box-shadow: none
+    .no-touchevents &
+      box-shadow: none
 
   // added
   &.added
@@ -11097,11 +11467,19 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   &:first-child
     margin-top: 0
 
+// buttons
+.p-card-options__btn
+  display: block
+  width: 100%
+
 // p-card-offer
 .p-card-offer
   position: relative
   border: 1px solid $border-color-light
   padding: 2rem
+
+  +media('<mob')
+    padding: nth($section-inner-space--mob, 2)
 
 .p-card-offer__meta
   display: flex
@@ -11110,32 +11488,56 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   align-items: center
   margin-bottom: 1rem
 
+  +media('<mob-s')
+    display: block
+    margin-bottom: 2rem
+
   &:last-child
     margin-bottom: 0
 
   .p-card-stock, .p-card-code
     margin-bottom: 1rem
 
+    +media('<mob-s')
+      display: block
+
   .p-card-stock
     padding-right: 1rem
 
 .p-card-offer__buy
   display: flex
-  flex-wrap: wrap
+  align-items: flex-start
   justify-content: space-between
+
+  +media('<mob-s')
+    display: block
 
   //.p-card-price, .p-card-options
   //  flex-basis: 50%
   //  flex-grow: 1
 
   .p-card-price
+    flex-shrink: 0
     flex-grow: 1
-    flex-basis: 50%
+    $width: 50%
+    flex-basis: $width
+    max-width: $width
     padding-right: 1rem
 
+    +media('<mob-s')
+      padding-right: 0
+      margin-bottom: 2rem
+      max-width: none
+
   .p-card-options
-    flex-basis: 50%
+    flex-shrink: 0
     flex-grow: 1
+    $width: 50%
+    flex-basis: $width
+    max-width: $width
+
+    +media('<mob-s')
+      max-width: none
 
   &:last-child
     margin-bottom: 0
@@ -11143,6 +11545,78 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 // credit
 .credit
   position: relative
+
+// nav
+.credit-nav
+  position: relative
+  margin-bottom: 1rem
+
+  +media('<mob')
+    max-width: 24rem
+
+  &:last-child
+    margin-bottom: 0
+
+// select
+.credit-select
+  position: relative
+  display: block
+  $line-height: 4.4rem
+  height: $line-height
+  width: 100%
+  padding: 0 3.6rem 0 2rem
+  +font-bold
+  +font(1.6rem, $line-height)
+  color: $text-color
+  text-decoration: none
+  cursor: pointer
+  background-color: #f9f7ff
+  border-radius: $line-height
+  user-select: none
+  -webkit-tap-highlight-color: transparent
+  // transition
+  $prop: background-color, color
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+
+  & > i
+    display: block
+    position: absolute
+    right: 0
+    top: 0
+    +size(3.6rem, 100%)
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+
+    svg
+      display: block
+      position: absolute
+      left: 50%
+      top: 50%
+      height: 0.6rem
+      width: 1rem
+      transform: translate(-50%, -50%)
+      stroke: currentColor
+
+      path
+        stroke: currentColor
+
+  & > span
+    display: inline-block
+    vertical-align: top
+    +truncate(100%)
+
+  em, i
+    +font-normal
+    font-style: normal
+
+  & > em
+    display: none
+
+  +media('>=mob')
+    display: none
 
 // thumbs
 .credit-thumbs
@@ -11153,6 +11627,33 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   cursor: default
   user-select: none
   -webkit-tap-highlight-color: transparent
+
+  +media('<mob')
+    display: block // Not flex
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    background-color: white
+    border-radius: 1.2rem
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
 
   a
     position: relative
@@ -11173,6 +11674,19 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     user-select: none
     -webkit-tap-highlight-color: transparent
 
+    +media('<mob')
+      display: block
+      margin: 0
+      padding: 1.2rem 1.4rem
+
+      span
+        border: none
+
+      &:hover
+        .no-touchevents &
+          color: white
+          background-color: $base-color-light
+
     & > em
       $size: 1.2rem
       $arr-size: 0.4rem
@@ -11191,6 +11705,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       transition:
         property: $prop
         duration: $animation-speed
+
+      +media('<mob')
+        display: none
 
       &::before
         content: ""
@@ -11211,7 +11728,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       background-color: #d7d0ef
 
     // active
-    &:active
+    //&:active
       top: 1px
 
     // is open
@@ -11223,6 +11740,21 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       & > em
         transform: rotate(0.5turn)
         background-color: $base-color
+
+      +media('<mob')
+        color: $base-color
+        background-color: rgba($base-color-light, 0.2)
+
+  // Select opened
+  &.tabs-select-open
+    +media('<mob')
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
 
 // panels
 .credit-panel
@@ -11263,6 +11795,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   align-items: flex-start
   margin-bottom: 2rem
 
+  +media('<mob-s')
+    display: block
+
   &:last-child
     margin-bottom: 0
 
@@ -11296,6 +11831,10 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   &:first-child
     padding-right: 2rem
 
+    +media('<mob-s')
+      padding-top: 0
+      margin-bottom: 1rem
+
 // card-info
 .card-info
   font-size: 1.4rem
@@ -11328,6 +11867,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   align-items: center
   margin-bottom: 2rem
 
+  +media('<mob-s')
+    display: block
+
   &:last-child
     margin-bottom: 0
 
@@ -11338,6 +11880,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   &:first-child
     padding-right: 2rem
 
+    +media('<mob-s')
+      margin-bottom: 1rem
+
 // aside
 .p-card__aside
   width: $card-cont-width
@@ -11345,6 +11890,15 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   clear: right
   padding-right: 0
   margin-top: -0.4rem
+
+  +media('<net')
+    width: $card-cont-width--net
+
+  +media('<tab')
+    float: none
+    width: auto
+    margin-top: 0
+    margin-bottom: 4rem
 
   // offer
   .p-card-offer
@@ -11362,18 +11916,19 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
 $card-size: 85px 135px
 .cards-slider__slide
-  position: relative
-  height: nth($card-size, 1)
-  width: round(nth($card-size, 2) * 0.7)
-  margin-top: 2px
-  //border: solid transparent
-  //border-width: 3px 1px
-  box-sizing: content-box
-  $transform: 0, 32px
-  transform: translate($transform)
-  transform: translate3d($transform, 0)
-  cursor: default
-  +clear
+  &, .swiper-container-android &
+    position: relative
+    height: nth($card-size, 1)
+    width: round(nth($card-size, 2) * 0.7)
+    margin-top: 2px
+    //border: solid transparent
+    //border-width: 3px 1px
+    box-sizing: content-box
+    $transform: 0, 32px
+    transform: translate($transform)
+    transform: translate3d($transform, 0)
+    cursor: default
+    +clear
 
 .cards-slider-figure
   border-radius: 10px
@@ -11446,7 +12001,7 @@ $card-size: 85px 135px
   cursor: pointer
   outline: none
   user-select: none
-  text-line-through-color: transparent
+  -webkit-tap-highlight-color: transparent
   // transition
   $prop: color
   will-change: $prop
@@ -11471,12 +12026,12 @@ $card-size: 85px 135px
       fill: currentColor
 
   &:not(.swiper-button-disabled):not(:hover):focus
-    box-shadow: 0 0 1px 1px rgba(77, 144, 254, 1)
+    box-shadow: 0 0 0 2px rgba(77, 144, 254, 0.5)
 
   &:not(.swiper-button-disabled):hover
     color: $base-color
 
-  &:not(.swiper-button-disabled):active
+  //&:not(.swiper-button-disabled):active
     top: calc(50% + 1px)
 
   &.swiper-button-disabled
@@ -11496,7 +12051,7 @@ $card-size: 85px 135px
 .p-prompts
   position: relative
 
-.p-prompts__thumbs
+.p-prompts-tabs__nav
   margin: 0 #{nth($section-inner-space, 2)}
   padding-bottom: 0
   border: none
@@ -11505,25 +12060,25 @@ $card-size: 85px 135px
   +media('<lap-s')
     margin: 0 #{nth($section-inner-space--tab, 2)}
 
-  +media('<mob')
-    margin: 0 #{nth($section-inner-space--mob, 2)}
+  +media('<tab')
+    margin: 0 0 2rem
 
-.p-prompts__panel-thumbs
-  position: absolute
-  left: #{nth($section-inner-space, 2)}
-  right: #{nth($section-inner-space, 2)}
-  top: 0
-  padding: 1.1rem 0 0
-  margin: 2px 10rem 0 0
+.p-prompts-tabs__panel-nav
+  position: relative
+  //left: #{nth($section-inner-space, 2)}
+  //right: #{nth($section-inner-space, 2)}
+  //top: 0
+  padding: 1.1rem #{nth($section-inner-space, 2)} 0
+  margin: 0.2rem 10rem -4.1rem 0
   z-index: 3
 
   +media('<lap-s')
-    left: #{nth($section-inner-space--tab, 2)}
-    right: #{nth($section-inner-space--tab, 2)}
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
 
-  +media('<mob')
-    left: #{nth($section-inner-space--mob, 2)}
-    right: #{nth($section-inner-space--mob, 2)}
+  +media('<tab')
+    padding: 0
+    margin-top: 0
 
   &::after
     content: ""
@@ -11533,6 +12088,9 @@ $card-size: 85px 135px
     left: 0
     right: -10rem
     border-top: 1px solid #c5c5c5
+
+    +media('<tab')
+      display: none
 
 /* product prompts end
 
@@ -11545,9 +12103,9 @@ $card-size: 85px 135px
     padding: #{nth($section-inner-space--tab, 1)} #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
-    padding: #{nth($section-inner-space--mob, 1)} #{nth($section-inner-space--mob, 2)}
+    padding: 2rem #{nth($section-inner-space--mob, 2)}
 
-.p-infobar-tabs__thumbs
+.p-infobar-tabs__nav
   margin-bottom: 2rem
 
 // product info list
@@ -11558,10 +12116,16 @@ $card-size: 85px 135px
   column-count: 3
   column-gap: 7rem
   font-size: 1.4rem
-  line-height: 2rem
+  line-height: 1.8rem
 
   +media('<desk-s')
     column-count: 2
+
+  +media('<tab')
+    column-gap: 3rem
+
+  +media('<tab-s')
+    column-count: auto
 
   &:last-child
     margin-bottom: 0
@@ -11571,12 +12135,21 @@ $card-size: 85px 135px
     width: 100%
     margin-bottom: 2.4rem
 
+    &:last-child
+      margin-bottom: 0
+
     & > h4, & > strong
       display: block
       +font-bold
       font-size: 1.4rem
       line-height: 2rem
       margin-bottom: 0.5rem
+
+    & p
+      margin-bottom: 1em
+
+      &:last-child
+        margin-bottom: 0
 
 /* product infobar end
 
@@ -11669,8 +12242,14 @@ $advice-box-shadow-color: black
   line-height: 2.1rem
   color: $text-color-light
 
+  +media('<net')
+    margin-bottom: 0
+
   +media('<lap-s')
     padding: $section-inner-space--tab
+
+  +media('<tab')
+    display: block
 
   +media('<mob')
     padding: $section-inner-space--mob
@@ -11702,13 +12281,17 @@ $advice-box-shadow-color: black
   +media('<lap-s')
     padding-right: nth($section-inner-space--tab, 1)
 
-  +media('<mob')
-    padding-right: nth($section-inner-space--mob, 1)
+  +media('<tab')
+    padding-right: 0
+    margin-bottom: 2rem
 
 .useful__aside
   $width: 40rem
   flex-basis: $width
   min-width: $width
+
+  +media('<tab')
+    min-width: 0
 
 .useful-advices
   margin-bottom: $bottom-space
@@ -11747,6 +12330,9 @@ $advice-box-shadow-color: black
   +font-bold
   font-size: 2.0rem
 
+  +media('<tab-s')
+    font-size: 1.6rem
+
 .set-result-price__old-unit
   +font-normal
   font-style: normal
@@ -11759,10 +12345,22 @@ $advice-box-shadow-color: black
   +font-bold
   font-size: 3.5rem
 
+  +media('<tab')
+    font-size: 2.8rem
+
+  +media('<tab-s')
+    font-size: 2.0rem
+
+  +media('<mob-s')
+    font-size: 2.4rem
+
 .set-result-price__new-unit
   +font-normal
   font-style: normal
   font-size: 2.4rem
+
+  +media('<tab-s')
+    font-size: 1.8rem
 
 /* set result price end
 
@@ -11779,6 +12377,19 @@ $advice-box-shadow-color: black
   &:last-child
     margin-bottom: 0
 
+.set-result__btn
+  display: block
+  width: 100%
+
+  +media('<tab')
+    padding-left: 1rem
+    padding-right: 1rem
+
+    &.btn-alt
+      padding: 2rem 1rem
+      font-size: 1.2rem
+      line-height: 1.6rem
+
 /* set result options end
 
 /* set result
@@ -11791,22 +12402,35 @@ $advice-box-shadow-color: black
 .set
   display: flex
 
+  +media('<mob-s')
+    display: block
+
 .set__item
-  width: 17.5rem
+  $width: 17.5rem
+  flex-basis: $width
+  max-width: $width
+
+  +media('<mob-s')
+    max-width: none
 
   .product-short
     height: 100%
 
 .set__sign
   position: relative
-  width: 10.2rem
+  $width: 10.2rem
+  flex-basis: $width
+  max-width: $width
   display: flex
+  flex-shrink: 0
   align-items: center
   justify-content: center
   font-size: 0
   line-height: 0
 
-  $sign-size: 4px 40px
+  $sign-size: 0.4rem 4rem
+  $sign-size-h: nth($sign-size, 1)
+  $sign-size-w: nth($sign-size, 2)
 
   &::before, &::after
     content: ""
@@ -11814,10 +12438,55 @@ $advice-box-shadow-color: black
     position: absolute
     top: 50%
     left: 50%
-    height: nth($sign-size, 1)
-    width: nth($sign-size, 2)
-    margin: -#{round-float(nth($sign-size, 1) / 2, 1)} 0 0 -#{round-float(nth($sign-size, 2) / 2, 1)}
+    height: $sign-size-h
+    width: $sign-size-w
+    margin: -#{round-float($sign-size-h / 2, 1)} 0 0 -#{round-float($sign-size-w / 2, 1)}
     background-color: $border-color
+
+  +media('<net')
+    $width: 6rem
+    flex-basis: $width
+    max-width: $width
+
+    $sign-size: 0.4rem 2.6rem
+    $sign-size-h: nth($sign-size, 1)
+    $sign-size-w: nth($sign-size, 2)
+
+    &::before, &::after
+      height: $sign-size-h
+      width: $sign-size-w
+      margin: -#{round-float($sign-size-h / 2, 1)} 0 0 -#{round-float($sign-size-w / 2, 1)}
+
+  +media('<tab')
+    $width: 1.4rem
+    flex-basis: $width
+    max-width: $width
+
+    $sign-size: 0.2rem 1.4rem
+    $sign-size-h: nth($sign-size, 1)
+    $sign-size-w: nth($sign-size, 2)
+
+    &::before, &::after
+      height: $sign-size-h
+      width: $sign-size-w
+      margin: -#{round-float($sign-size-h / 2, 1)} 0 0 -#{round-float($sign-size-w / 2, 1)}
+      background-color: $base-color
+
+  +media('<mob-s')
+    max-width: none
+    height: 4rem
+    width: 4rem
+    margin: 0 auto
+
+    $sign-size: 0.4rem 2.6rem
+    $sign-size-h: nth($sign-size, 1)
+    $sign-size-w: nth($sign-size, 2)
+
+    &::before, &::after
+      height: $sign-size-h
+      width: $sign-size-w
+      margin: -#{round-float($sign-size-h / 2, 1)} 0 0 -#{round-float($sign-size-w / 2, 1)}
+      background-color: $base-color
 
 .set__sign_plus
   &::before
@@ -11825,15 +12494,40 @@ $advice-box-shadow-color: black
 
 .set__sign_equal
   &::before
-    margin-top: -9px
+    margin-top: -0.9rem
 
   &::after
-    margin-top: 5px
+    margin-top: 0.5rem
+
+  +media('<tab')
+    &::before
+      margin-top: -0.6rem
+
+    &::after
+      margin-top: 0.4rem
+
+  +media('<mob-s')
+    &::before
+      margin-top: -0.8rem
+
+    &::after
+      margin-top: 0.4rem
 
 .set__result
   display: flex
   align-items: center
-  width: 24.4rem
+  $width: 24.4rem
+  flex-basis: $width
+  max-width: $width
+  padding: 0 1.5rem
+
+  +media('<net')
+    $width: 20rem
+    flex-basis: $width
+    max-width: $width
+
+  +media('<mob-s')
+    max-width: none
 
   .set-result
     flex-grow: 1
@@ -11850,6 +12544,10 @@ $advice-box-shadow-color: black
 .sets-slider__item
   background-color: white
   padding-top: 5px
+
+  +media('<mob-s')
+    padding-top: 3.5rem
+    padding-bottom: 2rem
 
 // arrows
 $swiper-button-size: 14px, 20px
