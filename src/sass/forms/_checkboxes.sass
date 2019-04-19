@@ -229,17 +229,29 @@
 /* checkbox and radiobutton text view end
 
 /* checkbox and radiobutton image view
+$radiocheck-img-space-half: round-float(nth($section-inner-space, 2) / 2, 1)
+$radiocheck-img-space-half--tab: round-float(nth($section-inner-space--tab, 2) / 2, 1)
 .radiocheck-img-group
   overflow: hidden
   position: relative
   display: flex
   flex-wrap: wrap
-  margin: 0 -#{round-float(nth($section-inner-space, 2) / 2, 1)}
+  margin: 0 -#{$radiocheck-img-space-half}
+
+  +media('<lap-s')
+    margin: 0 -#{$radiocheck-img-space-half--tab}
+
+  +media('<mob-s')
+    display: block
 
 .radiocheck-img
+  display: block
   $element: &
-  flex-grow: 1
-  margin: 0 #{round-float(nth($section-inner-space, 2) / 2, 1)}
+  flex-shrink: 0
+  margin: 0 #{$radiocheck-img-space-half}
+
+  +media('<lap-s')
+    margin: 0 #{$radiocheck-img-space-half--tab}
 
   & > span
     +hide-text
@@ -260,6 +272,14 @@
       property: $prop
       duration: $animation-speed
       timing-function: ease-in-out
+
+    +media('<mob')
+      padding: 1.5rem
+      height: 6rem
+
+    +media('<mob-s')
+      padding: 0.5rem 1.5rem
+      height: 5rem
 
     & > img
       display: block
@@ -301,25 +321,37 @@
 .radiocheck-img-group_two
   .radiocheck-img
     $width: calc(#{round-float(100% / 2, 2)} - #{nth($section-inner-space, 2)})
-    min-width: $width
+    flex-basis: $width
     max-width: $width
 
 .radiocheck-img-group_three
   .radiocheck-img
     $width: calc(#{round-float(100% / 3, 2)} - #{nth($section-inner-space, 2)})
-    min-width: $width
+    flex-basis: $width
     max-width: $width
 
 .radiocheck-img-group_four
   .radiocheck-img
     $width: calc(#{round-float(100% / 4, 2)} - #{nth($section-inner-space, 2)})
-    min-width: $width
+    flex-basis: $width
     max-width: $width
 
 .radiocheck-img-group_five
   .radiocheck-img
     $width: calc(#{round-float(100% / 5, 2)} - #{nth($section-inner-space, 2)})
-    min-width: $width
+    flex-basis: $width
     max-width: $width
+
+.radiocheck-img-group_two,
+.radiocheck-img-group_three,
+.radiocheck-img-group_four,
+.radiocheck-img-group_five
+  +media('<mob-s')
+    .radiocheck-img
+      margin-bottom: $form-bottom-space
+      max-width: none
+
+      &:last-child
+        margin-bottom: 0
 
 /* checkbox and radiobutton image view end

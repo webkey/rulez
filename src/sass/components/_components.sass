@@ -189,7 +189,7 @@ $spinner-btn-width: 35px
   border-style: solid
   outline: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
 .ui-spinner-up
   right: 0
@@ -508,7 +508,7 @@ $single-form-label-width: 10.3rem
   padding: 1rem #{nth($box-inner-space, 2)}
   background-color: white
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -567,6 +567,7 @@ input[type="text"].single-form__input
   width: nth($size, 2)
   margin-top: -#{round-float(nth($size, 2) / 2, 1)}
   padding: 0
+  color: $text-color
   border: none
   background: none
   box-shadow: none
@@ -604,7 +605,7 @@ input[type="text"].single-form__input
   font-size: 1.2rem
   line-height: 1.3rem
   white-space: normal
-  text-align: right
+  text-align: left
 
 /* single form end
 
@@ -613,7 +614,7 @@ input[type="text"].single-form__input
   padding: 2rem #{nth($box-inner-space, 2)}
   background-color: white
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -646,10 +647,14 @@ input[type="text"].single-form__input
     margin-bottom: 0
 
 .rolls__header
+  display: flex
+  align-items: center
   position: relative
-  padding: 1.5rem 5rem 1.5rem #{nth($section-inner-space, 2)}
+  padding: 0.8rem 5rem 0.8rem #{nth($section-inner-space, 2)}
+  min-height: 5rem
   +font(1.4rem, 1.8rem)
   color: $text-color-light
+  //-webkit-tap-highlight-color: transparent
   cursor: pointer
 
   +media('<lap-s')
@@ -676,7 +681,7 @@ input[type="text"].single-form__input
   border-radius: $size
   cursor: pointer
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, border-color, transform
   transition:
@@ -693,12 +698,12 @@ input[type="text"].single-form__input
       height: $size
       width: $size
       margin: -#{round-float($size / 2, 1) - 0.1} 0 0 -#{round-float($size / 2, 1)}
-      stroke: $base-color
+      fill: $base-color
       transition: stroke $animation-speed
 
       #{$element}:hover &
         .no-touchevents &
-          stroke: white
+          fill: white
 
   &:hover
     .no-touchevents &
@@ -706,19 +711,21 @@ input[type="text"].single-form__input
       background-color: $base-color
 
       .rolls__angle-icon
-        stroke: white
+        fill: white
 
-  &.rolls-active
+  .rolls-active &
     transform: rotate(0.5turn)
 
 .rolls__panel
-  padding: 1rem #{nth($section-inner-space, 2)} 2rem
+  padding: 0 #{nth($section-inner-space, 2)} 2rem
 
   +media('<lap-s')
-    padding: 1rem #{nth($section-inner-space--tab, 2)} 2rem
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
-    padding: 1rem #{nth($section-inner-space--mob, 2)} 2rem
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 .js .rolls:not(.ms-rolls_initialized)
   .rolls__panel
@@ -1003,7 +1010,7 @@ $swiper-button-size: 14px, 20px
   will-change: transform
   cursor: pointer
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   outline: none
   // transition
   $prop: color
@@ -1272,7 +1279,7 @@ $uo-border-radius: 7px
     text-align: center
     cursor: default
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
     // transition
     $prop: color, box-shadow, background-color
     transition:
@@ -1517,7 +1524,7 @@ $uo-border-radius: 7px
     color: rgba(white, 0.85)
     text-decoration: none
     border-radius: 4px
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
     // transition
     $prop: color
     transition:
@@ -1595,7 +1602,7 @@ $uo-border-radius: 7px
   padding: 0.4rem 3rem 0.4rem 1.3rem
   border-radius: 5px
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: border-radius, background-color
   transition:
@@ -1701,7 +1708,7 @@ $uo-border-radius: 7px
   position: relative
   min-width: 14rem
   padding-top: 5px
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   +media('<tab')
     min-width: 0
@@ -1778,7 +1785,7 @@ $uo-border-radius: 7px
     line-height: 2.0rem
     text-decoration: none
     color: currentColor
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
     span
       display: inline-block
@@ -1836,7 +1843,7 @@ $uo-border-radius: 7px
   cursor: pointer
   border-radius: 5px
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color
   will-change: $prop
@@ -2139,7 +2146,7 @@ $uo-border-radius: 7px
   padding: 0.6rem 0.8rem 0.7rem
   border-radius: 0 0 7px 7px
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, color
   transition:
@@ -2168,7 +2175,7 @@ $uo-border-radius: 7px
       height: $header-height--tab
       margin-left: 0
       margin-right: -#{nth($header-btn-space--tab, 2)}
-      -webkit-tap-highlight-color: transparent
+      //-webkit-tap-highlight-color: transparent
       user-select: none
 
     +media('<mob')
@@ -2512,7 +2519,7 @@ $quick-cart-footer-height--mob: 7rem
   +media('<tab')
     max-height: calc(100vh - #{$header-height--tab} - #{$quick-cart-footer-height--tab} - #{nth($page-layout-space, 2)})
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -2611,7 +2618,7 @@ $quick-cart-footer-height--mob: 7rem
   transition: background-color $animation-speed
   outline: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   +media('<mob')
     $size: 2.4rem
@@ -2665,7 +2672,7 @@ a.quick-cart__item
   +media('<tab')
     height: $quick-cart-footer-height--tab
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -2692,7 +2699,7 @@ a.quick-cart__item
   transform: rotate(-90deg) translateZ(0)
   transition: background-color $animation-speed
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   +media('<tab')
     display: none // Заменяем на крестик в кнопке корзины
@@ -2852,7 +2859,7 @@ a.quick-cart__item
     display: block
     height: 100%
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
     +media('<tab')
       position: absolute
@@ -3004,7 +3011,7 @@ a.catalog-opener
   text-decoration: none
   border-radius: 2rem
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: color, background-color
   will-change: $prop
@@ -3362,7 +3369,7 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
   border-radius: $catalog-menu-angle-size
   cursor: pointer
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, border-color, transform
   transition:
@@ -3418,7 +3425,7 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
     // Компенсировать разную высоту иконок
     text-decoration: none
     color: $base-color
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
     +media('<tab')
       font-size: 1.6rem
@@ -3646,7 +3653,7 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
   a, li > span
     color: $base-color
     text-decoration: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
     $prop: color
     transition:
       property: $prop
@@ -3892,7 +3899,7 @@ $search-btn-space: 0 0.5rem
   border-radius: nth($search-btn-size, 1)
   margin: 0 0 0 nth($search-btn-space, 2)
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, color
   transition:
@@ -4558,6 +4565,26 @@ $search-btn-space: 0 0.5rem
   .no-js &
     padding-top: 2rem
 
+/* main heading
+.main-heading
+  position: relative
+  padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
+  background-color: white
+
+  +media('<lap-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
+.main-heading__title
+  margin-bottom: 0
+  margin-right: 2rem
+
+/* main heading end
+
 /* main-section
 .main-section
   position: relative
@@ -4804,7 +4831,7 @@ $p-sticker-size: 2.6rem 2.6rem
   background-position: center
   border-radius: round-float(nth($p-sticker-size, 1) / 2, 1)
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   & > b
     +font-bold
@@ -5801,7 +5828,7 @@ $categories-item-col: 3
     text-decoration: none
     margin: 0.5rem 4rem 0.5rem 0
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
     // transition
     $prop: opacity
     transition:
@@ -6025,7 +6052,7 @@ $categories-item-col: 3
     text-decoration: none
     margin: 0.5rem 3rem 0.5rem 0
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
     // transition
     $prop: opacity
     transition:
@@ -6142,7 +6169,7 @@ $categories-item-col: 3
     margin: 0 5rem -0.5rem 0
     padding-bottom: 0.8rem
     border-bottom: 0.5rem solid transparent
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
     // transition
     $prop: color, border-color
     transition:
@@ -6158,7 +6185,7 @@ $categories-item-col: 3
     // touch
     &.touchevents
       user-select: none
-      -webkit-tap-highlight-color: transparent
+      //-webkit-tap-highlight-color: transparent
 
     em
       display: inline-block
@@ -6236,14 +6263,14 @@ $opinion-box-shadow-color: black
   transition:
     property: $prop
     duration: $animation-speed
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   +clear
 
   +media('<tab')
     padding: 8% #{nth($box-inner-space, 2)}
     box-shadow: none
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -6482,7 +6509,7 @@ $opinion-box-shadow-color: black
   justify-content: flex-start
   padding: 2rem #{nth($box-inner-space, 2)} 1.1rem
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -6652,7 +6679,7 @@ $opinion-box-shadow-color: black
     background-size: 3px 1px
     user-select: none
     pointer-events: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
     +media('<mob')
       display: none
@@ -6689,7 +6716,7 @@ $opinion-box-shadow-color: black
   padding: 1.1rem #{nth($box-inner-space, 2)}
   color: white
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -6856,7 +6883,7 @@ input[type="text"].quick-order__input
   text-indent: -9999px
   overflow: hidden
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   transform: rotate(-90deg) translateZ(0)
   transition: background-color $animation-speed
 
@@ -6948,7 +6975,7 @@ $product-item-space--tab: 2rem 2rem
     text-decoration: none
     color: inherit
     transition: color $animation-speed
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
     &:last-child
       margin-bottom: 0
@@ -7136,7 +7163,7 @@ $product-item-space--tab: 2rem 2rem
     property: $prop
     duration: $animation-speed
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   svg
     $size: 2.2rem
@@ -7237,7 +7264,7 @@ $product-item-space--tab: 2rem 2rem
     property: $prop
     duration: $animation-speed
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   svg
     $size: 2.2rem
@@ -8025,7 +8052,7 @@ a.banner-element
   padding: 1rem #{nth($section-inner-space, 2)} 2.7rem
   z-index: 1
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding: $section-inner-space--tab
 
   +media('<mob')
@@ -8318,7 +8345,7 @@ $tl-item-space--tab: 1rem
   // touch
   .touchevents &
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
   &:first-child
     border: none
@@ -8447,7 +8474,7 @@ $tl-item-space--tab: 1rem
     // touch
     &.touchevents
       user-select: none
-      -webkit-tap-highlight-color: transparent
+      //-webkit-tap-highlight-color: transparent
 
     +underlinedLinks(white)
 
@@ -8821,7 +8848,7 @@ $at-elem-space: 1.6rem 2.5rem
   position: relative
   overflow: hidden
   text-decoration: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   .articles-tiles__item:nth-child(1n) &
     +media('>=lap-s')
@@ -9045,7 +9072,7 @@ $at-elem-space: 1.6rem 2.5rem
   // touch
   .touchevents &
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
   // for ie 9
   //@if $ie9
@@ -9347,7 +9374,7 @@ $products-border-width: 1px
     //border: 0 solid red
     user-select: none
     pointer-events: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
 //.products__list
   &::before
@@ -9552,7 +9579,7 @@ $p-results-fixed-height: 7rem
   +size($size)
   cursor: pointer
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   svg
     display: block
@@ -9986,7 +10013,7 @@ $p-results-fixed-height: 7rem
   color: $text-color-light
   text-decoration: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, color
   will-change: $prop
@@ -10161,7 +10188,7 @@ $p-results-fixed-height: 7rem
   line-height: 1.8rem
   text-decoration: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   @at-root
     // Переключатели
@@ -10283,7 +10310,7 @@ $p-results-fixed-height: 7rem
   position: relative
   line-height: 2.0rem
   margin-left: -1rem
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
 .p-filters-tags__item
   $this-icon-lines-width: 10px
@@ -10298,7 +10325,7 @@ $p-results-fixed-height: 7rem
   cursor: pointer
   margin-left: 1rem
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   & > span
     margin-right: $this-icon-lines-width + 3
@@ -10369,7 +10396,7 @@ $p-results-fixed-height: 7rem
   padding: nth($p-filters-space, 1) nth($p-filters-space, 2) nth($p-filters-space, 1) 3.3rem
   line-height: 1
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
 // title
 .p-filters-title
@@ -10388,7 +10415,7 @@ $p-results-fixed-height: 7rem
   border: 1px solid $border-color
   border-radius: round-float($p-filters-angle-size / 2, 1)
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: transform
   will-change: $prop
@@ -10728,7 +10755,7 @@ $collections-title-width: 12.5rem
     text-decoration: none
     margin: 0.5rem 4rem 0.5rem 0
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
     // transition
     $prop: opacity
     transition:
@@ -10955,7 +10982,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   align-items: center
   justify-content: center
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   //&::before
     content: ""
@@ -11025,7 +11052,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     property: $prop
     duration: $animation-speed
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   &::after
     content: ""
@@ -11063,7 +11090,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   //background-color: $base-color
   cursor: pointer
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   +media('<tab-s')
     flex-shrink: 0
@@ -11230,12 +11257,6 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     direction: ltr
     padding: 0
 
-  //+media('<tab-s')
-    padding: 0 #{nth($section-inner-space--tab, 2)}
-
-  //+media('<mob')
-    padding: 0 #{nth($section-inner-space--mob, 2)}
-
   &:last-child
     margin-bottom: 0
 
@@ -11382,7 +11403,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   border-radius: 4px
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4)
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   & > i
     $size: 1.8rem
@@ -11573,7 +11594,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   background-color: #f9f7ff
   border-radius: $line-height
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: background-color, color
   will-change: $prop
@@ -11588,7 +11609,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     top: 0
     +size(3.6rem, 100%)
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
     svg
       display: block
@@ -11626,7 +11647,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   align-items: flex-start
   cursor: default
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
 
   +media('<mob')
     display: block // Not flex
@@ -11672,7 +11693,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       property: $prop
       duration: $animation-speed
     user-select: none
-    -webkit-tap-highlight-color: transparent
+    //-webkit-tap-highlight-color: transparent
 
     +media('<mob')
       display: block
@@ -11780,7 +11801,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   background-color: white
   padding: 2.2rem nth($box-inner-space, 2) 2rem
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -12002,7 +12023,7 @@ $card-size: 85px 135px
   cursor: pointer
   outline: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   // transition
   $prop: color
   will-change: $prop
@@ -12177,7 +12198,7 @@ $advice-box-shadow-color: black
   box-shadow: $advice-box-shadow-size--start rgba($advice-box-shadow-color, 0.18)
   background-color: white
   transition: box-shadow $animation-speed
-  -webkit-tap-highlight-color: transparent
+  //-webkit-tap-highlight-color: transparent
   +clear
 
   +media('<tab')
@@ -12187,7 +12208,7 @@ $advice-box-shadow-color: black
     padding: 8% #{nth($box-inner-space, 2)}
     box-shadow: none
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -12617,10 +12638,10 @@ $advice-box-shadow-color: black
 
 .sets-slider__item
   background-color: white
-  padding-top: 5px
+  padding-top: 0.5rem
 
   +media('<mob-s')
-    padding: 3.5rem #{nth($section-inner-space--mob, 2)} 1.5rem
+    padding: 5rem #{nth($section-inner-space--mob, 2)} 1.5rem
 
 // arrows
 $swiper-button-size: 14px, 20px
@@ -12966,6 +12987,8 @@ $cart-item-figure-space--mob: 0
   height: $cart-item-figure-height
   padding-right: $cart-item-figure-space
   text-decoration: none
+  user-select: none
+  //-webkit-tap-highlight-color: transparent
   color: inherit
 
   +media('<lap-s')
@@ -13183,23 +13206,6 @@ $cart-item-figure-space--mob: 0
 /* cart item end
 
 /* cart
-.cart__heading
-  position: relative
-  padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
-  background-color: white
-
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
-
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
-
-.cart__title
-  margin-bottom: 0
-  margin-right: 2rem
-
 .cart__list
   border: solid $border-color
   border-width: 1px 0
@@ -13234,8 +13240,6 @@ $cart-item-figure-space--mob: 0
   align-items: center
   //position: absolute
   position: relative
-  //left: #{nth($section-inner-space, 2)}
-  //right: #{nth($section-inner-space, 2)}
   padding-left: #{nth($section-inner-space, 2)}
   padding-right: #{nth($section-inner-space, 2)}
   //top: 0
@@ -13243,16 +13247,12 @@ $cart-item-figure-space--mob: 0
   z-index: 3
 
   +media('<lap-s')
-    //left: #{nth($section-inner-space--tab, 2)}
-    //right: #{nth($section-inner-space--tab, 2)}
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
     margin-right: 8rem
 
   +media('<mob')
     display: block
-    //left: #{nth($section-inner-space--mob, 2)}
-    //right: #{nth($section-inner-space--mob, 2)}
     padding-left: #{nth($section-inner-space--mob, 2)}
     padding-right: #{nth($section-inner-space--mob, 2)}
 
@@ -13290,11 +13290,13 @@ $cart-item-figure-space--mob: 0
   padding: 2rem #{nth($box-inner-space, 2)}
   background-color: white
 
-  +media('<tab-s')
-    padding: 2rem #{nth($section-inner-space--tab, 2)}
+  +media('<lap-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
-    padding: 2rem #{nth($section-inner-space--mob, 2)}
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
 .delivery-item
   display: flex
@@ -13310,9 +13312,6 @@ $cart-item-figure-space--mob: 0
   margin-right: 3rem
 
   +media('<lap-s')
-    margin-right: 2rem
-
-  +media('<tab-s')
     margin-right: #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
@@ -13350,7 +13349,7 @@ $cart-item-figure-space--mob: 0
   +font(1.4rem, 2.0rem)
   background-color: white
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -13382,7 +13381,7 @@ $cart-item-figure-space--mob: 0
   padding: 1rem #{nth($box-inner-space, 2)}
   background-color: white
 
-  +media('<tab-s')
+  +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
     padding-right: #{nth($section-inner-space--tab, 2)}
 
@@ -13436,13 +13435,23 @@ $cart-item-figure-space--mob: 0
   +clear
 
 .consist__item-figure
+  $width: 10rem
+  $height: 7.8rem
+  $ratio: $height / $width
   float: left
   display: flex
   align-items: center
   justify-content: center
-  width: 11.8rem
-  height: 7.8rem
+  //width: 11.8rem
+  width: $width
+  height: round-float($width * $ratio, 1)
   margin-right: 2.0rem
+
+  +media('<lap-s')
+    $width: 7rem
+    width: $width
+    height: round-float($width * $ratio, 1)
+    margin-right: 1.5rem
 
   img
     display: block
@@ -13504,6 +13513,26 @@ a.consist__item
   &:last-child
     margin-bottom: 0
 
+// element spaces
+.clearance__caption,
+.clearance__consist,
+.clearance__divider,
+.clearance__delivery,
+.clearance__promo-code,
+.clearance__summary,
+.clearance__buttons,
+.clearance__quick-order,
+.clearance__comment
+  padding: 1.5rem #{nth($box-inner-space, 2)}
+
+  +media('<lap-s')
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
+
 // __meta
 .clearance__meta
 
@@ -13524,28 +13553,28 @@ a.consist__item
     &::after
       display: block
 
+// __main
+.clearance__main
+  +media('<tab', '>=mob')
+    float: right
+    clear: right
+    width: 50%
+
 // __caption
 .clearance__caption
   display: flex
   align-items: center
-  padding: 2.0rem #{nth($box-inner-space, 2)} 1.9rem
+  padding-top: 2.0rem
+  padding-bottom: 1.9rem
   margin-bottom: 1rem
   font-size: 1.4rem
   line-height: 2.0rem
   background-color: white
   border-bottom: 1px solid $border-color
 
-  +media('<tab-s')
-    padding-left: nth($section-inner-space--tab, 2)
-    padding-right: nth($section-inner-space--tab, 2)
-
   +media('<tab')
     border: none
     margin-bottom: 0
-
-  +media('<mob')
-    padding-left: nth($section-inner-space--mob, 2)
-    padding-right: nth($section-inner-space--mob, 2)
 
   &:last-child
     margin-bottom: 0
@@ -13572,7 +13601,7 @@ a.consist__item
   +media('<lap-s')
     margin-right: 2rem
 
-  +media('<tab-s')
+  +media('<lap-s')
     margin-right: nth($section-inner-space--tab, 2)
 
   +media('<mob')
@@ -13599,115 +13628,43 @@ a.consist__item
     background: none
     color: $base-color
 
-// __delivery
-.clearance__consist
-  padding: 1.5rem #{nth($box-inner-space, 2)}
+// __consist
+//.clearance__consist
 
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
-
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
-
+// __divider
 .clearance__divider
-  height: 0
-  border-bottom: 1px solid $border-color
-  margin: 1rem #{nth($box-inner-space, 2)}
+  position: relative
+  height: 1px
+  padding-top: 1rem
+  padding-bottom: 1rem
 
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
+  +media('<tab', '>=mob')
+    &:first-child, &:last-child
+        display: none
 
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
+  &::before
+    content: ""
+    display: block
+    border-top: 1px solid $border-color
 
-.clearance__delivery
-  padding-top: 1.5rem
-  padding-bottom: 1.5rem
+// __delivery
+//.clearance__delivery
 
 // __promo-code
-.clearance__promo-code
-  padding: 1.5rem #{nth($box-inner-space, 2)}
-
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
-
-  +media('<tab', '>=mob')
-    float: right
-    clear: right
-    width: 50%
-
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
+//.clearance__promo-code
 
 // __summary
-.clearance__summary
-  padding: 1.5rem #{nth($box-inner-space, 2)}
-
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
-
-  +media('<tab', '>=mob')
-    float: right
-    clear: right
-    width: 50%
-
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
+//.clearance__summary
 
 // __buttons
 .clearance__buttons
-  padding: 1.5rem #{nth($box-inner-space, 2)}
   background-color: white
 
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
-
-  +media('<tab', '>=mob')
-    float: right
-    clear: right
-    width: 50%
-
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
-
 // __quick-order
-.clearance__quick-order
-  padding: 1.5rem #{nth($box-inner-space, 2)}
-
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
-
-  +media('<tab', '>=mob')
-    float: right
-    clear: right
-    width: 50%
-
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
+//.clearance__quick-order
 
 // __comment
-.clearance__comment
-  padding: 1.5rem #{nth($box-inner-space, 2)}
-
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
-
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
+//.clearance__comment
 
 /* clearance end
 
@@ -13760,7 +13717,6 @@ $cart-container-aside-width-full--tab: $cart-container-aside-width--tab + $cart-
   clear: right
   width: $cart-container-aside-width
   margin-left: $cart-container-inside-space
-  //padding: 0 0 1rem
 
   +media('<net')
     width: $cart-container-aside-width--net
@@ -13782,14 +13738,16 @@ $cart-container-aside-width-full--tab: $cart-container-aside-width--tab + $cart-
 .checkout
   position: relative
   margin-bottom: 2rem
-  padding: 2rem #{nth($section-inner-space, 2)}
+  padding: 0 #{nth($section-inner-space, 2)} 2rem
   background-color: white
 
   +media('<lap-s')
-    padding: 2rem #{nth($section-inner-space--tab, 2)}
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
-    padding: 1.2rem #{nth($section-inner-space--mob, 2)}
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
   &:last-child
     margin-bottom: 0
@@ -13799,18 +13757,34 @@ $cart-container-aside-width-full--tab: $cart-container-aside-width--tab + $cart-
   min-width: 100%
 
 $checkout-col-inner-space: #{round-float(nth($section-inner-space, 2) / 2, 1)} // Половина горизонтального отступа
+$checkout-col-inner-space--tab: #{round-float(nth($section-inner-space--tab, 2) / 2, 1)} // Половина горизонтального отступа
 .checkout__row
   display: flex
-  flex-wrap: wrap
   align-items: flex-start
   margin: 0 -#{$checkout-col-inner-space}
 
+  +media('<lap-s')
+    margin: 0 -#{$checkout-col-inner-space--tab}
+
+  +media('<mob')
+    display: block
+
 .checkout__col
+  flex-shrink: 0
   $width: 50.0%
   flex-basis: $width
-  min-width: $width
   width: $width
   padding: 0 #{$checkout-col-inner-space}
+
+  +media('<lap-s')
+    padding: 0 #{$checkout-col-inner-space--tab}
+
+  +media('<mob')
+    width: auto
+    margin-bottom: nth($section-outer-space--mob, 1)
+
+    &:last-child
+      margin-bottom: 0
 
 .checkout__subtitle
   +font-normal
@@ -13829,10 +13803,12 @@ $checkout-col-inner-space: #{round-float(nth($section-inner-space, 2) / 2, 1)} /
   background-color: white
 
   +media('<lap-s')
-    padding: 2rem #{nth($section-inner-space--tab, 2)}
+    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
-    padding: 2rem #{nth($section-inner-space--mob, 2)}
+    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
   &:last-child
     margin-bottom: 0
@@ -13848,8 +13824,18 @@ $checkout-col-inner-space: #{round-float(nth($section-inner-space, 2) / 2, 1)} /
 
 /* order
 $order-inside-space: 2rem
-$order-aside-width: 41.0rem
-$order-aside-width-full: $order-inside-space + $order-aside-width
+//$order-aside-width: 41.0rem
+//$order-aside-width-full: $order-inside-space + $order-aside-width
+
+$order-aside-width: 36.2rem
+$order-inside-space: 2rem
+$order-aside-width-full: $order-aside-width + $order-inside-space
+// ===
+$order-aside-width--net: 32rem
+$order-aside-width-full--net: $order-aside-width--net + $cart-container-inside-space
+// ===
+$order-aside-width--tab: 28rem
+$order-aside-width-full--tab: $order-aside-width--tab + $cart-container-inside-space
 .order
   margin-bottom: nth($section-outer-space, 1)
   +clear
@@ -13860,29 +13846,42 @@ $order-aside-width-full: $order-inside-space + $order-aside-width
 
 .order__main
   float: left
+  clear: left
   width: calc(100% - #{$order-aside-width-full})
 
-.order__heading
-  position: relative
-  padding: 2.1rem #{nth($box-inner-space, 2)} 0.6rem
-  background-color: white
+  +media('<net')
+    width: calc(100% - #{$order-aside-width-full--net})
 
-  +media('<tab-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
-    padding-right: #{nth($section-inner-space--tab, 2)}
+  +media('<lap-s')
+    width: calc(100% - #{$order-aside-width-full--tab})
 
-  +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
-    padding-right: #{nth($section-inner-space--mob, 2)}
+  +media('<tab')
+    float: none
+    width: auto
+    margin-bottom: nth($section-outer-space--tab, 1)
 
-.order__title
-  margin-bottom: 0
-  margin-right: 2rem
+  &:last-child
+    margin-bottom: 0
 
 .order__aside
   float: right
+  clear: right
   width: $order-aside-width
   margin-left: $order-inside-space
+
+  +media('<net')
+    width: $order-aside-width--net
+
+  +media('<lap-s')
+    width: $order-aside-width--tab
+
+  +media('<tab')
+    float: none
+    width: auto
+    margin: 0 0 nth($section-outer-space--tab, 1)
+
+  &:last-child
+    margin-bottom: 0
 
 /* order end
 

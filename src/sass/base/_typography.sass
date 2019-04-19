@@ -175,9 +175,12 @@ table
 
 /* table end
 
-/* article elements
-.#{$article-content}
+/* article and typography elements
+.#{$article-content}, .#{$typography}
   letter-spacing: $letter-spacing
+
+// article
+.#{$article-content}
 
   @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
     p + #{$tags},
@@ -188,6 +191,22 @@ table
     figure + #{$tags},
     .table-auto + #{$tags}
       margin-top: #{round-float($bottom-space * 1.5, 1)}
+
+  & > p, & > ul, & > ol,
+  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
+  & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+  & > hr, & > mark, & > blockquote, & > figure,
+  & > .layout-text
+    max-width: 100rem
+    +push-auto
+
+  & > .layout-flood,
+  & > .layout-section
+    max-width: $flood-layout-width
+    +push-auto
+
+// article & typography
+.#{$article-content}, .#{$typography}
 
   // figure
   figure
@@ -245,7 +264,6 @@ table
         content: none
 
     cite
-      text-align: right
       display: block
       margin: 1rem 0 0
       +font-italic
@@ -300,16 +318,8 @@ table
   & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
   & > hr, & > mark, & > blockquote, & > figure,
   & > .layout-text
-    max-width: 100rem
-    +push-auto
-
     &:last-child
       margin-bottom: 0
-
-  & > .layout-flood,
-  & > .layout-section
-    max-width: $flood-layout-width
-    +push-auto
 
   & > img,
   & > .layout-text img,
@@ -352,4 +362,4 @@ table
         max-width: none
         margin-left: auto
 
-/* article elements end
+/* article and typography elements end
