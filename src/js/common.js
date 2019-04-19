@@ -1304,7 +1304,7 @@ function tabs() {
       compactView: {
         elem: '.tabs__select-js',
         drop: '.tabs__select-drop-js',
-        arrowTpl: '<i><svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg></i>',
+        arrowTpl: '<i><svg width="10" height="6" viewBox="0 0 10 6" xmlns="http://www.w3.org/2000/svg"><path d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L5 3.58579L8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893C10.0976 0.683417 10.0976 1.31658 9.70711 1.70711L5.70711 5.70711C5.31658 6.09763 4.68342 6.09763 4.29289 5.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"></path></svg></i>',
         openClass: 'tabs-select-open'
       },
       afterOpen: function (e, el, tabs) {
@@ -1559,9 +1559,9 @@ function tabs() {
 })(jQuery);
 
 /**
- * !Toggle shutters panel, like a search panel, a catalog shutter etc.
+ * !Toggle popup, drop, submenu, options etc.
  */
-function toggleShutters() {
+function toggleDrop() {
   // var scrollFixedOnlyMobClass = 'css-scroll-fixed_only-mob';
   var showOnlyMobClass = 'open-only-mob';
 
@@ -1674,6 +1674,18 @@ function toggleShutters() {
     });
   }
 
+  // Toggle contacts in header
+  var $selectIn = $('.select-in-selector-js'), selectInJs;
+  if ($selectIn.length) {
+    selectInJs = $selectIn.switchClass({
+      switchClassTo: $('.select-in-drop-js')
+      , modifiers: {
+        activeClass: 'is-open'
+      }
+      , cssScrollFixed: false
+    });
+  }
+
   // При добавлении классов одним экземпляром плагина,
   // Удалять другие
   // todo Добавить в плагин этот кусок
@@ -1701,6 +1713,10 @@ function toggleShutters() {
     quickCartJs && quickCartJs.switchClass('remove');
   }
 
+  function selectInRemoveClass() {
+    selectInJs && selectInJs.switchClass('remove');
+  }
+
   // Вызывать метод удаления классов другими
   if (hContactsDropJs) {
     hContactsDropJs.on('switchClass.beforeAdded', function () {
@@ -1709,6 +1725,7 @@ function toggleShutters() {
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
       quickCartRemoveClass();
+      selectInRemoveClass();
     });
   }
 
@@ -1719,6 +1736,7 @@ function toggleShutters() {
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
       quickCartRemoveClass();
+      selectInRemoveClass();
     });
   }
 
@@ -1729,6 +1747,7 @@ function toggleShutters() {
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
       quickCartRemoveClass();
+      selectInRemoveClass();
     });
   }
 
@@ -1739,6 +1758,7 @@ function toggleShutters() {
       catalogShutterRemoveClass();
       addFormPopupRemoveClass();
       quickCartRemoveClass();
+      selectInRemoveClass();
     });
   }
 
@@ -1749,6 +1769,7 @@ function toggleShutters() {
       filtersShutterRemoveClass();
       catalogShutterRemoveClass();
       quickCartRemoveClass();
+      selectInRemoveClass();
     });
   }
 
@@ -1759,6 +1780,18 @@ function toggleShutters() {
       filtersShutterRemoveClass();
       catalogShutterRemoveClass();
       addFormPopupRemoveClass();
+      selectInRemoveClass();
+    });
+  }
+
+  if (selectInJs) {
+    selectInJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
+      searchPopupRemoveClass();
+      filtersShutterRemoveClass();
+      catalogShutterRemoveClass();
+      quickCartRemoveClass();
+      addFormPopupRemoveClass();
     });
   }
 }
@@ -1766,7 +1799,7 @@ function toggleShutters() {
 /**
  * !Quick cart remove item (temporary, test)
  * */
-function qCartRremoveItem() {
+function qCartRemoveItem() {
   var $btnRemove = $('.quick-cart__item-remove-js');
 
   if ($btnRemove.length) {
@@ -2299,6 +2332,24 @@ function rollsInit() {
       item: 'li',
       header: '.catalog-menu-angle-js',
       hand: '.catalog-menu-angle-js',
+      panel: 'ul',
+      animationSpeed: 200,
+      collapsed: false,
+      modifiers: {
+        activeClass: 'active'
+      }
+    })
+  }
+
+  /** Devise (mobile) menu */
+  // Второй и ниже уровни навигации
+  var $navMob = $('.nav-mob-rolls-js');
+
+  if ($navMob.length) {
+    $navMob.msRolls({
+      item: 'li',
+      header: '.nav-mob-angle-js',
+      hand: '.nav-mob-angle-js',
       panel: 'ul',
       animationSpeed: 200,
       collapsed: false,
@@ -3494,8 +3545,8 @@ $(document).ready(function () {
   slidersInit();
   gridLayout();
   tabs();
-  toggleShutters();
-  qCartRremoveItem();
+  toggleDrop();
+  qCartRemoveItem();
   changeState();
   addToCarAnimation();
   rollsInit();

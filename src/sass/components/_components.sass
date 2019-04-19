@@ -363,6 +363,10 @@ $spinner-btn-width: 35px
   padding: 2rem 0 4.4rem
   margin-bottom: $bottom-space
 
+  +media('<tab')
+    max-width: 60rem
+    +push-auto
+
   &::before
     content: ""
     display: block
@@ -413,22 +417,27 @@ $spinner-btn-width: 35px
       padding: 0 #{nth($section-inner-space--tab, 2)}
 
     +media('<mob')
-      padding: 0 #{nth($section-inner-space--mob, 2)}
+      display: block
+      //padding: 0 #{nth($section-inner-space--mob, 2)}
+      padding: 0
+      +font(1.6rem, 2.4rem)
 
     li
       position: relative
-      flex-grow: 1
+      flex-shrink: 0
       padding: 0 #{nth($section-inner-space, 2)}
       margin: 0 0 4.5rem
       $width: 50.0%
+      flex-basis: $width
       max-width: $width
-      min-width: $width
 
       +media('<lap-s')
         padding: 0 #{nth($section-inner-space--tab, 2)}
 
       +media('<mob')
-        padding: 0 #{nth($section-inner-space--mob, 2)}
+        padding: 0
+        margin-bottom: 3rem
+        max-width: none
 
       &:nth-child(odd)
         padding-left: 0
@@ -445,6 +454,9 @@ $spinner-btn-width: 35px
           bottom: 0
           border-left: 2px solid $border-color
 
+          +media('<mob')
+            display: none
+
       &::before
         content: none
 
@@ -459,6 +471,11 @@ $spinner-btn-width: 35px
         font-size: 1.4rem
         line-height: 2.0rem
         color: $title-color
+
+        +media('<mob')
+          margin-bottom: 1rem
+          font-size: 1.6rem
+          line-height: 2.4rem
 
         svg
           display: block
@@ -3301,7 +3318,7 @@ $catalog-columns-length--mob: 1
   +media('<tab')
     margin-top: -#{$catalog-item-space-vertical--tab}
 
-  +media('<tab')
+  +media('<mob')
     margin: -#{round-float($catalog-item-space-vertical--mob / 2, 1)} 0
 
 .catalog-menu__item, .nav-mob__list > li, .user-options-mob__item
@@ -3400,9 +3417,9 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
   &:hover
     .no-touchevents &
       border-color: $base-color
-      background-color: $base-color
+      //background-color: $base-color
 
-      .catalog-menu-angle__icon
+      //.catalog-menu-angle__icon
         stroke: white
 
 .catalog-menu__title, .user-options-mob__item
@@ -3510,7 +3527,7 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
     margin-bottom: 0
 
   li
-    color: #131313
+    color: $text-color
     font-size: 0
     letter-spacing: -4px
     white-space: nowrap
@@ -3560,10 +3577,8 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
 
     li
       a
-        $color: #666
+        $color: $text-color-light
         color: $color
-
-        +underlinedLinks($color)
 
   // current
   li
@@ -3571,9 +3586,6 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
       & > a, & > span
         +font-bold
         color: $base-color
-
-      & > a
-        +underlinedLinks($base-color)
 
   ul.active
     opacity: 1
@@ -3646,10 +3658,6 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
   +media('>=tab')
     margin-top: -1.5rem
 
-  & > li
-    +media('>=tab')
-      padding-top: 1.5rem
-
   a, li > span
     color: $base-color
     text-decoration: none
@@ -3659,18 +3667,74 @@ $catalog-menu-angle-size--mob: 3.2rem // Размер кнопки со стре
       property: $prop
       duration: $animation-speed
 
-    +media('<mob')
-      display: block
-      padding: round-float($catalog-item-space-vertical--mob / 2, 1) 0
+  & > li
+    +media('>=tab')
+      padding-top: 1.5rem
 
-  a
-    +underlinedLinks($base-color)
+    & > a
+      &:hover
+        text-decoration: underline
+
+    & > a, & > span
+      +media('<mob')
+        display: block
+        padding: round-float($catalog-item-space-vertical--mob / 2, 1) 0
 
   .current a, .current > span
     opacity: 0.56
     pointer-events: none
 
-    +underlinedLinksReset
+  // submenu
+  ul
+    list-style: none
+    margin: 0
+    padding: 0.6rem 0 1.2rem 1.2rem
+    line-height: 1
+
+    li
+      padding-bottom: 1.2rem
+      +clear-spacing
+      white-space: nowrap
+
+      &:last-child
+        padding-bottom: 0
+
+    a, li > span
+      +font(1.4rem, 1.8rem)
+      color: $text-color
+      white-space: normal
+      letter-spacing: normal
+
+    a:hover
+      color: $base-color
+
+    ul
+      padding-top: 1.2rem
+      padding-bottom: 0
+
+      a, li > span
+        color: $text-color-light
+
+  // has submenu
+  li.has-items
+    & > a, & > span
+      display: inline-block
+      vertical-align: middle
+      margin-right: $catalog-menu-angle-size + 0.8
+
+      +media('<mob')
+        margin-right: $catalog-menu-angle-size--mob + 0.8
+
+.nav-mob__angle
+  position: relative
+  display: inline-block
+  vertical-align: middle
+  margin: -0.2rem 0 -0.2rem -#{$catalog-menu-angle-size}
+  z-index: 5
+
+  +media('<mob')
+    margin: -1rem 0 -1rem -#{$catalog-menu-angle-size--mob}
+
 /* mobile navigation end
 
 //=== Catalog is open ===
@@ -4667,6 +4731,9 @@ $search-btn-space: 0 0.5rem
     +media('<lap-s')
       left: $sidebar-min-width
 
+    +media('<tab')
+      display: none
+
 .content-align
   overflow: hidden // Нужен для обрезки выходящих за пределы контента элементов
   float: left
@@ -4677,8 +4744,19 @@ $search-btn-space: 0 0.5rem
     margin: 0 #{$aside-width} 0 #{$sidebar-width}
     min-height: 32rem
 
-    +media('<lap-s')
+    +media('<lap')
+      padding: 3.5rem 3rem
       margin: 0 #{$aside-min-width} 0 #{$sidebar-min-width}
+
+    +media('<lap-s')
+      margin-right: $aside-min-width--net
+
+    +media('<tab')
+      padding: 2.5rem #{nth($section-inner-space--tab, 2)}
+      margin: 0
+
+    +media('<mob')
+      padding: 2rem #{nth($section-inner-space--mob, 2)}
 
 .sidebar
   position: relative
@@ -4692,6 +4770,9 @@ $search-btn-space: 0 0.5rem
 
   +media('<lap-s')
     width: $sidebar-min-width
+
+  +media('<tab')
+    display: none
 
 .articles-nav
   &, & ul
@@ -4721,6 +4802,7 @@ $search-btn-space: 0 0.5rem
         color: $base-color-light
 
   $articles-nav-first-inner-space: 3rem 4rem
+  $articles-nav-first-inner-space--net: 2.5rem 3rem
   & > li
     border-top: 1px solid $border-color
     padding: 0
@@ -4735,8 +4817,14 @@ $search-btn-space: 0 0.5rem
       +font(1.6rem, 2.4rem)
       color: #000
 
+      +media('<lap-s')
+        padding: $articles-nav-first-inner-space--net
+
     & > ul
       padding: 0 nth($articles-nav-first-inner-space, 2) nth($articles-nav-first-inner-space, 1)
+
+      +media('<lap-s')
+        padding: 0 nth($articles-nav-first-inner-space--net, 2) nth($articles-nav-first-inner-space--net, 1)
 
       & > li
         position: relative
@@ -4773,6 +4861,19 @@ $search-btn-space: 0 0.5rem
   top: 5rem
   z-index: 3
 
+  +media('<lap-s')
+    right: 3rem
+    top: 3rem
+
+  +media('<tab')
+    position: relative
+    right: auto
+    top: auto
+    left: auto
+    bottom: auto
+    overflow: hidden
+    padding: $section-inner-space--tab
+
 .article-share
   display: inline-block
   vertical-align: top
@@ -4780,6 +4881,14 @@ $search-btn-space: 0 0.5rem
   padding: 2rem
   border-radius: 4px
   background-color: rgba(white, 0.98)
+
+  +media('<tab')
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    padding: 0
+    margin: -1rem
 
 .article-share__item
   display: block
@@ -4791,8 +4900,12 @@ $search-btn-space: 0 0.5rem
   text-decoration: none
   transition: color $animation-speed
 
+  +media('<tab')
+    margin: 1rem
+
   &:last-child
-    margin-bottom: 0
+    +media('>=tab')
+      margin-bottom: 0
 
   &:hover
     color: $base-color-light
@@ -5888,6 +6001,124 @@ $categories-item-col: 3
 
 /* topics tabs end
 
+/* topics links
+// topics links select
+.topics-links__select
+  +pseudo-select-common($base-color-light)
+
+  +media('>=tab')
+    display: none
+
+// topics links nav
+.topics-links__nav
+  position: relative
+
+  +media('<tab')
+    max-width: 24rem
+
+// topics links
+.topics-links
+  display: flex
+  flex-wrap: wrap
+  font-size: 1.6rem
+  line-height: 2.4rem
+
+  +media('<tab')
+    display: block // Not flex
+    overflow: hidden
+    position: absolute
+    left: 0
+    top: 0
+    width: 24rem
+    background-color: white
+    border-radius: 1.2rem
+    box-shadow: 0 1px 2px rgba(black, 0.15)
+    z-index: 9
+    // hide
+    opacity: 0
+    visibility: hidden
+    pointer-events: none
+    transform-origin: left top
+    $translate: -0.2rem, -0.2rem
+    $scale: 0.8, 0.8
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    // transition
+    $prop: transform, opacity, visibility
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+.topics-links__item
+  margin: 0.5rem 4rem 0.5rem 0
+
+  +media('<lap-s')
+    margin-right: 2.5rem
+
+  +media('<tab')
+    margin: 0
+
+  a
+    color: $text-color-light
+    text-decoration: none
+    user-select: none
+    box-shadow: inset 0 -1px 0 rgba($text-color, 0.5)
+    // transition
+    $prop: color, box-shadow, background-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+    &:hover
+      .no-touchevents &
+        color: $base-color
+        box-shadow: inset 0 -2px 0 rgba($base-color, 0.5)
+
+    +media('<tab')
+      display: block
+      padding: 1.2rem 1.4rem
+      box-shadow: none
+
+      &:hover
+        .no-touchevents &
+          color: white
+          background-color: $base-color-light
+          box-shadow: none
+
+  // current
+  &.current
+    color: #000
+
+    a, & > span
+      +font-bold
+      cursor: default
+
+      &, .no-touchevents &
+        color: currentColor
+        box-shadow: inset 0 -2px 0 rgba($base-color, 0)
+
+    +media('<tab')
+      color: $base-color
+
+      a, & > span
+        &, .no-touchevents &
+          background-color: rgba($base-color-light, 0.2)
+
+  // Select opened
+.topics-links
+  +media('<tab')
+    &.is-open
+      opacity: 1
+      visibility: visible
+      pointer-events: auto
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
+
+/* topics links end
+
 /* caption box
 .caption-box
   position: relative
@@ -5905,9 +6136,6 @@ $categories-item-col: 3
   flex-shrink: 0
   margin-right: 5rem
   margin-bottom: 0
-  //$width: 35rem
-  //min-width: $width
-  //max-width: $width
   +font-bold
   font-size: $main-section-title-font-size
   line-height: $main-section-title-line-height
@@ -5926,7 +6154,7 @@ $categories-item-col: 3
 .caption-box__options
   position: relative
   //padding-top: 0.2rem // If align center
-  padding-top: 0.7rem // If align top
+  padding-top: 0.6rem // If align top
   padding-right: 8rem // Space for button All
 
   +media('<lap-s')
@@ -12721,22 +12949,41 @@ $swiper-button-size: 14px, 20px
 /* news preview element
 $news-elem-inner: 2.7rem 2rem 2.1rem
 .news-elem
-  display: block
+  display: flex
+  flex-direction: column
   position: relative
+  height: 100%
   text-decoration: none
   color: inherit
   background-color: white
   box-shadow: inset 0 0 0 1px $border-color
 
 .news-elem__figure
+  +font(0, 0)
   background-position: center
   background-repeat: no-repeat
-  background-size: cover
-  height: 22.3rem
+
+  &[data-loaded]
+    background-size: cover
+
+  &::before
+    content: ""
+    display: block
+    +ratio(287, 223)
 
 .news-elem__content
+  display: flex
+  flex-direction: column
+  flex-grow: 1
   position: relative
   padding: $news-elem-inner
+
+  +media('<lap-s')
+    padding-left: nth($section-inner-space--tab, 2)
+    padding-right: nth($section-inner-space--tab, 2)
+
+  +media('<mob')
+    padding: $section-inner-space--mob
 
 .news-elem__category
   +truncate(100%)
@@ -12746,12 +12993,16 @@ $news-elem-inner: 2.7rem 2rem 2.1rem
   color: $base-color
   margin-bottom: 1.3rem
 
+  +media('<mob')
+    font-size: 1.4rem
+    line-height: 1.8rem
+
 .news-elem__title
   $line-height: 3.1rem
   $line-length: 3
   position: relative
   overflow: hidden
-  height: $line-height * $line-length
+  min-height: $line-height * $line-length
   +font-bold
   font-size: 2.2rem
   line-height: $line-height
@@ -12759,10 +13010,27 @@ $news-elem-inner: 2.7rem 2rem 2.1rem
   margin-bottom: 0.6rem
   transition: color $animation-speed
 
+  +media('<tab')
+    $line-height: 2.6rem
+    $line-length: 3
+    min-height: $line-height * $line-length
+    font-size: 2.0rem
+    line-height: $line-height
+    margin-bottom: 1rem
+
+  +media('<mob')
+    $line-height: 2.4rem
+    $line-length: 3
+    min-height: $line-height * $line-length
+    font-size: 1.8rem
+    line-height: $line-height
+    margin-bottom: 1.5rem
+
+  +media('<mob-s')
+    min-height: 0
+
   &:last-child
     margin-bottom: 0
-
-  +truncateCover($line-height, white)
 
 .news-elem__date
   display: block
@@ -12771,6 +13039,11 @@ $news-elem-inner: 2.7rem 2rem 2.1rem
   line-height: 1.7rem
   color: $text-color-ultra-light
   margin-bottom: 0.6rem
+  margin-top: auto
+
+  +media('<mob')
+    font-size: 1.4rem
+    line-height: 2.0rem
 
   &:last-child
     margin-bottom: 0
@@ -12780,16 +13053,24 @@ $news-elem-inner: 2.7rem 2rem 2.1rem
   $line-length: 2
   position: relative
   overflow: hidden
-  height: $line-height * $line-length
+  min-height: $line-height * $line-length
   font-size: 1.5rem
   line-height: $line-height
   color: $text-color-light
   margin-bottom: 0.75rem
 
+  +media('<mob')
+    $line-height: 2.0rem
+    $line-length: 3
+    min-height: $line-height * $line-length
+    font-size: 1.6rem
+    line-height: $line-height
+
+  +media('<mob-s')
+    min-height: 0
+
   &:last-child
     margin-bottom: 0
-
-  +truncateCover($line-height, white)
 
 // hover
 a.news-elem:hover
@@ -12799,9 +13080,6 @@ a.news-elem:hover
 // alternative view
 .news-elem_alt
   box-shadow: none
-
-  .news-elem__figure
-    height: 46.6rem
 
   .news-elem__content
     display: flex
@@ -12816,16 +13094,32 @@ a.news-elem:hover
     padding: 4.8rem 4.5rem
     color: white
 
+    +media('<tab')
+      padding: 3rem 3rem
+
+    +media('<tab-s')
+      // Именно на разрешении ниже 768
+      padding: $section-inner-space--tab
+
+    +media('<mob')
+      padding: $section-inner-space--mob
+
   .news-elem__title
     order: 2
     height: auto
+    min-height: 0
     font-size: 3.0rem
     line-height: 4.5rem
     color: white
     margin-bottom: 0
 
-    span
-      transition: box-shadow $animation-speed
+    +media('<tab')
+      font-size: 2.4rem
+      line-height: 3.2rem
+
+    +media('<tab-s')
+      font-size: 2.0rem
+      line-height: 2.6rem
 
     &::after
       content: none
@@ -12840,32 +13134,51 @@ a.news-elem:hover
     margin-bottom: 0.5rem
     color: white
 
+    +media('<mob')
+      font-size: 1.6rem
+      line-height: 2.0rem
+
   // hover
   @at-root
     a#{&}:hover
       .news-elem__title
-        color: white
-
-        span
-          box-shadow: inset 0 -2px 0 white
+        color: $base-color-light
 
 /* news preview element end
 
-/* news entry
-.section_news-entry
-  background-color: white
-  margin-bottom: 2.3rem
-  padding-top: nth($section-inner-space, 1)
-  padding-bottom: nth($section-inner-space, 1)
+/* news layout
+.section-news
+  padding: 0 nth($box-inner-space, 2)
+  margin-bottom: nth($section-outer-space, 1)
 
   +media('<lap-s')
-    padding-top: nth($section-inner-space--tab, 1)
-    padding-bottom: nth($section-inner-space--tab, 1)
+    padding: 0 nth($section-inner-space--tab, 2)
+    margin-bottom: nth($section-inner-space--tab, 1)
 
   +media('<mob')
-    padding-top: nth($section-inner-space--mob, 1)
-    padding-bottom: nth($section-inner-space--mob, 1)
+    padding: 0 nth($section-inner-space--mob, 2)
+    margin-bottom: nth($section-inner-space--mob, 1)
 
+.section-news-entry
+  background-color: white
+  margin-bottom: 2.3rem
+  padding-top: nth($box-inner-space, 2)
+  padding-bottom: nth($box-inner-space, 2)
+
+  +media('<lap-s')
+    padding-top: nth($section-inner-space--tab, 2)
+    padding-bottom: nth($section-inner-space--tab, 2)
+
+  +media('<mob')
+    padding-top: nth($section-inner-space--mob, 2)
+    padding-bottom: nth($section-inner-space--mob, 2)
+
+  .caption-box__options
+    padding-right: 0
+
+/* news layout end
+
+/* news entry
 .news-entry
   overflow: hidden
 
@@ -12879,16 +13192,48 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
   width: 25%
   padding: 0 round-float(nth($news-entry-item-space-outer, 2) / 2, 1) nth($news-entry-item-space-outer, 1)
 
+  +media('<net')
+    width: 35%
+
+  +media('<tab-s')
+    width: 50%
+
+  +media('<mob-s')
+    width: 100%
+
+  .news-elem__figure
+    +media('>=mob-s')
+      min-height: 22.3rem
+
+      &::before
+        display: none
+
+  .news-elem_alt
+    .news-elem__figure
+      min-height: 46.6rem
+      height: 100%
+
+      +media('<mob')
+        min-height: 32rem
+
+      +media('<mob-s')
+        min-height: 22.3rem
+
 .news-entry__list-item_large
   width: 75%
+
+  +media('<net')
+    width: 65%
+
+  +media('<tab-s')
+    width: 50%
+
+  +media('<mob-s')
+    width: 100%
 
 /* news entry end
 
 /* news previews list
-.section_news-entry
-  background-color: white
-  margin-bottom: 2.3rem
-
 .news
   overflow: hidden
 
@@ -12901,6 +13246,18 @@ $news-entry-item-space-outer: 1.8rem 1.8rem
 .news__list-item
   width: 25%
   padding: 0 round-float(nth($news-entry-item-space-outer, 2) / 2, 1) nth($news-entry-item-space-outer, 1)
+
+  +media('>=tab-s', '<net')
+    width: 33.33%
+
+    &:nth-child(4n)
+      display: none
+
+  +media('<tab-s')
+    width: 50%
+
+  +media('<mob-s')
+    width: 100%
 
 .news__list-item_large
   width: 75%

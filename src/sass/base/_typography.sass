@@ -234,6 +234,9 @@ table
     margin: 6rem 0
     padding: 0
 
+    +media('<mob')
+      margin: 3rem 0
+
     q
       position: relative
       display: block
@@ -243,6 +246,9 @@ table
       +font(round-float($font-size*1.25, 1), $line-height)
       color: $text-color
       text-align: center
+
+      +media('<mob')
+        padding: 2rem 1.5rem 0
 
       &::before
         display: block
@@ -254,6 +260,9 @@ table
         text-align: center
         color: $base-color-light
         pointer-events: none
+
+        +media('<mob')
+          font-size: 14rem
 
       &::before
         //content: '“'
@@ -279,6 +288,14 @@ table
     list-style: none
     font-size: 1.6rem
     line-height: 2.4rem
+
+    +media('<lap-s')
+      padding-left: #{nth($section-inner-space--tab, 2)}
+      padding-right: #{nth($section-inner-space--tab, 2)}
+
+    +media('<mob')
+      padding-left: #{nth($section-inner-space--mob, 2)}
+      padding-right: #{nth($section-inner-space--mob, 2)}
 
     li
       padding-left: $list-space

@@ -18,29 +18,44 @@
 
     <!--CONTENT-->
 
-    <section class="section section_news-entry layout">
+    <section class="section-news section-news-entry">
       <div class="caption-box">
         <h1 class="caption-box__title">Новости</h1>
 
         <div class="caption-box__options">
-          <div class="topics-thumbs">
-            <a href="news.html"><span>Полезные советы</span></a>
-            <a href="news.html"><span>Как выбрать ноутбук</span></a>
-            <a href="news.html"><span>Как выбрать компьютер</span></a>
-            <a href="news.html"><span>Обзоры ноутбуков</span></a>
-            <a href="news.html"><span>Обзоры компьютеров</span></a>
+          <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+            <symbol id="select-arrow" viewBox="0 0 10 6">
+              <path d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L5 3.58579L8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893C10.0976 0.683417 10.0976 1.31658 9.70711 1.70711L5.70711 5.70711C5.31658 6.09763 4.68342 6.09763 4.29289 5.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"></path>
+            </symbol>
+          </svg>
+          <div class="topics-links__nav">
+            <div class="topics-links__select select-in-selector-js">
+              <span>Как выбрать ноутбук</span>
+              <i>
+                <svg height="10" width="10">
+                  <use xlink:href="#select-arrow" />
+                </svg>
+              </i>
+            </div>
+            <div class="topics-links select-in-drop-js">
+              <div class="topics-links__item"><a href="news.html">Полезные советы</a></div>
+              <div class="topics-links__item current"><a href="news.html">Как выбрать ноутбук</a></div>
+              <div class="topics-links__item"><a href="news.html">Как выбрать компьютер</a></div>
+              <div class="topics-links__item"><a href="news.html">Обзоры ноутбуков</a></div>
+              <div class="topics-links__item"><a href="news.html">Обзоры компьютеров</a></div>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="news-entry">
-        <div class="news-entry__list">
+        <div class="news-entry__list equal-height-js">
           <div class="news-entry__list-item news-entry__list-item_large">
             <a href="#" class="news-elem news-elem_alt">
               @@include("_tpl_news-elem.html", {
               "category": "",
               "title": "Обзор ультрабука Huawei<br> Matebook X Pro",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-article-01.jpg",
               "date": "20.03.2019",
               "dateTime": "2019-03-20",
@@ -53,7 +68,7 @@
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "График работы интернет-магазина в новогодние праздникия",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-01.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -65,16 +80,16 @@
       </div>
     </section>
 
-    <section class="section layout">
+    <section class="section-news">
       <h2 class="section__title hide-text">Новости 1</h2>
       <div class="news">
-        <div class="news__list">
+        <div class="news__list equal-height-js">
           <div class="news__list-item">
             <a href="#" class="news-elem">
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "График работы интернет-магазина в новогодние праздникия",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-02.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -87,7 +102,7 @@
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "«Рулез» запустил новый сервис",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-03.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -100,7 +115,7 @@
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "Как привязать карту «Рулез-Клуба» к электронному кошельку",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-04.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -113,7 +128,7 @@
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "График работы интернет-магазина в новогодние праздникия",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-05.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -125,22 +140,23 @@
       </div>
     </section>
 
-    <section class="section layout">
-      <div class="banner">
-        <img src="img/banner-01.jpg" alt="Ноутбуки Samsung по суперцене 1000 р.">
-      </div>
+    <section class="section-news">
+      <a href="#" class="banner">
+        <img class="no-mobile-only lozad" src="img/preloader.svg" data-src="img/banner-01.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." />
+        <img class="mobile-only lozad" src="img/banner-01-mob.jpg" data-src="img/banner-01-mob.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." data-loaded="true">
+      </a>
     </section>
 
-    <section class="section layout">
+    <section class="section-news">
       <h2 class="section__title hide-text">Новости 2</h2>
       <div class="news">
-        <div class="news__list">
+        <div class="news__list equal-height-js">
           <div class="news__list-item">
             <a href="#" class="news-elem">
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "График работы интернет-магазина в новогодние праздникия",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-06.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -153,7 +169,7 @@
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "«Рулез» запустил новый сервис",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-07.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -166,7 +182,7 @@
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "Как привязать карту «Рулез-Клуба» к электронному кошельку",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-08.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",
@@ -179,7 +195,7 @@
               @@include("_tpl_news-elem.html", {
               "category": "Полезные советы",
               "title": "График работы интернет-магазина в новогодние праздникия",
-              "imgBg": "#bacbdf",
+              "imgBg": "#8f77ed",
               "imgSrc": "img/img-news-09.jpg",
               "date": "19.03.2019",
               "dateTime": "2019-03-19",

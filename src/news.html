@@ -659,14 +659,39 @@
           </ul>
         </div>
         <nav class="nav-mob">
-          <ul class="nav-mob__list">
+          <ul class="nav-mob__list nav-mob-rolls-js">
             <li><a href="index.html"><span>Акции и подарки</span></a></li>
             <li><a href="index.html"><span>Скидки</span></a></li>
             <li class="current"><span>Рассрочка</span></li>
             <li><a href="index.html"><span>Оплата</span></a></li>
             <li><a href="index.html"><span>Гарантия и доставка</span></a></li>
             <li><a href="index.html"><span>Услуги</span></a></li>
-            <li><a href="inner.html"><span>Статьи</span></a></li>
+            <li class="has-items">
+              <a href="inner.html"><span>Статьи</span></a>
+              <em class="catalog-menu-angle nav-mob__angle nav-mob-angle-js">
+                <svg height="10" width="10" class="catalog-menu-angle__icon" fill="none">
+                  <use xlink:href="#catalog-menu-angle"></use>
+                </svg>
+              </em>
+              <ul>
+                <li><a href="inner.html"><span>Раздел 1</span></a></li>
+                <li class="has-items">
+                  <a href="inner.html"><span>Раздел 2</span></a>
+                  <em class="catalog-menu-angle nav-mob__angle nav-mob-angle-js">
+                    <svg height="10" width="10" class="catalog-menu-angle__icon" fill="none">
+                      <use xlink:href="#catalog-menu-angle"></use>
+                    </svg>
+                  </em>
+                  <ul>
+                    <li><a href="inner.html"><span>Статья 1</span></a></li>
+                    <li><a href="inner.html"><span>Статья 2</span></a></li>
+                    <li><a href="inner.html"><span>Статья 3</span></a></li>
+                  </ul>
+                </li>
+                <li><a href="inner.html"><span>Раздел 3</span></a></li>
+                <li><a href="inner.html"><span>Раздел 4</span></a></li>
+              </ul>
+            </li>
             <li><a href="index.html"><span>Кредит</span></a></li>
             <li><a href="index.html"><span>Контакты</span></a></li>
           </ul>
@@ -692,24 +717,39 @@
         </ul>
       </div>
       <!--CONTENT-->
-      <section class="section section_news-entry layout">
+      <section class="section-news section-news-entry">
         <div class="caption-box">
           <h1 class="caption-box__title">Новости</h1>
           <div class="caption-box__options">
-            <div class="topics-thumbs">
-              <a href="news.html"><span>Полезные советы</span></a>
-              <a href="news.html"><span>Как выбрать ноутбук</span></a>
-              <a href="news.html"><span>Как выбрать компьютер</span></a>
-              <a href="news.html"><span>Обзоры ноутбуков</span></a>
-              <a href="news.html"><span>Обзоры компьютеров</span></a>
+            <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+              <symbol id="select-arrow" viewBox="0 0 10 6">
+                <path d="M0.292893 0.292893C0.683417 -0.0976311 1.31658 -0.0976311 1.70711 0.292893L5 3.58579L8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893C10.0976 0.683417 10.0976 1.31658 9.70711 1.70711L5.70711 5.70711C5.31658 6.09763 4.68342 6.09763 4.29289 5.70711L0.292893 1.70711C-0.0976311 1.31658 -0.0976311 0.683417 0.292893 0.292893Z"></path>
+              </symbol>
+            </svg>
+            <div class="topics-links__nav">
+              <div class="topics-links__select select-in-selector-js">
+                <span>Как выбрать ноутбук</span>
+                <i>
+                  <svg height="10" width="10">
+                    <use xlink:href="#select-arrow" />
+                  </svg>
+                </i>
+              </div>
+              <div class="topics-links select-in-drop-js">
+                <div class="topics-links__item"><a href="news.html">Полезные советы</a></div>
+                <div class="topics-links__item current"><a href="news.html">Как выбрать ноутбук</a></div>
+                <div class="topics-links__item"><a href="news.html">Как выбрать компьютер</a></div>
+                <div class="topics-links__item"><a href="news.html">Обзоры ноутбуков</a></div>
+                <div class="topics-links__item"><a href="news.html">Обзоры компьютеров</a></div>
+              </div>
             </div>
           </div>
         </div>
         <div class="news-entry">
-          <div class="news-entry__list">
+          <div class="news-entry__list equal-height-js">
             <div class="news-entry__list-item news-entry__list-item_large">
               <a href="#" class="news-elem news-elem_alt">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-article-01.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-article-01.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__title"><span>Обзор ультрабука Huawei<br> Matebook X Pro</span></div>
                   <time class="news-elem__date" datetime="20.03.2019time">20.03.2019</time>
@@ -718,7 +758,7 @@
             </div>
             <div class="news-entry__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-01.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-01.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>График работы интернет-магазина в новогодние праздникия</span></div>
@@ -730,13 +770,13 @@
           </div>
         </div>
       </section>
-      <section class="section layout">
+      <section class="section-news">
         <h2 class="section__title hide-text">Новости 1</h2>
         <div class="news">
-          <div class="news__list">
+          <div class="news__list equal-height-js">
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-02.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-02.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>График работы интернет-магазина в новогодние праздникия</span></div>
@@ -747,7 +787,7 @@
             </div>
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-03.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-03.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>«Рулез» запустил новый сервис</span></div>
@@ -758,7 +798,7 @@
             </div>
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-04.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-04.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>Как привязать карту «Рулез-Клуба» к электронному кошельку</span></div>
@@ -769,7 +809,7 @@
             </div>
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-05.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-05.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>График работы интернет-магазина в новогодние праздникия</span></div>
@@ -781,18 +821,19 @@
           </div>
         </div>
       </section>
-      <section class="section layout">
-        <div class="banner">
-          <img src="img/banner-01.jpg" alt="Ноутбуки Samsung по суперцене 1000 р.">
-        </div>
+      <section class="section-news">
+        <a href="#" class="banner">
+          <img class="no-mobile-only lozad" src="img/preloader.svg" data-src="img/banner-01.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." />
+          <img class="mobile-only lozad" src="img/banner-01-mob.jpg" data-src="img/banner-01-mob.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." data-loaded="true">
+        </a>
       </section>
-      <section class="section layout">
+      <section class="section-news">
         <h2 class="section__title hide-text">Новости 2</h2>
         <div class="news">
-          <div class="news__list">
+          <div class="news__list equal-height-js">
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-06.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-06.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>График работы интернет-магазина в новогодние праздникия</span></div>
@@ -803,7 +844,7 @@
             </div>
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-07.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-07.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>«Рулез» запустил новый сервис</span></div>
@@ -814,7 +855,7 @@
             </div>
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-08.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-08.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>Как привязать карту «Рулез-Клуба» к электронному кошельку</span></div>
@@ -825,7 +866,7 @@
             </div>
             <div class="news__list-item">
               <a href="#" class="news-elem">
-                <div class="news-elem__figure" style="background-color: #bacbdf; background-image: url(img/img-news-09.jpg);">&nbsp;</div>
+                <div class="news-elem__figure lozad" data-background-image="img/img-news-09.jpg" style="background-color: #8f77ed; background-image: url(img/preloader.svg);">&nbsp;</div>
                 <div class="news-elem__content">
                   <div class="news-elem__category">Полезные советы</div>
                   <div class="news-elem__title"><span>График работы интернет-магазина в новогодние праздникия</span></div>
