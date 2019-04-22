@@ -239,7 +239,14 @@ $page-layout-space-narrow--tab: 0 2rem !default
 $text-layout-width: 60rem !default
 // максимальная ширина текстового блока выходящего за пределы текста
 $flood-layout-width: 103rem !default
-// внешние и внутренние отступы  секций (большие лотические единици)
+// внутренние отступы текстовых страниц: статей, обзоров
+// первое значение в "парах" - вертикальные отступы установлено как 0,
+// так как оно разное на разных страницах
+$article-layout-space: 0 4rem
+$article-layout-space--lap: 0 3rem
+$article-layout-space--tab: 0 2rem // горизонтальные отступы аналогичные $section-inner-space--tab
+$article-layout-space--mob: 0 1.5rem // горизонтальные отступы аналогичные $section-inner-space--mob
+// внешние и внутренние отступы секций (большие лотические единици)
 $section-inner-space: 3rem 2.4rem !default
 $section-inner-space--tab: 2rem 2rem !default // '<lap-s' <1280
 $section-inner-space--mob: 2rem 1.5rem !default // '<mob' <640

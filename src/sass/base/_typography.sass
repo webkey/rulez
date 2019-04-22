@@ -179,32 +179,6 @@ table
 .#{$article-content}, .#{$typography}
   letter-spacing: $letter-spacing
 
-// article
-.#{$article-content}
-
-  @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
-    p + #{$tags},
-    ul + #{$tags},
-    ol + #{$tags},
-    hr + #{$tags},
-    table + #{$tags},
-    figure + #{$tags},
-    .table-auto + #{$tags}
-      margin-top: #{round-float($bottom-space * 1.5, 1)}
-
-  & > p, & > ul, & > ol,
-  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
-  & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
-  & > hr, & > mark, & > blockquote, & > figure,
-  & > .layout-text
-    max-width: 100rem
-    +push-auto
-
-  & > .layout-flood,
-  & > .layout-section
-    max-width: $flood-layout-width
-    +push-auto
-
 // article & typography
 .#{$article-content}, .#{$typography}
 
@@ -378,5 +352,46 @@ table
         float: none
         max-width: none
         margin-left: auto
+
+// article
+.#{$article-content}
+
+  padding-left: #{nth($article-layout-space, 2)}
+  padding-right: #{nth($article-layout-space, 2)}
+
+  +media('<lap')
+    padding-left: #{nth($article-layout-space--lap, 2)}
+    padding-right: #{nth($article-layout-space--lap, 2)}
+
+  +media('<tab')
+    padding-left: #{nth($article-layout-space--tab, 2)}
+    padding-right: #{nth($article-layout-space--tab, 2)}
+
+  +media('<mob')
+    padding-left: #{nth($article-layout-space--mob, 2)}
+    padding-right: #{nth($article-layout-space--mob, 2)}
+
+  @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
+    p + #{$tags},
+    ul + #{$tags},
+    ol + #{$tags},
+    hr + #{$tags},
+    table + #{$tags},
+    figure + #{$tags},
+    .table-auto + #{$tags}
+      margin-top: #{round-float($bottom-space * 1.5, 1)}
+
+  & > p, & > ul, & > ol,
+  & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
+  & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
+  & > hr, & > mark, & > blockquote, & > figure,
+  & > .layout-text
+    max-width: 100rem
+    +push-auto
+
+  & > .layout-flood,
+  & > .layout-section
+    max-width: $flood-layout-width
+    +push-auto
 
 /* article and typography elements end

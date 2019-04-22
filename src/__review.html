@@ -19,12 +19,6 @@
     <!--CONTENT-->
     <article class="review layout">
       <div class="review-caption">
-        <div class="review-caption__author">
-          <div class="review-caption__author-photo">
-            <img src="img/img-advise.jpg" alt="Автор Обзора" />
-          </div>
-          <div class="review-caption__author-name">Евгений Евгеньевич Евгеньев</div>
-        </div>
         <div class="review-caption__meta">
           <div class="review-caption__title">Обзор ноутбука SAMSUNG GL753VE-GC112T</div>
           <div class="review-caption__rate">
@@ -33,6 +27,12 @@
               <meta itemprop="ratingCount" content="1">
             </div>
           </div>
+        </div>
+        <div class="review-caption__author">
+          <div class="review-caption__author-photo">
+            <img src="img/img-advise.jpg" alt="Автор Обзора" />
+          </div>
+          <div class="review-caption__author-name">Евгений Евгеньевич Евгеньев</div>
         </div>
       </div>
       <div class="review-content article-content">
@@ -54,9 +54,12 @@
         </div>
 
         <div class="review-features tabs-js layout-text">
-          <div class="review-features__thumbs tabs__thumbs-js">
-            <a href="#review-description" class="tabs-active"><span>Описание</span></a>
-            <a href="#review-features"><span>Харрактеристики</span></a>
+          <div class="review-features__nav">
+            <div class="review-features__select tabs__select-js"></div>
+            <div class="review-features__thumbs tabs__thumbs-js tabs__select-drop-js">
+              <a href="#review-description" class="tabs-active"><span>Описание</span></a>
+              <a href="#review-features"><span>Харрактеристики</span></a>
+            </div>
           </div>
           <div class="tabs__panels-js">
             <div id="review-description">
@@ -309,7 +312,7 @@
         <div class="review-conclusion layout-flood equal-height-js">
           <div class="review-conclusion__item">
             <div class="review-conclusion__item-caption">
-              @@include("includes/svg/icon-power.svg")
+              <i class="icon-power"></i>
               <h3>Мощность</h3>
             </div>
             <p>Select 5 numbers between 1-50 and two Lucky Stars from 1-12. Complete as many entries as you like and click the green ‘Add to cart’ button to complete your transaction.</p>
@@ -317,7 +320,7 @@
           </div>
           <div class="review-conclusion__item">
             <div class="review-conclusion__item-caption">
-              @@include("includes/svg/icon-cost.svg")
+              <i class="icon-cost"></i>
               <h3>Стоимость отнасительно параметров</h3>
             </div>
             <p>It’s the most popular draw in Europe and it has earned its reputation with good reason…</p>
@@ -325,7 +328,7 @@
           </div>
           <div class="review-conclusion__item">
             <div class="review-conclusion__item-caption">
-              @@include("includes/svg/icon-time.svg")
+              <i class="icon-time"></i>
               <h3>Время батареи</h3>
             </div>
             <p>The draws take place on Tuesdays and Fridays, in Paris at 21:00 CET (20:00 BST/GMT)</p>

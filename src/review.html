@@ -315,7 +315,7 @@
       <div class="logo-wrap">
         <div class="logo">
           <a href="index.html" title="Перейти на главную">Rulezzz. Твой магазин</a>
-          <img style="display: none;" src="img/logo.png" alt="Print version logotype">
+          <img style="display: none;" src="img/logo-print.png" alt="Print version logotype">
         </div>
       </div>
       <!--logo end-->
@@ -725,12 +725,6 @@
       <!--CONTENT-->
       <article class="review layout">
         <div class="review-caption">
-          <div class="review-caption__author">
-            <div class="review-caption__author-photo">
-              <img src="img/img-advise.jpg" alt="Автор Обзора" />
-            </div>
-            <div class="review-caption__author-name">Евгений Евгеньевич Евгеньев</div>
-          </div>
           <div class="review-caption__meta">
             <div class="review-caption__title">Обзор ноутбука SAMSUNG GL753VE-GC112T</div>
             <div class="review-caption__rate">
@@ -739,6 +733,12 @@
                 <meta itemprop="ratingCount" content="1">
               </div>
             </div>
+          </div>
+          <div class="review-caption__author">
+            <div class="review-caption__author-photo">
+              <img src="img/img-advise.jpg" alt="Автор Обзора" />
+            </div>
+            <div class="review-caption__author-name">Евгений Евгеньевич Евгеньев</div>
           </div>
         </div>
         <div class="review-content article-content">
@@ -759,9 +759,12 @@
             </div>
           </div>
           <div class="review-features tabs-js layout-text">
-            <div class="review-features__thumbs tabs__thumbs-js">
-              <a href="#review-description" class="tabs-active"><span>Описание</span></a>
-              <a href="#review-features"><span>Харрактеристики</span></a>
+            <div class="review-features__nav">
+              <div class="review-features__select tabs__select-js"></div>
+              <div class="review-features__thumbs tabs__thumbs-js tabs__select-drop-js">
+                <a href="#review-description" class="tabs-active"><span>Описание</span></a>
+                <a href="#review-features"><span>Харрактеристики</span></a>
+              </div>
             </div>
             <div class="tabs__panels-js">
               <div id="review-description">
@@ -1014,33 +1017,7 @@
           <div class="review-conclusion layout-flood equal-height-js">
             <div class="review-conclusion__item">
               <div class="review-conclusion__item-caption">
-                <svg width="51" height="58" viewBox="0 0 51 58" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="0.5" y="0.5" width="50" height="57" rx="0.5" stroke="#6E52DD" />
-                  <rect x="4.5" y="8.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="13.5" y="8.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="22.5" y="8.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="31.5" y="8.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="40.5" y="8.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="4.5" y="17.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="13.5" y="17.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="22.5" y="17.5" width="6" height="6" rx="0.5" fill="#6E52DD" stroke="#6E52DD" />
-                  <rect x="31.5" y="17.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="40.5" y="17.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="4.5" y="26.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="13.5" y="26.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="22.5" y="26.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="31.5" y="26.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="40.5" y="26.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="4.5" y="35.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="13.5" y="35.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="22.5" y="35.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="31.5" y="35.5" width="6" height="6" rx="0.5" fill="#6E52DD" stroke="#6E52DD" />
-                  <rect x="40.5" y="35.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="4.5" y="44.5" width="6" height="6" rx="0.5" fill="#6E52DD" stroke="#6E52DD" />
-                  <rect x="13.5" y="44.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="22.5" y="44.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="31.5" y="44.5" width="6" height="6" rx="0.5" stroke="#6E52DD" />
-                  <rect x="40.5" y="44.5" width="6" height="6" rx="0.5" stroke="#6E52DD" /></svg>
+                <i class="icon-power"></i>
                 <h3>Мощность</h3>
               </div>
               <p>Select 5 numbers between 1-50 and two Lucky Stars from 1-12. Complete as many entries as you like and click the green ‘Add to cart’ button to complete your transaction.</p>
@@ -1048,12 +1025,7 @@
             </div>
             <div class="review-conclusion__item">
               <div class="review-conclusion__item-caption">
-                <svg width="68" height="43" viewBox="0 0 68 43" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect x="0.5" y="2.5" width="67" height="36" rx="3.5" stroke="#6E52DD" />
-                  <rect x="0.5" y="4.5" width="67" height="36" rx="3.5" stroke="#6E52DD" />
-                  <rect x="0.5" y="6.5" width="67" height="36" rx="3.5" stroke="#6E52DD" />
-                  <rect x="0.5" y="0.5" width="67" height="36" rx="3.5" fill="white" stroke="#6E52DD" />
-                  <path d="M19.476 15.048L20.33 16.378L21.534 15.468V23H23.144V13.172H21.982L19.476 15.048ZM28.1642 18.1C28.1642 21.096 29.2282 23.112 31.4822 23.112C33.7222 23.112 34.7302 21.096 34.7302 18.1C34.7302 15.104 33.6942 13.088 31.4542 13.088C29.2002 13.088 28.1642 15.104 28.1642 18.1ZM29.8862 18.1C29.8862 15.734 30.3482 14.6 31.4542 14.6C32.5742 14.6 33.0222 15.678 33.0222 18.1C33.0222 20.522 32.6022 21.614 31.4822 21.614C30.4322 21.614 29.8862 20.494 29.8862 18.1ZM35.9161 18.1C35.9161 21.096 36.9801 23.112 39.2341 23.112C41.4741 23.112 42.4821 21.096 42.4821 18.1C42.4821 15.104 41.4461 13.088 39.2061 13.088C36.9521 13.088 35.9161 15.104 35.9161 18.1ZM37.6381 18.1C37.6381 15.734 38.1001 14.6 39.2061 14.6C40.3261 14.6 40.7741 15.678 40.7741 18.1C40.7741 20.522 40.3541 21.614 39.2341 21.614C38.1841 21.614 37.6381 20.494 37.6381 18.1ZM43.6681 18.1C43.6681 21.096 44.7321 23.112 46.9861 23.112C49.2261 23.112 50.2341 21.096 50.2341 18.1C50.2341 15.104 49.1981 13.088 46.9581 13.088C44.7041 13.088 43.6681 15.104 43.6681 18.1ZM45.3901 18.1C45.3901 15.734 45.8521 14.6 46.9581 14.6C48.0781 14.6 48.5261 15.678 48.5261 18.1C48.5261 20.522 48.1061 21.614 46.9861 21.614C45.9361 21.614 45.3901 20.494 45.3901 18.1Z" fill="#6E52DD" /></svg>
+                <i class="icon-cost"></i>
                 <h3>Стоимость отнасительно параметров</h3>
               </div>
               <p>It’s the most popular draw in Europe and it has earned its reputation with good reason…</p>
@@ -1061,9 +1033,7 @@
             </div>
             <div class="review-conclusion__item">
               <div class="review-conclusion__item-caption">
-                <svg width="51" height="51" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M0 25.5C0 11.4393 11.4393 0 25.5 0C39.5607 0 51 11.4393 51 25.5C51 39.5607 39.5607 51 25.5 51C11.4393 51 0 39.5607 0 25.5ZM1.7 25.5C1.7 38.6231 12.3768 49.3 25.5 49.3C38.6231 49.3 49.3 38.6231 49.3 25.5C49.3 12.3768 38.6231 1.7 25.5 1.7C12.3768 1.7 1.7 12.3768 1.7 25.5Z" fill="#6E52DD" />
-                  <path d="M25.1667 5C24.7067 5 24.3333 5.37823 24.3333 5.84615V25.3077H11.8333C11.3733 25.3077 11 25.6859 11 26.1538C11 26.6218 11.3733 27 11.8333 27H25.1667C25.6267 27 26 26.6218 26 26.1538V5.84615C26 5.37823 25.6267 5 25.1667 5Z" fill="#6E52DD" /></svg>
+                <i class="icon-time"></i>
                 <h3>Время батареи</h3>
               </div>
               <p>The draws take place on Tuesdays and Fridays, in Paris at 21:00 CET (20:00 BST/GMT)</p>
@@ -1185,7 +1155,7 @@
           </div>
           <div class="footer-bottom__col">
             <!--developer-->
-            <a class="developer" href="http://astronim.by/" target="_blank" title="Разработка сайта компания Astronim*Support">Astronim*Support</a>
+            <a class="developer" href="http://astronim.by/" target="_blank" title="Разработка сайта">Astronim*Support</a>
             <!--developer end-->
           </div>
         </div>
