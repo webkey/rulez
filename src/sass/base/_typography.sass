@@ -202,6 +202,9 @@ table
     line-height: 2.4rem
     color: $text-color-ultra-light
 
+  table figure
+    margin: 0 0 $bottom-space
+
   // blockquote
   blockquote
     display: block
@@ -308,14 +311,15 @@ table
   & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,
   & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
   & > hr, & > mark, & > blockquote, & > figure,
-  & > .layout-text
+  & > .layout-text,
+  & > .table-auto
     &:last-child
       margin-bottom: 0
 
   & > img,
-  & > .layout-text img,
-  & > .layout-flood img,
-  & > .layout-section img
+  & > .layout-text > img,
+  & > .layout-flood > img,
+  & > .layout-section > img
     display: block
     margin: 3rem auto 4rem
 
@@ -383,6 +387,9 @@ table
     figure + #{$tags},
     .table-auto + #{$tags}
       margin-top: #{round-float($bottom-space * 1.5, 1)}
+
+    table #{$tags}
+      margin-top: 0
 
   & > p, & > ul, & > ol,
   & > h1, & > h2, & > h3, & > h4, & > h5, & > h6,

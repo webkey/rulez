@@ -2640,24 +2640,21 @@ $quick-cart-footer-height--mob: 7rem
     height: $size
     border-radius: $size
 
-  svg
-    display: block
+  & > em
     $size: 0.8rem
-    +size($size)
+    +icon($size)
     position: absolute
     left: 50%
     top: 50%
     $space: round-float($size / 2, 1)
     margin: -#{$space} 0 0 -#{$space}
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgOCA4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wLjY0NjQ0NyAxLjM1MzU1TDYuNjQ2NDUgNy4zNTM1NUw3LjM1MzU1IDYuNjQ2NDVMMS4zNTM1NSAwLjY0NjQ0N0wwLjY0NjQ0NyAxLjM1MzU1Wk02LjY0NjQ1IDAuNjQ2NDQ3TDAuNjQ2NDQ3IDYuNjQ2NDVMMS4zNTM1NSA3LjM1MzU1TDcuMzUzNTUgMS4zNTM1NUw2LjY0NjQ1IDAuNjQ2NDQ3WiI+PC9wYXRoPjwvc3ZnPg==)
 
     +media('<mob')
       $size: 1.4rem
       +size($size)
       $space: round-float($size / 2, 1)
       margin: -#{$space} 0 0 -#{$space}
-
-    &, path
-      fill: currentColor
 
   // hover
   &:hover
@@ -14766,3 +14763,101 @@ $author-photo-size--mob: 6rem
     opacity: 1
 
 /* default overlay end
+
+/* products compare
+.products-compare
+  table
+    tr
+      td, th
+        max-width: 20rem
+        min-width: 20rem
+        vertical-align: top
+        padding: 0
+        +font-normal
+        +font(1.6rem, 2.2rem)
+        letter-spacing: normal
+        color: $text-color
+        text-align: left
+        background-color: white
+        border: 1px solid $border-color
+
+        &:first-child, &:first-child
+          border-left-width: 1px
+
+        &:last-child, &:last-child
+          border-right-width: 1px
+
+        & > div
+          padding: 1.2rem 1.4em
+          position: relative
+
+        &:first-child
+          max-width: 10rem
+          
+.products-compare__title
+  background-color: #f3f3f3
+  border-bottom: 1px solid $border-color
+
+.products-compare_accent
+  background-color: #ede9ff
+
+.products-compare_on
+  color: $form-success-color
+
+.products-compare_off
+  color: $form-error-color
+
+.products-compare__remove
+  position: absolute
+  right: 0.5rem
+  top: 0.5rem
+  $size: 1.8rem
+  width: $size
+  height: $size
+  color: white
+  //background-color: #d8d8d8
+  //background-color: $base-color-light
+  background-color: #cecece
+  border-radius: $size
+  text-indent: -9999px
+  cursor: pointer
+  overflow: hidden
+  transform: rotate(-90deg) translateZ(0)
+  transition: background-color $animation-speed
+  outline: none
+  user-select: none
+  //-webkit-tap-highlight-color: transparent
+
+  +media('<mob')
+    $size: 2.4rem
+    width: $size
+    height: $size
+    border-radius: $size
+
+  & > em
+    $size: 0.8rem
+    +icon($size)
+    position: absolute
+    left: 50%
+    top: 50%
+    $space: round-float($size / 2, 1)
+    margin: -#{$space} 0 0 -#{$space}
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgOCA4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wLjY0NjQ0NyAxLjM1MzU1TDYuNjQ2NDUgNy4zNTM1NUw3LjM1MzU1IDYuNjQ2NDVMMS4zNTM1NSAwLjY0NjQ0N0wwLjY0NjQ0NyAxLjM1MzU1Wk02LjY0NjQ1IDAuNjQ2NDQ3TDAuNjQ2NDQ3IDYuNjQ2NDVMMS4zNTM1NSA3LjM1MzU1TDcuMzUzNTUgMS4zNTM1NUw2LjY0NjQ1IDAuNjQ2NDQ3WiI+PC9wYXRoPjwvc3ZnPg==)
+
+    +media('<mob')
+      $size: 1.4rem
+      +size($size)
+      $space: round-float($size / 2, 1)
+      margin: -#{$space} 0 0 -#{$space}
+
+  // hover
+  &:hover
+    .no-touchevents &
+      background-color: $base-color
+
+  // focus
+  &:focus
+    .no-touchevents &
+      box-shadow: 0 0 0 2px rgba($focus-color, 0.5)
+
+/* products compare end
