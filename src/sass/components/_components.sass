@@ -669,10 +669,12 @@ input[type="text"].single-form__input
   position: relative
   padding: 0.8rem 5rem 0.8rem #{nth($section-inner-space, 2)}
   min-height: 5rem
-  +font(1.4rem, 1.8rem)
+  +font(1.8rem, 2.4rem)
   color: $text-color-light
   //-webkit-tap-highlight-color: transparent
-  cursor: pointer
+
+  &.rolls__hand-js
+    cursor: pointer
 
   +media('<lap-s')
     padding-left: #{nth($section-inner-space--tab, 2)}
@@ -680,7 +682,7 @@ input[type="text"].single-form__input
   +media('<mob')
     padding-left: #{nth($section-inner-space--mob, 2)}
 
-  & > strong
+  //& > strong
     +font-normal
     font-weight: normal
 
@@ -693,8 +695,12 @@ input[type="text"].single-form__input
   right: 1.6rem
   top: 50%
   margin-top: -#{round-float($size / 2, 1)}
+  +font(0, 0)
   color: $base-color
   border: 1px solid $border-color
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iNiIgdmlld0JveD0iMCAwIDEwIDYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZmlsbD0iIzZlNTJkZCIgZD0iTTAuMjkyODkzIDAuMjkyODkzQzAuNjgzNDE3IC0wLjA5NzYzMTEgMS4zMTY1OCAtMC4wOTc2MzExIDEuNzA3MTEgMC4yOTI4OTNMNSAzLjU4NTc5TDguMjkyODkgMC4yOTI4OTNDOC42ODM0MiAtMC4wOTc2MzExIDkuMzE2NTggLTAuMDk3NjMxMSA5LjcwNzExIDAuMjkyODkzQzEwLjA5NzYgMC42ODM0MTcgMTAuMDk3NiAxLjMxNjU4IDkuNzA3MTEgMS43MDcxMUw1LjcwNzExIDUuNzA3MTFDNS4zMTY1OCA2LjA5NzYzIDQuNjgzNDIgNi4wOTc2MyA0LjI5Mjg5IDUuNzA3MTFMMC4yOTI4OTMgMS43MDcxMUMtMC4wOTc2MzExIDEuMzE2NTggLTAuMDk3NjMxMSAwLjY4MzQxNyAwLjI5Mjg5MyAwLjI5Mjg5M1oiPjwvcGF0aD48L3N2Zz4=)
+  background-repeat: no-repeat
+  background-position: 50%
   border-radius: $size
   cursor: pointer
   user-select: none
@@ -4702,13 +4708,18 @@ $search-btn-space: 0 0.5rem
 /* section end
 
 /* page with sidebar
-.content-layout
+.content
+  overflow: hidden // Нужен для обрезки выходящих за пределы контента элементов. Например слайдера на внутренней странице.
   position: relative
   width: 100%
   background-color: white
   border-radius: 5px
   margin-bottom: 2rem
   +clear
+
+.content-align
+  float: left
+  width: 100%
 
   &::before
     content: ""
@@ -4725,33 +4736,28 @@ $search-btn-space: 0 0.5rem
     +media('<tab')
       display: none
 
-.content-align
-  overflow: hidden // Нужен для обрезки выходящих за пределы контента элементов
-  float: left
-  width: 100%
+.content-inner
+  //padding-top: 4rem
+  //padding-bottom: 4rem
+  margin: 0 #{$aside-width} 0 #{$sidebar-width}
+  min-height: 32rem
 
-  .content
-    padding-top: 4rem
-    padding-bottom: 4rem
-    margin: 0 #{$aside-width} 0 #{$sidebar-width}
-    min-height: 32rem
+  +media('<lap')
+    //padding-top: 3.5rem
+    //padding-bottom: 3.5rem
+    margin: 0 #{$aside-min-width} 0 #{$sidebar-min-width}
 
-    +media('<lap')
-      padding-top: 3.5rem
-      padding-bottom: 3.5rem
-      margin: 0 #{$aside-min-width} 0 #{$sidebar-min-width}
+  +media('<lap-s')
+    margin-right: $aside-min-width--net
 
-    +media('<lap-s')
-      margin-right: $aside-min-width--net
+  +media('<tab')
+    //padding-top: 2.5rem
+    //padding-bottom: 2.5rem
+    margin: 0
 
-    +media('<tab')
-      padding-top: 2.5rem
-      padding-bottom: 2.5rem
-      margin: 0
-
-    +media('<mob')
-      padding-top: 2rem
-      padding-bottom: 2rem
+  //+media('<mob')
+    padding-top: 2rem
+    padding-bottom: 2rem
 
 .sidebar
   position: relative
@@ -14147,7 +14153,7 @@ $checkout-col-inner-space--tab: #{round-float(nth($section-inner-space--tab, 2) 
 .checkout__subtitle
   +font-normal
   font-weight: normal
-  +font(1.6rem, 2.4rem)
+  +font(1.8rem, 2.4rem)
   color: $title-color
   margin-bottom: 1.5rem
 
@@ -14174,7 +14180,7 @@ $checkout-col-inner-space--tab: #{round-float(nth($section-inner-space--tab, 2) 
 .payment__title
   +font-normal
   font-weight: normal
-  +font(1.6rem, 2.4rem)
+  +font(1.8rem, 2.4rem)
   color: $title-color
   margin-bottom: 1.5rem
 
@@ -14245,10 +14251,10 @@ $order-aside-width-full--tab: $order-aside-width--tab + $cart-container-inside-s
 
 /* review article
 .review
-  margin: 0 -#{nth($page-layout-space, 2)}
+  margin-bottom: 2rem
 
-  +media('<mob')
-    margin: 0 -#{nth($page-layout-space--mob, 2)}
+  &:last-child
+    margin-bottom: 0
 
 .review-caption
   display: flex
@@ -14356,6 +14362,7 @@ $author-photo-size--mob: 6rem
 
 .review-article-gallery-wrap
   position: relative
+  overflow: hidden
   margin: 0 -#{nth($article-layout-space, 2)} $bottom-space
 
   +media('<lap')
@@ -14428,11 +14435,12 @@ $author-photo-size--mob: 6rem
     user-select: none
 
 .review-content
-  overflow: hidden
-  background-color: white
+  //overflow: hidden
+  padding-top: 0
   padding-bottom: 6rem
   margin-bottom: 2rem
-  border-radius: 0 0 5px 5px
+  background-color: white
+  border-radius: 0 0 0.5rem 0.5rem
 
   +media('<net')
     padding-bottom: 4rem
