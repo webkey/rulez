@@ -12713,30 +12713,6 @@ input[type="text"].quick-order__input.success {
   }
 }
 
-.product__options::before, .product__options::after {
-  content: "";
-  display: block;
-  border: solid #e6e6e6;
-  position: absolute;
-  z-index: -1;
-}
-
-.product__options::before {
-  left: 0.5rem;
-  right: 0.5rem;
-  top: 0;
-  border-width: 2px 0 0;
-}
-
-.product__options::after {
-  width: 0;
-  height: 100%;
-  left: 50%;
-  top: 0;
-  border-width: 0 0 0 2px;
-  margin-left: -1px;
-}
-
 .product__action,
 .product__purchase {
   -ms-flex-positive: 1;
