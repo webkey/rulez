@@ -34,13 +34,13 @@
     @@if(!context.inCart){
     <a href="#" class="purchase-sm-btn add-to-cart-js">
       <span class="purchase-sm-btn__to-cart">Добавить в&nbsp;корзину</span>
-      @@include("includes/svg/icon-cart.svg")
+      <i class="icon-cart-color"></i>
     </a>
     }
     @@if(context.inCart) {
     <a href="#" class="purchase-sm-btn add-to-cart-js added">
       <span class="purchase-sm-btn__to-cart">Добавить в&nbsp;корзину</span>
-      @@include("includes/svg/icon-cart.svg")
+      <i class="icon-cart-color"></i>
     </a>
     }}
   </div>
