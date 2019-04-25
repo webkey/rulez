@@ -1801,32 +1801,6 @@ function toggleDrop() {
 }
 
 /**
- * !Quick cart remove item (temporary, test)
- * */
-function qCartRemoveItem() {
-  var $btnRemove = $('.quick-cart__item-remove-js');
-
-  if ($btnRemove.length) {
-    $btnRemove.on('click', function (e) {
-      e.preventDefault();
-      var $curItem = $(this).closest('.quick-cart__item');
-      $curItem.stop().animate({'opacity': 0}, 200, function () {
-        var $curCart = $curItem.closest('.quick-cart');
-        $curItem.detach();
-        if (!$curCart.find('.quick-cart__item').length) {
-          $('.quick-cart-empty', $curCart).show();
-          $('.quick-cart__btn', $curCart).addClass('disabled');
-          $('.cart-keeper-js').addClass('disabled').find('.counter').hide();
-          setTimeout(function () {
-            $('.cart-keeper-js').switchClass('remove');
-          }, 800);
-        }
-      })
-    })
-  }
-}
-
-/**
  * !Change visual state
  * */
 function changeState() {
@@ -3432,24 +3406,130 @@ function initSpinner ($_elem) {
   })
 }
 
-function calcPriceOrder() {
-  var $spin = $('.p-add-form__counter-js').find('input[type="number"]');
+/**
+ * !Quick cart remove item (temporary, test)
+ * */
+function removeItemQuickCart() {
+  var $btnRemove = $('.quick-cart__item-remove-js');
 
-  $spin.on('change keyup spinstop', function (event) {
-    var $curSpin = $(this),
-        $curForm = $curSpin.closest('.p-add-form-js');
-
-    var total = +$curForm.find('.p-add-form-price-js').attr('data-price') * +$curSpin.val();
-    total = parseFloat(total).toFixed(2);
-
-    $curForm.find('.p-add-form-total-js').html(total).attr('data-total', +total);
-  });
-
-  $spin.trigger('change');
+  if ($btnRemove.length) {
+    $btnRemove.on('click', function (e) {
+      e.preventDefault();
+      var $curItem = $(this).closest('.quick-cart__item-js');
+      $curItem.stop().animate({'opacity': 0}, 200, function () {
+        var $curCart = $curItem.closest('.quick-cart-js');
+        $curItem.detach();
+        if (!$curCart.find('.quick-cart__item-js').length) {
+          $('.quick-cart__empty-js', $curCart).show();
+          $('.quick-cart__btn-js', $curCart).addClass('disabled');
+          $('.cart-keeper-js').addClass('disabled').find('.counter').hide();
+          setTimeout(function () {
+            $('.cart-keeper-js').switchClass('remove');
+          }, 800);
+        }
+      })
+    })
+  }
 }
 
 /**
- * Popups
+ * !Calculation price order
+ */
+
+function calcPriceOrder() {
+  var $spin = $('.p-add-form__counter-js').find('input[type="number"]');
+
+  if ($spin.length) {
+    $spin.on('change keyup spinstop', function (event) {
+      var $curSpin = $(this),
+          $curForm = $curSpin.closest('.p-add-form-js');
+
+      var total = +$curForm.find('.p-add-form-price-js').attr('data-price') * +$curSpin.val();
+      total = parseFloat(total).toFixed(2);
+
+      $curForm.find('.p-add-form-total-js').html(total).attr('data-total', +total);
+    });
+
+    $spin.trigger('change');
+  }
+}
+
+/**
+ * !Calculation cart
+ */
+function calcCart() {
+  var $spin = $('.cart-item__counter-js').find('input[type="number"]');
+
+  if ($spin.length) {
+    $spin.on('change keyup spinstop', function (event) {
+      var $curSpin = $(this),
+          curLength = +$curSpin.val(),
+          $item = $('.cart-item-js'),
+          $curCart = $curSpin.closest('.cart-js'),
+          $curItem = $curSpin.closest($item),
+          $curSum = $curItem.find('.cart-item__sum-js'),
+          totalLength = 0, totalPrice = 0;
+
+      if (curLength > 1) {
+        $curSum.parent().show();
+      } else {
+        $curSum.parent().hide();
+      }
+
+      var total = +$curItem.find('.cart-item__price-js').attr('data-price') * curLength;
+      total = parseFloat(total).toFixed(2);
+
+      $curSum.html(total).attr('data-total', +total);
+
+      $.each($item, function (index, elem) {
+        var val = +$(elem).find($spin).val();
+        totalLength += val;
+        totalPrice += +$(elem).find('.cart-item__sum-js').attr('data-total');
+      });
+
+      // total length
+      $('.cart__total-length-js', $curCart).html(totalLength).attr('data-total-length', +totalLength);
+
+      // total price (without deli)
+      totalPrice = parseFloat(totalPrice).toFixed(2);
+      $('.cart__total-price-js', $curCart).html(totalPrice).attr('data-total-price', +totalPrice);
+
+      // with delivery
+      var resultPrice = totalPrice + +$('.cart__delivery-js', $curCart).attr('data-deliver');
+      $('.cart__result-price-js', $curCart).html(resultPrice).attr('data-total-price', +resultPrice);
+    });
+
+    $spin.trigger('change');
+  }
+}
+
+/**
+ * !Remove item cart
+ */
+function removeItemCart() {
+  var $btnRemove = $('.cart-item__remove-js');
+
+  if ($btnRemove.length) {
+    $btnRemove.on('click', function (e) {
+      e.preventDefault();
+      var $curItem = $(this).closest('.cart-item-js');
+      $curItem.stop().animate({'opacity': 0}, 200, function () {
+        var $curCart = $curItem.closest('.cart-js');
+        $curItem.detach();
+        if (!$curCart.find('.cart-item-js').length) {
+          $('.cart__empty-js', $curCart).show();
+          $('.cart__list-js', $curCart).hide();
+          $('.cart__button-js', $curCart).addClass('disabled');
+          $('.cart__quick-order-js', $curCart).prop('disabled', true);
+          $('.cart__promo-code-js', $curCart).prop('disabled', true);
+        }
+      })
+    })
+  }
+}
+
+/**
+ * !Popups
  */
 function popupsInit() {
 
@@ -3532,6 +3612,11 @@ function formValidation() {
  */
 
 $(document).ready(function () {
+  if (!("ontouchstart" in document.documentElement)) {
+    document.documentElement.className += " no-touch";
+  } else {
+    document.documentElement.className += " touch";
+  }
   // $('html').addClass('document-ready');
   // showOnScroll();
   objectFitImages(); // object-fit-images initial
@@ -3550,7 +3635,7 @@ $(document).ready(function () {
   gridLayout();
   tabs();
   toggleDrop();
-  qCartRemoveItem();
+  removeItemQuickCart();
   changeState();
   addToCarAnimation();
   rollsInit();
@@ -3560,6 +3645,8 @@ $(document).ready(function () {
   initSpinner($('.spinner-js'));
   onlyNumberInput();
   calcPriceOrder();
+  removeItemCart();
   popupsInit();
+  calcCart();
   formValidation();
 });

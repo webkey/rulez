@@ -1,4 +1,4 @@
-<div class="cart-item@@if(context.classes){ @@classes}">
+<div class="cart-item@@if(context.classes){ @@classes} cart-item-js">
   <div class="cart-item__box">
     <div class="cart-item__main">
       <a href="product-card.html" class="cart-item__figure">
@@ -18,15 +18,16 @@
         @@if(context.priceOld.val){
         <div class="cart-item__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>
         }
-        <div class="cart-item__price-new"><strong>@@price.val</strong>&nbsp;<em>@@price.unit</em></div>
+        <div class="cart-item__price-new"><strong class="cart-item__price-js" data-price="@@price.val">@@price.val</strong>&nbsp;<em>@@price.unit</em></div>
       </div>
-      <div class="cart-item__counter">
-        <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="1" data-only-number>
+      <div class="cart-item__counter cart-item__counter-js">
+        <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="@@length" data-only-number>
       </div>
+      <div class="cart-item__sum" style="display: none"><strong class="cart-item__sum-js" data-total="@@price.val">@@price.val</strong> <em>@@price.unit</em></div>
     </div>
   </div>
 
-  <a href="#" class="cart-item__remove">
+  <a href="#" class="cart-item__remove cart-item__remove-js">
     @@include("includes/svg/icon-cross-sm.svg")
     <span>Удалить из корзины</span>
   </a>
