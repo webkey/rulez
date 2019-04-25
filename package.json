@@ -24,6 +24,7 @@
     "gulp-html-beautify": "^1.0.1",
     "gulp-imagemin": "^3.1.1",
     "gulp-index": "^0.2.0",
+    "gulp-modernizr": "^3.2.1",
     "gulp-remove-empty-lines": "^0.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-rev-timestamp": "0.0.1",
@@ -36,8 +37,7 @@
     "gulp-uglifyjs": "^0.6.2",
     "imagemin-pngquant": "^5.0.0",
     "intersection-observer": "^0.5.1",
-    "markdown": "^0.5.0",
-    "modernizr": "^3.7.1"
+    "markdown": "^0.5.0"
   },
   "dependencies": {
     "bower": "^1.8.8",

@@ -14,10 +14,14 @@ $(window).on('debouncedresize', function () {
 });
 
 /**
- * !Detected touchscreen devices
+ * !Detects overlay scrollbars (when scrollbars on overflowed blocks are visible). This is found most commonly on mobile and OS X.
  * */
-var TOUCH = Modernizr.touchevents;
-var DESKTOP = !TOUCH;
+var HIDDEN_SCROLL = Modernizr.hiddenscroll;
+var NO_HIDDEN_SCROLL = !HIDDEN_SCROLL;
+
+/**
+ * !Detect desktop and devices
+ * */
 
 /**
  * !Load images on load page or scroll page
@@ -189,7 +193,7 @@ function initTooltip() {
  * !Custom srollbar
  */
 function initCustomScrollBar() {
-  if (DESKTOP) {
+  if (NO_HIDDEN_SCROLL) {
     $('.quick-cart__list').each(function (index, element) {
       new SimpleBar(element);
     });
