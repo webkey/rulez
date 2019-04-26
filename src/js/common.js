@@ -669,6 +669,23 @@ function slidersInit() {
       });
 
       cardImgSlider.init();
+
+      $().fancybox({
+        selector : '.p-card-gallery-js a:visible',
+        infobar: true,
+        buttons: [
+          "zoom",
+          //"share",
+          // "slideShow",
+          //"fullScreen",
+          //"download",
+          // "thumbs",
+          "close"
+        ],
+        beforeClose: function (instance, current) {
+          cardImgSlider.slideTo(current.index);
+        }
+      });
     });
   }
 
@@ -3407,6 +3424,37 @@ function initSpinner ($_elem) {
 }
 
 /**
+ * !Compare products remove item
+ * */
+function removeItemCompare() {
+  var $btnRemove = $('.products-compare__remove-js');
+
+  if ($btnRemove.length) {
+    $btnRemove.on('click', function (e) {
+      e.preventDefault();
+      var $curRemoveBtn = $(this),
+          curIndex = $curRemoveBtn.closest('td').index(),
+          $curCompareContainer = $curRemoveBtn.closest('.products-compare-js'),
+          $curCompareTable = $curRemoveBtn.closest('.products-compare__table-js'),
+          $curItem = $curCompareTable.find('tr');
+
+      $.each($curItem, function (index, element) {
+        var $sameElem = $('td', $(element)).eq(curIndex);
+
+        $sameElem.stop().animate({'opacity': 0}, 200, function () {
+          $sameElem.detach();
+          if ($('td', $(element)).length < 2) {
+            $('.products-compare__empty-js', $curCompareContainer).show();
+            $curCompareTable.hide();
+          }
+        })
+
+      });
+    })
+  }
+}
+
+/**
  * !Quick cart remove item (temporary, test)
  * */
 function removeItemQuickCart() {
@@ -3518,7 +3566,6 @@ function calcCart() {
 
         // recalculation cart
         $curCart.find('.cart-item__counter-js').find('input[type="number"]').trigger('change');
-        console.log("spin: ", $curCart.find('.cart-item__counter-js').find('input[type="number"]'));
 
         // if cart has any items
         if (!$curCart.find('.cart-item-js').length) {
@@ -3641,7 +3688,6 @@ $(document).ready(function () {
   gridLayout();
   tabs();
   toggleDrop();
-  removeItemQuickCart();
   changeState();
   addToCarAnimation();
   rollsInit();
@@ -3650,6 +3696,8 @@ $(document).ready(function () {
   sortProducts();
   initSpinner($('.spinner-js'));
   onlyNumberInput();
+  removeItemCompare();
+  removeItemQuickCart();
   calcPriceOrder();
   calcCart();
   popupsInit();

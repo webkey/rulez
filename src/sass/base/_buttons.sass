@@ -13,7 +13,8 @@
   box-shadow: 0 1px 1px rgba(black, 0.4)
   outline: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  transition: box-shadow $animation-speed
+  //-webkit-tap-highlight-color: transparent
 
   +media('<tab')
     padding: 1.4rem 1.2rem
@@ -31,12 +32,12 @@
 
   // hover
   &:hover
-    .no-touchevents &
-      box-shadow: 0 3px 6px rgba(black, 0.2)
+    .no-touch &
+      box-shadow: 0 1px 1px rgba(black, 0.4), 0 3px 6px rgba(black, 0.2)
 
   // active
-  //&:active
-    box-shadow: none
+  &:active
+    top: 1px
 
   // disabled
   &:disabled, &.disabled, &[data-disabled]
@@ -46,8 +47,9 @@
     box-shadow: none !important
     pointer-events: none !important
 
-    &::before, &::after
-      display: none
+    // active
+    &:active
+      top: auto
 
 .btn-def_full-width
   width: 100%
@@ -64,7 +66,8 @@
   box-shadow: none
   outline: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  transition: box-shadow $animation-speed
+  //-webkit-tap-highlight-color: transparent
 
   +media('<tab')
     padding: 1.4rem 1.2rem
@@ -82,12 +85,12 @@
 
   // hover
   &:hover
-    .no-touchevents &
+    .no-touch &
       box-shadow: 0 3px 6px rgba(black, 0.2)
 
   // active
-  //&:active
-    box-shadow: none
+  &:active
+    top: 1px
 
   // disabled
   &:disabled, &.disabled, &[data-disabled]
@@ -97,8 +100,9 @@
     box-shadow: none !important
     pointer-events: none !important
 
-    &::before, &::after
-      display: none
+    // active
+    &:active
+      top: auto
 
 // full parent container width
 .btn-round_full-width
@@ -130,7 +134,8 @@
   box-shadow: none
   outline: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  transition: box-shadow $animation-speed
+  //-webkit-tap-highlight-color: transparent
 
   +media('<tab')
     padding: 1.4rem 1.2rem
@@ -146,12 +151,12 @@
 
   // hover
   &:hover
-    .no-touchevents &
+    .no-touch &
       box-shadow: 0 3px 6px rgba($btn-alt-bg-color, 0.35)
 
   // active
-  //&:active
-    box-shadow: none
+  &:active
+    top: 1px
 
   // disabled
   &:disabled, &.disabled, &[data-disabled]
@@ -161,8 +166,9 @@
     box-shadow: none !important
     pointer-events: none !important
 
-    &::before, &::after
-      display: none
+    // active
+    &:active
+      top: auto
 
 .btn-alt_full-width
   display: block
@@ -180,7 +186,8 @@
   box-shadow: none
   outline: none
   user-select: none
-  -webkit-tap-highlight-color: transparent
+  transition: box-shadow $animation-speed
+  //-webkit-tap-highlight-color: transparent
 
   +media('<tab')
     padding: 1.4rem 1.2rem
@@ -191,12 +198,12 @@
 
   // hover
   &:hover
-    .no-touchevents &
+    .no-touch &
       box-shadow: 0 3px 6px rgba(black, 0.2)
 
   // active
-  //&:active
-    box-shadow: none
+  &:active
+    top: 1px
 
   // disabled
   &:disabled, &.disabled, &[data-disabled]
@@ -206,35 +213,11 @@
     box-shadow: none !important
     pointer-events: none !important
 
-    &::before, &::after
-      display: none
+    // active
+    &:active
+      top: auto
 
 .btn-outline_full-width
   display: block
 
 /* btn-outline end
-
-/* btn-with-icon
-.btn-with-icon
-  $btni-space: 10px
-  //=================
-  text-align: center
-  +clear-spacing
-  white-space: nowrap
-
-  svg, span
-    +display-inline-block-middle
-
-  path
-    fill: currentColor
-
-  span
-    text-align: left
-    white-space: normal
-    padding-right: $btni-space
-
-  svg + span
-    padding-right: 0
-    padding-left: $btni-space
-
-/* btn-with-icon end

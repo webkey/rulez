@@ -1,9 +1,7 @@
 <div class="catalog-menu__title">
 	<a href="catalog.html">@@icon<span>@@title</span></a>
 	<em class="catalog-menu-angle catalog-list__angle catalog-list-angle-js">
-		<svg height="10" width="10" class="catalog-menu-angle__icon" fill="none">
-			<use xlink:href="#catalog-menu-angle"></use>
-		</svg>
+		<i class="icon-angle-color catalog-menu-angle__icon"></i>
 	</em>
 </div>
 <ul class="catalog-menu__links catalog-links-rolls-js">
@@ -13,9 +11,7 @@
 	<li class="has-items">
 		<a href="catalog.html"><span>@@hasSubLinks</span></a>
 		<em class="catalog-menu-angle catalog-menu__angle catalog-menu-angle-js">
-			<svg height="10" width="10" class="catalog-menu-angle__icon" fill="none">
-				<use xlink:href="#catalog-menu-angle"></use>
-			</svg>
+			<i class="icon-angle-color catalog-menu-angle__icon"></i>
 		</em>
 		<ul>
 			@@for (var i = 0; i < subLinks.length; i++){<li><a href="catalog.html"><span>`+subLinks[i]+`</span></a></li>}

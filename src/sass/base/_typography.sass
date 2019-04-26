@@ -132,7 +132,8 @@ table
 
 .table-auto
   position: relative
-  overflow: auto
+  overflow-y: hidden
+  overflow-x: auto
   max-width: 100%
   -webkit-overflow-scrolling: touch
   margin-bottom: $bottom-space
@@ -396,7 +397,7 @@ table
   & > .h1, & > .h2, & > .h3, & > .h4, & > .h5, & > .h6,
   & > hr, & > mark, & > blockquote, & > figure,
   & > .layout-text
-    max-width: 100rem
+    max-width: $text-layout-width-alt
     +push-auto
 
   & > .layout-flood,
