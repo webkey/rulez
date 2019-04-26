@@ -1236,7 +1236,7 @@
 // +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++//
 
 // Добавить крестик для закрытия выпадах в шапке
-=add-cross($display: none, $color: null)
+=add-cross($color: null)
   position: absolute
   left: 50%
   top: 50%
@@ -1256,11 +1256,6 @@
   transition:
     property: $prop
     duration: $animation-speed
-
-  display: $display
-
-  +media('<tab')
-    display: block
 
 // Базовые стили для кнопок
 =btn-base()

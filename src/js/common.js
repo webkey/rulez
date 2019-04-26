@@ -3488,25 +3488,22 @@ function calcCart() {
       });
 
       // total length
-      $('.cart__total-length-js', $curCart).html(totalLength).attr('data-total-length', +totalLength);
+      $('.cart__total-length-js', $curCart).html(totalLength).attr('data-total-length', totalLength);
 
-      // total price (without deli)
-      totalPrice = parseFloat(totalPrice).toFixed(2);
-      $('.cart__total-price-js', $curCart).html(totalPrice).attr('data-total-price', +totalPrice);
+      // total price (without delivery)
+      var totalPriceFloat = parseFloat(totalPrice).toFixed(2);
+      $('.cart__total-price-js', $curCart).html(totalPriceFloat).attr('data-total-price', totalPriceFloat);
 
-      // with delivery
+      // total price (with delivery)
       var resultPrice = totalPrice + +$('.cart__delivery-js', $curCart).attr('data-deliver');
-      $('.cart__result-price-js', $curCart).html(resultPrice).attr('data-total-price', +resultPrice);
+      var resultPriceFloat = parseFloat(resultPrice).toFixed(2);
+      $('.cart__result-price-js', $curCart).html(resultPriceFloat).attr('data-total-price', resultPriceFloat);
     });
 
     $spin.trigger('change');
   }
-}
 
-/**
- * !Remove item cart
- */
-function removeItemCart() {
+  // remove item
   var $btnRemove = $('.cart-item__remove-js');
 
   if ($btnRemove.length) {
@@ -3515,10 +3512,19 @@ function removeItemCart() {
       var $curItem = $(this).closest('.cart-item-js');
       $curItem.stop().animate({'opacity': 0}, 200, function () {
         var $curCart = $curItem.closest('.cart-js');
+
+        // remove item
         $curItem.detach();
+
+        // recalculation cart
+        $curCart.find('.cart-item__counter-js').find('input[type="number"]').trigger('change');
+        console.log("spin: ", $curCart.find('.cart-item__counter-js').find('input[type="number"]'));
+
+        // if cart has any items
         if (!$curCart.find('.cart-item-js').length) {
           $('.cart__empty-js', $curCart).show();
           $('.cart__list-js', $curCart).hide();
+          $('.cart__summary-js ', $curCart).hide();
           $('.cart__button-js', $curCart).addClass('disabled');
           $('.cart__quick-order-js', $curCart).prop('disabled', true);
           $('.cart__promo-code-js', $curCart).prop('disabled', true);
@@ -3645,8 +3651,7 @@ $(document).ready(function () {
   initSpinner($('.spinner-js'));
   onlyNumberInput();
   calcPriceOrder();
-  removeItemCart();
-  popupsInit();
   calcCart();
+  popupsInit();
   formValidation();
 });
