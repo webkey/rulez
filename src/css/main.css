@@ -11697,6 +11697,8 @@ a.catalog-opener.catalog-is-open > i::after {
   display: block;
   max-height: 100%;
   max-width: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .p-add-form__content {
@@ -12383,6 +12385,8 @@ input[type="text"].quick-order__input.success {
 
 .product__figure img {
   display: block;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   max-height: 100%;
   max-width: 100%;
 }
@@ -13421,6 +13425,8 @@ a:hover .product-short__title {
 .product-short__footer {
   -ms-flex-positive: 1;
       flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   padding: 1rem 0.8rem 0;
   margin: 0 -0.8rem;
   border-top: 1px solid #dbdbdb;
@@ -13919,6 +13925,11 @@ a.topic-banner:hover .topic-banner__title > span {
       justify-content: center;
   text-align: center;
   text-decoration: none;
+}
+
+.banner img {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .main-section_banners .banner img {
@@ -17301,6 +17312,8 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 .p-card-gallery-images__item img {
   max-width: 100%;
   max-height: 100%;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .p-card-gallery-thumbs {
@@ -19737,19 +19750,17 @@ a.news-elem:hover .news-elem__title {
 }
 
 .news-elem_alt .news-elem__content {
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-      flex-direction: column;
-  -ms-flex-line-pack: start;
-      align-content: flex-start;
-  -ms-flex-pack: end;
-      justify-content: flex-end;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+  -ms-flex-pack: start;
+      justify-content: flex-start;
   position: absolute;
   left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
   padding: 4.8rem 4.5rem;
   color: white;
 }
@@ -19770,6 +19781,17 @@ a.news-elem:hover .news-elem__title {
   .news-elem_alt .news-elem__content {
     padding: 2rem 1.5rem;
   }
+}
+
+.news-elem_alt .news-elem__content-align {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
 }
 
 .news-elem_alt .news-elem__title {
@@ -21140,7 +21162,7 @@ a.consist__item:hover .consist__item-title {
       flex-shrink: 0;
   -ms-flex-preferred-size: 50%;
       flex-basis: 50%;
-  width: 50%;
+  max-width: 50%;
   padding: 0 1.2rem;
 }
 
