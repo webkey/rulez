@@ -435,6 +435,239 @@ $spinner-btn-width: 35px
 
 /* breadcrumbs end
 
+/* pagination
+// pagination
+$pagination-hspace: 1.2rem
+$pagination-vspace: 0.4rem
+$pagination-font-size: 1.4rem
+$pagination-height: 3rem
+$pagination-width: $pagination-height
+$pagination-border-width: 0
+
+.pagination
+  +font-bold
+  +clear-spacing
+  color: inherit
+  text-align: center
+  cursor: default
+  margin-bottom: $bottom-space
+  +push-auto
+  +clear
+
+  +media('<mob')
+    position: relative
+    margin-bottom: $bottom-space--mob
+    padding-bottom: $pagination-height + $pagination-vspace*2
+
+  &:last-child
+    margin-bottom: 0
+
+.pg-left
+  float: left
+
+  +media('<mob')
+    float: none
+    position: absolute
+    bottom: 0
+    right: 50%
+
+.pg-right
+  float: right
+
+  +media('<mob')
+    float: none
+    position: absolute
+    bottom: 0
+    left: 50%
+
+  &::before
+    +pseudo()
+    width: 0
+    height: 2rem
+    margin-top: -1rem
+    top: 50%
+    left: -0.1rem
+    border-left: 0.2rem solid
+    display: none
+
+    +media('<mob')
+      display: block
+
+.pg-first-arr, .pg-last-arr, .pg-prev-arr, .pg-next-arr
+  //display: none
+  position: absolute
+  +position(50%, 0)
+  +size(1.2rem, 0.2rem)
+  margin-top: -0.1rem
+  letter-spacing: 0
+  border-top: 0.2rem solid $text-color
+
+  @if $animation-use
+    transition:
+      property: border-color
+      duration: $animation-speed
+
+  &::before, &::after
+    +pseudo()
+    top: 0
+    +size(0.8rem)
+    margin-top: -0.1rem
+    border: 0 solid $text-color
+    backface-visibility: hidden
+
+    @if $animation-use
+      transition:
+        property: border-color
+        duration: $animation-speed
+
+.pg-first-arr, .pg-prev-arr
+  &::before, &::after
+    transform: rotate(-45deg)
+    transform-origin: left top
+    left: 0
+    margin-left: -0.1rem
+    border-width: 0.2rem 0 0 0.2rem
+
+.pg-last-arr, .pg-next-arr
+  left: auto
+  right: 0
+
+  &::before, &::after
+    right: 0
+    margin-right: -0.1rem
+    transform-origin: top right
+    transform: rotate(45deg)
+    border-width: 0.2rem 0.2rem 0 0
+
+.pg-first-arr, .pg-last-arr
+  width: 1.8rem
+
+.pg-first-arr
+
+  &::after
+    margin-left: 0.6rem
+
+.pg-last-arr
+
+  &::after
+    margin-right: 0.6rem
+
+.pg-prev-arr, .pg-next-arr
+
+  &::after
+    display: none
+
+.pg-first, .pg-last, .pg-prev, .pg-next
+  +display-inline-block-middle
+  position: relative
+  //width: 27px
+  @if $pagination-border-width != 0
+    margin: 0 0 0 -#{$pagination-border-width}
+  @else
+    margin: #{$pagination-vspace} #{$pagination-hspace}
+  color: inherit
+  text-decoration: none
+
+  span
+    +padding-horizontal(2rem)
+
+  &.disabled
+    opacity: 0.5
+    cursor: default
+
+  .no-touch &:not(.disabled):hover
+    color: $base-color
+
+    [class*="-arr"]
+      &, &::before, &::after
+        border-color: $base-color
+
+//&:not(.disabled):active
+  margin-top: 1px
+
+.pg-first, .pg-last
+  display: none
+
+  span
+    +padding-horizontal(2.6rem)
+
+  +media('<mob')
+    display: none
+
+.pg-first, .pg-prev
+  span
+    padding-right: 0
+
+.pg-last, .pg-next
+  span
+    padding-left: 0
+
+.pg-list
+  display: inline-block
+  vertical-align: middle
+  list-style: none
+  padding: 0
+  margin: 0
+
+  li
+    margin: #{$pagination-vspace} 4px
+    padding: 0
+
+    +media('<mob-s')
+      +margin-horizontal(0)
+
+    &:before
+      content: none
+
+  li
+    +display-inline-block-top
+    text-align: center
+
+    a, & > span
+      +display-inline-block-top
+      color: inherit
+      background: transparent
+      min-width: $pagination-width
+      padding: 0 0.2rem
+      border-radius: 50%
+
+      @if $animation-use
+        transition:
+          property: color
+          duration: $animation-speed
+
+    a
+      text-decoration: none
+      cursor: pointer
+
+      .no-touch &:hover
+        color: $base-color
+
+    &.active > span, &.active a, .no-touch &.active a:hover
+      color: white
+      background-color: $base-color
+      @if $pagination-border-width != 0
+        border:
+          top-color: $base-color
+          bottom-color: $base-color
+
+// шрифт для элементов пагинации
+.pg-first, .pg-last, .pg-prev, .pg-next, .pg-list a, .pg-list li > span
+  height: $pagination-height
+  +font($pagination-font-size, #{$pagination-height - $pagination-border-width*2})
+  letter-spacing: 0.05em
+  //text-transform: uppercase
+  @if $pagination-border-width != 0
+    border: #{$pagination-border-width} solid #{$border-color}
+
+  +media('<mob-s')
+    font-size: 14px
+
+.pg-list a, .pg-list li > span
+  letter-spacing: normal
+
+/* pagination end
+
 /* images gallery
 .images-gallery
   position: relative
@@ -6167,7 +6400,7 @@ $categories-item-col: 3
     color: $text-color-light
     text-decoration: none
     user-select: none
-    box-shadow: inset 0 -1px 0 rgba($text-color, 0.5)
+    //box-shadow: inset 0 -1px 0 rgba($text-color, 0.5)
     // transition
     $prop: color, box-shadow, background-color
     transition:
@@ -6177,7 +6410,7 @@ $categories-item-col: 3
     &:hover
       .no-touch &
         color: $base-color
-        box-shadow: inset 0 -2px 0 rgba($base-color, 0.5)
+        //box-shadow: inset 0 -2px 0 rgba($base-color, 0.5)
 
     +media('<tab')
       display: block
@@ -6236,6 +6469,12 @@ $categories-item-col: 3
   +media('<lap-s')
     flex-direction: column
 
+  +media('<tab')
+    flex-direction: row
+
+  +media('<mob')
+    flex-direction: column
+
 .caption-box__title
   flex-shrink: 0
   margin-right: 5rem
@@ -6251,7 +6490,11 @@ $categories-item-col: 3
     font-size: $main-section-title-font-size--tab
     line-height: $main-section-title-line-height--tab
 
+  +media('<tab')
+    margin-right: 2rem
+
   +media('<mob')
+    margin-right: 0
     font-size: $main-section-title-font-size--mob
     line-height: $main-section-title-line-height--mob
 
@@ -7643,6 +7886,7 @@ $product-item-space--mob: 2rem 1.5rem
   background-color: #eaeaea
   +size(2.8rem)
   border-radius: 2.8rem
+  transition: background-color $animation-speed
 
   & > span
     display: none
@@ -7661,6 +7905,14 @@ $product-item-space--mob: 2rem 1.5rem
       fill: white
       stroke: white
 
+  // active
+  &:active
+    top: 1px
+
+  // hover
+  .no-touch &:hover
+    background-color: tint($mark-color, 40%)
+
   &.added
     background-color: $mark-color
 
@@ -7668,6 +7920,10 @@ $product-item-space--mob: 2rem 1.5rem
       path
         fill: white
         stroke: white
+
+    // hover
+    .no-touch &:hover
+      background-color: tint($mark-color, 75%)
 
 [data-view="list-view"] .action-btn_like
   svg
@@ -7807,7 +8063,7 @@ $product-item-space--mob: 2rem 1.5rem
     &:hover
       .no-touch &
         background-color: $base-color-ultra-light
-        border-color: $base-color-ultra-light
+        //border-color: $base-color-ultra-light
 
     //& > i
       background-color: $base-color
@@ -8315,7 +8571,8 @@ $product-item-space--mob: 2rem 1.5rem
       width: 100%
 
   .product__options-btn_like
-    &:hover
+    // hover
+    .no-touch &:hover
       background-color: transparent
       color: $base-color
 
@@ -8328,6 +8585,10 @@ $product-item-space--mob: 2rem 1.5rem
       svg
         path
           fill: $mark-color
+
+      // hover
+      .no-touch &:hover
+        background-color: transparent
 
 /* product item end
 
@@ -9962,6 +10223,9 @@ $products-border-width: 1px
     width: $width
     flex-basis: $width
 
+    &.has-banner
+      display: none
+
   +media('<tab-s')
     $width: 50%
     width: $width
@@ -10027,7 +10291,23 @@ $products-border-width: 1px
   .products__item
     width: auto
 
+    &.has-banner
+      display: none
+
 /* products end
+
+/* product pagination
+.products-pagination
+  text-align: center
+  margin-bottom: 3rem
+
+  +media('<mob')
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* product pagination end
 
 /* load more products
 // Елемент, который размещен после списка продуктов,
@@ -10263,7 +10543,7 @@ $p-results-fixed-height: 7rem
     width: auto
     max-width: none
 
-.m-heading, .m-options, .m-tags, .m-description
+.m-heading, .m-options, .m-tags, .m-description, .load-more, .products-pagination
   padding-left: nth($m-container-space, 2)
   padding-right: nth($m-container-space, 2)
 
@@ -14478,7 +14758,7 @@ $cart-container-aside-width-full--tab: $cart-container-aside-width--tab + $cart-
     display: block
     +clear
 
-.cart__main, .cart__similar, .cart-banner
+.cart__base, .cart__main, .cart__similar, .cart-banner
   float: left
   clear: left
   width: calc(100% - #{$cart-container-aside-width-full})
@@ -14497,6 +14777,14 @@ $cart-container-aside-width-full--tab: $cart-container-aside-width--tab + $cart-
 
   &:last-child
     margin-bottom: 0
+
+  .cart__base &
+    float: none
+    clear: none
+    width: auto
+
+.cart__base
+  background: none
 
 .cart__aside
   float: right

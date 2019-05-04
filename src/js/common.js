@@ -3538,7 +3538,7 @@ function calcCart() {
       // total length
       $('.cart__total-length-js', $curCart).html(totalLength).attr('data-total-length', totalLength);
 
-      // total price (without delivery)
+      // total price (without deli+very)
       var totalPriceFloat = parseFloat(totalPrice).toFixed(2);
       $('.cart__total-price-js', $curCart).html(totalPriceFloat).attr('data-total-price', totalPriceFloat);
 

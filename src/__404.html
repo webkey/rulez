@@ -1,0 +1,44 @@
+@@include('_tpl_layout_head.html', {
+	"title": "error-404",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная", "Статьи"],
+      "last": "404"
+    })
+
+    <!--CONTENT-->
+    <div class="content">
+      <div class="content-align">
+        <!--article content-->
+        <section class="content-inner article-content">
+          <h1>ОШИБКА 404</h1>
+          <p>Извините, страница не найдена.<br> Возможно вы ошиблись при вводе адреса, либо использовали неверную ссылку.</p>
+          <p><a href="index.html"><strong>Вернуться на главную</strong></a></p>
+        </section>
+        <!--article content end-->
+      </div>
+
+      <!--SIDEBAR-->
+      @@include('_tpl_layout_sidebar.html')
+      <!--SIDEBAR-->
+    </div>
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

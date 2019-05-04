@@ -19,42 +19,367 @@
     <!--CONTENT-->
     <!--cart-->
     <div class="cart cart-js">
-      <div class="cart__main">
-        <!--cart heading-->
-        <div class="main-heading">
-          <h1 class="main-heading__title">Корзина</h1>
+      <!--cart base-->
+      <div class="cart__base">
+        <!--cart main-->
+        <div class="cart__main">
+          <!--cart heading-->
+          <div class="main-heading">
+            <h1 class="main-heading__title">Корзина</h1>
+          </div>
+          <!--cart heading end-->
+
+          <!--cart list-->
+          <section class="cart__list cart__list-js">
+            @@include("_tpl_cart-item.html", {
+            "classes": "cart__list-item",
+            "href": "product-card.html",
+            "src": "img/img-product-09.jpg",
+            "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+            "priceOld": {"val": "1599.99", "unit": "р."},
+            "price": {"val": "1500.99", "unit": "р."},
+            "rate": {"width": "90%", "val": "4.5"},
+            "length": "1"
+            })
+            @@include("_tpl_cart-item.html", {
+            "classes": "cart__list-item",
+            "href": "product-card.html",
+            "src": "img/img-product-06.jpg",
+            "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+            "priceOld": {"val": "298.99", "unit": "р."},
+            "price": {"val": "250.99", "unit": "р."},
+            "rate": {"width": "50%", "val": "2.5"},
+            "length": "2"
+            })
+          </section>
+          <!--cart list end-->
+
+          <!--cart empty note-->
+          <div class="cart__empty cart__empty-js" style="display: none;">В корзине нет товаров</div>
+          <!--cart empty note end-->
         </div>
-        <!--cart heading end-->
+        <!--cart main end-->
 
-        <!--cart list-->
-        <section class="cart__list cart__list-js">
-          @@include("_tpl_cart-item.html", {
-          "classes": "cart__list-item",
-          "href": "product-card.html",
-          "src": "img/img-product-09.jpg",
-          "title": "Ноутбук SAMSUNG GL753VE-GC112T",
-          "priceOld": {"val": "1599.99", "unit": "р."},
-          "price": {"val": "1500.99", "unit": "р."},
-          "rate": {"width": "90%", "val": "4.5"},
-          "length": "1"
-          })
-          @@include("_tpl_cart-item.html", {
-          "classes": "cart__list-item",
-          "href": "product-card.html",
-          "src": "img/img-product-06.jpg",
-          "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-          "priceOld": {"val": "298.99", "unit": "р."},
-          "price": {"val": "250.99", "unit": "р."},
-          "rate": {"width": "50%", "val": "2.5"},
-          "length": "2"
-          })
+        <!--cart similar-->
+        <section class="cart__similar tabs-js">
+          <div class="cart__similar-caption">
+            <h3 class="cart__similar-title">Подходящие товары</h3>
+            <div class="simple-tabs__nav">
+              <div class="simple-tabs__select tabs__select-js"></div>
+              <div class="simple-tabs-thumbs tabs__thumbs-js tabs__select-drop-js">
+                <a href="#cartSimilarHeadphones" class="tabs-active"><span>Наушники</span></a>
+                <a href="#cartSimilarMice"><span>Мышки</span></a>
+                <a href="#cartSimilarBags"><span>Сумки для ноутбуков</span></a>
+              </div>
+            </div>
+          </div>
+          <div class="tabs__panels-js">
+            <div id="cartSimilarHeadphones">
+              <div class="swiper-container shot-slider cart-similar-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-12.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "1457.00", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-13.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "true",
+                    "wow": "",
+                    "stickers": { "gift": "Подарок!" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-12.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "",
+                    "stickers": ""
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-13.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "",
+                    "stickers": { "top": "ТОП" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-12.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "1457.00", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "true",
+                    "wow": "",
+                    "stickers": ""
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-13.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "WOW!",
+                    "stickers": ""
+                    })
+                  </div>
+                </div>
+                <div class="shot-slider__prev cart-similar-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="shot-slider__next cart-similar-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
+              </div>
+            </div>
+            <div id="cartSimilarMice">
+              <div class="swiper-container shot-slider cart-similar-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-10.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "1457.00", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-11.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "true",
+                    "wow": "",
+                    "stickers": { "gift": "Подарок!" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-10.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "",
+                    "stickers": ""
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-11.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "",
+                    "stickers": { "top": "ТОП" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-10.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "1457.00", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "true",
+                    "wow": "",
+                    "stickers": ""
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-11.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "WOW!",
+                    "stickers": ""
+                    })
+                  </div>
+                </div>
+                <div class="shot-slider__prev cart-similar-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="shot-slider__next cart-similar-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
+              </div>
+            </div>
+            <div id="cartSimilarBags">
+              <div class="swiper-container shot-slider cart-similar-slider-js">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-06.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "1457.00", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "WOW!",
+                    "stickers": { "sale": "%" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-07.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "true",
+                    "wow": "",
+                    "stickers": { "gift": "Подарок!" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-06.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "",
+                    "stickers": ""
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-07.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "",
+                    "stickers": { "top": "ТОП" }
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-06.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "1457.00", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "true",
+                    "wow": "",
+                    "stickers": ""
+                    })
+                  </div>
+                  <div class="swiper-slide shot-slider__item">
+                    @@include("_tpl_product-short.html", {
+                    "href": "product-card.html",
+                    "src": "img/img-product-07.jpg",
+                    "category": "Сумки",
+                    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+                    "priceOld": {"val": "", "unit": "р."},
+                    "price": {"val": "1457.00", "unit": "р."},
+                    "withoutCart": "",
+                    "inCart": "",
+                    "wow": "WOW!",
+                    "stickers": ""
+                    })
+                  </div>
+                </div>
+                <div class="shot-slider__prev cart-similar-slider__prev-js">
+                  @@include("includes/svg/icon-slider-arrow-l.svg")
+                  <span>Prev</span>
+                </div>
+                <div class="shot-slider__next cart-similar-slider__next-js">
+                  @@include("includes/svg/icon-slider-arrow-r.svg")
+                  <span>Next</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
-        <!--cart list end-->
+        <!--cart similar end-->
 
-        <!--cart empty note-->
-        <div class="cart__empty cart__empty-js" style="display: none;">В корзине нет товаров</div>
-        <!--cart empty note end-->
+        <!--cart banner-->
+        <a href="#" class="cart-banner">
+          <img class="no-mobile-only lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" />
+          <img class="mobile-only lozad" src="img/banner-01-mob.jpg" data-src="img/banner-01-mob.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." data-loaded="true">
+        </a>
+        <!--cart banner end-->
       </div>
+      <!--cart base end-->
 
       <!--cart aside / clearance-->
       <div class="clearance cart__aside">
@@ -136,325 +461,6 @@
         </form>
       </div>
       <!--cart aside / clearance end-->
-
-      <!--cart similar-->
-      <section class="cart__similar tabs-js">
-        <div class="cart__similar-caption">
-          <h3 class="cart__similar-title">Подходящие товары</h3>
-          <div class="simple-tabs__nav">
-            <div class="simple-tabs__select tabs__select-js"></div>
-            <div class="simple-tabs-thumbs tabs__thumbs-js tabs__select-drop-js">
-              <a href="#cartSimilarHeadphones" class="tabs-active"><span>Наушники</span></a>
-              <a href="#cartSimilarMice"><span>Мышки</span></a>
-              <a href="#cartSimilarBags"><span>Сумки для ноутбуков</span></a>
-            </div>
-          </div>
-        </div>
-        <div class="tabs__panels-js">
-          <div id="cartSimilarHeadphones">
-            <div class="swiper-container shot-slider cart-similar-slider-js">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-12.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "1457.00", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "WOW!",
-                  "stickers": { "sale": "%" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-13.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "true",
-                  "wow": "",
-                  "stickers": { "gift": "Подарок!" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-12.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "",
-                  "stickers": ""
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-13.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "",
-                  "stickers": { "top": "ТОП" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-12.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "1457.00", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "true",
-                  "wow": "",
-                  "stickers": ""
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-13.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "WOW!",
-                  "stickers": ""
-                  })
-                </div>
-              </div>
-              <div class="shot-slider__prev cart-similar-slider__prev-js">
-                @@include("includes/svg/icon-slider-arrow-l.svg")
-                <span>Prev</span>
-              </div>
-              <div class="shot-slider__next cart-similar-slider__next-js">
-                @@include("includes/svg/icon-slider-arrow-r.svg")
-                <span>Next</span>
-              </div>
-            </div>
-          </div>
-          <div id="cartSimilarMice">
-            <div class="swiper-container shot-slider cart-similar-slider-js">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-10.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "1457.00", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "WOW!",
-                  "stickers": { "sale": "%" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-11.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "true",
-                  "wow": "",
-                  "stickers": { "gift": "Подарок!" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-10.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "",
-                  "stickers": ""
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-11.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "",
-                  "stickers": { "top": "ТОП" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-10.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "1457.00", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "true",
-                  "wow": "",
-                  "stickers": ""
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-11.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "WOW!",
-                  "stickers": ""
-                  })
-                </div>
-              </div>
-              <div class="shot-slider__prev cart-similar-slider__prev-js">
-                @@include("includes/svg/icon-slider-arrow-l.svg")
-                <span>Prev</span>
-              </div>
-              <div class="shot-slider__next cart-similar-slider__next-js">
-                @@include("includes/svg/icon-slider-arrow-r.svg")
-                <span>Next</span>
-              </div>
-            </div>
-          </div>
-          <div id="cartSimilarBags">
-            <div class="swiper-container shot-slider cart-similar-slider-js">
-              <div class="swiper-wrapper">
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-06.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "1457.00", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "WOW!",
-                  "stickers": { "sale": "%" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-07.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "true",
-                  "wow": "",
-                  "stickers": { "gift": "Подарок!" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-06.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "",
-                  "stickers": ""
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-07.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "",
-                  "stickers": { "top": "ТОП" }
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-06.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "1457.00", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "true",
-                  "wow": "",
-                  "stickers": ""
-                  })
-                </div>
-                <div class="swiper-slide shot-slider__item">
-                  @@include("_tpl_product-short.html", {
-                  "href": "product-card.html",
-                  "src": "img/img-product-07.jpg",
-                  "category": "Сумки",
-                  "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
-                  "priceOld": {"val": "", "unit": "р."},
-                  "price": {"val": "1457.00", "unit": "р."},
-                  "withoutCart": "",
-                  "inCart": "",
-                  "wow": "WOW!",
-                  "stickers": ""
-                  })
-                </div>
-              </div>
-              <div class="shot-slider__prev cart-similar-slider__prev-js">
-                @@include("includes/svg/icon-slider-arrow-l.svg")
-                <span>Prev</span>
-              </div>
-              <div class="shot-slider__next cart-similar-slider__next-js">
-                @@include("includes/svg/icon-slider-arrow-r.svg")
-                <span>Next</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--cart similar end-->
-
-      <!--cart banner-->
-      <a href="#" class="cart-banner">
-        <img class="no-mobile-only lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" />
-        <img class="mobile-only lozad" src="img/banner-01-mob.jpg" data-src="img/banner-01-mob.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." data-loaded="true">
-      </a>
-      <!--cart banner end-->
     </div>
     <!--cart end-->
 
