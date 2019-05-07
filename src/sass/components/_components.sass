@@ -710,6 +710,59 @@ $pagination-border-width: 0
   .swiper-slide
     user-select: none
 
+//.images-gallery-overlay
+  position: absolute
+  top: 0
+  //left: -36.8%
+  //right: -31.5%
+  left: calc(-33% - #{nth($article-layout-space, 2)})
+  right: calc(-27.5% - #{nth($article-layout-space, 2)})
+  //max-width: calc(100vw - #{nth($page-layout-space, 2) * 2})
+  //width: #{$page-layout-width - nth($page-layout-space, 2) * 2}
+  height: 10%
+  background-color: red
+  z-index: 10
+  //transform: translate(-50%, 0)
+
+  +media('<lap')
+    left: calc(-#{$sidebar-min-width} - #{nth($article-layout-space--lap, 2)})
+    right: calc(-#{$aside-min-width} - #{nth($article-layout-space--lap, 2)})
+
+  +media('<lap-s')
+    right: calc(-#{$aside-min-width--net} - #{nth($article-layout-space--lap, 2)})
+
+  +media('<tab')
+    left: -#{nth($article-layout-space--tab, 2)}
+    right: -#{nth($article-layout-space--tab, 2)}
+
+  +media('<mob')
+    left: -#{nth($article-layout-space--mob, 2)}
+    right: -#{nth($article-layout-space--mob, 2)}
+
+  &::before, &::after
+    content: ""
+    display: block
+    position: absolute
+    height: 100%
+    width: 10rem
+    top: 0
+    z-index: 2
+    pointer-events: none
+
+    +media('<tab')
+      width: 8%
+
+  &::before
+    $color: white
+    left: 0
+    +linear-gradient(to right, $color 0%, rgba($color, 0) 100%)
+
+  &::after
+    $color: white
+    right: 0
+    +linear-gradient(to left, $color 0%, rgba($color, 0) 100%)
+
+
 /* images gallery end
 
 /* description list
@@ -5075,27 +5128,17 @@ $search-btn-space: 0 0.5rem
       display: none
 
 .content-inner
-  //padding-top: 4rem
-  //padding-bottom: 4rem
   margin: 0 #{$aside-width} 0 #{$sidebar-width}
   min-height: 32rem
 
   +media('<lap')
-    //padding-top: 3.5rem
-    //padding-bottom: 3.5rem
     margin: 0 #{$aside-min-width} 0 #{$sidebar-min-width}
 
   +media('<lap-s')
     margin-right: $aside-min-width--net
 
   +media('<tab')
-    //padding-top: 2.5rem
-    //padding-bottom: 2.5rem
     margin: 0
-
-  //+media('<mob')
-    padding-top: 2rem
-    padding-bottom: 2rem
 
 .sidebar
   position: relative
@@ -5267,6 +5310,7 @@ $search-btn-space: 0 0.5rem
 /* product stickers
 // --> single sticker <--
 $p-sticker-size: 2.6rem 2.6rem
+$p-sticker-size--mob: 1.8rem 1.8rem
 .p-sticker
   flex-shrink: 0
   height: nth($p-sticker-size, 1)
@@ -5281,9 +5325,17 @@ $p-sticker-size: 2.6rem 2.6rem
   background-color: $base-color-light
   background-repeat: no-repeat
   background-position: center
-  border-radius: round-float(nth($p-sticker-size, 1) / 2, 1)
+  border-radius: $p-sticker-size
   user-select: none
   //-webkit-tap-highlight-color: transparent
+
+  +media('<mob')
+    height: nth($p-sticker-size--mob, 1)
+    width: nth($p-sticker-size--mob, 2)
+    border-radius: $p-sticker-size--mob
+    padding: 0.1rem 0.6rem 0
+    font-size: 1rem
+    line-height: nth($p-sticker-size--mob, 1)
 
   & > b
     +font-bold
@@ -5301,25 +5353,43 @@ $p-sticker-size: 2.6rem 2.6rem
   background-size: contain
   pointer-events: none
 
+  +media('<mob')
+    $p-sticker-size: 1.3rem 3.7rem
+    height: nth($p-sticker-size, 1)
+    width: nth($p-sticker-size, 2)
+    background-size: contain
+
 // --> type sale <--
 .p-sticker_sale
   background-color: $base-color-light
   background-image: url(../../img/sticker-sale.svg)
+
+  +media('<mob')
+    background-size: 1.2rem
 
 // --> type new <--
 .p-sticker_new
   background-color: $base-color-light
   background-image: url(../../img/sticker-new.svg)
 
+  +media('<mob')
+    background-size: 1.4rem
+
 // --> type gif <--
 .p-sticker_gif
   background-color: $base-color-light
   background-image: url(../../img/sticker-gift.svg)
 
+  +media('<mob')
+    background-size: 1.4rem
+
 // --> type top <--
 .p-sticker_top
   background-color: $mark-color-alt
   background-image: url(../../img/sticker-top.svg)
+
+  +media('<mob')
+    background-size: 1.4rem
 
 // --> type text <--
 .p-sticker_text
@@ -7324,6 +7394,7 @@ input[type="text"].quick-order__input
   $width: 46%
   width: $width
   flex-basis: $width
+  padding-right: 40px
   margin: 0
   border-color: white
 
@@ -8263,6 +8334,9 @@ $product-item-space--mob: 2rem 1.5rem
     $space: 3.5rem 1.8rem
     right: nth($space, 2)
     top: nth($space, 1)
+
+    +media('<mob')
+      top: 2.2rem
 
   // --> stickers <--
   .product__stickers
@@ -14571,6 +14645,7 @@ a.consist__item
   display: block
   text-decoration: none
   color: inherit
+  outline: none
 
   &:hover
     .consist__item-title
@@ -15644,7 +15719,7 @@ $author-photo-size--mob: 6rem
 .products-compare__empty
   display: none
   padding: 0
-  +push-auto
-  max-width: $text-layout-width-alt
+  //+push-auto
+  //max-width: $text-layout-width-alt
 
 /* products compare end

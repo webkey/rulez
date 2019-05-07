@@ -804,6 +804,10 @@ table th {
   margin-bottom: 2.8rem;
 }
 
+.table-auto:last-child {
+  margin-bottom: 0;
+}
+
 .table-auto table {
   margin-bottom: 0;
   width: auto;
@@ -1279,11 +1283,24 @@ table th {
   margin-left: auto;
 }
 
+.article-content > p.full-width, .article-content > ul.full-width, .article-content > ol.full-width,
+.article-content > h1.full-width, .article-content > h2.full-width, .article-content > h3.full-width, .article-content > h4.full-width, .article-content > h5.full-width, .article-content > h6.full-width,
+.article-content > .h1.full-width, .article-content > .h2.full-width, .article-content > .h3.full-width, .article-content > .h4.full-width, .article-content > .h5.full-width, .article-content > .h6.full-width,
+.article-content > hr.full-width, .article-content > mark.full-width, .article-content > blockquote.full-width, .article-content > figure.full-width,
+.article-content > .layout-text.full-width {
+  max-width: none;
+}
+
 .article-content > .layout-flood,
 .article-content > .layout-section {
   max-width: 103rem;
   margin-right: auto;
   margin-left: auto;
+}
+
+.article-content > .layout-flood.full-width,
+.article-content > .layout-section.full-width {
+  max-width: none;
 }
 
 /* article and typography elements end */
@@ -1668,6 +1685,13 @@ label.input-wrap, .label.input-wrap {
   margin-left: -0.5rem;
   font-size: 0;
   letter-spacing: -4px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .form-row .input-wrap {
@@ -1956,6 +1980,58 @@ input[type="text"].error:not([disabled]).placeholder, input[type="password"].err
 }
 
 /* inputs states end */
+/* float label */
+label.input-wrap input[type="text"].input-def, label.input-wrap input[type="password"].input-def, label.input-wrap input[type="email"].input-def, label.input-wrap input[type="search"].input-def, label.input-wrap textarea.input-def, label.input-wrap textarea.input-def {
+  padding-top: 18px;
+  padding-right: 30px;
+  padding-bottom: 6px;
+}
+
+label.input-wrap .label-float {
+  width: 100%;
+  height: 100%;
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 0;
+  padding: 13px 20px 13px;
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: normal;
+  color: #777;
+  color: rgba(0, 0, 0, 0.5);
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  border: 1px solid transparent;
+  pointer-events: none;
+  z-index: 5;
+  -ms-transform-origin: 0 0;
+      transform-origin: 0 0;
+  will-change: transform, color;
+  transition-property: transform, color;
+  transition-duration: 0.25s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+label.input-wrap .input-def:focus, label.input-wrap .input-def.filled, label.input-wrap .input-def.focused {
+  cursor: text;
+  box-shadow: none;
+}
+
+label.input-wrap .input-def:focus ~ .label-float, label.input-wrap .input-def.filled ~ .label-float, label.input-wrap .input-def.focused ~ .label-float {
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  -ms-transform: translate(0.25em, -0.6em) scale(0.85);
+      transform: translate(0.25em, -0.6em) scale(0.85);
+  transform: translate3d(0.25em, -0.6em, 0) scale3d(0.85, 0.85, 1);
+  cursor: default;
+}
+
+/* float label end */
 /* forms checkbox and radiobutton */
 .check-label, .radio-label {
   display: inline-block;
@@ -2842,7 +2918,7 @@ input[type="text"].error:not([disabled]).placeholder, input[type="password"].err
   color: #ff3322;
 }
 
-form .error + .error-note,
+form .error ~ .error-note,
 form .error + .select2 + .error-note {
   display: block;
 }
@@ -2851,8 +2927,7 @@ form .error + .select2 + .error-note {
   color: #0dad0d;
 }
 
-form .success + .error-note + .success-note,
-form .success + .select2 + .error-note + .success-note {
+form .success ~ .success-note {
   display: block;
 }
 
@@ -2881,8 +2956,7 @@ form .success + .select2 + .error-note + .success-note {
   margin: -8px 0 0 2px;
 }
 
-form .success + .error-note + .success-note,
-form .success + .select2 + .error-note + .success-note {
+form .success ~ .success-note {
   display: block;
 }
 
@@ -9486,11 +9560,22 @@ a.catalog-opener.catalog-is-open > i::after {
   background-color: #8f77ed;
   background-repeat: no-repeat;
   background-position: center;
-  border-radius: 1.3rem;
+  border-radius: 2.6rem 2.6rem;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+}
+
+@media (max-width: 639px) {
+  .p-sticker {
+    height: 1.8rem;
+    width: 1.8rem;
+    border-radius: 1.8rem 1.8rem;
+    padding: 0.1rem 0.6rem 0;
+    font-size: 1rem;
+    line-height: 1.8rem;
+  }
 }
 
 .p-sticker > b {
@@ -9512,9 +9597,23 @@ a.catalog-opener.catalog-is-open > i::after {
   pointer-events: none;
 }
 
+@media (max-width: 639px) {
+  .p-sticker_wow {
+    height: 1.3rem;
+    width: 3.7rem;
+    background-size: contain;
+  }
+}
+
 .p-sticker_sale {
   background-color: #8f77ed;
   background-image: url(../img/sticker-sale.svg);
+}
+
+@media (max-width: 639px) {
+  .p-sticker_sale {
+    background-size: 1.2rem;
+  }
 }
 
 .p-sticker_new {
@@ -9522,14 +9621,32 @@ a.catalog-opener.catalog-is-open > i::after {
   background-image: url(../img/sticker-new.svg);
 }
 
+@media (max-width: 639px) {
+  .p-sticker_new {
+    background-size: 1.4rem;
+  }
+}
+
 .p-sticker_gif {
   background-color: #8f77ed;
   background-image: url(../img/sticker-gift.svg);
 }
 
+@media (max-width: 639px) {
+  .p-sticker_gif {
+    background-size: 1.4rem;
+  }
+}
+
 .p-sticker_top {
   background-color: #96d728;
   background-image: url(../img/sticker-top.svg);
+}
+
+@media (max-width: 639px) {
+  .p-sticker_top {
+    background-size: 1.4rem;
+  }
 }
 
 .p-sticker_text {
@@ -12342,6 +12459,7 @@ input[type="text"].quick-order__input {
   width: 46%;
   -ms-flex-preferred-size: 46%;
       flex-basis: 46%;
+  padding-right: 40px;
   margin: 0;
   border-color: white;
 }
@@ -13280,6 +13398,12 @@ input[type="text"].quick-order__input.success {
 [data-view="list-view"] .product__sticker_wow {
   right: 1.8rem;
   top: 3.5rem;
+}
+
+@media (max-width: 639px) {
+  [data-view="list-view"] .product__sticker_wow {
+    top: 2.2rem;
+  }
 }
 
 [data-view="list-view"] .product__stickers {
@@ -21144,6 +21268,7 @@ a.consist__item {
   display: block;
   text-decoration: none;
   color: inherit;
+  outline: none;
 }
 
 a.consist__item:hover .consist__item-title {
@@ -22588,9 +22713,6 @@ a.consist__item:hover .consist__item-title {
 .products-compare__empty {
   display: none;
   padding: 0;
-  margin-right: auto;
-  margin-left: auto;
-  max-width: 100rem;
 }
 
 /* products compare end */

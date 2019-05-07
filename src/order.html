@@ -666,7 +666,7 @@
       </div>
       <!--CONTENT-->
       <!--order-->
-      <div class="order">
+      <form class="order validate-js">
         <div class="order__main">
           <!--order heading-->
           <div class="main-heading">
@@ -680,17 +680,20 @@
               <div class="checkout__col">
                 <h3 class="checkout__subtitle">Личные данные</h3>
                 <label class="input-wrap">
-                  <input class="input-def" name="checkout-name" placeholder="Ваше имя" type="text" required>
+                  <input class="input-def" name="checkout-name" type="text" required>
+                  <span class="label-float">Ваше имя</span>
                   <span class="error-note">Текст ошибки</span>
                   <span class="success-note">Текст успешной отправки</span>
                 </label>
                 <label class="input-wrap">
-                  <input class="input-def" name="checkout-email" placeholder="Пароль" type="email" required>
+                  <input class="input-def" name="checkout-email" type="email" required>
+                  <span class="label-float">Пароль</span>
                   <span class="error-note">Текст ошибки</span>
                   <span class="success-note">Текст успешной отправки</span>
                 </label>
                 <label class="input-wrap">
-                  <input class="input-def" name="checkout-tel" placeholder="Телефон" type="text" required>
+                  <input class="input-def" name="checkout-tel" type="text" required>
+                  <span class="label-float">Телефон</span>
                   <span class="error-note">Текст ошибки</span>
                   <span class="success-note">Текст успешной отправки</span>
                 </label>
@@ -712,18 +715,21 @@
                   </label>
                 </div>
                 <label class="input-wrap">
-                  <input class="input-def" name="checkout-address" placeholder="Пароль" type="text" required>
+                  <input class="input-def" name="checkout-address" type="text" required>
+                  <span class="label-float">Улица, дом, корпус</span>
                   <span class="error-note">Улица, дом, корпус</span>
                   <span class="success-note">Текст успешной отправки</span>
                 </label>
                 <div class="form-row">
                   <label class="input-wrap">
-                    <input class="input-def" name="checkout-flat" placeholder="Квартира" type="text" required>
+                    <input class="input-def" name="checkout-flat" type="text" required>
+                    <span class="label-float">Квартира</span>
                     <span class="error-note">Текст ошибки</span>
                     <span class="success-note">Текст успешной отправки</span>
                   </label>
                   <label class="input-wrap">
-                    <input class="input-def" name="checkout-floor" placeholder="Этаж" type="text" required>
+                    <input class="input-def" name="checkout-floor" type="text" required>
+                    <span class="label-float">Этаж</span>
                     <span class="error-note">Текст ошибки</span>
                     <span class="success-note">Текст успешной отправки</span>
                   </label>
@@ -917,7 +923,7 @@
           </div>
         </div>
         <!--order aside / clearance end-->
-      </div>
+      </form>
       <!--order end-->
       <!--services-->
       <section class="helper-alt-section">
@@ -1074,12 +1080,14 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="name" placeholder="Логин" type="text" autofocus required>
+          <input class="input-def" name="name" type="text" autofocus required>
+          <span class="label-float">Логин</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass" placeholder="Пароль" type="password" required>
+          <input class="input-def" name="pass" type="password" required>
+          <span class="label-float">Пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
@@ -1128,17 +1136,20 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="name" placeholder="Логин" type="text" required>
+          <input class="input-def" name="name" type="text" required>
+          <span class="label-float">Логин</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass_1" placeholder="Пароль" type="password" required>
+          <input class="input-def" name="pass_1" type="password" required>
+          <span class="label-float">Пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass_2" placeholder="Повтортие пароль" type="password" required>
+          <input class="input-def" name="pass_2" type="password" required>
+          <span class="label-float">Повтортие пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
@@ -1157,7 +1168,8 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="email" placeholder="Введите свой email" type="email" required>
+          <input class="input-def" name="email" type="email" required>
+          <span class="label-float">Введите свой email</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>

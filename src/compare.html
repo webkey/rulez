@@ -661,8 +661,10 @@
       <!--CONTENT-->
       <div class="content">
         <div class="article-content">
-          <h1>Сравнение товаров</h1>
+          <h1 class="full-width">Сравнение товаров</h1>
           <div class="products-compare products-compare-js">
+            <!--show if cart is empty-->
+            <div class="products-compare__empty products-compare__empty-js" style="display: none;"><a href="catalog.html">Выберите товары для сравнения</a></div>
             <div class="table-auto products-compare__table-js">
               <table>
                 <thead class="products-compare__caption">
@@ -962,9 +964,6 @@
                 </tbody>
               </table>
             </div>
-            <!--cart empty note-->
-            <div class="products-compare__empty products-compare__empty-js" style="display: none;"><a href="catalog.html">Выберите товары для сравнения</a></div>
-            <!--cart empty note end-->
           </div>
         </div>
       </div>
@@ -1097,12 +1096,14 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="name" placeholder="Логин" type="text" autofocus required>
+          <input class="input-def" name="name" type="text" autofocus required>
+          <span class="label-float">Логин</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass" placeholder="Пароль" type="password" required>
+          <input class="input-def" name="pass" type="password" required>
+          <span class="label-float">Пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
@@ -1151,17 +1152,20 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="name" placeholder="Логин" type="text" required>
+          <input class="input-def" name="name" type="text" required>
+          <span class="label-float">Логин</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass_1" placeholder="Пароль" type="password" required>
+          <input class="input-def" name="pass_1" type="password" required>
+          <span class="label-float">Пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass_2" placeholder="Повтортие пароль" type="password" required>
+          <input class="input-def" name="pass_2" type="password" required>
+          <span class="label-float">Повтортие пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
@@ -1180,7 +1184,8 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="email" placeholder="Введите свой email" type="email" required>
+          <input class="input-def" name="email" type="email" required>
+          <span class="label-float">Введите свой email</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>

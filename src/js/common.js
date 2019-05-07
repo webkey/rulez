@@ -286,7 +286,8 @@ function detectScroll() {
  * !Toggle class on a form elements on focus
  * */
 function inputFocusClass() {
-  var $inputs = $('.field-js');
+  // var $inputs = $('.field-js');
+  var $inputs = $('label.input-wrap input, .field-js');
 
   if ($inputs.length) {
     var $fieldWrap = $('.input-wrap'),
@@ -319,7 +320,8 @@ function inputFocusClass() {
  * !Toggle class on a form elements if this one has a value
  * */
 function inputHasValueClass() {
-  var $inputs = $('.field-js');
+  // var $inputs = $('.field-js');
+  var $inputs = $('label.input-wrap input, .field-js');
 
   if ($inputs.length) {
     var $fieldWrap = $('.input-wrap');

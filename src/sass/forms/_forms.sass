@@ -66,6 +66,7 @@ label, .label
   +margin-horizontal(-#{round-float($form-gap / 2, 1)})
   font-size: 0
   letter-spacing: -4px
+  +antialiased
 
   .input-wrap
     +display-inline-block-top
@@ -245,6 +246,52 @@ input, textarea
       color: $form-error-color
 
 /* inputs states end
+
+/* float label
+label.input-wrap
+  #{$inputs}, textarea
+    &.input-def
+      padding-top: $form-input-space-vt + 6
+      padding-right: $form-input-space-h + 10
+      padding-bottom: $form-input-space-vb - 6
+
+  .label-float
+    +size(100%)
+    +font-bold
+    position: absolute
+    left: 0
+    bottom: 0
+    margin-bottom: 0
+    padding: #{$form-input-space-vt + $form-border-width} #{$form-input-space-h} #{$form-input-space-vb + $form-border-width}
+    +inputs-font()
+    color: $form-placeholder-color
+    +truncate(100%)
+    border: 1px solid transparent
+    pointer-events: none // важно! поднять выше лейбла
+    z-index: 5
+    transform-origin: 0 0
+    $prop: transform, color
+    will-change: $prop
+    transition:
+      property: $prop
+      duration: $animation-speed
+      timing-function: cubic-bezier(0.4, 0, 0.2, 1)
+
+  // active
+  .input-def
+    &:focus, &.filled, &.focused
+      cursor: text
+      box-shadow: none
+
+      & ~ .label-float
+        $transform: 0.25em, -0.6em
+        $scale: 0.85
+        +font-normal
+        transform: translate($transform) scale($scale)
+        transform: translate3d($transform, 0) scale3d($scale, $scale, 1)
+        cursor: default
+
+/* float label end
 
 @import checkboxes
 @import select

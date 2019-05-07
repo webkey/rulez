@@ -138,6 +138,9 @@ table
   -webkit-overflow-scrolling: touch
   margin-bottom: $bottom-space
 
+  &:last-child
+    margin-bottom: 0
+
   table
     margin-bottom: 0
     width: auto
@@ -360,23 +363,15 @@ table
 
 // article
 .#{$article-content}
-  //padding-left: #{nth($article-layout-space, 2)}
-  //padding-right: #{nth($article-layout-space, 2)}
   padding: $article-layout-space
 
   +media('<lap')
-    //padding-left: #{nth($article-layout-space--lap, 2)}
-    //padding-right: #{nth($article-layout-space--lap, 2)}
     padding: $article-layout-space--lap
 
   +media('<tab')
-    //padding-left: #{nth($article-layout-space--tab, 2)}
-    //padding-right: #{nth($article-layout-space--tab, 2)}
     padding: $article-layout-space--tab
 
   +media('<mob')
-    //padding-left: #{nth($article-layout-space--mob, 2)}
-    //padding-right: #{nth($article-layout-space--mob, 2)}
     padding: $article-layout-space--mob
 
   @each $tags in h2, h3, h4, h5, '.h2', '.h3', '.h4', '.h5'
@@ -400,9 +395,15 @@ table
     max-width: $text-layout-width-alt
     +push-auto
 
+    &.full-width
+      max-width: none
+
   & > .layout-flood,
   & > .layout-section
     max-width: $flood-layout-width
     +push-auto
+
+    &.full-width
+      max-width: none
 
 /* article and typography elements end

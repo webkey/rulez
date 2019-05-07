@@ -27,17 +27,14 @@
 .error-note
   color: $form-error-color
 
-  // нужно выбрать только ближайший элемент ошибки формы (нельзя использовать ~)
-  form .error + &,
+  form .error ~ &,
   form .error + .select2 + &
     display: block
 
 .success-note
   color: $form-success-color
 
-  // нужно выбрать тольк ближайший элемент подтверждения формы ((нельзя использовать ~))
-  form .success + .error-note + &,
-  form .success + .select2 + .error-note + &
+  form .success ~ &
     display: block
 
 // Если поддтверждение в виде галочки
@@ -68,8 +65,7 @@
     margin: -#{round($this-icon-size*0.5)} 0 0 #{round(($this-icon-size)*0.1)}
 
   // нужно выбрать тольк ближайший элемент подтверждения формы ((нельзя использовать ~))
-  form .success + .error-note + &,
-  form .success + .select2 + .error-note + &
+  form .success ~ &
     display: block
 
   &::before, &::after

@@ -18,7 +18,7 @@
 
     <!--CONTENT-->
     <!--order-->
-    <div class="order">
+    <form class="order validate-js">
       <div class="order__main">
         <!--order heading-->
         <div class="main-heading">
@@ -33,15 +33,18 @@
             <div class="checkout__col">
               <h3 class="checkout__subtitle">Личные данные</h3>
               <label class="input-wrap">
-                <input class="input-def" name="checkout-name" placeholder="Ваше имя" type="text" required>
+                <input class="input-def" name="checkout-name" type="text" required>
+                <span class="label-float">Ваше имя</span>
                 @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
               </label>
               <label class="input-wrap">
-                <input class="input-def" name="checkout-email" placeholder="Пароль" type="email" required>
+                <input class="input-def" name="checkout-email" type="email" required>
+                <span class="label-float">Пароль</span>
                 @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
               </label>
               <label class="input-wrap">
-                <input class="input-def" name="checkout-tel" placeholder="Телефон" type="text" required>
+                <input class="input-def" name="checkout-tel" type="text" required>
+                <span class="label-float">Телефон</span>
                 @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
               </label>
             </div>
@@ -62,16 +65,19 @@
                 </label>
               </div>
               <label class="input-wrap">
-                <input class="input-def" name="checkout-address" placeholder="Пароль" type="text" required>
+                <input class="input-def" name="checkout-address" type="text" required>
+                <span class="label-float">Улица, дом, корпус</span>
                 @@include("_tpl_forms_valid-notes.html", {"error": "Улица, дом, корпус", "success": "Текст успешной отправки"})
               </label>
               <div class="form-row">
                 <label class="input-wrap">
-                  <input class="input-def" name="checkout-flat" placeholder="Квартира" type="text" required>
+                  <input class="input-def" name="checkout-flat" type="text" required>
+                  <span class="label-float">Квартира</span>
                   @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
                 </label>
                 <label class="input-wrap">
-                  <input class="input-def" name="checkout-floor" placeholder="Этаж" type="text" required>
+                  <input class="input-def" name="checkout-floor" type="text" required>
+                  <span class="label-float">Этаж</span>
                   @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
                 </label>
               </div>
@@ -260,7 +266,7 @@
         </div>
       </div>
       <!--order aside / clearance end-->
-    </div>
+    </form>
     <!--order end-->
 
     <!--services-->

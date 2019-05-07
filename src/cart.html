@@ -1331,12 +1331,12 @@
                     <label for="promo-code" class="single-form__label">Промокод</label>
                     <input class="single-form__input field-js cart__promo-code-js" id="promo-code" name="promo-code" type="text" required>
                     <div class="error-note single-form__error-note">Промокод неверный</div>
-                    <a href="#" class="single-form__send-btn">
+                    <button href="#" class="single-form__send-btn">
                       <svg width="19" height="13" viewBox="0 0 19 13" xmlns="http://www.w3.org/2000/svg">
                         <path d="M12.8021 0.19552C12.5342 -0.0651732 12.1126 -0.0651732 11.8447 0.19552C11.5859 0.447405 11.5859 0.866628 11.8447 1.11793L16.6993 5.84269H0.679892C0.306465 5.84269 0 6.13157 0 6.49501C0 6.85845 0.306465 7.15672 0.679892 7.15672H16.6993L11.8447 11.8727C11.5859 12.1334 11.5859 12.5532 11.8447 12.8045C12.1126 13.0652 12.5342 13.0652 12.8021 12.8045L18.8059 6.9612C19.0647 6.70932 19.0647 6.2901 18.8059 6.0388L12.8021 0.19552Z"></path>
                       </svg>
                       <span class="hide-text">Отправить</span>
-                    </a>
+                    </button>
                   </div>
                 </div>
                 <div class="summary clearance__summary cart__summary-js">
@@ -1537,12 +1537,14 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="name" placeholder="Логин" type="text" autofocus required>
+          <input class="input-def" name="name" type="text" autofocus required>
+          <span class="label-float">Логин</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass" placeholder="Пароль" type="password" required>
+          <input class="input-def" name="pass" type="password" required>
+          <span class="label-float">Пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
@@ -1591,17 +1593,20 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="name" placeholder="Логин" type="text" required>
+          <input class="input-def" name="name" type="text" required>
+          <span class="label-float">Логин</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass_1" placeholder="Пароль" type="password" required>
+          <input class="input-def" name="pass_1" type="password" required>
+          <span class="label-float">Пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="pass_2" placeholder="Повтортие пароль" type="password" required>
+          <input class="input-def" name="pass_2" type="password" required>
+          <span class="label-float">Повтортие пароль</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
@@ -1620,7 +1625,8 @@
       </div>
       <form action="#" method="post" class="popup-def__form validate-js">
         <label class="input-wrap popup-def__form-input">
-          <input class="input-def" name="email" placeholder="Введите свой email" type="email" required>
+          <input class="input-def" name="email" type="email" required>
+          <span class="label-float">Введите свой email</span>
           <span class="error-note">Текст ошибки</span>
           <span class="success-note">Текст успешной отправки</span>
         </label>
