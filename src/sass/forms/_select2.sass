@@ -3,6 +3,9 @@
 @import ../../libs/include-media/dist/include-media
 
 /* select2
+html:not(.no-js) .cselect
+  opacity: 0
+
 .select2
   +forms-space
 
@@ -11,6 +14,16 @@
 
 .select2-container--default .select2-selection
   +select-selection
+
+//=== has-prefix
+.has-prefix .select2-container--default .select2-selection
+  padding-left: $form-input-space-h--has-prefix
+
+//=== form-small
+.form-small .select2-container--default .select2-selection
+  height: $form-input-height--small
+  padding-top: $form-input-space-vt--small
+  padding-bottom: $form-input-space-vb--small
 
 .select2-container--default .select2-selection .select2-selection__rendered
   +selects-font
@@ -117,7 +130,7 @@
     max-height: 200px
 
   .select2-results__option[aria-selected=true]
-    background-color: #f3f3f3
+    background-color: $base-color-ultra-light
     color: $text-color
 
   .select2-results__option--highlighted[aria-selected]
@@ -139,9 +152,9 @@
 
 // State
 .select2
-  .select2-selection, .select2-selection__rendered, .select2-selection__placeholder
+  .select2-selection
 
-    .filled + &
+    //.filled + &
       +form-has-value
 
     .success + &
@@ -152,6 +165,14 @@
 
     .focused + &
       +form-on-focus
+
+  .select2-selection, .select2-selection__rendered, .select2-selection__placeholder
+
+    .success + &
+      color: $form-success-color
+
+    .error + &
+      color: $form-error-color
 
   .select2-search__field
     .success + &

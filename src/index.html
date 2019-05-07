@@ -793,7 +793,32 @@
                   </ul>
                 </div>
               </div>
-              <a href="#" class="advise__callback"><span>Заказать звонок</span></a>
+              <a href="#" class="advise__callback advise-callback-open-js"><span>Заказать звонок</span></a>
+              <div class="advise-callback stop-remove-class advise-callback-js">
+                <form action="#" method="post" class="validate-js">
+                  <label class="input-wrap advise-callback__form-input">
+                    <input class="input-def" name="advise-callback-name" type="text" required>
+                    <span class="label-float">Ваше имя</span>
+                    <span class="error-note">Текст ошибки</span>
+                    <span class="success-note">Текст успешной отправки</span>
+                  </label>
+                  <label class="input-wrap advise-callback__form-input">
+                    <input class="input-def" name="advise-callback-name" type="text" required>
+                    <span class="label-float">Телефон</span>
+                    <span class="error-note">Текст ошибки</span>
+                    <span class="success-note">Текст успешной отправки</span>
+                  </label>
+                  <div class="input-wrap input-wrap_btn advise-callback__form-input advise-callback__form-input_btn">
+                    <input class="btn-alt advise-callback-form__btn" type="submit" value="Заказать">
+                  </div>
+                </form>
+                <a href="#" class="advise-callback-close advise-callback-close-js">
+                  <svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.646447 1.35355L6.64645 7.35355L7.35355 6.64645L1.35355 0.646447L0.646447 1.35355ZM6.64645 0.646447L0.646447 6.64645L1.35355 7.35355L7.35355 1.35355L6.64645 0.646447Z"></path>
+                  </svg>
+                  <span>Закрыть</span>
+                </a>
+              </div>
             </div>
           </div>
           <div class="quick-links__item has-shadow grid-item-js">

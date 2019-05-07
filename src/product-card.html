@@ -810,7 +810,32 @@
                   </a>
                 </div>
                 <div class="p-card-options__item">
-                  <a href="#" class="btn-outline p-card-options__btn">Купить в один клик</a>
+                  <a href="#" class="btn-outline p-card-options__btn quick-buy-open-js">Купить в один клик</a>
+                  <div class="quick-buy-popup stop-remove-class quick-buy-popup-js">
+                    <form action="#" method="post" class="validate-js">
+                      <label class="input-wrap quick-buy__form-input">
+                        <input class="input-def" name="quick-buy-name" type="text" required>
+                        <span class="label-float">Ваше имя</span>
+                        <span class="error-note">Текст ошибки</span>
+                        <span class="success-note">Текст успешной отправки</span>
+                      </label>
+                      <label class="input-wrap quick-buy__form-input">
+                        <input class="input-def" name="quick-buy-name" type="text" required>
+                        <span class="label-float">Телефон</span>
+                        <span class="error-note">Текст ошибки</span>
+                        <span class="success-note">Текст успешной отправки</span>
+                      </label>
+                      <div class="input-wrap input-wrap_btn quick-buy__form-input quick-buy__form-input_btn">
+                        <input class="btn-alt quick-buy-form__btn" type="submit" value="Заказать">
+                      </div>
+                    </form>
+                    <a href="#" class="quick-buy-close quick-buy-close-js">
+                      <svg width="8" height="8" viewBox="0 0 8 8" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.646447 1.35355L6.64645 7.35355L7.35355 6.64645L1.35355 0.646447L0.646447 1.35355ZM6.64645 0.646447L0.646447 6.64645L1.35355 7.35355L7.35355 1.35355L6.64645 0.646447Z"></path>
+                      </svg>
+                      <span>Закрыть</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </div>

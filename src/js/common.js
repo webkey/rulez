@@ -1680,6 +1680,34 @@ function toggleDrop() {
     });
   }
 
+  // Toggle quick buy
+  var $quickBuy = $('.quick-buy-open-js'), quickBuyJs;
+  if ($quickBuy.length) {
+    var $quickBuyPopup = $('.quick-buy-popup-js');
+    quickBuyJs = $quickBuy.switchClass({
+      switchClassTo: $quickBuyPopup
+      , remover: '.quick-buy-close-js'
+      , modifiers: {
+        activeClass: 'quick-buy_open'
+      }
+      , cssScrollFixed: false
+    });
+  }
+
+  // Toggle advise callback
+  var $adviseCallback = $('.advise-callback-open-js'), adviseCallbackJs;
+  if ($adviseCallback.length) {
+    var $adviseCallbackPopup = $('.advise-callback-js');
+    adviseCallbackJs = $adviseCallback.switchClass({
+      switchClassTo: $adviseCallbackPopup
+      , remover: '.advise-callback-close-js'
+      , modifiers: {
+        activeClass: 'advise-callback_open'
+      }
+      , cssScrollFixed: false
+    });
+  }
+
   // Toggle quick cart
   var $quickCartSwitcher = $('.cart-keeper-js'), quickCartJs;
   if ($quickCartSwitcher.length) {
@@ -1731,6 +1759,14 @@ function toggleDrop() {
     addFormPopupJs && addFormPopupJs.switchClass('remove');
   }
 
+  function quickBuyRemoveClass() {
+    quickBuyJs && quickBuyJs.switchClass('remove');
+  }
+
+  function adviseCallbackRemoveClass() {
+    quickBuyJs && quickBuyJs.switchClass('remove');
+  }
+
   function searchPopupRemoveClass() {
     searchPanelJs && searchPanelJs.switchClass('remove');
   }
@@ -1750,6 +1786,8 @@ function toggleDrop() {
       catalogShutterRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickBuyRemoveClass();
+      adviseCallbackRemoveClass();
       quickCartRemoveClass();
       selectInRemoveClass();
     });
@@ -1761,6 +1799,8 @@ function toggleDrop() {
       catalogShutterRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickBuyRemoveClass();
+      adviseCallbackRemoveClass();
       quickCartRemoveClass();
       selectInRemoveClass();
     });
@@ -1772,6 +1812,8 @@ function toggleDrop() {
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickBuyRemoveClass();
+      adviseCallbackRemoveClass();
       quickCartRemoveClass();
       selectInRemoveClass();
     });
@@ -1783,6 +1825,8 @@ function toggleDrop() {
       searchPopupRemoveClass();
       catalogShutterRemoveClass();
       addFormPopupRemoveClass();
+      quickBuyRemoveClass();
+      adviseCallbackRemoveClass();
       quickCartRemoveClass();
       selectInRemoveClass();
     });
@@ -1794,7 +1838,35 @@ function toggleDrop() {
       searchPopupRemoveClass();
       filtersShutterRemoveClass();
       catalogShutterRemoveClass();
+      quickBuyRemoveClass();
+      adviseCallbackRemoveClass();
       quickCartRemoveClass();
+      selectInRemoveClass();
+    });
+  }
+
+  if (quickBuyJs) {
+    quickBuyJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
+      searchPopupRemoveClass();
+      filtersShutterRemoveClass();
+      catalogShutterRemoveClass();
+      quickCartRemoveClass();
+      adviseCallbackRemoveClass();
+      addFormPopupRemoveClass();
+      selectInRemoveClass();
+    });
+  }
+
+  if (adviseCallbackJs) {
+    adviseCallbackJs.on('switchClass.beforeAdded', function () {
+      hContactsSwitcherRemoveClass();
+      searchPopupRemoveClass();
+      // filtersShutterRemoveClass(); // фильтры закрывать не нужно
+      catalogShutterRemoveClass();
+      quickCartRemoveClass();
+      quickBuyRemoveClass();
+      addFormPopupRemoveClass();
       selectInRemoveClass();
     });
   }
@@ -1806,6 +1878,8 @@ function toggleDrop() {
       filtersShutterRemoveClass();
       catalogShutterRemoveClass();
       addFormPopupRemoveClass();
+      adviseCallbackRemoveClass();
+      quickBuyRemoveClass();
       selectInRemoveClass();
     });
   }
@@ -1818,6 +1892,8 @@ function toggleDrop() {
       catalogShutterRemoveClass();
       quickCartRemoveClass();
       addFormPopupRemoveClass();
+      quickBuyRemoveClass();
+      adviseCallbackRemoveClass();
     });
   }
 }

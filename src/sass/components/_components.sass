@@ -5880,7 +5880,8 @@ $advise-figure-space--net: 1rem
 $advise-content-space: nth($advise-figure-size, 2) + $advise-figure-space
 $advise-content-space--net: nth($advise-figure-size--net, 2) + $advise-figure-space--net
 .advise
-  overflow: hidden
+  position: relative
+  //overflow: hidden
 
   .m-aside &
     padding-right: 1px
@@ -6018,7 +6019,7 @@ $advise-content-space--net: nth($advise-figure-size--net, 2) + $advise-figure-sp
   line-height: 2.5rem
   text-align: center
   background-color: #ffe99c
-  padding: 10px
+  padding: 1rem
   color: #000
   // transition
   $prop: background-color
@@ -6026,12 +6027,22 @@ $advise-content-space--net: nth($advise-figure-size--net, 2) + $advise-figure-sp
     property: $prop
     duration: $animation-speed
 
+  +media('<tab')
+    padding: 0.8rem
+
+  +media('<mob')
+    font-size: 1.8rem
+    line-height: 2.0rem
+
   & > span
     display: block
     padding: 2rem 2.5rem
     background-color: white
     border-radius: 3px
     box-shadow: inset 0 0 0 1px #efefef
+
+    +media('<tab')
+      padding: 1.5rem #{nth($page-layout-space--mob, 2)}
 
   //hover
   &:hover
@@ -6084,13 +6095,111 @@ $advise-content-space--small: nth($advise-figure-size--small, 2) + $advise-figur
   .advise__callback
     font-size: 1.4rem
     line-height: 2.0rem
-    padding: 8px
+    padding: 0.8rem
 
     +media('<mob')
       font-size: 1.8rem
 
     & > span
       padding: 1.5rem 2rem
+
+// advise form
+.advise-callback
+  position: absolute
+  right: 0
+  bottom: 0
+  width: 100%
+  padding: 2.4rem 2rem 2rem
+  background-color: white
+  border: 1px solid #f5f5f5
+  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.08)
+  pointer-events: none
+  opacity: 0
+  z-index: 99
+  $scale: 0.85, 0.85
+  transform: scale($scale)
+  transform: scale3d($scale, 1)
+  transform-origin: right bottom
+  // transition
+  $prop: transform, opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  +media('<mob')
+    padding: 3.4rem #{nth($section-inner-space--mob, 2)} #{nth($section-inner-space--mob, 2)}
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15)
+
+  // opened
+  &.advise-callback_open
+    pointer-events: auto
+    opacity: 1
+    $scale: 1, 1
+    transform: scale($scale)
+    transform: scale3d($scale, 1)
+
+.advise-callback__form-input
+  &:last-child
+    margin-bottom: 0
+
+.advise-callback__form-input_btn
+  margin-top: 2.4rem
+
+.advise-callback-form__btn
+  display: block
+  width: 100%
+
+.advise-callback-close
+  $size: 1.8rem
+  position: absolute
+  right: 0.3rem
+  top: 0.3rem
+  width: $size
+  height: $size
+  color: white
+  background-color: #cecece
+  border-radius: round-float($size / 2, 1)
+  text-indent: -9999px
+  overflow: hidden
+  user-select: none
+  //-webkit-tap-highlight-color: transparent
+  transform: rotate(-90deg) translateZ(0)
+  transition: background-color $animation-speed
+
+  +media('<tab', '>=mob')
+    .no-touch .m-aside__align:hover &
+      right: 2rem
+
+  +media('<mob')
+    $size: 2.4rem
+    width: $size
+    height: $size
+    border-radius: $size
+
+  svg
+    display: block
+    $size: 0.8rem
+    +size($size)
+    position: absolute
+    left: 50%
+    top: 50%
+    $space: round-float($size / 2, 1)
+    margin: -#{$space} 0 0 -#{$space}
+
+    +media('<mob')
+      $size: 1.4rem
+      +size($size)
+      $space: round-float($size / 2, 1)
+      margin: -#{$space} 0 0 -#{$space}
+
+  path
+    fill: currentColor
+
+  // hover
+  &:hover
+    background-color: $base-color
 
 /* advise end
 
@@ -7353,6 +7462,105 @@ $opinion-box-shadow-color: black
     width: auto
 
 /* form add a product to a cart end
+
+/* quick buy
+.quick-buy-popup
+  position: absolute
+  right: 0
+  bottom: 0
+  width: 280px
+  padding: 2rem
+  background-color: white
+  border: 1px solid #f5f5f5
+  box-shadow: 0 5px 11px rgba(0, 0, 0, 0.08)
+  pointer-events: none
+  opacity: 0
+  z-index: 99
+  $scale: 0.85, 0.85
+  transform: scale($scale)
+  transform: scale3d($scale, 1)
+  transform-origin: right bottom
+  // transition
+  $prop: transform, opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  +media('<mob')
+    padding: 3.4rem #{nth($section-inner-space--mob, 2)} #{nth($section-inner-space--mob, 2)}
+    width: calc(100% + #{nth($section-inner-space--mob, 2) * 2})
+    right: -#{nth($section-inner-space--mob, 2)}
+    bottom: -#{nth($section-inner-space--mob, 2)}
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15)
+
+  // opened
+  &.quick-buy_open
+    pointer-events: auto
+    opacity: 1
+    $scale: 1, 1
+    transform: scale($scale)
+    transform: scale3d($scale, 1)
+
+.quick-buy__form-input
+  &:last-child
+    margin-bottom: 0
+
+.quick-buy__form-input_btn
+  margin-top: 2.4rem
+
+.quick-buy-form__btn
+  display: block
+  width: 100%
+
+.quick-buy-close
+  $size: 1.8rem
+  position: absolute
+  right: 0.3rem
+  top: 0.3rem
+  width: $size
+  height: $size
+  color: white
+  background-color: #cecece
+  border-radius: round-float($size / 2, 1)
+  text-indent: -9999px
+  overflow: hidden
+  user-select: none
+  //-webkit-tap-highlight-color: transparent
+  transform: rotate(-90deg) translateZ(0)
+  transition: background-color $animation-speed
+
+  +media('<mob')
+    $size: 2.4rem
+    width: $size
+    height: $size
+    border-radius: $size
+
+  svg
+    display: block
+    $size: 0.8rem
+    +size($size)
+    position: absolute
+    left: 50%
+    top: 50%
+    $space: round-float($size / 2, 1)
+    margin: -#{$space} 0 0 -#{$space}
+
+    +media('<mob')
+      $size: 1.4rem
+      +size($size)
+      $space: round-float($size / 2, 1)
+      margin: -#{$space} 0 0 -#{$space}
+
+  path
+    fill: currentColor
+
+  // hover
+  &:hover
+    background-color: $base-color
+
+/* quick buy end
 
 /* quick order
 .quick-order
@@ -11517,6 +11725,9 @@ $p-results-fixed-height: 7rem
         margin-right: $half-space--net
         width: calc(100% / 2 - #{$space--net})
 
+      +media('<mob')
+        width: auto
+
 label.checkbox_value
   & > span
     display: inline-block
@@ -12481,6 +12692,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     margin-bottom: 0
 
 .p-card-options__item
+  position: relative
   margin-top: 0.7rem
 
   &:first-child
