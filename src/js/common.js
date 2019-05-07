@@ -361,7 +361,8 @@ function inputHasValueClass() {
 /**
  * !Initial custom select for cross-browser styling
  * */
-function customSelect(select) {
+function customSelect() {
+  var select = $('select.cselect');
   $.each(select, function () {
     var $thisSelect = $(this);
     // var placeholder = $thisSelect.attr('data-placeholder') || '';
@@ -369,7 +370,9 @@ function customSelect(select) {
       language: "ru",
       width: '100%',
       containerCssClass: 'cselect-head',
-      dropdownCssClass: 'cselect-drop'
+      dropdownCssClass: 'cselect-drop',
+      minimumResultsForSearch: Infinity,
+      // allowClear: true
       // , placeholder: placeholder
     });
   })
@@ -3684,7 +3687,7 @@ $(document).ready(function () {
   equalHeight();
   inputFocusClass();
   inputHasValueClass();
-  customSelect($('select.cselect'));
+  customSelect();
   // bannersSiblings();
   slidersInit();
   gridLayout();

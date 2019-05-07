@@ -216,11 +216,11 @@
                 </div>
                 <!--===============-->
                 <!--===============-->
-                <div class="p-filters-item p-filters-item-js">
+                <div class="p-filters-item p-filters-item-js p-filters-is-open">
                   @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Дата выхода на рынок", "group": "entry-date", "modGroup": "" })
                   <li>
-                    <div class="select select-small">
-                      <select class="field-js" name="filter-by-years-from" data-filter-select="years-from" data-filter-default="">
+                    <div class="form-small">
+                      <select class="cselect field-js" name="filter-by-years-from" data-filter-select="years-from" data-filter-default="">
                         <option value="" data-filter-tag="">Год выпуска с</option>
                         <option value="2012" data-filter-tag="2012">2012</option>
                         <option value="2013" data-filter-tag="2013">2013</option>
@@ -234,8 +234,8 @@
                     </div>
                   </li>
                   <li>
-                    <div class="select select-small">
-                      <select class="field-js" name="filter-by-years-to" data-filter-select="years-to" data-filter-default="">
+                    <div class="form-small">
+                      <select class="cselect field-js" name="filter-by-years-to" data-filter-select="years-to" data-filter-default="">
                         <option value="" data-filter-tag="">Год выпуска по</option>
                         <option value="2012" data-filter-tag="2012">2012</option>
                         <option value="2013" data-filter-tag="2013">2013</option>
