@@ -283,6 +283,18 @@ function detectScroll() {
 }
 
 /**
+ * !Input file simple
+ */
+function inputFileSimple() {
+  $('input[type=file]', '.input-file-js').on('change', function () {
+    var $curInput = $(this);
+    var val = $curInput.val().replace(/C:\\fakepath\\/i, '');
+
+    $curInput.closest('.input-file-js').find('.input-file-label-js').html(val);
+  })
+}
+
+/**
  * !Toggle class on a form elements on focus
  * */
 function inputFocusClass() {
@@ -3696,6 +3708,94 @@ function popupsInit() {
 }
 
 /**
+ * !Reviews gallery
+ */
+function reviewsGallery() {
+  $().fancybox({
+    selector : '.u-review-gallery-js a:visible',
+    infobar: true,
+    buttons: [
+      "zoom",
+      //"share",
+      // "slideShow",
+      //"fullScreen",
+      //"download",
+      // "thumbs",
+      "close"
+    ]
+  });
+}
+
+/**
+ * !Reviews voting
+ */
+function reviewsVoting() {
+  var $votingBtn = $('.u-review__voting-btn-js');
+
+  $votingBtn.on('click', function () {
+    var $thisBtn = $(this), activeClass = 'active',
+        $thisCounter = $thisBtn.find('.u-review__voting-count-js');
+
+    if ($thisBtn.hasClass(activeClass)) {
+      $thisBtn.removeClass(activeClass);
+
+      var curDecr = +$thisCounter.attr('data-count') - 1;
+      $thisCounter.attr('data-count', curDecr);
+      $thisCounter.html(curDecr);
+    } else {
+      var $siblActive = $thisBtn.parent().find($votingBtn).filter('.' + activeClass);
+
+      if ($siblActive.length) {
+        $siblActive.removeClass(activeClass);
+
+        var $siblCounter = $siblActive.find('.u-review__voting-count-js'),
+            siblDecr = +$siblCounter.attr('data-count') - 1;
+
+        $siblCounter.attr('data-count', siblDecr);
+        $siblCounter.html(siblDecr);
+      }
+
+      $thisBtn.addClass(activeClass);
+      var curIncr = +$thisCounter.attr('data-count') + 1;
+      $thisCounter.attr('data-count', curIncr);
+      $thisCounter.html(curIncr);
+    }
+  })
+}
+
+/**
+ * !Toggle new review
+ */
+function toggleNewReview() {
+  var $toggleBtn = $('.add-new-review-js');
+
+  $toggleBtn.on('click', function (e) {
+    e.preventDefault();
+    var $form = $('.u-review-form-js');
+    $form.toggle();
+
+    if ($form.is(':visible') && !$(this).is(':animated')) {
+      $('html,body').stop().animate({scrollTop: $form.offset().top - $('.header').outerHeight() - 15}, 300);
+    }
+  })
+}
+
+/**
+ * !Stars Rating
+ */
+function starsRating() {
+  var $starsRating = $('.stars-rating-js');
+  if ($starsRating.length) {
+    $.each($starsRating, function () {
+      $(this).barrating({
+        theme: 'css-stars',
+        initialRating: 3
+      });
+    });
+  }
+}
+
+/**
  * !Form validation
  * */
 function formValidation() {
@@ -3761,6 +3861,7 @@ $(document).ready(function () {
   initCustomScrollBar();
   detectScroll();
   equalHeight();
+  inputFileSimple();
   inputFocusClass();
   inputHasValueClass();
   customSelect();
@@ -3782,5 +3883,9 @@ $(document).ready(function () {
   calcPriceOrder();
   calcCart();
   popupsInit();
+  reviewsGallery();
+  reviewsVoting();
+  toggleNewReview();
+  starsRating();
   formValidation();
 });

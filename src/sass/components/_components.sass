@@ -137,7 +137,9 @@
 .icon-yourself,
 .icon-power,
 .icon-cost,
-.icon-time
+.icon-time,
+.icon-voting-plus,
+.icon-voting-minus
   +icon()
 
 .icon-angle-color
@@ -328,6 +330,12 @@ $spinner-btn-width: 35px
       pointer-events: none
 
 /* spinner end
+
+/* stars rating
+.br-theme-css-stars .br-widget a.br-active:after, .br-theme-css-stars .br-widget a.br-selected:after
+  color: $base-color-alt
+
+/* stars rating end
 
 /* simple bar
 [data-simplebar]
@@ -13328,6 +13336,8 @@ $card-size: 85px 135px
 /* product infobar
 .section_p-infobar
   padding: #{nth($section-inner-space, 1)} #{nth($section-inner-space, 2)}
+  font-size: 1.4rem
+  line-height: 1.8rem
   background-color: white
 
   +media('<lap-s')
@@ -13337,6 +13347,8 @@ $card-size: 85px 135px
     padding: 2rem #{nth($section-inner-space--mob, 2)}
 
   p, ul, ol
+    margin-bottom: 0.5rem
+
     &:last-child
       margin-bottom: 0
 
@@ -15935,3 +15947,289 @@ $author-photo-size--mob: 6rem
   //max-width: $text-layout-width-alt
 
 /* products compare end
+
+/* users reviews
+$u-review-aside-width: 6rem
+$u-review-aside-space: 2rem
+$u-review-photo-size: 6rem
+.u-review
+  display: flex
+  font-size: 1.4rem
+  line-height: 1.8rem
+
+  p
+    margin-bottom: 1em
+
+    &:last-child
+      margin-bottom: 0
+
+.u-review__aside
+  flex-shrink: 0
+  flex-basis: $u-review-aside-width
+  max-width: $u-review-aside-width
+  margin-right: $u-review-aside-space
+
+.u-review__avatar
+  display: flex
+  align-items: center
+  justify-content: center
+  $size: $u-review-photo-size
+  flex-basis: $size
+  max-width: $size
+  height: $size
+  border-radius: $size
+  text-decoration: none
+  color: inherit
+
+.u-review__avatar-img
+  flex-shrink: 0
+  max-height: 100%
+  max-width: 100%
+
+.u-review__no-avatar
+  +font-normal
+  font-weight: normal
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 100%
+  width: 100%
+  padding: 0.2rem 1rem 0
+  background-color: $base-color
+  font-size: 1.6rem
+  line-height: 2.0rem
+  color: white
+  text-transform: uppercase
+  border-radius: 50%
+
+.u-review__body
+  flex-grow: 1
+
+.u-review__header,
+.u-review__content,
+.u-review__footer,
+.u-review__talk
+  margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.u-review__meta
+  margin-bottom: 0.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+.u-review__author-name
+  display: inline-block
+  vertical-align: top
+  +font-bold
+  font-size: 1.8rem
+  line-height: 2.2rem
+  margin-right: 0.5rem
+  
+  a
+    text-decoration: none
+    color: inherit
+    transition: color $animation-speed
+    
+    .no-touch &:hover
+      color: $base-color
+
+.u-review__date
+  display: inline-block
+  vertical-align: top
+  padding-top: 0.5rem
+  font-size: 1.2rem
+  line-height: 1.6rem
+  color: $text-color-ultra-light
+
+.u-review__condition
+  margin-bottom: 1rem
+
+  &:last-child
+    margin-bottom: 0
+
+.u-review__condition-title
+  display: block
+  +font-bold
+  font-size: 1.4rem
+  line-height: 1.8rem
+  margin-bottom: 0.5rem
+  text-transform: none
+
+// u review gallery
+.u-review__gallery
+  display: flex
+  flex-wrap: wrap
+  margin-bottom: 0.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+.u-review__gallery-item
+  $element: &
+  display: flex
+  align-items: center
+  justify-content: center
+  height: 9rem
+  width: 9rem
+  margin: 0 0.5rem 0.5rem 0
+
+  a#{$element}
+    cursor: zoom-in
+
+.u-review__gallery-img
+  display: block
+  flex-shrink: 0
+  max-height: 100%
+  max-width: 100%
+
+// u review footer
+.u-review__footer
+  display: flex
+  align-items: flex-start
+  justify-content: space-between
+
+.u-review__footer-c
+  flex-grow: 1
+
+//  u review voting
+.u-review__voting
+  display: flex
+  flex-shrink: 0
+  align-items: center
+
+.u-review__voting-label
+  margin-right: 1rem
+  color: $text-color-ultra-light
+
+.u-review__voting-plus,
+.u-review__voting-minus
+  display: flex
+  align-items: center
+  margin-right: 1rem
+  text-decoration: none
+  color: $text-color-ultra-light
+
+  &:last-child
+    margin-right: 0
+
+.u-review__voting-plus
+  color: $form-success-color
+
+.u-review__voting-minus
+  color: $form-error-color
+
+.u-review__voting-icon
+  margin-right: 0.5rem
+  $size: 1.8rem
+  height: $size
+  width: $size
+
+.icon-voting-plus
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzBjMGMwIiBkPSJNMTUuNDMgOC44MTRjLjgwOC0zLjI4MyAxLjI1Mi04LjgxNC0yLjE5Ny04LjgxNC0xLjg2MSAwLTIuMzUgMS42NjgtMi44MzMgMy4zMjktMS45NzEgNi43ODgtNS4zMTQgNy4zNDItOC40IDcuNzQzdjkuOTI4YzMuNTAzIDAgNS41ODQuNzI5IDguMTY5IDEuODQyIDEuMjU3LjU0MSAzLjA1MyAxLjE1OCA1LjMzNiAxLjE1OCAyLjUzOCAwIDQuMjk1LS45OTcgNS4wMDktMy42ODYuNS0xLjg3NyAxLjQ4Ni03LjI1IDEuNDg2LTguMjUgMC0xLjY0OS0xLjE2OC0yLjQ0Ni0yLjU5NC0yLjUwNy0xLjIxLS4wNTEtMi44Ny0uMjc3LTMuOTc2LS43NDN6bTMuNzE4IDQuMzIxbC0xLjM5NC4xNjdzLS42MDkgMS4xMDkuMTQxIDEuMTE1YzAgMCAuMjAxLjAxIDEuMDY5LS4wMjcgMS4wODItLjA0NiAxLjA1MSAxLjQ2OS4wMDQgMS41NjNsLTEuNzYxLjA5OWMtLjczNC4wOTQtLjY1NiAxLjIwMy4xNDEgMS4xNzIgMCAwIC42ODYtLjAxNyAxLjE0My0uMDQxIDEuMDY4LS4wNTYgMS4wMTYgMS40MjkuMDQgMS41NTEtLjQyNC4wNTMtMS43NDUuMTE1LTEuNzQ1LjExNS0uODExLjA3Mi0uNzA2IDEuMjM1LjEwOSAxLjE0MWwuNzcxLS4wMzFjLjgyMi0uMDc0IDEuMDAzLjgyNS0uMjkyIDEuNjYxLTEuNTY3Ljg4MS00LjY4NS4xMzEtNi40MTYtLjYxNC0yLjIzOC0uOTY1LTQuNDM3LTEuOTM0LTYuOTU4LTIuMDA2di02YzMuMjYzLS43NDkgNi4zMjktMi4yNTQgOC4zMjEtOS4xMTMuODk4LTMuMDkyIDEuNjc5LTEuOTMxIDEuNjc5LjU3NCAwIDIuMDcxLS40OSAzLjc4Ni0uOTIxIDUuNTMzIDEuMDYxLjU0MyAzLjM3MSAxLjQwMiA2LjEyIDEuNTU2IDEuMDU1LjA1OSAxLjAyNSAxLjQ1NS0uMDUxIDEuNTg1eiI+PC9wYXRoPjwvc3ZnPg==)
+
+  .no-touch .u-review__voting-plus:hover &
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjNmU1MmRkIiBkPSJNMTUuNDMgOC44MTRjLjgwOC0zLjI4MyAxLjI1Mi04LjgxNC0yLjE5Ny04LjgxNC0xLjg2MSAwLTIuMzUgMS42NjgtMi44MzMgMy4zMjktMS45NzEgNi43ODgtNS4zMTQgNy4zNDItOC40IDcuNzQzdjkuOTI4YzMuNTAzIDAgNS41ODQuNzI5IDguMTY5IDEuODQyIDEuMjU3LjU0MSAzLjA1MyAxLjE1OCA1LjMzNiAxLjE1OCAyLjUzOCAwIDQuMjk1LS45OTcgNS4wMDktMy42ODYuNS0xLjg3NyAxLjQ4Ni03LjI1IDEuNDg2LTguMjUgMC0xLjY0OS0xLjE2OC0yLjQ0Ni0yLjU5NC0yLjUwNy0xLjIxLS4wNTEtMi44Ny0uMjc3LTMuOTc2LS43NDN6bTMuNzE4IDQuMzIxbC0xLjM5NC4xNjdzLS42MDkgMS4xMDkuMTQxIDEuMTE1YzAgMCAuMjAxLjAxIDEuMDY5LS4wMjcgMS4wODItLjA0NiAxLjA1MSAxLjQ2OS4wMDQgMS41NjNsLTEuNzYxLjA5OWMtLjczNC4wOTQtLjY1NiAxLjIwMy4xNDEgMS4xNzIgMCAwIC42ODYtLjAxNyAxLjE0My0uMDQxIDEuMDY4LS4wNTYgMS4wMTYgMS40MjkuMDQgMS41NTEtLjQyNC4wNTMtMS43NDUuMTE1LTEuNzQ1LjExNS0uODExLjA3Mi0uNzA2IDEuMjM1LjEwOSAxLjE0MWwuNzcxLS4wMzFjLjgyMi0uMDc0IDEuMDAzLjgyNS0uMjkyIDEuNjYxLTEuNTY3Ljg4MS00LjY4NS4xMzEtNi40MTYtLjYxNC0yLjIzOC0uOTY1LTQuNDM3LTEuOTM0LTYuOTU4LTIuMDA2di02YzMuMjYzLS43NDkgNi4zMjktMi4yNTQgOC4zMjEtOS4xMTMuODk4LTMuMDkyIDEuNjc5LTEuOTMxIDEuNjc5LjU3NCAwIDIuMDcxLS40OSAzLjc4Ni0uOTIxIDUuNTMzIDEuMDYxLjU0MyAzLjM3MSAxLjQwMiA2LjEyIDEuNTU2IDEuMDU1LjA1OSAxLjAyNSAxLjQ1NS0uMDUxIDEuNTg1eiI+PC9wYXRoPjwvc3ZnPg==)
+
+  .u-review__voting-plus.active &,
+  .no-touch .u-review__voting-plus.active:hover &
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjMGRhZDBkIiBkPSJNMTUuNDMgOC44MTRjLjgwOC0zLjI4MyAxLjI1Mi04LjgxNC0yLjE5Ny04LjgxNC0xLjg2MSAwLTIuMzUgMS42NjgtMi44MzMgMy4zMjktMS45NzEgNi43ODgtNS4zMTQgNy4zNDItOC40IDcuNzQzdjkuOTI4YzMuNTAzIDAgNS41ODQuNzI5IDguMTY5IDEuODQyIDEuMjU3LjU0MSAzLjA1MyAxLjE1OCA1LjMzNiAxLjE1OCAyLjUzOCAwIDQuMjk1LS45OTcgNS4wMDktMy42ODYuNS0xLjg3NyAxLjQ4Ni03LjI1IDEuNDg2LTguMjUgMC0xLjY0OS0xLjE2OC0yLjQ0Ni0yLjU5NC0yLjUwNy0xLjIxLS4wNTEtMi44Ny0uMjc3LTMuOTc2LS43NDN6bTMuNzE4IDQuMzIxbC0xLjM5NC4xNjdzLS42MDkgMS4xMDkuMTQxIDEuMTE1YzAgMCAuMjAxLjAxIDEuMDY5LS4wMjcgMS4wODItLjA0NiAxLjA1MSAxLjQ2OS4wMDQgMS41NjNsLTEuNzYxLjA5OWMtLjczNC4wOTQtLjY1NiAxLjIwMy4xNDEgMS4xNzIgMCAwIC42ODYtLjAxNyAxLjE0My0uMDQxIDEuMDY4LS4wNTYgMS4wMTYgMS40MjkuMDQgMS41NTEtLjQyNC4wNTMtMS43NDUuMTE1LTEuNzQ1LjExNS0uODExLjA3Mi0uNzA2IDEuMjM1LjEwOSAxLjE0MWwuNzcxLS4wMzFjLjgyMi0uMDc0IDEuMDAzLjgyNS0uMjkyIDEuNjYxLTEuNTY3Ljg4MS00LjY4NS4xMzEtNi40MTYtLjYxNC0yLjIzOC0uOTY1LTQuNDM3LTEuOTM0LTYuOTU4LTIuMDA2di02YzMuMjYzLS43NDkgNi4zMjktMi4yNTQgOC4zMjEtOS4xMTMuODk4LTMuMDkyIDEuNjc5LTEuOTMxIDEuNjc5LjU3NCAwIDIuMDcxLS40OSAzLjc4Ni0uOTIxIDUuNTMzIDEuMDYxLjU0MyAzLjM3MSAxLjQwMiA2LjEyIDEuNTU2IDEuMDU1LjA1OSAxLjAyNSAxLjQ1NS0uMDUxIDEuNTg1eiI+PC9wYXRoPjwvc3ZnPg==)
+
+.icon-voting-minus
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjYzBjMGMwIiBkPSJNMTkuNDA2IDE0LjQ0MmMxLjQyNi0uMDYgMi41OTQtLjg1OCAyLjU5NC0yLjUwNiAwLTEtLjk4Ni02LjM3My0xLjQ4Ni04LjI1LS43MTQtMi42ODktMi40NzEtMy42ODYtNS4wMDktMy42ODYtMi4yODMgMC00LjA3OS42MTctNS4zMzYgMS4xNTgtMi41ODUgMS4xMTMtNC42NjUgMS44NDItOC4xNjkgMS44NDJ2OS45MjhjMy4wODYuNDAxIDYuNDMuOTU2IDguNCA3Ljc0NC40ODMgMS42Ni45NzIgMy4zMjggMi44MzMgMy4zMjggMy40NDggMCAzLjAwNS01LjUzMSAyLjE5Ni04LjgxNCAxLjEwNy0uNDY2IDIuNzY3LS42OTIgMy45NzctLjc0NHptLS4yMDctMS45OTJjLTIuNzQ5LjE1NC01LjA2IDEuMDEzLTYuMTIgMS41NTYuNDMxIDEuNzQ3LjkyMSAzLjQ2Mi45MjEgNS41MzMgMCAyLjUwNS0uNzgxIDMuNjY2LTEuNjc5LjU3NC0xLjk5My02Ljg1OS01LjA1Ny04LjM2NC04LjMyMS05LjExM3YtNmMyLjUyMS0uMDcyIDQuNzItMS4wNDEgNi45NTktMi4wMDUgMS43MzEtLjc0NSA0Ljg0OS0xLjQ5NSA2LjQxNi0uNjE0IDEuMjk1LjgzNiAxLjExNCAxLjczNC4yOTIgMS42NjFsLS43NzEtLjAzMmMtLjgxNS0uMDk0LS45MiAxLjA2OC0uMTA5IDEuMTQxIDAgMCAxLjMyMS4wNjIgMS43NDUuMTE1Ljk3Ni4xMjMgMS4wMjggMS42MDctLjA0IDEuNTUxLS40NTctLjAyNC0xLjE0My0uMDQxLTEuMTQzLS4wNDEtLjc5Ny0uMDMxLS44NzUgMS4wNzgtLjE0MSAxLjE3MiAwIDAgLjcxNC4wMDUgMS43NjEuMDk5czEuMDc4IDEuNjA5LS4wMDQgMS41NjNjLS44NjgtLjAzNy0xLjA2OS0uMDI3LTEuMDY5LS4wMjctLjc1LjAwNS0uODc0IDEuMDI4LS4xNDEgMS4xMTVsMS4zOTQuMTY3YzEuMDc1LjEzIDEuMTA1IDEuNTI2LjA1IDEuNTg1eiI+PC9wYXRoPjwvc3ZnPg==)
+
+  .no-touch .u-review__voting-minus:hover &
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjNmU1MmRkIiBkPSJNMTkuNDA2IDE0LjQ0MmMxLjQyNi0uMDYgMi41OTQtLjg1OCAyLjU5NC0yLjUwNiAwLTEtLjk4Ni02LjM3My0xLjQ4Ni04LjI1LS43MTQtMi42ODktMi40NzEtMy42ODYtNS4wMDktMy42ODYtMi4yODMgMC00LjA3OS42MTctNS4zMzYgMS4xNTgtMi41ODUgMS4xMTMtNC42NjUgMS44NDItOC4xNjkgMS44NDJ2OS45MjhjMy4wODYuNDAxIDYuNDMuOTU2IDguNCA3Ljc0NC40ODMgMS42Ni45NzIgMy4zMjggMi44MzMgMy4zMjggMy40NDggMCAzLjAwNS01LjUzMSAyLjE5Ni04LjgxNCAxLjEwNy0uNDY2IDIuNzY3LS42OTIgMy45NzctLjc0NHptLS4yMDctMS45OTJjLTIuNzQ5LjE1NC01LjA2IDEuMDEzLTYuMTIgMS41NTYuNDMxIDEuNzQ3LjkyMSAzLjQ2Mi45MjEgNS41MzMgMCAyLjUwNS0uNzgxIDMuNjY2LTEuNjc5LjU3NC0xLjk5My02Ljg1OS01LjA1Ny04LjM2NC04LjMyMS05LjExM3YtNmMyLjUyMS0uMDcyIDQuNzItMS4wNDEgNi45NTktMi4wMDUgMS43MzEtLjc0NSA0Ljg0OS0xLjQ5NSA2LjQxNi0uNjE0IDEuMjk1LjgzNiAxLjExNCAxLjczNC4yOTIgMS42NjFsLS43NzEtLjAzMmMtLjgxNS0uMDk0LS45MiAxLjA2OC0uMTA5IDEuMTQxIDAgMCAxLjMyMS4wNjIgMS43NDUuMTE1Ljk3Ni4xMjMgMS4wMjggMS42MDctLjA0IDEuNTUxLS40NTctLjAyNC0xLjE0My0uMDQxLTEuMTQzLS4wNDEtLjc5Ny0uMDMxLS44NzUgMS4wNzgtLjE0MSAxLjE3MiAwIDAgLjcxNC4wMDUgMS43NjEuMDk5czEuMDc4IDEuNjA5LS4wMDQgMS41NjNjLS44NjgtLjAzNy0xLjA2OS0uMDI3LTEuMDY5LS4wMjctLjc1LjAwNS0uODc0IDEuMDI4LS4xNDEgMS4xMTVsMS4zOTQuMTY3YzEuMDc1LjEzIDEuMTA1IDEuNTI2LjA1IDEuNTg1eiI+PC9wYXRoPjwvc3ZnPg==)
+
+  .u-review__voting-minus.active &,
+  .no-touch .u-review__voting-minus.active:hover &
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBmaWxsPSIjZmYzMzIyIiBkPSJNMTkuNDA2IDE0LjQ0MmMxLjQyNi0uMDYgMi41OTQtLjg1OCAyLjU5NC0yLjUwNiAwLTEtLjk4Ni02LjM3My0xLjQ4Ni04LjI1LS43MTQtMi42ODktMi40NzEtMy42ODYtNS4wMDktMy42ODYtMi4yODMgMC00LjA3OS42MTctNS4zMzYgMS4xNTgtMi41ODUgMS4xMTMtNC42NjUgMS44NDItOC4xNjkgMS44NDJ2OS45MjhjMy4wODYuNDAxIDYuNDMuOTU2IDguNCA3Ljc0NC40ODMgMS42Ni45NzIgMy4zMjggMi44MzMgMy4zMjggMy40NDggMCAzLjAwNS01LjUzMSAyLjE5Ni04LjgxNCAxLjEwNy0uNDY2IDIuNzY3LS42OTIgMy45NzctLjc0NHptLS4yMDctMS45OTJjLTIuNzQ5LjE1NC01LjA2IDEuMDEzLTYuMTIgMS41NTYuNDMxIDEuNzQ3LjkyMSAzLjQ2Mi45MjEgNS41MzMgMCAyLjUwNS0uNzgxIDMuNjY2LTEuNjc5LjU3NC0xLjk5My02Ljg1OS01LjA1Ny04LjM2NC04LjMyMS05LjExM3YtNmMyLjUyMS0uMDcyIDQuNzItMS4wNDEgNi45NTktMi4wMDUgMS43MzEtLjc0NSA0Ljg0OS0xLjQ5NSA2LjQxNi0uNjE0IDEuMjk1LjgzNiAxLjExNCAxLjczNC4yOTIgMS42NjFsLS43NzEtLjAzMmMtLjgxNS0uMDk0LS45MiAxLjA2OC0uMTA5IDEuMTQxIDAgMCAxLjMyMS4wNjIgMS43NDUuMTE1Ljk3Ni4xMjMgMS4wMjggMS42MDctLjA0IDEuNTUxLS40NTctLjAyNC0xLjE0My0uMDQxLTEuMTQzLS4wNDEtLjc5Ny0uMDMxLS44NzUgMS4wNzgtLjE0MSAxLjE3MiAwIDAgLjcxNC4wMDUgMS43NjEuMDk5czEuMDc4IDEuNjA5LS4wMDQgMS41NjNjLS44NjgtLjAzNy0xLjA2OS0uMDI3LTEuMDY5LS4wMjctLjc1LjAwNS0uODc0IDEuMDI4LS4xNDEgMS4xMTVsMS4zOTQuMTY3YzEuMDc1LjEzIDEuMTA1IDEuNTI2LjA1IDEuNTg1eiI+PC9wYXRoPjwvc3ZnPg==)
+
+// u reviews empty
+.u-reviews-empty
+  font-size: 1.6rem
+  line-height: 2.0rem
+  margin-bottom: 3rem
+
+  +media('<mob')
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+// u reviews list
+.u-reviews
+  margin-bottom: 3rem
+
+  +media('<mob')
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.u-reviews__item
+  margin-bottom: nth($section-outer-space, 1)
+
+  &:last-child
+    margin-bottom: 0
+
+.u-reviews-pagination,
+.u-reviews-load-more
+  text-align: center
+  margin-bottom: 3rem
+
+  +media('<mob')
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+// new u review
+.new-u-review
+  margin-bottom: 4rem
+
+  +media('<mob')
+    margin-bottom: 3rem
+
+.new-u-review__note
+  max-width: 64rem
+  margin-bottom: 2rem
+
+  +media('<mob')
+    margin-bottom: 1.5rem
+
+  &:last-child
+    margin-bottom: 0
+
+// u review form
+.u-review-form
+  max-width: 64rem
+  margin-bottom: 4rem
+
+  +media('<mob')
+    margin-bottom: 3rem
+
+.u-review-form__title
+  +font-h3
+  +font-bold
+  letter-spacing: normal
+  color: $title-color
+  margin: 0 0 $bottom-space
+
+  &:last-child
+    margin-bottom: 0
+
+.u-review-form-footer
+  display: flex
+  align-items: center
+  justify-content: space-between
+
+.u-review-form-footer__holder
+  flex-grow: 1
+
+.u-review-form-footer__aside
+  flex-shrink: 0
+
+/* users reviews end

@@ -139,6 +139,7 @@ gulp.task('mergeCssLibs', function () {
     // , 'node_modules/okaynav/dist/css/common.min.css'
     // , 'node_modules/okaynav/dist/css/okayNav.min.css' // https://www.npmjs.com/package/okaynav
     , 'node_modules/simplebar/dist/simplebar.min.css' // Custom scrollbar
+    , 'src/libs/jquery-bar-rating/dist/themes/css-stars.css' // Star rating
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -185,6 +186,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'node_modules/okaynav/dist/js/jquery.okayNav-min.js' // https://www.npmjs.com/package/okaynav
     , 'src/libs/fancybox/dist/jquery.fancybox.min.js' // fancybox
     , 'node_modules/simplebar/dist/simplebar.min.js' // Custom scrollbar (Для подержки старых браузеров нужно подключить полифил, см. выше)
+    , 'src/libs/jquery-bar-rating/dist/jquery.barrating.min.js' // Star rating
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

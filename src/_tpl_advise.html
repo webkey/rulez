@@ -19,13 +19,14 @@
         @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
       </label>
       <label class="input-wrap advise-callback__form-input">
-        <input class="input-def" name="advise-callback-name" type="text" required>
+        <input class="input-def" name="advise-callback-phone" type="text" required>
         <span class="label-float">Телефон</span>
         @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
       </label>
       <div class="input-wrap input-wrap_btn advise-callback__form-input advise-callback__form-input_btn">
         <input class="btn-alt advise-callback-form__btn" type="submit" value="Заказать">
       </div>
+      <div class=""></div>
     </form>
     <a href="#" class="advise-callback-close advise-callback-close-js">
       @@include("includes/svg/icon-cross-sm.svg")

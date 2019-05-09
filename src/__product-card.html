@@ -1505,9 +1505,9 @@
       <div class="divisions-tabs__nav p-infobar-tabs__nav">
         <div class="divisions-tabs__select tabs__select-js"></div>
         <div class="divisions-tabs-thumbs tabs__thumbs-js tabs__select-drop-js">
-          <a href="#pInfobarCh" class="tabs-active">Характеристики</a>
+          <a href="#pInfobarCh">Характеристики</a>
           <a href="#pInfobarDesc">Описание</a>
-          <a href="#pInfobarRev">Отзывы <em>15</em></a>
+          <a href="#pInfobarRev" class="tabs-active">Отзывы <em>15</em></a>
           <a href="#pInfobarIns">Рассрочка и кредит</a>
         </div>
       </div>
@@ -1794,35 +1794,247 @@
         </div>
         <div id="pInfobarRev">
           <h3 class="hide">Отзывы</h3>
-          <h4>Пользователь скрыл свои данные</h4>
-          <h5>Достоинства:</h5>
-          <p>
-            - Безупречный дисплей. <br>
-            - Великолепная сборка. <br>
-            - Компактность, лёгкость. <br>
-            - Сканер отпечатков в кнопке включения. <br>
-            - Отсутствует лишний предустановленный софт <br>
-            (Остальное в комментарии)
-          </p>
-          <h5>Недостатки:</h5>
-          <p>
-            - Разумеется, очевидный минус - расположение камеры <br>
-            - При рассмотрении шарнира с задней стороны заметил два элемента, похожих на шлейфы. И если это действительно шлейфы (что логично, ведь даже нижняя рамка почти отсутствует), то не комильфо, что они не спрятаны внутрь чего бы то ни было, хоть конструкция шарнира и такова, что к ним крайне сложно подлезть.
-            <br>
-            - Переходника под видеоразъёмы не положили в комплект. В оф. магазине вроде его дарят сейчас с кучей прочих ништяков, но официально в комплекте с i5 его нет, а i7 у нас пока не планируется продавать.
-          </p>
-          <h5>Комментарий:</h5>
-          <p>
-            Слишком хорошо за свои деньги, компромиссов как таковых нет. Хотелось бы отметить несколько моментов: <br>
-            1. Микрофоны. Очень боялся за качество записи звука на встроенные микрофоны из-за их местоположения. Зря.<br>
-            2. Батарея. Действительно держит ну никак не меньше 6-7 часов.<br>
-            3. Масштабирование. Масштаб 200%, всё в меру крупное и при этом чёткое. С проблемами столкнулся только в фотошопе, он масштабироваться не хочет - шрифты микроскопические, элементы в панели инструментов едва крупнее рисового зерна. Но как-то это обходится, пока не вдавался.<br>
-            4. Звук. Отдельный респект. В наушниках ничего сверхъестественного не услышал, но и плохого ничего нет, фоновых помех во время простоя наушников нет совершенно. А вот встроенная акустика способна озвучить комнату квадратов до 20-25 точно. При прослушивании некоторых треков невольно задаёшься вопросом "откуда в нём столько??". Тягается с яблочными "прошками" спокойно, но у последних звук малость честнее.<br>
-            5. Клавиатура, тачпад. Никаких нареканий. Не ожидал в столь тонком устройстве увидеть клавиатуру вообще без компромиссов, ровно как и не ожидал встретить очень сносный тачпад. Мышь не нужна.<br>
-            6. Производительность, нагрев. Начинка стоит покруче конкурентов по классу за ту же цену. Дота2 на максималках в родном разрешении, HoMM5 тоже не задумывается, ничего мощнее пока не пробовал. При этом частоты под нагрузкой не сбрасывает, как его прямые конкуренты, но нагревается и шумит ощутимо. На всякий случай использую доп. охлаждение во время игры. В повседневке кулер если и пашет, то этого не слышно.<br>
-            7. Он выглядит и ощущается дорого. Будьте готовы к тому, что 90% зевак будет интересоваться ценой, как только вы включите дисплей.<br>
-            8. Все минусы ничтожны, ноутбук безбожно хорош.<br>
-          </p>
+          <div class="u-reviews-empty" style="display: none;">К этому товару нет отзывов. <a href="#" class="add-new-review-js">Будь первым!</a></div>
+          <div class="new-u-review">
+            <div class="new-u-review__note">Для расчёта рейтинга используются общие оценки товара и оценки по характеристикам за всё время. Поделитесь своим мнением о товаре: Ноутбук Dell Inspiron 17 5770-6922</div>
+            <div class="new-u-review__footer">
+              <a href="#" class="btn-def new-u-review__btn add-new-review-js">Написать отзыв</a>
+            </div>
+          </div>
+          <div class="u-review-form u-review-form-js" style="display: none;">
+            <form action="#" class="validate-js">
+              <div class="u-review-form__title">Новый отзыв</div>
+              <div class="input-wrap input-file input-file-js">
+                <span class="input-file__title">Фото к отзыву:</span>
+                <label>
+                  <span class="input-file__label input-file-label-js">Выберите файл</span>
+                  <input type="file" class="input-file-field">
+                </label>
+              </div>
+              <label class="input-wrap">
+                <input class="input-def" name="u-review-form-name" type="text" required>
+                <span class="label-float">Ваше имя</span>
+                @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+              </label>
+              <label class="input-wrap">
+                <input class="input-def" name="u-review-form-e-mail" type="email" required>
+                <span class="label-float">E-mail</span>
+                @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+              </label>
+              <label class="input-wrap">
+                <textarea class="input-def" name="u-review-form-plus" required></textarea>
+                <span class="label-float">Достоинства</span>
+                @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+              </label>
+              <label class="input-wrap">
+                <textarea class="input-def" name="u-review-form-minus" required></textarea>
+                <span class="label-float">Недостатки</span>
+                @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+              </label>
+              <label class="input-wrap">
+                <textarea class="input-def" name="u-review-form-comment" required></textarea>
+                <span class="label-float">Комментарий</span>
+                @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+              </label>
+              <div class="input-wrap">
+                <div class="label-holder"><span class="label">Ваша оценка:</span></div>
+                <select class="stars-rating-js">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+              <div class="u-review-form-footer">
+                <div class="u-review-form-footer__holder">
+                  <label class="check-label">
+                    <input type="checkbox" name="recommend" />
+                    <span>Рекомендуете данный товар?</span>
+                  </label>
+                </div>
+                <div class="u-review-form-footer__aside">
+                  <input class="btn-alt u-review-form__btn" type="submit" value="Отправить">
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="u-reviews">
+            <div class="u-reviews__item u-review">
+              <div class="u-review__aside">
+                <a href="#" class="u-review__avatar">
+                  <img class="u-review__avatar-img" src="img/img-advise.jpg" alt="image description" />
+                </a>
+              </div>
+              <div class="u-review__body">
+                <div class="u-review__header">
+                  <div class="u-review__meta">
+                    <div class="u-review__author-name"><a href="#">butterfly100</a></div>
+                    <time class="u-review__date" datetime="2019-04-24T15:45">24.04.2019 15:45</time>
+                  </div>
+                  <div class="u-review__rating-wrap">
+                    <div class="p-rate u-review__rating">
+                      <span content="2.5" style="width: 50%">2.5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-review__content">
+                  <div class="u-review__condition">
+                    <h4 class="u-review__condition-title">Достоинства:</h4>
+                    <p>ВСЕ!</p>
+                  </div>
+                  <div class="u-review__condition">
+                    <h4 class="u-review__condition-title">Недостатки:</h4>
+                    <p>НЕТ!</p>
+                  </div>
+                  <div class="u-review__condition">
+                    <h4 class="u-review__condition-title">Комментарий:</h4>
+                    <p>Добрый день.У меня такой холодильник уже как 10 лет. Все устраивает. Пластик прочный. Размораживать не нужно. Вчера муж двери переделал,чтобы справа налево открывались. Все норм. Система хитрая, но мужчина справится. Хотя, муж подруги не смог... Но за 50р. все это сделали, нужны были ключи и на 10 и на 11.КОРОЧЕ! рекомендую! Если маленькая кухня-зеркалит и увеличивает. Крутой дизайн. Далеко не атлант. Цвет богатый!</p>
+                  </div>
+                  <div class="u-review__condition">
+                    <h4 class="u-review__condition-title">Несколько снимков:</h4>
+                    <p>Не могу нарадоваться покупке</p>
+                    <div class="u-review__gallery u-review-gallery-js">
+                      <a href="img/products/fullsize/01.jpg" class="u-review__gallery-item">
+                        <img src="img/products/thumbs/01.jpg" class="u-review__gallery-img" alt="image description" />
+                      </a>
+                      <a href="img/products/fullsize/02.jpg" class="u-review__gallery-item">
+                        <img src="img/products/thumbs/02.jpg" class="u-review__gallery-img" alt="image description" />
+                      </a>
+                      <a href="img/products/fullsize/03.jpg" class="u-review__gallery-item">
+                        <img src="img/products/thumbs/03.jpg" class="u-review__gallery-img" alt="image description" />
+                      </a>
+                      <a href="img/temp/img_1280_01.jpg" class="u-review__gallery-item">
+                        <img src="img/temp/img_1280_01.jpg" class="u-review__gallery-img" alt="image description" />
+                      </a>
+                      <a href="img/temp/img_1280_02.jpg" class="u-review__gallery-item">
+                        <img src="img/temp/img_1280_02.jpg" class="u-review__gallery-img" alt="image description" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-review__footer">
+                  <div class="u-review__footer-c">
+                    <div class="u-review__reply">
+                      <a href="#">Ответить</a>
+                    </div>
+                  </div>
+                  <div class="u-review__voting">
+                    <div class="u-review__voting-label">Полезно?</div>
+                    <a href="#?yes" title="Да, полезно" class="u-review__voting-btn u-review__voting-btn-js u-review__voting-plus">
+                      <i class="u-review__voting-icon icon-voting-plus"></i>
+                      <span class="u-review__voting-count u-review__voting-count-js" data-count="105">105</span>
+                    </a>
+                    <a href="#?no" title="Нет, бесполезно" class="u-review__voting-btn u-review__voting-btn-js u-review__voting-minus">
+                      <i class="u-review__voting-icon icon-voting-minus"></i>
+                      <span class="u-review__voting-count u-review__voting-count-js" data-count="25">25</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="u-review__talk">
+                  <div class="u-reviews__item u-review">
+                    <div class="u-review__aside">
+                      <a href="#" class="u-review__avatar">
+                        <div class="u-review__no-avatar"><span>we</span></div>
+                      </a>
+                    </div>
+                    <div class="u-review__body">
+                      <div class="u-review__header">
+                        <div class="u-review__meta">
+                          <div class="u-review__author-name"><a href="#">werx</a></div>
+                          <time class="u-review__date" datetime="2019-04-24T15:55">24.04.2019 15:55</time>
+                        </div>
+                      </div>
+                      <div class="u-review__content">
+                        <div class="u-review__condition">
+                          <h4 class="u-review__condition-title">Согласен с Вами:</h4>
+                          <p>Все сказанное вами парвда. Хотелось бы добавить только вот, что.</p>
+                          <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний
+                            <a href="#">ноутбук</a> это очень лёгкое и ультратонкое устройство с большим объемом памяти.</p>
+                        </div>
+                      </div>
+                      <div class="u-review__footer">
+                        <div class="u-review__footer-c">
+                          <div class="u-review__reply">
+                            <a href="#">Ответить</a>
+                          </div>
+                        </div>
+                        <div class="u-review__voting">
+                          <div class="u-review__voting-label">Полезно?</div>
+                          <a href="#?yes" title="Да, полезно" class="u-review__voting-btn u-review__voting-btn-js u-review__voting-plus">
+                            <i class="u-review__voting-icon icon-voting-plus"></i>
+                            <span class="u-review__voting-count u-review__voting-count-js" data-count="5">5</span>
+                          </a>
+                          <a href="#?no" title="Нет, бесполезно" class="u-review__voting-btn u-review__voting-btn-js u-review__voting-minus">
+                            <i class="u-review__voting-icon icon-voting-minus"></i>
+                            <span class="u-review__voting-count u-review__voting-count-js" data-count="178">178</span>
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="u-reviews__item u-review">
+              <div class="u-review__aside">
+                <a href="#" class="u-review__avatar">
+                  <div class="u-review__no-avatar"><span>Mr</span></div>
+                </a>
+              </div>
+              <div class="u-review__body">
+                <div class="u-review__header">
+                  <div class="u-review__meta">
+                    <div class="u-review__author-name"><a href="#">Mr.Jack</a></div>
+                    <time class="u-review__date" datetime="2019-04-24T15:45">15.03.2019 15:45</time>
+                  </div>
+                  <div class="u-review__rating-wrap">
+                    <div class="p-rate u-review__rating">
+                      <span content="2.5" style="width: 90%">4.5</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="u-review__content">
+                  <div class="u-review__condition">
+                    <h4 class="u-review__condition-title">Достоинства:</h4>
+                    <p>дизайнтихо работает</p>
+                  </div>
+                  <div class="u-review__condition">
+                    <h4 class="u-review__condition-title">Недостатки:</h4>
+                    <p>нет</p>
+                  </div>
+                  <div class="u-review__condition">
+                    <h4 class="u-review__condition-title">Комментарий:</h4>
+                    <p>Хороший, стильный холодильник.Работает тихо. Есть подсветка морозильной камеры. Очень вместительный. Для меня особых недостатков нет.</p>
+                  </div>
+                </div>
+                <div class="u-review__footer">
+                  <div class="u-review__footer-c">
+                    <div class="u-review__reply">
+                      <a href="#">Ответить</a>
+                    </div>
+                  </div>
+                  <div class="u-review__voting">
+                    <div class="u-review__voting-label">Полезно?</div>
+                    <a href="#?yes" title="Да, полезно" class="u-review__voting-btn u-review__voting-btn-js u-review__voting-plus">
+                      <i class="u-review__voting-icon icon-voting-plus"></i>
+                      <span class="u-review__voting-count u-review__voting-count-js" data-count="14">14</span>
+                    </a>
+                    <a href="#?no" title="Нет, бесполезно" class="u-review__voting-btn u-review__voting-btn-js u-review__voting-minus">
+                      <i class="u-review__voting-icon icon-voting-minus"></i>
+                      <span class="u-review__voting-count u-review__voting-count-js" data-count="31">31</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="u-reviews-pagination">
+            @@include("_tpl_pagination.html")
+          </div>
+          <div class="u-reviews-load-more">
+            <a href="#" class="btn-def load-more__btn">Показать еще</a>
+          </div>
         </div>
         <div id="pInfobarIns">
           <h3>Рассрочка на 24 месяца с первым взносом от 0%</h3>

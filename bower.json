@@ -36,7 +36,8 @@
     "okaynav": "^2.0.4",
     "fancybox": "^3.5.7",
     "classlist-polyfill": "^1.2.0",
-    "lozad": "^1.9.0"
+    "lozad": "^1.9.0",
+    "jquery-bar-rating": "^1.2.2"
   },
   "devDependencies": {
     "mathsass": "^0.9.5"
