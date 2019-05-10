@@ -2541,10 +2541,14 @@ $uo-border-radius: 7px
 
 /* cart-link
 .cart-link
+  $element: &
   position: relative
   display: flex
   align-items: center
   justify-content: flex-start
+  flex-shrink: 0
+  max-width: 14rem
+  //flex-basis: 14rem
   text-decoration: none
   color: white
   cursor: pointer
@@ -2553,13 +2557,15 @@ $uo-border-radius: 7px
   user-select: none
   //-webkit-tap-highlight-color: transparent
   // transition
-  $prop: background-color, color
+  $prop: background-color, color, opacity
   transition:
     property: $prop
     duration: $animation-speed
 
   +media('<tab')
     padding: $header-btn-space--tab
+    flex-basis: auto
+    max-width: none
 
   +media('<mob')
     padding: $header-btn-space--mob
@@ -2571,7 +2577,8 @@ $uo-border-radius: 7px
       border-radius: 4rem
 
   .header-top &
-    margin-left: 2.8rem
+    //margin-left: 2.8rem
+    margin-left: 2.0rem
 
     +media('<lap-s')
       margin-left: 1.5rem
@@ -2637,6 +2644,7 @@ $uo-border-radius: 7px
     display: flex
     align-items: center
     justify-content: center
+    flex-shrink: 0
     background-color: white
     +size($size)
     border-radius: $size
@@ -2661,7 +2669,7 @@ $uo-border-radius: 7px
       display: block
 
       +media('>=tab')
-        left: 2.6rem
+        left: 2.3rem
 
     svg
       display: inline-block
@@ -2689,7 +2697,7 @@ $uo-border-radius: 7px
           fill: $base-color
 
     & + .cart-link__text
-      padding-left: 1.2rem
+      padding-left: 0.7rem
 
   // counter
   .counter
@@ -2710,6 +2718,7 @@ $uo-border-radius: 7px
     background-color: #e61f1f
     border-radius: $size
     z-index: 10
+    transition: opacity $animation-speed
 
     +media('<tab')
       margin: 0
@@ -2731,6 +2740,9 @@ $uo-border-radius: 7px
       font-size: 1rem
       line-height: $size
       border-radius: $size
+
+  &.quick-cart_opened .counter
+    opacity: 0
 
   &.push
     .counter
@@ -2765,6 +2777,7 @@ $uo-border-radius: 7px
   & > strong, & > span
     +font-normal
     display: block
+    white-space: nowrap
 
 // hover
 .cart-link:not(.disabled)
@@ -3335,7 +3348,7 @@ a.quick-cart__item
   // If header is change
   .header-changed &
     //max-width: 60rem
-    max-width: calc(100% - 65rem)
+    max-width: calc(100% - 66.5rem)
     visibility: visible // Родительская обертка скрыта, а меню нужно показать
 
     //+media('<desk-s')
@@ -3351,10 +3364,10 @@ a.quick-cart__item
     //  max-width: 28rem
 
     +media('<lap-s')
-      max-width: calc(100% - 69rem)
+      max-width: calc(100% - 71rem)
 
     +media('<net')
-      max-width: calc(100% - 65rem)
+      max-width: calc(100% - 66.5rem)
 
     +media('<tab')
       max-width: none
@@ -15950,12 +15963,17 @@ $author-photo-size--mob: 6rem
 
 /* users reviews
 $u-review-aside-width: 6rem
+$u-review-aside-width--mob: 4.2rem
 $u-review-aside-space: 2rem
 $u-review-photo-size: 6rem
+$u-review-photo-size--mob: 4.2rem
 .u-review
   display: flex
   font-size: 1.4rem
   line-height: 1.8rem
+
+  +media('<mob-s')
+    display: block
 
   p
     margin-bottom: 1em
@@ -15969,6 +15987,15 @@ $u-review-photo-size: 6rem
   max-width: $u-review-aside-width
   margin-right: $u-review-aside-space
 
+  +media('<mob')
+    margin-right: nth($section-inner-space--mob, 2)
+    flex-basis: $u-review-aside-width--mob
+    max-width: $u-review-aside-width--mob
+
+  +media('<mob-s')
+    float: left
+    margin-right: 0
+
 .u-review__avatar
   display: flex
   align-items: center
@@ -15980,6 +16007,13 @@ $u-review-photo-size: 6rem
   border-radius: $size
   text-decoration: none
   color: inherit
+
+  +media('<mob')
+    $size: $u-review-photo-size--mob
+    flex-basis: $size
+    max-width: $size
+    height: $size
+    border-radius: $size
 
 .u-review__avatar-img
   flex-shrink: 0
@@ -16013,6 +16047,11 @@ $u-review-photo-size: 6rem
 
   &:last-child
     margin-bottom: 0
+
+.u-review__header
+  +media('<mob-s')
+    min-height: $u-review-photo-size--mob
+    padding-left: $u-review-photo-size--mob + nth($section-inner-space--mob, 2)
 
 .u-review__meta
   margin-bottom: 0.5rem
@@ -16075,6 +16114,10 @@ $u-review-photo-size: 6rem
   height: 9rem
   width: 9rem
   margin: 0 0.5rem 0.5rem 0
+
+  +media('<mob')
+    height: 6rem
+    width: 6rem
 
   a#{$element}
     cursor: zoom-in
@@ -16161,10 +16204,10 @@ $u-review-photo-size: 6rem
 
 // u reviews list
 .u-reviews
-  margin-bottom: 3rem
+  margin-bottom: 4rem
 
   +media('<mob')
-    margin-bottom: 2rem
+    margin-bottom: 3rem
 
   &:last-child
     margin-bottom: 0
@@ -16228,6 +16271,7 @@ $u-review-photo-size: 6rem
 
 .u-review-form-footer__holder
   flex-grow: 1
+  padding-right: 1rem
 
 .u-review-form-footer__aside
   flex-shrink: 0
