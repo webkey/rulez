@@ -888,7 +888,6 @@ function slidersInit() {
 
       setsSliderJs.init();
     });
-
   }
 }
 
