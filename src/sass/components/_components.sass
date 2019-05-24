@@ -369,6 +369,15 @@ $spinner-btn-width: 35px
 
 /* simple bar end
 
+/* simple form
+.simple-form__group
+  margin-bottom: 3rem
+
+  &:last-child
+    margin-bottom: 0
+
+/* simple form end
+
 /* tabs
 .tabs__panels-js,
 .tabs-nested__panels-js
@@ -16631,3 +16640,122 @@ $u-review-photo-size--mob: 4.2rem
   background-color: $bg-color-alt
 
 /* order details end
+
+/* split
+.split
+  $element: &
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: center
+  padding: $section-inner-space
+  color: inherit
+  text-decoration: none
+  transition: color $animation-speed
+
+  +media('<lap-s')
+    padding: $section-inner-space--tab
+
+  +media('<mob')
+    padding: $section-inner-space--mob
+
+  @at-root
+    .no-touch a#{$element}:hover
+      color: $link-color
+
+// figure
+.split__figure
+  position: relative
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-shrink: 0
+  margin-bottom: 1rem
+  height: 23.2rem
+
+  +media('<lap-s')
+    height: 20rem
+
+  +media('<mob-s')
+    height: 10rem
+
+  &:last-child
+    margin-bottom: 0
+
+  img
+    display: block
+    flex-shrink: 0 // Fixed for ie 11
+    max-height: 100%
+    max-width: 100%
+
+// title
+.split__title
+  display: block
+  margin-bottom: 2rem
+  +font-bold
+  font-size: 1.8rem
+  line-height: 2.4rem
+  color: currentColor
+  text-align: center
+
+  +media('<mob-s')
+    font-size: 1.6rem
+    line-height: 2.0rem
+
+  &:last-child
+    margin-bottom: 0
+
+// Перестиливание элементов превью товара для отображения в виде списка (детальный вид)
+[data-view="list-view"]
+  .split
+    flex-direction: row
+    justify-content: flex-start
+    padding-top: 1rem
+    padding-bottom: 1rem
+
+    +media('<lap-s')
+      padding-top: 1rem
+      padding-bottom: 1rem
+
+    +media('<mob')
+      padding-top: 0.5rem
+      padding-bottom: 0.5rem
+
+  .split__figure
+    $size: 10rem
+    height: $size
+    width: $size
+    margin: 0 #{nth($section-inner-space, 2)} 0 0
+
+    +media('<lap-s')
+      $size: 8rem
+      height: $size
+      width: $size
+      margin-right: nth($section-inner-space--tab, 2)
+
+    +media('<mob')
+      $size: 6rem
+      height: $size
+      width: $size
+      margin-right: nth($section-inner-space--mob, 2)
+
+  .split__title
+    text-align: left
+
+/* split end
+
+/* cabinet-profile-form
+.cabinet-profile-form
+  max-width: 64rem
+  margin-bottom: nth($section-outer-space, 1)
+
+  +media('<lap-s')
+    margin-bottom: #{nth($section-outer-space--tab, 1)}
+
+  +media('<mob')
+    margin-bottom: #{nth($section-outer-space--mob, 1)}
+
+  &:last-child
+    margin-bottom: 0
+
+/* cabinet-profile-form end

@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>История заказов</title>
+  <title>Категории</title>
   <!--Mobile optimized-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
   <!--Theme color-->
@@ -298,7 +298,7 @@
           <div class="c-nav-wrap">
             <div class="c-nav">
               <ul class="c-nav__list">
-                <li><a href="catalog.html"><span>Ноутбуки</span></a></li>
+                <li class="current"><span>Ноутбуки</span></li>
                 <li><a href="catalog.html"><span>Моноблоки</span></a></li>
                 <li><a href="catalog.html"><span>Компьютеры</span></a></li>
                 <li><a href="catalog.html"><span>Мониторы</span></a></li>
@@ -654,216 +654,327 @@
             </a>
           </li>
           <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <a itemprop="item" href="#" title="Перейти в раздел Личный кабинет">
-              <span itemprop="name">Личный кабинет</span>
+            <a itemprop="item" href="#" title="Перейти в раздел Каталог">
+              <span itemprop="name">Каталог</span>
               <meta itemprop="position" content="1" />
             </a>
           </li>
           <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <span itemprop="name">История заказов</span>
+            <span itemprop="name">Категории</span>
           </li>
         </ul>
       </div>
       <!--CONTENT-->
-      <div class="content">
-        <div class="content-align">
-          <!--article content-->
-          <div class="content-inner article-content">
-            <h1>Заказы <sup>12</sup></h1>
-            <div class="rolls layout-text payment__methods rolls-js">
-              <div class="rolls__item rolls__item-js">
-                <div class="rolls__header rolls__header-js">
-                  <div class="oh-meta">
-                    <div class="oh-meta__figure"><img src="img/img-product-02.jpg" alt="Заказ от 17 апреля 2019 г." /></div>
-                    <div class="oh-meta__content">
-                      <div class="oh-meta__title"><a href="cabinet-order-details.html">Заказ от 17 апреля 2019 г.</a></div>
-                      <div class="oh-meta__add">33737682-0003</div>
-                      <div class="oh-meta__status oh-meta__status_done">Выполнен</div>
-                    </div>
+      <!--Во время подбора результатов нужно добавлять класс js-loading на контейнер p-filters-js-->
+      <div class="m-container p-filters-js">
+        <div class="m-aside shutter--filters-js stop-remove-class">
+          <div class="m-aside__header">
+            Все товары
+            <a href="#" class="btn-filters-close js-btn-shutter-close" title="Закрыть фильтр">
+              <svg class="svg-ico-close" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 57.2 57.2">
+                <path d="M34.3 28.6L56 6.9c1.6-1.6 1.6-4.1 0-5.7 -1.6-1.6-4.1-1.6-5.7 0L28.6 22.9 6.9 1.3c-1.6-1.6-4.1-1.6-5.7 0 -1.6 1.6-1.6 4.1 0 5.7l21.7 21.6L1.3 50.3c-1.6 1.5-1.6 4.1 0 5.6 0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2l21.7-21.6L50.3 56c0.8 0.8 1.8 1.2 2.8 1.2s2-0.4 2.8-1.2c1.6-1.6 1.6-4.1 0-5.7L34.3 28.6z"></path>
+              </svg>
+            </a>
+          </div>
+          <div class="m-aside__align">
+            <div class="m-aside__holder">
+              <ul class="articles-nav">
+                <li class="current">
+                  <a href="#">Как выбрать ноутбук</a>
+                  <ul>
+                    <li><a href="#">Ноутбуки</a></li>
+                    <li class="current"><span>Компьютеры</span></li>
+                    <li class="current"><a href="#">Компьютеры</a></li>
+                    <li><a href="#">Мониторы</a></li>
+                  </ul>
+                </li>
+                <li class="current">
+                  <a href="#">Как выбрать планшет</a>
+                  <ul>
+                    <li><a href="#">Ноутбуки</a></li>
+                    <li><a href="#">Компьютеры</a></li>
+                    <li class="current">
+                      <a href="#">Мониторы</a>
+                      <ul>
+                        <li><a href="#">Ноутбуки</a></li>
+                        <li class="current"><span>Компьютеры</span></li>
+                        <li class="current"><a href="#">Мониторы</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Матрица</a>
+                  <ul>
+                    <li><a href="#">Ноутбуки</a></li>
+                    <li><a href="#">Компьютеры</a></li>
+                    <li><a href="#">Мониторы</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Цвет корпуса</a>
+                  <ul>
+                    <li><a href="#">Ноутбуки</a></li>
+                    <li><a href="#">Компьютеры</a></li>
+                    <li><a href="#">Мониторы</a></li>
+                  </ul>
+                </li>
+                <li>
+                  <a href="#">Процессор</a>
+                  <ul>
+                    <li><a href="#">Ноутбуки</a></li>
+                    <li><a href="#">Компьютеры</a></li>
+                    <li><a href="#">Мониторы</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="m-content">
+          <div class="m-heading">
+            <h1>Название категории</h1>
+            <div class="view-switcher m-heading__switcher view-switcher-products-js" data-toggle-view-for="products">
+              <a href="#" class="active" data-mod="grid-view" title="Продукты плиткой">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                  <path d="M6 7.5C6 6.67157 6.67157 6 7.5 6C8.32843 6 9 6.67157 9 7.5C9 8.32843 8.32843 9 7.5 9C6.67157 9 6 8.32843 6 7.5Z"></path>
+                  <path d="M6 13.5C6 12.6716 6.67157 12 7.5 12C8.32843 12 9 12.6716 9 13.5C9 14.3284 8.32843 15 7.5 15C6.67157 15 6 14.3284 6 13.5Z"></path>
+                  <path d="M6 20.5C6 19.6716 6.67157 19 7.5 19C8.32843 19 9 19.6716 9 20.5C9 21.3284 8.32843 22 7.5 22C6.67157 22 6 21.3284 6 20.5Z"></path>
+                  <path d="M13 7.5C13 6.67157 13.6716 6 14.5 6C15.3284 6 16 6.67157 16 7.5C16 8.32843 15.3284 9 14.5 9C13.6716 9 13 8.32843 13 7.5Z"></path>
+                  <path d="M13 13.5C13 12.6716 13.6716 12 14.5 12C15.3284 12 16 12.6716 16 13.5C16 14.3284 15.3284 15 14.5 15C13.6716 15 13 14.3284 13 13.5Z"></path>
+                  <path d="M13 20.5C13 19.6716 13.6716 19 14.5 19C15.3284 19 16 19.6716 16 20.5C16 21.3284 15.3284 22 14.5 22C13.6716 22 13 21.3284 13 20.5Z"></path>
+                  <path d="M20 7.5C20 6.67157 20.6716 6 21.5 6C22.3284 6 23 6.67157 23 7.5C23 8.32843 22.3284 9 21.5 9C20.6716 9 20 8.32843 20 7.5Z"></path>
+                  <path d="M20 13.5C20 12.6716 20.6716 12 21.5 12C22.3284 12 23 12.6716 23 13.5C23 14.3284 22.3284 15 21.5 15C20.6716 15 20 14.3284 20 13.5Z"></path>
+                  <path d="M20 20.5C20 19.6716 20.6716 19 21.5 19C22.3284 19 23 19.6716 23 20.5C23 21.3284 22.3284 22 21.5 22C20.6716 22 20 21.3284 20 20.5Z"></path>
+                </svg>
+                <span>Плиткой</span>
+              </a>
+              <a href="#" data-mod="list-view" title="Продукты списком">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28">
+                  <path d="M3 7C3 6.44772 3.44772 6 4 6H24C24.5523 6 25 6.44772 25 7C25 7.55228 24.5523 8 24 8H4C3.44772 8 3 7.55228 3 7Z"></path>
+                  <path d="M3 14C3 13.4477 3.44772 13 4 13H24C24.5523 13 25 13.4477 25 14C25 14.5523 24.5523 15 24 15H4C3.44772 15 3 14.5523 3 14Z"></path>
+                  <path d="M3 21C3 20.4477 3.44772 20 4 20H24C24.5523 20 25 20.4477 25 21C25 21.5523 24.5523 22 24 22H4C3.44772 22 3 21.5523 3 21Z"></path>
+                </svg>
+                <span>Списком</span>
+              </a>
+            </div>
+          </div>
+          <div class="m-options">
+            <a href="#" class="filters-switcher btn-filters-js" title="Показать фильтры">
+              <div class="p-filters-activated p-filters-activated-js hide">0</div>
+              <span>Список</span>
+              <em><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path d="M3 13h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7zm-4 6h2v-2H3v2zm0 4h2v-2H3v2zm0-8h2V7H3v2zm4 4h14v-2H7v2zm0 4h14v-2H7v2zM7 7v2h14V7H7z" /></svg></em>
+            </a>
+          </div>
+          <a href="#" class="banner">
+            <img class="no-mobile-only lozad" src="img/preloader.svg" data-src="img/banner-02.jpg" alt="Все виды рассрочки" />
+            <img class="mobile-only lozad" src="img/banner-01-mob.jpg" data-src="img/banner-01-mob.jpg" alt="Ноутбуки Samsung по суперцене 1000 р." data-loaded="true">
+          </a>
+          <div class="products" data-toggle-view-id="products">
+            <section class="products__list equal-height-js">
+              <article class="products__item">
+                <a href="catalog.html" class="split">
+                  <div class="split__figure">
+                    <img class="lozad" src="img/preloader.svg" data-src="img/img-product-01.jpg" alt="Портативные устройства" />
                   </div>
-                  <em class="rolls__angle rolls__hand-js">&#9660;</em>
-                </div>
-                <div class="rolls__panel typography rolls__panel-js">
-                  <div class="oh-content">
-                    <div class="oh-products">
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-02.jpg" alt="img/img-product-02.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-03.jpg" alt="img/img-product-03.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-04.jpg" alt="img/img-product-04.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-05.jpg" alt="img/img-product-05.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-06.jpg" alt="img/img-product-06.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-07.jpg" alt="img/img-product-07.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-08.jpg" alt="img/img-product-08.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-09.jpg" alt="img/img-product-09.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-10.jpg" alt="img/img-product-10.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                    </div>
+                  <h3 class="split__title"><span>Портативные устройства</span></h3>
+                </a>
+              </article>
+              <article class="products__item">
+                <a href="catalog.html" class="split">
+                  <div class="split__figure">
+                    <img class="lozad" src="img/preloader.svg" data-src="img/img-product-02.jpg" alt="Телевидение и видео" />
                   </div>
-                </div>
+                  <h3 class="split__title"><span>Телевидение и видео</span></h3>
+                </a>
+              </article>
+              <article class="products__item">
+                <a href="catalog.html" class="split">
+                  <div class="split__figure">
+                    <img class="lozad" src="img/preloader.svg" data-src="img/img-product-03.jpg" alt="Аксессуары для портативных устройств" />
+                  </div>
+                  <h3 class="split__title"><span>Аксессуары для портативных устройств</span></h3>
+                </a>
+              </article>
+              <article class="products__item">
+                <a href="catalog.html" class="split">
+                  <div class="split__figure">
+                    <img class="lozad" src="img/preloader.svg" data-src="img/img-product-04.jpg" alt="Фото и видеотехника" />
+                  </div>
+                  <h3 class="split__title"><span>Фото и видеотехника</span></h3>
+                </a>
+              </article>
+              <article class="products__item">
+                <a href="catalog.html" class="split">
+                  <div class="split__figure">
+                    <img class="lozad" src="img/preloader.svg" data-src="img/img-product-05.jpg" alt="Аудиотехника" />
+                  </div>
+                  <h3 class="split__title"><span>Аудиотехника</span></h3>
+                </a>
+              </article>
+              <article class="products__item">
+                <a href="catalog.html" class="split">
+                  <div class="split__figure">
+                    <img class="lozad" src="img/preloader.svg" data-src="img/img-product-06.jpg" alt="Музыкальное оборудование" />
+                  </div>
+                  <h3 class="split__title"><span>Музыкальное оборудование</span></h3>
+                </a>
+              </article>
+            </section>
+          </div>
+          <div class="products-pagination">
+            <div class="pagination layout-text">
+              <div class="pg-left">
+                <a class="pg-first disabled" href="#">
+                  <span>В начало</span>
+                  <i class="pg-first-arr">&nbsp;</i>
+                </a>
+                <a class="pg-prev disabled" href="#">
+                  <span>Назад</span>
+                  <i class="pg-prev-arr">&nbsp;</i>
+                </a>
               </div>
-              <div class="rolls__item rolls__item-js">
-                <div class="rolls__header rolls__header-js">
-                  <div class="oh-meta">
-                    <div class="oh-meta__figure"><img src="img/img-product-13.jpg" alt="Заказ от 20 мая 2019 г." /></div>
-                    <div class="oh-meta__content">
-                      <div class="oh-meta__title"><a href="cabinet-order-details.html">Заказ от 20 мая 2019 г.</a></div>
-                      <div class="oh-meta__add">82579614-2384</div>
-                      <div class="oh-meta__status oh-meta__status_pending">В ожидании</div>
-                    </div>
-                  </div>
-                  <em class="rolls__angle rolls__hand-js">&#9660;</em>
-                </div>
-                <div class="rolls__panel typography rolls__panel-js">
-                  <div class="oh-content">
-                    <div class="oh-products">
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-13.jpg" alt="img/img-product-13.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-12.jpg" alt="img/img-product-12.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-11.jpg" alt="img/img-product-11.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-10.jpg" alt="img/img-product-10.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="rolls__item rolls__item-js">
-                <div class="rolls__header rolls__header-js">
-                  <div class="oh-meta">
-                    <div class="oh-meta__figure"><img src="img/img-product-05.jpg" alt="Заказ от 01 июня 2018 г." /></div>
-                    <div class="oh-meta__content">
-                      <div class="oh-meta__title"><a href="cabinet-order-details.html">Заказ от 01 июня 2018 г.</a></div>
-                      <div class="oh-meta__add">73915462-1125</div>
-                      <div class="oh-meta__status oh-meta__status_rejected">Отклонено</div>
-                    </div>
-                  </div>
-                  <em class="rolls__angle rolls__hand-js">&#9660;</em>
-                </div>
-                <div class="rolls__panel typography rolls__panel-js">
-                  <div class="oh-content">
-                    <div class="oh-products">
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-05.jpg" alt="img/img-product-05.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-04.jpg" alt="img/img-product-04.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-03.jpg" alt="img/img-product-03.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                      <div class="oh-products__item">
-                        <a href="product-card.html" class="oh-product">
-                          <div class="oh-product__figure"><img src="img/img-product-06.jpg" alt="img/img-product-06.jpg" /></div>
-                          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="rolls__item rolls__item-js">
-                <div class="rolls__header rolls__header-js">
-                  <div class="oh-meta">
-                    <a href="product-card.html" class="oh-meta__figure"><img src="img/img-product-03.jpg" alt="В заказе может не быть раскрывашки" /></a>
-                    <div class="oh-meta__content">
-                      <div class="oh-meta__title"><a href="cabinet-order-details.html">В заказе может не быть раскрывашки</a></div>
-                      <div class="oh-meta__add">А картинка может быть ссылкой на товар</div>
-                      <div class="oh-meta__status oh-meta__status_done">Выполнен</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="rolls__panel typography rolls__panel-js">
-                  <div class="oh-content">
-                  </div>
-                </div>
+              <ul class="pg-list">
+                <li><a href="#">1</a></li>
+                <li><span class="dots">...</span></li>
+                <li><a href="#">8</a></li>
+                <li class="active"><span>9</span></li>
+                <li><a href="#">10</a></li>
+                <li><span class="dots">...</span></li>
+                <li><a href="#">127</a></li>
+              </ul>
+              <div class="pg-right">
+                <a class="pg-next" href="#">
+                  <span>Вперед</span>
+                  <i class="pg-next-arr">&nbsp;</i>
+                </a>
+                <a class="pg-last" href="#">
+                  <span>В конец</span>
+                  <i class="pg-last-arr">&nbsp;</i>
+                </a>
               </div>
             </div>
           </div>
-          <!--article content end-->
-        </div>
-        <!--SIDEBAR-->
-        <aside class="sidebar">
-          <div class="sidebar__holder">
-            <ul class="articles-nav">
-              <li><a href="cabinet.html">Мой кабинет</a></li>
-              <li class="current"><span>История заказов</span></li>
-              <li><a href="cabinet-profile.html">Личные данные</a></li>
-              <li><a href="cart.html">Корзина</a></li>
-              <li><a href="#">Выйти</a></li>
-            </ul>
+          <div class="load-more">
+            <a href="#" class="btn-def load-more__btn">Показать еще</a>
           </div>
-        </aside>
-        <!--SIDEBAR-->
+          <div class="m-description">
+            <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний ноутбук это очень лёгкое и ультратонкое устройство с большим объемом памяти. А прекрасное изображение на мониторе и высокая скорость работы способны поразить даже самых требовательных пользователей. При этом все современные производители ноутбуков, такие как Asus, HP, Acer и др в борьбе за внимание потребителей продолжают усовершенствовать существующие модели и выпускать превосходные новинки.</p>
+            <p>Если вы хотите купить ноутбук в Беларуси, то обязательно посетите наш магазин. Мы работаем в Минске и в других регионах. Мы предлагаем купить ноутбуки по выгодным ценам и в рассрочку, даже без процентов. Только у нас вы получите доступные цены и качественное обслуживание. Наши специалисты предоставят все необходимые консультации и помогут оформить простой и удобный кредит.</p>
+            <p>Мы осуществляем доставку в Минск, Гомель, Брест, Могилев, Гродно и Витебск, а также в любую точку Беларуси!</p>
+          </div>
+        </div>
       </div>
+      <section class="section section_collections tabs-js">
+        <div class="collections">
+          <h2 class="collections__title">Готовые подборки</h2>
+          <div class="collections__content">
+            <div class="collections__nav">
+              <div class="collections__select tabs__select-js"></div>
+              <div class="collections__thumbs tabs__thumbs-js tabs__select-drop-js">
+                <a href="#brand" class="tabs-active"><span>По производителю</span></a>
+                <a href="#launch"><span>Дата выхода на рынок</span></a>
+                <a href="#screen"><span>Диагональ экрана</span></a>
+                <a href="#color"><span>Цвет корпуса</span></a>
+                <a href="#resolution"><span>Разрешение экрана</span></a>
+              </div>
+            </div>
+            <div class="tabs__panels-js">
+              <div id="brand">
+                <ul class="float-list">
+                  <li><span>ASUS</span></li>
+                  <li><a href="#"><span>Acer</span></a></li>
+                  <li><a href="#"><span>Apple</span></a></li>
+                  <li><a href="#"><span>ASUS</span></a></li>
+                  <li><a href="#"><span>Dell</span></a></li>
+                  <li><a href="#"><span>DEXP</span></a></li>
+                  <li><a href="#"><span>Digma</span></a></li>
+                  <li><a href="#"><span>Dream Machines</span></a></li>
+                  <li><a href="#"><span>Fujitsu</span></a></li>
+                  <li><a href="#"><span>HP</span></a></li>
+                  <li><a href="#"><span>Huawei</span></a></li>
+                  <li><a href="#"><span>IRBIS</span></a></li>
+                  <li><a href="#"><span>Krez</span></a></li>
+                  <li><a href="#"><span>Lenovo</span></a></li>
+                  <li><a href="#"><span>MSI</span></a></li>
+                  <li><a href="#"><span>Packard</span></a></li>
+                  <li><a href="#"><span>Bell</span></a></li>
+                  <li><a href="#"><span>PNY</span></a></li>
+                  <li><a href="#"><span>Prestigio</span></a></li>
+                  <li><a href="#"><span>Razer</span></a></li>
+                  <li><a href="#"><span>Xiaomi</span></a></li>
+                </ul>
+              </div>
+              <div id="launch">
+                <ul class="float-list">
+                  <li><a href="#"><span>2015</span></a></li>
+                  <li><a href="#"><span>2016</span></a></li>
+                  <li><a href="#"><span>2017</span></a></li>
+                  <li><a href="#"><span>2018</span></a></li>
+                  <li><a href="#"><span>2019</span></a></li>
+                </ul>
+              </div>
+              <div id="screen">
+                <ul class="float-list">
+                  <li><a href="#"><span>менее 12"</span></a></li>
+                  <li><a href="#"><span>12-13"</span></a></li>
+                  <li><a href="#"><span>13.3-14"</span></a></li>
+                  <li><a href="#"><span>15"</span></a></li>
+                  <li><a href="#"><span>17"</span></a></li>
+                  <li><a href="#"><span>18" и более</span></a></li>
+                </ul>
+              </div>
+              <div id="color">
+                <ul class="float-list">
+                  <li><a href="#"><span>белый</span></a></li>
+                  <li><a href="#"><span>бордовый</span></a></li>
+                  <li><a href="#"><span>бронзовый</span></a></li>
+                  <li><a href="#"><span>голубой</span></a></li>
+                  <li><a href="#"><span>зеленый</span></a></li>
+                  <li><a href="#"><span>золотистый</span></a></li>
+                  <li><a href="#"><span>коричневый</span></a></li>
+                  <li><a href="#"><span>красный</span></a></li>
+                  <li><a href="#"><span>медный</span></a></li>
+                </ul>
+              </div>
+              <div id="resolution">
+                <ul class="float-list">
+                  <li><a href="#"><span>HD/HD+ (768p/900p)</span></a></li>
+                  <li><a href="#"><span>Full HD (1080p)</span></a></li>
+                  <li><a href="#"><span>QHD (1440p)</span></a></li>
+                  <li><a href="#"><span>Retina</span></a></li>
+                  <li><a href="#"><span>QHD+ (1800p)</span></a></li>
+                  <li><a href="#"><span>4K UHD (2160p)</span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section section_helper">
+        <h2 class="hide">Сервисы</h2>
+        <div class="helper-alt">
+          <div class="helper-alt__list equal-height-js">
+            <div class="helper-alt__item">
+              <strong><i class="icon-helper-call-color">&nbsp;</i> <span>Помощь экспертов в выборе</span></strong>
+              <p>Не можете определиться, какой товар выбрать? Консультации специалистов по телефону и в удобных мессенджерах, пишите нам!</p>
+            </div>
+            <div class="helper-alt__item">
+              <strong><i class="icon-helper-credit-color">&nbsp;</i> <span>Все виды рассрочки и кредит</span></strong>
+              <p>Поможем подобрать лучший вариант рассрочки или кредита Быстрое оформление по телефону Доставка рассрочки на дом</p>
+            </div>
+            <div class="helper-alt__item">
+              <strong><i class="icon-helper-delivery-color">&nbsp;</i> <span>Быстрая доставка</span></strong>
+              <p>Доставляем по Минску курьером в удобное для вас время. А также большой выбор способов доставки товаров по Беларуси</p>
+            </div>
+            <div class="helper-alt__item">
+              <strong><i class="icon-helper-service-color">&nbsp;</i> <span>Дополнительные услуги</span></strong>
+              <p>Предлагаем профессиональное сервисное обслуживание техники по выгодной цене</p>
+            </div>
+          </div>
+        </div>
+      </section>
       <!--CONTENT end-->
     </div>
   </div>

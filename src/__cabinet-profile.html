@@ -1,0 +1,82 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Личный кабинет",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная"],
+      "last": "Личный кабинет"
+    })
+
+    <!--CONTENT-->
+    <div class="content">
+      <div class="content-align">
+        <!--article content-->
+        <section class="content-inner article-content">
+          <h1>Персональный раздел</h1>
+          <div class="cabinet-profile-form">
+            <form action="#" method="post" class="simple-form validate-js">
+              <h2>Личные данные</h2>
+              <div class="simple-form__group">
+                <label class="input-wrap simple-form__input">
+                  <input class="input-def" name="profile-name" type="text">
+                  <span class="label-float">Имя</span>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <label class="input-wrap simple-form__input">
+                  <input class="input-def" name="profile-surname" type="text">
+                  <span class="label-float">Фамилия</span> @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <label class="input-wrap simple-form__input">
+                  <input class="input-def" name="profile-email" type="email" required>
+                  <span class="label-float">E-mail *</span> @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <label class="input-wrap simple-form__input">
+                  <input class="input-def" name="profile-login" type="text" required>
+                  <span class="label-float">Login (мин. 3 символа) *</span> @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+              </div>
+              <h2>Пароль</h2>
+              <div class="simple-form__group">
+                <label class="input-wrap simple-form__input">
+                  <input class="input-def" name="profile-pass-main" type="password" required>
+                  <span class="label-float">Пароль</span>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+                <label class="input-wrap simple-form__input">
+                  <input class="input-def" name="profile-pass-confirm" type="password" required>
+                  <span class="label-float">Пароль</span>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+              </div>
+              <div class="input-wrap input-wrap_btn simple-form__input simple-form__input_btn">
+                <input class="btn-alt simple-form__btn" type="submit" value="Сохранить настройки профиля">
+              </div>
+            </form>
+          </div>
+        </section>
+        <!--article content end-->
+      </div>
+
+      <!--SIDEBAR-->
+      @@include('_tpl_layout_sidebar-cabinet.html', {"currentItem": "Мой кабинет"})
+      <!--SIDEBAR-->
+    </div>
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')
