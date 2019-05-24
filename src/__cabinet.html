@@ -1,0 +1,53 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Личный кабинет",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная"],
+      "last": "Личный кабинет"
+    })
+
+    <!--CONTENT-->
+    <div class="content">
+      <div class="content-align">
+        <!--article content-->
+        <section class="content-inner article-content">
+          <h1>Персональный раздел</h1>
+          <p>В личном кабинете Вы можете проверить текущее состояние корзины, ход выполнения Ваших заказов, просмотреть или изменить личную информацию, а также подписаться на новости и другие информационные рассылки.</p>
+          <h2>Личная информация</h2>
+          <ul>
+            <li><a href="#">Изменить регистрационные данные</a></li>
+          </ul>
+          <h2>Заказы</h2>
+          <ul>
+            <li><a href="#">Ознакомиться с состоянием заказов</a></li>
+            <li><a href="#">Посмотреть содержание корзины</a></li>
+            <li><a href="#">Посмотреть историю заказов</a></li>
+          </ul>
+        </section>
+        <!--article content end-->
+      </div>
+
+      <!--SIDEBAR-->
+      @@include('_tpl_layout_sidebar-cabinet.html', {"currentItem": "Мой кабинет"})
+      <!--SIDEBAR-->
+    </div>
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

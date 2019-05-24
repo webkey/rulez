@@ -1,0 +1,19 @@
+<aside class="sidebar">
+  <div class="sidebar__holder">
+    <ul class="articles-nav">
+      @@if(context.currentItem == "Мой кабинет"){<li class="current"><span>Мой кабинет</span></li>}
+      @@if(context.currentItem != "Мой кабинет"){<li><a href="cabinet.html">Мой кабинет</a></li>}
+
+      @@if(context.currentItem == "История заказов"){<li class="current"><span>История заказов</span></li>}
+      @@if(context.currentItem != "История заказов"){<li><a href="cabinet-orders-history.html">История заказов</a></li>}
+
+      @@if(context.currentItem == "Личные данные"){<li class="current"><span>Личные данные</span></li>}
+      @@if(context.currentItem != "Личные данные"){<li><a href="cabinet-personal-data.html">Личные данные</a></li>}
+
+      @@if(context.currentItem == "Корзина"){<li class="current"><span>Корзина</span></li>}
+      @@if(context.currentItem != "Корзина"){<li><a href="cart.html">Корзина</a></li>}
+
+      <li><a href="#">Выйти</a></li>
+    </ul>
+  </div>
+</aside>

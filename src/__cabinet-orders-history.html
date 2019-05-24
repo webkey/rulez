@@ -1,0 +1,81 @@
+@@include('_tpl_layout_head.html', {
+	"title": "История заказов",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная", "Личный кабинет"],
+      "last": "История заказов"
+    })
+
+    <!--CONTENT-->
+    <div class="content">
+      <div class="content-align">
+        <!--article content-->
+        <div class="content-inner article-content">
+          <h1>Заказы <sup>12</sup></h1>
+
+          <div class="rolls layout-text payment__methods rolls-js">
+            <div class="rolls__item rolls__item-js">
+              @@include("_tpl_orders-history__item.html", {
+              "metaFigureSrc": "img/img-product-02.jpg",
+              "metaTitle": "Заказ от 17 апреля 2019 г.",
+              "metaAdd": "33737682-0003",
+              "metaStatus": "Выполнен",
+              "allFigures": ["img/img-product-02.jpg", "img/img-product-03.jpg", "img/img-product-04.jpg", "img/img-product-05.jpg", "img/img-product-06.jpg", "img/img-product-07.jpg", "img/img-product-08.jpg", "img/img-product-09.jpg", "img/img-product-10.jpg"]
+              })
+            </div>
+            <div class="rolls__item rolls__item-js">
+              @@include("_tpl_orders-history__item.html", {
+              "metaFigureSrc": "img/img-product-13.jpg",
+              "metaTitle": "Заказ от 20 мая 2019 г.",
+              "metaAdd": "82579614-2384",
+              "metaStatus": "В ожидании",
+              "allFigures": ["img/img-product-13.jpg", "img/img-product-12.jpg", "img/img-product-11.jpg", "img/img-product-10.jpg"]
+              })
+            </div>
+            <div class="rolls__item rolls__item-js">
+              @@include("_tpl_orders-history__item.html", {
+              "metaFigureSrc": "img/img-product-05.jpg",
+              "metaTitle": "Заказ от 01 июня 2018 г.",
+              "metaAdd": "73915462-1125",
+              "metaStatus": "Отклонено",
+              "allFigures": ["img/img-product-05.jpg", "img/img-product-04.jpg", "img/img-product-03.jpg", "img/img-product-06.jpg"]
+              })
+            </div>
+            <div class="rolls__item rolls__item-js">
+              @@include("_tpl_orders-history__item.html", {
+              "metaFigureSrc": "img/img-product-03.jpg",
+              "metaTitle": "В заказе может не быть раскрывашки",
+              "metaAdd": "А картинка может быть ссылкой на товар",
+              "metaStatus": "Выполнен"
+              })
+            </div>
+          </div>
+
+        </div>
+        <!--article content end-->
+      </div>
+
+      <!--SIDEBAR-->
+      @@include('_tpl_layout_sidebar-cabinet.html', {"currentItem": "История заказов"})
+      <!--SIDEBAR-->
+    </div>
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

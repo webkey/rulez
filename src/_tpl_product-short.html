@@ -13,8 +13,9 @@
     </div>
     }
     <a itemprop="url" href="product-card.html" title="@@title">
-      <div class="product-short__figure product-short-figure-js">
-        <img itemprop="image" src="img/preloader.svg" data-src="@@src" alt="@@title" />
+      <div class="product-short__figure">
+        @@if(context.imagePreload == "false"){<img itemprop="image" src="@@src" alt="@@title" />}
+        @@if(!context.imagePreload){<img itemprop="image" src="img/preloader.svg" data-src="@@src" alt="@@title" />}
       </div>
       <div class="product-short__category">@@category</div>
       <h3 itemprop="name" class="product-short__title"><span>@@title</span></h3>

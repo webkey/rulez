@@ -1,0 +1,32 @@
+<div class="rolls__header rolls__header-js">
+  <div class="oh-meta">
+    @@if(context.allFigures){<div class="oh-meta__figure"><img src="@@metaFigureSrc" alt="@@metaTitle" /></div>}
+    @@if(!context.allFigures){<a href="product-card.html" class="oh-meta__figure"><img src="@@metaFigureSrc" alt="@@metaTitle" /></a>}
+    <div class="oh-meta__content">
+      <div class="oh-meta__title"><a href="cabinet-order-details.html">@@metaTitle</a></div>
+      <div class="oh-meta__add">@@metaAdd</div>
+      @@if(context.metaStatus == "Выполнен") {<div class="oh-meta__status oh-meta__status_done">Выполнен</div>}
+      @@if(context.metaStatus == "В ожидании") {<div class="oh-meta__status oh-meta__status_pending">В ожидании</div>}
+      @@if(context.metaStatus == "Отклонено") {<div class="oh-meta__status oh-meta__status_rejected">Отклонено</div>}
+    </div>
+  </div>
+  @@if(context.allFigures){
+  <em class="rolls__angle rolls__hand-js">&#9660;</em>
+  }
+</div>
+<div class="rolls__panel typography rolls__panel-js@@if(context.active){ rolls-active}">
+  <div class="oh-content">
+    @@if(context.allFigures){
+    <div class="oh-products">
+      @@for (var i = 0; i < allFigures.length; i++) {
+      <div class="oh-products__item">
+        <a href="product-card.html" class="oh-product">
+          <div class="oh-product__figure"><img src="`+allFigures[i]+`" alt="`+allFigures[i]+`" /></div>
+          <div class="oh-product__title">Название товара может быть достаточно большим (1)</div>
+        </a>
+      </div>
+      }
+    </div>
+    }
+  </div>
+</div>

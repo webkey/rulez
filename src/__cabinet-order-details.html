@@ -1,0 +1,97 @@
+@@include('_tpl_layout_head.html', {
+	"title": "Личный кабинет",
+  "hasBg": "true",
+	"pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная", "Личный кабинет", "История заказов"],
+      "last": "Заказ от 17 апреля 2019 г."
+    })
+
+    <!--CONTENT-->
+    <div class="content">
+      <div class="content-align">
+        <!--article content-->
+        <div class="content-inner article-content">
+          <div class="order-details">
+            <div class="od-header order-details__header">
+              <h1 class="h1 od-header__title">Заказ от 17 апреля 2019 г.</h1>
+              <div class="od-header__status od-header__status_done">Выполнен</div>
+              <div class="od-header__add">33737682-0003</div>
+            </div>
+            <div class="order-details__body">
+              <div class="order-details__content">
+                <div class="od-address i-list">
+                  <div class="i-list__item">
+                    <i class="i-list__icon icon-i-list-check-color"></i>
+                    <div class="i-list__content">
+                      <h3>Дата доставки</h3>
+                      <p>20 мая 2019 г.</p>
+                    </div>
+                  </div>
+                  <div class="i-list__item">
+                    <i class="i-list__icon icon-i-list-adr-color"></i>
+                    <div class="i-list__content">
+                      <h3>Доставка в пункт выдачи</h3>
+                      <p>Минск, пр. Независимости, д. 25, к. 205</p>
+                    </div>
+                  </div>
+                  <div class="i-list__item">
+                    <i class="i-list__icon icon-i-list-user-color"></i>
+                    <div class="i-list__content">
+                      <h3>Покупатель</h3>
+                      <p>Имя Фамилия</p>
+                      <p>imyafamiliya@gmail.com</p>
+                      <p>+37517170170</p>
+                    </div>
+                  </div>
+                  <div class="i-list__item">
+                    <i class="i-list__icon icon-i-list-receipt-color"></i>
+                    <div class="i-list__content">
+                      <h3>Электронный чек</h3>
+                      <p><a href="#">Посмотреть</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="order-details__aside">
+                <div class="summary order-details__summary">
+                  <div class="summary__item">
+                    <div>Товары (1)</div> <div>67 900 ₽</div>
+                  </div>
+                  <div class="summary__item">
+                    <div>Доставка</div> <div><mark>бесплатно</mark></div>
+                  </div>
+                  <div class="summary__total">
+                    <div>Итого</div> <div>67 900 ₽</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--article content end-->
+      </div>
+
+      <!--SIDEBAR-->
+      @@include('_tpl_layout_sidebar-cabinet.html', {"currentItem": "История заказов"})
+      <!--SIDEBAR-->
+    </div>
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')
