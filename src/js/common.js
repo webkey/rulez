@@ -2141,6 +2141,7 @@ function addToCarAnimation() {
           if (!$_panel.length) {
             return false;
           }
+          // console.log('open!');
 
           var $activePanelWrap = $_panel.parent(), // Ближайшая родительская обертка активной Панели
               $activeParentsPanels = $_panel.parentsUntil(element, config.panel), // Все родительские Панели активной Панели
@@ -2298,6 +2299,7 @@ function addToCarAnimation() {
         },
         events = function () {
           $element.on(config.event, config.hand, function (event) {
+            // console.log('click');
             // Если панель во время клика находится в процессе анимации, то выполнение функции прекратится
             if (isAnimated) {
               event.preventDefault();
@@ -2317,6 +2319,7 @@ function addToCarAnimation() {
 
             event.preventDefault();
 
+            // console.log("$currentHand: ", $currentHand);
             var $currentPanel = $currentHand.closest(config.header).next().children(config.panel);
 
             if ($currentPanel.data('active')) {
@@ -2325,6 +2328,8 @@ function addToCarAnimation() {
                 isAnimated = false; // Анимация завершина
               });
             } else {
+              // console.log('1');
+              // console.log("$currentPanel: ", $currentPanel);
               // Открыть текущую панель
               open($currentPanel, function () {
                 isAnimated = false; // Анимация завершина
@@ -2341,7 +2346,9 @@ function addToCarAnimation() {
             }
           });
 
-          $panel.wrap($panelWrap);
+          var $panel = $(config.panel, $element).not('.wrapped');
+
+          $panel.wrap($panelWrap).addClass('wrapped');
 
           $panel
               .css(absoluteStyles)
@@ -2440,7 +2447,7 @@ function rollsInit() {
   var $defautlRolls = $('.rolls-js');
 
   if ($defautlRolls.length) {
-    $defautlRolls.msRolls()
+    $defautlRolls.msRolls();
   }
 
   /** Catalog list */
