@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Личный кабинет</title>
+  <title>Личные данные</title>
   <!--Mobile optimized-->
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=2.0">
   <!--Theme color-->
@@ -654,7 +654,13 @@
             </a>
           </li>
           <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
-            <span itemprop="name">Личный кабинет</span>
+            <a itemprop="item" href="#" title="Перейти в раздел Личный кабинет">
+              <span itemprop="name">Личный кабинет</span>
+              <meta itemprop="position" content="1" />
+            </a>
+          </li>
+          <li itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">
+            <span itemprop="name">Личные данные</span>
           </li>
         </ul>
       </div>
@@ -662,7 +668,7 @@
       <div class="content">
         <div class="content-align">
           <!--article content-->
-          <section class="content-inner article-content">
+          <div class="content-inner article-content">
             <h1>Персональный раздел</h1>
             <div class="cabinet-profile-form">
               <form action="#" method="post" class="simple-form validate-js">
@@ -713,17 +719,18 @@
                 </div>
               </form>
             </div>
-          </section>
+          </div>
           <!--article content end-->
         </div>
         <!--SIDEBAR-->
         <aside class="sidebar">
           <div class="sidebar__holder">
             <ul class="articles-nav">
-              <li class="current"><span>Мой кабинет</span></li>
+              <li><a href="cabinet.html">Мой кабинет</a></li>
               <li><a href="cabinet-orders-history.html">История заказов</a></li>
-              <li><a href="cabinet-profile.html">Личные данные</a></li>
+              <li class="current"><span>Личные данные</span></li>
               <li><a href="cart.html">Корзина</a></li>
+              <li><a href="favorites.html">Избранное</a></li>
               <li><a href="#">Выйти</a></li>
             </ul>
           </div>

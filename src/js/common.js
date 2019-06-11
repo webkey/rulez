@@ -31,8 +31,16 @@ var observer = lozad();
 observer.observe();
 
 function preloadOtherImages() {
-  var $img = $('img', '.products__list');
-  $.each($img, function (index, element) {
+  // Catalog
+  var $imgCatalog = $('img', '.products__list');
+  $.each($imgCatalog, function (index, element) {
+    var observer = lozad(element);
+    observer.observe();
+  });
+
+  // Favorite
+  var $imgFavourite = $('img', '.f-products__list');
+  $.each($imgFavourite, function (index, element) {
     var observer = lozad(element);
     observer.observe();
   });

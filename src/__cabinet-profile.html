@@ -1,5 +1,5 @@
 @@include('_tpl_layout_head.html', {
-	"title": "Личный кабинет",
+	"title": "Личные данные",
   "hasBg": "true",
 	"pageClass": ""
 })
@@ -12,15 +12,15 @@
 <div class="main">
   <div class="max-wrap layout">
     @@include('_tpl_breadcrumbs.html', {
-      "items": ["Главная"],
-      "last": "Личный кабинет"
+      "items": ["Главная", "Личный кабинет"],
+      "last": "Личные данные"
     })
 
     <!--CONTENT-->
     <div class="content">
       <div class="content-align">
         <!--article content-->
-        <section class="content-inner article-content">
+        <div class="content-inner article-content">
           <h1>Персональный раздел</h1>
           <div class="cabinet-profile-form">
             <form action="#" method="post" class="simple-form validate-js">
@@ -62,12 +62,12 @@
               </div>
             </form>
           </div>
-        </section>
+        </div>
         <!--article content end-->
       </div>
 
       <!--SIDEBAR-->
-      @@include('_tpl_layout_sidebar-cabinet.html', {"currentItem": "Мой кабинет"})
+      @@include('_tpl_layout_sidebar-cabinet.html', {"currentItem": "Личные данные"})
       <!--SIDEBAR-->
     </div>
     <!--CONTENT end-->

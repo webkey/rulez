@@ -1,0 +1,188 @@
+@@include('_tpl_layout_head.html', {
+  "title": "Избранное",
+  "hasBg": "true",
+  "pageClass": ""
+})
+
+<!--HEADER-->
+@@include('_tpl_layout_header.html', { "float": "true", "currentItem": "" })
+<!--HEADER end-->
+
+<!--MAIN-->
+<div class="main">
+  <div class="max-wrap layout">
+    @@include('_tpl_breadcrumbs.html', {
+      "items": ["Главная", "Личный кабинет"],
+      "last": "Избранное"
+    })
+
+    <!--CONTENT-->
+    <div class="content">
+      <div class="content-align">
+        <!--article content-->
+        <div class="content-inner article-content">
+          <h1>Избранное</h1>
+          <p>В этом разделе размещены отмеченные Вами товары.</p>
+          <h2>Список понравившихся товаров</h2>
+          <div class="f-products">
+            <section class="f-products__list equal-height-js">
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/img-product-01.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "5", "rateWidth": "100%",
+                "priceOld": {"val": "1500.50", "unit": "р."},
+                "price": {"val": "1500.50", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "inCompare": "",
+                "wow": "WOW!",
+                "stickers": { "sale": "%", "new": "new", "gift": "Подарок!", "top": "ТОП", "installment": "Рассрочка 0%" }
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/img-product-02.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "4.5", "rateWidth": "90%",
+                "priceOld": {"val": "", "unit": "р."},
+                "price": {"val": "", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "inCompare": "true",
+                "wow": "",
+                "stickers": { "new": "new", "top": "ТОП" }
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/img-product-03.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "3", "rateWidth": "60%",
+                "priceOld": {"val": "5199.50", "unit": "р."},
+                "price": {"val": "4325.50", "unit": "р."},
+                "inFavorites": "added",
+                "inCart": "added",
+                "inCompare": "",
+                "wow": "WOW!",
+                "stickers": { "sale": "%", "new": "new", "top": "ТОП", "installment": "Рассрочка 0%" }
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/temp/img_640_01.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "5", "rateWidth": "100%",
+                "priceOld": {"val": "", "unit": "р."},
+                "price": {"val": "4325.50", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "wow": "WOW!",
+                "stickers": ""
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/temp/img_640_02.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "5", "rateWidth": "100%",
+                "priceOld": {"val": "", "unit": "р."},
+                "price": {"val": "1457.50", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "wow": "",
+                "stickers": { "installment": "Рассрочка 0%" }
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/img-product-04.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "5", "rateWidth": "100%",
+                "priceOld": {"val": "", "unit": "р."},
+                "price": {"val": "1457.50", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "wow": "",
+                "stickers": ""
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/img-product-01.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "4.5", "rateWidth": "90%",
+                "priceOld": {"val": "", "unit": "р."},
+                "price": {"val": "", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "wow": "",
+                "stickers": ""
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/img-product-05.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "3", "rateWidth": "60%",
+                "priceOld": {"val": "", "unit": "р."},
+                "price": {"val": "4325.50", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "wow": "",
+                "stickers": ""
+                })
+              </article>
+              <article class="f-products__item">
+                @@include("_tpl_product.html", {
+                "href": "#",
+                "src": "img/img-product-04.jpg",
+                "title": "Ноутбук SAMSUNG GL753VE-GC112T",
+                "rate": "5", "rateWidth": "100%",
+                "priceOld": {"val": "", "unit": "р."},
+                "price": {"val": "1457", "unit": "р."},
+                "inFavorites": "",
+                "inCart": "",
+                "wow": "",
+                "stickers": ""
+                })
+              </article>
+            </section>
+            <div class="products-pagination">
+              @@include("_tpl_pagination.html")
+            </div>
+            <div class="load-more">
+              <a href="#" class="btn-def load-more__btn">Показать еще</a>
+            </div>
+            <div class="m-description">
+              <p>Современные ноутбуки заметно отличаются от своих предшественников – крупных и нефункциональных устройств с минимальной памятью, которые появились в 80-х годах прошлого столетия. Сегодняшний ноутбук это очень лёгкое и ультратонкое устройство с большим объемом памяти. А прекрасное изображение на мониторе и высокая скорость работы способны поразить даже самых требовательных пользователей. При этом все современные производители ноутбуков, такие как Asus, HP, Acer и др в борьбе за внимание потребителей продолжают усовершенствовать существующие модели и выпускать превосходные новинки.</p>
+              <p>Если вы хотите купить ноутбук в Беларуси, то обязательно посетите наш магазин. Мы работаем в Минске и в других регионах. Мы предлагаем купить ноутбуки по выгодным ценам и в рассрочку, даже без процентов. Только у нас вы получите доступные цены и качественное обслуживание. Наши специалисты предоставят все необходимые консультации и помогут оформить простой и удобный кредит.</p>
+              <p>Мы осуществляем доставку в Минск, Гомель, Брест, Могилев, Гродно и Витебск, а также в любую точку Беларуси!</p>
+            </div>
+          </div>
+        </div>
+        <!--article content end-->
+      </div>
+
+      <!--SIDEBAR-->
+      @@include('_tpl_layout_sidebar-cabinet.html', {"currentItem": "Избранное"})
+      <!--SIDEBAR-->
+    </div>
+    <!--CONTENT end-->
+  </div>
+</div>
+<!--MAIN end-->
+
+<!--FOOTER-->
+@@include('_tpl_layout_footer.html')
+<!--FOOTER end-->
+
+@@include('_tpl_layout_foot.html')

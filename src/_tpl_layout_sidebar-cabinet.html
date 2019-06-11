@@ -13,6 +13,9 @@
       @@if(context.currentItem == "Корзина"){<li class="current"><span>Корзина</span></li>}
       @@if(context.currentItem != "Корзина"){<li><a href="cart.html">Корзина</a></li>}
 
+      @@if(context.currentItem == "Избранное"){<li class="current"><span>Избранное</span></li>}
+      @@if(context.currentItem != "Избранное"){<li><a href="favorites.html">Избранное</a></li>}
+
       <li><a href="#">Выйти</a></li>
     </ul>
   </div>

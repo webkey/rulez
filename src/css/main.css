@@ -3945,7 +3945,7 @@ form .success ~ .success-note {
   padding-left: 0;
 }
 
-.pg-list {
+.pg-list, .article-content .pg-list, .typography .pg-list {
   display: inline-block;
   vertical-align: middle;
   list-style: none;
@@ -3953,29 +3953,29 @@ form .success ~ .success-note {
   margin: 0;
 }
 
-.pg-list li {
+.pg-list li, .article-content .pg-list li, .typography .pg-list li {
   margin: 0.4rem 4px;
   padding: 0;
 }
 
 @media (max-width: 479px) {
-  .pg-list li {
+  .pg-list li, .article-content .pg-list li, .typography .pg-list li {
     margin-right: 0;
     margin-left: 0;
   }
 }
 
-.pg-list li:before {
+.pg-list li:before, .article-content .pg-list li:before, .typography .pg-list li:before {
   content: none;
 }
 
-.pg-list li {
+.pg-list li, .article-content .pg-list li, .typography .pg-list li {
   display: inline-block;
   vertical-align: top;
   text-align: center;
 }
 
-.pg-list li a, .pg-list li > span {
+.pg-list li a, .pg-list li > span, .article-content .pg-list li a, .article-content .pg-list li > span, .typography .pg-list li a, .typography .pg-list li > span {
   display: inline-block;
   vertical-align: top;
   color: inherit;
@@ -3987,16 +3987,16 @@ form .success ~ .success-note {
   transition-duration: 0.25s;
 }
 
-.pg-list li a {
+.pg-list li a, .article-content .pg-list li a, .typography .pg-list li a {
   text-decoration: none;
   cursor: pointer;
 }
 
-.no-touch .pg-list li a:hover {
+.no-touch .pg-list li a:hover, .no-touch .article-content .pg-list li a:hover, .no-touch .typography .pg-list li a:hover {
   color: #6e52dd;
 }
 
-.pg-list li.active > span, .pg-list li.active a, .no-touch .pg-list li.active a:hover {
+.pg-list li.active > span, .pg-list li.active a, .no-touch .pg-list li.active a:hover, .article-content .pg-list li.active > span, .article-content .pg-list li.active a, .no-touch .article-content .pg-list li.active a:hover, .typography .pg-list li.active > span, .typography .pg-list li.active a, .no-touch .typography .pg-list li.active a:hover {
   color: white;
   background-color: #6e52dd;
 }
@@ -15965,6 +15965,82 @@ a.helper__item:hover .helper__inner > span {
 }
 
 /* helper alt end */
+/* favorite products */
+.f-products {
+  overflow: hidden;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 767px) {
+  .f-products {
+    margin-bottom: 2rem;
+  }
+}
+
+.f-products:last-child {
+  margin-bottom: 0;
+}
+
+.f-products__list {
+  overflow: hidden;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: stretch;
+      justify-content: stretch;
+  -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+  margin: 0 0 4rem;
+  padding: 1px;
+}
+
+.f-products__list:last-child {
+  margin-bottom: 0;
+}
+
+.f-products__item {
+  position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: 33.33%;
+      flex-basis: 33.33%;
+  width: 33.33%;
+  background-color: white;
+  box-shadow: 0 0 0 1px #dbdbdb;
+}
+
+@media (max-width: 1199px) {
+  .f-products__item {
+    width: 50%;
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+  }
+  .f-products__item.has-banner {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .f-products__item {
+    width: 33.33%;
+    -ms-flex-preferred-size: 33.33%;
+        flex-basis: 33.33%;
+  }
+}
+
+@media (max-width: 767px) {
+  .f-products__item {
+    width: 50%;
+    -ms-flex-preferred-size: 50%;
+        flex-basis: 50%;
+  }
+}
+
+.f-products__item .product {
+  z-index: auto;
+  height: 100%;
+}
+
+/* favorite products end */
 /* products */
 .products {
   overflow: hidden;
@@ -16355,20 +16431,20 @@ a.helper__item:hover .helper__inner > span {
   }
 }
 
-.m-heading, .m-options, .m-tags, .m-description, .load-more, .products-pagination {
+.m-content .m-heading, .m-content .m-options, .m-content .m-tags, .m-content .m-description, .m-content .load-more, .m-content .products-pagination {
   padding-left: 3rem;
   padding-right: 3rem;
 }
 
 @media (max-width: 1279px) {
-  .m-heading, .m-options, .m-tags, .m-description, .load-more, .products-pagination {
+  .m-content .m-heading, .m-content .m-options, .m-content .m-tags, .m-content .m-description, .m-content .load-more, .m-content .products-pagination {
     padding-left: 2rem;
     padding-right: 2rem;
   }
 }
 
 @media (max-width: 639px) {
-  .m-heading, .m-options, .m-tags, .m-description, .load-more, .products-pagination {
+  .m-content .m-heading, .m-content .m-options, .m-content .m-tags, .m-content .m-description, .m-content .load-more, .m-content .products-pagination {
     padding-left: 1rem;
     padding-right: 1rem;
   }
@@ -16475,6 +16551,74 @@ a.helper__item:hover .helper__inner > span {
 }
 
 /* m-container end */
+/* categories-menu */
+.categories-menu, .categories-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 1.4rem 0 0;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  color: #7e7e7e;
+}
+
+.categories-menu li {
+  position: relative;
+  padding: 0 0 0 2.4rem;
+  margin: 0 0 1.4rem;
+  cursor: default;
+}
+
+.categories-menu li:first-child {
+  margin-top: 0;
+}
+
+.categories-menu li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 1.4rem;
+  height: 0.2rem;
+  background-color: #8f77ed;
+}
+
+.categories-menu li.current > a, .categories-menu li.current > span {
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
+.categories-menu li.current > span {
+  color: #8f77ed;
+}
+
+.categories-menu a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.25s;
+}
+
+.categories-menu a:hover {
+  color: #6e52dd;
+}
+
+.categories-menu > li > a, .categories-menu > li > span {
+  color: #000;
+}
+
+.categories-menu > li > ul {
+  font-size: 1.4rem;
+  line-height: 2rem;
+}
+
+.categories-menu > li > ul > li {
+  padding-left: 0;
+}
+
+.categories-menu > li > ul > li::before {
+  content: none;
+}
+
 /* filters-results */
 .p-results {
   position: absolute;
@@ -17444,7 +17588,7 @@ a.helper__item:hover .helper__inner > span {
 
 .p-filters-drop-list, .article-content .p-filters-drop-list {
   list-style: none;
-  margin: 0 -0.6rem;
+  margin: 0 0 0 -0.6rem;
   padding: 1.4rem 0 0rem;
 }
 

@@ -679,53 +679,54 @@ $pagination-border-width: 0
     padding-left: 0
 
 .pg-list
-  display: inline-block
-  vertical-align: middle
-  list-style: none
-  padding: 0
-  margin: 0
-
-  li
-    margin: #{$pagination-vspace} 4px
+  &, .#{$article-content} &, .#{$typography} &
+    display: inline-block
+    vertical-align: middle
+    list-style: none
     padding: 0
+    margin: 0
 
-    +media('<mob-s')
-      +margin-horizontal(0)
+    li
+      margin: #{$pagination-vspace} 4px
+      padding: 0
 
-    &:before
-      content: none
+      +media('<mob-s')
+        +margin-horizontal(0)
 
-  li
-    +display-inline-block-top
-    text-align: center
+      &:before
+        content: none
 
-    a, & > span
+    li
       +display-inline-block-top
-      color: inherit
-      background: transparent
-      min-width: $pagination-width
-      padding: 0 0.2rem
-      border-radius: 50%
+      text-align: center
 
-      @if $animation-use
-        transition:
-          property: color
-          duration: $animation-speed
+      a, & > span
+        +display-inline-block-top
+        color: inherit
+        background: transparent
+        min-width: $pagination-width
+        padding: 0 0.2rem
+        border-radius: 50%
 
-    a
-      text-decoration: none
-      cursor: pointer
+        @if $animation-use
+          transition:
+            property: color
+            duration: $animation-speed
 
-      .no-touch &:hover
-        color: $base-color
+      a
+        text-decoration: none
+        cursor: pointer
 
-    &.active > span, &.active a, .no-touch &.active a:hover
-      color: white
-      background-color: $base-color
-      @if $pagination-border-width != 0
-        border:
-          top-color: $base-color
-          bottom-color: $base-color
+        .no-touch &:hover
+          color: $base-color
+
+      &.active > span, &.active a, .no-touch &.active a:hover
+        color: white
+        background-color: $base-color
+        @if $pagination-border-width != 0
+          border:
+            top-color: $base-color
+            bottom-color: $base-color
 
 // шрифт для элементов пагинации
 .pg-first, .pg-last, .pg-prev, .pg-next, .pg-list a, .pg-list li > span
@@ -5247,6 +5248,7 @@ $search-btn-space: 0 0.5rem
   +media('<tab')
     display: none
 
+// article nav
 .articles-nav
   &, & ul
     list-style: none
@@ -10549,6 +10551,64 @@ a.helper__item
 
 /* helper alt end
 
+/* favorite products
+// variables
+$f-products-border-width: 1px
+.f-products
+  overflow: hidden
+  margin-bottom: 3rem
+
+  +media('<tab-s')
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+.f-products__list
+  overflow: hidden
+  display: flex
+  justify-content: stretch
+  flex-flow: row wrap
+  margin: 0 0 4rem
+  padding: #{$f-products-border-width}
+
+  &:last-child
+    margin-bottom: 0
+
+.f-products__item
+  position: relative
+  flex-shrink: 0
+  $width: 33.33%
+  flex-basis: $width
+  width: $width
+  background-color: white // Нужно для перекрытия соседних бордеров
+  //background-color: #ff8484 // Нужно для перекрытия соседних бордеров
+  box-shadow: 0 0 0 #{$f-products-border-width} $border-color
+
+  +media('<net')
+    $width: 50%
+    width: $width
+    flex-basis: $width
+
+    &.has-banner
+      display: none
+
+  +media('<tab')
+    $width: 33.33%
+    width: $width
+    flex-basis: $width
+
+  +media('<tab-s')
+    $width: 50%
+    width: $width
+    flex-basis: $width
+
+  .product
+    z-index: auto
+    height: 100%
+
+/* favorite products end
+
 /* products
 // variables
 $products-border-width: 1px
@@ -10576,7 +10636,7 @@ $products-border-width: 1px
   justify-content: stretch
   flex-flow: row wrap
   margin: 0 -#{$products-border-width} 4rem
-  padding: 0 1px #{$products-border-width} 0
+  padding: 0 #{$products-border-width} #{$products-border-width} 0
 
   &:last-child
     margin-bottom: 0
@@ -10917,16 +10977,17 @@ $p-results-fixed-height: 7rem
     max-width: none
 
 .m-heading, .m-options, .m-tags, .m-description, .load-more, .products-pagination
-  padding-left: nth($m-container-space, 2)
-  padding-right: nth($m-container-space, 2)
+  .m-content &
+    padding-left: nth($m-container-space, 2)
+    padding-right: nth($m-container-space, 2)
 
-  +media('<lap-s')
-    padding-left: nth($m-container-space--tab, 2)
-    padding-right: nth($m-container-space--tab, 2)
+    +media('<lap-s')
+      padding-left: nth($m-container-space--tab, 2)
+      padding-right: nth($m-container-space--tab, 2)
 
-  +media('<mob')
-    padding-left: nth($m-container-space--mob, 2)
-    padding-right: nth($m-container-space--mob, 2)
+    +media('<mob')
+      padding-left: nth($m-container-space--mob, 2)
+      padding-right: nth($m-container-space--mob, 2)
 
 .m-heading
   display: flex
@@ -10996,6 +11057,63 @@ $p-results-fixed-height: 7rem
       margin-bottom: 0
 
 /* m-container end
+
+/* categories-menu
+.categories-menu
+  &, & ul
+    list-style: none
+    margin: 0
+    padding: 1.4rem 0 0
+    +font(1.6rem, 2.4rem)
+    color: $text-color-light
+
+  li
+    position: relative
+    padding: 0 0 0 2.4rem
+    margin: 0 0 1.4rem
+    cursor: default
+
+    &:first-child
+      margin-top: 0
+
+    &::before
+      content: ""
+      display: block
+      position: absolute
+      left: 0
+      top: 0.6em
+      width: 1.4rem
+      height: 0.2rem
+      background-color: $base-color-light
+
+    &.current
+      & > a, & > span
+        +font-bold
+
+      & > span
+        color: $base-color-light
+
+  a
+    color: inherit
+    text-decoration: none
+    transition: color $animation-speed
+
+    &:hover
+      color: $base-color
+
+  & > li
+
+    & > a, & > span
+      color: #000
+
+    & > ul
+      +font(1.4rem, 2.0rem)
+
+      & > li
+        padding-left: 0
+
+        &::before
+          content: none
 
 /* filters-results
 .p-results
@@ -11767,7 +11885,7 @@ $p-results-fixed-height: 7rem
 
   &, .#{$article-content} &
     list-style: none
-    margin: 0 -0.6rem
+    margin: 0 0 0 -0.6rem
     padding: #{nth($p-filters-space, 1)} 0 #{nth($p-filters-space, 1) - $item-space}
 
     li
