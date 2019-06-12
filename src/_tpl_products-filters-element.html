@@ -2,7 +2,7 @@
   @@for (var key in checkboxesExpanded) {
     <li>
       <label class="check-label@@if(context.addClass){ @@addClass}">
-        <input type="checkbox" name="`+key+`" data-filter-name="`+key+`" data-filter-tag="`+checkboxesExpanded[key].tagText+`" />
+        <input type="checkbox" name="`+key+`" data-filter-name="`+key+`" data-filter-tag="`+checkboxesExpanded[key].tagText+`" value="`+key+`" />
         <span>`+checkboxesExpanded[key].labelText+`</span>
         @@if(context.hasIcon){
           <em class="checkbox-icon">
@@ -20,7 +20,7 @@
   @@for (var key in checkboxes) {
     <li>
       <label class="check-label@@if(context.addClass){ @@addClass}">
-        <input type="checkbox" name="`+key+`" data-filter-name="`+key+`" />
+        <input type="checkbox" name="`+key+`" data-filter-name="`+key+`" value="`+key+`" />
         <span class="p-filters-label-text-js">`+checkboxes[key]+`</span>
       </label>
     </li>
