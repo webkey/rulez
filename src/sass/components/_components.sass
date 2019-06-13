@@ -10585,24 +10585,33 @@ $f-products-border-width: 1px
   //background-color: #ff8484 // Нужно для перекрытия соседних бордеров
   box-shadow: 0 0 0 #{$f-products-border-width} $border-color
 
-  +media('<net')
-    $width: 50%
-    width: $width
-    flex-basis: $width
-
-    &.has-banner
-      display: none
-
-  +media('<tab')
-    $width: 33.33%
-    width: $width
-    flex-basis: $width
-
   +media('<tab-s')
     $width: 50%
     width: $width
     flex-basis: $width
 
+  // If .f-products__item inside .content-inner
+  .content-inner &
+    $width: 33.33%
+    flex-basis: $width
+    width: $width
+
+    +media('<net')
+      $width: 50%
+      width: $width
+      flex-basis: $width
+
+    +media('<tab')
+      $width: 33.33%
+      width: $width
+      flex-basis: $width
+
+    +media('<tab-s')
+      $width: 50%
+      width: $width
+      flex-basis: $width
+
+  // If .product inside .f-products__item
   .product
     z-index: auto
     height: 100%

@@ -637,15 +637,15 @@
   border-color: #5897fb;
 }
 /**
- * Swiper 4.5.0
+ * Swiper 4.4.6
  * Most modern mobile touch slider and framework with hardware accelerated transitions
  * http://www.idangero.us/swiper/
  *
- * Copyright 2014-2019 Vladimir Kharlampidi
+ * Copyright 2014-2018 Vladimir Kharlampidi
  *
  * Released under the MIT License
  *
- * Released on: February 22, 2019
+ * Released on: December 19, 2018
  */
 
 .swiper-container {
@@ -3663,51 +3663,4 @@ body.compensate-for-scrollbar {
   width: 500px;
   overflow-y: hidden;
   overflow-x: scroll;
-}
-.br-theme-css-stars .br-widget {
-  height: 28px;
-  white-space: nowrap;
-}
-
-.br-theme-css-stars .br-widget a {
-  text-decoration: none;
-  height: 18px;
-  width: 18px;
-  float: left;
-  font-size: 23px;
-  margin-right: 5px;
-}
-
-.br-theme-css-stars .br-widget a:after {
-  content: "\2605";
-  color: #d2d2d2;
-}
-
-.br-theme-css-stars .br-widget a.br-active:after {
-  color: #EDB867;
-}
-
-.br-theme-css-stars .br-widget a.br-selected:after {
-  color: #EDB867;
-}
-
-.br-theme-css-stars .br-widget .br-current-rating {
-  display: none;
-}
-
-.br-theme-css-stars .br-readonly a {
-  cursor: default;
-}
-
-@media print {
-  .br-theme-css-stars .br-widget a:after {
-    content: "\2606";
-    color: black;
-  }
-
-  .br-theme-css-stars .br-widget a.br-active:after,
-  .br-theme-css-stars .br-widget a.br-selected:after {
-    content: "\2605";
-    color: black;
-  }
 }
