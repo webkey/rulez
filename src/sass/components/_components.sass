@@ -9525,19 +9525,23 @@ $tl-item-space--tab: 1rem
     height: 100%
     background-color: white
 
-  .topics__list:not(.topics__list_with-banners) &:last-child
+  //.topics__list:not(.topics__list_with-banners) &:last-child
+  .topics__list:not(.topics__list_with-banners) &:nth-child(5)
     +media('<desk-s', '>=tab')
       display: none
 
-  .topics__list:not(.topics__list_with-banners) &:nth-last-child(2)
+  //.topics__list:not(.topics__list_with-banners) &:nth-last-child(2)
+  .topics__list:not(.topics__list_with-banners) &:nth-child(4)
     +media('<net', '>=tab')
       display: none
 
-  .topics__list_with-banners &:nth-last-child(2)
+  //.topics__list_with-banners &:nth-last-child(2)
+  .topics__list_with-banners &:nth-child(4)
     +media('<desk-s', '>=tab')
       display: none
 
-  .topics__list_with-banners &:nth-last-child(3)
+  //.topics__list_with-banners &:nth-last-child(3)
+  .topics__list_with-banners &:nth-child(3)
     +media('<net', '>=tab')
       display: none
 

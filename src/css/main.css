@@ -14709,25 +14709,25 @@ a.topic-banner:hover .topic-banner__title > span {
 }
 
 @media (max-width: 1599px) and (min-width: 992px) {
-  .topics__list:not(.topics__list_with-banners) .topics__item:last-child {
+  .topics__list:not(.topics__list_with-banners) .topics__item:nth-child(5) {
     display: none;
   }
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
-  .topics__list:not(.topics__list_with-banners) .topics__item:nth-last-child(2) {
+  .topics__list:not(.topics__list_with-banners) .topics__item:nth-child(4) {
     display: none;
   }
 }
 
 @media (max-width: 1599px) and (min-width: 992px) {
-  .topics__list_with-banners .topics__item:nth-last-child(2) {
+  .topics__list_with-banners .topics__item:nth-child(4) {
     display: none;
   }
 }
 
 @media (max-width: 1199px) and (min-width: 992px) {
-  .topics__list_with-banners .topics__item:nth-last-child(3) {
+  .topics__list_with-banners .topics__item:nth-child(3) {
     display: none;
   }
 }
