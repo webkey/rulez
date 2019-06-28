@@ -4897,19 +4897,22 @@ $search-btn-space: 0 0.5rem
 
 /* soc-footer end
 
-/* btn-subs
+/* subs
 .subs
+  display: inline-block
+  vertical-align: top
+  position: relative
   margin-bottom: 1.3rem
 
   &:last-child
     margin-bottom: 0
 
+// btn-subs
 .btn-subs
   position: relative
   display: inline-block
   vertical-align: top
   padding: 0.7rem 1.3rem 0.7rem 3.7rem
-  margin-bottom: 2.5rem
   font-size: 1.4rem
   line-height: 1.8rem
   white-space: nowrap
@@ -4927,9 +4930,6 @@ $search-btn-space: 0 0.5rem
   +media('<mob')
     white-space: normal
     padding: 0.7rem 1.3rem
-
-  &:last-child
-    margin-bottom: 0
 
   svg
     $size: 18px
@@ -4961,7 +4961,181 @@ $search-btn-space: 0 0.5rem
       path, circle
         fill: currentColor
 
-/* btn-subs end
+
+// subs form
+$subs-form-height: 3.4rem
+
+.subs-form
+  position: relative
+  min-height: $subs-form-height
+  width: 24rem
+  padding: 1.2rem 1rem
+  transform-origin: right bottom
+  background-color: #fff
+  border-radius: 8px
+  box-shadow: 0 5px 10px rgba(black, 0.2)
+
+  .subs-form__input-wrap
+    margin: 0
+
+    input[type="email"].subs-form__input
+      font-size: 1.4rem
+      line-height: 1.8rem
+      height: $subs-form-height
+      padding: 0.8rem 1.2rem
+      border-radius: 8px
+      margin-bottom: 2rem
+
+      &.success:not([disabled])
+        border-color: $form-border-color
+
+      &.error:not([disabled])
+        border-color: $form-error-color
+
+    .label-float
+      padding: 0.8rem 1.2rem
+      font-size: 1.4rem
+      line-height: 1.8rem
+
+    // active
+    .subs-form__input
+      &:focus, &.filled, &.focused
+        & ~ .label-float
+          +font-normal
+          $transform: -0.75em, -1.8em
+          $scale: 0.85
+          transform: translate($transform) scale($scale)
+          transform: translate3d($transform, 0) scale3d($scale, $scale, 1)
+          cursor: default
+
+          @at-root
+            .completed &
+              opacity: 0
+
+    .error-note
+      top: 100%
+      text-align: left
+      padding: 0
+      margin-top: 0.2rem
+
+    .success-note
+      display: none
+
+.subs__title
+  font-size: 1.6rem
+  line-height: 2.0rem
+  margin-bottom: 2rem
+  color: $title-color
+
+.subs-form__send
+  height: $subs-form-height
+  width: 100%
+  border: none
+  padding: 0
+  box-shadow: none
+  border-radius: 8px
+  background-color: $base-color-alt
+  outline: none
+  cursor: pointer
+
+.subs-feedback
+  display: flex
+  align-items: center
+  justify-content: center
+  position: absolute
+  +position(0)
+  +size(100%)
+  padding: 0.5rem 1rem 0.5rem 3rem
+  opacity: 0
+  user-select: none
+  pointer-events: none
+  background-color: $base-color-alt
+  transform: scale(0.76, 0.76) translateZ(0)
+  border-radius: 8px
+  text-align: center
+  color: $text-color
+  font-size: 1.6rem
+  line-height: 1.8rem
+  z-index: 5
+  transition:
+    property: opacity, visibility, transform
+    duration: 0.25s
+
+  span
+    position: relative
+    display: inline-block
+    vertical-align: top
+
+    &::before, &::after
+      +pseudo()
+      +size(0, 2px)
+      left: 0
+      top: 50%
+      background-color: currentColor
+      $prop: width
+      will-change: $prop
+      transition:
+        property: $prop
+        duration: 0.12s
+        timing-function: linear
+
+    &::before
+      margin: -3px 0 0 -29px
+      transform: rotate(45deg) translateZ(0)
+      transform-origin: 0 8px
+      transition-delay: 0.12s
+
+    &::after
+      transform: rotate(-50deg) translateZ(0)
+      transform-origin: 0 16px
+      margin: -1px 0 0 -8px
+
+  .completed &
+    opacity: 1
+    pointer-events: auto
+    visibility: visible
+    transform: scale(1, 1) translateZ(0)
+
+    span
+      &::before
+        width: 8px
+        transition:
+          delay: 0s
+          timing-function: cubic-bezier(0.6, -0.28, 0.74, 0.05)
+
+      &::after
+        width: 16px
+        transition-delay: 0.12s
+
+// form
+.subs__form
+  position: absolute
+  right: 0
+  bottom: 0
+  opacity: 0
+  pointer-events: none
+  transform-origin: right bottom
+  $transform: 0, 0
+  $scale: 0.6
+  transform: translate($transform) scale($scale)
+  transform: translate3d($transform, 0) scale3d($scale, $scale, 1)
+  // transition
+  $prop: transform, opacity
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+    timing-function: ease-in-out
+
+  .subs.active &
+    opacity: 1
+    pointer-events: auto
+    $transform: 0, 0
+    $scale: 1
+    transform: translate($transform) scale($scale)
+    transform: translate3d($transform, 0) scale3d($scale, $scale, 1)
+
+/* subs end
 
 /* pay cards
 .pay-cards
@@ -12779,24 +12953,30 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
 // price
 .p-card-price
+  //font-size: 1.6rem
   line-height: 4.7rem
 
   +media('<net')
     display: flex
-    flex-direction: column-reverse // Снадала новая цена, потом старая
+    //flex-direction: column-reverse // Сначала новая цена, потом старая
+    flex-direction: column
     line-height: 1
 
 // price old
 .p-card-price__old
   display: inline-block
   vertical-align: baseline
-  margin-right: 0.4rem
+  margin: 0 0.4rem 0.8rem 0
   +oldPriceStyle()
 
   +media('<net')
+    order: 2
     display: block
     width: 100%
     margin-right: 0
+
+  &:last-child
+    margin-bottom: 0
 
   .p-card-price.off &
     color: $text-color-ultra-light
@@ -12809,6 +12989,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   +newPriceStyle(4.5rem, 2.4rem, #000)
 
   +media('<net')
+    order: 1
     display: block
     width: 100%
     margin-bottom: 0.5rem
@@ -12816,6 +12997,32 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   +media('<mob')
     & > strong
       font-size: 3.8rem
+
+  .p-card-price.off &
+    color: $text-color-ultra-light
+
+// price installment
+.p-card-price__inst
+  position: relative
+  font-size: 1.4rem
+  line-height: 2.0rem
+  color: $text-color
+
+  +media('<net')
+    order: 3
+
+  & > strong
+    display: inline-block
+    vertical-align: baseline
+    +font-bold
+    font-size: 2.0rem
+
+  & > em
+    display: inline-block
+    vertical-align: baseline
+    +font-normal
+    font-size: 1.6rem
+    font-style: normal
 
   .p-card-price.off &
     color: $text-color-ultra-light

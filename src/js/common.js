@@ -1811,6 +1811,26 @@ function toggleDrop() {
     });
   }
 
+  var $subsBtn = $('.btn-subs-js');
+  if ($subsBtn.length) {
+    $subsBtn.switchClass({
+      switchClassTo: $('.subs-js'),
+      modifiers: {
+        activeClass: 'active'
+      },
+      cssScrollFixed: false,
+      afterAdded: function () {
+        setTimeout(function () {
+          $('.focus-field-js').focus();
+        }, 50);
+      },
+      afterRemoved: function () {
+        $('.focus-field-js').blur();
+      }
+    });
+  }
+
+
   // При добавлении классов одним экземпляром плагина,
   // Удалять другие
   // todo Добавить в плагин этот кусок
@@ -3862,17 +3882,43 @@ function starsRating() {
 }
 
 /**
+ * !Toggle subscribe form
+ * */
+function toggleSubsFrom() {
+  $('.btn-subs-js').on('click', function (e) {
+    e.preventDefault();
+    var $curBtn = $(this),
+    $curContainer = $curBtn.closest('.subs-js');
+    if ($curBtn.hasClass('active')) {
+      $curBtn.add($curContainer).removeClass('active');
+      $curContainer.find('.focus-field-js').blur();
+    } else {
+      $curBtn.add($curContainer).addClass('active');
+      setTimeout(function () {
+        $curContainer.find('.focus-field-js').focus();
+      }, 50)
+    }
+  })
+}
+
+/**
  * !Form validation
  * */
 function formValidation() {
   $.validator.setDefaults({
-    submitHandler: function() {
-      alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
-      return false;
+    submitHandler: function(form) {
+      // alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.');
+      // Subscribe form feedback for example
+      var $form = $(form);
+      if($form.hasClass('subs-form')) {
+        setTimeout(function () {
+          $('.btn-subs-js').switchClass('remove');
+          $form.closest('.subs-js').addClass('completed');
+        }, 50);
+      }
+      // return false;
     }
   });
-
-  // $("#commentForm").validate();
 
   var $form = $('.validate-js');
 

@@ -9057,8 +9057,11 @@ a.catalog-opener.catalog-is-open > i::after {
 }
 
 /* soc-footer end */
-/* btn-subs */
+/* subs */
 .subs {
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
   margin-bottom: 1.3rem;
 }
 
@@ -9071,7 +9074,6 @@ a.catalog-opener.catalog-is-open > i::after {
   display: inline-block;
   vertical-align: top;
   padding: 0.7rem 1.3rem 0.7rem 3.7rem;
-  margin-bottom: 2.5rem;
   font-size: 1.4rem;
   line-height: 1.8rem;
   white-space: nowrap;
@@ -9089,10 +9091,6 @@ a.catalog-opener.catalog-is-open > i::after {
     white-space: normal;
     padding: 0.7rem 1.3rem;
   }
-}
-
-.btn-subs:last-child {
-  margin-bottom: 0;
 }
 
 .btn-subs svg {
@@ -9126,7 +9124,198 @@ a.catalog-opener.catalog-is-open > i::after {
   fill: currentColor;
 }
 
-/* btn-subs end */
+.subs-form {
+  position: relative;
+  min-height: 3.4rem;
+  width: 24rem;
+  padding: 1.2rem 1rem;
+  -ms-transform-origin: right bottom;
+      transform-origin: right bottom;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.subs-form .subs-form__input-wrap {
+  margin: 0;
+}
+
+.subs-form .subs-form__input-wrap input[type="email"].subs-form__input {
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+  height: 3.4rem;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.subs-form .subs-form__input-wrap input[type="email"].subs-form__input.success:not([disabled]) {
+  border-color: #d3d3d3;
+}
+
+.subs-form .subs-form__input-wrap input[type="email"].subs-form__input.error:not([disabled]) {
+  border-color: #ff3322;
+}
+
+.subs-form .subs-form__input-wrap .label-float {
+  padding: 0.8rem 1.2rem;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
+}
+
+.subs-form .subs-form__input-wrap .subs-form__input:focus ~ .label-float, .subs-form .subs-form__input-wrap .subs-form__input.filled ~ .label-float, .subs-form .subs-form__input-wrap .subs-form__input.focused ~ .label-float {
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  -ms-transform: translate(-0.75em, -1.8em) scale(0.85);
+      transform: translate(-0.75em, -1.8em) scale(0.85);
+  transform: translate3d(-0.75em, -1.8em, 0) scale3d(0.85, 0.85, 1);
+  cursor: default;
+}
+
+.completed .subs-form .subs-form__input-wrap .subs-form__input:focus ~ .label-float, .completed .subs-form .subs-form__input-wrap .subs-form__input.filled ~ .label-float, .completed .subs-form .subs-form__input-wrap .subs-form__input.focused ~ .label-float {
+  opacity: 0;
+}
+
+.subs-form .subs-form__input-wrap .error-note {
+  top: 100%;
+  text-align: left;
+  padding: 0;
+  margin-top: 0.2rem;
+}
+
+.subs-form .subs-form__input-wrap .success-note {
+  display: none;
+}
+
+.subs__title {
+  font-size: 1.6rem;
+  line-height: 2.0rem;
+  margin-bottom: 2rem;
+  color: #131313;
+}
+
+.subs-form__send {
+  height: 3.4rem;
+  width: 100%;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 8px;
+  background-color: #f8e71c;
+  outline: none;
+  cursor: pointer;
+}
+
+.subs-feedback {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: center;
+      justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1rem 0.5rem 3rem;
+  opacity: 0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  background-color: #f8e71c;
+  transform: scale(0.76, 0.76) translateZ(0);
+  border-radius: 8px;
+  text-align: center;
+  color: #4a4a4a;
+  font-size: 1.6rem;
+  line-height: 1.8rem;
+  z-index: 5;
+  transition-property: opacity, visibility, transform;
+  transition-duration: 0.25s;
+}
+
+.subs-feedback span {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.subs-feedback span::before, .subs-feedback span::after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 0;
+  height: 2px;
+  left: 0;
+  top: 50%;
+  background-color: currentColor;
+  will-change: width;
+  transition-property: width;
+  transition-duration: 0.12s;
+  transition-timing-function: linear;
+}
+
+.subs-feedback span::before {
+  margin: -3px 0 0 -29px;
+  transform: rotate(45deg) translateZ(0);
+  -ms-transform-origin: 0 8px;
+      transform-origin: 0 8px;
+  transition-delay: 0.12s;
+}
+
+.subs-feedback span::after {
+  transform: rotate(-50deg) translateZ(0);
+  -ms-transform-origin: 0 16px;
+      transform-origin: 0 16px;
+  margin: -1px 0 0 -8px;
+}
+
+.completed .subs-feedback {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+  transform: scale(1, 1) translateZ(0);
+}
+
+.completed .subs-feedback span::before {
+  width: 8px;
+  transition-delay: 0s;
+  transition-timing-function: cubic-bezier(0.6, -0.28, 0.74, 0.05);
+}
+
+.completed .subs-feedback span::after {
+  width: 16px;
+  transition-delay: 0.12s;
+}
+
+.subs__form {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  pointer-events: none;
+  -ms-transform-origin: right bottom;
+      transform-origin: right bottom;
+  -ms-transform: translate(0, 0) scale(0.6);
+      transform: translate(0, 0) scale(0.6);
+  transform: translate3d(0, 0, 0) scale3d(0.6, 0.6, 1);
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-duration: 0.25s;
+  transition-timing-function: ease-in-out;
+}
+
+.subs.active .subs__form {
+  opacity: 1;
+  pointer-events: auto;
+  -ms-transform: translate(0, 0) scale(1);
+      transform: translate(0, 0) scale(1);
+  transform: translate3d(0, 0, 0) scale3d(1, 1, 1);
+}
+
+/* subs end */
 /* pay cards */
 .pay-cards {
   position: relative;
@@ -18789,8 +18978,8 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
   .p-card-price {
     display: -ms-flexbox;
     display: flex;
-    -ms-flex-direction: column-reverse;
-        flex-direction: column-reverse;
+    -ms-flex-direction: column;
+        flex-direction: column;
     line-height: 1;
   }
 }
@@ -18798,7 +18987,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 .p-card-price__old {
   display: inline-block;
   vertical-align: baseline;
-  margin-right: 0.4rem;
+  margin: 0 0.4rem 0.8rem 0;
   font-size: inherit;
   line-height: inherit;
   white-space: nowrap;
@@ -18840,10 +19029,16 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 
 @media (max-width: 1199px) {
   .p-card-price__old {
+    -ms-flex-order: 2;
+        order: 2;
     display: block;
     width: 100%;
     margin-right: 0;
   }
+}
+
+.p-card-price__old:last-child {
+  margin-bottom: 0;
 }
 
 .p-card-price.off .p-card-price__old {
@@ -18879,6 +19074,8 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 
 @media (max-width: 1199px) {
   .p-card-price__new {
+    -ms-flex-order: 1;
+        order: 1;
     display: block;
     width: 100%;
     margin-bottom: 0.5rem;
@@ -18892,6 +19089,40 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 }
 
 .p-card-price.off .p-card-price__new {
+  color: #c3c3c3;
+}
+
+.p-card-price__inst {
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  color: #4a4a4a;
+}
+
+@media (max-width: 1199px) {
+  .p-card-price__inst {
+    -ms-flex-order: 3;
+        order: 3;
+  }
+}
+
+.p-card-price__inst > strong {
+  display: inline-block;
+  vertical-align: baseline;
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 2.0rem;
+}
+
+.p-card-price__inst > em {
+  display: inline-block;
+  vertical-align: baseline;
+  font-family: "circe-regular", Helvetica, Arial, sans-serif;
+  font-size: 1.6rem;
+  font-style: normal;
+}
+
+.p-card-price.off .p-card-price__inst {
   color: #c3c3c3;
 }
 

@@ -58,8 +58,18 @@
                 @@loop('_tpl_social-items.html', 'includes/json/social-items.json')
               </div>
             </div>
-            <div class="subs">
-              <a href="#" class="btn-subs">@@include("includes/svg/icon-rss.svg") <span>Подписать на рассылку</span></a>
+            <div class="subs subs-js">
+              <a href="#" class="btn-subs btn-subs-js">@@include("includes/svg/icon-rss.svg") <span>Подписать на рассылку</span></a>
+              <div class="subs-feedback"><span>Подписка оформлена</span></div>
+              <form action="#" method="post" class="subs-form subs__form validate-js stop-remove-class">
+                <div class="subs__title">Подписка на рассылку</div>
+                <label class="input-wrap subs-form__input-wrap">
+                  <input class="input-def subs-form__input focus-field-js" name="name" type="email" required>
+                  <span class="label-float">Введите Ваш e-mail</span>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Проверте Ваш e-mail", "success": "Ок"})
+                </label>
+                <button class="subs-form__send">Ok</button>
+              </form>
             </div>
             <a href="#" class="pay-cards">
               <img src="img/img-payment.png" alt="Банковские карты" />
