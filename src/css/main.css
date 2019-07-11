@@ -3543,6 +3543,38 @@ form .success ~ .success-note {
 }
 
 /* spinner end */
+/*ui autocomplete drop */
+.ui-autocomplete {
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  line-height: 18px;
+  background: #fff;
+  box-sizing: border-box;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15);
+  border-top: 1px solid #f1f1f1;
+}
+
+.ui-autocomplete li {
+  padding: 0;
+  margin: 0;
+}
+
+.ui-autocomplete .ui-menu-item-wrapper {
+  padding: 11px 20px;
+  transition-property: color, background;
+  transition-duration: 0.25s;
+}
+
+.ui-autocomplete .ui-state-active,
+.ui-autocomplete .ui-state-focus {
+  margin: 0;
+  background-color: #6e52dd;
+  color: #f5f5f5;
+}
+
+/*ui autocomplete drop end */
 /* stars rating */
 .br-theme-css-stars .br-widget a.br-active:after, .br-theme-css-stars .br-widget a.br-selected:after {
   color: #f8e71c;

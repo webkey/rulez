@@ -347,6 +347,35 @@ $spinner-btn-width: 35px
 
 /* spinner end
 
+/*ui autocomplete drop
+.ui-autocomplete
+  border-radius: 0
+  border: none
+  padding: 0
+  font-size: 14px
+  line-height: 18px
+  background: #fff
+  box-sizing: border-box
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.15)
+  border-top: 1px solid $border-color-light
+
+  li
+    padding: 0
+    margin: 0
+
+  .ui-menu-item-wrapper
+    padding: 11px 20px
+    transition-property: color, background
+    transition-duration: $animation-speed
+
+  .ui-state-active,
+  .ui-state-focus
+    margin: 0
+    background-color: $base-color
+    color: $bg-color
+
+/*ui autocomplete drop end
+
 /* stars rating
 .br-theme-css-stars .br-widget a.br-active:after, .br-theme-css-stars .br-widget a.br-selected:after
   color: $base-color-alt

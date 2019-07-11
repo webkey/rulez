@@ -133,6 +133,7 @@ gulp.task('mergeCssLibs', function () {
     // jquery ui
     , 'src/libs/jquery-ui/themes/base/base.css'
     , 'src/libs/jquery-ui/themes/base/spinner.css'
+    , 'src/libs/jquery-ui/themes/base/autocomplete.css'
     // , 'src/libs/jquery-ui/themes/base/tooltip.css'
     , 'src/libs/fancybox/dist/jquery.fancybox.min.css' // fancybox
     // , 'src/libs/priority-nav/dist/priority-nav-core.css'
