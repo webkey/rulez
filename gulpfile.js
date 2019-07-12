@@ -188,6 +188,7 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     , 'src/libs/fancybox/dist/jquery.fancybox.min.js' // fancybox
     , 'node_modules/simplebar/dist/simplebar.min.js' // Custom scrollbar (Для подержки старых браузеров нужно подключить полифил, см. выше)
     , 'src/libs/jquery-bar-rating/dist/jquery.barrating.min.js' // Star rating
+    , 'src/libs/shave/dist/jquery.shave.min.js' // Cut text
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

@@ -15734,6 +15734,8 @@ $order-aside-width-full--tab: $order-aside-width--tab + $cart-container-inside-s
     margin-bottom: 2rem
 
 .review-caption__meta
+  flex-grow: 1
+
   +media('<tab')
     margin-bottom: $bottom-space
 
@@ -15744,6 +15746,7 @@ $author-photo-size: 14.8rem
 $author-photo-size--tab: 8rem
 $author-photo-size--mob: 6rem
 .review-caption__author
+  flex-shrink: 0
   max-width: $author-photo-size
   margin-right: 8rem
 
@@ -16053,6 +16056,28 @@ $author-photo-size--mob: 6rem
       transform: translate($translate) scale($scale)
       transform: translate3d($translate, 0) scale3d($scale, 1)
 
+// text truncate
+.truncate-text
+  position: relative
+  overflow: hidden
+  margin-bottom: $bottom-space
+  max-height: #{round-float($line-height * 9, 1)}
+
+  .no-js &
+    max-height: none
+
+  p:last-child
+    margin-bottom: 0
+
+.tt__shadow
+  position: absolute
+  bottom: -1rem
+  left: -1rem
+  height: 4rem
+  width: calc(100% + 2rem)
+  $color: lightgreen
+  @include linear-gradient(to top, $color 0%, rgba($color, 0.5) 70%, rgba($color, 0) 100%)
+
 // read more
 .read-more
   text-align: center
@@ -16091,11 +16116,6 @@ $author-photo-size--mob: 6rem
 
   // active
   &.active
-    & > span
-      display: none
-
-    & > span + span
-      display: block
 
     svg
       transform: rotate(180deg) translateZ(0)
@@ -16104,10 +16124,6 @@ $author-photo-size--mob: 6rem
   &:hover
     .no-touch &
       border-color: $base-color
-
-  // active
-  //&:active
-    top: 1px
 
 // conclusion
 .review-conclusion

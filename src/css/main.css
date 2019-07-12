@@ -22641,6 +22641,11 @@ a.consist__item:hover .consist__item-title {
   }
 }
 
+.review-caption__meta {
+  -ms-flex-positive: 1;
+      flex-grow: 1;
+}
+
 @media (max-width: 991px) {
   .review-caption__meta {
     margin-bottom: 2.8rem;
@@ -22654,6 +22659,8 @@ a.consist__item:hover .consist__item-title {
 }
 
 .review-caption__author {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
   max-width: 14.8rem;
   margin-right: 8rem;
 }
@@ -23153,6 +23160,31 @@ a.consist__item:hover .consist__item-title {
   }
 }
 
+.truncate-text {
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 2.8rem;
+  max-height: 25.2rem;
+}
+
+.no-js .truncate-text {
+  max-height: none;
+}
+
+.truncate-text p:last-child {
+  margin-bottom: 0;
+}
+
+.tt__shadow {
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
+  height: 4rem;
+  width: calc(100% + 2rem);
+  background: lightgreen;
+  background: linear-gradient(to top, lightgreen 0%, rgba(144, 238, 144, 0.5) 70%, rgba(144, 238, 144, 0) 100%);
+}
+
 .read-more {
   text-align: center;
 }
@@ -23189,14 +23221,6 @@ a.consist__item:hover .consist__item-title {
   transition-property: transform;
   transition-duration: 0.25s;
   transition-timing-function: ease-in-out;
-}
-
-.btn-read-more.active > span {
-  display: none;
-}
-
-.btn-read-more.active > span + span {
-  display: block;
 }
 
 .btn-read-more.active svg {

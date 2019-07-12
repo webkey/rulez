@@ -3882,6 +3882,160 @@ function starsRating() {
 }
 
 /**
+ * !Truncate text
+ */
+function truncateText() {
+  // var $btn = $('#truncateBtn');
+  // var $textEl = $('#truncateText');
+  // var textContent = $textEl.html();
+  //
+  // $btn.on('click', function() {
+  //   var hasShave = $textEl.has('.js-shave');
+  //
+  //   console.log("hasShave.length: ", !!hasShave.length);
+  //
+  //   if (hasShave.length) {
+  //     $textEl.html(textContent);
+  //     $btn.html('Truncate Text ✁');
+  //     return;
+  //   }
+  //
+  //   $textEl.shave(510);
+  //
+  //   $btn.html('Reset ⏎');
+  // });
+
+  // external js:
+  // 1) TweetMax VERSION: (lib.js);
+  // 2) device.js 0.2.7 (lib.js);
+  // 3) resizeByWidth (resize only width);
+
+  var $textSlide = $('#truncateText');
+
+  if (!$textSlide.length) return false;
+
+  var $window = $(window),
+      textFull = 'Далее',
+      textShort = 'Скрыть',
+      $tplSlideFull = $('<div class="read-more" style="display: none;"><a href="#?" class="btn-read-more tt__switcher-js"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="#6E52DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>' + textFull + '</span></a></div>'),
+      $tplTextSlideInner = $('<div class="tt__inner" />'),
+      $tplShadow = $('<div class="tt__shadow" >'),
+      textSlideHeight = $textSlide.outerHeight(),
+      isTextFull = false,
+      minHeight = parseInt($textSlide.css('line-height'), 10) * 9;
+
+  $textSlide.addClass('tt tt_initialize');
+
+  // hide elements
+  // TweenMax.set($tplShadow, {autoAlpha: 0});
+  $tplShadow.animate({'opacity': 0});
+  // $tplSlideFull.hide(0);
+
+  // build structure
+  $textSlide
+      .wrapInner($tplTextSlideInner)
+      .after($tplSlideFull)
+      .append($tplShadow);
+
+  $window.on('load resize', function () {
+    var wrapInnerHeight = $('.tt__inner').outerHeight();
+
+    $textSlide.css('max-height', 'none');
+
+    if (wrapInnerHeight <= minHeight) {
+      // TweenMax.set($textSlide, {height: 'auto'});
+      // TweenMax.set($tplShadow, {autoAlpha: 0});
+      $textSlide.animate({'height': 'auto'});
+      $tplShadow.animate({'opacity': 0});
+      $tplSlideFull.hide(0);
+    } else if (!isTextFull) {
+      $textSlide.animate({'height': minHeight});
+      $tplShadow.animate({'opacity': 1});
+      // TweenMax.set($textSlide, {height: minHeight});
+      // TweenMax.set($tplShadow, {autoAlpha: 1});
+      $tplSlideFull.show(0);
+
+      textSlideHeight = $textSlide.outerHeight();
+    }
+  });
+
+  $textSlide.parent().on('click', '.tt__switcher-js', function (e) {
+    e.preventDefault();
+
+    var wrapInnerHeight = $('.tt__inner').outerHeight();
+
+    if (wrapInnerHeight <= minHeight) return false;
+
+    var $this = $(this);
+
+    if (isTextFull) {
+      // TweenMax.to($textSlide, 0.5, {
+      //   height: textSlideHeight,
+      //   ease: Power3.easeInOut,
+      //   onComplete: function () {
+      //     $textSlide.trigger('heightHeightChange');
+      //   }
+      // });
+      // TweenMax.to($tplShadow, 0.5, {autoAlpha: 1});
+
+      $textSlide.animate({
+        'height': textSlideHeight
+      }, 500, function() {
+        $textSlide.trigger('heightHeightChange');
+      });
+
+      $tplShadow.animate({
+        'opacity': 1
+      }, 500);
+
+      $this.removeClass('active').children('span').text(textFull);
+
+      isTextFull = false;
+    } else {
+      // TweenMax.to($textSlide, 0.5, {
+      //   height: wrapInnerHeight,
+      //   ease: Power3.easeInOut,
+      //   onComplete: function () {
+      //     TweenMax.set($textSlide, {height: 'auto'});
+      //     $textSlide.trigger('afterHeightChange');
+      //
+      //     isTextFull = true;
+      //   }
+      // });
+      // TweenMax.to($tplShadow, 0.5, {autoAlpha: 0});
+
+      $textSlide.animate({
+        'height': wrapInnerHeight
+      }, 500, function() {
+        $textSlide.css({height: 'auto'});
+
+        $textSlide.trigger('afterHeightChange');
+
+        isTextFull = true;
+      });
+
+      $tplShadow.animate({
+        'opacity': 1
+      }, 500);
+
+      $this.addClass('active').children('span').text(textShort);
+    }
+  });
+
+
+  // sticky kit recalculate
+  // var textSlideTimeout;
+  //
+  // $textSlide.on('afterHeightChange', function () {
+  //   clearTimeout(textSlideTimeout);
+  //
+  //   textSlideTimeout = setTimeout(function () {
+  //     $(document.body).trigger("sticky_kit:recalc");
+  //   }, 100);
+  // })
+}
+
+/**
  * !Toggle subscribe form
  * */
 function toggleSubsFrom() {
@@ -3999,5 +4153,6 @@ $(document).ready(function () {
   reviewsVoting();
   toggleNewReview();
   starsRating();
+  truncateText();
   formValidation();
 });

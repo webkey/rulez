@@ -40,6 +40,7 @@
     "jquery-bar-rating": "^1.2.2"
   },
   "devDependencies": {
-    "mathsass": "^0.9.5"
+    "mathsass": "^0.9.5",
+    "shave": "^2.5.4"
   }
 }
