@@ -15828,20 +15828,22 @@ $author-photo-size--mob: 6rem
 .review-article-gallery-wrap
   position: relative
   overflow: hidden
-  margin: 0 -#{nth($article-layout-space, 2)} $bottom-space
+  margin: -6rem -#{nth($article-layout-space, 2)} $bottom-space
 
   +media('<lap')
+    padding-top: -4rem
     margin-left: -#{nth($article-layout-space--lap, 2)}
     margin-right: -#{nth($article-layout-space--lap, 2)}
 
   +media('<tab')
+    margin-top: -3rem
     margin-left: -#{nth($article-layout-space--tab, 2)}
     margin-right: -#{nth($article-layout-space--tab, 2)}
     padding-left: 8%
     padding-right: 8%
 
   +media('<mob')
-    margin: 0 -#{nth($article-layout-space--mob, 2)} $bottom-space--mob
+    margin: -2rem -#{nth($article-layout-space--mob, 2)} $bottom-space--mob
 
   &:last-child
     margin-bottom: 0
@@ -15901,19 +15903,26 @@ $author-photo-size--mob: 6rem
 
 .review-content
   //overflow: hidden
-  padding-top: 0
+  //padding-top: #{nth($article-layout-space, 1)}
+  padding-top: 6rem
   padding-bottom: 6rem
   margin-bottom: 2rem
   background-color: white
   border-radius: 0 0 0.5rem 0.5rem
 
-  +media('<net')
+  +media('<lap')
+    //padding-top: #{nth($article-layout-space--lap, 1)}
+    padding-top: 4rem
     padding-bottom: 4rem
 
   +media('<tab')
+    //padding-top: #{nth($article-layout-space--tab, 1)}
+    padding-top: 3rem
     padding-bottom: 3rem
 
   +media('<mob')
+    //padding-top: #{nth($article-layout-space--mob, 1)}
+    padding-top: 2rem
     padding-bottom: 2rem
 
   & > p, & > ul, & > ol,
@@ -16061,7 +16070,7 @@ $author-photo-size--mob: 6rem
   position: relative
   overflow: hidden
   margin-bottom: $bottom-space
-  max-height: #{round-float($line-height * 9, 1)}
+  max-height: #{round-float($line-height * 20, 1)}
 
   .no-js &
     max-height: none
@@ -16075,8 +16084,10 @@ $author-photo-size--mob: 6rem
   left: -1rem
   height: 4rem
   width: calc(100% + 2rem)
-  $color: lightgreen
-  @include linear-gradient(to top, $color 0%, rgba($color, 0.5) 70%, rgba($color, 0) 100%)
+  $color: white
+  @include linear-gradient(to top, $color 0%, rgba($color, 1) 35%, rgba($color, 0.5) 70%, rgba($color, 0) 100%)
+  user-select: none
+  -webkit-tap-highlight-color: transparent
 
 // read more
 .read-more

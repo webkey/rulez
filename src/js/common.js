@@ -8,7 +8,7 @@ $(window).on('debouncedresize', function () {
   var currentWidth = $('body').outerWidth();
   resizeByWidth = prevWidth !== currentWidth;
   if (resizeByWidth) {
-    $(window).trigger('resizeByWidth');
+    $(window).trigger('debouncedresizeByWidth');
     prevWidth = currentWidth;
   }
 });
@@ -275,7 +275,7 @@ function detectScroll() {
     }, hideDelay);
   }
 
-  $(window).on('resizeByWidth scroll', function () {
+  $(window).on('debouncedresizeByWidth scroll', function () {
     var scrollTop = $(window).scrollTop();
     toggleClassOnScroll(scrollTop);
     changeHeightOnScroll(scrollTop, 100, 250);
@@ -1067,7 +1067,6 @@ function gridLayout() {
           $activeAnchor = $anchor.filter('[href="#' + activeId + '"]');
 
       if (!isAnimated) {
-        // console.log('Показать таб:', activeId);
         isAnimated = true;
 
         // Удалить активный класс со всех элементов
@@ -1132,7 +1131,6 @@ function gridLayout() {
       var $activePanel = $panel.filter('[id="' + activeId + '"]');
 
       if (!isAnimated) {
-        // console.log("Скрыть таб: ", activeId);
 
         isAnimated = true;
 
@@ -1194,10 +1192,6 @@ function gridLayout() {
         event.preventDefault();
 
         var curId = $(this).attr('href').substring(1);
-        // console.log("Таб анимируется?: ", isAnimated);
-        // console.log("Текущий таб открыт?: ", isOpen);
-        // console.log("Таб нужно закрывать, если открыт?: ", collapsible);
-        // console.log("activeId (Предыдущий): ", activeId);
 
         if (isAnimated || !collapsible && curId === activeId) {
           closeSelect();
@@ -1208,7 +1202,6 @@ function gridLayout() {
           hide();
         } else {
           activeId = curId;
-          // console.log("activeId (Текущий): ", activeId);
           show();
         }
 
@@ -1222,8 +1215,6 @@ function gridLayout() {
       activeId = $anchor.filter('.' + pluginClasses.active).length && $anchor.filter('.' + pluginClasses.active).attr('href').substring(1);
       var $activeAnchor = $anchor.filter('[href="#' + activeId + '"]'),
           $activePanel;
-
-      // console.log("activeId (сразу после инициализации): ", !!activeId);
 
       $anchor.filter('.' + pluginClasses.active).addClass(mixedClasses.active);
 
@@ -2169,7 +2160,6 @@ function addToCarAnimation() {
           if (!$_panel.length) {
             return false;
           }
-          // console.log('open!');
 
           var $activePanelWrap = $_panel.parent(), // Ближайшая родительская обертка активной Панели
               $activeParentsPanels = $_panel.parentsUntil(element, config.panel), // Все родительские Панели активной Панели
@@ -2327,7 +2317,6 @@ function addToCarAnimation() {
         },
         events = function () {
           $element.on(config.event, config.hand, function (event) {
-            // console.log('click');
             // Если панель во время клика находится в процессе анимации, то выполнение функции прекратится
             if (isAnimated) {
               event.preventDefault();
@@ -2347,7 +2336,6 @@ function addToCarAnimation() {
 
             event.preventDefault();
 
-            // console.log("$currentHand: ", $currentHand);
             var $currentPanel = $currentHand.closest(config.header).next().children(config.panel);
 
             if ($currentPanel.data('active')) {
@@ -2356,8 +2344,6 @@ function addToCarAnimation() {
                 isAnimated = false; // Анимация завершина
               });
             } else {
-              // console.log('1');
-              // console.log("$currentPanel: ", $currentPanel);
               // Открыть текущую панель
               open($currentPanel, function () {
                 isAnimated = false; // Анимация завершина
@@ -3058,10 +3044,8 @@ function toggleViewInit() {
     // });
 
     // $(document).keyup(function(e) {
-    // 	// console.log('Is drop opened? - ', self.dropIsOpened);
     // 	if (self.dropIsOpened && e.keyCode === 27) {
     // 		closeVisibleDrop();
-    // 		// console.log('Drop closed!');
     // 	}
     // });
 
@@ -3885,31 +3869,6 @@ function starsRating() {
  * !Truncate text
  */
 function truncateText() {
-  // var $btn = $('#truncateBtn');
-  // var $textEl = $('#truncateText');
-  // var textContent = $textEl.html();
-  //
-  // $btn.on('click', function() {
-  //   var hasShave = $textEl.has('.js-shave');
-  //
-  //   console.log("hasShave.length: ", !!hasShave.length);
-  //
-  //   if (hasShave.length) {
-  //     $textEl.html(textContent);
-  //     $btn.html('Truncate Text ✁');
-  //     return;
-  //   }
-  //
-  //   $textEl.shave(510);
-  //
-  //   $btn.html('Reset ⏎');
-  // });
-
-  // external js:
-  // 1) TweetMax VERSION: (lib.js);
-  // 2) device.js 0.2.7 (lib.js);
-  // 3) resizeByWidth (resize only width);
-
   var $textSlide = $('#truncateText');
 
   if (!$textSlide.length) return false;
@@ -3917,46 +3876,42 @@ function truncateText() {
   var $window = $(window),
       textFull = 'Далее',
       textShort = 'Скрыть',
-      $tplSlideFull = $('<div class="read-more" style="display: none;"><a href="#?" class="btn-read-more tt__switcher-js"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="#6E52DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>' + textFull + '</span></a></div>'),
+      $tplBtn = $('<div class="read-more" style="display: none;"><a href="#?" class="btn-read-more tt__switcher-js"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke="#6E52DD" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>' + textFull + '</span></a></div>'),
       $tplTextSlideInner = $('<div class="tt__inner" />'),
       $tplShadow = $('<div class="tt__shadow" >'),
       textSlideHeight = $textSlide.outerHeight(),
-      isTextFull = false,
-      minHeight = parseInt($textSlide.css('line-height'), 10) * 9;
+      _textIsFull = false,
+      truncateHeight = parseInt($textSlide.css('line-height'), 10) * 20,
+      dur = 300;
 
   $textSlide.addClass('tt tt_initialize');
 
-  // hide elements
-  // TweenMax.set($tplShadow, {autoAlpha: 0});
-  $tplShadow.animate({'opacity': 0});
-  // $tplSlideFull.hide(0);
-
-  // build structure
+  // Build structure
   $textSlide
       .wrapInner($tplTextSlideInner)
-      .after($tplSlideFull)
+      .after($tplBtn)
       .append($tplShadow);
 
-  $window.on('load resize', function () {
+  function prepare() {
     var wrapInnerHeight = $('.tt__inner').outerHeight();
 
     $textSlide.css('max-height', 'none');
 
-    if (wrapInnerHeight <= minHeight) {
-      // TweenMax.set($textSlide, {height: 'auto'});
-      // TweenMax.set($tplShadow, {autoAlpha: 0});
-      $textSlide.animate({'height': 'auto'});
-      $tplShadow.animate({'opacity': 0});
-      $tplSlideFull.hide(0);
-    } else if (!isTextFull) {
-      $textSlide.animate({'height': minHeight});
-      $tplShadow.animate({'opacity': 1});
-      // TweenMax.set($textSlide, {height: minHeight});
-      // TweenMax.set($tplShadow, {autoAlpha: 1});
-      $tplSlideFull.show(0);
+    if (wrapInnerHeight <= truncateHeight) {
+      $textSlide.css({'height': 'auto'});
+      $tplShadow.css({'opacity': 0});
+      $tplBtn.hide();
+    } else if (!_textIsFull) {
+      $textSlide.css({'height': truncateHeight});
+      $tplShadow.css({'opacity': 1});
+      $tplBtn.show();
 
       textSlideHeight = $textSlide.outerHeight();
     }
+  }
+
+  $window.on('load debouncedresizeByWidth', function () {
+    prepare();
   });
 
   $textSlide.parent().on('click', '.tt__switcher-js', function (e) {
@@ -3964,75 +3919,45 @@ function truncateText() {
 
     var wrapInnerHeight = $('.tt__inner').outerHeight();
 
-    if (wrapInnerHeight <= minHeight) return false;
+    if (wrapInnerHeight <= truncateHeight) return false;
 
     var $this = $(this);
 
-    if (isTextFull) {
-      // TweenMax.to($textSlide, 0.5, {
-      //   height: textSlideHeight,
-      //   ease: Power3.easeInOut,
-      //   onComplete: function () {
-      //     $textSlide.trigger('heightHeightChange');
-      //   }
-      // });
-      // TweenMax.to($tplShadow, 0.5, {autoAlpha: 1});
+    if (_textIsFull) {
+
+      $tplShadow.animate({
+        'opacity': 1
+      }, dur);
 
       $textSlide.animate({
         'height': textSlideHeight
-      }, 500, function() {
+      }, dur, function() {
+
         $textSlide.trigger('heightHeightChange');
       });
 
-      $tplShadow.animate({
-        'opacity': 1
-      }, 500);
-
       $this.removeClass('active').children('span').text(textFull);
 
-      isTextFull = false;
+      _textIsFull = false;
     } else {
-      // TweenMax.to($textSlide, 0.5, {
-      //   height: wrapInnerHeight,
-      //   ease: Power3.easeInOut,
-      //   onComplete: function () {
-      //     TweenMax.set($textSlide, {height: 'auto'});
-      //     $textSlide.trigger('afterHeightChange');
-      //
-      //     isTextFull = true;
-      //   }
-      // });
-      // TweenMax.to($tplShadow, 0.5, {autoAlpha: 0});
 
       $textSlide.animate({
         'height': wrapInnerHeight
-      }, 500, function() {
+      }, dur, function() {
         $textSlide.css({height: 'auto'});
 
-        $textSlide.trigger('afterHeightChange');
+        $textSlide.trigger('afterTextTruncated');
 
-        isTextFull = true;
+        _textIsFull = true;
       });
 
       $tplShadow.animate({
-        'opacity': 1
-      }, 500);
+        'opacity': 0
+      }, dur);
 
       $this.addClass('active').children('span').text(textShort);
     }
   });
-
-
-  // sticky kit recalculate
-  // var textSlideTimeout;
-  //
-  // $textSlide.on('afterHeightChange', function () {
-  //   clearTimeout(textSlideTimeout);
-  //
-  //   textSlideTimeout = setTimeout(function () {
-  //     $(document.body).trigger("sticky_kit:recalc");
-  //   }, 100);
-  // })
 }
 
 /**

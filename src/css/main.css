@@ -22778,11 +22778,12 @@ a.consist__item:hover .consist__item-title {
 .review-article-gallery-wrap {
   position: relative;
   overflow: hidden;
-  margin: 0 -4rem 2.8rem;
+  margin: -6rem -4rem 2.8rem;
 }
 
 @media (max-width: 1365px) {
   .review-article-gallery-wrap {
+    padding-top: -4rem;
     margin-left: -3rem;
     margin-right: -3rem;
   }
@@ -22790,6 +22791,7 @@ a.consist__item:hover .consist__item-title {
 
 @media (max-width: 991px) {
   .review-article-gallery-wrap {
+    margin-top: -3rem;
     margin-left: -2rem;
     margin-right: -2rem;
     padding-left: 8%;
@@ -22799,7 +22801,7 @@ a.consist__item:hover .consist__item-title {
 
 @media (max-width: 639px) {
   .review-article-gallery-wrap {
-    margin: 0 -1.5rem 2rem;
+    margin: -2rem -1.5rem 2rem;
   }
 }
 
@@ -22879,27 +22881,30 @@ a.consist__item:hover .consist__item-title {
 }
 
 .review-content {
-  padding-top: 0;
+  padding-top: 6rem;
   padding-bottom: 6rem;
   margin-bottom: 2rem;
   background-color: white;
   border-radius: 0 0 0.5rem 0.5rem;
 }
 
-@media (max-width: 1199px) {
+@media (max-width: 1365px) {
   .review-content {
+    padding-top: 4rem;
     padding-bottom: 4rem;
   }
 }
 
 @media (max-width: 991px) {
   .review-content {
+    padding-top: 3rem;
     padding-bottom: 3rem;
   }
 }
 
 @media (max-width: 639px) {
   .review-content {
+    padding-top: 2rem;
     padding-bottom: 2rem;
   }
 }
@@ -23164,7 +23169,7 @@ a.consist__item:hover .consist__item-title {
   position: relative;
   overflow: hidden;
   margin-bottom: 2.8rem;
-  max-height: 25.2rem;
+  max-height: 56rem;
 }
 
 .no-js .truncate-text {
@@ -23181,8 +23186,13 @@ a.consist__item:hover .consist__item-title {
   left: -1rem;
   height: 4rem;
   width: calc(100% + 2rem);
-  background: lightgreen;
-  background: linear-gradient(to top, lightgreen 0%, rgba(144, 238, 144, 0.5) 70%, rgba(144, 238, 144, 0) 100%);
+  background: white;
+  background: linear-gradient(to top, white 0%, white 35%, rgba(255, 255, 255, 0.5) 70%, rgba(255, 255, 255, 0) 100%);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .read-more {
