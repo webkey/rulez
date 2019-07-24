@@ -424,6 +424,9 @@ table {
   background: #fff;
   padding: 5px 20px;
   font-size: 18px;
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
 }
 
 /* no js warning end */
@@ -10484,7 +10487,7 @@ a.catalog-opener.catalog-is-open > i::after {
 }
 
 .category-links__title {
-  margin-bottom: 3.1rem;
+  margin-bottom: 2rem;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: start;
@@ -10493,10 +10496,6 @@ a.catalog-opener.catalog-is-open > i::after {
       align-items: center;
   font-size: 1.6rem;
   line-height: 2.2rem;
-}
-
-.category-links__title:last-child {
-  margin-bottom: 0;
 }
 
 .category-links__title > svg {
@@ -10572,6 +10571,7 @@ a.catalog-opener.catalog-is-open > i::after {
 }
 
 .category-links__list li {
+  max-width: 100%;
   color: #131313;
   font-size: 1.4rem;
   line-height: 1.8rem;
@@ -10580,8 +10580,7 @@ a.catalog-opener.catalog-is-open > i::after {
 }
 
 .category-links__list a {
-  display: inline-block;
-  vertical-align: top;
+  display: block;
   color: currentColor;
   text-align: center;
   min-height: 3.2rem;
@@ -10590,6 +10589,10 @@ a.catalog-opener.catalog-is-open > i::after {
   padding: 0.7rem 0.9rem;
   box-shadow: inset 0 0 0 1px rgba(189, 189, 189, 0.3);
   text-decoration: none;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   will-change: border-color, background-color, color;
   transition-property: border-color, background-color, color;
   transition-duration: 0.25s;
@@ -11181,10 +11184,12 @@ a.catalog-opener.catalog-is-open > i::after {
   top: 0;
   width: 100%;
   height: 100%;
+  padding: 0.8em;
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
   font-size: 1.6rem;
   line-height: 2.4rem;
+  text-align: center;
   text-decoration: none;
   color: inherit;
   background-color: #fff;
@@ -11198,6 +11203,7 @@ a.catalog-opener.catalog-is-open > i::after {
   .categories__inner {
     font-size: 1.4rem;
     line-height: 1.8rem;
+    padding: 0.6em;
   }
 }
 
@@ -11219,6 +11225,24 @@ a.catalog-opener.catalog-is-open > i::after {
 
 .categories__inner svg rect {
   stroke: currentColor;
+}
+
+.categories__inner span {
+  display: block;
+  overflow: hidden;
+  max-height: 4.8rem;
+}
+
+@media (max-width: 639px) {
+  .categories__inner span {
+    max-height: 5.4rem;
+  }
+}
+
+@media (max-width: 374px) {
+  .categories__inner span {
+    max-height: 4.8rem;
+  }
 }
 
 .no-touch .categories__inner:hover {
@@ -13448,12 +13472,20 @@ input[type="text"].quick-order__input.success {
   line-height: 2.4rem;
   color: currentColor;
   margin-bottom: 2rem;
+  overflow: hidden;
+}
+
+.topics__list .product__title {
+  height: 4.8rem;
 }
 
 @media (max-width: 479px) {
   .product__title {
     font-size: 1.4rem;
     line-height: 2.0rem;
+  }
+  .topics__list .product__title {
+    height: 4rem;
   }
 }
 
