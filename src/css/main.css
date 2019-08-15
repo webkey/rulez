@@ -2205,6 +2205,41 @@ label.input-wrap .input-def:focus ~ .label-float, label.input-wrap .input-def.fi
 }
 
 /* forms checkbox and radiobutton end */
+/* check as value */
+label.checkbox_value > span {
+  display: inline-block;
+  vertical-align: top;
+  height: 3.2rem;
+  border-radius: 1.6rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  font-size: 1.4rem;
+  line-height: 2.0rem;
+  border: 1px solid #dbdbdb;
+  background-color: white;
+  will-change: color, background-color, border-color, box-shadow;
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 0.25s;
+}
+
+label.checkbox_value > span::before, label.checkbox_value > span::after {
+  content: none;
+}
+
+label.checkbox_value input[type="checkbox"]:checked ~ span,
+label.checkbox_value input[type="radio"]:checked ~ span {
+  background-color: #6e52dd;
+  border-color: #6e52dd;
+  color: white;
+}
+
+.no-touch label.checkbox_value:hover input[type="checkbox"]:not(:disabled) ~ span,
+.no-touch label.checkbox_value:hover input[type="radio"]:not(:disabled) ~ span {
+  border-color: #6e52dd;
+  box-shadow: inset 0 0 0 1px #6e52dd;
+}
+
+/* check as value end */
 /* checkbox and radiobutton text view */
 .radiocheck-text-group {
   overflow: hidden;
@@ -17917,37 +17952,6 @@ a.helper__item:hover .helper__inner > span {
   }
 }
 
-label.checkbox_value > span {
-  display: inline-block;
-  vertical-align: top;
-  height: 3.2rem;
-  border-radius: 1.6rem;
-  text-align: center;
-  padding: 0.5rem 1rem;
-  font-size: 1.4rem;
-  line-height: 2.0rem;
-  border: 1px solid #dbdbdb;
-  background-color: white;
-  will-change: color, background-color, border-color, box-shadow;
-  transition-property: color, background-color, border-color, box-shadow;
-  transition-duration: 0.25s;
-}
-
-label.checkbox_value > span::before, label.checkbox_value > span::after {
-  content: none;
-}
-
-label.checkbox_value input[type="checkbox"]:checked ~ span {
-  background-color: #6e52dd;
-  border-color: #6e52dd;
-  color: white;
-}
-
-.no-touch label.checkbox_value:hover > span {
-  border-color: #6e52dd;
-  box-shadow: inset 0 0 0 1px #6e52dd;
-}
-
 .no-touch .p-filters-select:hover .p-filters-title {
   color: #6e52dd;
 }
@@ -20110,7 +20114,7 @@ label.checkbox_value input[type="checkbox"]:checked ~ span {
 }
 
 .section_p-infobar p, .section_p-infobar ul, .section_p-infobar ol {
-  margin-bottom: 0.5rem;
+  margin: 0 0 1rem;
 }
 
 .section_p-infobar p:last-child, .section_p-infobar ul:last-child, .section_p-infobar ol:last-child {
@@ -24657,6 +24661,53 @@ a.consist__item:hover .consist__item-title {
 }
 
 /* cabinet-profile-form end */
+/* installment */
+.ch-group {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 0 0 2.8rem -0.6rem;
+}
+
+@media (max-width: 639px) {
+  .ch-group {
+    margin-bottom: 2rem;
+  }
+}
+
+.ch-group:last-child {
+  margin-bottom: 0;
+}
+
+.ch-group__item {
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  margin: 0 0 1.4rem 0.6rem;
+}
+
+.installment-result__item {
+  font-size: 1.8rem;
+  margin: 0 0 2.8rem;
+}
+
+@media (max-width: 639px) {
+  .installment-result__item {
+    margin-bottom: 2rem;
+  }
+}
+
+.installment-result__item:last-child {
+  margin-bottom: 0;
+}
+
+.installment-result__item > span {
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #6e52dd;
+}
+
+/* installment end */
 /* ==================================== */
 /* =========== PRINT VERSION ========== */
 /* ==================================== */

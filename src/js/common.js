@@ -3981,6 +3981,217 @@ function toggleSubsFrom() {
 }
 
 /**
+ * Installment plan
+ */
+(function (window, $) {
+  // If there's no jQuery, nav plugin can't work
+  // ====================================================
+
+  if (!$) return;
+
+  // Inner Plugin Modifiers
+  // ====================================================
+  var CONST_MOD = {
+    initClass: 'installment-js-initialized',
+    dataDef: 'data-installment-default',
+  };
+
+  var Installment = function (element, config) {
+    var self,
+        $element = $(element),
+        checks = [config.termCheckEl, config.initialFeeCheckEl];
+
+    var callbacks = function () {
+          /** track events */
+          $.each(config, function (key, value) {
+            if (typeof value === 'function') {
+              $element.on('installment.' + key, function (e, param) {
+                return value(e, $element, param);
+              });
+            }
+          });
+        },
+        getPrice = function () {
+          // Получить ЦЕНУ
+          return +$(config.priceInput, $element).val();
+        },
+        getInstallmentRateVal = function () {
+          // Получить ПРОЦЕНТ по рассрочке
+          var val = getPrice() * (+$(config.installmentRateInput, $element).val() / 100);
+          val = +parseFloat(val).toFixed(2);
+          return val;
+        },
+        getValue = function (el) {
+          var val;
+
+          $.each($(el, $element), function (i, el) {
+            var $ch = $(el);
+            if ($ch.prop('checked')) {
+              val = +$ch.val();
+              return false;
+            }
+          });
+
+          return val;
+        },
+        getTerm = function () {
+          // Получить ПЕРИОД выплаты по рассрочке
+          return getValue(config.termCheckEl);
+        },
+        getInitialFee = function () {
+          // Получить размер ПЕРВОНАЧАЛЬНОГО ВЗНОСА
+          var val = (getPrice() + getInstallmentRateVal()) * getValue(config.initialFeeCheckEl) / 100;
+          val = parseFloat(val).toFixed(2);
+          return val;
+        },
+        getValPerMonth = function () {
+          // Получить размер ЕЖЕМЕСЯЧНОГО ВЗНОСА
+          var price = +getPrice();
+          var installmentRate = +getInstallmentRateVal();
+          var initialFee = +getInitialFee();
+          var term = +getTerm();
+
+          var result = (price + installmentRate - initialFee) / term;
+          result = parseFloat(result).toFixed(2);
+
+          return result;
+        },
+        setInitialFee = function () {
+          $(config.resultInitialFeeEl, $element).html(getInitialFee() + ' ' + config.priceUnit);
+        },
+        setTerm = function () {
+          $(config.resultTermEl, $element).html(getTerm() + ' ' + config.termUnit);
+        },
+        setValPerMonth = function () {
+          $(config.resultValPerMonthEl, $element).html(getValPerMonth() + ' ' + config.priceUnit);
+        },
+        enableTerms = function () {
+          $.each($(config.initialFeeCheckEl, $element).filter(':checked'), function () {
+            var $ch = $(this);
+            var $termCheck = $(config.termCheckEl);
+
+            $termCheck.filter('[data-installment-enable]').prop('disabled', true);
+
+            $.each($termCheck, function () {
+              var $term = $(this);
+
+              if ($term.attr('data-installment-enable') <= $ch.val()) {
+                $term.prop('disabled', false);
+              }
+            })
+          });
+        },
+        setResults = function () {
+          // Включить доступные ПЕРИОДЫ выплаты
+          enableTerms();
+
+          // Установить размер ПЕРВОНАЧАЛЬНОГО ВЗНОСА
+          setInitialFee();
+
+          // Установить ПЕРИОД выплаты по рассрочке
+          setTerm();
+
+          // Установить размер ЕЖЕМЕСЯЧНОГО ВЗНОСА
+          setValPerMonth();
+        },
+        events = function () {
+          $element.on('change', checks, function (event) {
+            setResults();
+
+            event.preventDefault();
+          });
+
+          $(config.resetEl).closest('form').on('reset', function () {
+            setTimeout(function () {
+              setResults();
+            }, 1)
+          });
+
+          $(window).on('load', function () {
+            setResults();
+          });
+
+          $element.on('recalc', function () {
+            setResults();
+          })
+        },
+        init = function () {
+          $element.addClass(CONST_MOD.initClass);
+          $element.trigger('installment.afterInit');
+        };
+
+    self = {
+      callbacks: callbacks,
+      events: events,
+      init: init
+    };
+
+    return self;
+  };
+
+  function _run (el) {
+    el.installment.callbacks();
+    el.installment.init();
+    el.installment.events();
+  }
+
+  $.fn.installment = function () {
+    var self = this,
+        opt = arguments[0],
+        args = Array.prototype.slice.call(arguments, 1),
+        l = self.length,
+        i,
+        ret;
+
+    // Обойти все выбранные элементы по отдельности
+    // и создань инстансы для каждого из них.
+    // Косвенно for предохраняет от попытки
+    // создания экземпляра объекта на несуществующем элементе,
+    // так как l в таком случае будет равно 0, переменная i также равна 0,
+    // следовательно условие i < l не выполнится
+    for (i = 0; i < l; i++) {
+      if (typeof opt === 'object' || typeof opt === 'undefined') {
+        self[i].installment = new Installment(self[i], $.extend(true, {}, $.fn.installment.defaultOptions, opt));
+        _run(self[i]);
+      } else {
+        ret = self[i].installment[opt].apply(self[i].installment, args);
+      }
+      if (typeof ret !== 'undefined') {
+        return ret;
+      }
+    }
+    return self;
+  };
+
+  $.fn.installment.defaultOptions = {
+    // param: 'input:radio',
+    priceInput: '.installment-price-js',
+    installmentRateInput: '.installment-rate-js',
+    termCheckEl: '.installment-term-check-js',
+    initialFeeCheckEl: '.installment-fee-check-js',
+    resetEl: '.installment-reset-js',
+    resultInitialFeeEl: '.installment-result-fee-js',
+    resultValPerMonthEl: '.installment-result-val-js',
+    resultTermEl: '.installment-result-term-js',
+    priceUnit: 'руб.',
+    termUnit: 'мес.'
+  };
+
+})(window, jQuery);
+
+function instalmentPlan() {
+  var $installment = $('.installment-js');
+  if ($installment.length) {
+    $installment.installment();
+
+    // todo Delete after testing
+    $('.installment-price-js, .installment-rate-js').on('keyup', function () {
+      $installment.trigger('recalc');
+    })
+  }
+}
+
+/**
  * !Form validation
  * */
 function formValidation() {
@@ -4079,5 +4290,6 @@ $(document).ready(function () {
   toggleNewReview();
   starsRating();
   truncateText();
+  instalmentPlan();
   formValidation();
 });

@@ -12176,37 +12176,6 @@ $p-results-fixed-height: 7rem
       +media('<mob')
         width: auto
 
-label.checkbox_value
-  & > span
-    display: inline-block
-    vertical-align: top
-    height: 3.2rem
-    border-radius: 1.6rem
-    text-align: center
-    padding: 0.5rem 1rem
-    font-size: 1.4rem
-    line-height: 2.0rem
-    border: 1px solid $border-color
-    background-color: white
-    // transition
-    $prop: color, background-color, border-color, box-shadow
-    will-change: $prop
-    transition:
-      property: $prop
-      duration: $animation-speed
-
-    &::before, &::after
-      content: none
-
-  input[type="checkbox"]:checked ~ span
-    background-color: $base-color
-    border-color: $base-color
-    color: white
-
-  .no-touch &:hover > span
-    border-color: $base-color
-    box-shadow: inset 0 0 0 1px $base-color
-
 // ===STATES===
 // hover
 .p-filters-select
@@ -13820,7 +13789,7 @@ $card-size: 85px 135px
     padding: 2rem #{nth($section-inner-space--mob, 2)}
 
   p, ul, ol
-    margin-bottom: 0.5rem
+    margin: 0 0 1rem
 
     &:last-child
       margin-bottom: 0
@@ -17176,3 +17145,37 @@ $u-review-photo-size--mob: 4.2rem
     margin-bottom: 0
 
 /* cabinet-profile-form end
+
+/* installment
+
+// checkboxes / radiobuttons group
+.ch-group
+  display: flex
+  flex-wrap: wrap
+  margin: 0 0 #{$bottom-space} -0.6rem
+
+  +media('<mob')
+    margin-bottom: $bottom-space--mob
+
+  &:last-child
+    margin-bottom: 0
+
+.ch-group__item
+  flex-shrink: 1
+  margin: 0 0 1.4rem 0.6rem
+
+.installment-result__item
+  font-size: 1.8rem
+  margin: 0 0 #{$bottom-space}
+
+  +media('<mob')
+    margin-bottom: $bottom-space--mob
+
+  &:last-child
+    margin-bottom: 0
+
+  & > span
+    +font-bold
+    color: $base-color
+
+/* installment end
