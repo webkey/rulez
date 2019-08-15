@@ -4057,13 +4057,16 @@ function toggleSubsFrom() {
           return result;
         },
         setInitialFee = function () {
-          $(config.resultInitialFeeEl, $element).html(getInitialFee() + ' ' + config.priceUnit);
+          var initialFee = getInitialFee();
+          $(config.resultInitialFeeEl, $element).html(initialFee + ' ' + config.priceUnit).attr('data-installment-initial-fee', initialFee);
         },
         setTerm = function () {
-          $(config.resultTermEl, $element).html(getTerm() + ' ' + config.termUnit);
+          var term = getTerm();
+          $(config.resultTermEl, $element).html(term + ' ' + config.termUnit).attr('data-installment-term', term);
         },
         setValPerMonth = function () {
-          $(config.resultValPerMonthEl, $element).html(getValPerMonth() + ' ' + config.priceUnit);
+          var valPerMonth = getValPerMonth();
+          $(config.resultValPerMonthEl, $element).html(valPerMonth + ' ' + config.priceUnit).attr('data-installment-per-month', valPerMonth);
         },
         enableTerms = function () {
           $.each($(config.initialFeeCheckEl, $element).filter(':checked'), function () {
