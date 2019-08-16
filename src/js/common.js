@@ -4071,17 +4071,26 @@ function toggleSubsFrom() {
         enableTerms = function () {
           $.each($(config.initialFeeCheckEl, $element).filter(':checked'), function () {
             var $ch = $(this);
-            var $termCheck = $(config.termCheckEl);
+            var $termCheck = $(config.termCheckEl, $element);
 
             $termCheck.filter('[data-installment-enable]').prop('disabled', true);
 
             $.each($termCheck, function () {
               var $term = $(this);
 
+              // Если значение атрибута равно или больше размеру ПЕРВОНАЧАЛЬНОГО взноса,
+              // то активировать соответствующие кнопки ПЕРИОДА рассрочки
               if ($term.attr('data-installment-enable') <= $ch.val()) {
                 $term.prop('disabled', false);
               }
-            })
+
+              // Если отмеченная кнопка оказывается заблокированной,
+              // то с нее чеккед нужно перенести на последнюю активну кнопку ПЕРИОДА рассрочки
+              if ($term.is(':checked:disabled')) {
+                $term.prop('checked', false);
+                $termCheck.not(':disabled').last().prop('checked', true);
+              }
+            });
           });
         },
         setResults = function () {

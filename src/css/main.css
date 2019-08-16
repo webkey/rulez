@@ -2233,6 +2233,19 @@ label.checkbox_value input[type="radio"]:checked ~ span {
   color: white;
 }
 
+label.checkbox_value input[type="checkbox"]:disabled ~ span,
+label.checkbox_value input[type="radio"]:disabled ~ span {
+  color: #bdbdbd;
+  border-color: #dbdbdb;
+  background-color: #fff;
+}
+
+label.checkbox_value input[type="checkbox"]:checked:disabled ~ span,
+label.checkbox_value input[type="radio"]:checked:disabled ~ span {
+  color: #fff !important;
+  background-color: #dbdbdb;
+}
+
 .no-touch label.checkbox_value:hover input[type="checkbox"]:not(:disabled) ~ span,
 .no-touch label.checkbox_value:hover input[type="radio"]:not(:disabled) ~ span {
   border-color: #6e52dd;

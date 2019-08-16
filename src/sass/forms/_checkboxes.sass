@@ -165,10 +165,22 @@ label.checkbox_value
     border-color: $base-color
     color: white
 
-  .no-touch &:hover input[type="checkbox"]:not(:disabled) ~ span,
-  .no-touch &:hover input[type="radio"]:not(:disabled) ~ span
-    border-color: $base-color
-    box-shadow: inset 0 0 0 1px $base-color
+  input[type="checkbox"]:disabled ~ span,
+  input[type="radio"]:disabled ~ span
+    color: #bdbdbd
+    border-color: #dbdbdb
+    background-color: #fff
+
+  input[type="checkbox"]:checked:disabled ~ span,
+  input[type="radio"]:checked:disabled ~ span
+    color: #fff !important
+    background-color: #dbdbdb
+
+  .no-touch &:hover
+    input[type="checkbox"]:not(:disabled) ~ span,
+    input[type="radio"]:not(:disabled) ~ span
+      border-color: $base-color
+      box-shadow: inset 0 0 0 1px $base-color
 
 /* check as value end
 
