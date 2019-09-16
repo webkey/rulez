@@ -3829,7 +3829,7 @@ $catalog-columns-length--mob: 1
   padding: #{$catalog-item-space-vertical} #{round-float($catalog-item-space-horizontal / 2, 1)} 0
   //outline: 1px solid lightgrey
 
-  // Перебить стили утановленные скриптом пока они не нужны
+  // Перебить стили установленные скриптом пока они не нужны
   +media('>=tab')
     & > .rolls-panel-wrap-js
       position: static !important
@@ -3846,6 +3846,53 @@ $catalog-columns-length--mob: 1
     $width: round-float(100% / $catalog-columns-length--net, 2) - 0.01
     flex-basis: $width
     width: $width
+    max-width: $width
+
+  +media('<tab')
+    padding-top: $catalog-item-space-vertical--tab
+    $width: round-float(100% / $catalog-columns-length--tab, 2) - 0.01
+    flex-basis: $width
+    width: $width
+    max-width: $width
+
+  +media('<mob')
+    padding: 0
+    $width: 100%
+    flex-basis: $width
+    width: $width
+    max-width: $width
+    border-top: 1px solid $border-color-light
+
+    &:first-child
+      border-top: none
+
+  // for ie 9
+  @if $ie9
+    .no-flexwrap &
+      display: inline-block
+      vertical-align: top
+
+// Попытка выполнить просьбу, чтбы пункты занимали шарину по контенту и не было больших промежутков менжду ними
+// Так как подпункты могут содержать больше коненат, то будут распирать контет
+//.catalog-menu__item
+  $width: round-float(100% / $catalog-columns-length, 2) - 0.01
+  max-width: $width
+  flex: 0 1 auto
+  padding: #{$catalog-item-space-vertical} #{round-float($catalog-item-space-horizontal / 2, 1)} 0
+
+  // Перебить стили установленные скриптом пока они не нужны
+  +media('>=tab')
+    & > .rolls-panel-wrap-js
+      position: static !important
+      overflow: visible !important
+      height: auto !important
+
+  +media('<desk-s')
+    $width: round-float(100% / $catalog-columns-length--lap, 2) - 0.01
+    max-width: $width
+
+  +media('<net')
+    $width: round-float(100% / $catalog-columns-length--net, 2) - 0.01
     max-width: $width
 
   +media('<tab')
@@ -10976,7 +11023,7 @@ $products-border-width: 1px
   +media('<mob')
     margin-bottom: 2rem
 
-  &:last-child
+  //&:last-child
     margin-bottom: 0
 
 /* product pagination end
@@ -10994,7 +11041,7 @@ $products-border-width: 1px
   +media('<mob')
     margin-bottom: 2rem
 
-  &:last-child
+  //&:last-child
     margin-bottom: 0
 
 /* load more products end
@@ -11024,16 +11071,16 @@ $p-results-fixed-height: 7rem
   display: flex
   background-color: white
   margin-bottom: 2.5rem
-  padding-bottom: nth($m-container-space, 3)
+  //padding-bottom: nth($m-container-space, 3)
 
-  +media('<lap-s')
+  //+media('<lap-s')
     padding-bottom: nth($m-container-space--tab, 3)
 
   // Фильтры - попапом
   +media('<#{$p-filters-breakpoint}')
     display: block
 
-  +media('<mob')
+  //+media('<mob')
     padding-bottom: nth($m-container-space--mob, 3)
 
   &:last-child
@@ -11215,6 +11262,11 @@ $p-results-fixed-height: 7rem
     width: auto
     max-width: none
 
+  &::after
+    content: ""
+    display: block
+    clear: both
+
 .m-heading, .m-options, .m-tags, .m-description, .load-more, .products-pagination
   .m-content &
     padding-left: nth($m-container-space, 2)
@@ -11284,9 +11336,16 @@ $p-results-fixed-height: 7rem
   color: #777
   font-size: 1.4rem
   line-height: 2.2rem
-  margin-bottom: 4rem
+  //margin-bottom: 4rem
+  padding-bottom: nth($m-container-space, 3)
 
-  &:last-child
+  +media('<lap-s')
+    padding-bottom: nth($m-container-space--tab, 3)
+
+  +media('<mob')
+    padding-bottom: nth($m-container-space--mob, 3)
+
+  //&:last-child
     margin-bottom: 0
 
   p
