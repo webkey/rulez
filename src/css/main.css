@@ -16355,13 +16355,18 @@ a.helper__item:hover .helper__inner > span {
 /* favorite products end */
 /* products */
 .products {
-  overflow: hidden;
   margin-bottom: 3rem;
 }
 
 @media (max-width: 767px) {
   .products {
     margin-bottom: 2rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .products {
+    overflow: hidden;
   }
 }
 
@@ -16387,8 +16392,14 @@ a.helper__item:hover .helper__inner > span {
       justify-content: stretch;
   -ms-flex-flow: row wrap;
       flex-flow: row wrap;
-  margin: 0 -1px 4rem;
-  padding: 0 1px 1px 0;
+  margin: 0 0 4rem -1px;
+  padding: 0 0 1px 1px;
+}
+
+@media (max-width: 991px) {
+  .products__list {
+    margin-left: -1px;
+  }
 }
 
 .products__list:last-child {
@@ -16503,7 +16514,6 @@ a.helper__item:hover .helper__inner > span {
 }
 
 .m-container::before {
-  content: "";
   display: block;
   position: absolute;
   left: 34.7rem;
@@ -16539,6 +16549,7 @@ a.helper__item:hover .helper__inner > span {
       flex-shrink: 0;
   -ms-flex-item-align: start;
       align-self: flex-start;
+  border-right: 1px solid #dbdbdb;
 }
 
 @media (max-width: 1599px) {
@@ -16569,6 +16580,7 @@ a.helper__item:hover .helper__inner > span {
     padding-top: 5rem;
     max-width: none;
     background-color: white;
+    border: none;
     z-index: 9995;
     -ms-transform: translate(-100%, 0);
         transform: translate(-100%, 0);
