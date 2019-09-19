@@ -11077,23 +11077,17 @@ $p-results-fixed-height: 7rem
   display: flex
   background-color: white
   margin-bottom: 2.5rem
-  //padding-bottom: nth($m-container-space, 3)
-
-  //+media('<lap-s')
-    padding-bottom: nth($m-container-space--tab, 3)
+  min-height: 45rem
 
   // Фильтры - попапом
   +media('<#{$p-filters-breakpoint}')
     display: block
 
-  //+media('<mob')
-    padding-bottom: nth($m-container-space--mob, 3)
-
   &:last-child
     margin-bottom: 0
 
-  &::before
-    //content: ""
+  //&::before
+    content: ""
     display: block
     position: absolute
     left: $p-filters-width - 0.1
