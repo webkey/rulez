@@ -442,8 +442,8 @@ $spinner-btn-width: 35px
   cursor: default
   overflow: hidden
   +font-light
-  font-size: 1.3rem
-  line-height: 1.9rem
+  font-size: 1.4rem
+  line-height: 2.0rem
   color: white
 
   &, .#{$article-content} &
@@ -482,7 +482,7 @@ $spinner-btn-width: 35px
 
   a
     padding-top: 0.5em
-    color: rgba(white, 0.2)
+    color: rgba(white, 0.7)
     text-decoration: none
     cursor: pointer
     // transition
@@ -1370,6 +1370,21 @@ $popup-def__soc-space-outer: 1rem 1rem
 //.popup-def-wrap
 .fancybox-bg
   background-color: rgba($base-color, 0.9)
+
+.fancybox-container.white-spaces
+  .fancybox-content
+    background-color: white
+    box-shadow: 0 0 0 2rem white
+
+    //.fancybox-image, .fancybox-spaceball
+      $space: 2rem
+      left: $space
+      top: $space
+      height: calc(100% - #{$space * 2})
+      width: calc(100% - #{$space * 2})
+
+    //.fancybox-image, .fancybox-spaceball
+      border: 2rem solid white
 
 .fancybox-button
   svg
@@ -5221,14 +5236,19 @@ $subs-form-height: 3.4rem
 
   img
     opacity: 0.38
+    transition: opacity $animation-speed
+
+  // Hover
+  .no-touch &:hover
+    img
+      opacity: 0.55
 
 /* pay cards end
 
 /* footer bottom
 .footer-bottom
   position: relative
-  // обрезать вытянутый маржинами по горизонтале дочерний элемент
-  overflow: hidden
+  //overflow: hidden // обрезать вытянутый маржинами по горизонтале дочерний элемент
   font-size: 1.2rem
   line-height: 1.4rem
 
@@ -5237,27 +5257,35 @@ $subs-form-height: 3.4rem
   display: flex
   flex-wrap: nowrap
   justify-content: space-between
-  +margin-horizontal(-#{round(nth($grid-inner-space, 2)/2)})
-  margin-bottom: -#{round(nth($grid-inner-space, 1)/2)}
+  align-items: center
+  $space: nth($footer-grid-space, 2)
+  margin-left: -#{$space}
+  margin-right: -#{round-float($space / 2, 1)}
 
-  +media('<tab-s')
+  +media('<lap-s')
+    $space: nth($footer-grid-space--tab, 2)
+    margin-left: -#{$space}
+    margin-right: -#{round-float($space / 2, 1)}
+
+  +media('<mob')
     display: block
-    margin-bottom: -2rem
 
 .footer-bottom__col
-  flex-basis: 160px
   text-align: center
-  +padding-horizontal(round(nth($grid-inner-space, 2)/2))
-  margin-bottom: #{round(nth($grid-inner-space, 1)/2)}
+  $space: nth($footer-grid-space, 2)
+  padding-left: $space
+  padding-right: round-float($space / 2, 1)
 
-  +media('<tab-s')
-    margin-bottom: 2rem
+  +media('<lap-s')
+    $space: nth($footer-grid-space--tab, 2)
+    padding-left: $space
+    padding-right: round-float($space / 2, 1)
 
-  &:nth-child(2)
-    flex-basis: 500px
+  +media('<mob')
+    margin-top: 2rem
 
   // for ie 9
-  @if $ie9
+  //@if $ie9
     .no-flexwrap &
       display: inline-block
       vertical-align: top
@@ -5266,16 +5294,32 @@ $subs-form-height: 3.4rem
       +media('<mob')
         width: 100%
 
-  +media('<mob')
-    min-width: 100%
-
   &:first-child
-    +media('>=tab-s')
-      text-align: left
+    flex-shrink: 0
+    text-align: left
+
+    +media('<mob')
+      text-align: center
+      margin-top: 0
 
   &:last-child
-    +media('>=tab-s')
-      text-align: right
+    flex-shrink: 0
+    $width: 25%
+    flex-basis: $width
+    max-width: $width
+    text-align: left
+
+    +media('<tab')
+      $width: 30%
+      flex-basis: $width
+      max-width: $width
+
+    +media('<tab-s')
+      flex-basis: auto
+      max-width: none
+
+    +media('<mob')
+      text-align: center
 
   a
     color: inherit
@@ -5294,40 +5338,77 @@ $subs-form-height: 3.4rem
 
 /* developer
 .developer
-  position: relative
   display: inline-block
-  vertical-align: top
-  +size(154px, 20px)
-  text-align: left
-  text-indent: -9999px
-  text-decoration: none
-  opacity: 0.7
-  // transition
-  $prop: opacity
-  will-change: $prop
-  transition:
-    property: $prop
-    duration: $animation-speed
+  line-height: 1
 
-  &::before, &::after
-    +pseudo()
-    +position(0, 0)
-    +size(149px, 16px)
+  a
+    text-decoration: none
+    color: #fff
+
+.developer__logo
+  display: block
+  position: relative
+  margin-bottom: 0.2rem
+  width: 16rem
+  font-size: 0
+  line-height: 0
+
+  +media('<tab-s')
+    width: 12rem
 
   &::before
-    +pseudo()
-    +position(4px, 4px)
-    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTMyIDc5LjE1OTI4NCwgMjAxNi8wNC8xOS0xMzoxMzo0MCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OTA2ODc1N0UwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OTA2ODc1N0YwOEJDMTFFNzlCNzhBOUI2REQxMjc4QzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MDY4NzU3QzA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5MDY4NzU3RDA4QkMxMUU3OUI3OEE5QjZERDEyNzhDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PnDruBQAAAAkSURBVHjaYmRgYPjPACL+/2cE0YwYAkAGA5jByPgfqwBAgAEAP4gP/bFMMZQAAAAASUVORK5CYII=')
-    background-size: 2px
+    content: ""
+    display: block
+    +ratio(247, 84)
 
   &::after
-    +pseudo()
-    background: #00ef85 url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASwAAAAgBAMAAABa5liJAAAAMFBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABaPxwLAAAAD3RSTlMAd7tEIt0R7pkzzIhmqlV9QenDAAAD2klEQVRYw+2WPYsTURSGj5oEs0lMBkUUlMSUWkxwxNKsnV2ihWCVbGXpFwhWs6Io2GT0D2xQsM2KqGUEEUvFwjbxF7irO2ZMsh7PuRvP3Xuv2mhhkRd258zuvc/7bOaDhXnmmedvUi79S1rK2wcqp99XnyzSwVOhib4fBJWl98ciOuS9GsCuQzR5HNLY4akdW1ovDc6OvUCLPS7wPJ5lEKBU6FJJDiezI4Wa6qhCAny4AKwTIiZtgJ3YpLrPAICcNYAi7+ggAHyET7Udw22c4jrQYiQ1pJwFGTRQKnSpJI0xcAbxE+8e4R5Uq+HVajUCwCOHWyM6Qnn05BlWWGs60/K81lmPu7ELELJW+KF+wj8vHEPr5oEeLsuggVKhSyUrE+SzPbx+Fr8CHCwR9h1AFh9DpjdlrVhp6TXFeAPyMWudGfXvJovCMbRqkOp9kUGAUqGBOv3zuEqH3QRwtaB3GaAworqLMWklOLS0kgkUJgjshWQlHEsLGpsyaKCucLVaq4MmUOWvtfw1IiXqlolg57pfMbXq32NoXBMt4ThaC2MZNFAqXK0s1srf1KrSLz8tUn77HZhZIq1PXyyttTAqP+e646P+iyQSjq21M5ZBA6XC1cqNoDHhpzfcXHS18ryv/JVOMkor/dnW6iy3IqrL0C1/ctAUjq1FG2UQoFS4WukEFmIe3uDm0NK6daozbgMM1tTZO9LKY2RqNVdujIHrXsHb2p6hcGyt+lQGDZQKV2vlO+2NaEh1MH5palHu8OkWpUJamXDZ1Kqkx+ukJW954ZhaS2FXBg2UClerfxlSuKp4L9AUx3O9RJ3qTwvKG4ZWubIDN7ZpCcfQengU40gGDZQKV6v1jr6aoPIau+a9lVfCnS1KibUuJpZWiuj6aRGO9ZYf7QcZNFAqHK0sPg2CwTdQyfhTUwvKX7j7mzyJ9IQsmVrgv7S1mGNo7Q0iABk0UCocrRxyJrOzxrqldZEdPk1VQcRaKfQsLQBDSzhFhhZm7wWODAKUCkcrjZyxvAItrRyTLvHGdAysBZ2zrpavtTRngdctbLpaApQKV2uFxXO4CCpv7YuYQhoLOCSB6ZZWI96uNXC0hLObofWpqyVAqXC1+vxmy9JvC68A7ofXLS3obABtvNJewi5rcRtrBUHvUVD7udJfFp5wSOIR7ArPu1oClApHix9EStiFIlJGka3VSPiP5+vcZi1mb/9/y1+1iZrTx888uFoClAobkuWfK+GdIWK8H2ytAl+KrK8ebKUFvqFVsomas6eHeBt+pSVAqRCImyBow2+SCSL4c1wO76r9CTjPPPP8x/kBIrOdsjg4YcgAAAAASUVORK5CYII=') no-repeat center center
-    background-size: auto 16px
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    width: 100%
+    height: 100%
+    background: url("../../img/logo-dev.png") no-repeat center center
+    background-size: contain
 
-  // hover
-  &:hover
-    opacity: 1
+.developer__label
+  font-size: 1.6rem
+  line-height: 2.4rem
+  letter-spacing: 0.14em
+
+  +media('<tab-s')
+    font-size: 1.3rem
+    line-height: 2rem
+    letter-spacing: 0.08em
+
+  a
+    box-shadow: inset 0 0 0 currentColor
+    text-decoration: none
+    color: currentColor
+
+// Hover
+.developer
+  .developer__label
+    white-space: nowrap
+
+    a
+      text-decoration: none
+      transition: box-shadow $animation-speed
+
+      &:hover
+        text-decoration: none
+        box-shadow: inset 0 -1px 0 currentColor
+
+  .developer__logo
+    &::after
+      transition: transform $animation-speed
+
+    &:hover
+      &::after
+        $translate: 0, -0.5rem
+        transform: translate($translate)
+        transform: translate3d($translate, 0)
 
 /* developer end
 
@@ -6125,13 +6206,15 @@ $p-sticker-size--mob: 1.8rem 1.8rem
   align-items: center
   font-size: 1.6rem
   line-height: 2.2rem
+  white-space: normal
 
   //&:last-child
     margin-bottom: 0
 
   & > svg
-    display: inline-block
-    vertical-align: top
+    display: block
+    //display: inline-block
+    //vertical-align: top
     flex-shrink: 0
     width: 3rem
     height: 2.2rem
@@ -6144,8 +6227,9 @@ $p-sticker-size--mob: 1.8rem 1.8rem
         stroke: $base-color
 
   & > strong
-    display: inline-block
-    vertical-align: top
+    display: block
+    //display: inline-block
+    //vertical-align: top
     +font-bold
     color: #000
     margin-right: 1rem
@@ -6157,8 +6241,9 @@ $p-sticker-size--mob: 1.8rem 1.8rem
       +underlinedLinks(#000)
 
   & > em
-    display: inline-block
-    vertical-align: top
+    display: block
+    //display: inline-block
+    //vertical-align: top
     +font-light
     font-style: normal
     font-size: 1.4rem
@@ -8335,13 +8420,9 @@ $product-item-space--mob: 2rem 1.5rem
   padding: 0
   list-style: none
   display: none
-  font-size: 1.2rem
-  line-height: 1.4rem
+  font-size: 1.4rem
+  line-height: 1.8rem
   color: #858585
-
-  +media('<mob')
-    font-size: 1.4rem
-    line-height: 2.0rem
 
   li
     padding-left: 0
@@ -10454,6 +10535,18 @@ $at-elem-space: 1.6rem 2.5rem
   background-position: center
   background-size: cover
 
+  &::after
+    content: ""
+    display: block
+    position: absolute
+    left: 0
+    top: 0
+    height: 100%
+    width: 100%
+    opacity: 0
+    +linear-gradient(to top, rgba($base-color, 0.5) 0%, rgba($base-color, 0.3) 30%, rgba($base-color, 0) 100%)
+    transition: opacity $animation-speed
+
 .articles-tiles-elem__content
   display: flex
   flex-direction: column
@@ -10559,141 +10652,148 @@ $at-elem-space: 1.6rem 2.5rem
   &:last-child
     margin-bottom: 0
 
+// Hover
+.articles-tiles-elem
+  .no-touch &:hover
+    .articles-tiles-elem__figure
+      &::after
+        opacity: 1
+
 /* articles main previews end
 
-/* helper
-.main-section_helper
-  position: relative
-  padding:
-    top: 0
-    bottom: 0
-
-  .helper-alt
-    padding:
-      top: 4rem
-      bottom: 4rem
-
-    +media('<lap-s')
-      padding:
-        left: 0
-        right: 0
-        top: 3rem
-        bottom: 3rem
-
-    +media('<tab')
-      padding:
-        top: 1rem
-        bottom: 1rem
-
-.helper
-  position: relative
-
-.helper__list
-  display: flex
-  flex-wrap: wrap
-  margin-bottom: 2rem
-
-  &:last-child
-    margin-bottom: 0
-
-.helper__item
-  display: flex
-  justify-content: center
-  align-items: center
-  flex-grow: 1
-  flex-shrink: 0
-  $width: 25%
-  flex-basis: $width
-  max-width: $width
-  padding: $box-inner-space
-  min-height: 12rem
-  text-align: center
-  text-decoration: none
-  color: currentColor
-  background-color: white
-  border: solid $border-color-light
-  border-width: 0 0 0 1px
-  user-select: none
-  // transition
-  $prop: background-color
-  transition:
-    property: $prop
-    duration: $animation-speed
-
-  // for ie 9
-  //@if $ie9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
-      width: calc(20% - 6px)
-
-  &:first-child
-    border-left: none
-
-  +media('<tab')
-    $width: 50%
-    flex-basis: $width
-    max-width: $width
-    min-height: 6rem
-    border-width: 1px 0 0 1px
-
-    &:nth-child(2n - 1)
-      border-left: none
-
-    &:nth-child(-n + 2)
-      border-top: none
-
-.helper__inner
-  width: calc(100% - 4rem)
-  display: flex
-  align-items: center
-  text-align: left
-  max-width: 24rem
-
-  & > svg
-    $size: 3.4rem
-    display: inline-block
-    vertical-align: top
-    width: $size
-    min-width: $size
-    height: $size
-    opacity: 0.8
-
-    path
-      fill: $base-color
-      // transition
-      $prop: fill
-      transition:
-        property: $prop
-        duration: $animation-speed
-
-    & + span
-      margin-left: 1.5rem
-
-  & > span
-    font-size: 1.4rem
-    line-height: 1.8rem
-    color: rgba(black, 0.8)
-    // transition
-    $prop: color
-    transition:
-      property: $prop
-      duration: $animation-speed
-
-a.helper__item
-  // hover
-  &:hover
-    background-color: $base-color
-    color: white
-
-    .helper__inner
-      & > svg path
-        fill: white
-
-      & > span
-        color: white
-
-/* helper
+///* helper
+//.main-section_helper
+//  position: relative
+//  padding:
+//    top: 0
+//    bottom: 0
+//
+//  .helper-alt
+//    padding:
+//      top: 4rem
+//      bottom: 4rem
+//
+//    +media('<lap-s')
+//      padding:
+//        left: 0
+//        right: 0
+//        top: 3rem
+//        bottom: 3rem
+//
+//    +media('<tab')
+//      padding:
+//        top: 1rem
+//        bottom: 1rem
+//
+//.helper
+//  position: relative
+//
+//.helper__list
+//  display: flex
+//  flex-wrap: wrap
+//  margin-bottom: 2rem
+//
+//  &:last-child
+//    margin-bottom: 0
+//
+//.helper__item
+//  display: flex
+//  justify-content: center
+//  align-items: center
+//  flex-grow: 1
+//  flex-shrink: 0
+//  $width: 25%
+//  flex-basis: $width
+//  max-width: $width
+//  padding: $box-inner-space
+//  min-height: 12rem
+//  text-align: center
+//  text-decoration: none
+//  color: currentColor
+//  background-color: white
+//  border: solid $border-color-light
+//  border-width: 0 0 0 1px
+//  user-select: none
+//  // transition
+//  $prop: background-color
+//  transition:
+//    property: $prop
+//    duration: $animation-speed
+//
+//  // for ie 9
+//  //@if $ie9
+//    .no-flexwrap &
+//      display: inline-block
+//      vertical-align: top
+//      width: calc(20% - 6px)
+//
+//  &:first-child
+//    border-left: none
+//
+//  +media('<tab')
+//    $width: 50%
+//    flex-basis: $width
+//    max-width: $width
+//    min-height: 6rem
+//    border-width: 1px 0 0 1px
+//
+//    &:nth-child(2n - 1)
+//      border-left: none
+//
+//    &:nth-child(-n + 2)
+//      border-top: none
+//
+//.helper__inner
+//  width: calc(100% - 4rem)
+//  display: flex
+//  align-items: center
+//  text-align: left
+//  max-width: 24rem
+//
+//  & > svg
+//    $size: 3.4rem
+//    display: inline-block
+//    vertical-align: top
+//    width: $size
+//    min-width: $size
+//    height: $size
+//    opacity: 0.8
+//
+//    path
+//      fill: $base-color
+//      // transition
+//      $prop: fill
+//      transition:
+//        property: $prop
+//        duration: $animation-speed
+//
+//    & + span
+//      margin-left: 1.5rem
+//
+//  & > span
+//    font-size: 1.4rem
+//    line-height: 1.8rem
+//    color: rgba(black, 0.8)
+//    // transition
+//    $prop: color
+//    transition:
+//      property: $prop
+//      duration: $animation-speed
+//
+//a.helper__item
+//  // hover
+//  &:hover
+//    background-color: $base-color
+//    color: white
+//
+//    .helper__inner
+//      & > svg path
+//        fill: white
+//
+//      & > span
+//        color: white
+//
+///* helper
 
 /* helper alt
 .helper-alt-section
@@ -10730,6 +10830,7 @@ a.helper__item
 .helper-alt__list
   display: flex
   margin: 0 -3rem
+  cursor: default
 
   +media('<desk-s')
     margin: 0 -#{nth($page-layout-space, 2)}
@@ -10784,7 +10885,12 @@ a.helper__item
     &::before
       content: none
 
-  & > strong
+  a
+    color: inherit
+    text-decoration: none
+
+  & > strong,
+  a > strong
     display: flex
     align-items: center
     position: relative
@@ -10795,7 +10901,7 @@ a.helper__item
     font-size: 1.6rem
     line-height: 2.0rem
     color: $title-color
-    cursor: default
+    transition: color $animation-speed
 
     svg
       display: inline-block
@@ -10825,6 +10931,11 @@ a.helper__item
   mark
     background: none
     color: $base-color
+
+  // Hover
+  .no-touch & a:hover
+    & > strong
+      color: $base-color
 
 /* helper alt end
 
@@ -12679,6 +12790,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     max-width: 100%
     max-height: 100%
     flex-shrink: 0
+    border: 2rem solid white
 
 // card gallery thumbs
 .p-card-gallery-thumbs
@@ -12872,7 +12984,12 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     &:first-child
       margin-top: 0
 
-  & > strong
+  a
+    color: inherit
+    text-decoration: none
+
+  & > strong,
+  a > strong
     display: block
     position: relative
     +font-bold
@@ -12882,6 +12999,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     padding: 0.2rem 0 0.2rem 4.2rem
     margin-bottom: 2rem
     cursor: default
+    transition: color $animation-speed
 
     +media('>=tab', '<net')
       margin-bottom: 1rem
@@ -12918,6 +13036,11 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   mark
     background: none
     color: $base-color
+
+  // Hover
+  .no-touch & a:hover
+    & > strong
+      color: $base-color
 
 // === product card aside ===
 // ==========================
@@ -13402,7 +13525,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     vertical-align: top
     text-decoration: none
     color: #000
-    font-size: 1.3rem
+    font-size: 1.4rem
     line-height: 2.0rem
     padding: 1rem 3.3rem 0.9rem 1.6rem
     border-radius: 4px 4px 0 0
@@ -13414,6 +13537,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       duration: $animation-speed
     user-select: none
     //-webkit-tap-highlight-color: transparent
+
+    +media('<lap-s')
+      font-size: 1.3rem
 
     +media('<mob')
       display: block
@@ -13500,8 +13626,8 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
 // panels
 .credit-panel
-  font-size: 1.3rem
-  line-height: 1.9rem
+  font-size: 1.4rem
+  line-height: 1.8rem
   color: $text-color-light
   background-color: #f9f7ff
   border: 2px solid #f9f7ff

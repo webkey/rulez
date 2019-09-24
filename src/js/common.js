@@ -698,6 +698,7 @@ function slidersInit() {
       $().fancybox({
         selector : '.p-card-gallery-js a:visible',
         infobar: true,
+        baseClass: 'white-spaces',
         buttons: [
           "zoom",
           //"share",
