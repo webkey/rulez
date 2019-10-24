@@ -746,7 +746,21 @@
             <strong class="footer-grid__title"><a href="#"><span>Каталог</span></a></strong>
             <div class="footer-grid__content">
               <ul class="footer-grid__list">
-                <li><a href="#"><span>Ноутбуки</span></a></li>
+                <li>
+                  <a href="javascript:;" data-fancybox data-src="#exampleModal" data-modal="true"><span>Ноутбуки</span></a>
+                  <div id="exampleModal" class="p-5" style="display: none;max-width:600px;">
+                    <div class="modal-title h2">
+                      <em class="icon-error"></em>
+                      <div class="modal-title__inner">Это модальное окно с ошибкой</div>
+                    </div>
+                    <div class="modal-title h2">
+                      <em class="icon-success"></em>
+                      <div class="modal-title__inner">Это модальное окно успешное</div>
+                    </div>
+                    <p>Нажми ОК, чтобы закрыть</p>
+                    <button data-fancybox-close class="btn-def">ОК</button>
+                  </div>
+                </li>
                 <li><a href="#"><span>Моноблоки</span></a></li>
                 <li><a href="#"><span>Компьютеры</span></a></li>
                 <li><a href="#"><span>Мониторы</span></a></li>

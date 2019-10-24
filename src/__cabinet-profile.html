@@ -57,6 +57,14 @@
                   @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
                 </label>
               </div>
+              <h2>Дата рождения</h2>
+              <div class="simple-form__group">
+                <label class="input-wrap simple-form__input">
+                  <input class="input-def js-datepicker" name="profile-pass-main" type="password" required data-locale="ru" data-date-format="d.m.Y">
+                  <span class="label-float">ДД.ММ.ГГГГ</span>
+                  @@include("_tpl_forms_valid-notes.html", {"error": "Текст ошибки", "success": "Текст успешной отправки"})
+                </label>
+              </div>
               <div class="input-wrap input-wrap_btn simple-form__input simple-form__input_btn">
                 <input class="btn-alt simple-form__btn" type="submit" value="Сохранить настройки профиля">
               </div>

@@ -4205,6 +4205,16 @@ function instalmentPlan() {
 }
 
 /**
+ * Datepicker (flatpickr)
+ */
+function datepickerInit() {
+  $(".js-datepicker").flatpickr({
+    // 'locale': 'ru'
+  });
+}
+
+
+/**
  * !Form validation
  * */
 function formValidation() {
@@ -4304,5 +4314,6 @@ $(document).ready(function () {
   starsRating();
   truncateText();
   instalmentPlan();
+  datepickerInit();
   formValidation();
 });
