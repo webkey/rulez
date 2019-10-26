@@ -1691,6 +1691,11 @@ $swiper-button-size: 14px, 20px
   width: $width
   max-width: $width
 
+  +media('<net')
+    $width: calc(100% - 2rem - #{$header-top__r-width--net})
+    width: $width
+    max-width: $width
+
   +media('<tab')
     display: none
 
@@ -1711,6 +1716,9 @@ $swiper-button-size: 14px, 20px
     .no-flexwrap &
       display: inline-block
       vertical-align: top
+
+  +media('<net')
+    width: $header-top__r-width--net
 
   +media('<tab')
     width: auto
@@ -1792,7 +1800,7 @@ $uo-border-radius: 7px
     justify-content: center
     align-items: center
     height: 100%
-    padding: 5px round($uo-space/2)
+    padding: 5px round-float($uo-space / 2, 1)
     color: #131313
     text-decoration: none
     text-align: center
@@ -1851,6 +1859,7 @@ $uo-border-radius: 7px
 
     // icon
     & > i
+      flex-shrink: 0
       display: flex
       align-items: center
       justify-content: center
@@ -1888,6 +1897,16 @@ $uo-border-radius: 7px
 
       & ~ span
         padding-left: 12px
+
+    .img
+      flex-shrink: 0
+      display: flex
+      align-items: center
+      justify-content: center
+      +size(2.4 rem)
+      background-repeat: no-repeat
+      background-position: center
+      background-size: cover
 
     // text
     & > span
@@ -1983,7 +2002,12 @@ $uo-border-radius: 7px
 // login
 .user-options__item_login
   & > a, & > div, & > span, & > strong
-    max-width: 10rem
+    & > span
+      max-width: 12rem
+      overflow: hidden
+      white-space: nowrap
+      position: relative
+      text-overflow: ellipsis
 
     i
       $size: 1.8rem
