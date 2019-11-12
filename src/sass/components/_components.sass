@@ -6885,6 +6885,9 @@ $categories-item-col: 3
 .topics-nav
   position: relative
 
+  +media('<tab')
+    max-width: 32rem
+
 // topics thumbs select
 .topics-thumbs-select
   +pseudo-select-common($base-color-light)
@@ -7113,8 +7116,10 @@ $categories-item-col: 3
 .caption-box
   position: relative
   display: flex
+  flex-wrap: wrap
   align-items: flex-start
   margin-bottom: 1.7rem
+  padding-right: 8rem // Space for button All
 
   &:last-child
     margin-bottom: 0
@@ -7127,6 +7132,7 @@ $categories-item-col: 3
 
   +media('<mob')
     flex-direction: column
+    padding-right: 0
 
 .caption-box__title
   flex-shrink: 0
@@ -7155,10 +7161,13 @@ $categories-item-col: 3
   position: relative
   //padding-top: 0.2rem // If align center
   padding-top: 0.6rem // If align top
-  padding-right: 8rem // Space for button All
+  max-width: 100%
 
   +media('<lap-s')
     padding-top: 0
+
+  +media('<mob')
+    padding-right: 10rem
 
 .link-all
   display: inline-block
@@ -7193,6 +7202,11 @@ $categories-item-col: 3
     bottom: 0.5rem // If align bottom
 
     +media('<tab')
+      bottom: auto
+      top: 0
+
+    +media('<mob')
+      top: auto
       bottom: 0
 
   svg
