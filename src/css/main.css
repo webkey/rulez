@@ -16784,6 +16784,21 @@ a.topic-banner:hover .topic-banner__title > span {
   font-size: 3.6rem;
   line-height: 4.4rem;
   margin-bottom: 0;
+  max-width: calc(100% - 9rem);
+}
+
+@media (max-width: 1279px) {
+  .m-heading h1, .m-heading .h1 {
+    font-size: 2.8rem;
+    line-height: 3.2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .m-heading h1, .m-heading .h1 {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+  }
 }
 
 .m-heading__switcher {
@@ -16791,19 +16806,7 @@ a.topic-banner:hover .topic-banner__title > span {
       flex-basis: 6.6rem;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  margin-left: 2.4rem;
-}
-
-@media (max-width: 1279px) {
-  .m-heading__switcher {
-    margin-left: 2rem;
-  }
-}
-
-@media (max-width: 639px) {
-  .m-heading__switcher {
-    margin-left: 1.5rem;
-  }
+  margin-left: 2rem;
 }
 
 .m-options {
@@ -17210,6 +17213,8 @@ a.topic-banner:hover .topic-banner__title > span {
 .view-switcher {
   position: relative;
   width: 6.6rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
 }
 
 .view-switcher::after {

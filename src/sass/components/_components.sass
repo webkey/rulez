@@ -11448,18 +11448,21 @@ $p-results-fixed-height: 7rem
     font-size: 3.6rem
     line-height: 4.4rem
     margin-bottom: 0
+    max-width: calc(100% - 9rem)
+
+    +media('<lap-s')
+      font-size: 2.8rem
+      line-height: 3.2rem
+
+    +media('<mob')
+      font-size: 2.2rem
+      line-height: 2.8rem
 
 .m-heading__switcher
   $width: 6.6rem
   flex-basis: $width
   flex-shrink: 0
-  margin-left: nth($section-inner-space, 2)
-
-  +media('<lap-s')
-    margin-left: nth($section-inner-space--tab, 2)
-
-  +media('<mob')
-    margin-left: nth($section-inner-space--mob, 2)
+  margin-left: 2rem
 
 .m-options
   $vertical-space: 0.5rem
@@ -11785,6 +11788,7 @@ $p-results-fixed-height: 7rem
   $space: 1rem
   position: relative
   width: $size * 2 + $space
+  flex-shrink: 0
   +clear
 
   &:not(.toggle-view_initialized)
