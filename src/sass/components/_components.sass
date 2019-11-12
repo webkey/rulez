@@ -5285,86 +5285,78 @@ $subs-form-height: 3.4rem
 
 /* footer bottom
 .footer-bottom
+  $footer-grid-space: 0 4rem
+
   position: relative
   //overflow: hidden // обрезать вытянутый маржинами по горизонтале дочерний элемент
   font-size: 1.2rem
   line-height: 1.4rem
 
-.footer-bottom__holder
-  position: relative
-  display: flex
-  flex-wrap: nowrap
-  justify-content: space-between
-  align-items: center
-  $space: nth($footer-grid-space, 2)
-  margin-left: -#{$space}
-  margin-right: -#{round-float($space / 2, 1)}
-
-  +media('<lap-s')
-    $space: nth($footer-grid-space--tab, 2)
+  &__holder
+    position: relative
+    display: flex
+    flex-wrap: nowrap
+    justify-content: space-between
+    align-items: center
+    $space: nth($footer-grid-space, 2)
     margin-left: -#{$space}
     margin-right: -#{round-float($space / 2, 1)}
 
-  +media('<mob')
-    display: block
+    +media('<lap-s')
+      $space: nth($footer-grid-space--tab, 2)
+      margin-left: -#{$space}
+      margin-right: -#{round-float($space / 2, 1)}
 
-.footer-bottom__col
-  text-align: center
-  $space: nth($footer-grid-space, 2)
-  padding-left: $space
-  padding-right: round-float($space / 2, 1)
+    +media('<mob')
+      display: block
 
-  +media('<lap-s')
-    $space: nth($footer-grid-space--tab, 2)
+  &__col
+    text-align: center
+    $space: nth($footer-grid-space, 2)
     padding-left: $space
     padding-right: round-float($space / 2, 1)
 
-  +media('<mob')
-    margin-top: 2rem
+    +media('<lap-s')
+      $space: nth($footer-grid-space--tab, 2)
+      padding-left: $space
+      padding-right: round-float($space / 2, 1)
 
-  // for ie 9
-  //@if $ie9
-    .no-flexwrap &
-      display: inline-block
-      vertical-align: top
-      width: calc(33.33% - 5px)
+    +media('<mob')
+      margin-top: 2rem
+
+    &:first-child
+      flex-shrink: 0
+      text-align: left
 
       +media('<mob')
-        width: 100%
+        text-align: center
+        margin-top: 0
 
-  &:first-child
-    flex-shrink: 0
-    text-align: left
-
-    +media('<mob')
-      text-align: center
-      margin-top: 0
-
-  &:last-child
-    flex-shrink: 0
-    $width: 25%
-    flex-basis: $width
-    max-width: $width
-    text-align: left
-
-    +media('<tab')
-      $width: 30%
+    &:last-child
+      flex-shrink: 0
+      $width: 25%
       flex-basis: $width
       max-width: $width
+      text-align: left
 
-    +media('<tab-s')
-      flex-basis: auto
-      max-width: none
+      +media('<tab')
+        $width: 30%
+        flex-basis: $width
+        max-width: $width
 
-    +media('<mob')
-      text-align: center
+      +media('<tab-s')
+        flex-basis: auto
+        max-width: none
 
-  a
-    color: inherit
-    text-decoration: none
+      +media('<mob')
+        text-align: center
 
-    .no-touch &:hover
-      text-decoration: underline
+    a
+      color: inherit
+      text-decoration: none
+
+      .no-touch &:hover
+        text-decoration: underline
 
 /* footer bottom end
 

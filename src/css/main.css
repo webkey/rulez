@@ -9490,8 +9490,8 @@ a.catalog-opener.catalog-is-open > i::after {
       justify-content: space-between;
   -ms-flex-align: center;
       align-items: center;
-  margin-left: -4.4rem;
-  margin-right: -2.2rem;
+  margin-left: -4rem;
+  margin-right: -2rem;
 }
 
 @media (max-width: 1279px) {
@@ -9509,8 +9509,8 @@ a.catalog-opener.catalog-is-open > i::after {
 
 .footer-bottom__col {
   text-align: center;
-  padding-left: 4.4rem;
-  padding-right: 2.2rem;
+  padding-left: 4rem;
+  padding-right: 2rem;
 }
 
 @media (max-width: 1279px) {
