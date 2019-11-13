@@ -3501,7 +3501,7 @@ a.quick-cart__item
   // If header is change
   .header-changed &
     //max-width: 60rem
-    max-width: calc(100% - 66.5rem)
+    max-width: calc(100% - 71rem)
     visibility: visible // Родительская обертка скрыта, а меню нужно показать
 
     //+media('<desk-s')
@@ -3517,10 +3517,10 @@ a.quick-cart__item
     //  max-width: 28rem
 
     +media('<lap-s')
-      max-width: calc(100% - 71rem)
+      max-width: calc(100% - 75.5rem)
 
     +media('<net')
-      max-width: calc(100% - 66.5rem)
+      max-width: calc(100% - 71rem)
 
     +media('<tab')
       max-width: none
@@ -4724,6 +4724,196 @@ $search-btn-space: 0 0.5rem
         color: white
 
 /* search panel end
+
+/* search fast result */
+.s-result
+  position: fixed
+  left: 0
+  width: 100%
+  z-index: 9999
+  opacity: 0
+  pointer-events: none
+  user-select: none
+  $prop: transform, opacity, top
+  will-change: $prop
+  transition:
+    property: $prop
+    duration: $animation-speed
+  top: $header-height
+  height: calc(100% - #{$header-height})
+
+  .header-changed ~ &
+    +media('>=tab')
+      top: $header-height--scrolled
+      height: calc(100% - #{$header-height--scrolled})
+
+  +media('<tab')
+    top: $header-height--tab
+    height: calc(100% - #{$header-height--tab})
+
+  +media('<mob')
+    top: calc(#{$header-height--tab} + 5rem)
+    height: calc(100% - #{$header-height--tab} - 5rem)
+
+  &.s-result_show
+    opacity: 1
+    pointer-events: auto
+    user-select: auto
+
+  &__layout
+    height: 100%
+    padding-top: 1rem
+    padding-bottom: 1rem
+
+    +media('<tab')
+      padding-top: 0
+
+  &__holder
+    max-height: 100%
+    //max-height: calc(100vh - #{$header-height} - 2rem)
+    overflow: auto
+    margin-bottom: $bottom-space
+    background: white
+    box-shadow: 0 12px 10px rgba(0, 0, 0, 0.17)
+    border-radius: 7px
+    transform-origin: 20rem top
+    $translate: 0, -0.5rem
+    $scale: 0.85, 0.85
+    transform: translate($translate) scale($scale)
+    transform: translate3d($translate, 0) scale3d($scale, 1)
+    $prop: transform, opacity
+    will-change: $prop
+    transition:
+      property: transform, opacity
+      duration: $animation-speed
+
+    +media('<mob')
+      $translate: 0, -0.5rem
+      $scale: 1, 1
+      transform: translate($translate) scale($scale)
+      transform: translate3d($translate, 0) scale3d($scale, 1)
+
+    .s-result_show &
+      $translate: 0, 0
+      $scale: 1, 1
+      transform: translate($translate)
+      transform: translate3d($translate, 0)
+
+    &:last-child
+      margin-bottom: 0
+
+  &__content
+    display: block
+
+  &__row,
+  &__title
+    padding-left: 3rem
+    padding-right: 3rem
+
+    +media('<lap-s')
+      $space: nth($section-inner-space--tab, 2)
+      padding-left: $space
+      padding-right: $space
+
+    +media('<mob')
+      $space: nth($section-inner-space--mob, 2)
+      padding-left: $space
+      padding-right: $space
+
+  &__title
+    padding-bottom: 1.5rem
+    padding-top: 1.5rem
+    +font-bold
+    font-size: 2.4rem
+    line-height: 1.43
+    color: $title-color
+    background-color: $bg-color-alt
+    border-bottom: 1px solid $border-color
+
+    +media('<mob')
+      font-size: 2.0rem
+
+  &__row
+    padding-bottom: 1.5rem
+    padding-top: 1.5rem
+    border-bottom: 1px solid $border-color
+
+    &:last-child
+      border-bottom: none
+
+    .float-list
+      margin-top: -1.2rem
+      font-size: inherit
+      line-height: inherit
+
+  &__list
+    position: relative
+
+    &-item
+      position: relative
+      padding: 1.5rem 0
+      border-top: 1px solid $border-color
+
+      &:first-child
+        border: none
+
+    &-inner
+      text-decoration: none
+      color: inherit
+      display: flex
+      align-items: center
+
+    &-figure
+      float: left
+      display: flex
+      align-items: center
+      justify-content: center
+      flex-shrink: 0
+      $width: 11.8rem
+      flex-basis: $width
+      max-width: $width
+      width: $width
+      height: 7.8rem
+      margin-right: 2.0rem
+
+      +media('<mob')
+        $width: 9rem
+        flex-basis: $width
+        max-width: $width
+        width: $width
+        margin-right: #{nth($page-layout-space--mob, 2)}
+
+      img
+        display: block
+        max-width: 100%
+        max-height: 100%
+
+    &-content
+      overflow: hidden
+
+    &-title
+      display: block
+      margin-bottom: 1rem
+      +font-normal
+      font-weight: normal
+      color: $title-color
+      transition: color $animation-speed
+
+    &-count
+      display: inline-block
+      color: $text-color-ultra-light
+      margin-right: 0.5rem
+
+    &-price
+      display: inline-block
+      +font-bold
+      color: $text-color
+
+    &-inner:hover
+      [class*="-title"]
+        color: $link-color
+
+/* search fast result end */
 
 /* ====================================
 /* ============== FOOTER ==============

@@ -4316,4 +4316,29 @@ $(document).ready(function () {
   instalmentPlan();
   datepickerInit();
   formValidation();
+
+  /**
+   * For example. Remove after programming a search form
+   */
+  function tempShowSearchFastResult() {
+    var $elem = $('.search-form__input');
+
+    if ($elem.length) {
+      function toggleStateClass(cond) {
+        $('html').toggleClass('css-scroll-fixed', cond);
+        $('.js-search-fast-result').toggleClass('s-result_show', cond);
+      }
+
+      // Has value
+      $.each($elem, function () {
+        toggleStateClass.call(this, $(this).val().length > 1);
+      });
+
+      $elem.on('keyup change', function () {
+        toggleStateClass.call(this, $(this).val().length > 1);
+      });
+    }
+  }
+
+  tempShowSearchFastResult();
 });
