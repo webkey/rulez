@@ -9,10 +9,16 @@
 </div>
 
 <div class="p-filters-drop p-filters-drop-js">
-  <ul class="p-filters-drop-list p-filters-group-js@@if(context.modGroup){ @@modGroup}" data-filter-group="@@group">
+  <ul class="p-filters-drop-list p-filters-group-js@@if(context.modGroup){ @@modGroup}" data-filter-group="@@group"@@if(context.showElements){ data-show-items="@@showElements"}>
 }
 @@if(itemLayout === "END") {
   </ul>
-  <!--<div class="p-filters-drop-footer"> <button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button> </div>-->
+  @@if(context.toggleMore) {
+  <div class="p-filters-drop-footer">
+    <!--<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>-->
+    <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-more-js" style="display: none;"><span>Показать все</span></a>
+    <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-less-js" style="display: none;"><span>Скрыть</span></a>
+  </div>
+  }
 </div>
 }

@@ -497,98 +497,71 @@ function slidersInit() {
   /**promo slider*/
   var $promoSlider = $('.promo-slider-js');
   if ($promoSlider.length) {
-    $promoSlider.each(function () {
-      var $thisSlider = $(this),
-          $thisBtnNext = $('.slider-arrow_next-js', $thisSlider),
-          $thisBtnPrev = $('.slider-arrow_prev-js', $thisSlider),
-          $thisPag = $('.swiper-pagination', $thisSlider),
-          $thisWordImg = $('.word-img-parallax-js', $thisSlider),
-          promoSliderJs;
+    var $thisBtnNext = $('.slider-arrow_next-js', $promoSlider),
+        $thisBtnPrev = $('.slider-arrow_prev-js', $promoSlider),
+        $thisPag = $('.swiper-pagination', $promoSlider),
+        $thisWordImg = $('.word-img-parallax-js', $promoSlider),
+        promoSliderJs;
 
-      function initPromoSlider() {
-        promoSliderJs = new Swiper($thisSlider, {
-          init: false,
-          speed: 900,
+    function initPromoSlider() {
+      promoSliderJs = new Swiper($promoSlider, {
+        init: false,
+        speed: 900,
 
-          // Optional parameters
-          loop: true,
-          // Keyboard
-          keyboardControl: true,
-          // Parallax
-          parallax: true,
+        // Optional parameters
+        loop: true,
+        // Keyboard
+        keyboardControl: true,
+        // Parallax
+        parallax: true,
 
-          // Navigation arrows
-          navigation: {
-            nextEl: $thisBtnNext,
-            prevEl: $thisBtnPrev,
-          },
+        // Navigation arrows
+        navigation: {
+          nextEl: $thisBtnNext,
+          prevEl: $thisBtnPrev,
+        },
 
-          // Pagination
-          pagination: {
-            el: $thisPag,
-            type: 'bullets',
-            clickable: true
-          },
+        // Pagination
+        pagination: {
+          el: $thisPag,
+          type: 'bullets',
+          clickable: true
+        },
+        longSwipesRatio: 0.05,
+        longSwipesMs: 200,
+      });
 
-          longSwipesRatio: 0.05,
-          longSwipesMs: 200,
+      promoSliderJs.on('init', function() {
+        $(promoSliderJs.el).closest($promoSlider).addClass('is-loaded');
+      });
 
-          // breakpoints: {
-          //   768: {
-          //     parallax: false
-          //   }
-          // },
+      promoSliderJs.init();
+    }
 
-          // Events
-          // on: {
-          //   slideChange: function (e) {
-          //     // changeBgColor(promoSliderJs.activeIndex);
-          //   }
-          // }
-        });
+    var layoutWidth = window.innerWidth,
+        addSpace = Math.round(layoutWidth / 4);
 
-        promoSliderJs.on('init', function() {
-          $(promoSliderJs.el).closest($thisSlider).addClass('is-loaded');
-          // changeBgColor(promoSliderJs.activeIndex);
-        });
-
-        promoSliderJs.init();
-        // function changeBgColor(index) {
-        //   var bgColor = $(promoSliderJs.slides).eq(index).css('background-color');
-        //   $('.header-bg').css('background-color', bgColor);
-        // }
-      }
-
-      var total_images = $thisWordImg.length,
-          images_loaded = 0,
-          layoutWidth = window.innerWidth,
-          addSpace = Math.round(layoutWidth / 4);
-          // addSpace = 100;
-
-      $thisWordImg.each(function() {
+    $promoSlider.imagesLoaded(function () {
+      $thisWordImg.each(function(i, el) {
         var $curImg = $(this),
             $parallaxElem = $curImg.parent();
-        if(this.complete) {
-          // Определения размера смещения изображения
-          // Размер смещения равен сумме:
-          // 1/ ширина страницы
-          // 2/ минус расстояние от левого края слайда до обертки изображения (елемет, которы будет параллакситься)
-          // 3/ минус ширина изображения
-          // 4/ минус дополнительный отступ в "px" (addSpace),
-          // который равен запланированному расстоянию
-          // от правого края изображения до правого края слайда
-          // в момет, когда слайд полностью скрывается или начинает появляться
-          var translate = layoutWidth - $curImg.width() - $parallaxElem.position().left - addSpace;
-          // Добавить на родительский контейнер data-swiper-parallax с определенным выше смещением
-          $parallaxElem.attr('data-swiper-parallax', translate);
-          images_loaded++;
-          if (images_loaded >= total_images) {
-            initPromoSlider();
-          }
-        }
-      });
-    });
 
+        // Определения размера смещения изображения
+        // Размер смещения равен сумме:
+        // 1/ ширина страницы
+        // 2/ минус расстояние от левого края слайда до обертки изображения (елемет, которы будет параллакситься)
+        // 3/ минус ширина изображения
+        // 4/ минус дополнительный отступ в "px" (addSpace),
+        // который равен запланированному расстоянию
+        // от правого края изображения до правого края слайда
+        // в момет, когда слайд полностью скрывается или начинает появляться
+        var translate = layoutWidth - $curImg.width() - $parallaxElem.position().left - addSpace;
+        // Добавить на родительский контейнер data-swiper-parallax с определенным выше смещением
+        $parallaxElem.attr('data-swiper-parallax', translate);
+      });
+
+      initPromoSlider();
+    });
   }
 
   /**topics slider*/
@@ -2665,6 +2638,8 @@ function toggleViewInit() {
       labelText: null,
       btnReset: null,
       btnResetAll: null,
+      btnToggleMore: null,
+      btnHideMore: null,
       tagsContainer: null,
       resultsPanel: null,
       activatedFilters: '.activated-js',
@@ -2678,6 +2653,8 @@ function toggleViewInit() {
       showSelectedClass: 'filters-selected-show',
       showPlaceholderClass: 'filters-placeholder-show',
       filterActiveClass: 'is-active',
+      filterShowAllClass: 'is-show-all',
+      filterHideAllClass: 'is-hide-all',
 
       dataGroup: 'data-filter-group',
       dataDefaultValue: 'data-filter-default',
@@ -2719,6 +2696,8 @@ function toggleViewInit() {
       showSelected: options.showSelectedClass,
       showPlaceholder: options.showPlaceholderClass,
       filterActive: options.filterActiveClass,
+      filterShowAll: options.filterShowAllClass,
+      filterHideAll: options.filterHideAllClass
     };
 
     this.attributes = {
@@ -2735,6 +2714,7 @@ function toggleViewInit() {
     this.changeFilters();
     this.bindTagsEvents();
     this.toggleDrop();
+    this.toggleMore();
     this.resetFiltersInGroup();
     this.resetAllFilters();
     // this.initRangeSlider();
@@ -3083,6 +3063,81 @@ function toggleViewInit() {
     }
   };
 
+  MultiFilters.prototype.toggleMore = function () {
+    var self = this;
+    var $container = self.$container;
+    var $item = self.$item;
+    var $btnToggleMore = $(self.options.btnToggleMore);
+    var $btnHideMore = $(self.options.btnHideMore);
+
+    $.each($('[data-show-items]'), function () {
+      var $cur = $(this);
+
+      hideMoreFilters($cur.closest($item))
+    });
+
+    $btnToggleMore.on('click', function (e) {
+      e.preventDefault();
+
+      var $curBtn = $(this);
+      var $currentItem = $curBtn.closest($item);
+
+      if($currentItem.hasClass(self.modifiers.filterHideAll)) {
+        showMoreFilters($currentItem);
+
+        return;
+      }
+
+      hideMoreFilters($currentItem);
+    });
+
+    $btnHideMore.on('click', function (e) {
+      e.preventDefault();
+
+      hideMoreFilters($(this).closest($item));
+    });
+
+    function showMoreFilters(item) {
+      var $elemWithData = $('[data-show-items]', item);
+      var $filters = $elemWithData.find('li');
+      var number = parseFloat($elemWithData.attr('data-show-items'));
+
+      if ($filters.length <= number) {
+        return;
+      }
+
+      item
+          .addClass(self.modifiers.filterShowAll)
+          .removeClass(self.modifiers.filterHideAll);
+
+      $filters.show();
+
+      item.find($btnToggleMore).hide();
+
+      item.find($btnHideMore).show();
+    }
+
+    function hideMoreFilters(item) {
+      var $elemWithData = $('[data-show-items]', item);
+      var $filters = $elemWithData.find('li');
+      var number = parseFloat($elemWithData.attr('data-show-items'));
+
+      if ($filters.length <= number) {
+        return;
+      }
+
+      item
+          .removeClass(self.modifiers.filterShowAll)
+          .addClass(self.modifiers.filterHideAll);
+
+      $filters.slice(number).hide();
+
+      item.find($btnToggleMore).show();
+
+      item.find($btnHideMore).hide();
+    }
+  };
+
   MultiFilters.prototype.addClassCustom = function (elements, modifiersClass) {
     $.each(elements, function () {
       $(this).addClass(modifiersClass);
@@ -3157,6 +3212,8 @@ function multiFiltersInit() {
       labelText: '.p-filters-label-text-js',
       btnReset: '.btn-reset-js',
       btnResetAll: '.btn-filters-clear-js',
+      btnToggleMore: '.p-filters-btn-more-js',
+      btnHideMore: '.p-filters-btn-less-js',
       tagsContainer: '.p-filters-tags-js',
       tagsItem: '.p-filters-tags-item-js',
       tagTextContainer: '.p-filters-tag-text-js',
