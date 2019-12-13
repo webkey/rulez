@@ -887,7 +887,7 @@
               <div class="checkout__col">
                 <h3 class="checkout__subtitle">Личные данные</h3>
                 <label class="input-wrap">
-                  <input class="input-def" name="checkout-name" type="text" required>
+                  <input class="input-def" name="checkout-name" type="text" value="Мое имя" required>
                   <span class="label-float">Ваше имя</span>
                   <span class="error-note">Текст ошибки</span>
                   <span class="success-note">Текст успешной отправки</span>
@@ -1054,6 +1054,10 @@
                           <div class="consist__item-price">1500.00 ₽</div>
                         </div>
                       </div>
+                      <div class="consist__item-remove">
+                        <em>x</em>
+                        <span>Удалить из корзины</span>
+                      </div>
                     </a>
                     <div class="consist__item">
                       <div class="consist__item-figure">
@@ -1066,7 +1070,43 @@
                           <strong class="consist__item-price">250.00 ₽</strong>
                         </div>
                       </div>
+                      <div class="consist__item-remove">
+                        <em>x</em>
+                        <span>Удалить из корзины</span>
+                      </div>
                     </div>
+                    <a href="#" class="consist__item">
+                      <div class="consist__item-figure">
+                        <img src="img/img-product-09.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T">
+                      </div>
+                      <div class="consist__item-content">
+                        <strong class="consist__item-title">Ноутбук SAMSUNG GL753VE-GC112T</strong>
+                        <div class="consist__item-meta">
+                          <div class="consist__item-count">1 шт</div>
+                          <div class="consist__item-price">1500.00 ₽</div>
+                        </div>
+                      </div>
+                      <div class="consist__item-remove">
+                        <em>x</em>
+                        <span>Удалить из корзины</span>
+                      </div>
+                    </a>
+                    <a href="#" class="consist__item">
+                      <div class="consist__item-figure">
+                        <img src="img/img-product-09.jpg" alt="Ноутбук SAMSUNG GL753VE-GC112T">
+                      </div>
+                      <div class="consist__item-content">
+                        <strong class="consist__item-title">Ноутбук SAMSUNG GL753VE-GC112T</strong>
+                        <div class="consist__item-meta">
+                          <div class="consist__item-count">1 шт</div>
+                          <div class="consist__item-price">1500.00 ₽</div>
+                        </div>
+                      </div>
+                      <div class="consist__item-remove">
+                        <em>x</em>
+                        <span>Удалить из корзины</span>
+                      </div>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -1181,17 +1221,17 @@
               <ul class="footer-grid__list">
                 <li>
                   <a href="javascript:;" data-fancybox data-src="#exampleModal" data-modal="true"><span>Ноутбуки</span></a>
-                  <div id="exampleModal" class="p-5" style="display: none;max-width:600px;">
+                  <div id="exampleModal" class="p-5" style="display: none; max-width:600px;">
                     <div class="modal-title h2">
                       <em class="icon-error"></em>
-                      <div class="modal-title__inner">Это модальное окно с ошибкой</div>
+                      <div class="modal-title__inner">Предупреждение</div>
                     </div>
-                    <div class="modal-title h2">
-                      <em class="icon-success"></em>
-                      <div class="modal-title__inner">Это модальное окно успешное</div>
+                    <div>
+                      В корзине есть товары, для которых не доступно оформление в рассрочку:<br><br><strong>- Планшет Lenovo Tab 4 8 TB-8504X 16GB LTE (черный) [ZA2D0036RU];</strong><br><strong>- Принтер Canon PIXMA TS304;</strong><br><strong>- Моноблок Acer Asprie S24-880 DQ.BA8ER.002;</strong><br><strong>- Моноблок Apple iMac 27" Retina 5K (2017 год) [MNEA2];</strong><br><strong>- Моноблок ASUS Vivo AiO V221IDUK-WA019T;</strong><br><strong>- Моноблок ASUS Vivo AiO V241ICUK-WA101T;</strong><br><strong>- Моноблок Dell Inspiron 22 3277-2396;</strong><br><strong>- Моноблок Dell Inspiron 22 3277-2402;</strong><br><strong>- Монитор HP EliteDisplay E273m;</strong><br><strong>- Монитор Acer V196L [UM.CV6EE.B02];</strong><br><strong>- Монитор AOC Q27P1;</strong><br><strong>- Монитор HP 22y;</strong><br><strong>- Монитор ASUS Designo MX279HE;</strong><br><strong>- Игровое Кресло CHAIRMAN Game 22 (серый/оранжевый);</strong><br><strong>- Игровое Кресло AeroCool AC110 AIR (черный/синий);</strong><br><strong>- Игровая приставка NewGame Dendy Master (195 игр);</strong><br><br>
                     </div>
-                    <p>Нажми ОК, чтобы закрыть</p>
-                    <button data-fancybox-close class="btn-def">ОК</button>
+                    <p>Вы хотите оформить заказ без&nbsp;указанных&nbsp;товаров?</p>
+                    <button data-fancybox-close class="btn-alt">Да</button>
+                    <button data-fancybox-close class="btn-def">Отмена</button>
                   </div>
                 </li>
                 <li><a href="#"><span>Моноблоки</span></a></li>

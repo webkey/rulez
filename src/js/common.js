@@ -2632,6 +2632,8 @@ function toggleViewInit() {
       labelText: null,
       btnReset: null,
       btnResetAll: null,
+      btnToggleMore: null,
+      btnHideMore: null,
       tagsContainer: null,
       resultsPanel: null,
       activatedFilters: '.activated-js',
@@ -2645,6 +2647,8 @@ function toggleViewInit() {
       showSelectedClass: 'filters-selected-show',
       showPlaceholderClass: 'filters-placeholder-show',
       filterActiveClass: 'is-active',
+      filterShowAllClass: 'is-show-all',
+      filterHideAllClass: 'is-hide-all',
 
       dataGroup: 'data-filter-group',
       dataDefaultValue: 'data-filter-default',
@@ -2686,6 +2690,8 @@ function toggleViewInit() {
       showSelected: options.showSelectedClass,
       showPlaceholder: options.showPlaceholderClass,
       filterActive: options.filterActiveClass,
+      filterShowAll: options.filterShowAllClass,
+      filterHideAll: options.filterHideAllClass
     };
 
     this.attributes = {
@@ -2702,6 +2708,7 @@ function toggleViewInit() {
     this.changeFilters();
     this.bindTagsEvents();
     this.toggleDrop();
+    this.toggleMore();
     this.resetFiltersInGroup();
     this.resetAllFilters();
     // this.initRangeSlider();
@@ -3050,6 +3057,81 @@ function toggleViewInit() {
     }
   };
 
+  MultiFilters.prototype.toggleMore = function () {
+    var self = this;
+    var $container = self.$container;
+    var $item = self.$item;
+    var $btnToggleMore = $(self.options.btnToggleMore);
+    var $btnHideMore = $(self.options.btnHideMore);
+
+    $.each($('[data-show-items]'), function () {
+      var $cur = $(this);
+
+      hideMoreFilters($cur.closest($item))
+    });
+
+    $btnToggleMore.on('click', function (e) {
+      e.preventDefault();
+
+      var $curBtn = $(this);
+      var $currentItem = $curBtn.closest($item);
+
+      if($currentItem.hasClass(self.modifiers.filterHideAll)) {
+        showMoreFilters($currentItem);
+
+        return;
+      }
+
+      hideMoreFilters($currentItem);
+    });
+
+    $btnHideMore.on('click', function (e) {
+      e.preventDefault();
+
+      hideMoreFilters($(this).closest($item));
+    });
+
+    function showMoreFilters(item) {
+      var $elemWithData = $('[data-show-items]', item);
+      var $filters = $elemWithData.find('li');
+      var number = parseFloat($elemWithData.attr('data-show-items'));
+
+      if ($filters.length <= number) {
+        return;
+      }
+
+      item
+          .addClass(self.modifiers.filterShowAll)
+          .removeClass(self.modifiers.filterHideAll);
+
+      $filters.show();
+
+      item.find($btnToggleMore).hide();
+
+      item.find($btnHideMore).show();
+    }
+
+    function hideMoreFilters(item) {
+      var $elemWithData = $('[data-show-items]', item);
+      var $filters = $elemWithData.find('li');
+      var number = parseFloat($elemWithData.attr('data-show-items'));
+
+      if ($filters.length <= number) {
+        return;
+      }
+
+      item
+          .removeClass(self.modifiers.filterShowAll)
+          .addClass(self.modifiers.filterHideAll);
+
+      $filters.slice(number).hide();
+
+      item.find($btnToggleMore).show();
+
+      item.find($btnHideMore).hide();
+    }
+  };
+
   MultiFilters.prototype.addClassCustom = function (elements, modifiersClass) {
     $.each(elements, function () {
       $(this).addClass(modifiersClass);
@@ -3124,6 +3206,8 @@ function multiFiltersInit() {
       labelText: '.p-filters-label-text-js',
       btnReset: '.btn-reset-js',
       btnResetAll: '.btn-filters-clear-js',
+      btnToggleMore: '.p-filters-btn-more-js',
+      btnHideMore: '.p-filters-btn-less-js',
       tagsContainer: '.p-filters-tags-js',
       tagsItem: '.p-filters-tags-item-js',
       tagTextContainer: '.p-filters-tag-text-js',

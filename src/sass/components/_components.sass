@@ -1150,24 +1150,23 @@ input[type="text"].single-form__input
   display: flex
   align-items: center
   position: relative
-  padding: 0.8rem 5rem 0.8rem #{nth($section-inner-space, 2)}
+  padding: 0.8rem #{nth($section-inner-space, 2)} 0.8rem 5rem
   min-height: 5rem
   +font(1.6rem, 2rem)
   color: $text-color-light
-  //-webkit-tap-highlight-color: transparent
 
   &.rolls__hand-js
     cursor: pointer
 
   +media('<lap-s')
-    padding-left: #{nth($section-inner-space--tab, 2)}
+    padding-right: #{nth($section-inner-space--tab, 2)}
 
   +media('<mob')
-    padding-left: #{nth($section-inner-space--mob, 2)}
+    padding-right: #{nth($section-inner-space--mob, 2)}
 
-  //& > strong
-    +font-normal
-    font-weight: normal
+  // Hover
+  .no-touch &:hover
+    color: $base-color-light
 
 .rolls__angle
   $element: &
@@ -1175,7 +1174,7 @@ input[type="text"].single-form__input
   position: absolute
   height: $size
   width: $size
-  right: 1.6rem
+  left: 1.6rem
   top: 50%
   margin-top: -#{round-float($size / 2, 1)}
   +font(0, 0)
@@ -3102,8 +3101,6 @@ $quick-cart-footer-height--mob: 7rem
 
 .quick-cart__item
   position: relative
-  display: flex
-  align-items: center
   $element: &
   padding: 1.5rem 3rem 1.5rem 0
   border-top: 1px solid $border-color
@@ -4752,8 +4749,8 @@ $search-btn-space: 0 0.5rem
     height: calc(100% - #{$header-height--tab})
 
   +media('<mob')
-    top: calc(#{$header-height--tab} + 5rem)
-    height: calc(100% - #{$header-height--tab} - 5rem)
+    top: calc(#{$header-height--tab} + 6rem)
+    height: calc(100% - #{$header-height--tab} - 6rem)
 
   &.s-result_show
     opacity: 1
@@ -4764,6 +4761,8 @@ $search-btn-space: 0 0.5rem
     height: 100%
     padding-top: 1rem
     padding-bottom: 1rem
+    width: $flood-layout-width
+    max-width: 90%
 
     +media('<tab')
       padding-top: 0
@@ -12528,9 +12527,9 @@ $p-results-fixed-height: 7rem
 
 .p-filters-drop-list
   $item-space: 1.4rem
-  overflow-x: hidden
-  overflow-y: auto
-  max-height: 33rem
+  //overflow-x: hidden
+  //overflow-y: auto
+  //max-height: 33rem
 
   &, .#{$article-content} &
     list-style: none
@@ -15667,6 +15666,7 @@ $cart-item-figure-space--mob: 0
 .consist__list
   margin-bottom: 4rem
   max-height: 35rem
+  padding-right: 1rem
   overflow-y: auto
 
   &[data-simplebar*="init"]
@@ -15676,9 +15676,13 @@ $cart-item-figure-space--mob: 0
     margin-bottom: 0
 
 .consist__item
+  position: relative
   $element: &
-  padding: 1rem 0
+  padding: 1rem 3rem 1rem 0
   +clear
+
+  +media('<mob')
+    padding-right: 3.5rem
 
 .consist__item-figure
   $width: 10rem
@@ -15730,6 +15734,59 @@ $cart-item-figure-space--mob: 0
   display: inline-block
   +font-bold
   color: $text-color
+
+.consist__item-remove
+  position: absolute
+  right: 0.5rem
+  top: 1rem
+  $size: 1.8rem
+  width: $size
+  height: $size
+  color: white
+  //background-color: #d8d8d8
+  //background-color: $base-color-light
+  background-color: #cecece
+  border-radius: $size
+  text-indent: -9999px
+  cursor: pointer
+  overflow: hidden
+  transform: rotate(-90deg) translateZ(0)
+  transition: background-color $animation-speed
+  outline: none
+  user-select: none
+  //-webkit-tap-highlight-color: transparent
+
+  +media('<mob')
+    $size: 2.4rem
+    width: $size
+    height: $size
+    border-radius: $size
+
+  & > em
+    $size: 0.8rem
+    +icon($size)
+    position: absolute
+    left: 50%
+    top: 50%
+    $space: round-float($size / 2, 1)
+    margin: -#{$space} 0 0 -#{$space}
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOCIgaGVpZ2h0PSI4IiB2aWV3Qm94PSIwIDAgOCA4IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik0wLjY0NjQ0NyAxLjM1MzU1TDYuNjQ2NDUgNy4zNTM1NUw3LjM1MzU1IDYuNjQ2NDVMMS4zNTM1NSAwLjY0NjQ0N0wwLjY0NjQ0NyAxLjM1MzU1Wk02LjY0NjQ1IDAuNjQ2NDQ3TDAuNjQ2NDQ3IDYuNjQ2NDVMMS4zNTM1NSA3LjM1MzU1TDcuMzUzNTUgMS4zNTM1NUw2LjY0NjQ1IDAuNjQ2NDQ3WiI+PC9wYXRoPjwvc3ZnPg==)
+
+    +media('<mob')
+      $size: 1.4rem
+      +size($size)
+      $space: round-float($size / 2, 1)
+      margin: -#{$space} 0 0 -#{$space}
+
+  // hover
+  &:hover
+    .no-touch &
+      background-color: $base-color
+
+  // focus
+  &:focus
+    .no-touch &
+      box-shadow: 0 0 0 2px rgba($focus-color, 0.5)
 
 // hover (if use link)
 a.consist__item
