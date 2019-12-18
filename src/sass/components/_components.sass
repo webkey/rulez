@@ -6181,6 +6181,9 @@ $p-sticker-size--mob: 1.8rem 1.8rem
 // slide of promo slider
 // --> slide type 1 with image and title <--
 .i-promo-slide
+  display: block
+  text-decoration: none
+  color: inherit
   position: relative
   height: 100%
 
@@ -6263,12 +6266,20 @@ $p-sticker-size--mob: 1.8rem 1.8rem
 
 .i-promo-slide__btn
   min-width: 20.3rem
+  transition: color $animation-speed, background-color $animation-speed, box-shadow $animation-speed
+
+  .no-touch &:hover
+    background-color: $base-color-light
+    color: white
 
   +media('<mob')
     min-width: 0
 
 // --> slide type 2 with long parallax word <--
 .w-promo-slide
+  display: block
+  text-decoration: none
+  color: inherit
   position: relative
   height: 100%
 
@@ -6338,6 +6349,11 @@ $p-sticker-size--mob: 1.8rem 1.8rem
 
 .w-promo-slide__btn
   min-width: 14.7rem
+  transition: color $animation-speed, background-color $animation-speed, box-shadow $animation-speed
+
+  .no-touch &:hover
+    background-color: $base-color-light
+    color: white
 
   +media('<mob')
     min-width: 0
