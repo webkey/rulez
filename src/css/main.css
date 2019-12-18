@@ -18270,10 +18270,10 @@ a.topic-banner:hover .topic-banner__title > span {
 .loader-cover {
   width: 100%;
   height: 100%;
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
-  z-index: 5;
+  z-index: 99999;
   background-color: rgba(255, 255, 255, 0.5);
   opacity: 0;
   visibility: hidden;
@@ -18288,7 +18288,8 @@ a.topic-banner:hover .topic-banner__title > span {
   }
 }
 
-.js-loading .loader-cover {
+.js-loading .loader-cover,
+.js-loading ~ .loader-cover {
   opacity: 1;
   visibility: visible;
 }

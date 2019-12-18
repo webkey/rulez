@@ -12629,10 +12629,10 @@ $p-results-fixed-height: 7rem
 /* loading cover
 .loader-cover
   +size(100%)
-  position: absolute
+  position: fixed
   left: 0
   top: 0
-  z-index: 5
+  z-index: 99999
   background-color: rgba(255, 255, 255, 0.50)
   opacity: 0
   visibility: hidden
@@ -12644,7 +12644,8 @@ $p-results-fixed-height: 7rem
     position: fixed
     z-index: 10100
 
-  .js-loading &
+  .js-loading &,
+  .js-loading ~ &
     opacity: 1
     visibility: visible
 

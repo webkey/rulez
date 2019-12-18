@@ -4387,15 +4387,25 @@ $(document).ready(function () {
     var $elem = $('.search-form__input');
 
     if ($elem.length) {
-      function toggleStateClass(cond) {
-        $('html').toggleClass('css-scroll-fixed', cond);
-        $('.js-search-fast-result').toggleClass('s-result_show', cond);
-      }
+      var timeout;
 
-      // Has value
-      $.each($elem, function () {
-        toggleStateClass.call(this, $(this).val().length > 1);
-      });
+      function toggleStateClass(cond) {
+        var $jsSearchFastResult = $('.js-search-fast-result');
+
+        $jsSearchFastResult.addClass('js-loading');
+        setTimeout(function () {
+          $elem.blur();
+        }, 50);
+
+        clearTimeout(timeout);
+
+        timeout = setTimeout(function () {
+          $jsSearchFastResult.removeClass('js-loading');
+
+          $('html').toggleClass('css-scroll-fixed', cond);
+          $jsSearchFastResult.toggleClass('s-result_show', cond);
+        }, 2000);
+      }
 
       $elem.on('keyup change', function () {
         toggleStateClass.call(this, $(this).val().length > 1);
