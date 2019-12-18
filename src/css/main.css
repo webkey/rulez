@@ -18862,7 +18862,6 @@ a.topic-banner:hover .topic-banner__title > span {
   max-height: 100%;
   -ms-flex-negative: 0;
       flex-shrink: 0;
-  border: 2rem solid white;
 }
 
 .p-card-gallery-thumbs {
