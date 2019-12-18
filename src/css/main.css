@@ -8518,9 +8518,31 @@ a.catalog-opener.catalog-is-open > i::after {
   z-index: auto;
 }
 
+.search-form__field::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin: -2rem 0 0;
+  background: rgba(255, 255, 255, 0.65) url(../img/preloader.svg) no-repeat center;
+  background-size: contain;
+  border-radius: 4rem;
+  pointer-events: none;
+  z-index: 5;
+  transition: opacity 0.15s;
+  opacity: 0;
+}
+
+.loading .search-form__field::after {
+  opacity: 1;
+}
+
 .search-form__field .search-form__input {
   display: block;
-  padding: 1rem 4rem 1rem 1.8rem;
+  padding: 1rem 4rem 1rem 4rem;
   width: 100%;
   height: 4rem;
   color: #000;
@@ -8548,7 +8570,7 @@ a.catalog-opener.catalog-is-open > i::after {
 
 @media (max-width: 639px) {
   .search-form__field .search-form__input {
-    padding: 1.5rem 5rem 1.5rem 1.8rem;
+    padding: 1.5rem 5rem 1.5rem 4rem;
     height: 5rem;
   }
 }

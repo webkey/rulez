@@ -4391,16 +4391,14 @@ $(document).ready(function () {
 
       function toggleStateClass(cond) {
         var $jsSearchFastResult = $('.js-search-fast-result');
+        var $searchForm = $(this).closest('.search-form');
 
-        $jsSearchFastResult.addClass('js-loading');
-        setTimeout(function () {
-          $elem.blur();
-        }, 50);
+        $searchForm.toggleClass('loading', cond);
 
         clearTimeout(timeout);
 
         timeout = setTimeout(function () {
-          $jsSearchFastResult.removeClass('js-loading');
+          $searchForm.removeClass('loading');
 
           $('html').toggleClass('css-scroll-fixed', cond);
           $jsSearchFastResult.toggleClass('s-result_show', cond);
