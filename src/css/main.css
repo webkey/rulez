@@ -19325,9 +19325,11 @@ a.topic-banner:hover .topic-banner__title > span {
 }
 
 .p-card-code {
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
   font-size: 1.4rem;
   line-height: 1.6rem;
-  color: #c3c3c3;
+  color: #4a4a4a;
 }
 
 .p-card-price {
