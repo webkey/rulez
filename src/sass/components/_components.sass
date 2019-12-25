@@ -8771,7 +8771,8 @@ $product-item-space--mob: 2rem 1.5rem
 // --> product action <--
 // action buttons
 .action-btn,
-[data-view="list-view"] .action-btn_like
+[data-view="list-view"] .action-btn_like,
+[data-view="list-view"] .action-btn_compare
   position: relative
   display: inline-block
   vertical-align: top
@@ -8936,7 +8937,13 @@ $product-item-space--mob: 2rem 1.5rem
 // compare button in a product options
 .product__options-btn_compare
   vertical-align: top
-  display: none
+  width: 2.8rem
+  height: 2.8rem
+  padding: 0
+  //display: none
+
+  & > span
+    display: none
 
 // --> product purchase <--
 //.product__purchase
@@ -9378,7 +9385,8 @@ $product-item-space--mob: 2rem 1.5rem
   // --> product action <--
   // compare button
   .product__options-btn_compare
-    display: block
+    & > span
+      display: inline-block
 
   // favorite (like) button
   .action-btn_like
@@ -11676,6 +11684,7 @@ $p-results-fixed-height: 7rem
     line-height: 4.4rem
     margin-bottom: 0
     max-width: calc(100% - 9rem)
+    word-break: break-word
 
     +media('<lap-s')
       font-size: 2.8rem
