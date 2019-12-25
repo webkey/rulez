@@ -18804,18 +18804,47 @@ a.topic-banner:hover .topic-banner__title > span {
 
 .p-card__caption {
   margin-bottom: 1rem;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+      align-items: flex-start;
+}
+
+@media (max-width: 991px) {
+  .p-card__caption {
+    display: block;
+    margin-bottom: 2.5rem;
+  }
 }
 
 .p-card__caption-title {
-  display: inline-block;
-  vertical-align: middle;
   margin-right: 2rem;
 }
 
+@media (max-width: 991px) {
+  .p-card__caption-title {
+    margin: 0 0 1rem;
+  }
+}
+
+@media (max-width: 374px) {
+  .p-card__caption-title {
+    font-size: 2rem;
+    line-height: 2.6rem;
+  }
+}
+
 .p-card__caption-rate {
-  display: inline-block;
-  vertical-align: middle;
-  margin-bottom: 1.5rem;
+  -ms-flex: 1 0 14.1rem;
+      flex: 1 0 14.1rem;
+  max-width: 14.1rem;
+  margin: 1rem 0 1.5rem;
+}
+
+@media (max-width: 991px) {
+  .p-card__caption-rate {
+    margin: 0 0 0 -0.5rem;
+  }
 }
 
 .p-card__main {
@@ -19403,8 +19432,12 @@ a.topic-banner:hover .topic-banner__title > span {
 .p-card-code {
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-size: 1.4rem;
+  font-size: 2.8rem;
   line-height: 1.6rem;
+  color: #ff3322;
+}
+
+.p-card-code__label {
   color: #4a4a4a;
 }
 

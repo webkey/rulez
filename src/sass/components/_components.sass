@@ -12985,16 +12985,30 @@ $card-cont-width--net: 40rem
 // heading
 .p-card__caption
   margin-bottom: 1rem
+  display: flex
+  align-items: flex-start
+
+  +media("<tab")
+    display: block
+    margin-bottom: 2.5rem
 
 .p-card__caption-title
-  display: inline-block
-  vertical-align: middle
   margin-right: 2rem
 
+  +media("<tab")
+    margin: 0 0 1rem
+
+  +media("<mob-xs")
+    font-size: 2rem
+    line-height: 2.6rem
+
 .p-card__caption-rate
-  display: inline-block
-  vertical-align: middle
-  margin-bottom: 1.5rem
+  flex: 1 0 14.1rem
+  max-width: 14.1rem
+  margin: 1rem 0 1.5rem
+
+  +media("<tab")
+    margin: 0 0 0 -0.5rem
 
 
 // === product card main ===
@@ -13450,9 +13464,12 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 // code
 .p-card-code
   +font-bold
-  font-size: 1.4rem
+  font-size: 2.8rem
   line-height: 1.6rem
-  color: $text-color
+  color: $form-error-color
+
+  &__label
+    color: $text-color
 
 // price
 .p-card-price
