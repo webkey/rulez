@@ -11686,11 +11686,15 @@ $p-results-fixed-height: 7rem
       padding-right: nth($m-container-space--mob, 2)
 
 .m-heading
+  position: relative
   display: flex
   justify-content: space-between
   align-items: center
   padding-top: 1.5rem
   padding-bottom: 1rem
+
+  +media('<mob-xs')
+    display: block
 
   h1, .h1
     font-size: 3.6rem
@@ -11707,11 +11711,8 @@ $p-results-fixed-height: 7rem
       font-size: 2.2rem
       line-height: 2.8rem
 
-.m-heading__switcher
-  $width: 6.6rem
-  flex-basis: $width
-  flex-shrink: 0
-  margin-left: 2rem
+    +media('<mob-xs')
+      max-width: none
 
 .m-options
   $vertical-space: 0.5rem
@@ -11721,6 +11722,10 @@ $p-results-fixed-height: 7rem
   justify-content: flex-start
   margin-bottom: 1rem
   line-height: 1
+
+  +media('<mob-xs')
+    position: relative
+    padding: 4rem 0 0
 
   & > *
     margin: #{$vertical-space} #{nth($section-inner-space, 2)} #{$vertical-space} 0
@@ -12117,6 +12122,19 @@ $p-results-fixed-height: 7rem
     &.active
       cursor: default
 
+.m-heading__switcher
+  $width: 6.6rem
+  flex-basis: $width
+  flex-shrink: 0
+  margin-left: 2rem
+
+  +media('<mob-xs')
+    margin: 0.5rem 0 0
+    position: absolute
+    right: nth($m-container-space--mob, 2)
+    top: 100%
+    z-index: 5
+
 /* view-switcher end
 
 /* options panel
@@ -12138,6 +12156,12 @@ $p-results-fixed-height: 7rem
   +media('<#{$p-filters-breakpoint}')
     display: flex
     align-items: center
+
+  +media("<mob-xs")
+    position: absolute
+    left: nth($m-container-space--mob, 2)
+    top: 0
+    z-index: 5
 
   & > em
     display: inline-block
@@ -12417,14 +12441,19 @@ $p-results-fixed-height: 7rem
 /* filters tags
 .m-tags
   display: none
+  position: sticky
+  top: 6.3rem
+  background-color: white
+  z-index: 9
 
-  //.filters-results-show &
+  .filters-results-show &
     display: block
 
 .p-filters-tags
   //position: sticky
   //top: 0
-  padding: 0 0 2rem
+  padding: 0.5rem 0 1.5rem
+  border-bottom: 1px solid $border-color
   position: relative
   line-height: 2.0rem
   margin-left: -1rem
@@ -12459,14 +12488,19 @@ $p-results-fixed-height: 7rem
     margin-left: -$this-icon-lines-width
     top: 6px
     +font(0, 0)
+    color: $text-color-light
     // transition
-    $prop: opacity
+    $prop: opacity, color
     will-change: $prop
     transition:
       property: $prop
       duration: $animation-speed
 
-    &::before, &::after
+    &:hover
+      color: $link-color
+
+    &::before,
+    &::after
       +pseudo()
       left: 50%
       top: 50%
