@@ -14013,11 +14013,10 @@ input[type="text"].quick-order__input.success {
 
 .products__features {
   margin: 0;
-  padding: 0;
+  padding: 1.2rem 0 0;
   list-style: none;
-  display: none;
-  font-size: 1.4rem;
-  line-height: 1.8rem;
+  font-size: 1.2rem;
+  line-height: 1.4rem;
   color: #858585;
 }
 
@@ -14608,7 +14607,9 @@ input[type="text"].quick-order__input.success {
 }
 
 [data-view="list-view"] .products__features {
-  display: block;
+  padding: 0;
+  font-size: 1.4rem;
+  line-height: 1.8rem;
 }
 
 [data-view="list-view"] .product__footer {
