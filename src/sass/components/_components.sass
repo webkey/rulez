@@ -7033,7 +7033,7 @@ $categories-item-col: 3
   display: flex
   align-items: center
   justify-content: center
-  flex-flow: column wrap
+  flex-flow: column nowrap
   position: absolute
   left: 0
   top: 0
@@ -7063,9 +7063,22 @@ $categories-item-col: 3
     font-size: 1.2rem
     line-height: 1.6rem
 
+  &-mob-icon
+    display: none
+
+    +media("<tab-s")
+      display: block
+      margin: 0 auto -0.2rem
+      +font-extra-bold
+      font-size: 3.6rem
+      line-height: 1
+
   svg
     display: block
     margin-bottom: 0.5rem
+
+    +media("<tab-s")
+      display: none
 
     &, path
       fill: currentColor
@@ -7075,8 +7088,8 @@ $categories-item-col: 3
 
   span
     display: block
-    overflow: hidden
     max-height: 1.6rem * 3
+    overflow: hidden
 
     +media('<mob')
       max-height: 1.8rem * 3

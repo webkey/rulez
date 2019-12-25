@@ -4276,6 +4276,22 @@ function datepickerInit() {
   });
 }
 
+/**
+ * Letter-icon for mobile in catalog headings
+ */
+function letterIcon() {
+  var $item = $('.categories__inner');
+
+  if ($item.length) {
+    $.each($item, function () {
+      var $curItem = $(this);
+      var firstLetter = $curItem.children('span').text().charAt(0).toUpperCase();
+      var $letter = $('<div class="categories__inner-mob-icon">'+ firstLetter +'</div>');
+      $curItem.prepend($letter);
+    });
+  }
+}
+
 
 /**
  * !Form validation
@@ -4379,6 +4395,7 @@ $(document).ready(function () {
   instalmentPlan();
   datepickerInit();
   formValidation();
+  letterIcon();
 
   /**
    * For example. Remove after programming a search form
