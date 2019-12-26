@@ -4823,6 +4823,11 @@ input[type="text"].single-form__input {
   box-shadow: 0 0 0 2rem white;
 }
 
+.fancybox-container.white-spaces .fancybox-slide--video .fancybox-content {
+  box-shadow: none;
+  background-color: transparent;
+}
+
 .fancybox-button svg {
   pointer-events: none;
 }

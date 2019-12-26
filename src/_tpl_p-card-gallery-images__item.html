@@ -1,4 +1,4 @@
-<a href="@@imgSrc">
+<a href="@@if(!context.video){@@imgSrc}@@if(context.video){@@video}">
   <img itemprop="image" src="img/empty.png" data-src="@@imgSrc" data-thumb="@@imgThumbSrc" class="swiper-lazy" alt="@@imgAlt">
   <div class="swiper-lazy-preloader"></div>
   <noscript class="noscript"><img src="@@imgSrc" alt="@@imgAlt"></noscript>
