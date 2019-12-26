@@ -14611,9 +14611,15 @@ input[type="text"].quick-order__input.success {
 }
 
 [data-view="list-view"] .products__features {
-  padding: 0;
+  padding: 0 0 0 1.2rem;
   font-size: 1.4rem;
   line-height: 1.8rem;
+}
+
+@media (max-width: 1199px) {
+  [data-view="list-view"] .products__features {
+    padding: 0;
+  }
 }
 
 [data-view="list-view"] .product__footer {
@@ -19441,8 +19447,8 @@ a.topic-banner:hover .topic-banner__title > span {
 .p-card-code {
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
-  font-size: 2.8rem;
-  line-height: 1.6rem;
+  font-size: 1.8rem;
+  line-height: 2.2rem;
   color: #ff3322;
 }
 

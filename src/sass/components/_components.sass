@@ -9314,9 +9314,12 @@ $product-item-space--mob: 2rem 1.5rem
   // === products features ===
   .products__features
     //display: block
-    padding: 0
+    padding: 0 0 0 1.2rem
     font-size: 1.4rem
     line-height: 1.8rem
+
+    +media('<net')
+      padding: 0
 
   // === product footer ===
   .product__footer
@@ -13473,8 +13476,8 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 // code
 .p-card-code
   +font-bold
-  font-size: 2.8rem
-  line-height: 1.6rem
+  font-size: 1.8rem
+  line-height: 2.2rem
   color: $form-error-color
 
   &__label
