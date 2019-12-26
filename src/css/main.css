@@ -19592,6 +19592,10 @@ a.topic-banner:hover .topic-banner__title > span {
   }
 }
 
+.p-card-price__inst-value {
+  display: inline-block;
+}
+
 .p-card-price__inst > strong {
   display: inline-block;
   vertical-align: baseline;
@@ -19776,12 +19780,17 @@ a.topic-banner:hover .topic-banner__title > span {
       align-items: flex-start;
   -ms-flex-pack: justify;
       justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 479px) {
   .p-card-offer__buy {
     display: block;
   }
+}
+
+.p-card-offer__buy:last-child {
+  margin-bottom: 0;
 }
 
 .p-card-offer__buy .p-card-price {
@@ -19821,6 +19830,29 @@ a.topic-banner:hover .topic-banner__title > span {
 
 .p-card-offer__buy:last-child {
   margin-bottom: 0;
+}
+
+.p-card-offer__feature-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  color: #858585;
+}
+
+.p-card-offer__feature-list li {
+  padding-left: 0;
+  margin-bottom: 0.3rem;
+}
+
+.p-card-offer__feature-list li::before {
+  content: none;
+}
+
+.p-card-offer__feature-list li > span {
+  display: inline-block;
+  color: #282828;
 }
 
 .credit {

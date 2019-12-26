@@ -13543,6 +13543,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   +media('<net')
     order: 3
 
+  &-value
+    display: inline-block
+
   & > strong
     display: inline-block
     vertical-align: baseline
@@ -13700,9 +13703,13 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   display: flex
   align-items: flex-start
   justify-content: space-between
+  margin-bottom: 2rem
 
   +media('<mob-s')
     display: block
+
+  &:last-child
+    margin-bottom: 0
 
   //.p-card-price, .p-card-options
   //  flex-basis: 50%
@@ -13733,6 +13740,26 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
   &:last-child
     margin-bottom: 0
+
+.p-card-offer__feature
+  &-list
+    margin: 0
+    padding: 0
+    list-style: none
+    font-size: 1.4rem
+    line-height: 1.6rem
+    color: #858585
+
+    li
+      padding-left: 0
+      margin-bottom: 0.3rem
+
+      &::before
+        content: none
+
+      & > span
+        display: inline-block
+        color: #282828
 
 // credit
 .credit
