@@ -145,7 +145,8 @@
 .icon-voting-plus,
 .icon-voting-minus,
 .icon-error,
-.icon-success
+.icon-success,
+.icon-gift
   +icon()
 
 .icon-i-list-adr-color
@@ -220,6 +221,9 @@
 
 .icon-error
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTYuOTcxIDBoLTkuOTQybC03LjAyOSA3LjAyOXY5Ljk0MWw3LjAyOSA3LjAzaDkuOTQxbDcuMDMtNy4wMjl2LTkuOTQybC03LjAyOS03LjAyOXptLTQuOTcxIDE5LjI1Yy0uNjkgMC0xLjI1LS41Ni0xLjI1LTEuMjVzLjU2LTEuMjUgMS4yNS0xLjI1IDEuMjUuNTYgMS4yNSAxLjI1LS41NiAxLjI1LTEuMjUgMS4yNXptLjU1LTQuNzQ4Yy0uMDI5LjI4My0uMjY2LjQ5OC0uNTUuNDk4cy0uNTIxLS4yMTUtLjU1LS40OThsLS44MDEtOC4wMWMtLjA4LS44LjU1LTEuNDkyIDEuMzUxLTEuNDkyczEuNDMxLjY5MiAxLjM1MSAxLjQ5M2wtLjgwMSA4LjAwOXoiIGZpbGw9IiNmZjMzMjIiLz48L3N2Zz4=)
+
+.icon-gift
+  background-image: url(../../img/icon-gift.svg)
 
 /* icons end
 
@@ -13345,6 +13349,12 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       height: $size
       margin-top: -#{round-float($size / 2, 1)}
 
+      &.icon-gift
+        $size: 3.6rem
+        width: $size
+        height: $size
+        margin-top: -#{round-float($size / 2, 1)}
+
     svg
       $size: 2.4rem
       display: inline-block
@@ -13365,10 +13375,21 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     background: none
     color: $base-color
 
+    &.mark_gift
+      +font-bold
+      color: #fa2c64
+      //box-shadow: inset 0 -1px 0 currentColor
+
   // Hover
   .no-touch & a:hover
     & > strong
       color: $base-color
+
+.p-card-services__item_gift
+  // Hover
+  .no-touch & a:hover
+    & > strong
+      color: #fa2c64
 
 // === product card aside ===
 // ==========================

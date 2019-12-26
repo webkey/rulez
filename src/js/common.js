@@ -4292,6 +4292,20 @@ function letterIcon() {
   }
 }
 
+/**
+ * !Scroll to anchor
+ */
+function scrollToAnchor() {
+  $('body').on('click', '.js-scroll-to-anchor', function (e) {
+    e.preventDefault();
+    var $doc = $('html,body');
+    var $this = $(this);
+    if (!$doc.is(':animated')) {
+      $('html, body').stop().animate({scrollTop: $($this.attr('href')).offset().top - $('.header').outerHeight() - 15}, 300);
+    }
+  });
+}
+
 
 /**
  * !Form validation
@@ -4396,6 +4410,7 @@ $(document).ready(function () {
   datepickerInit();
   formValidation();
   letterIcon();
+  scrollToAnchor();
 
   /**
    * For example. Remove after programming a search form
