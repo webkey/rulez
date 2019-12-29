@@ -2580,13 +2580,16 @@ function rollsInit() {
 
   ToggleView.prototype.init = function () {
     var self = this;
+    var activeAnchor = self.anchor.filter('.' + self.config.activeClass);
+    var id = activeAnchor.closest(self.element).attr(self.data.switcher);
 
-    var cookieMod = getCookie(self.productViewCookieName),
-        activeAnchor = self.anchor.filter('.' + self.config.activeClass);
+    // Create individual cookie name
+    self.productViewCookieName = self.productViewCookieName + id.charAt(0).toUpperCase() + id.slice(1);
+
+    var cookieMod = getCookie(self.productViewCookieName);
 
     var mod = cookieMod || activeAnchor.attr('data-mod');
 
-    var id = activeAnchor.closest(self.element).attr(self.data.switcher);
     // Add modifier to a panel
     $('[' + self.data.panel + '="' + id + '"]').attr('data-view', mod);
     // Add modifier to a switcher
