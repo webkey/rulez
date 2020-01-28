@@ -13084,7 +13084,6 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     opacity: 0
     pointer-events: none
 
-
 // card gallery images
 .p-card-gallery-images
   margin: 0 auto
@@ -18022,3 +18021,54 @@ span.flatpickr-weekday
   border-color: $base-color-light
 
 /* flatpickr end
+
+/* sets
+.sets
+  margin-bottom: 3rem
+
+  +media('<tab-s')
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+  &__list
+    display: block
+
+  &__item
+    margin-bottom: 4rem
+
+    +media('<tab-s')
+      margin-bottom: 3rem
+
+    &:last-child
+      margin-bottom: 0
+
+.sets-pagination
+  text-align: center
+  margin-bottom: 3rem
+
+  +media('<mob')
+    margin-bottom: 2rem
+
+/* sets end
+
+/* set card
+.p-card-set
+  position: relative
+  padding: 2rem 4rem 2rem 0
+  margin-bottom: 2.4rem
+
+  +media('<tab')
+    padding: 2rem 0
+    display: flex
+    justify-content: center
+
+  +media('<mob-s')
+    margin-left: -#{nth($section-inner-space--mob, 2)}
+    margin-right: -#{nth($section-inner-space--mob, 2)}
+
+  &:last-child
+    margin-bottom: 0
+
+/* set card end

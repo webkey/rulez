@@ -25526,6 +25526,80 @@ span.flatpickr-weekday {
 }
 
 /* flatpickr end */
+/* sets */
+.sets {
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 767px) {
+  .sets {
+    margin-bottom: 2rem;
+  }
+}
+
+.sets:last-child {
+  margin-bottom: 0;
+}
+
+.sets__list {
+  display: block;
+}
+
+.sets__item {
+  margin-bottom: 4rem;
+}
+
+@media (max-width: 767px) {
+  .sets__item {
+    margin-bottom: 3rem;
+  }
+}
+
+.sets__item:last-child {
+  margin-bottom: 0;
+}
+
+.sets-pagination {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 639px) {
+  .sets-pagination {
+    margin-bottom: 2rem;
+  }
+}
+
+/* sets end */
+/* set card */
+.p-card-set {
+  position: relative;
+  padding: 2rem 4rem 2rem 0;
+  margin-bottom: 2.4rem;
+}
+
+@media (max-width: 991px) {
+  .p-card-set {
+    padding: 2rem 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+  }
+}
+
+@media (max-width: 479px) {
+  .p-card-set {
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
+  }
+}
+
+.p-card-set:last-child {
+  margin-bottom: 0;
+}
+
+/* set card end */
 /* ==================================== */
 /* =========== PRINT VERSION ========== */
 /* ==================================== */

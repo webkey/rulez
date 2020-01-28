@@ -1,0 +1,70 @@
+<div class="set equal-height-js">
+  <div class="set__item">
+    @@include("_tpl_product-short.html", {
+    "href": "product-card.html",
+    "src": "img/img-product-01.jpg",
+    "category": "Сумки",
+    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+    "priceOld": {"val": "1457", "unit": "р."},
+    "price": {"val": "1457", "unit": "р."},
+    "withoutCart": "true",
+    "inCart": "",
+    "wow": "WOW!",
+    "stickers": { "sale": "%" }
+    })
+  </div>
+  <div class="set__sign set__sign_plus">+</div>
+  <div class="set__item">
+    @@include("_tpl_product-short.html", {
+    "href": "product-card.html",
+    "src": "img/products/preview/03.jpg",
+    "category": "Сумки",
+    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+    "priceOld": {"val": "25.50", "unit": "р."},
+    "price": {"val": "0", "unit": "р."},
+    "withoutCart": "true",
+    "inCart": "",
+    "wow": "",
+    "mark": "mark",
+    "stickers": { "gift": "Подарок!" }
+    })
+  </div>
+  <div class="set__sign set__sign_plus">+</div>
+  <div class="set__item">
+    @@include("_tpl_product-short.html", {
+    "href": "product-card.html",
+    "src": "img/img-product-11.jpg",
+    "category": "Сумки",
+    "title": "RIVACASE 7560 для ноутбука 15.6&quot; (серый цвет)",
+    "priceOld": {"val": "25.50", "unit": "р."},
+    "price": {"val": "0", "unit": "р."},
+    "withoutCart": "true",
+    "inCart": "",
+    "wow": "",
+    "stickers": { "gift": "Подарок!" }
+    })
+  </div>
+  @@if(!context.withoutResult) {
+  <div class="set__sign set__sign_equal">=</div>
+  <div class="set__result">
+    <div class="set-result">
+      <div class="set-result-price set-result__price">
+        <div class="set-result-price__old"><strong class="set-result-price__old-val">2000</strong>&nbsp;<em class="set-result-price__old-unit">р.</em></div>
+        <div class="set-result-price__new"><strong class="set-result-price__new-val">1500</strong>&nbsp;<em class="set-result-price__new-unit">р.</em></div>
+      </div>
+      <div class="set-result-options">
+        <div class="set-result-options__item">
+          <a href="#" class="btn-buy set-result__btn add-to-cart-js">
+            <span class="btn-buy__buy">Купить</span>
+            <span class="btn-buy__in-cart">В&nbsp;корзине</span>
+            <i>@@include("includes/svg/icon-cart.svg")</i>
+          </a>
+        </div>
+        <div class="set-result-options__item">
+          <a href="#" class="btn-alt set-result__btn">Купить в рассрочку</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div>

@@ -44,6 +44,13 @@ function preloadOtherImages() {
     var observer = lozad(element);
     observer.observe();
   });
+
+  // All images lazy load
+  var $lazyImages = $('img', '.lazy-images-js');
+  $.each($lazyImages, function (index, element) {
+    var observer = lozad(element);
+    observer.observe();
+  });
 }
 
 /**
