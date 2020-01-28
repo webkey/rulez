@@ -10658,6 +10658,7 @@ a.catalog-opener.catalog-is-open > i::after {
   padding-top: 0;
   padding-bottom: 0;
   margin-bottom: -11.5rem;
+  background-color: #8f77ed;
 }
 
 @media (max-width: 991px) {
