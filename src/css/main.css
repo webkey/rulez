@@ -15426,37 +15426,12 @@ a.topic-banner:hover .topic-banner__title > span {
 @media (max-width: 991px) {
   .topics__list {
     display: block;
-    height: 46.2rem !important;
     white-space: nowrap;
-    overflow: hidden;
-    font-size: 0;
-    letter-spacing: -4px;
-  }
-}
-
-@media (max-width: 991px) and (max-width: 479px) {
-  .topics__list {
-    height: 32.6rem !important;
-  }
-}
-
-@media (max-width: 991px) {
-  .touch .topics__list {
-    height: 45.6rem !important;
-  }
-}
-
-@media (max-width: 991px) and (max-width: 479px) {
-  .touch .topics__list {
-    height: 32rem !important;
-  }
-}
-
-@media (max-width: 991px) {
-  .no-touch .topics__list:hover, .touch .topics__list {
     overflow-x: auto;
     overflow-y: hidden;
     -webkit-overflow-scrolling: touch;
+    font-size: 0;
+    letter-spacing: -4px;
   }
 }
 
@@ -15490,14 +15465,12 @@ a.topic-banner:hover .topic-banner__title > span {
   .topics__item {
     max-width: none;
     min-width: 0;
-    height: 45.6rem;
     width: 29.6rem;
   }
 }
 
 @media (max-width: 639px) {
   .topics__item {
-    height: 32rem;
     width: 20rem;
   }
 }
@@ -19905,6 +19878,7 @@ a.topic-banner:hover .topic-banner__title > span {
   left: -1rem;
   right: -1rem;
   height: 2.9rem;
+  box-shadow: 0 0 1rem white;
   background: white;
   background: linear-gradient(to left, white 0%, white 55%, rgba(255, 255, 255, 0.5) 85%, rgba(255, 255, 255, 0) 100%);
   -webkit-user-select: none;

@@ -10087,21 +10087,24 @@ $tl-item-space--tab: 1rem
 
   +media('<tab')
     display: block
-    height: #{nth($tl-item-size--tab, 1) + 0.6} !important
+    //height: #{nth($tl-item-size--tab, 1) + 0.6} !important
     white-space: nowrap
-    overflow: hidden
+    //overflow: hidden
+    overflow-x: auto
+    overflow-y: hidden
+    -webkit-overflow-scrolling: touch
     +clear-spacing
 
-    +media('<mob-s')
+    //+media('<mob-s')
       height: #{nth($tl-item-size--mob, 1) + 0.6} !important
 
-    .touch &
+    //.touch &
       height: #{nth($tl-item-size--tab, 1)} !important
 
       +media('<mob-s')
         height: #{nth($tl-item-size--mob, 1)} !important
 
-    .no-touch &:hover, .touch &
+    //.no-touch &:hover, .touch &
       overflow-x: auto
       overflow-y: hidden
       -webkit-overflow-scrolling: touch
@@ -10176,11 +10179,11 @@ $tl-item-space--tab: 1rem
   +media('<tab')
     max-width: none
     min-width: 0
-    height: nth($tl-item-size--tab, 1)
+    //height: nth($tl-item-size--tab, 1)
     width: nth($tl-item-size--tab, 2)
 
   +media('<mob')
-    height: nth($tl-item-size--mob, 1)
+    //height: nth($tl-item-size--mob, 1)
     width: nth($tl-item-size--mob, 2)
 
   // for ie 9
