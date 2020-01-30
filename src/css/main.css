@@ -19807,17 +19807,12 @@ a.topic-banner:hover .topic-banner__title > span {
       align-items: flex-start;
   -ms-flex-pack: justify;
       justify-content: space-between;
-  margin-bottom: 2rem;
 }
 
 @media (max-width: 479px) {
   .p-card-offer__buy {
     display: block;
   }
-}
-
-.p-card-offer__buy:last-child {
-  margin-bottom: 0;
 }
 
 .p-card-offer__buy .p-card-price {
@@ -19862,7 +19857,8 @@ a.topic-banner:hover .topic-banner__title > span {
 .p-card-offer__feature {
   position: relative;
   overflow: hidden;
-  padding-right: 2.2rem;
+  padding: 0 2.2rem 0 0;
+  margin-top: 2rem;
   font-size: 1.4rem;
   line-height: 1.6rem;
   max-height: 9.5rem;
@@ -25546,12 +25542,29 @@ span.flatpickr-weekday {
 }
 
 .sets__item {
-  margin-bottom: 4rem;
+  padding: 2rem 0;
+  border: 1px solid #dbdbdb;
+  margin: -1px -1px 0;
+}
+
+@media (max-width: 991px) {
+  .sets__item {
+    margin: -1px 0 0;
+    border-width: 1px 0;
+  }
 }
 
 @media (max-width: 767px) {
   .sets__item {
-    margin-bottom: 3rem;
+    padding: 1.5rem 0;
+  }
+}
+
+@media (max-width: 479px) {
+  .sets__item {
+    border: none;
+    margin: 0;
+    padding: 0 0 4rem;
   }
 }
 
