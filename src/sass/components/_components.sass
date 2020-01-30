@@ -13771,10 +13771,16 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   margin-top: 2rem
   font-size: 1.4rem
   line-height: $lh
-  max-height: #{round-float(($lh + 0.3) * 5, 1)}
 
-  .no-js &
-    max-height: none
+  &#jsTruncateFeatures
+    max-height: #{round-float(($lh + 0.3) * 5, 1)}
+
+    +media('<tab')
+      max-height: none
+      height: auto !important
+
+    .no-js &
+      max-height: none
 
   &-list
     margin: 0
@@ -13801,10 +13807,14 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     right: -1rem
     height: 2.9rem
     $color: white
+    box-shadow: 0 0 1rem white
     @include linear-gradient(to left, $color 0%, rgba($color, 1) 55%, rgba($color, 0.5) 85%, rgba($color, 0) 100%)
     user-select: none
     -webkit-tap-highlight-color: transparent
     z-index: 9
+
+    +media('<tab')
+      display: none
 
   &__control
     height: 2.2rem
@@ -13813,6 +13823,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     right: 0
     bottom: 0
     z-index: 10
+
+    +media('<tab')
+      display: none
 
   &__btn
     height: 100%
@@ -13823,6 +13836,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     +font(0, 0)
     color: $text-color
     transition: color $animation-speed
+
+    +media('<tab')
+      display: none
 
     & > span + span
       display: none

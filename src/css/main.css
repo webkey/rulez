@@ -19861,10 +19861,20 @@ a.topic-banner:hover .topic-banner__title > span {
   margin-top: 2rem;
   font-size: 1.4rem;
   line-height: 1.6rem;
+}
+
+.p-card-offer__feature#jsTruncateFeatures {
   max-height: 9.5rem;
 }
 
-.no-js .p-card-offer__feature {
+@media (max-width: 991px) {
+  .p-card-offer__feature#jsTruncateFeatures {
+    max-height: none;
+    height: auto !important;
+  }
+}
+
+.no-js .p-card-offer__feature#jsTruncateFeatures {
   max-height: none;
 }
 
@@ -19905,6 +19915,12 @@ a.topic-banner:hover .topic-banner__title > span {
   z-index: 9;
 }
 
+@media (max-width: 991px) {
+  .truncate-feature__shadow {
+    display: none;
+  }
+}
+
 .truncate-feature__control {
   height: 2.2rem;
   width: 100%;
@@ -19912,6 +19928,12 @@ a.topic-banner:hover .topic-banner__title > span {
   right: 0;
   bottom: 0;
   z-index: 10;
+}
+
+@media (max-width: 991px) {
+  .truncate-feature__control {
+    display: none;
+  }
 }
 
 .truncate-feature__btn {
@@ -19924,6 +19946,12 @@ a.topic-banner:hover .topic-banner__title > span {
   line-height: 0;
   color: #4a4a4a;
   transition: color 0.25s;
+}
+
+@media (max-width: 991px) {
+  .truncate-feature__btn {
+    display: none;
+  }
 }
 
 .truncate-feature__btn > span + span {
