@@ -145,7 +145,8 @@
 .icon-voting-plus,
 .icon-voting-minus,
 .icon-error,
-.icon-success
+.icon-success,
+.icon-gift
   +icon()
 
 .icon-i-list-adr-color
@@ -220,6 +221,9 @@
 
 .icon-error
   background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTYuOTcxIDBoLTkuOTQybC03LjAyOSA3LjAyOXY5Ljk0MWw3LjAyOSA3LjAzaDkuOTQxbDcuMDMtNy4wMjl2LTkuOTQybC03LjAyOS03LjAyOXptLTQuOTcxIDE5LjI1Yy0uNjkgMC0xLjI1LS41Ni0xLjI1LTEuMjVzLjU2LTEuMjUgMS4yNS0xLjI1IDEuMjUuNTYgMS4yNSAxLjI1LS41NiAxLjI1LTEuMjUgMS4yNXptLjU1LTQuNzQ4Yy0uMDI5LjI4My0uMjY2LjQ5OC0uNTUuNDk4cy0uNTIxLS4yMTUtLjU1LS40OThsLS44MDEtOC4wMWMtLjA4LS44LjU1LTEuNDkyIDEuMzUxLTEuNDkyczEuNDMxLjY5MiAxLjM1MSAxLjQ5M2wtLjgwMSA4LjAwOXoiIGZpbGw9IiNmZjMzMjIiLz48L3N2Zz4=)
+
+.icon-gift
+  background-image: url(../../img/icon-gift.svg)
 
 /* icons end
 
@@ -1397,6 +1401,11 @@ $popup-def__soc-space-outer: 1rem 1rem
 
     //.fancybox-image, .fancybox-spaceball
       border: 2rem solid white
+
+  .fancybox-slide--video
+    .fancybox-content
+      box-shadow: none
+      background-color: transparent
 
 .fancybox-button
   svg
@@ -6189,6 +6198,7 @@ $p-sticker-size--mob: 1.8rem 1.8rem
   padding-top: 0
   padding-bottom: 0
   margin-bottom: -#{$promo-section-bottom}
+  background-color: $base-color-light
 
   +media('<tab')
     height: 50rem
@@ -8427,7 +8437,7 @@ input[type="text"].quick-order__input
   box-shadow: 0 5px 11px rgba(0, 0, 0, 0.08)
   pointer-events: none
   opacity: 0
-  z-index: 99
+  z-index: 98
   $scale: 0.85, 0.85
   transform: scale($scale)
   transform: scale3d($scale, 1)
@@ -8513,6 +8523,9 @@ $product-item-space--mob: 2rem 1.5rem
   cursor: default
   //background-color: white // нельзя использовать заливку фона
   z-index: 1
+
+  &_mark
+    box-shadow: inset 0 0 0 6px #f8e71c
 
 // === product stickers ===
 // --> sticker wow <--
@@ -8701,11 +8714,11 @@ $product-item-space--mob: 2rem 1.5rem
 // === products features ===
 .products__features
   margin: 0
-  padding: 0
+  padding: 1.2rem 0 0
   list-style: none
-  display: none
-  font-size: 1.4rem
-  line-height: 1.8rem
+  //display: none
+  font-size: 1.2rem
+  line-height: 1.4rem
   color: #858585
 
   li
@@ -9310,7 +9323,13 @@ $product-item-space--mob: 2rem 1.5rem
 
   // === products features ===
   .products__features
-    display: block
+    //display: block
+    padding: 0 0 0 1.2rem
+    font-size: 1.4rem
+    line-height: 1.8rem
+
+    +media('<net')
+      padding: 0
 
   // === product footer ===
   .product__footer
@@ -9622,6 +9641,9 @@ $product-short-inner-space: 2.5rem 1.5rem 1.5rem
   background-color: white
   padding: $product-short-inner-space
   cursor: default
+
+  &_mark
+    box-shadow: inset 0 0 0 6px #f8e71c
 
 // === short product stickers ===
 // --> sticker wow <--
@@ -10065,21 +10087,24 @@ $tl-item-space--tab: 1rem
 
   +media('<tab')
     display: block
-    height: #{nth($tl-item-size--tab, 1) + 0.6} !important
+    //height: #{nth($tl-item-size--tab, 1) + 0.6} !important
     white-space: nowrap
-    overflow: hidden
+    //overflow: hidden
+    overflow-x: auto
+    overflow-y: hidden
+    -webkit-overflow-scrolling: touch
     +clear-spacing
 
-    +media('<mob-s')
+    //+media('<mob-s')
       height: #{nth($tl-item-size--mob, 1) + 0.6} !important
 
-    .touch &
+    //.touch &
       height: #{nth($tl-item-size--tab, 1)} !important
 
       +media('<mob-s')
         height: #{nth($tl-item-size--mob, 1)} !important
 
-    .no-touch &:hover, .touch &
+    //.no-touch &:hover, .touch &
       overflow-x: auto
       overflow-y: hidden
       -webkit-overflow-scrolling: touch
@@ -10154,11 +10179,11 @@ $tl-item-space--tab: 1rem
   +media('<tab')
     max-width: none
     min-width: 0
-    height: nth($tl-item-size--tab, 1)
+    //height: nth($tl-item-size--tab, 1)
     width: nth($tl-item-size--tab, 2)
 
   +media('<mob')
-    height: nth($tl-item-size--mob, 1)
+    //height: nth($tl-item-size--mob, 1)
     width: nth($tl-item-size--mob, 2)
 
   // for ie 9
@@ -12988,12 +13013,11 @@ $card-cont-width--net: 40rem
 
 .p-card
   background-color: white
-  padding: 4.8rem nth($section-inner-space, 2) 4.2rem
+  padding: 2.5rem nth($section-inner-space, 2) 4.2rem
   margin-bottom: 4.8rem
   +clear
 
   +media('<net')
-    padding-top: 3rem
     padding-bottom: 3rem
 
   +media('<lap-s')
@@ -13096,7 +13120,6 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   .js &:not(.is-loaded)
     opacity: 0
     pointer-events: none
-
 
 // card gallery images
 .p-card-gallery-images
@@ -13362,6 +13385,12 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       height: $size
       margin-top: -#{round-float($size / 2, 1)}
 
+      &.icon-gift
+        $size: 3.6rem
+        width: $size
+        height: $size
+        margin-top: -#{round-float($size / 2, 1)}
+
     svg
       $size: 2.4rem
       display: inline-block
@@ -13382,10 +13411,21 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     background: none
     color: $base-color
 
+    &.mark_gift
+      +font-bold
+      color: #fa2c64
+      //box-shadow: inset 0 -1px 0 currentColor
+
   // Hover
   .no-touch & a:hover
     & > strong
       color: $base-color
+
+.p-card-services__item_gift
+  // Hover
+  .no-touch & a:hover
+    & > strong
+      color: #fa2c64
 
 // === product card aside ===
 // ==========================
@@ -13498,8 +13538,8 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 // code
 .p-card-code
   +font-bold
-  font-size: 2.8rem
-  line-height: 1.6rem
+  font-size: 1.8rem
+  line-height: 2.2rem
   color: $form-error-color
 
   &__label
@@ -13564,6 +13604,9 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
   +media('<net')
     order: 3
+
+  &-value
+    display: inline-block
 
   & > strong
     display: inline-block
@@ -13755,6 +13798,113 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
   &:last-child
     margin-bottom: 0
+
+.p-card-offer__feature
+  $lh: 1.6rem
+
+  position: relative
+  overflow: hidden
+  padding: 0 2.2rem 0 0
+  margin-top: 2rem
+  font-size: 1.4rem
+  line-height: $lh
+
+  &#jsTruncateFeatures
+    max-height: #{round-float(($lh + 0.3) * 5, 1)}
+
+    +media('<tab')
+      max-height: none
+      height: auto !important
+
+    .no-js &
+      max-height: none
+
+  &-list
+    margin: 0
+    padding: 0
+    list-style: none
+    color: #858585
+
+    li
+      padding-left: 0
+      margin-bottom: 0.3rem
+
+      &::before
+        content: none
+
+      & > span
+        display: inline-block
+        color: #282828
+
+.truncate-feature
+  &__shadow
+    position: absolute
+    bottom: -1rem
+    left: -1rem
+    right: -1rem
+    height: 2.9rem
+    $color: white
+    box-shadow: 0 0 1rem white
+    @include linear-gradient(to left, $color 0%, rgba($color, 1) 55%, rgba($color, 0.5) 85%, rgba($color, 0) 100%)
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+    z-index: 9
+
+    +media('<tab')
+      display: none
+
+  &__control
+    height: 2.2rem
+    width: 100%
+    position: absolute
+    right: 0
+    bottom: 0
+    z-index: 10
+
+    +media('<tab')
+      display: none
+
+  &__btn
+    height: 100%
+    width: 100%
+    position: absolute
+    right: 0
+    bottom: 0
+    +font(0, 0)
+    color: $text-color
+    transition: color $animation-speed
+
+    +media('<tab')
+      display: none
+
+    & > span + span
+      display: none
+
+    svg
+      $size: 1.2rem
+
+      +size($size)
+      display: block
+      position: absolute
+      right: 2px
+      bottom: 5px
+      transition: transform $animation-speed
+
+      path
+        stroke: currentColor
+
+    // active
+    &.active
+      width: 2.2rem
+
+      svg
+        transform: rotate(180deg) translateZ(0)
+
+    // hover
+    &:hover
+      .no-touch &
+        color: $base-color
+
 
 // credit
 .credit
@@ -14119,7 +14269,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
   // offer
   .p-card-offer
-    margin-bottom: 3.8rem
+    margin-bottom: 2rem
 
     &:last-child
       margin-bottom: 0
@@ -17921,3 +18071,65 @@ span.flatpickr-weekday
   border-color: $base-color-light
 
 /* flatpickr end
+
+/* sets
+.sets
+  margin-bottom: 3rem
+
+  +media('<tab-s')
+    margin-bottom: 2rem
+
+  &:last-child
+    margin-bottom: 0
+
+  &__list
+    display: block
+
+  &__item
+    padding: 2rem 0
+    border: 1px solid $border-color
+    margin: -1px -1px 0
+
+    +media('<tab')
+      margin: -1px 0 0
+      border-width: 1px 0
+
+    +media('<tab-s')
+      padding: 1.5rem 0
+
+    +media('<mob-s')
+      border: none
+      margin: 0
+      padding: 0 0 4rem
+
+    &:last-child
+      margin-bottom: 0
+
+.sets-pagination
+  text-align: center
+  margin-bottom: 3rem
+
+  +media('<mob')
+    margin-bottom: 2rem
+
+/* sets end
+
+/* set card
+.p-card-set
+  position: relative
+  padding: 2rem 4rem 2rem 0
+  margin-bottom: 2.4rem
+
+  +media('<tab')
+    padding: 2rem 0
+    display: flex
+    justify-content: center
+
+  +media('<mob-s')
+    margin-left: -#{nth($section-inner-space--mob, 2)}
+    margin-right: -#{nth($section-inner-space--mob, 2)}
+
+  &:last-child
+    margin-bottom: 0
+
+/* set card end

@@ -44,6 +44,13 @@ function preloadOtherImages() {
     var observer = lozad(element);
     observer.observe();
   });
+
+  // All images lazy load
+  var $lazyImages = $('img', '.lazy-images-js');
+  $.each($lazyImages, function (index, element) {
+    var observer = lozad(element);
+    observer.observe();
+  });
 }
 
 /**
@@ -2580,13 +2587,16 @@ function rollsInit() {
 
   ToggleView.prototype.init = function () {
     var self = this;
+    var activeAnchor = self.anchor.filter('.' + self.config.activeClass);
+    var id = activeAnchor.closest(self.element).attr(self.data.switcher);
 
-    var cookieMod = getCookie(self.productViewCookieName),
-        activeAnchor = self.anchor.filter('.' + self.config.activeClass);
+    // Create individual cookie name
+    self.productViewCookieName = self.productViewCookieName + id.charAt(0).toUpperCase() + id.slice(1);
+
+    var cookieMod = getCookie(self.productViewCookieName);
 
     var mod = cookieMod || activeAnchor.attr('data-mod');
 
-    var id = activeAnchor.closest(self.element).attr(self.data.switcher);
     // Add modifier to a panel
     $('[' + self.data.panel + '="' + id + '"]').attr('data-view', mod);
     // Add modifier to a switcher
@@ -4025,6 +4035,101 @@ function truncateText() {
 }
 
 /**
+ * !Truncate features
+ */
+function truncateFeatures() {
+  var $textSlide = $('#jsTruncateFeatures');
+
+  if (!$textSlide.length) return false;
+
+  var $window = $(window),
+      textFull = 'Показать',
+      textShort = 'Скрыть',
+      $tplBtn = $('<div class="truncate-feature__control" style="display: none;"><a href="#?" class="truncate-feature__btn truncate-feature__switcher-js" title="' + textFull + '"><svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1L5 5L9 1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg><span>' + textFull + '</span></a></div>'),
+      $tplTextSlideInner = $('<div class="truncate-feature__inner" />'),
+      $tplShadow = $('<div class="truncate-feature__shadow" >'),
+      textSlideHeight = $textSlide.outerHeight(),
+      _textIsFull = false,
+      truncateHeight = (parseInt($textSlide.css('line-height'), 10) + 3) * 5,
+      dur = 300;
+
+  $textSlide.addClass('truncate-feature truncate-feature_initialize');
+
+  // Build structure
+  $textSlide
+      .wrapInner($tplTextSlideInner)
+      .append($tplShadow)
+      .append($tplBtn);
+
+  function prepare() {
+    var wrapInnerHeight = $('.truncate-feature__inner').outerHeight();
+
+    $textSlide.css('max-height', 'none');
+
+    if (wrapInnerHeight <= truncateHeight) {
+      $textSlide.css({'height': 'auto'});
+      $tplShadow.css({'opacity': 0});
+      $tplBtn.hide();
+    } else if (!_textIsFull) {
+      $textSlide.css({'height': truncateHeight});
+      $tplShadow.css({'opacity': 1});
+      $tplBtn.show();
+
+      textSlideHeight = $textSlide.outerHeight();
+    }
+  }
+
+  $window.on('load debouncedresizeByWidth', function () {
+    prepare();
+  });
+
+  $textSlide.parent().on('click', '.truncate-feature__switcher-js', function (e) {
+    e.preventDefault();
+
+    var wrapInnerHeight = $('.truncate-feature__inner').outerHeight();
+
+    if (wrapInnerHeight <= truncateHeight) return false;
+
+    var $this = $(this);
+
+    if (_textIsFull) {
+
+      $tplShadow.animate({
+        'opacity': 1
+      }, dur);
+
+      $textSlide.animate({
+        'height': textSlideHeight
+      }, dur, function() {
+
+        $textSlide.trigger('heightHeightChange');
+      });
+
+      $this.removeClass('active').attr('title', textFull).children('span').text(textFull);
+
+      _textIsFull = false;
+    } else {
+
+      $textSlide.animate({
+        'height': wrapInnerHeight
+      }, dur, function() {
+        $textSlide.css({height: 'auto'});
+
+        $textSlide.trigger('afterTextTruncated');
+
+        _textIsFull = true;
+      });
+
+      $tplShadow.animate({
+        'opacity': 0
+      }, dur);
+
+      $this.addClass('active').attr('title', textShort).children('span').text(textShort);
+    }
+  });
+}
+
+/**
  * !Toggle subscribe form
  * */
 function toggleSubsFrom() {
@@ -4292,6 +4397,20 @@ function letterIcon() {
   }
 }
 
+/**
+ * !Scroll to anchor
+ */
+function scrollToAnchor() {
+  $('body').on('click', '.js-scroll-to-anchor', function (e) {
+    e.preventDefault();
+    var $doc = $('html,body');
+    var $this = $(this);
+    if (!$doc.is(':animated')) {
+      $('html, body').stop().animate({scrollTop: $($this.attr('href')).offset().top - $('.header').outerHeight() - 15}, 300);
+    }
+  });
+}
+
 
 /**
  * !Form validation
@@ -4392,10 +4511,12 @@ $(document).ready(function () {
   toggleNewReview();
   starsRating();
   truncateText();
+  truncateFeatures();
   instalmentPlan();
   datepickerInit();
   formValidation();
   letterIcon();
+  scrollToAnchor();
 
   /**
    * For example. Remove after programming a search form

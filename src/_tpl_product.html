@@ -1,4 +1,4 @@
-<div itemscope itemtype="http://schema.org/Product" class="product product-js">
+<div itemscope itemtype="http://schema.org/Product" class="product product-js@@if(context.mark){ product_mark}">
   <div class="product__main">
     @@if(context.wow){
     <div class="p-sticker p-sticker_wow product__sticker_wow">@@wow</div>
@@ -24,6 +24,15 @@
         <meta itemprop="ratingCount" content="1">
       </div>
     </div>
+    @@if(context.featureShort){
+    <ul class="products__features">
+      <li>Диагональ экрана: <span>15.6&quot;</span></li>
+      <li>Операционная система: <span>Windows 10</span></li>
+      <li>Модель видеокарты: <span>Intel HD Graphics 500</span></li>
+      <li>Модель процессора: <span>Intel Celeron N3350</span></li>
+    </ul>
+    }
+    @@if(!context.featureShort){
     <ul class="products__features">
       <li>Операционная система: <span>Windows 10</span></li>
       <li>Диагональ экрана: <span>15.6&quot;</span></li>
@@ -34,6 +43,7 @@
       <li>Тип видеокарты: <span>встроенная</span></li>
       <li>Модель видеокарты: <span>Intel HD Graphics 500</span></li>
     </ul>
+    }
   </div>
 
   <div class="product__footer">

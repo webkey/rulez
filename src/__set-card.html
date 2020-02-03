@@ -1,5 +1,5 @@
 @@include('_tpl_layout_head.html', {
-	"title": "Карточка товара",
+	"title": "Карточка комплекта",
   "hasBg": "true",
 	"pageClass": ""
 })
@@ -13,7 +13,7 @@
   <div class="max-wrap layout">
     @@include('_tpl_breadcrumbs.html', {
       "items": ["Каталог", "Ноутбуки", "Dell"],
-      "last": "Ноутбук Dell Inspiron 17 5770-6922"
+      "last": "Комплект Ноутбук Dell Inspiron 17 5770-6922"
     })
 
     <!--CONTENT-->
@@ -21,7 +21,7 @@
     <section itemscope itemtype="http://schema.org/Product" class="section p-card">
       <!--product card caption-->
       <div class="p-card__caption">
-        <h1 itemprop="name" class="p-card-title p-card__caption-title">Ноутбук Dell Inspiron 17 5770-6922</h1>
+        <h1 itemprop="name" class="p-card-title p-card__caption-title">Комплект Ноутбук Dell Inspiron 17 5770-6922</h1>
         <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate_lg p-card__caption-rate">
           <span itemprop="ratingValue" content="4.5" style="width: 90%">4.5</span>
           <meta itemprop="ratingCount" content="1">
@@ -44,24 +44,8 @@
         </div>
         <!--product card stickers end-->
         <!--product card gallery-->
-        <div class="p-card-gallery p-card-gallery-js">
-          <div class="swiper-container p-card-gallery-images p-card-gallery-images-js">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/01.jpg", "imgThumbSrc": "img/products/thumbs/01.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/img-video.png", "imgThumbSrc": "img/img-video.png", "imgAlt": "View Video", "video": "https://www.youtube.com/watch?v=UVadfCxNnoY"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/02.jpg", "imgThumbSrc": "img/products/thumbs/02.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/temp/img_1280_01.jpg", "imgThumbSrc": "img/temp/img_1280_01.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/temp/img_1280_02.jpg", "imgThumbSrc": "img/temp/img_1280_02.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/03.jpg", "imgThumbSrc": "img/products/thumbs/03.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/04.jpg", "imgThumbSrc": "img/products/thumbs/04.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/05.jpg", "imgThumbSrc": "img/products/thumbs/05.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/06.jpg", "imgThumbSrc": "img/products/thumbs/06.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/07.jpg", "imgThumbSrc": "img/products/thumbs/07.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/08.jpg", "imgThumbSrc": "img/products/thumbs/08.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/09.jpg", "imgThumbSrc": "img/products/thumbs/09.jpg", "imgAlt": "image description"})</div>
-              <div class="swiper-slide p-card-gallery-images__item">@@include("_tpl_p-card-gallery-images__item.html", {"imgSrc": "img/products/preview/10.jpg", "imgThumbSrc": "img/products/thumbs/10.jpg", "imgAlt": "image description"})</div>
-            </div>
-          </div>
+        <div class="p-card-set lazy-images-js">
+          @@include("_tpl_set-01.html", {"withoutResult": "true"})
         </div>
         <!--product card gallery end-->
       </div>
@@ -71,7 +55,7 @@
       <div class="p-card__aside">
         <div class="p-card-action">
           <a href="#" class="action-btn action-btn_like p-card-action__btn change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> @@include("includes/svg/icon-like.svg")</a>
-          <a href="#" class="action-btn action-btn_compare p-card-action__btn change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><em class="action-btn__counter">1</em><span>Сравнить</span> @@include("includes/svg/icon-compare.svg")</a>
+          <!--<a href="#" class="action-btn action-btn_compare p-card-action__btn change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><em class="action-btn__counter">1</em><span>Сравнить</span> @@include("includes/svg/icon-compare.svg")</a>-->
         </div>
         <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="p-card-offer">
           <div class="p-card-offer__meta">
@@ -118,7 +102,7 @@
               </div>
             </div>
           </div>
-          <div class="p-card-offer__feature" id="jsTruncateFeatures">
+          <!--<div class="p-card-offer__feature" id="jsTruncateFeatures">
             <ul class="p-card-offer__feature-list">
               <li>Тип: <span>игровой</span></li>
               <li>Конфигурация накопителя: <span>HDD 1000 ГБ + SSD 128 ГБ</span></li>
@@ -130,7 +114,7 @@
               <li>Ёмкость накопителя (ГБ): <span>1000</span></li>
               <li>Графический адаптер: <span>NVIDIA GeForce GTX 1050 2 ГБ</span></li>
             </ul>
-          </div>
+          </div>-->
           <div class="p-add-form-popup p-add-form-popup-js stop-remove-class">
             <div class="p-add-form p-add-form-js">
               <div class="p-add-form__figure">
