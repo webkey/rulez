@@ -12466,8 +12466,6 @@ $p-results-fixed-height: 7rem
 /* filters tags
 .m-tags
   display: none
-  position: sticky
-  top: 6.3rem
   background-color: white
   z-index: 9
 
@@ -12475,16 +12473,15 @@ $p-results-fixed-height: 7rem
     display: block
 
 .p-filters-tags
-  //position: sticky
-  //top: 0
   padding: 0.5rem 0 1.5rem
   border-bottom: 1px solid $border-color
   position: relative
   line-height: 2.0rem
   margin-left: -1rem
-  //-webkit-tap-highlight-color: transparent
 
 .p-filters-tags__item
+  $tag: &
+
   $this-icon-lines-width: 10px
   $this-icon-lines-height: 1px
   //display: inline
@@ -12497,32 +12494,48 @@ $p-results-fixed-height: 7rem
   cursor: pointer
   margin-left: 1rem
   user-select: none
-  //-webkit-tap-highlight-color: transparent
 
   & > span
+    position: relative
+    display: inline-block
     margin-right: $this-icon-lines-width + 3
     white-space: normal
-    text-decoration: underline
+    //text-decoration: underline
+
+    &::after
+      content: ""
+      display: block
+      position: absolute
+      border-top: 1px solid currentColor
+      width: calc(100% + 0.4rem)
+      left: -0.2rem
+      bottom: 50%
+      margin: -1px 0
+      will-change: transfom
+      transition: transform $animation-speed
+      transform: scale(0, 1) translateZ(0)
+      transform-origin: left center
+
+  @at-root
+    #{$tag}:hover
+      & > span::after
+        transform: scale(1, 1) translateZ(0)
 
   & > i
     position: relative
     display: inline-block
     vertical-align: top
-    opacity: 0
+    //opacity: 0
     +size(#{round($this-icon-lines-width)})
     margin-left: -$this-icon-lines-width
     top: 6px
     +font(0, 0)
     color: $text-color-light
-    // transition
     $prop: opacity, color
     will-change: $prop
     transition:
       property: $prop
       duration: $animation-speed
-
-    &:hover
-      color: $link-color
 
     &::before,
     &::after
@@ -12539,13 +12552,6 @@ $p-results-fixed-height: 7rem
 
     &::after
       transform: rotate(45deg)
-
-  .no-touch &:hover
-    //& > span
-      text-decoration: none
-
-    & > i
-      opacity: 1
 
 /* filters tags end
 
@@ -12703,6 +12709,10 @@ $p-results-fixed-height: 7rem
 
       +media('<mob')
         width: auto
+
+.p-filters-drop-footer
+  .btn-filters-clear
+    //display: none
 
 // ===STATES===
 // hover

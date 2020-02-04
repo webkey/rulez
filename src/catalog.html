@@ -901,7 +901,7 @@
                 <div class="p-filters-list">
                   <!--===============-->
                   <!--===============-->
-                  <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                  <div class="p-filters-item p-filters-item-js">
                     <div class="p-filters-select p-filters-select-js">
                       <div class="p-filters-title"><span>Разделы</span></div>
                       <div class="p-filters-angle">
@@ -949,13 +949,13 @@
                       </div>
                     </div>
                     <div class="p-filters-drop p-filters-drop-js">
-                      <ul class="p-filters-drop-list p-filters-group-js" data-filter-group="price">
+                      <ul class="p-filters-drop-list p-filters-group-js" data-filter-group="price-by-select">
                         <li>
                           <div class="form-row">
                             <div class="input-wrap has-prefix">
                               <div class="form-small">
                                 <span class="form-prefix">От</span>
-                                <select class="cselect field-js" name="filter-by-price-from" data-filter-select="price-from" data-filter-default="">
+                                <select class="cselect field-js" name="filter-by-price-from" data-filter-name="min-price" data-filter-from data-filter-default="" data-filter-tag-prefix="дороже" data-filter-unit="руб.">
                                   <option value="" data-filter-tag="5">5</option>
                                   <option value="10" data-filter-tag="10">10</option>
                                   <option value="20" data-filter-tag="20">20</option>
@@ -971,7 +971,7 @@
                             <div class="input-wrap has-prefix">
                               <div class="form-small">
                                 <span class="form-prefix">До</span>
-                                <select class="cselect field-js" name="filter-by-price-to" data-filter-select="price-to" data-filter-default="">
+                                <select class="cselect field-js" name="filter-by-price-to" data-filter-name="max-price" data-filter-to data-filter-default="" data-filter-tag-prefix="дешевле" data-filter-unit="руб.">
                                   <option value="" data-filter-tag="5">5</option>
                                   <option value="10" data-filter-tag="10">10</option>
                                   <option value="20" data-filter-tag="20">20</option>
@@ -992,6 +992,11 @@
                           </div>
                         </li>
                       </ul>
+                      <div class="p-filters-drop-footer">
+                        <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-more-js" style="display: none;"><span>Показать все</span></a>
+                        <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-less-js" style="display: none;"><span>Скрыть</span></a>
+                        <!--<button class="btn-reset-js btn-filters-clear" disabled><span>Очистить фильтр <em class="p-filters-selected-js"></em></span></button>-->
+                      </div>
                     </div>
                   </div>
                   <!--===============-->
@@ -1006,20 +1011,25 @@
                       </div>
                     </div>
                     <div class="p-filters-drop p-filters-drop-js">
-                      <ul class="p-filters-drop-list p-filters-group-js" data-filter-group="price2">
+                      <ul class="p-filters-drop-list p-filters-group-js" data-filter-group="price-by-text">
                         <li>
                           <div class="form-row">
                             <div class="input-wrap has-prefix">
                               <span class="form-prefix">От</span>
-                              <input class="form-light form-small" value="" type="text" placeholder="300" data-filter-default="" data-filter-tag="От" data-only-number>
+                              <input class="form-light form-small" value="" type="text" placeholder="300" data-filter-name="min-price" data-filter-from data-filter-default="" data-filter-tag-prefix="от" data-filter-unit="р." data-only-number>
                             </div>
                             <div class="input-wrap has-prefix">
                               <span class="form-prefix">До</span>
-                              <input class="form-light form-small" value="" type="text" placeholder="5000" data-filter-default="" data-filter-tag="До" data-only-number>
+                              <input class="form-light form-small" value="" type="text" placeholder="5000" data-filter-name="max-price" data-filter-to data-filter-default="" data-filter-tag-prefix="до" data-filter-unit="р." data-only-number>
                             </div>
                           </div>
                         </li>
                       </ul>
+                      <div class="p-filters-drop-footer">
+                        <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-more-js" style="display: none;"><span>Показать все</span></a>
+                        <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-less-js" style="display: none;"><span>Скрыть</span></a>
+                        <!--<button class="btn-reset-js btn-filters-clear" disabled><span>Очистить фильтр <em class="p-filters-selected-js"></em></span></button>-->
+                      </div>
                     </div>
                   </div>
                   <!--===============-->
@@ -1091,10 +1101,31 @@
                         </li>
                       </ul>
                       <div class="p-filters-drop-footer">
-                        <!--<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>-->
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-more-js" style="display: none;"><span>Показать все</span></a>
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-less-js" style="display: none;"><span>Скрыть</span></a>
+                        <!--<button class="btn-reset-js btn-filters-clear" disabled><span>Очистить фильтр <em class="p-filters-selected-js"></em></span></button>-->
                       </div>
+                    </div>
+                  </div>
+                  <!--===============-->
+                  <!--===============-->
+                  <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                    <div class="p-filters-select p-filters-select-js">
+                      <div class="p-filters-title"><span>Ключевое слово</span> <span class="p-filters-selected p-filters-selected-js">0</span></div>
+                      <div class="p-filters-angle">
+                        <svg height="6" width="10" fill="none">
+                          <use xlink:href="#icon-arr-filter"></use>
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="p-filters-drop p-filters-drop-js">
+                      <ul class="p-filters-drop-list p-filters-group-js" data-filter-group="key-word">
+                        <li>
+                          <div class="input-wrap">
+                            <input class="form-light form-small" value="" data-filter-name="key-word" type="text" placeholder="Ключевое слово">
+                          </div>
+                        </li>
+                      </ul>
                     </div>
                   </div>
                   <!--===============-->
@@ -1160,9 +1191,9 @@
                         </li>
                       </ul>
                       <div class="p-filters-drop-footer">
-                        <!--<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>-->
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-more-js" style="display: none;"><span>Показать все</span></a>
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-less-js" style="display: none;"><span>Скрыть</span></a>
+                        <!--<button class="btn-reset-js btn-filters-clear" disabled><span>Очистить фильтр <em class="p-filters-selected-js"></em></span></button>-->
                       </div>
                     </div>
                   </div>
@@ -1229,9 +1260,9 @@
                         </li>
                       </ul>
                       <div class="p-filters-drop-footer">
-                        <!--<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>-->
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-more-js" style="display: none;"><span>Показать все</span></a>
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-less-js" style="display: none;"><span>Скрыть</span></a>
+                        <!--<button class="btn-reset-js btn-filters-clear" disabled><span>Очистить фильтр <em class="p-filters-selected-js"></em></span></button>-->
                       </div>
                     </div>
                   </div>
@@ -1250,7 +1281,7 @@
                       <ul class="p-filters-drop-list p-filters-group-js" data-filter-group="entry-date">
                         <li>
                           <div class="form-small">
-                            <select class="cselect field-js" name="filter-by-years-from" data-filter-select="years-from" data-filter-default="">
+                            <select class="cselect field-js" name="filter-by-years-from" data-filter-default="">
                               <option value="" data-filter-tag="">Год выпуска с</option>
                               <option value="2012" data-filter-tag="2012">2012</option>
                               <option value="2013" data-filter-tag="2013">2013</option>
@@ -1265,7 +1296,7 @@
                         </li>
                         <li>
                           <div class="form-small">
-                            <select class="cselect field-js" name="filter-by-years-to" data-filter-select="years-to" data-filter-default="">
+                            <select class="cselect field-js" name="filter-by-years-to" data-filter-default="">
                               <option value="" data-filter-tag="">Год выпуска по</option>
                               <option value="2012" data-filter-tag="2012">2012</option>
                               <option value="2013" data-filter-tag="2013">2013</option>
@@ -1638,9 +1669,9 @@
                         </li>
                       </ul>
                       <div class="p-filters-drop-footer">
-                        <!--<button class="btn-reset btn-reset-js" disabled><span>Очистить фильтр</span></button>-->
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-more-js" style="display: none;"><span>Показать все</span></a>
                         <a href="#" class="btn-round_small p-filters-btn-more p-filters-btn-less-js" style="display: none;"><span>Скрыть</span></a>
+                        <!--<button class="btn-reset-js btn-filters-clear" disabled><span>Очистить фильтр <em class="p-filters-selected-js"></em></span></button>-->
                       </div>
                     </div>
                   </div>

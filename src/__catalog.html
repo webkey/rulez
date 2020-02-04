@@ -44,7 +44,7 @@
               <div class="p-filters-list">
                 <!--===============-->
                 <!--===============-->
-                <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                <div class="p-filters-item p-filters-item-js">
                   <div class="p-filters-select p-filters-select-js">
                     <div class="p-filters-title"><span>Разделы</span></div>
                     <div class="p-filters-angle">
@@ -83,13 +83,13 @@
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена", "group": "price", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена", "group": "price-by-select", "modGroup": "" })
                     <li>
                       <div class="form-row">
                         <div class="input-wrap has-prefix">
                           <div class="form-small">
                             <span class="form-prefix">От</span>
-                            <select class="cselect field-js" name="filter-by-price-from" data-filter-select="price-from" data-filter-default="">
+                            <select class="cselect field-js" name="filter-by-price-from" data-filter-name="min-price" data-filter-from data-filter-default="" data-filter-tag-prefix="дороже" data-filter-unit="руб.">
                               <option value="" data-filter-tag="5">5</option>
                               <option value="10" data-filter-tag="10">10</option>
                               <option value="20" data-filter-tag="20">20</option>
@@ -105,7 +105,7 @@
                         <div class="input-wrap has-prefix">
                           <div class="form-small">
                             <span class="form-prefix">До</span>
-                            <select class="cselect field-js" name="filter-by-price-to" data-filter-select="price-to" data-filter-default="">
+                            <select class="cselect field-js" name="filter-by-price-to" data-filter-name="max-price" data-filter-to data-filter-default="" data-filter-tag-prefix="дешевле" data-filter-unit="руб.">
                               <option value="" data-filter-tag="5">5</option>
                               <option value="10" data-filter-tag="10">10</option>
                               <option value="20" data-filter-tag="20">20</option>
@@ -125,25 +125,25 @@
                         </div>
                       </div>
                     </li>
-                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END", "toggleMore": "true"})
                 </div>
                 <!--===============-->
                 <!--===============-->
                 <div class="p-filters-item p-filters-item-js p-filters-is-open">
-                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена", "group": "price2", "modGroup": "" })
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Цена", "group": "price-by-text", "modGroup": "" })
                     <li>
                       <div class="form-row">
                         <div class="input-wrap has-prefix">
                           <span class="form-prefix">От</span>
-                          <input class="form-light form-small" value="" type="text" placeholder="300" data-filter-default="" data-filter-tag="От" data-only-number>
+                          <input class="form-light form-small" value="" type="text" placeholder="300" data-filter-name="min-price" data-filter-from data-filter-default="" data-filter-tag-prefix="от" data-filter-unit="р." data-only-number>
                         </div>
                         <div class="input-wrap has-prefix">
                           <span class="form-prefix">До</span>
-                          <input class="form-light form-small" value="" type="text" placeholder="5000" data-filter-default="" data-filter-tag="До" data-only-number>
+                          <input class="form-light form-small" value="" type="text" placeholder="5000" data-filter-name="max-price" data-filter-to data-filter-default="" data-filter-tag-prefix="до" data-filter-unit="р." data-only-number>
                         </div>
                       </div>
                     </li>
-                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END", "toggleMore": "true"})
                 </div>
                 <!--===============-->
                 <!--===============-->
@@ -166,6 +166,17 @@
                   })
 
                   @@include('_tpl_products-filters-item.html', {"itemLayout": "END", "toggleMore": "true"})
+                </div>
+                <!--===============-->
+                <!--===============-->
+                <div class="p-filters-item p-filters-item-js p-filters-is-open">
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Ключевое слово", "group": "key-word", "modGroup": "" })
+                  <li>
+                    <div class="input-wrap">
+                      <input class="form-light form-small" value="" data-filter-name="key-word" type="text" placeholder="Ключевое слово">
+                    </div>
+                  </li>
+                  @@include('_tpl_products-filters-item.html', {"itemLayout": "END"})
                 </div>
                 <!--===============-->
                 <!--===============-->
@@ -258,7 +269,7 @@
                   @@include('_tpl_products-filters-item.html', {"itemLayout": "START", "title": "Дата выхода на рынок", "group": "entry-date", "modGroup": "" })
                   <li>
                     <div class="form-small">
-                      <select class="cselect field-js" name="filter-by-years-from" data-filter-select="years-from" data-filter-default="">
+                      <select class="cselect field-js" name="filter-by-years-from" data-filter-default="">
                         <option value="" data-filter-tag="">Год выпуска с</option>
                         <option value="2012" data-filter-tag="2012">2012</option>
                         <option value="2013" data-filter-tag="2013">2013</option>
@@ -273,7 +284,7 @@
                   </li>
                   <li>
                     <div class="form-small">
-                      <select class="cselect field-js" name="filter-by-years-to" data-filter-select="years-to" data-filter-default="">
+                      <select class="cselect field-js" name="filter-by-years-to" data-filter-default="">
                         <option value="" data-filter-tag="">Год выпуска по</option>
                         <option value="2012" data-filter-tag="2012">2012</option>
                         <option value="2013" data-filter-tag="2013">2013</option>
