@@ -815,6 +815,9 @@ $pagination-border-width: 0
   &.swiper-container
     overflow: visible
 
+  .swiper-wrapper
+    align-items: center
+
   .swiper-pagination
     bottom: 1.8rem
 
@@ -826,8 +829,24 @@ $pagination-border-width: 0
   .swiper-pagination-bullet-active
     transform: scale(1) translateZ(0)
 
-  .swiper-slide
+  .images-gallery__slide
     user-select: none
+    text-align: center
+
+  .images-gallery__video
+    position: relative
+
+    &::before
+      content: ""
+      display: block
+      @include ratio(16, 9)
+
+    iframe
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
 
 //.images-gallery-overlay
   position: absolute
