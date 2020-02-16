@@ -1,3 +1,20 @@
+@@if(context.bgSrc){
+<!--Slide with bg and title-->
+<a href="#" class="bg-promo-slide">
+	<div class="bg-promo-slide__layout layout-narrow max-wrap">
+		<div class="bg-promo-slide__figure layout-narrow">
+			<img src="@@bgSrc.img" class="bg-promo-slide__img bg-promo-slide__img_desk" alt="@@alt" />
+			<img src="@@bgSrc.imgMob" class="bg-promo-slide__img bg-promo-slide__img_mob" alt="@@alt" />
+		</div>
+		<div class="bg-promo-slide__content" data-swiper-parallax="-400">
+			@@if(context.title){
+			<div class="bg-promo-slide__title">@@title</div>}
+			<div class="bg-promo-slide__footer">
+				@@include("includes/snippets/_tpl_snip_btn.html", {"tag": "span", "text": "Получить", "classes": "btn-round btn-round_small w-promo-slide__btn"})
+			</div>
+		</div>
+	</div>
+</a>}
 @@if(context.imgSrc){
 <!--Slide with image and title-->
 <a href="#" class="i-promo-slide">
