@@ -1,3 +1,20 @@
+@@if(context.cSrc){
+<!--Slide with centering image-->
+<a href="#" class="c-promo-slide">
+	<div class="c-promo-slide__layout layout-narrow max-wrap">
+		<div class="c-promo-slide__figure">
+			<img src="@@cSrc.img" class="c-promo-slide__img c-promo-slide__img_desk" alt="@@alt" />
+			<img src="@@cSrc.imgMob" class="c-promo-slide__img c-promo-slide__img_mob" alt="@@alt" />
+		</div>
+		<div class="c-promo-slide__content" data-swiper-parallax="-400">
+			@@if(context.title){
+			<div class="c-promo-slide__title">@@title</div>}
+			<div class="c-promo-slide__footer">
+				@@include("includes/snippets/_tpl_snip_btn.html", {"tag": "span", "text": "Смотреть все", "classes": "btn-round btn-round_small w-promo-slide__btn"})
+			</div>
+		</div>
+	</div>
+</a>}
 @@if(context.bgSrc){
 <!--Slide with bg and title-->
 <a href="#" class="bg-promo-slide">
@@ -10,7 +27,7 @@
 			@@if(context.title){
 			<div class="bg-promo-slide__title">@@title</div>}
 			<div class="bg-promo-slide__footer">
-				@@include("includes/snippets/_tpl_snip_btn.html", {"tag": "span", "text": "Получить", "classes": "btn-round btn-round_small w-promo-slide__btn"})
+				@@include("includes/snippets/_tpl_snip_btn.html", {"tag": "span", "text": "Подробнее", "classes": "btn-round btn-round_small w-promo-slide__btn"})
 			</div>
 		</div>
 	</div>
@@ -26,7 +43,7 @@
 			@@if(context.title){
 			<div class="i-promo-slide__title" data-swiper-parallax="-700">@@title</div>}
 			<div class="i-promo-slide__footer" data-swiper-parallax="-400">
-				@@include("includes/snippets/_tpl_snip_btn.html", {"tag": "span", "text": "Получить", "classes": "btn-round i-promo-slide__btn"})
+				@@include("includes/snippets/_tpl_snip_btn.html", {"tag": "span", "text": "Смотреть все", "classes": "btn-round i-promo-slide__btn"})
 			</div>
 		</div>
 	</div>

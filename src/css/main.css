@@ -11079,6 +11079,130 @@ a.catalog-opener.catalog-is-open > i::after {
   }
 }
 
+.c-promo-slide {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.c-promo-slide__layout {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: end;
+      align-items: flex-end;
+  height: 100%;
+  padding-bottom: 17.8rem;
+}
+
+@media (max-width: 991px) {
+  .c-promo-slide__layout {
+    padding-bottom: 12rem;
+  }
+}
+
+.c-promo-slide__figure {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+}
+
+.c-promo-slide__img {
+  position: relative;
+  display: block;
+  width: auto;
+  max-width: none;
+  height: auto;
+  max-height: none;
+  margin: 0 auto;
+}
+
+@media (max-width: 1022px) {
+  .c-promo-slide__img_desk {
+    display: none;
+  }
+}
+
+.c-promo-slide__img_mob {
+  display: none;
+}
+
+@media (max-width: 1022px) {
+  .c-promo-slide__img_mob {
+    display: block;
+  }
+}
+
+.c-promo-slide__content {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+      align-items: center;
+  -ms-flex-pack: end;
+      justify-content: flex-end;
+  width: 100%;
+}
+
+.c-promo-slide__title {
+  font-family: "circe-extra-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 2.4rem;
+  line-height: 2.8rem;
+  margin-right: 3.5rem;
+  -ms-flex: 1 0 calc(50% - 3.5rem);
+      flex: 1 0 calc(50% - 3.5rem);
+  max-width: calc(50% - 3.5rem);
+  color: white;
+  word-wrap: break-word;
+}
+
+@media (max-width: 639px) {
+  .c-promo-slide__title {
+    margin-right: 2rem;
+    -ms-flex: 1 0 calc(50% - 2rem);
+        flex: 1 0 calc(50% - 2rem);
+    max-width: calc(50% - 2rem);
+    font-size: 1.8rem;
+    line-height: 2.1rem;
+  }
+}
+
+.c-promo-slide__title:last-child {
+  margin-bottom: 0;
+}
+
+.c-promo-slide__footer {
+  position: relative;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  max-width: 50%;
+}
+
+.c-promo-slide__btn {
+  min-width: 14.7rem;
+  transition: color 0.25s, background-color 0.25s, box-shadow 0.25s;
+}
+
+.no-touch .c-promo-slide__btn:hover {
+  background-color: #8f77ed;
+  color: white;
+}
+
+@media (max-width: 639px) {
+  .c-promo-slide__btn {
+    min-width: 0;
+  }
+}
+
 .promo-slider {
   height: 100%;
   overflow: hidden;
