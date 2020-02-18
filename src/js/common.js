@@ -4494,6 +4494,7 @@ function letterIcon() {
  */
 function scrollToAnchor() {
   $('body').on('click', '.js-scroll-to-anchor', function (e) {
+    console.log(1);
     e.preventDefault();
     var $doc = $('html,body');
     var $this = $(this);

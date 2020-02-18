@@ -5778,15 +5778,18 @@ $subs-form-height: 3.4rem
   position: relative
   margin-bottom: 2.5rem
 
-.section__title
-  +font-bold
-  font-size: 2.4rem
-  line-height: 3.2rem
-  color: #131313
-  margin-bottom: 2rem
+  &__title
+    +font-bold
+    font-size: 2.4rem
+    line-height: 3.2rem
+    color: #131313
+    margin-bottom: 2rem
 
-  &:last-child
-    margin-bottom: 0
+    &:last-child
+      margin-bottom: 0
+
+  &__item
+    margin-bottom: 3rem
 
 /* section end
 
@@ -18432,3 +18435,58 @@ span.flatpickr-weekday
     margin-bottom: 0
 
 /* set card end
+
+/* divisions anchors
+// divisions anchors nav
+.divisions-anchors
+  margin-bottom: 3rem
+  position: relative
+  border-bottom: 0.1rem solid $border-color
+  padding-bottom: 0.2rem
+
+  &__list
+    display: flex
+    flex-wrap: wrap
+    font-size: 1.6rem
+    line-height: 2.4rem
+
+  &__item
+    color: rgba(black, 0.7)
+    text-decoration: none
+    margin: 0 5rem -0.5rem 0
+    padding-bottom: 0.8rem
+    border-bottom: 0.5rem solid transparent
+    user-select: none
+    -webkit-tap-highlight-color: transparent
+    // transition
+    $prop: color, border-color
+    transition:
+      property: $prop
+      duration: $animation-speed
+
+    &:last-child
+      margin-bottom: 0
+
+    span
+      border-bottom: 1px dashed currentColor
+
+    em
+      display: inline-block
+      font-family: inherit
+      font-style: inherit
+      color: $base-color
+
+    // hover
+    &:hover
+      color: #000
+
+    +media('<lap-s')
+      margin-right: #{nth($section-inner-space--tab, 2)}
+
+    // active
+    //&.active
+      //color: #000
+      border-color: $base-color
+      //cursor: default
+
+/* divisions anchors end

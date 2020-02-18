@@ -10120,6 +10120,10 @@ a.catalog-opener.catalog-is-open > i::after {
   margin-bottom: 0;
 }
 
+.section__item {
+  margin-bottom: 3rem;
+}
+
 /* section end */
 /* page with sidebar */
 .content {
@@ -26081,6 +26085,64 @@ span.flatpickr-weekday {
 }
 
 /* set card end */
+/* divisions anchors */
+.divisions-anchors {
+  margin-bottom: 3rem;
+  position: relative;
+  border-bottom: 0.1rem solid #dbdbdb;
+  padding-bottom: 0.2rem;
+}
+
+.divisions-anchors__list {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+}
+
+.divisions-anchors__item {
+  color: rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+  margin: 0 5rem -0.5rem 0;
+  padding-bottom: 0.8rem;
+  border-bottom: 0.5rem solid transparent;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transition-property: color, border-color;
+  transition-duration: 0.25s;
+}
+
+.divisions-anchors__item:last-child {
+  margin-bottom: 0;
+}
+
+.divisions-anchors__item span {
+  border-bottom: 1px dashed currentColor;
+}
+
+.divisions-anchors__item em {
+  display: inline-block;
+  font-family: inherit;
+  font-style: inherit;
+  color: #6e52dd;
+}
+
+.divisions-anchors__item:hover {
+  color: #000;
+}
+
+@media (max-width: 1279px) {
+  .divisions-anchors__item {
+    margin-right: 2rem;
+  }
+}
+
+/* divisions anchors end */
 /* ==================================== */
 /* =========== PRINT VERSION ========== */
 /* ==================================== */
