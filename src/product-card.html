@@ -1298,131 +1298,89 @@
         <!--product card services end-->
         <!--product card installment-->
         <div class="p-card__installment">
-          <h2>Кредит</h2>
+          <h2>Оплата частями</h2>
           <div class="installment installment_product-card installment-js">
-            <form action="#">
+            <form action="#" method="post" onsubmit="alert('Форма находится в тестовом режиме. Чтобы закрыть окно, нажмите ОК.'); return false;">
               <div class="installment__main installment__main_product-card">
-                <!--<h3>Цена:</h3>-->
-                <input class="installment-price-js" type="hidden" value="1700.50" style="width: auto;">
-                <!--<h3>Размер рассрочки, %</h3>-->
-                <input class="installment-rate-js" type="hidden" value="0" style="width: auto;">
+                <!--<h3>Цена, руб:</h3>-->
+                <input class="installment-price-js" type="hidden" value="1245" style="width: auto;">
+                <!--<h3>Цена по кредиту, руб</h3>-->
+                <input class="installment-fin-price-js" type="hidden" value="1245" style="width: auto;" readonly>
                 <h3>Выберите срок:</h3>
                 <div class="ch-group">
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="2" checked>
-                      <span>2 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="3">
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="3" data-installment-enable="10" data-installment-rate="1.068" disabled checked>
                       <span>3 мес.</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="4">
-                      <span>4 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="5">
-                      <span>5 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="6">
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="6" data-installment-enable="10" data-installment-rate="1.079" disabled>
                       <span>6 мес.</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="7">
-                      <span>7 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="8">
-                      <span>8 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="9">
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="9" data-installment-enable="10" data-installment-rate="1.094" disabled>
                       <span>9 мес.</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="10">
-                      <span>10 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="11">
-                      <span>11 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="12" data-installment-enable="30" disabled>
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="12" data-installment-enable="10" data-installment-rate="1.105" disabled>
                       <span>12 мес.</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="15" data-installment-enable="40" disabled>
-                      <span>15 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="18" data-installment-enable="40" disabled>
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="18" data-installment-enable="10" data-installment-rate="1.152" disabled>
                       <span>18 мес.</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="20" data-installment-enable="40" disabled>
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="20" data-installment-enable="10" data-installment-rate="1.167" disabled>
                       <span>20 мес.</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="24" data-installment-enable="50" disabled>
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="24" data-installment-enable="10" data-installment-rate="1.188" disabled>
                       <span>24 мес.</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="36" data-installment-enable="50" disabled>
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="30" data-installment-enable="10" data-installment-rate="1.294" disabled>
+                      <span>30 мес.</span>
+                    </label>
+                  </div>
+                  <div class="ch-group__item">
+                    <label class="radio-label checkbox_value">
+                      <input class="installment-term-check-js" type="radio" name="i-term" value="36" data-installment-enable="10" data-installment-rate="1.322" disabled>
                       <span>36 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="42" data-installment-enable="50" disabled>
-                      <span>42 мес.</span>
-                    </label>
-                  </div>
-                  <div class="ch-group__item">
-                    <label class="radio-label checkbox_value">
-                      <input class="installment-term-check-js" type="radio" name="i-term" value="48" data-installment-enable="50" disabled>
-                      <span>48 мес.</span>
                     </label>
                   </div>
                 </div>
                 <h3>Выберите первоначальный взнос:</h3>
                 <div class="ch-group">
+                  <!--<div class="ch-group__item">
+                  <label class="radio-label checkbox_value">
+                    <input class="installment-fee-check-js" type="radio" name="i-initial-fee" value="0">
+                    <span>Нет</span>
+                  </label>
+                </div>-->
                   <div class="ch-group__item">
                     <label class="radio-label checkbox_value">
-                      <input class="installment-fee-check-js" type="radio" name="i-initial-fee" value="0" checked>
-                      <span>Нет</span>
+                      <input class="installment-fee-check-js" type="radio" name="i-initial-fee" value="10" checked>
+                      <span>10%</span>
+                    </label>
+                  </div>
+                  <div class="ch-group__item">
+                    <label class="radio-label checkbox_value">
+                      <input class="installment-fee-check-js" type="radio" name="i-initial-fee" value="20">
+                      <span>20%</span>
                     </label>
                   </div>
                   <div class="ch-group__item">
@@ -1458,8 +1416,9 @@
                   <div class="installment-result__item"><span class="installment-result-term-js">--</span></div>
                 </div>
                 <div class="installment-footer">
-                  <button class="btn-def">Купить в рассрочку за <span class="installment-result-val-js">--</span> в месяц</button>
+                  <!--<button class="btn-def">Купить в рассрочку за <span class="installment-result-val-js">&#45;&#45;</span> в месяц</button>-->
                   <input class="btn-outline installment-reset-js" type="reset" value="Сбросить">
+                  <button class="btn-def">Купить в кредит</button>
                 </div>
               </div>
             </form>

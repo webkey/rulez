@@ -4274,13 +4274,21 @@ function toggleSubsFrom() {
         },
         getPrice = function () {
           // Получить ЦЕНУ
-          return +$(config.priceInput, $element).val();
+          return +$(config.priceInput, $element).val() || 0;
         },
         getInstallmentRateVal = function () {
           // Получить ПРОЦЕНТ по рассрочке
-          var val = getPrice() * (+$(config.installmentRateInput, $element).val() / 100);
-          val = +parseFloat(val).toFixed(2);
-          return val;
+          var val;
+
+          $.each($(config.termCheckEl, $element), function (i, el) {
+            var $ch = $(el);
+            if ($ch.prop('checked')) {
+              val = +$ch.attr('data-installment-rate');
+              return false;
+            }
+          });
+
+          return val || 1;
         },
         getValue = function (el) {
           var val;
@@ -4301,20 +4309,14 @@ function toggleSubsFrom() {
         },
         getInitialFee = function () {
           // Получить размер ПЕРВОНАЧАЛЬНОГО ВЗНОСА
-          var val = (getPrice() + getInstallmentRateVal()) * getValue(config.initialFeeCheckEl) / 100;
-          val = parseFloat(val).toFixed(2);
-          return val;
+          // var result = +parseFloat((getPrice() + getInstallmentRateVal()) * getValue(config.initialFeeCheckEl) / 100).toFixed(2) || 0;
+          var result = +parseFloat(getPrice() * (getValue(config.initialFeeCheckEl) / 100)).toFixed(2) || 0;
+          return result;
         },
         getValPerMonth = function () {
           // Получить размер ЕЖЕМЕСЯЧНОГО ВЗНОСА
-          var price = +getPrice();
-          var installmentRate = +getInstallmentRateVal();
-          var initialFee = +getInitialFee();
-          var term = +getTerm();
-
-          var result = (price + installmentRate - initialFee) / term;
-          result = parseFloat(result).toFixed(2);
-
+          // var result = getTerm() ? +parseFloat((+getPrice() + +getInstallmentRateVal() - +getInitialFee()) / +getTerm()).toFixed(2) : null;
+          var result = getTerm() ? +parseFloat((getPrice() - getInitialFee()) * getInstallmentRateVal() / getTerm()).toFixed(2) : null;
           return result;
         },
         setInitialFee = function () {
@@ -4322,11 +4324,11 @@ function toggleSubsFrom() {
           $(config.resultInitialFeeEl, $element).html(initialFee + ' ' + config.priceUnit).attr('data-installment-initial-fee', initialFee);
         },
         setTerm = function () {
-          var term = getTerm();
+          var term = getTerm() || '--';
           $(config.resultTermEl, $element).html(term + ' ' + config.termUnit).attr('data-installment-term', term);
         },
         setValPerMonth = function () {
-          var valPerMonth = getValPerMonth();
+          var valPerMonth = getValPerMonth() || '--';
           $(config.resultValPerMonthEl, $element).html(valPerMonth + ' ' + config.priceUnit).attr('data-installment-per-month', valPerMonth);
         },
         enableTerms = function () {
@@ -4354,6 +4356,10 @@ function toggleSubsFrom() {
             });
           });
         },
+        setFinPrice = function () {
+          var finPrice = +parseFloat(getValPerMonth() * getTerm() + getInitialFee() || getPrice()).toFixed(2);
+          $(config.finPriceInput, $element).val(finPrice);
+        },
         setResults = function () {
           // Включить доступные ПЕРИОДЫ выплаты
           enableTerms();
@@ -4366,6 +4372,20 @@ function toggleSubsFrom() {
 
           // Установить размер ЕЖЕМЕСЯЧНОГО ВЗНОСА
           setValPerMonth();
+
+          // Финальная цена по кредиту
+          setFinPrice()
+
+          // console.log("Получить ЦЕНУ: ", getPrice());
+          // console.log("Получить ПРОЦЕНТ по рассрочке: ", getInstallmentRateVal());
+          // console.log("Получить ПЕРИОД выплаты по рассрочке: ", getTerm());
+          // console.log("Получить размер ПЕРВОНАЧАЛЬНОГО ВЗНОСА: ", getInitialFee());
+          // console.log("Получить размер ЕЖЕМЕСЯЧНОГО ВЗНОСА: ", getValPerMonth());
+          //
+          // console.log("Сумма, от которой считается кредит: ", getPrice() - getInitialFee() || getPrice());
+          // console.log("Стоимость товара: ", +parseFloat(getValPerMonth() * getTerm() + getInitialFee() || getPrice()).toFixed(2));
+          // console.log("Стоимость товара (проверка): ", +parseFloat((getPrice() - getInitialFee()) * getInstallmentRateVal() + getInitialFee() || getPrice()).toFixed(2));
+          // console.log('========================================');
         },
         events = function () {
           $element.on('change', checks, function (event) {
@@ -4439,7 +4459,7 @@ function toggleSubsFrom() {
   $.fn.installment.defaultOptions = {
     // param: 'input:radio',
     priceInput: '.installment-price-js',
-    installmentRateInput: '.installment-rate-js',
+    finPriceInput: '.installment-fin-price-js',
     termCheckEl: '.installment-term-check-js',
     initialFeeCheckEl: '.installment-fee-check-js',
     resetEl: '.installment-reset-js',

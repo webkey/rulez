@@ -25925,6 +25925,10 @@ a.consist__item:hover .consist__item-title {
   color: #6e52dd;
 }
 
+.installment-footer {
+  padding-bottom: 0.5rem;
+}
+
 .installment-footer button, .installment-footer input[type="reset"] {
   display: block;
   width: 100%;
