@@ -2026,14 +2026,15 @@ function addToCarAnimation() {
   $btn.on('click', function (event) {
     event.preventDefault();
 
-    var $cutBtn = $(this),
-        countLength = +$cartCounter.text();
+    var $cutBtn = $(this);
+    var $cutBtnSiblings = $cutBtn.closest('.flip-product-card').siblings('.flip-product-card').find($btn);
+    var countLength = +$cartCounter.text();
 
     $cartKeeper.removeClass(pushClass).removeClass(pickClass);
 
     if (!$cutBtn.hasClass(addedClass)) {
       // Change a button
-      $cutBtn.addClass(addedClass);
+      $cutBtn.add($cutBtnSiblings).addClass(addedClass);
 
       if (animation) {
         // Remove a copy of product image
@@ -2059,7 +2060,7 @@ function addToCarAnimation() {
       }, 30)
     } else {
       // Change a button
-      $cutBtn.removeClass(addedClass);
+      $cutBtn.add($cutBtnSiblings).removeClass(addedClass);
 
       // Remove a copy of product image
       // $('#figureCopy').remove();

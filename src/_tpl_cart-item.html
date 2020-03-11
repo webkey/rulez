@@ -15,10 +15,9 @@
     <div class="cart-item__order">
       <div class="cart-item__stock p-stock on"><i>&nbsp;</i>В наличии</div>
       <div class="cart-item__price">
-        @@if(context.priceOld.val){
-        <div class="cart-item__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>
-        }
+        @@if(context.priceOld.val){<div class="cart-item__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>}
         <div class="cart-item__price-new"><strong class="cart-item__price-js" data-price="@@price.val">@@price.val</strong>&nbsp;<em>@@price.unit</em></div>
+        @@if(context.priceOld.val){<div class="cart-item__price-note">Спецпредложение</div>}
       </div>
       <div class="cart-item__counter cart-item__counter-js">
         <input class="spinner spinner-js" max="100" min="1" type="number" name="value" value="@@length" data-only-number>

@@ -1,95 +1,125 @@
-<div itemscope itemtype="http://schema.org/Product" class="product product-js@@if(context.mark){ product_mark}">
-  <div class="product__main">
-    @@if(context.wow){
-    <div class="p-sticker p-sticker_wow product__sticker_wow">@@wow</div>
-    }
-    @@if(context.stickers){
-    <div class="p-stickers product__stickers">
-      @@if(context.stickers.sale){<div class="p-sticker p-sticker_sale p-stickers__item">@@stickers.sale</div>}
-      @@if(context.stickers.new){<div class="p-sticker p-sticker_new p-stickers__item">@@stickers.new</div>}
-      @@if(context.stickers.gift){<div class="p-sticker p-sticker_gif p-stickers__item">@@stickers.gift</div>}
-      @@if(context.stickers.top){<div class="p-sticker p-sticker_top p-stickers__item">@@stickers.top</div>}
-      @@if(context.stickers.installment){<div class="p-sticker p-sticker_text p-sticker_installment p-stickers__item">@@stickers.installment</div>}
-    </div>
-    }
-    <a itemprop="url" href="product-card.html">
-      <div class="product__figure product-figure-js">
-        <img itemprop="image" @@if(context.preloadOnLoad){class="lozad"} src="img/preloader.svg" data-src="@@src" alt="@@title" />
+@@if(context.mark){
+<div class="flip-product">
+  <div class="flip-product-frame">
+    <div class="flip-product-card flip-product-card_front">}
+      <div itemscope itemtype="http://schema.org/Product" class="product product-js@@if(context.mark){ product_mark}">
+        @@if(context.mark){
+        <div class="product__mark-label"><img src="img/rulik.png" alt="Рулик"></div>}
+
+        <div class="product__main">
+          @@if(context.wow){
+          <div class="p-sticker p-sticker_wow product__sticker_wow">@@wow</div>
+          }
+          @@if(context.stickers){
+          <div class="p-stickers product__stickers">
+            @@if(context.stickers.sale){<div class="p-sticker p-sticker_sale p-stickers__item">@@stickers.sale</div>}
+            @@if(context.stickers.new){<div class="p-sticker p-sticker_new p-stickers__item">@@stickers.new</div>}
+            @@if(context.stickers.gift){<div class="p-sticker p-sticker_gif p-stickers__item">@@stickers.gift</div>}
+            @@if(context.stickers.top){<div class="p-sticker p-sticker_top p-stickers__item">@@stickers.top</div>}
+            @@if(context.stickers.installment){<div class="p-sticker p-sticker_text p-sticker_installment p-stickers__item">@@stickers.installment</div>}
+          </div>
+          }
+          <a itemprop="url" href="product-card.html">
+            <div class="product__figure product-figure-js">
+              <img itemprop="image" @@if(context.preloadOnLoad){class="lozad"} src="img/preloader.svg" data-src="@@src" alt="@@title" />
+            </div>
+            <h3 itemprop="name" class="product__title"><span>@@title</span></h3>
+          </a>
+          <div class="product__meta">
+            <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
+              <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth">@@rate</span>
+              <meta itemprop="ratingCount" content="1">
+            </div>
+          </div>
+          @@if(context.featureShort){
+          <ul class="products__features">
+            <li>Диагональ экрана: <span>15.6&quot;</span></li>
+            <li>Операционная система: <span>Windows 10</span></li>
+            <li>Модель видеокарты: <span>Intel HD Graphics 500</span></li>
+            <li>Модель процессора: <span>Intel Celeron N3350</span></li>
+          </ul>
+          }
+          @@if(!context.featureShort){
+          <ul class="products__features">
+            <li>Операционная система: <span>Windows 10</span></li>
+            <li>Диагональ экрана: <span>15.6&quot;</span></li>
+            <li>Разрешение экрана: <span>1366x768(HD)</span></li>
+            <li>Модель процессора: <span>Intel Celeron N3350</span></li>
+            <li>Оперативная память: <span>4 ГБ</span></li>
+            <li>Емкость HDD: <span>1000 ГБ</span></li>
+            <li>Тип видеокарты: <span>встроенная</span></li>
+            <li>Модель видеокарты: <span>Intel HD Graphics 500</span></li>
+          </ul>
+          }
+        </div>
+
+        <div class="product__footer">
+          <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
+            @@if(context.price.val){<div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>}
+            @@if(!context.price.val){<div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>}
+
+            @@if(context.price.val){
+            <div class="product__price">
+              @@if(context.priceOld.val){<div class="product__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>}
+              <div class="product__price-new"><strong itemprop="price" content="@@price.val">@@price.val</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+              @@if(context.priceOld.val){<div class="product__price-note">Спецпредложение</div>}
+            </div>
+            }
+            @@if(!context.price.val){
+            <div class="product__price off">
+              <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
+            </div>
+            }
+          </div>
+          <div class="product__options">
+            <div class="product__action">
+              @@if(!context.inCompare){<a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> @@include("includes/svg/icon-compare.svg")</a>}
+              @@if(context.inCompare){<a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> @@include("includes/svg/icon-compare.svg")</a>}
+
+              @@if(!context.inFavorites){<a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> @@include("includes/svg/icon-like.svg")</a>}
+              @@if(context.inFavorites){<a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> @@include("includes/svg/icon-like.svg")</a>}
+            </div>
+            <div class="product__purchase">
+              @@if(!context.inCart){
+              <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
+                <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                <span class="purchase-btn__buy">Купить</span>
+                <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                <i class="icon-cart-color"></i>
+              </a>}
+              @@if(context.inCart){
+              <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
+                <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
+                <span class="purchase-btn__buy">Купить</span>
+                <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
+                <i class="icon-cart-color"></i>
+              </a>}
+            </div>
+            <div class="product__installment">
+              <a href="#" class="btn-alt">Купить в рассрочку</a>
+            </div>
+          </div>
+        </div>
       </div>
-      <h3 itemprop="name" class="product__title"><span>@@title</span></h3>
-    </a>
-    <div class="product__meta">
-      <div itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" class="p-rate product__rate">
-        <span itemprop="ratingValue" content="@@rate" style="width: @@rateWidth">@@rate</span>
-        <meta itemprop="ratingCount" content="1">
+@@if(context.mark){
+    </div>
+    <div class="flip-product-card flip-product-card_back flip-product-card_mark">
+      <div class="flip-product-card__alight">
+        <div class="recommend recommend_align-center">
+          <div class="recommend__align">
+            <div class="recommend__title">Рулик рекомендует</div>
+            <div class="recommend__figure">
+              <div class="recommend__figure-img">
+                <img src="img/rulik_purple.png" alt="Рулик рекомендует">
+              </div>
+            </div>
+            <div class="recommend__text">Рекомендуем самый выгодный период по кредиту, в который клиент переплачивает минимально.</div>
+            <div class="recommend__footer">
+              <a href="#" class="btn-alt">Купить</a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    @@if(context.featureShort){
-    <ul class="products__features">
-      <li>Диагональ экрана: <span>15.6&quot;</span></li>
-      <li>Операционная система: <span>Windows 10</span></li>
-      <li>Модель видеокарты: <span>Intel HD Graphics 500</span></li>
-      <li>Модель процессора: <span>Intel Celeron N3350</span></li>
-    </ul>
-    }
-    @@if(!context.featureShort){
-    <ul class="products__features">
-      <li>Операционная система: <span>Windows 10</span></li>
-      <li>Диагональ экрана: <span>15.6&quot;</span></li>
-      <li>Разрешение экрана: <span>1366x768(HD)</span></li>
-      <li>Модель процессора: <span>Intel Celeron N3350</span></li>
-      <li>Оперативная память: <span>4 ГБ</span></li>
-      <li>Емкость HDD: <span>1000 ГБ</span></li>
-      <li>Тип видеокарты: <span>встроенная</span></li>
-      <li>Модель видеокарты: <span>Intel HD Graphics 500</span></li>
-    </ul>
-    }
   </div>
-
-  <div class="product__footer">
-    <div itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="product__offer">
-      @@if(context.price.val){<div itemprop="availability" content="http://schema.org/InStock" class="p-stock product__stock on"><i>&nbsp;</i>В наличии</div>}
-      @@if(!context.price.val){<div itemprop="availability" content="http://schema.org/SoldOut" class="p-stock product__stock off"><i>&nbsp;</i>Нет в наличии</div>}
-
-      @@if(context.price.val){
-      <div class="product__price">
-        @@if(context.priceOld.val){<div class="product__price-old"><strong>@@priceOld.val</strong>&nbsp;<em>@@priceOld.unit</em></div>}
-        <div class="product__price-new"><strong itemprop="price" content="@@price.val">@@price.val</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
-      </div>
-      }
-      @@if(!context.price.val){
-      <div class="product__price off">
-        <div class="product__price-new"><strong itemprop="price" content="0">0</strong>&nbsp;<em itemprop="priceCurrency" content="BYN">@@price.unit</em></div>
-      </div>
-      }
-    </div>
-    <div class="product__options">
-      <div class="product__action">
-        @@if(!context.inCompare){<a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Сравнить</span> @@include("includes/svg/icon-compare.svg")</a>}
-        @@if(context.inCompare){<a href="#" class="action-btn action-btn_compare product__action-btn product__options-btn_compare change-compare-js added" data-active-text="Добавлен к сравнению" data-inactive-text="Сравнить"><span>Добавлен к сравнению</span> @@include("includes/svg/icon-compare.svg")</a>}
-
-        @@if(!context.inFavorites){<a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>В избранное</span> @@include("includes/svg/icon-like.svg")</a>}
-        @@if(context.inFavorites){<a href="#" class="action-btn action-btn_like product__action-btn product__options-btn product__options-btn_like change-like-js added" data-active-text="Мне нравится" data-inactive-text="В избранное"><span>Мне нравится</span> @@include("includes/svg/icon-like.svg")</a>}
-      </div>
-      <div class="product__purchase">
-        @@if(!context.inCart){
-        <a href="#" class="purchase-btn product__options-btn add-to-cart-js">
-          <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
-          <span class="purchase-btn__buy">Купить</span>
-          <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
-          <i class="icon-cart-color"></i>
-        </a>}
-        @@if(context.inCart){
-        <a href="#" class="purchase-btn product__options-btn add-to-cart-js added" data-active-text="В корзине" data-inactive-text="В корзину">
-          <span class="purchase-btn__to-cart">В&nbsp;корзину</span>
-          <span class="purchase-btn__buy">Купить</span>
-          <span class="purchase-btn__in-cart">В&nbsp;корзине</span>
-          <i class="icon-cart-color"></i>
-        </a>}
-      </div>
-      <div class="product__installment">
-        <a href="#" class="btn-alt">Купить в рассрочку</a>
-      </div>
-    </div>
-  </div>
-</div>
+</div>}
