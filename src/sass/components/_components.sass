@@ -13799,9 +13799,8 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
 // price old
 .p-card-price__old
-  display: inline-block
-  vertical-align: baseline
-  margin: 0 0.4rem 0.8rem 0
+  display: block
+  margin: 0 0 0.8rem
   +oldPriceStyle()
 
   +media('<net')
@@ -13818,10 +13817,23 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
 
 // price new
 .p-card-price__new
-  display: inline-block
-  vertical-align: baseline
-  line-height: inherit
-  +newPriceStyle(4.5rem, 2.4rem, #000)
+  display: block
+  line-height: 4.5rem
+  white-space: nowrap
+  color: $text-color
+
+  & > strong
+    display: inline-block
+    vertical-align: baseline
+    +font-bold
+    font-size: 4.5rem
+
+  & > em
+    display: inline-block
+    vertical-align: baseline
+    +font-normal
+    font-size: 2.4rem
+    font-style: normal
 
   +media('<net')
     order: 1
@@ -14006,6 +14018,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   display: flex
   align-items: flex-start
   justify-content: space-between
+  margin-bottom: 2rem
 
   +media('<mob-s')
     display: block
@@ -14021,6 +14034,7 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     flex-basis: $width
     max-width: $width
     padding-right: 1rem
+    line-height: 2.4rem
 
     +media('<mob-s')
       padding-right: 0
@@ -14146,6 +14160,30 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
       .no-touch &
         color: $base-color
 
+
+// payment
+.p-card-offer__payment
+  font-size: 1.4rem
+  line-height: 2rem
+  color: #7e7e7e
+  margin-top: 2.5rem
+  padding: 1rem 2rem 1rem 2rem
+  border-left: 3px solid $base-color
+  background-color: rgba($base-color, 0.1)
+  border-radius: 0 4px 4px 0
+
+  &-title
+    display: block
+    position: relative
+    +font-bold
+    font-size: 1.6rem
+    line-height: 2.0rem
+    color: $title-color
+    margin-bottom: 0.5rem
+
+// advice
+.p-card__advice
+  margin-top: 2rem
 
 // credit
 .credit
@@ -14772,7 +14810,9 @@ $card-size: 85px 135px
 /* advice
 $advice-figure-size: 6.4rem
 $advice-figure-size--tab: 6rem
+$advice-figure-size_small: 5rem
 $advice-figure-space: 3.5rem
+$advice-figure-space_small: 2rem
 $advice-figure-space--tab: 1.8rem
 $advice-box-shadow-size--start: 0 0 0
 $advice-box-shadow-size--end: 0 5px 8px
@@ -14806,6 +14846,17 @@ $advice-box-shadow-color: black
     padding-left: #{nth($section-inner-space--mob, 2)}
     padding-right: #{nth($section-inner-space--mob, 2)}
 
+  &_small
+    padding: 1.4rem 2rem 1.2rem
+
+    +media('<lap-s')
+      padding-left: #{nth($section-inner-space--tab, 2)}
+      padding-right: #{nth($section-inner-space--tab, 2)}
+
+    +media('<mob')
+      padding-left: #{nth($section-inner-space--mob, 2)}
+      padding-right: #{nth($section-inner-space--mob, 2)}
+
   &:hover
     .no-touch &
       box-shadow: $advice-box-shadow-size--end rgba($advice-box-shadow-color, 0.18)
@@ -14837,9 +14888,14 @@ $advice-box-shadow-color: black
   border: 3px solid white
 
   +media('<tab')
-    +size($advice-figure-size--tab)
+    +size($advice-figure-space--tab)
     margin-right: $advice-figure-space--tab
     border-radius: $advice-figure-size--tab
+
+  .advice_small &
+    +size($advice-figure-size_small)
+    margin-right: $advice-figure-space_small
+    border-radius: $advice-figure-size_small
 
   img
     display: block
@@ -14850,6 +14906,9 @@ $advice-box-shadow-color: black
 
     +media('<tab')
       border-radius: $advice-figure-size--tab
+
+    .advice_small &
+      border-radius: $advice-figure-size_small
 
 .advice__label
   display: block
@@ -14862,6 +14921,10 @@ $advice-box-shadow-color: black
 
   +media('<tab')
     margin-left: $advice-figure-size--tab + $advice-figure-space--tab
+
+  .advice_small &
+    margin-left: $advice-figure-size_small + $advice-figure-space_small
+    margin-bottom: 0.5rem
 
   &:last-child
     margin-bottom: 0
@@ -14882,6 +14945,9 @@ $advice-box-shadow-color: black
   +media('<mob')
     font-size: $font-size--mob
     line-height: $line-height--mob
+
+  .advice_small &
+    margin-left: $advice-figure-size_small + $advice-figure-space_small
 
   &:last-child
     margin-bottom: 0
@@ -16184,6 +16250,8 @@ $cart-item-figure-space--mob: 0
   padding: 1rem 3rem 1rem 0
   +clear
 
+  //&_not-available
+
   +media('<mob')
     padding-right: 3.5rem
 
@@ -16200,6 +16268,9 @@ $cart-item-figure-space--mob: 0
   height: round-float($width * $ratio, 1)
   margin-right: 2.0rem
 
+  .consist__item_no-available &
+    opacity: 0.2
+
   +media('<lap-s')
     $width: 7rem
     width: $width
@@ -16213,6 +16284,9 @@ $cart-item-figure-space--mob: 0
 
 .consist__item-content
   overflow: hidden
+
+  .consist__item_no-available &
+    opacity: 0.3
 
 .consist__item-title
   display: block
@@ -16237,6 +16311,14 @@ $cart-item-figure-space--mob: 0
   display: inline-block
   +font-bold
   color: $text-color
+
+.consist__item-warning
+  clear: both
+  margin: 0.5rem -2rem 0 0
+  text-align: right
+  +font-bold
+  font-size: 1.8rem
+  color: $form-error-color
 
 .consist__item-remove
   position: absolute

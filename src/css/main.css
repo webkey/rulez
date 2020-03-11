@@ -19845,9 +19845,8 @@ a.topic-banner:hover .topic-banner__title > span {
 }
 
 .p-card-price__old {
-  display: inline-block;
-  vertical-align: baseline;
-  margin: 0 0.4rem 0.8rem 0;
+  display: block;
+  margin: 0 0 0.8rem;
   font-size: inherit;
   line-height: inherit;
   white-space: nowrap;
@@ -19906,14 +19905,10 @@ a.topic-banner:hover .topic-banner__title > span {
 }
 
 .p-card-price__new {
-  display: inline-block;
-  vertical-align: baseline;
-  line-height: inherit;
-  position: relative;
-  font-size: inherit;
-  line-height: inherit;
+  display: block;
+  line-height: 4.5rem;
   white-space: nowrap;
-  color: #000;
+  color: #4a4a4a;
 }
 
 .p-card-price__new > strong {
@@ -20154,6 +20149,7 @@ a.topic-banner:hover .topic-banner__title > span {
       align-items: flex-start;
   -ms-flex-pack: justify;
       justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 @media (max-width: 479px) {
@@ -20171,6 +20167,7 @@ a.topic-banner:hover .topic-banner__title > span {
       flex-basis: 50%;
   max-width: 50%;
   padding-right: 1rem;
+  line-height: 2.4rem;
 }
 
 @media (max-width: 479px) {
@@ -20330,6 +20327,32 @@ a.topic-banner:hover .topic-banner__title > span {
 
 .no-touch .truncate-feature__btn:hover {
   color: #6e52dd;
+}
+
+.p-card-offer__payment {
+  font-size: 1.4rem;
+  line-height: 2rem;
+  color: #7e7e7e;
+  margin-top: 2.5rem;
+  padding: 1rem 2rem 1rem 2rem;
+  border-left: 3px solid #6e52dd;
+  background-color: rgba(110, 82, 221, 0.1);
+  border-radius: 0 4px 4px 0;
+}
+
+.p-card-offer__payment-title {
+  display: block;
+  position: relative;
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.6rem;
+  line-height: 2.0rem;
+  color: #131313;
+  margin-bottom: 0.5rem;
+}
+
+.p-card__advice {
+  margin-top: 2rem;
 }
 
 .credit {
@@ -21165,6 +21188,24 @@ a.topic-banner:hover .topic-banner__title > span {
   }
 }
 
+.advice_small {
+  padding: 1.4rem 2rem 1.2rem;
+}
+
+@media (max-width: 1279px) {
+  .advice_small {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .advice_small {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
 .no-touch .advice:hover {
   box-shadow: 0 5px 8px rgba(0, 0, 0, 0.18);
   z-index: 2;
@@ -21203,11 +21244,18 @@ a.topic-banner:hover .topic-banner__title > span {
 
 @media (max-width: 991px) {
   .advice__figure {
-    width: 6rem;
-    height: 6rem;
+    width: 1.8rem;
+    height: 1.8rem;
     margin-right: 1.8rem;
     border-radius: 6rem;
   }
+}
+
+.advice_small .advice__figure {
+  width: 5rem;
+  height: 5rem;
+  margin-right: 2rem;
+  border-radius: 5rem;
 }
 
 .advice__figure img {
@@ -21224,6 +21272,10 @@ a.topic-banner:hover .topic-banner__title > span {
   }
 }
 
+.advice_small .advice__figure img {
+  border-radius: 5rem;
+}
+
 .advice__label {
   display: block;
   margin-left: 9.9rem;
@@ -21238,6 +21290,11 @@ a.topic-banner:hover .topic-banner__title > span {
   .advice__label {
     margin-left: 7.8rem;
   }
+}
+
+.advice_small .advice__label {
+  margin-left: 7rem;
+  margin-bottom: 0.5rem;
 }
 
 .advice__label:last-child {
@@ -21268,6 +21325,10 @@ a.topic-banner:hover .topic-banner__title > span {
     font-size: 1.6rem;
     line-height: 2.2rem;
   }
+}
+
+.advice_small .advice__text {
+  margin-left: 7rem;
 }
 
 .advice__text:last-child {
@@ -23026,6 +23087,10 @@ a.news-elem_alt:hover .news-elem__title {
   margin-right: 2.0rem;
 }
 
+.consist__item_no-available .consist__item-figure {
+  opacity: 0.2;
+}
+
 @media (max-width: 1279px) {
   .consist__item-figure {
     width: 7rem;
@@ -23042,6 +23107,10 @@ a.news-elem_alt:hover .news-elem__title {
 
 .consist__item-content {
   overflow: hidden;
+}
+
+.consist__item_no-available .consist__item-content {
+  opacity: 0.3;
 }
 
 .consist__item-title {
@@ -23071,6 +23140,16 @@ a.news-elem_alt:hover .news-elem__title {
   font-family: "circe-bold", Helvetica, Arial, sans-serif;
   font-weight: normal;
   color: #4a4a4a;
+}
+
+.consist__item-warning {
+  clear: both;
+  margin: 0.5rem -2rem 0 0;
+  text-align: right;
+  font-family: "circe-bold", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1.8rem;
+  color: #ff3322;
 }
 
 .consist__item-remove {
