@@ -8751,11 +8751,11 @@ input[type="text"].quick-order__input
 
 /* flip product */
 .flip-product
+  $el: &
+  $dur: 0.4s
+  $del: 0.1s
+
   display: block
-  will-change: transform, box-shadow
-  transition-property: transform, box-shadow
-  transition-duration: 0.05s
-  transition-timing-function: ease-in-out
   user-select: none
   text-decoration: none
   color: inherit
@@ -8767,74 +8767,63 @@ input[type="text"].quick-order__input
   .tape-slider__item &
     height: 100%
 
-.flip-product-frame
-  display: block
-  position: relative
-  transform-style: preserve-3d
-  transform: rotateY(0)
-  transition: transform 0.6s, opacity 0.6s
+  &-frame
+    display: block
+    position: relative
+    transform-style: preserve-3d
+    transform: rotateY(0)
+    transition: transform $dur linear $del
 
-  .topics__item &,
-  .products__item &,
-  .tape-slider__item &
+    .topics__item &,
+    .products__item &,
+    .tape-slider__item &
+      height: 100%
+
+    @at-root
+      #{$el}.active &
+        transform: rotateY(180deg)
+
+  &-card
+    width: 100%
     height: 100%
+    transition: opacity 0.1s linear #{$del + round-float($dur / 2, 1)}
 
-.flip-product:hover
-  .flip-product-frame
-    transform: rotateY(180deg)
+    &_front
+      background-color: #fff
+      color: #124989
+      z-index: 1
 
-.flip-product-card
-  width: 100%
-  height: 100%
-  //padding: 20px
-  //background-color: #fff
-  //display: flex
-  //flex-direction: column
-  //justify-content: center
-  //align-items: center
-  //line-height: 1.3
-  //text-align: center
-  //text-decoration: none
-  //color: inherit
-  //box-sizing: border-box
+      @at-root
+        #{$el}.active &
+          opacity: 0
+          pointer-events: none
 
-.flip-product-card_front
-  background-color: #fff
-  color: #124989
-  -webkit-transition: opacity 0.2s 0.2s
-  transition: opacity 0.2s 0.2s
-  z-index: 1
-
-@media only screen and (max-width: 767px)
-  .flip-product-card_front
-    justify-content: flex-start
-
-.flip-product
-  &.active,
-  &:hover
-    .flip-product-card_front
+    &_back
+      position: absolute
+      left: 0
+      top: 0
+      font-size: 18px
+      line-height: 1.5
+      background-color: #fff
+      transform: rotateY(-180deg)
+      overflow: hidden
+      display: flex
+      align-items: center
       opacity: 0
       pointer-events: none
 
-.flip-product-card_back
-  position: absolute
-  left: 0
-  top: 0
-  font-size: 18px
-  line-height: 1.5
-  background-color: #fff
-  transform: rotateY(-180deg)
-  overflow: hidden
-  display: flex
-  align-items: center
+      @at-root
+        #{$el}.active &
+          opacity: 1
+          pointer-events: auto
 
-.flip-product-card_mark
-  background-color: $base-color-alt
-  color: #000
+    &_mark
+      background-color: $base-color-alt
+      color: #000
 
-.flip-product-card__alight
-  width: 100%
-  padding: 1.5rem 2rem
+    &__alight
+      width: 100%
+      padding: 1.5rem 2rem
 
 /* flip product end */
 
@@ -8867,11 +8856,12 @@ $product-item-space--mob: 2rem 1.5rem
     right: 0
     top: 0
     z-index: 5
-    width: 3.2rem
-    height: 3.2rem
-    padding: 0.4rem
-    background-color: $base-color-alt
-    border-radius: 0 0 0 1.5rem
+    width: 3.6rem
+    height: 3.6rem
+    padding: 0.6rem
+    background-color: $base-color
+    border-radius: 0 0 0 1.2rem
+    cursor: pointer
 
 // === product stickers ===
 // --> sticker wow <--
@@ -9356,12 +9346,8 @@ $product-item-space--mob: 2rem 1.5rem
   border-radius: 2rem
   border: 1px solid $base-color
   user-select: none
-  //-webkit-tap-highlight-color: transparent
-  // transition
-  $prop: background-color, color, border-color, box-shadow
-  transition:
-    property: $prop
-    duration: $animation-speed
+  transition: all $animation-speed
+  box-shadow: 0 0 0 0 transparent
 
   +media('<mob-s')
     padding: 0
@@ -9379,8 +9365,6 @@ $product-item-space--mob: 2rem 1.5rem
     height: nth($size, 1)
     margin-top: -#{round-float(nth($size, 1) / 2, 1)}
     filter: grayscale(1) contrast(10) invert(1)
-    //transform: rotate3d(0, 1, 0, 180deg)
-    transition: filter
 
     // Для браузеров не поддерживающих css filter
     .no-cssfilters &
@@ -9394,25 +9378,6 @@ $product-item-space--mob: 2rem 1.5rem
       top: 50%
       margin: -#{round-float(nth($size, 1) / 2, 1)} 0 0 -#{round-float(nth($size, 2) / 2, 1)}
       transform: none
-
-  //svg
-    $size: 2.2rem
-    display: inline-block
-    vertical-align: top
-    width: $size
-    height: $size
-
-    path
-      fill: $base-color
-      // transition
-      $prop: fill, stroke
-      transition:
-        property: $prop
-        duration: $animation-speed
-
-  //& > span
-    padding-top: 0.2rem
-    padding-right: 1rem
 
   & > span
     +media('<mob-s')
@@ -9429,10 +9394,7 @@ $product-item-space--mob: 2rem 1.5rem
   // hover
   &:hover
     .no-touch &
-      //background-color: $base-color
-      //color: white
-      background-color: $base-color-light
-      border-color: $base-color-light
+      box-shadow: 0 0 0 2px $base-color
 
       //svg path
         fill: white
@@ -9454,8 +9416,8 @@ $product-item-space--mob: 2rem 1.5rem
 
     &:hover
       .no-touch &
-        background-color: $base-color-ultra-light
-        //border-color: $base-color-ultra-light
+        background-color: #fff
+        box-shadow: 0 0 0 2px $base-color
 
     //& > i
       background-color: $base-color
@@ -13690,13 +13652,12 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     color: #000
     padding: 0.2rem 0 0.2rem 4.2rem
     margin-bottom: 2rem
-    cursor: default
     transition: color $animation-speed
 
     &.text-large
       font-size: 2rem
       line-height: 2.4rem
-      margin-bottom: 1.7rem
+      margin-bottom: 1rem
 
     +media('>=tab', '<net')
       font-size: 1.6rem
@@ -13757,6 +13718,57 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
   .no-touch & a:hover
     & > strong
       color: #fa2c64
+
+// recommended-prod
+.recommended-prod
+  display: flex
+  align-items: center
+  margin: 0 0 #{$bottom-space}
+
+  +media('<mob')
+    margin-bottom: $bottom-space--mob
+
+  &:last-child
+    margin-bottom: 0
+
+  &__figure
+    $width: 10rem
+    $height: 6rem
+    $ratio: $height / $width
+    display: flex
+    flex-grow: 0
+    flex-shrink: 1
+    align-items: center
+    justify-content: center
+    flex-basis: $width
+    max-width: $width
+    height: round-float($width * $ratio, 1)
+    margin-right: 2.0rem
+
+    img
+      display: block
+      max-width: 100%
+      max-height: 100%
+
+  &__title
+    flex-grow: 0
+    overflow: hidden
+    display: block
+    +font-normal
+    font-weight: normal
+    font-size: 1.6rem
+    line-height: 2.4rem
+    color: $form-error-color
+
+    &-inner
+      box-shadow: inset 0 -1px 0 transparent
+      transition: all $animation-speed
+
+      a:hover &
+        box-shadow: inset 0 -1px 0 rgba($form-error-color, 0.7)
+
+    &:last-child
+      margin-bottom: 0
 
 // product card installment
 .p-card__installment
@@ -14300,6 +14312,21 @@ $gallery-thumbs-height--sm: $gallery-thumbs-size * 3 + $gallery-thumbs-item-spac
     +font-bold
     font-size: 1.6rem
     line-height: 2.0rem
+    color: $title-color
+    margin-bottom: 0.5rem
+
+// advantages
+.p-card__advantages
+  font-size: 1.6rem
+  line-height: 2.4rem
+  margin-bottom: 2rem
+
+  &-title
+    display: block
+    position: relative
+    +font-bold
+    font-size: 2rem
+    line-height: 2.8rem
     color: $title-color
     margin-bottom: 0.5rem
 
@@ -18753,6 +18780,11 @@ span.flatpickr-weekday
     line-height: 2.8rem
     color: $title-color
     margin-bottom: 1rem
+    word-break: break-word
+
+    +media('<mob-s')
+      font-size: 1.8rem
+      line-height: 2.0rem
 
   &__figure
     margin-bottom: 1rem
@@ -18770,6 +18802,10 @@ span.flatpickr-weekday
     line-height: 2.4rem
     margin-bottom: 1.5rem
     color: $text-color
+
+    +media('<mob-s')
+      font-size: 1.4rem
+      line-height: 2.0rem
 
   &__footer
     [class*="btn-"]

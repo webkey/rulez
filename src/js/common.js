@@ -4525,6 +4525,57 @@ function scrollToAnchor() {
   });
 }
 
+/**
+ * !Product flip
+ */
+function productFlip() {
+  var $flipProduct = $('.js-flip-product');
+
+  if ($flipProduct.length) {
+    $flipProduct.mouseenter(function(){
+      var $curEl = $(this);
+
+      $curEl.addClass('active');
+    }).mouseleave(function () {
+      var $curEl = $(this);
+
+      $curEl.removeClass('active');
+    });
+  }
+
+  var flipBtn = '.js-flip-btn';
+  var $flipBtn = $(flipBtn);
+
+  if ($flipBtn.length) {
+    $('body').on('click', flipBtn, function (e) {
+      e.preventDefault();
+
+      var $curBtn = $(this);
+      var $curEl = $curBtn.closest($flipProduct);
+
+      if ($curEl.hasClass('active')) {
+        $curEl.removeClass('active');
+      } else {
+        $curEl.addClass('active');
+      }
+    })
+  }
+
+  var $html = $('html')
+
+  $html.on('click', function (event) {
+    if (!$(event.target).closest($flipProduct).length) {
+      $flipProduct.removeClass('active');
+    }
+  });
+
+  $html.keyup(function (event) {
+    if (event.keyCode === 27) {
+      $flipProduct.removeClass('active');
+    }
+  });
+}
+
 
 /**
  * !Form validation
@@ -4631,6 +4682,7 @@ $(document).ready(function () {
   formValidation();
   letterIcon();
   scrollToAnchor();
+  productFlip();
 
   /**
    * For example. Remove after programming a search form
