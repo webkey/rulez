@@ -4530,24 +4530,25 @@ function scrollToAnchor() {
  */
 function productFlip() {
   var $flipProduct = $('.js-flip-product');
+  var $body = $('body');
 
   if ($flipProduct.length) {
-    $flipProduct.mouseenter(function(){
+    $body.on('mouseenter', '.js-flip-product', function () {
       var $curEl = $(this);
 
       $curEl.addClass('active');
-    }).mouseleave(function () {
+    }).on('mouseleave', '.js-flip-product', function () {
       var $curEl = $(this);
 
       $curEl.removeClass('active');
-    });
+    })
   }
 
   var flipBtn = '.js-flip-btn';
   var $flipBtn = $(flipBtn);
 
   if ($flipBtn.length) {
-    $('body').on('click', flipBtn, function (e) {
+    $body.on('click', flipBtn, function (e) {
       e.preventDefault();
 
       var $curBtn = $(this);
