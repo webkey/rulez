@@ -4529,43 +4529,40 @@ function scrollToAnchor() {
  * !Product flip
  */
 function productFlip() {
-  var $flipProduct = $('.js-flip-product');
   var $body = $('body');
+  var $html = $('html');
+  var flipProduct = '.js-flip-product';
+  var $flipProduct = $(flipProduct);
 
-  if ($flipProduct.length) {
-    $body.on('mouseenter', '.js-flip-product', function () {
-      var $curEl = $(this);
+  // setTimeout(function () {
+  //   $flipProduct.first($flipProduct).parent().clone().insertAfter($flipProduct.first($flipProduct).parent());
+  // }, 2000)
 
-      $curEl.addClass('active');
-    }).on('mouseleave', '.js-flip-product', function () {
-      var $curEl = $(this);
+  $body.on('mouseenter', flipProduct, function () {
+    var $curEl = $(this);
 
+    $curEl.addClass('active');
+  }).on('mouseleave', flipProduct, function () {
+    var $curEl = $(this);
+
+    $curEl.removeClass('active');
+  })
+
+  $body.on('click', '.js-flip-btn', function (e) {
+    e.preventDefault();
+
+    var $curBtn = $(this);
+    var $curEl = $curBtn.closest(flipProduct);
+
+    if ($curEl.hasClass('active')) {
       $curEl.removeClass('active');
-    })
-  }
-
-  var flipBtn = '.js-flip-btn';
-  var $flipBtn = $(flipBtn);
-
-  if ($flipBtn.length) {
-    $body.on('click', flipBtn, function (e) {
-      e.preventDefault();
-
-      var $curBtn = $(this);
-      var $curEl = $curBtn.closest($flipProduct);
-
-      if ($curEl.hasClass('active')) {
-        $curEl.removeClass('active');
-      } else {
-        $curEl.addClass('active');
-      }
-    })
-  }
-
-  var $html = $('html')
+    } else {
+      $curEl.addClass('active');
+    }
+  })
 
   $html.on('click', function (event) {
-    if (!$(event.target).closest($flipProduct).length) {
+    if (!$(event.target).closest(flipProduct).length) {
       $flipProduct.removeClass('active');
     }
   });
