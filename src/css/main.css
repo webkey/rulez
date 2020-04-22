@@ -14268,8 +14268,8 @@ input[type="text"].quick-order__input.success {
   right: 0;
   top: 0;
   z-index: 5;
-  width: 3.6rem;
-  height: 3.6rem;
+  width: 4.2rem;
+  height: 4.2rem;
   padding: 0.6rem;
   background-color: #6e52dd;
   border-radius: 0 0 0 1.2rem;
@@ -26608,6 +26608,11 @@ span.flatpickr-weekday {
 }
 
 /* recommend end */
+.tipso_bubble {
+  z-index: 88;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 /* ==================================== */
 /* =========== PRINT VERSION ========== */
 /* ==================================== */

@@ -143,6 +143,8 @@ gulp.task('mergeCssLibs', function () {
     , 'src/libs/jquery-bar-rating/dist/themes/css-stars.css' // Star rating
     , 'node_modules/flatpickr/dist/flatpickr.min.css'
     , 'node_modules/flatpickr/dist/themes/dark.css'
+    , 'node_modules/animate.css/animate.min.css'
+    , 'node_modules/tipso/src/tipso.min.css'
   ])
       .pipe(concatCss("src/css/libs.css", {
         rebaseUrls: false
@@ -194,6 +196,8 @@ gulp.task('copyLibsScriptsToJs', ['copyJqueryToJs'], function () {
     // , 'src/libs/shave/dist/jquery.shave.min.js' // Cut text
     , 'node_modules/flatpickr/dist/flatpickr.min.js'
     , 'node_modules/flatpickr/dist/l10n/ru.js'
+    , 'node_modules/tipso/src/tipso.min.js'
+    , 'node_modules/wow.js/dist/wow.min.js'
   ])
       .pipe(concat('libs.js'))
       .pipe(gulp.dest('src/js'))

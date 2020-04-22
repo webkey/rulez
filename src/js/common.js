@@ -2796,7 +2796,7 @@ function toggleViewInit() {
         }
       });
     });
-    console.log("Filters Object: ", self.filtersObject);
+    console.info("Filters Object: ", self.filtersObject);
   };
 
   MultiFilters.prototype.createFromToFilterName = function (groupName, isFrom, isTo) {
@@ -2938,10 +2938,10 @@ function toggleViewInit() {
         fObjCurFilter.isActive = curFilterHasChanged;
         fObjCurGroup.isActive = !!fObjCurGroup['changedFiltersLengthInGroup'];
         fObjCurFilter.tag = self.tagVal;
-        console.log('Filter ' + curFilterName + ' is ' + fObjCurFilter.isActive + ' --> ' + curGroupName + ' group has ' + fObjCurGroup['changedFiltersLengthInGroup'] + ' active filters'); // For testing
+        // console.log('Filter ' + curFilterName + ' is ' + fObjCurFilter.isActive + ' --> ' + curGroupName + ' group has ' + fObjCurGroup['changedFiltersLengthInGroup'] + ' active filters'); // For testing
 
         self.createTagsList(self.filtersObject, $curContainer);
-        console.log("Filters Object: ", self.filtersObject);
+        console.info("Filters Object: ", self.filtersObject);
       }
     });
 
@@ -4515,7 +4515,6 @@ function letterIcon() {
  */
 function scrollToAnchor() {
   $('body').on('click', '.js-scroll-to-anchor', function (e) {
-    console.log(1);
     e.preventDefault();
     var $doc = $('html,body');
     var $this = $(this);
@@ -4526,6 +4525,49 @@ function scrollToAnchor() {
 }
 
 /**
+ * !Rulik bubble
+ */
+function rulikBubble() {
+  var $rulikBubbleEl = $('.js-rulik-bubble');
+  var delay = 6000;
+
+  if ($rulikBubbleEl.length) {
+    $rulikBubbleEl.tipso({
+      background: '#6e52dd',
+      color: '#fff',
+      animationIn: 'tada',
+      animationOut: 'fadeOut',
+      onHide: function ($element, element) {
+        $element.tipso('destroy');
+      }
+    });
+  }
+
+  function toggleBubble(box) {
+    $(box).tipso('show');
+    setTimeout(function () {
+      $(box).tipso('close');
+    }, delay);
+  }
+
+  new WOW(
+      {
+        boxClass: 'js-rulik-bubble',
+        animateClass: 'show-tooltip',
+        offset: 0,
+        callback: function (box) {
+          var $tab = $(box).closest('[class*="tabs"]');
+          if ($tab.length && $tab.hasClass('tabs-active') ) {
+            toggleBubble(box);
+          } else if (!$tab.length) {
+            toggleBubble(box);
+          }
+        },
+      }
+  ).init();
+}
+
+/**
  * !Product flip
  */
 function productFlip() {
@@ -4533,15 +4575,18 @@ function productFlip() {
   var $html = $('html');
   var flipProduct = '.js-flip-product';
   var $flipProduct = $(flipProduct);
+  var rulikBubbleEl = '.js-rulik-bubble';
 
   // setTimeout(function () {
   //   $flipProduct.first($flipProduct).parent().clone().insertAfter($flipProduct.first($flipProduct).parent());
+  //   rulikBubble();
   // }, 2000)
 
   $body.on('mouseenter', flipProduct, function () {
     var $curEl = $(this);
 
     $curEl.addClass('active');
+    $curEl.find(rulikBubbleEl).tipso('close');
   }).on('mouseleave', flipProduct, function () {
     var $curEl = $(this);
 
@@ -4553,6 +4598,10 @@ function productFlip() {
 
     var $curBtn = $(this);
     var $curEl = $curBtn.closest(flipProduct);
+
+    if ($curBtn.hasClass('js-rulik-bubble')) {
+      $curBtn.tipso('close');
+    }
 
     if ($curEl.hasClass('active')) {
       $curEl.removeClass('active');
@@ -4630,6 +4679,10 @@ function formValidation() {
 /**
  * =========== !ready document, load/resize window ===========
  */
+
+$(window).on('load', function () {
+  rulikBubble();
+})
 
 $(document).ready(function () {
   if (!("ontouchstart" in document.documentElement)) {
