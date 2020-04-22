@@ -4537,8 +4537,8 @@ function rulikBubble() {
       color: '#fff',
       animationIn: 'tada',
       animationOut: 'fadeOut',
-      onHide: function ($element, element) {
-        $element.tipso('destroy');
+      onHide: function ($element) {
+        $element.tipso('destroy').removeClass('js-rulik-bubble').attr('data-tipso', '');
       }
     });
   }
