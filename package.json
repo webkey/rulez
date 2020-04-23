@@ -47,7 +47,7 @@
     "okaynav": "^2.0.2",
     "scrollreveal": "^4.0.5",
     "simplebar": "^3.1.4",
-    "tipso": "^1.0.8",
+    "tooltipster": "^4.2.7",
     "wow.js": "^1.2.2"
   }
 }

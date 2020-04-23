@@ -4530,23 +4530,27 @@ function scrollToAnchor() {
 function rulikBubble() {
   var $rulikBubbleEl = $('.js-rulik-bubble');
   var delay = 6000;
-
   if ($rulikBubbleEl.length) {
-    $rulikBubbleEl.tipso({
-      background: '#6e52dd',
-      color: '#fff',
-      animationIn: 'tada',
-      animationOut: 'fadeOut',
-      onHide: function ($element) {
-        $element.tipso('destroy').removeClass('js-rulik-bubble').attr('data-tipso', '');
-      }
-    });
+    $.each($rulikBubbleEl, function () {
+      var $el = $(this);
+      var content = $el.attr('data-bubble')
+      $el.tooltipster({
+        content: content,
+        animation: 'tada',
+        functionAfter: function(instance) {
+          instance.destroy();
+        },
+        theme: ['tooltipster-rulik']
+      });
+    })
   }
 
   function toggleBubble(box) {
-    $(box).tipso('show');
+    $(box).tooltipster('open');
     setTimeout(function () {
-      $(box).tipso('close');
+      if ($(box).hasClass('tooltipstered')) {
+        $(box).tooltipster('close');
+      }
     }, delay);
   }
 
@@ -4577,16 +4581,19 @@ function productFlip() {
   var $flipProduct = $(flipProduct);
   var rulikBubbleEl = '.js-rulik-bubble';
 
-  // setTimeout(function () {
-  //   $flipProduct.first($flipProduct).parent().clone().insertAfter($flipProduct.first($flipProduct).parent());
-  //   rulikBubble();
-  // }, 2000)
+  setTimeout(function () {
+    $flipProduct.first($flipProduct).parent().clone().insertAfter($flipProduct.first($flipProduct).parent());
+    rulikBubble();
+  }, 2000)
 
   $body.on('mouseenter', flipProduct, function () {
     var $curEl = $(this);
 
     $curEl.addClass('active');
-    $curEl.find(rulikBubbleEl).tipso('close');
+    var $rBub = $curEl.find(rulikBubbleEl);
+    if ($rBub.hasClass('tooltipstered')) {
+      $rBub.tooltipster('close');
+    }
   }).on('mouseleave', flipProduct, function () {
     var $curEl = $(this);
 
@@ -4599,8 +4606,8 @@ function productFlip() {
     var $curBtn = $(this);
     var $curEl = $curBtn.closest(flipProduct);
 
-    if ($curBtn.hasClass('js-rulik-bubble')) {
-      $curBtn.tipso('close');
+    if ($curBtn.hasClass('js-rulik-bubble') && $curBtn.hasClass('tooltipstered')) {
+      $curBtn.tooltipster('close');
     }
 
     if ($curEl.hasClass('active')) {
