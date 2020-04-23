@@ -4581,10 +4581,10 @@ function productFlip() {
   var $flipProduct = $(flipProduct);
   var rulikBubbleEl = '.js-rulik-bubble';
 
-  setTimeout(function () {
-    $flipProduct.first($flipProduct).parent().clone().insertAfter($flipProduct.first($flipProduct).parent());
-    rulikBubble();
-  }, 2000)
+  // setTimeout(function () {
+  //   $flipProduct.first($flipProduct).parent().clone().insertAfter($flipProduct.first($flipProduct).parent());
+  //   rulikBubble();
+  // }, 2000)
 
   $body.on('mouseenter', flipProduct, function () {
     var $curEl = $(this);
